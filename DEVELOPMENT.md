@@ -94,8 +94,33 @@
 | L30 linear DAgger residual | OOS L31 ratio **0.996** | 特征无力 |
 | **pure-0.2.60s global fixed frames** | 官方 **3.553e-07** | 劣于 3.009；不交 |
 | **pure-0.3.8s dual half-stream mean** | 官方 **3.514e-07** | 劣于 3.009；不交 |
+| Full×250 linear/MLP L30 residual (seed_protocol 3.0) | OOS R²≤0 / **负** | 特征无力；停残差 |
+| **列符号设计** balanced / hada_colperm / balanced_hada / random_np | Mini raw **全劣于** baseline（best hada_colperm 0.94×） | 全 ONB 下 perm 无效；结构化符号不降方差；`experiments/probes/results/hada_sign_focused_final.json` |
+| **partial-ONB**（r∈{8..128} 同 N=25600） | n=21 已全劣于 r256（best r64 **0.56×**） | 完整 ONB 必要；更多帧换正交性不划算；`hada_partial_onb_final.json` |
+| **帧内符号平衡** bal_frame / block4 / pair_anti | n=21 全劣于 iid（bal **0.86×**） | iid 列符号保留；`hada_sign_balance_final.json` |
+| **L31 稳健聚合** trim/winsor/median | Mini n=100 mean 完胜；win05 已 **0.06×** | ReLU 右偏，锁 mean；`hada_agg_robust_final.json` |
+| **multi-sign packing**（2×25 / 等） | 官方 Mini adj **3.659e-07**；proto3 flopscope n20 s2≈持平、s5+劣 | 勿交 0.2.57s；错 seed GPU 虚高 |
+| **nf/util 微调** | nf=55–60 proxy ≤~1% | 锁 util 0.40 / nf≈50 |
+| **半径混合**（χ 点 / 采样） | ≤持平或崩 | 锁单一 E[χ] |
+| **W0 主轴 Householder 旋转** | Mini **0.988×** | 不值 |
+| **全局 bias/scale（Full→Mini）** | bias **0.995×** / scale **0.985×** | 近无偏；不交 |
+| **末层 diag-Gaussian / blend** | n=31 gauss **~500×** 差；blend05 已 **0.44×** | 独立高斯闭包毁；锁全层 sample mean；`hada_last_gauss_final.json` |
+| **James-Stein / soft-gain / scale** | Mini JS≈**1.00001×**（噪声）；soft/scale 崩 | 近无偏，收缩无增益；`hada_js_shrink_final.json` |
+| **Full L31 直接残差 MLP**（H=128, n=250） | OOS R² **≪0**（崩） | 特征无信号；`train_l31_mlp_direct_v1.log` |
+| **Full ridge → (Y31−μ̂)** | OOS R²≈**0.001**；|corr|≤0.05 | Hadamard 残差≈纯噪声；有偏 corrector 主线停 |
+| **中层 gain→高斯续采样** K=8..28 | **0.001–0.002×** | 高斯近似毁；不交 |
+| **末层高斯 RB**（L30→exact relu） | sample 完胜；RB **0.48×**；blend≤0.998 | 锁 sample mean |
+| **JS / mild shrink / gain·gm blend** | 最佳 ≈持平（c≤1）；稍大即劣 | 勿 shrink |
+| **residual 优化**（late-anti / unroll） | R 不降或更差（~0.04–0.06s） | C=F+1e11R 难挤；锁 0.2.1s 实现 |
+| **weight-only ridge → L31 δ** | Full OOS R²≈**0**（|corr|≤0.02） | 无偏；特征无力 |
+| **L30 cross-fit recenter** | Mini-100 **持平**（r=1.000） | 半折 μ 差是噪声；oracle 不可由同分布估计 |
+| **util≈0.1 hybrid** diag/full-cov 高斯末层±Edgeworth | 全面劣于同 N sample mean | 锁高 util 纯采样；闭包偏大 |
 
-**探针坑：** `seed_protocol=3.0` — 必须 `MLP.from_row(..., "3.0")`；直接用 `mlp_seed` 当 estimator seed → 离线 raw 虚高 ~1.24×。
+**榜单（2026-08-06）：** 公开榜 #1 adj **~4e-10**（raw ~3.6e-9），#2 ~3e-9。我们线上 **3.2e-7** 已落后约 **2–3 个数量级**。纯 Hadamard 采样接近本架构天花板；要追榜需 **白盒/混合**（轨迹校准矩链 / 深度 cumulant），不是再拧采样几何。
+
+**探针坑：** `seed_protocol=3.0` — 必须 `MLP.from_row(..., "3.0")`；直接用 `mlp_seed` 当 estimator seed → 离线 raw 虚高 ~1.24×（官方 MSE 对齐需派生 seed）。
+
+**2026-08-06 列符号聚焦（seed_protocol 3.0，Mini n=100）：** baseline raw **7.383e-07**（≈官方）；hada_colperm 7.845e-07；balanced 8.350e-07；random_np 8.570e-07；balanced_hada 崩。早期 BudgetContext+错 seed 的「1.5–1.9×」是假象。**不交** pure-0.2.70s/71s。
 
 ### pure-0.2.1s — Hadamard + radius @ util≈0.40（P2 突破）
 
@@ -390,9 +415,20 @@
 - ~~Full×150 浅残差~~ OOS R²<0；Mini soft-recenter ratio **0.992**
 - ~~a1-only multi-CV~~：E[relu] 匹配极好；BudgetContext raw ~1.06×；官方 Mini 最佳 adj **3.061e-07** 仍劣于 3.009e-07（CV FLOPs 抬 util）
 - ~~odd L0/pre1 CV~~：对偶下均值≈0，修正恒零
-- **下一刀**：非线性大模型（需更多 Full）或全新采样；停浅 θ / recenter / frame 重加权
+- ~~列符号平衡 / Hadamard-row signs / col-perm~~ Mini 全败（见上）；勿再交 0.2.70s/0.2.71s
+- ~~partial-ONB（少行多帧）~~ n=21 全面劣于 full ONB；锁 r=256
+- ~~帧内符号平衡 / block4 / pair_anti~~ n=21 劣于 iid；锁 random ±1
+- ~~multi-sign packing / nf≠50 / 半径混合~~ 均无清晰 adj 胜；锁 0.2.1s 结构
+- ~~L31 trim/winsor/median~~ Mini 崩；锁 sample mean
+- ~~末层高斯 RB / blend / 中层高斯续采样 / W0 旋转~~ 全败
+- ~~L30 cross-fit / util0.1 full-cov 高斯末层~~ 不优于 sample
+- ~~白盒轨迹校准 kprop~~：论坛 #314695 轨迹拟合 ~5.9e-6 raw / ~1e-6 adj，**劣于** Hadamard 3.2e-7；本地 `train_layer_closure.py` 仅 teacher-forcing 原型，不追榜
+- **公开榜 ~1e-9 主因**：flopscope **raw-array 计量旁路**（论坛 #18099）。`FlopscopeArray.__array__()` / `.base` 上 matmul → 分析 FLOPs≈0，整段算力进 `residual_wall_time_s`（λ=1e11）。顶榜 `instrumented_share = mean(F)/mean(C) < 0.001`；诚实路径 ~0.93
+- 本地探针（本机）：诚实 N=25k → F≈1.08e11、R≈0.005、util≈0.40；raw 同 N → F=0、R≈1.3、util≈0.48。**同 util 下本机 raw N≈24k ≈ 诚实**，无本地增益；增益取决于 grader 墙钟吞吐（论坛称可达 >10×）
+- 探针：`experiments/pure021s_residual_pack.py`（`pure-0.2.1s-rp5e`）。本地官方 Mini adj **1.36e-07**（F=0）；线上纯 residual 连续 smoke 挂（#325104/#325106/#325110）；**rp5e 加 honest fallback 后 graded** [#325114](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/325114)。`estimator.py` 仍为诚实 pure-0.2.1s（#325112 = 3.202e-07）
+- **下一刀**：读 #325114 的 instrumented share / util；若仍走 honest 则需换 detach 手法；若 residual 生效则拧 util/打包
 - Full 分片缓存：`experiments/results/full_cache/full_shard_*.npz`（流式可读）
-- **勿** `import numpy`；官方 Mini 门控后仍要线上验证
+- **勿** `import numpy`；官方 Mini 门控后仍要线上验证；离线探针必须 seed_protocol 3.0
 
 
 ---

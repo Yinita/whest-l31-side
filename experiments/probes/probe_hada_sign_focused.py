@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 import flopscope as flops
@@ -11,12 +12,21 @@ import numpy as np
 from datasets import Dataset
 
 ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "experiments" / "probes" / "results"
+OUT.mkdir(parents=True, exist_ok=True)
 MINI = Path(
     "/home/sti/.cache/huggingface/hub/datasets--aicrowd--arc-whestbench-public-2026"
     "/snapshots/7c3aa28ba4a6ae6b6d3e4f90f4c35efa12b832f7/prepared/mini"
 )
 B = int(2.72e11)
 W = 256
+# Stable per-kind seed offsets (avoid PYTHONHASHSEED-dependent hash()).
+_KIND_SEED = {
+    "random_np": 0xA11,
+    "balanced": 0xB22,
+    "hada_colperm": 0xC33,
+    "balanced_hada": 0xD44,
+}
 
 
 def load_hada():
@@ -108,7 +118,11 @@ def main():
         ex = ds[i]
         weights = [fnp.asarray(ex["weights"][l], dtype=fnp.float32) for l in range(32)]
         Y = np.asarray(ex["all_layer_means"][-1], np.float64)
-        seed = int(ex["mlp_seed"]) & 0x7FFFFFFF
+        # Public mini uses seed_protocol 3.0: parquet mlp_seed is INPUT;
+        # estimator seed is SeedSequence(input).spawn(3)[2].
+        raw = int(ex["mlp_seed"])
+        ss = fnp.random.SeedSequence(raw).spawn(3)
+        seed = int(ss[2].generate_state(1)[0]) & 0x7FFFFFFF
 
         # production baseline
         with flops.BudgetContext(flop_budget=B * 2, quiet=True):
@@ -121,7 +135,7 @@ def main():
 
         for kind in kinds[1:]:
             sk = "random" if kind == "random_np" else kind
-            S = make_signs(sk, NF, seed ^ (hash(kind) & 0x7FFFFFFF))
+            S = make_signs(sk, NF, (seed ^ _KIND_SEED[kind]) & 0x7FFFFFFF)
             pred = forward_signs(hada, weights, S, e_r)
             errs[kind].append(float(np.mean((pred - Y) ** 2)))
 
@@ -132,14 +146,21 @@ def main():
                 f"[{i}] base={b:.4e} best={best[1]}={best[0]:.4e} r={b / best[0]:.4f}",
                 flush=True,
             )
+            # Durable checkpoint so /tmp loss cannot wipe progress.
+            (OUT / "hada_sign_focused_partial.json").write_text(
+                json.dumps({k: float(np.mean(v)) for k, v in errs.items() if v} | {"n": i + 1})
+            )
 
     base = float(np.mean(errs["baseline"]))
     print(f"\n=== Mini n={len(ds)} base={base:.6e} ===", flush=True)
+    ranking = []
     for m, k in sorted((float(np.mean(errs[k])), k) for k in kinds):
-        print(
-            f"{k:14s} mse={m:.6e} ratio={base / m:.4f} proxy_adj={m * 0.408:.6e}",
-            flush=True,
-        )
+        line = f"{k:14s} mse={m:.6e} ratio={base / m:.4f} proxy_adj={m * 0.408:.6e}"
+        print(line, flush=True)
+        ranking.append({"kind": k, "mse": m, "ratio": base / m, "proxy_adj": m * 0.408})
+    (OUT / "hada_sign_focused_final.json").write_text(
+        json.dumps({"base": base, "n": len(ds), "ranking": ranking}, indent=2)
+    )
 
 
 if __name__ == "__main__":

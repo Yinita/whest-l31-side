@@ -213,6 +213,16 @@
 
 浅线性/权重特征在 Full 上同样学不动 L30 残差 → 需要 **非线性大模型** 或放弃 residual、改采样。
 
+### Full 监督（protocol 3.0 重跑）
+
+| 尝试 | 结果 |
+|------|------|
+| Full×250 特征缓存 `l30_feat_cache_v3.npz`（正确 estimator seed） | base L30≈9.74e-7 |
+| 线性 ridge 预测 Y30−μ̂30 | 最优 **shrink=0**；任意 sh>0 → R² **<0** |
+| 小 MLP（H=32）同目标 | 任意 sh>0 → R² **≪0**（最佳仍 sh=0） |
+
+**结论：** 在正确种子下浅/小非线性残差仍 **学不动**；停 L30 residual / soft-recenter 线。定稿仍 pure-0.2.1s。
+
 ### P2b 旁路续（global frames / dual-mean / 探针坑）
 
 | 尝试 | 官方 Mini | 判定 |
@@ -222,10 +232,17 @@
 | a1cv 族（diag/PCA/subsample β，多 util） | 最佳 ~**3.06e-07** | 未超 base |
 | a1cv sub2k | 3.063e-07 | 未超 |
 | Weyl/Halton 替换列符号（protocol 3.0） | proxy_adj 更差（r≪1） | **否决** |
+| Full×250 线性 residual（protocol 3.0） | OOS 最优 shrink→0（R²≤0） | **否决** |
+| Full×250 浅 MLP residual（H=64） | OOS R² **-0.04～-8** | **否决**；门控失败 |
+| Full→Mini 全局 bias / scale | r=0.975–0.995 | **否决** |
+| Full×40 搜 K 个全局 Hadamard 设计 | 均劣于 per-MLP（r≤0.98） | 再确认 fixed global 无益 |
+| gain-init + diag-Gauss suffix | raw ~1e-3 | **崩** |
+| frame RNG：np SeedSequence.spawn / fnp stride / pair-xor | Mini r=0.83–0.90 | **否决**（均劣于 sequential fnp） |
+| frame 逆方差加权 / JS-on-frames | Mini r=0.94–0.98 | **否决** |
 
 **探针坑（重要）：** Phase-1 数据集 `seed_protocol=3.0`。`MLP.from_row(..., "3.0")` 才得到官方 `mlp.seed`；直接用 parquet `mlp_seed` 当 estimator seed 会使 Hadamard 方向错位，离线 raw 虚高约 **1.24×**（9.15e-7 vs 官方 7.38e-7）。此后离线对比必须 `from_row` + protocol 3.0，或只信 `whest run`。
 
-**保留：** `estimator.py` = pure-0.2.1s。下步：Full 监督非线性，或全新采样结构（非符号 LD / global / dual）。
+**保留：** `estimator.py` = pure-0.2.1s。残差/浅学习/全局偏置/换 RNG/frame 加权已死；进行中：Full 上更深 MLP 直接拟合 L31 残差（`train_l31_mlp_direct.py`，H=128）。
 ---
 
 ## 3. Floor 管线回顾（线上回退族；Mini 已被 pure-0.2.1s 超过）
