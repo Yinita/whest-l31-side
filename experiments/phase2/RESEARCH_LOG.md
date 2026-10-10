@@ -37,3 +37,5 @@
 用户调整：取消每10分钟定时触发，改为当前会话持续研究；已通过app删除whestbench-10。阶段目标和验证门槛保持不变；nofeed现有进程继续，不重复启动。
 
 持续研究补充诊断：age3前4层误差与V29一致，第5层开始上升；age5前5层一致，第6层开始略改善，后层raw收益最多约3.5%。这符合门槛改变首次发生时点，但只能观察相关，不能单凭aggregate判定单来源因果。完整逐层ratio见source_age_layer_diagnostic.json。年龄修改不能解释所需十倍收益。原论文v2 HTML的4.2、4.3和S.4.3已读取：augmented保留更高阶迹结构、factorization讨论相同输出的表示重组；这并不证明V29再生/压缩近似准确。来源 https://arxiv.org/html/2605.05179v2 。nofeed仍运行，保持现有候选哈希不变。
+
+公共benchmark扩展：prepare_public.py新增--shard选项，默认首分片路径保持原样。分片1下载session39510，输出benchmark/data/mini_shard01；使用相同固定数据commit、逐分片LFS SHA校验、原targets、网络ID记录。本地未参与调参，上游是否用过未知，不能据此宣称完全独立泛化。nofeed进程仍运行，无重复实验。

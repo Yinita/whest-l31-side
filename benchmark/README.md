@@ -84,3 +84,7 @@ uv run python benchmark/rpc_score.py --predictions results/phase2/v29_rpc_repeat
 下一步先扩展 Mini-100 并测长期 client/server 内存及资源尾部；再完成 V25/V29 输出与成本消融。只有这些稳定后，才进入 E03 来源扰动及输出导向压缩。暂不以低样本 MC 或 Mini-8 开发集选择证明泛化。
 
 榜单验证：公开页面的 TeamLeaderboardEntry 显示团队 **Niko**、成员 **nikoo_yu**、提交 **335146**、排名 **111**、Entries=1；动态快照见 `results/phase2/leaderboard_335146.json`。下一步不重复提交相同基线，先完成完整公共 benchmark 和自身改进消融。
+
+## 扩展公共网络集合
+
+`uv run python benchmark/prepare_public.py --shard 1` 缓存固定commit的第二个Mini分片至 `benchmark/data/mini_shard01`，校验官方LFS SHA并记录网络ID。其他分片可用0–13；0保持原冻结Mini8路径。保留原targets，不合并到调参集。本地未调参的公共网络仍不能证明上游未使用；阶段独立验证须额外核查。下载与评测结果分开记录。
