@@ -31,7 +31,6 @@ def _sylvester_hadamard(dim: int) -> fnp.ndarray:
     # Build in Python floats then one asarray — avoid flopscope matmuls.
     h = [[1.0]]
     while len(h) < dim:
-        n = len(h)
         top = [row + row for row in h]
         bot = [row + [-x for x in row] for row in h]
         h = top + bot
@@ -51,7 +50,6 @@ def _hadamard_directions(n_frames: int, dim: int, seed: int, e_r: float) -> fnp.
     rng = fnp.random.default_rng(seed)
     scale = fnp.float32(e_r)
     blocks = []
-    idx = fnp.arange(dim)
     for _ in range(n_frames):
         perm = rng.permutation(dim)
         signs = rng.choice(fnp.asarray([-1.0, 1.0], dtype=fnp.float32), size=dim)

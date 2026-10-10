@@ -1,3 +1,5 @@
+> 历史教程提示（2026-10-10）：此页含 Phase 1 配置或示例。当前 Phase 2 项目入口与数据命令见根目录 [README](../../README.md)，配置以 [项目报告](../../ARC_WhestBench_Project_Report_2026-10-10.md) 为准；旧成绩和预算不可直接沿用。
+
 # `local_engine` API
 
 > [← Documentation](../README.md)

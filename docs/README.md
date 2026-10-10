@@ -1,3 +1,5 @@
+> 当前项目入口见 [Phase 2 README](../README.md) 与 [项目报告](../ARC_WhestBench_Project_Report_2026-10-10.md)。以下为继承的 starter kit 文档索引，部分教程使用旧阶段配置。
+
 # Documentation
 
 The starter kit teaches you to write a Python estimator that predicts

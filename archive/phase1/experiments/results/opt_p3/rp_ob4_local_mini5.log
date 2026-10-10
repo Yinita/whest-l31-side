@@ -1,0 +1,107 @@
+Resolving hf://aicrowd/arc-whestbench-public-2026@v1-phase1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+whestbench: downloading 'mini' split from 
+hf://aicrowd/arc-whestbench-public-2026@v1-phase1
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files: 100%|##########| 4/4 [00:00<00:00, 138654.68it/s]
+
+✓ Loaded 100 MLPs in 766ms (from cache)
+[run] estimator_class=Estimator
+[run] estimator_path=experiments/pure021s_rp_ob/estimator.py
+[run] n_mlps=5 gen_label=Loading dataset
+[run] generating: 5/5
+memory_limit_mb=65536 is advisory in --runner local: enforcement requires --runner subprocess (uses RLIMIT_AS) or external sandboxing (cgroups).
+[run] scoring: 1/5
+[run] scoring: 2/5
+[run] scoring: 3/5
+[run] scoring: 4/5
+[run] scoring: 5/5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                              WhestBench Report                               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────── Run Context ─────────────────────────────────╮
+│                                                                              │
+│   Estimator Class [estimator_class]   Estimator                              │
+│   Estimator Path [estimator_path]     experiments/pure021s_rp_ob/estimato…   │
+│   Started [run_started_at_utc]        Aug 07, 2026 02:13:14 UTC              │
+│   Finished [run_finished_at_utc]      Aug 07, 2026 02:13:19 UTC              │
+│   Duration(s) [run_duration_s]        4.793325                               │
+│   MLPs [n_mlps]                       5                                      │
+│   Width [width]                       256                                    │
+│   Depth [depth]                       32                                     │
+│   FLOP Budget [flop_budget]           2.72e+11                               │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── Hardware & Runtime ─────────────────────────────╮
+│                                                                              │
+│   Host [host.hostname]                  sti                                  │
+│   OS [host.os]                          Linux                                │
+│   Release [host.os_release]             6.8.0-124-generic                    │
+│   Platform [host.platform]              Linux-6.8.0-124-generic-x86_64-wi…   │
+│   Arch [host.machine]                   x86_64                               │
+│   CPU [host.cpu_brand]                  x86_64                               │
+│   CPU Cores (logical)                   28                                   │
+│   [host.cpu_count_logical]                                                   │
+│   CPU Cores (physical)                  20                                   │
+│   [host.cpu_count_physical]                                                  │
+│   RAM Total [host.ram_total_bytes]      62.5 GB                              │
+│   Python [host.python_version]          3.10.12                              │
+│   NumPy [host.numpy_version]            2.2.6                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭────────────────── Sampling Budget Breakdown (Ground Truth) ──────────────────╮
+│ restored from dataset metadata for the MLPs used in this run.                │
+│                                                                              │
+│        Total FLOPs [flops_used]                         2.11e+16             │
+│        Flopscope Backend [flopscope_backend_time_s]     0.000000s            │
+│        Flopscope Overhead [flopscope_overhead_time_s]   0.000000s            │
+│        Residual Wall Time [residual_wall_time_s]        1846.573297s         │
+│                                                                              │
+│                                                                              │
+│                                               % of    mean                   │
+│                                      total   sect…   flops   trac…   flop…   │
+│   namespace                          flops   flops   / MLP    time   over…   │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│   sampling.sample_layer_statistics   2.11…   100.…   4.21…   0.00…   0.00…   │
+│                                                                              │
+│ aggregated across all evaluated MLPs                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────── Estimator Budget Breakdown ─────────────────────────╮
+│                                                                              │
+│          Total FLOPs [flops_used]                         0                  │
+│          Effective Compute [effective_compute]            4.79e+11           │
+│          Flopscope Backend [flopscope_backend_time_s]     0.000649s          │
+│          Flopscope Overhead [flopscope_overhead_time_s]   0.000982s          │
+│          Residual Wall Time [residual_wall_time_s]        4.786688s          │
+│                                                                              │
+│                                                                              │
+│                                           % of     mean                      │
+│                                 total   secti…    flops   tracked   flops…   │
+│   namespace                     flops    flops    / MLP      time   overh…   │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│   estimator.estimator-client        0     0.0%        0   0.0006…   0.000…   │
+│                                                                              │
+│ aggregated across all evaluated MLPs                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────── Final Score ─────────────────────────────────╮
+│                                                                              │
+│   metric                                           value                     │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│   Adjusted Final-Layer Score                    1.48e-07   ← primary score   │
+│   [adjusted_final_layer_score]                                               │
+│   Raw Final-Layer MSE [final_layer_mse]         4.19e-07                     │
+│   All-Layers MSE [all_layers_mse]               6.43e-01                     │
+│   ────────                                      ────────                     │
+│   Best MLP                                      4.99e-08                     │
+│   [best_mlp_adjusted_final_layer_score]                                      │
+│   Worst MLP                                     3.54e-07                     │
+│   [worst_mlp_adjusted_final_layer_score]                                     │
+│   ────────                                      ────────                     │
+│   Mean Score Multiplier                       0.35196234                     │
+│   [mean_score_multiplier]                                                    │
+│   Mean Compute Utilization                    0.35196234                     │
+│   [mean_compute_utilization]                                                 │
+│   Failed MLPs [n_failed_mlps]                     0 of 5                     │
+│                                                                              │
+╰─ final_layer_mse: max(0.1, effective_compute/flop_budget) ───────────────────╯
+Next: `whest package --estimator estimator.py`

@@ -162,4 +162,4 @@ if __name__ == "__main__":
     from local_engine import build_mlp, compare_against_monte_carlo
 
     mlp = build_mlp(width=256, depth=32, seed=0)  # phase-1 competition shape (warmup round used depth=8)
-    compare_against_monte_carlo(Estimator(), mlp)
+    compare_against_monte_carlo(Estimator(), mlp, estimator_budget=int(2.72e11))

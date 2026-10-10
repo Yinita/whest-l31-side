@@ -1,228 +1,60 @@
-<div align="center">
-  <img src="assets/logo/logo.png" alt="ARC WhiteBox Estimation Challenge 2026 logo" style="height: 120px;">
-</div>
+# WhestBench Phase 2 研究项目
 
-# ARC WhiteBox Estimation Challenge 2026 - Starter Kit
+本仓库基于 AIcrowd whest-starterkit，当前目标是复现公开 K=3 高阶统计量传播方法，诊断误差与计算来源，再验证一项可解释的精度—成本改进。项目状态更新于 **2026-10-10**。
 
-<div align="center">
+完整依据见 [项目调研与推进报告](ARC_WhestBench_Project_Report_2026-10-10.md)，当前任务见 [DEVELOPMENT.md](DEVELOPMENT.md)，实验状态见 [EXPERIMENTS_REPORT.md](EXPERIMENTS_REPORT.md)。报告中的公开结果与路线建议不等于本项目已完成的复现。
 
-<a href="https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026"><img alt="Challenge" src="https://img.shields.io/badge/AIcrowd-Challenge_Page-f0524d?style=for-the-badge"></a>
-<a href="https://github.com/AIcrowd/whestbench"><img alt="whestbench" src="https://img.shields.io/badge/GitHub-AIcrowd%2Fwhestbench-181717?style=for-the-badge&logo=github&logoColor=white"></a>
-<a href="https://github.com/AIcrowd/whest-starterkit"><img alt="Starter Kit" src="https://img.shields.io/badge/Starter_Kit-whest--starterkit-f57c00?style=for-the-badge&logo=github&logoColor=white"></a>
-<a href="https://aicrowd.github.io/whestbench-explorer/"><img alt="MLP Explorer" src="https://img.shields.io/badge/MLP_Explorer-Interactive-7e57c2?style=for-the-badge"></a>
-<a href="https://github.com/AIcrowd/flopscope"><img alt="flopscope" src="https://img.shields.io/badge/FLOP_Tracking-flopscope-009688?style=for-the-badge&logo=github&logoColor=white"></a>
-<a href="https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/tree/v1-phase1"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-View_on_HF_Hub-ffd54f?style=for-the-badge"></a>
-<a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"></a>
-<br>
-<a href="https://github.com/AIcrowd/whest-starterkit/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/AIcrowd/whest-starterkit/actions/workflows/ci.yml/badge.svg"></a>
+## 当前阶段
 
-</div>
+Phase 2 以宽 1024、深 16 的随机 ReLU MLP 为对象，返回 `(16, 1024)` post-ReLU 均值，按最后一层 MSE 与计算用量评分。报告记录预算为 `2**41` FLOPs，公开数据版本为 `v2-phase2`；执行正式实验前须核对 grader 与工具版本。
 
-<div align="center">
-  <img src="assets/demo.gif" alt="whest-starterkit first 5 minutes" width="720">
-</div>
+根目录 `estimator.py` 是保留的 Phase 1 Hadamard 采样对照，仍含旧阶段预算标定，且仅填充最后一层预测。它尚未完成 Phase 2 验收。教学例子也不等同于公开 V25/V29 实现。
 
-## 🎬 60-Second Overview
-
-You are given a randomly-initialized ReLU MLP and a FLOP budget. Predict the per-neuron mean activation under N(0, 1) input — without running anywhere near the budget's worth of forward passes. Your score is that error (MSE against the ground-truth Monte-Carlo means) scaled by the share of the FLOP budget you actually spend — so both accuracy and low compute count. Lower is better.
-
-<div align="center">
-  <img src="assets/whestbench-explorer-visualization.svg" alt="A small ReLU MLP (width 4, depth 5) shown as a layer-by-layer heatmap of per-neuron mean activations after Monte-Carlo ground-truth estimation; rows are layers, columns are neurons, color intensity is mean activation" width="720">
-  <br>
-  <sub><em>Per-neuron mean activations of a small MLP (width 4, depth 5) after Monte-Carlo ground truth — exactly what your estimator predicts. Generate your own at the <a href="https://aicrowd.github.io/whestbench-explorer/">hosted WhestBench Explorer</a>.</em></sub>
-</div>
-
-The kit is structured as a five-stage **ladder of formality**: each stage adds one more layer of harness rigor. Start at Stage 1 (pure local math, zero CLI knowledge); climb to Stage 5 (a packaged submission) when you're ready.
-
-## 🚀 Your First 5 Minutes (Stage 1: just `python`)
+## 安装与基础检查
 
 ```bash
-git clone https://github.com/AIcrowd/whest-starterkit.git
-cd whest-starterkit
+uv sync --frozen --group dev
 ```
+
+以下小网络检查用于确认已有本地工具可运行：
 
 ```bash-test
-uv sync && uv run python estimator.py
+uv run python estimator.py --width 8 --depth 3
 ```
-
-That run printed a Monte-Carlo convergence table — your estimator's predictions, the FLOPs it used, and the MSE against ground truth at increasing sample counts. To experiment, edit `predict()` in [estimator.py](estimator.py) and re-run.
-
-Compare against a bundled baseline:
-
-```bash-test
-uv run python estimator.py --baseline mean_propagation
-```
-
-## 🧪 Try the Examples (still Stage 1)
-
-```bash-test
-uv run python examples/02_mean_propagation.py
-uv run python examples/03_covariance_propagation.py
-uv run python examples/04_shipped_weights.py
-```
-
-See [examples/README.md](examples/README.md) for the curriculum table.
-
-## 🪜 Climb the Ladder (Stages 2-5)
-
-Each rung adds one more layer of harness rigor — climb when you're ready. Per-stage walkthroughs live in the [Tutorial](docs/getting-started/).
-
-**Stage 1 — [Iterate locally](docs/getting-started/stage-1-standalone.md)** · the math: estimator vs Monte Carlo.
 
 ```bash
-uv run python estimator.py
+uv run pytest tests/ -q
+uv run ruff check .
+uv run whest validate --estimator examples/03_covariance_propagation.py
 ```
 
-**Stage 2 — [Validate the contract](docs/getting-started/stage-2-validate.md)** · contract correctness (shapes, types).
+Phase 2 数据评测入口如下；应先完成版本核对和候选合同验收。这里使用教学协方差对照，不代表强基线复现：
 
 ```bash
-uv run whest validate --estimator estimator.py
+uv run whest run --estimator examples/03_covariance_propagation.py \
+    --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+    --split mini --runner subprocess
 ```
 
-**Stage 3 — [Run on the public set](docs/getting-started/stage-3-run-local.md)** · real scoring against the public Mini split (100 MLPs), in-process, debuggable with `pdb`.
+提交计算需通过允许的 flopscope 算子。Torch/NumPy 参考程序仅用于研发。打包时显式指定经过验收的 estimator 文件或目录，并检查上传内容。
 
-```bash
-uv run whest run --estimator estimator.py \
-    --dataset hf://aicrowd/arc-whestbench-public-2026@v1-phase1 \
-    --split mini \
-    --runner local
-```
+## 研究顺序
 
-**Stage 4 — [Subprocess runner](docs/getting-started/stage-4-run-subprocess.md)** · isolation; closer to the grader environment.
+1. E00–E02：官方 baseline、V25/V29 复现、输出约定与成本对齐。
+2. E03–E07：来源扰动、输出导向压缩、高阶核心近似与精确计算重组。
+3. E09–E10：连续运行、独立网络验证、冻结 holdout 与消融。
 
-```bash
-uv run whest run --estimator estimator.py \
-    --dataset hf://aicrowd/arc-whestbench-public-2026@v1-phase1 \
-    --split mini \
-    --runner subprocess
-```
+先用 48 小时完成可解释复现与诊断。采样与低阶控制变量保留为对照；最终候选需有独立贡献、归因、成本记录与未见网络结果。
 
-**Stage 5 — [Package and Submit](docs/getting-started/stage-5-package.md)** · build the submission artifact, then ship it (run `whest login` once first — see [Submit to AIcrowd](#-submit-to-aicrowd) below).
+## 仓库导航
 
-```bash
-uv run whest package --estimator estimator.py   # build & inspect the tarball
-uv run whest submit  --estimator estimator.py   # ship it (also packages, in one step)
-```
+- `estimator.py`：历史采样对照。
+- `local_engine.py`、`examples/`、`tests/`：本地教学、参考算法与检查。
+- `experiments/moment_chain/`：保留的旧阶段矩链数学探针，尚需 Phase 2 重测。
+- `docs/`：继承的 starter kit 教程及合同参考；涉及旧阶段的内容已标记。
+- `archive/phase1/`：旧 L31 版本、日志、失败实验、提交草稿与报告，退出当前工作入口。
+- `archive/starterkit/README.md`：上游历史首页。
 
-> These ship **only `estimator.py`** — the common case. Embedding weights or splitting across modules? Point `--estimator` at a folder instead: see [Stage 5 → Embedding weights or multiple modules](docs/getting-started/stage-5-package.md#-embedding-weights-or-multiple-modules-power-users).
+报告建议北京时间 **2026-10-17 18:00** 内部冻结、当日 **23:00 前**完成提交；报告记录官方截止为 **2026-10-18 07:59**。最终选择界面与外部截止执行前需再次核查。
 
-## 🏁 Submit to AIcrowd
-
-Climbed to Stage 5? Ship it from the CLI. Log in once with your
-[AIcrowd API key](https://www.aicrowd.com/participants/me/customize):
-
-```bash
-uv run whest login
-```
-
-Then package + submit in one step (add `--watch` to follow it to a score):
-
-```bash
-uv run whest submit --estimator estimator.py
-```
-
-Your score and per-MLP detail land on the
-[challenge leaderboard](https://www.aicrowd.com/). Full walkthrough:
-[Stage 5 → Submit to AIcrowd](docs/getting-started/stage-5-package.md#-submit-to-aicrowd).
-
-## 🚑 When Something Breaks
-
-```bash-test
-uv run whest doctor
-```
-
-Reads as a 6-row health check; see [docs/reference/whest-doctor.md](docs/reference/whest-doctor.md) for what each row means and how to fix warnings.
-
-Or check [docs/troubleshooting/](docs/troubleshooting/).
-
-## 📚 Documentation
-
-Past Stage 1, the documentation is organized into six sections — pick whichever matches your task. Full map and guided reading paths at **[docs/](docs/README.md)**.
-
-<details>
-<summary>🪜 <b><a href="docs/getting-started/">Tutorial</a></b> — Climb the 5-stage ladder above</summary>
-
-- [Stage 1: Iterate locally](docs/getting-started/stage-1-standalone.md) — The math; `flopscope` + `local_engine.py`, no `whest` CLI.
-- [Stage 2: Validate the contract](docs/getting-started/stage-2-validate.md) — Class resolves, `setup()` runs, shape, finite values.
-- [Stage 3: Run locally](docs/getting-started/stage-3-run-local.md) — Real scoring against the grader's MLP suite, in-process.
-- [Stage 4: Subprocess runner](docs/getting-started/stage-4-run-subprocess.md) — Catches state-bleed, RNG re-use, dirty imports.
-- [Stage 5: Package and Submit](docs/getting-started/stage-5-package.md) — Build the AIcrowd submission tarball and ship it.
-
-</details>
-
-<details>
-<summary>📖 <b><a href="docs/concepts/">Concepts</a></b> — Why this challenge exists, what's measured, how ground truth works</summary>
-
-- [Problem Setup](docs/concepts/problem-setup.md) — MLP architecture, He init, the research question, further reading.
-- [Scoring Model](docs/concepts/scoring-model.md) — Pipeline diagram, `adjusted_final_layer_score` / `all_layers_mse` formulas, calibration table.
-- [Ground Truth](docs/concepts/ground-truth.md) — How the evaluator computes reference values via Monte Carlo.
-
-</details>
-
-<details>
-<summary>🔧 <b><a href="docs/how-to/">How-to</a></b> — Recipes: write, debug, optimize, submit</summary>
-
-**Writing and iterating**
-- [Write an Estimator](docs/how-to/write-an-estimator.md) — Minimal structure, contract checklist, common first failure.
-- [Inspect MLP Structure](docs/how-to/inspect-mlp-structure.md) — Traversing the `MLP` object.
-- [Validate, Run, Package](docs/how-to/validate-run-package.md) — The standard local loop, plus a useful-flags table.
-- [Use Evaluation Datasets](docs/how-to/use-evaluation-datasets.md) — Pre-create datasets for fast, reproducible iteration.
-
-**Optimizing**
-- [Algorithm Ideas](docs/how-to/algorithm-ideas.md) — Monte Carlo, mean propagation, covariance, hybrid, plus open directions.
-- [Manage FLOP Budget](docs/how-to/manage-flop-budget.md) — Where your FLOPs go; line-by-line walkthrough of `examples/02`.
-- [Performance Tips](docs/how-to/performance-tips.md) — Matmul placement, free ops, env-var knobs.
-
-**Debugging and shipping**
-- [Debugging Checklist](docs/how-to/debugging-checklist.md) — Tiered procedure when something feels wrong.
-- [Pre-Submission Checklist](docs/how-to/pre-submission-checklist.md) — One-screen gate before you click submit.
-
-</details>
-
-<details>
-<summary>📚 <b><a href="docs/reference/">Reference</a></b> — Exact contracts, schemas, lookup material</summary>
-
-**Estimator API**
-- [Estimator Contract](docs/reference/estimator-contract.md) — `predict`/`setup`/`teardown` signatures, `SetupContext`, failure-semantics table, lifecycle diagram.
-- [Code Patterns](docs/reference/code-patterns.md) — `flopscope` patterns, ReLU expectation derivation, when the Gaussian assumption breaks.
-- [<code>local_engine</code> API](docs/reference/local-engine-api.md) — Stage 1's MLP factory and Monte-Carlo helpers.
-
-**FLOP and scoring details**
-- [Flopscope Primer](docs/reference/flopscope-primer.md) — `BudgetContext` ownership, attribute reference, op cost table.
-- [Score Report Fields](docs/reference/score-report-fields.md) — Every field you'll see in `whest run` output.
-
-**CLI**
-- [CLI Reference](docs/reference/cli-reference.md) — Pointer at the upstream `whest` CLI.
-- [<code>whest doctor</code>](docs/reference/whest-doctor.md) — The 6 install/env checks and how to fix WARN/FAIL rows.
-
-</details>
-
-<details>
-<summary>🚑 <b><a href="docs/troubleshooting/">Troubleshooting</a></b> — When something breaks</summary>
-
-- [Common Participant Errors](docs/troubleshooting/common-participant-errors.md) — Symptom → cause → fix-now → verify.
-- [FAQ](docs/troubleshooting/faq.md) — Quick answers; includes "local score great, submission 10x worse".
-
-</details>
-
-<details>
-<summary>🔬 <b><a href="docs/advanced/">Advanced</a></b> — Deeper tooling</summary>
-
-- [Profile Simulation](docs/advanced/profile-simulation.md) — FLOP and time breakdown of your `predict()` call.
-- [WhestBench Explorer](docs/advanced/use-whestbench-explorer.md) — Hosted interactive visualizer at [aicrowd.github.io/whestbench-explorer](https://aicrowd.github.io/whestbench-explorer/) for inspecting MLPs and ground truth.
-
-</details>
-
-## 📁 Repo Layout
-
-```
-├── estimator.py     ← The participant's entry point; every stage operates on this file.
-├── local_engine.py  ← Single-file re-implementation of the harness; safe to read end-to-end.
-├── examples/        ← Numbered reference estimators (01–03) with a curriculum table.
-├── docs/            ← Full documentation; start at docs/README.md.
-└── tests/           ← Drift gates: README commands + local_engine parity.
-```
-
-## ⚖️ License & Contributing
-
-Released under the [MIT License](LICENSE). See [docs/RELEASING.md](docs/RELEASING.md) for the release process.
+上游来源：[AIcrowd/whest-starterkit](https://github.com/AIcrowd/whest-starterkit)。许可证见 [LICENSE](LICENSE)。公开参赛代码的许可与署名须在导入时单独记录。
