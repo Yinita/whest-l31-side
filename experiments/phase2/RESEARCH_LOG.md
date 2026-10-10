@@ -19,3 +19,9 @@
 下一项：根据age3的误差—成本变化，决定做age5的反向消融，或进入按来源年龄/输出敏感性分组的代理设计。Mini8属于开发集，正结果必须独立复验。
 
 来源：https://github.com/504aldo/whest-p2-cumulant-k3/blob/main/docs/derivation_code_map.md （已读取的来源快照commit 1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d）；官方评分折扣规则见项目报告S4。
+
+完成：age3 adjusted=6.45911031371232e-9（比V29恶化11.769%），raw=2.6029440824970607e-8（恶化14.653%），8/8零失败。每网络FLOPs下降2.393%–3.349%，raw全部增加，7/8 adjusted恶化。local峰值RSS=6012860KiB；完整时间/逐网络数据及版本见原始报告、manifest和age3_vs_v29_local.json。结论：拒绝提前压缩，尚未达标，不进入RPC确认。
+
+## P2-E004-age5-mini8
+
+唯一变化AGE_OLD 4→5，其余默认不变；检验保留来源一层能否逆转age3的精度损失，区分来源压缩误差与其他闭合误差。数据、预算、线程、reference沿用冻结Mini8。若收益很小，停止年龄门槛扫描，转向高阶闭合/来源扰动诊断。该开发集结果不构成独立验证。

@@ -10,6 +10,43 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
+    "id": "P2-E004-age5-mini8",
+    "single_change": "AGE_OLD 4 -> 5",
+    "hypothesis": "Delay compression to identify source-confinement accuracy loss",
+    "candidate": "estimators/k3_v29_age5/estimator.py",
+    "sha256": "43727ca1a0939f23a210597548432e6d7f2ed43219a20f59688aab46ab0e6283",
+    "dataset": "benchmark/data/mini_first8",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "report": "results/phase2/age5_mini8_local.json",
+    "status": "running",
+    "pid": 535199,
+    "pid_start_ticks": "2290150",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_age5/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/age5_mini8_local.json"
+    ],
+    "started_at_utc": "2026-10-10T09:56:28.844032+00:00"
+  },
+  "next_experiment": {
+    "status": "conditional",
+    "hypothesis": "If age5 accuracy gain is small, stop age sweeps and diagnose higher-order closure or source perturbation."
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T09:56:28.844043+00:00",
+  "previous_experiment": {
     "id": "P2-E003-age3-mini8",
     "hypothesis": "Confine third-cumulant sources one layer earlier to reduce cost; measure output-value loss at fixed ranks and all other settings.",
     "single_change": "AGE_OLD 4 -> 3",
@@ -18,7 +55,7 @@
     "dataset": "benchmark/data/mini_first8",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "report": "results/phase2/age3_mini8_local.json",
-    "status": "running",
+    "status": "completed_negative",
     "pid": 492915,
     "command": [
       "uv",
@@ -38,12 +75,2174 @@
       "results/phase2/age3_mini8_local.json"
     ],
     "started_at_utc": "2026-10-10T09:38:33.138246+00:00",
-    "pid_start_ticks": "2182580"
-  },
-  "next_experiment": {
-    "hypothesis": "If age3 trades accuracy for compute, compare age5 to distinguish compression loss from closure error before designing an output-aware source-selection proxy.",
-    "status": "planned"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T09:38:33.138307+00:00"
+    "pid_start_ticks": "2182580",
+    "comparison": "results/phase2/age3_vs_v29_local.json",
+    "metrics": {
+      "adjusted_final_layer_score": 6.45911031371232e-09,
+      "final_layer_mse": 2.6029440824970607e-08,
+      "all_layers_mse": 1.0170858377733794e-08,
+      "per_layer_mse": [
+        6.78465172931908e-10,
+        7.21060045005828e-10,
+        1.1019349877017248e-09,
+        1.8702879245324766e-09,
+        3.028407746796802e-09,
+        4.363450489819343e-09,
+        5.998531005246832e-09,
+        7.654282541125212e-09,
+        9.501100350917113e-09,
+        1.1227987428696906e-08,
+        1.3219370487149718e-08,
+        1.5452961577011592e-08,
+        1.77556422897851e-08,
+        2.054947856322542e-08,
+        2.35813342186475e-08,
+        2.6029441713149026e-08
+      ],
+      "best_mlp_adjusted_final_layer_score": 5.1940232927711115e-09,
+      "worst_mlp_adjusted_final_layer_score": 7.431019172234734e-09,
+      "mean_score_multiplier": 0.24807416885550992,
+      "mean_compute_utilization": 0.24807416885550992,
+      "n_failed_mlps": 0,
+      "mean_effective_compute": 545520866415.0,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 0,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      },
+      "per_mlp": [
+        {
+          "mlp_index": 0,
+          "mlp_name": "logan-fitzgerald",
+          "final_layer_mse": 2.751099970055293e-08,
+          "all_layers_mse": 1.0615851309125901e-08,
+          "per_layer_mse": [
+            6.977247668515929e-10,
+            7.654192835104823e-10,
+            1.2034884200318174e-09,
+            2.186162806339098e-09,
+            3.31705796163817e-09,
+            4.618853299831471e-09,
+            5.922646373335283e-09,
+            7.0652865780118645e-09,
+            8.784096117153695e-09,
+            1.1656249299107913e-08,
+            1.4266333892010152e-08,
+            1.704738394892047e-08,
+            1.915570635446784e-08,
+            2.2378019437496732e-08,
+            2.3278197147647006e-08,
+            2.751099970055293e-08
+          ],
+          "adjusted_final_layer_score": 7.100942728270924e-09,
+          "flops_used": 567596174831,
+          "effective_compute": 567596174831.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 28.351582889001293,
+          "flopscope_backend_time_s": 26.254464656965865,
+          "flopscope_overhead_time_s": 1.843042650121788,
+          "residual_wall_time_s": 0.2540755819136393,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 567596174831,
+              "flops_remaining": 1631427080721,
+              "wall_time_s": 28.351582889001293,
+              "flopscope_backend_time_s": 26.254464656965865,
+              "flopscope_overhead_time_s": 1.843042650121788,
+              "residual_wall_time_s": 0.2540755819136393,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 567596174831,
+                  "calls": 13062,
+                  "flopscope_backend_time_s": 26.254464656965865,
+                  "flopscope_overhead_time_s": 1.842191894120333,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00016182798572117463,
+                      "flopscope_overhead_time_s": 0.0023951150178618263
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 6.318001396721229e-06,
+                      "flopscope_overhead_time_s": 5.36539992026519e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.3846998626831919e-05,
+                      "flopscope_overhead_time_s": 0.00019273900397820398
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.4648842338647228,
+                      "flopscope_overhead_time_s": 0.3166704481191118
+                    },
+                    "empty": {
+                      "flop_cost": 0,
+                      "calls": 199,
+                      "flopscope_backend_time_s": 0.004179537980235182,
+                      "flopscope_overhead_time_s": 0.01018034099979559
+                    },
+                    "copyto": {
+                      "flop_cost": 5478025216,
+                      "calls": 1655,
+                      "flopscope_backend_time_s": 2.9288660660022288,
+                      "flopscope_overhead_time_s": 0.11830944846769853
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002574970021669287,
+                      "flopscope_overhead_time_s": 0.00012318599692662247
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.1919267840021348
+                    },
+                    "matmul": {
+                      "flop_cost": 517141341184,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 5.882494062996557,
+                      "flopscope_overhead_time_s": 0.22623364998071338
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 4.4186310959812545,
+                      "flopscope_overhead_time_s": 0.11922571455033903
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.0002186109995818697,
+                      "flopscope_overhead_time_s": 0.002406140003586188
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0001347559991700109,
+                      "flopscope_overhead_time_s": 0.0019114210008410737
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0020558699761750177,
+                      "flopscope_overhead_time_s": 0.011411752020649146
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.880400956608355e-05,
+                      "flopscope_overhead_time_s": 0.0015260869949997868
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00011785101014538668,
+                      "flopscope_overhead_time_s": 0.00580547500794637
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0016591999992670026
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 8.027399599086493e-05,
+                      "flopscope_overhead_time_s": 0.002267412008222891
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0031207610009005293
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0024520730003132485,
+                      "flopscope_overhead_time_s": 0.008727488981094211
+                    },
+                    "add": {
+                      "flop_cost": 8461744158,
+                      "calls": 4193,
+                      "flopscope_backend_time_s": 5.893043491229037,
+                      "flopscope_overhead_time_s": 0.5163692928181263
+                    },
+                    "reshape": {
+                      "flop_cost": 1348366336,
+                      "calls": 106,
+                      "flopscope_backend_time_s": 0.0007021000055829063,
+                      "flopscope_overhead_time_s": 0.009257262001483468
+                    },
+                    "subtract": {
+                      "flop_cost": 3353958400,
+                      "calls": 1721,
+                      "flopscope_backend_time_s": 2.74344066095,
+                      "flopscope_overhead_time_s": 0.21195867113419808
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.2125094520051789,
+                      "flopscope_overhead_time_s": 0.006369696977344574
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00025763798839761876,
+                      "flopscope_overhead_time_s": 0.0009158450156974141
+                    },
+                    "sum": {
+                      "flop_cost": 1008472006,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 0.6979895289805427,
+                      "flopscope_overhead_time_s": 0.05393314601315069
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0006862949885544367,
+                      "flopscope_overhead_time_s": 0.009608972002752125
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006473589965025894,
+                      "flopscope_overhead_time_s": 0.005083287014713278
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0001247950058314018,
+                      "flopscope_overhead_time_s": 0.0011077949930040631
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.00017560501146363094,
+                      "flopscope_overhead_time_s": 0.0030265099921962246
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.00028500600092229433,
+                      "flopscope_overhead_time_s": 0.0004145990023971535
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 1,
+          "mlp_name": "william-graves",
+          "final_layer_mse": 2.355849737512017e-08,
+          "all_layers_mse": 9.783684085107325e-09,
+          "per_layer_mse": [
+            6.407590014134712e-10,
+            7.262357382131768e-10,
+            1.0738988587277731e-09,
+            1.7879029368117472e-09,
+            2.9493936182234393e-09,
+            4.090779270882194e-09,
+            6.2345462126245366e-09,
+            7.78591413563845e-09,
+            9.351289520509454e-09,
+            1.04371977727169e-08,
+            1.2943120353270388e-08,
+            1.5244079776266517e-08,
+            1.77882206742197e-08,
+            1.9987954402722607e-08,
+            2.1939161598538703e-08,
+            2.355849737512017e-08
+          ],
+          "adjusted_final_layer_score": 5.828079387655245e-09,
+          "flops_used": 544011016687,
+          "effective_compute": 544011016687.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 35.352951243999996,
+          "flopscope_backend_time_s": 33.20442454295335,
+          "flopscope_overhead_time_s": 1.8821943650400499,
+          "residual_wall_time_s": 0.2663323360065988,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 544011016687,
+              "flops_remaining": 1655012238865,
+              "wall_time_s": 35.352951243999996,
+              "flopscope_backend_time_s": 33.20442454295335,
+              "flopscope_overhead_time_s": 1.8821943650400499,
+              "residual_wall_time_s": 0.2663323360065988,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 544011016687,
+                  "calls": 13267,
+                  "flopscope_backend_time_s": 33.20442454295335,
+                  "flopscope_overhead_time_s": 1.8814084080404427,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.0001659259942243807,
+                      "flopscope_overhead_time_s": 0.002413584999885643
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 7.443002687068656e-06,
+                      "flopscope_overhead_time_s": 5.219199738348834e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.2857002730015665e-05,
+                      "flopscope_overhead_time_s": 0.00016411998876719736
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.657469411933562,
+                      "flopscope_overhead_time_s": 0.3271606330272334
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002551360012148507,
+                      "flopscope_overhead_time_s": 8.668699956615455e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.21377687698986847
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.4432008510084415,
+                      "flopscope_overhead_time_s": 0.17563278105080826
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 4.197556879989861,
+                      "flopscope_overhead_time_s": 0.05609135254780995
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.00022533500305144116,
+                      "flopscope_overhead_time_s": 0.0024465759852319025
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0001420499938831199,
+                      "flopscope_overhead_time_s": 0.002005117006774526
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0021344560009310953,
+                      "flopscope_overhead_time_s": 0.011786440965806833
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.455699308891781e-05,
+                      "flopscope_overhead_time_s": 0.0015230119970510714
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00011824201283161528,
+                      "flopscope_overhead_time_s": 0.005798530983156525
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.001641293001739541
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 7.953299791552126e-05,
+                      "flopscope_overhead_time_s": 0.002256306994240731
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0031259429997589905
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0026289829911547713,
+                      "flopscope_overhead_time_s": 0.00902532499821973
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.542878103031398,
+                      "flopscope_overhead_time_s": 0.6016056860462413
+                    },
+                    "copyto": {
+                      "flop_cost": 4127244288,
+                      "calls": 1601,
+                      "flopscope_backend_time_s": 2.1343439310003305,
+                      "flopscope_overhead_time_s": 0.11842282554425765
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.665125129002263,
+                      "flopscope_overhead_time_s": 0.2550783318838512
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.22460700399096822,
+                      "flopscope_overhead_time_s": 0.00676074802322546
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00027491599757922813,
+                      "flopscope_overhead_time_s": 0.0008998119992611464
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.3299505590293847,
+                      "flopscope_overhead_time_s": 0.059566930965957
+                    },
+                    "empty": {
+                      "flop_cost": 0,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.0010674849872884806,
+                      "flopscope_overhead_time_s": 0.0018982140136358794
+                    },
+                    "reshape": {
+                      "flop_cost": 531062784,
+                      "calls": 13,
+                      "flopscope_backend_time_s": 9.790900003281422e-05,
+                      "flopscope_overhead_time_s": 0.0014528219981002621
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0007697209875914268,
+                      "flopscope_overhead_time_s": 0.010964086010062601
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006498279981315136,
+                      "flopscope_overhead_time_s": 0.005171372013137443
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00012058899665134959,
+                      "flopscope_overhead_time_s": 0.0010870760052057449
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.000189532005606452,
+                      "flopscope_overhead_time_s": 0.003111003003141377
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.0003081760005443357,
+                      "flopscope_overhead_time_s": 0.00040272800106322393
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 2,
+          "mlp_name": "raymond-barnes",
+          "final_layer_mse": 3.0144228446715715e-08,
+          "all_layers_mse": 1.1311313663497913e-08,
+          "per_layer_mse": [
+            7.070237728612483e-10,
+            7.574413873889796e-10,
+            1.1706626779073304e-09,
+            1.670840132916851e-09,
+            3.0668438899539296e-09,
+            4.246332618862425e-09,
+            6.237695693300793e-09,
+            7.998114170959525e-09,
+            1.0867467814534848e-08,
+            1.2388552406150666e-08,
+            1.3939995824330254e-08,
+            1.7426383891461228e-08,
+            2.0102934428223307e-08,
+            2.3445551278200583e-08,
+            2.681093747014529e-08,
+            3.0144228446715715e-08
+          ],
+          "adjusted_final_layer_score": 7.431019172234734e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 32.936489781001,
+          "flopscope_backend_time_s": 30.950756222824566,
+          "flopscope_overhead_time_s": 1.7469625058620295,
+          "residual_wall_time_s": 0.2387710523144051,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 32.936489781001,
+              "flopscope_backend_time_s": 30.950756222824566,
+              "flopscope_overhead_time_s": 1.7469625058620295,
+              "residual_wall_time_s": 0.2387710523144051,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 30.950756222824566,
+                  "flopscope_overhead_time_s": 1.746037768862152,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.0001605649849807378,
+                      "flopscope_overhead_time_s": 0.0023274430022866
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 9.120998583966866e-06,
+                      "flopscope_overhead_time_s": 5.473900091601536e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.2301999959163368e-05,
+                      "flopscope_overhead_time_s": 0.00016908799807424657
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.295372066037089,
+                      "flopscope_overhead_time_s": 0.30866866895667044
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002586919981695246,
+                      "flopscope_overhead_time_s": 8.241199975600466e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.1844046900041576
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.193316246903123,
+                      "flopscope_overhead_time_s": 0.1623523081325402
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 3.9292777849950653,
+                      "flopscope_overhead_time_s": 0.04450547550004558
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.00021343301341403276,
+                      "flopscope_overhead_time_s": 0.002292815981491003
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.00014019700029166415,
+                      "flopscope_overhead_time_s": 0.0018857029899663758
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0020356709937914275,
+                      "flopscope_overhead_time_s": 0.011116829027741915
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.1278995922766626e-05,
+                      "flopscope_overhead_time_s": 0.0015470010075659957
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00012164301733719185,
+                      "flopscope_overhead_time_s": 0.005835722979099955
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0016166179993888363
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 7.927099068183452e-05,
+                      "flopscope_overhead_time_s": 0.0022422870169975795
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.003114606999588432
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0025189879816025496,
+                      "flopscope_overhead_time_s": 0.008810642997559626
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.30262556992966,
+                      "flopscope_overhead_time_s": 0.570357038959628
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.1947712430810498,
+                      "flopscope_overhead_time_s": 0.10914134030826972
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.559875703904254,
+                      "flopscope_overhead_time_s": 0.24105444108863594
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.2170075730100507,
+                      "flopscope_overhead_time_s": 0.006474970967246918
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0002487499914423097,
+                      "flopscope_overhead_time_s": 0.0008794440036581364
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.2507259050107677,
+                      "flopscope_overhead_time_s": 0.057050108938710764
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0007144089868234005,
+                      "flopscope_overhead_time_s": 0.010349378007958876
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006323870038613677,
+                      "flopscope_overhead_time_s": 0.005145727987837745
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00012784199861926027,
+                      "flopscope_overhead_time_s": 0.001112000009015901
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.00017652999304118566,
+                      "flopscope_overhead_time_s": 0.003044266006327234
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.00029305000498425215,
+                      "flopscope_overhead_time_s": 0.00040200099101639353
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 3,
+          "mlp_name": "steven-rice",
+          "final_layer_mse": 2.8709971289231362e-08,
+          "all_layers_mse": 1.0147063633780817e-08,
+          "per_layer_mse": [
+            6.380163064534372e-10,
+            6.678751440780673e-10,
+            1.0757083002133072e-09,
+            1.91784499392611e-09,
+            2.973121304705728e-09,
+            4.409465237387167e-09,
+            5.8046278894607894e-09,
+            7.66708652122361e-09,
+            9.315588300751187e-09,
+            1.0342551703956815e-08,
+            1.1923050990958473e-08,
+            1.4044431395632273e-08,
+            1.7025422849314964e-08,
+            2.034037649423226e-08,
+            2.5497886468883735e-08,
+            2.8709971289231362e-08
+          ],
+          "adjusted_final_layer_score": 7.0774525697913944e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 32.317745071999525,
+          "flopscope_backend_time_s": 30.366193918103818,
+          "flopscope_overhead_time_s": 1.7142372429625539,
+          "residual_wall_time_s": 0.23731391093315324,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 32.317745071999525,
+              "flopscope_backend_time_s": 30.366193918103818,
+              "flopscope_overhead_time_s": 1.7142372429625539,
+              "residual_wall_time_s": 0.23731391093315324,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 30.366193918103818,
+                  "flopscope_overhead_time_s": 1.713299153961998,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00015771300968481228,
+                      "flopscope_overhead_time_s": 0.0023373349795292597
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 7.933998858788982e-06,
+                      "flopscope_overhead_time_s": 5.344700184650719e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.1661002645269036e-05,
+                      "flopscope_overhead_time_s": 0.00016690399934304878
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.234114862050774,
+                      "flopscope_overhead_time_s": 0.3053494879604841
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002511060010874644,
+                      "flopscope_overhead_time_s": 8.415100091951899e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.1857414609985426
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.145984348055208,
+                      "flopscope_overhead_time_s": 0.15844263700273586
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 3.7689261789964803,
+                      "flopscope_overhead_time_s": 0.04127588650226244
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.0002121559955412522,
+                      "flopscope_overhead_time_s": 0.002306285001395736
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.00013270000636111945,
+                      "flopscope_overhead_time_s": 0.0018802650010911748
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.002001723009016132,
+                      "flopscope_overhead_time_s": 0.011144451000291156
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.831200567423366e-05,
+                      "flopscope_overhead_time_s": 0.0015674799833504949
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.0001208079956995789,
+                      "flopscope_overhead_time_s": 0.005861156998435035
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0016191930044442415
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 7.912000000942498e-05,
+                      "flopscope_overhead_time_s": 0.0022572469861188438
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0030879719924996607
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0024997619912028313,
+                      "flopscope_overhead_time_s": 0.008726879012101563
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.12194762195577,
+                      "flopscope_overhead_time_s": 0.5569239510987245
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.1631885160386446,
+                      "flopscope_overhead_time_s": 0.10630903640412726
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.474638412062632,
+                      "flopscope_overhead_time_s": 0.23522997591499006
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.21406456198747037,
+                      "flopscope_overhead_time_s": 0.0063167660155158956
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0002606839952932205,
+                      "flopscope_overhead_time_s": 0.0008806449986877851
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.2356425089456025,
+                      "flopscope_overhead_time_s": 0.0560970640508458
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0007028620166238397,
+                      "flopscope_overhead_time_s": 0.01003377803863259
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006174559857754502,
+                      "flopscope_overhead_time_s": 0.005111576010676799
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00012064899419783615,
+                      "flopscope_overhead_time_s": 0.001083949002349982
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.00017469500380684622,
+                      "flopscope_overhead_time_s": 0.0030258010046964046
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.00028756699975929223,
+                      "flopscope_overhead_time_s": 0.0003843729973596055
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 4,
+          "mlp_name": "sarah-kelley",
+          "final_layer_mse": 2.7110818479059162e-08,
+          "all_layers_mse": 1.0630008873135921e-08,
+          "per_layer_mse": [
+            6.563205534604322e-10,
+            7.555447378848612e-10,
+            1.0669558569986748e-09,
+            1.8835903947689303e-09,
+            3.1086473395447456e-09,
+            4.728543778753647e-09,
+            6.6817236188398965e-09,
+            8.649648997050008e-09,
+            1.0190936095000325e-08,
+            1.2063516408034047e-08,
+            1.3573040469339048e-08,
+            1.5530680741449032e-08,
+            1.8667925871795887e-08,
+            2.0477902040738627e-08,
+            2.49343550251524e-08,
+            2.7110818479059162e-08
+          ],
+          "adjusted_final_layer_score": 6.683236635131525e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 32.13609597699906,
+          "flopscope_backend_time_s": 30.208997015193745,
+          "flopscope_overhead_time_s": 1.6916795725592237,
+          "residual_wall_time_s": 0.23541938924608985,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 32.13609597699906,
+              "flopscope_backend_time_s": 30.208997015193745,
+              "flopscope_overhead_time_s": 1.6916795725592237,
+              "residual_wall_time_s": 0.23541938924608985,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 30.208997015193745,
+                  "flopscope_overhead_time_s": 1.6907858505619515,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00016007799786166288,
+                      "flopscope_overhead_time_s": 0.0023575250088470057
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 8.347000402864069e-06,
+                      "flopscope_overhead_time_s": 5.4165000619832426e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.2324002454988658e-05,
+                      "flopscope_overhead_time_s": 0.00016563599274377339
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.2163768100763264,
+                      "flopscope_overhead_time_s": 0.3031732119670778
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002470969993737526,
+                      "flopscope_overhead_time_s": 8.4455001342576e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.1851296490058303
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.089607180983876,
+                      "flopscope_overhead_time_s": 0.15359294188237982
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 3.7188138510173303,
+                      "flopscope_overhead_time_s": 0.04076345447356289
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.0002128470005118288,
+                      "flopscope_overhead_time_s": 0.0023032959979900625
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0001278369854844641,
+                      "flopscope_overhead_time_s": 0.0018695300095714629
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0020594800043909345,
+                      "flopscope_overhead_time_s": 0.011062977016990772
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.259599882061593e-05,
+                      "flopscope_overhead_time_s": 0.0015222049987642094
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00012298001456656493,
+                      "flopscope_overhead_time_s": 0.005783232001704164
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0016061060050560627
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 7.921599535620771e-05,
+                      "flopscope_overhead_time_s": 0.0022635130226262845
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0031454089948965702
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0024914690184232313,
+                      "flopscope_overhead_time_s": 0.008668665977893397
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.106383092130272,
+                      "flopscope_overhead_time_s": 0.5488135817031434
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.1601102208878729,
+                      "flopscope_overhead_time_s": 0.10568503956710629
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.474446717045794,
+                      "flopscope_overhead_time_s": 0.23117883096347214
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.2117729650126421,
+                      "flopscope_overhead_time_s": 0.006125590989540797
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0002574540048954077,
+                      "flopscope_overhead_time_s": 0.0008718829958525021
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.2237605870286643,
+                      "flopscope_overhead_time_s": 0.055113684946263675
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0006822099821874872,
+                      "flopscope_overhead_time_s": 0.009850497019215254
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006334100071399007,
+                      "flopscope_overhead_time_s": 0.005173898989596637
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00012222500299685635,
+                      "flopscope_overhead_time_s": 0.001078512996173231
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.00017591799405636266,
+                      "flopscope_overhead_time_s": 0.0029597010325232986
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.0002901030020439066,
+                      "flopscope_overhead_time_s": 0.00038865700116730295
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 5,
+          "mlp_name": "christopher-morales",
+          "final_layer_mse": 2.2332907079203324e-08,
+          "all_layers_mse": 9.053883864851286e-09,
+          "per_layer_mse": [
+            7.574051386072256e-10,
+            7.006946134424652e-10,
+            1.0891830770631827e-09,
+            1.7329067070193105e-09,
+            2.8690239073370094e-09,
+            4.333709391346474e-09,
+            5.507335032461924e-09,
+            7.048948091892271e-09,
+            8.581898747195282e-09,
+            1.0817750251135294e-08,
+            1.1382459419451152e-08,
+            1.3970996803891467e-08,
+            1.523702053418674e-08,
+            1.8574151994243948e-08,
+            1.992574993892049e-08,
+            2.2332907079203324e-08
+          ],
+          "adjusted_final_layer_score": 5.505407476945327e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 35.73472648800089,
+          "flopscope_backend_time_s": 33.50081697414498,
+          "flopscope_overhead_time_s": 1.9693882796855178,
+          "residual_wall_time_s": 0.2645212341703882,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 35.73472648800089,
+              "flopscope_backend_time_s": 33.50081697414498,
+              "flopscope_overhead_time_s": 1.9693882796855178,
+              "residual_wall_time_s": 0.2645212341703882,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 33.50081697414498,
+                  "flopscope_overhead_time_s": 1.968499641687231,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00016208499073400162,
+                      "flopscope_overhead_time_s": 0.0024039510244620033
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 7.642000127816573e-06,
+                      "flopscope_overhead_time_s": 5.485300061991438e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.2445001630112529e-05,
+                      "flopscope_overhead_time_s": 0.0001640839982428588
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 4.099071103042661,
+                      "flopscope_overhead_time_s": 0.3551235889972304
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002616990022943355,
+                      "flopscope_overhead_time_s": 8.566399992560036e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.21826783200594946
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.579304925027827,
+                      "flopscope_overhead_time_s": 0.18711621993861627
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 4.099918183052068,
+                      "flopscope_overhead_time_s": 0.04629809444122657
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.00023094300195225514,
+                      "flopscope_overhead_time_s": 0.002407561001746217
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.00016133200551848859,
+                      "flopscope_overhead_time_s": 0.0021135349961696193
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0023305830218305346,
+                      "flopscope_overhead_time_s": 0.012437504978151992
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 5.473200508276932e-05,
+                      "flopscope_overhead_time_s": 0.0016755369979364332
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00012977197548025288,
+                      "flopscope_overhead_time_s": 0.00623473001178354
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0017536849954922218
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 8.554001396987587e-05,
+                      "flopscope_overhead_time_s": 0.0024004659862839617
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.003380861995537998
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.002629654001793824,
+                      "flopscope_overhead_time_s": 0.009085235000384273
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.94311373094024,
+                      "flopscope_overhead_time_s": 0.6362330029332952
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.3155485829811369,
+                      "flopscope_overhead_time_s": 0.12145565646460454
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.864328362054948,
+                      "flopscope_overhead_time_s": 0.26898801595234545
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.2381756589966244,
+                      "flopscope_overhead_time_s": 0.007318772008147789
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0002784959942800924,
+                      "flopscope_overhead_time_s": 0.0009040760050993413
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.3528351280001516,
+                      "flopscope_overhead_time_s": 0.0606164430246281
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0007926830148790032,
+                      "flopscope_overhead_time_s": 0.011357354946085252
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006804250115237664,
+                      "flopscope_overhead_time_s": 0.005539606987440493
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00013455000589601696,
+                      "flopscope_overhead_time_s": 0.001173449996713316
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.00019633099873317406,
+                      "flopscope_overhead_time_s": 0.0034590809991641436
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.0003723880035977345,
+                      "flopscope_overhead_time_s": 0.0004507789999479428
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 6,
+          "mlp_name": "cheryl-graham",
+          "final_layer_mse": 2.1069764599701557e-08,
+          "all_layers_mse": 9.38998034882843e-09,
+          "per_layer_mse": [
+            6.702394195201578e-10,
+            6.387554929432326e-10,
+            1.0763113733602836e-09,
+            1.8037142890392488e-09,
+            2.860101044888097e-09,
+            4.403653441897859e-09,
+            6.01648642017949e-09,
+            7.650367450651174e-09,
+            9.366450726133735e-09,
+            1.0617952739266912e-08,
+            1.352185297065489e-08,
+            1.429453888590615e-08,
+            1.7106934535604523e-08,
+            1.865622323293792e-08,
+            2.04863361830121e-08,
+            2.1069764599701557e-08
+          ],
+          "adjusted_final_layer_score": 5.1940232927711115e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 32.780947224000556,
+          "flopscope_backend_time_s": 30.81489484779013,
+          "flopscope_overhead_time_s": 1.726581647151761,
+          "residual_wall_time_s": 0.23947072905866662,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 32.780947224000556,
+              "flopscope_backend_time_s": 30.81489484779013,
+              "flopscope_overhead_time_s": 1.726581647151761,
+              "residual_wall_time_s": 0.23947072905866662,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 30.81489484779013,
+                  "flopscope_overhead_time_s": 1.725667862152477,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00015975899441400543,
+                      "flopscope_overhead_time_s": 0.0023847540105634835
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 8.641000022180378e-06,
+                      "flopscope_overhead_time_s": 5.519100159290247e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.1985001037828624e-05,
+                      "flopscope_overhead_time_s": 0.00016895800217753276
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.3943615040443547,
+                      "flopscope_overhead_time_s": 0.30995776993222535
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002487579986336641,
+                      "flopscope_overhead_time_s": 8.635400445200503e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.18667609299518517
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.167240022969054,
+                      "flopscope_overhead_time_s": 0.1579283009923529
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 3.8071954600200115,
+                      "flopscope_overhead_time_s": 0.04198097846892779
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.0002091510032187216,
+                      "flopscope_overhead_time_s": 0.0022659100104647223
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.00013295700409798883,
+                      "flopscope_overhead_time_s": 0.0018669669952942058
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0020689719822257757,
+                      "flopscope_overhead_time_s": 0.011299925015919143
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.35170040873345e-05,
+                      "flopscope_overhead_time_s": 0.0016038889880292118
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00012079200678272173,
+                      "flopscope_overhead_time_s": 0.005754961010097759
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.001622980009415187
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 8.38270025269594e-05,
+                      "flopscope_overhead_time_s": 0.0022416579922719393
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0030676929927722085
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0025281669877585955,
+                      "flopscope_overhead_time_s": 0.008823099997243844
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.267558559884492,
+                      "flopscope_overhead_time_s": 0.561693622970779
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.1928210249607218,
+                      "flopscope_overhead_time_s": 0.10731524558650563
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.529385289937636,
+                      "flopscope_overhead_time_s": 0.23620823915916844
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.21338308699341724,
+                      "flopscope_overhead_time_s": 0.006181737000588328
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00026044399419333786,
+                      "flopscope_overhead_time_s": 0.0008781010074017104
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.2351380979816895,
+                      "flopscope_overhead_time_s": 0.05584635401828564
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.0007092230007401668,
+                      "flopscope_overhead_time_s": 0.01004194201232167
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006502880023617763,
+                      "flopscope_overhead_time_s": 0.005199118993914453
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.00012349399912636727,
+                      "flopscope_overhead_time_s": 0.0010969909926643595
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.0001724940084386617,
+                      "flopscope_overhead_time_s": 0.0030324490035127383
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.0002793320090859197,
+                      "flopscope_overhead_time_s": 0.0003885789883497637
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        },
+        {
+          "mlp_index": 7,
+          "mlp_name": "renee-park",
+          "final_layer_mse": 2.7798339630180635e-08,
+          "all_layers_mse": 1.0435081243542754e-08,
+          "per_layer_mse": [
+            6.602320912207915e-10,
+            7.565134074738467e-10,
+            1.0592715593560342e-09,
+            1.979340913393912e-09,
+            3.0830724639940854e-09,
+            4.076266435504294e-09,
+            5.583188134039574e-09,
+            7.368890386771909e-09,
+            9.55107370970154e-09,
+            1.1500130625563543e-08,
+            1.4205109977183383e-08,
+            1.606520783070664e-08,
+            1.6960971294111005e-08,
+            2.053564429616017e-08,
+            2.5778053469593942e-08,
+            2.7798339630180635e-08
+          ],
+          "adjusted_final_layer_score": 6.852721246898299e-09,
+          "flops_used": 542093289967,
+          "effective_compute": 542093289967.0,
+          "budget_exhausted": false,
+          "time_exhausted": false,
+          "residual_wall_time_exhausted": false,
+          "combined_budget_exhausted": false,
+          "wall_time_s": 33.618026568998175,
+          "flopscope_backend_time_s": 31.57746444111035,
+          "flopscope_overhead_time_s": 1.7921670147698023,
+          "residual_wall_time_s": 0.24839511311802198,
+          "breakdowns": {
+            "estimator": {
+              "flop_budget": 2199023255552,
+              "flops_used": 542093289967,
+              "flops_remaining": 1656929965585,
+              "wall_time_s": 33.618026568998175,
+              "flopscope_backend_time_s": 31.57746444111035,
+              "flopscope_overhead_time_s": 1.7921670147698023,
+              "residual_wall_time_s": 0.24839511311802198,
+              "by_namespace": {
+                "estimator.estimator-client": {
+                  "flops_used": 542093289967,
+                  "calls": 13196,
+                  "flopscope_backend_time_s": 31.57746444111035,
+                  "flopscope_overhead_time_s": 1.7912276437709806,
+                  "operations": {
+                    "asarray": {
+                      "flop_cost": 12522,
+                      "calls": 35,
+                      "flopscope_backend_time_s": 0.00015965798957040533,
+                      "flopscope_overhead_time_s": 0.0023940580140333623
+                    },
+                    "ones": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 1.0149000445380807e-05,
+                      "flopscope_overhead_time_s": 5.491900083143264e-05
+                    },
+                    "zeros": {
+                      "flop_cost": 0,
+                      "calls": 4,
+                      "flopscope_backend_time_s": 1.2045999028487131e-05,
+                      "flopscope_overhead_time_s": 0.00016411199976573698
+                    },
+                    "multiply": {
+                      "flop_cost": 4385343577,
+                      "calls": 2814,
+                      "flopscope_backend_time_s": 3.467069515005278,
+                      "flopscope_overhead_time_s": 0.321219411031052
+                    },
+                    "eye": {
+                      "flop_cost": 1024,
+                      "calls": 1,
+                      "flopscope_backend_time_s": 0.0002467760023137089,
+                      "flopscope_overhead_time_s": 8.17199979792349e-05
+                    },
+                    "as_symmetric": {
+                      "flop_cost": 117440496,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.18640665299608372
+                    },
+                    "matmul": {
+                      "flop_cost": 490125980672,
+                      "calls": 1104,
+                      "flopscope_backend_time_s": 7.3481335589931405,
+                      "flopscope_overhead_time_s": 0.16709467594409944
+                    },
+                    "einsum": {
+                      "flop_cost": 19553226240,
+                      "calls": 166,
+                      "flopscope_backend_time_s": 3.837851282012707,
+                      "flopscope_overhead_time_s": 0.042602172996339505
+                    },
+                    "diag": {
+                      "flop_cost": 0,
+                      "calls": 43,
+                      "flopscope_backend_time_s": 0.00021252500300761312,
+                      "flopscope_overhead_time_s": 0.002295551988936495
+                    },
+                    "maximum": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0001542839963803999,
+                      "flopscope_overhead_time_s": 0.001917943995067617
+                    },
+                    "fill_diagonal": {
+                      "flop_cost": 183296,
+                      "calls": 179,
+                      "flopscope_backend_time_s": 0.0021381509977800306,
+                      "flopscope_overhead_time_s": 0.011606253989157267
+                    },
+                    "sqrt": {
+                      "flop_cost": 16384,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 4.701799480244517e-05,
+                      "flopscope_overhead_time_s": 0.0015306690038414672
+                    },
+                    "true_divide": {
+                      "flop_cost": 32798,
+                      "calls": 62,
+                      "flopscope_backend_time_s": 0.00012029000208713114,
+                      "flopscope_overhead_time_s": 0.005788765989564126
+                    },
+                    "stats.norm.pdf": {
+                      "flop_cost": 884736,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0016214939860219602
+                    },
+                    "astype": {
+                      "flop_cost": 65536,
+                      "calls": 32,
+                      "flopscope_backend_time_s": 8.059298124862835e-05,
+                      "flopscope_overhead_time_s": 0.0022746880167687777
+                    },
+                    "stats.norm.cdf": {
+                      "flop_cost": 1572864,
+                      "calls": 16,
+                      "flopscope_backend_time_s": 0.0,
+                      "flopscope_overhead_time_s": 0.0030559410006389953
+                    },
+                    "stack": {
+                      "flop_cost": 1128448,
+                      "calls": 124,
+                      "flopscope_backend_time_s": 0.0025238720336346887,
+                      "flopscope_overhead_time_s": 0.008937536982557504
+                    },
+                    "add": {
+                      "flop_cost": 11832517662,
+                      "calls": 4541,
+                      "flopscope_backend_time_s": 9.511000792099367,
+                      "flopscope_overhead_time_s": 0.5851628556956712
+                    },
+                    "copyto": {
+                      "flop_cost": 2740580352,
+                      "calls": 1572,
+                      "flopscope_backend_time_s": 1.2373791389582038,
+                      "flopscope_overhead_time_s": 0.11331183007314394
+                    },
+                    "subtract": {
+                      "flop_cost": 5109415936,
+                      "calls": 1895,
+                      "flopscope_backend_time_s": 4.653463910992286,
+                      "flopscope_overhead_time_s": 0.24761833107550046
+                    },
+                    "linalg.qr": {
+                      "flop_cost": 6742988204,
+                      "calls": 83,
+                      "flopscope_backend_time_s": 0.21925477301556384,
+                      "flopscope_overhead_time_s": 0.006640145988058066
+                    },
+                    "concatenate": {
+                      "flop_cost": 491520,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0002772779989754781,
+                      "flopscope_overhead_time_s": 0.000944783998420462
+                    },
+                    "sum": {
+                      "flop_cost": 1480527814,
+                      "calls": 205,
+                      "flopscope_backend_time_s": 1.2953438350159558,
+                      "flopscope_overhead_time_s": 0.05830701100057922
+                    },
+                    "swapaxes": {
+                      "flop_cost": 0,
+                      "calls": 159,
+                      "flopscope_backend_time_s": 0.000723599994671531,
+                      "flopscope_overhead_time_s": 0.010462490030477056
+                    },
+                    "mean": {
+                      "flop_cost": 30720,
+                      "calls": 30,
+                      "flopscope_backend_time_s": 0.0006492270113085397,
+                      "flopscope_overhead_time_s": 0.005246468983386876
+                    },
+                    "clip": {
+                      "flop_cost": 30,
+                      "calls": 15,
+                      "flopscope_backend_time_s": 0.0001251199937541969,
+                      "flopscope_overhead_time_s": 0.0010746000152721535
+                    },
+                    "power": {
+                      "flop_cost": 229616,
+                      "calls": 29,
+                      "flopscope_backend_time_s": 0.0001878760158433579,
+                      "flopscope_overhead_time_s": 0.003012565979588544
+                    },
+                    "copy": {
+                      "flop_cost": 602112,
+                      "calls": 7,
+                      "flopscope_backend_time_s": 0.0002991720029967837,
+                      "flopscope_overhead_time_s": 0.0003999939981440548
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "traceback": null
+        }
+      ],
+      "breakdowns": {
+        "sampling": {
+          "flop_budget": 269393920001122304,
+          "flops_used": 269393920001122304,
+          "flops_remaining": 0,
+          "wall_time_s": 13633.48205340824,
+          "flopscope_backend_time_s": 0.0,
+          "flopscope_overhead_time_s": 0.0,
+          "residual_wall_time_s": 13633.48205340824,
+          "by_namespace": {
+            "sampling.sample_layer_statistics": {
+              "flops_used": 269393920001122304,
+              "calls": 1312912,
+              "flopscope_backend_time_s": 0.0,
+              "flopscope_overhead_time_s": 0.0,
+              "operations": {
+                "random.Generator.standard_normal": {
+                  "flop_cost": 131072000000000,
+                  "calls": 15264,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "array": {
+                  "flop_cost": 8192000000000,
+                  "calls": 15264,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "matmul": {
+                  "flop_cost": 268304384000000000,
+                  "calls": 244224,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "maximum": {
+                  "flop_cost": 131072000000000,
+                  "calls": 244224,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "asarray": {
+                  "flop_cost": 278528000278528,
+                  "calls": 259504,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "sum": {
+                  "flop_cost": 278527468568576,
+                  "calls": 259488,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "add": {
+                  "flop_cost": 531431424,
+                  "calls": 259488,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "power": {
+                  "flop_cost": 262144000262144,
+                  "calls": 15272,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "zeros": {
+                  "flop_cost": 0,
+                  "calls": 136,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "stack": {
+                  "flop_cost": 262144,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "true_divide": {
+                  "flop_cost": 278528,
+                  "calls": 16,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "subtract": {
+                  "flop_cost": 16384,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "mean": {
+                  "flop_cost": 16384,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                },
+                "copy": {
+                  "flop_cost": 8192,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.0
+                }
+              }
+            }
+          },
+          "time_source": "bake"
+        },
+        "estimator": {
+          "flop_budget": 17592186044416,
+          "flops_used": 4364166931320,
+          "flops_remaining": 13228019113096,
+          "wall_time_s": 263.2285652440005,
+          "flopscope_backend_time_s": 246.8780126190868,
+          "flopscope_overhead_time_s": 14.366253278152726,
+          "residual_wall_time_s": 1.984299346760963,
+          "by_namespace": {
+            "estimator.estimator-client": {
+              "flops_used": 4364166931320,
+              "calls": 105505,
+              "flopscope_backend_time_s": 246.8780126190868,
+              "flopscope_overhead_time_s": 14.359118223157566,
+              "operations": {
+                "asarray": {
+                  "flop_cost": 100176,
+                  "calls": 280,
+                  "flopscope_backend_time_s": 0.0012876119471911807,
+                  "flopscope_overhead_time_s": 0.019013766057469184
+                },
+                "ones": {
+                  "flop_cost": 8192,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 6.559500252478756e-05,
+                  "flopscope_overhead_time_s": 0.0004331600030127447
+                },
+                "zeros": {
+                  "flop_cost": 0,
+                  "calls": 32,
+                  "flopscope_backend_time_s": 9.946700811269693e-05,
+                  "flopscope_overhead_time_s": 0.0013556409830925986
+                },
+                "multiply": {
+                  "flop_cost": 35082748616,
+                  "calls": 22512,
+                  "flopscope_backend_time_s": 27.828719506054767,
+                  "flopscope_overhead_time_s": 2.5473232199910854
+                },
+                "empty": {
+                  "flop_cost": 0,
+                  "calls": 228,
+                  "flopscope_backend_time_s": 0.005247022967523662,
+                  "flopscope_overhead_time_s": 0.012078555013431469
+                },
+                "copyto": {
+                  "flop_cost": 26048751616,
+                  "calls": 12688,
+                  "flopscope_backend_time_s": 12.327028723910189,
+                  "flopscope_overhead_time_s": 0.8999504224157135
+                },
+                "eye": {
+                  "flop_cost": 8192,
+                  "calls": 8,
+                  "flopscope_backend_time_s": 0.0020267610052542295,
+                  "flopscope_overhead_time_s": 0.000714629000867717
+                },
+                "as_symmetric": {
+                  "flop_cost": 939523968,
+                  "calls": 128,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 1.5523300389977521
+                },
+                "matmul": {
+                  "flop_cost": 3948023205888,
+                  "calls": 8832,
+                  "flopscope_backend_time_s": 56.84928119693723,
+                  "flopscope_overhead_time_s": 1.3883935149242461
+                },
+                "einsum": {
+                  "flop_cost": 156425809920,
+                  "calls": 1328,
+                  "flopscope_backend_time_s": 31.77817071606478,
+                  "flopscope_overhead_time_s": 0.43274312948051374
+                },
+                "diag": {
+                  "flop_cost": 0,
+                  "calls": 344,
+                  "flopscope_backend_time_s": 0.0017350010202790145,
+                  "flopscope_overhead_time_s": 0.018724135970842326
+                },
+                "maximum": {
+                  "flop_cost": 131072,
+                  "calls": 128,
+                  "flopscope_backend_time_s": 0.0011261129911872558,
+                  "flopscope_overhead_time_s": 0.015450481994776055
+                },
+                "fill_diagonal": {
+                  "flop_cost": 1466368,
+                  "calls": 1432,
+                  "flopscope_backend_time_s": 0.016824905986140948,
+                  "flopscope_overhead_time_s": 0.09186613401470822
+                },
+                "sqrt": {
+                  "flop_cost": 131072,
+                  "calls": 128,
+                  "flopscope_backend_time_s": 0.00037081500704516657,
+                  "flopscope_overhead_time_s": 0.01249587997153867
+                },
+                "true_divide": {
+                  "flop_cost": 262384,
+                  "calls": 496,
+                  "flopscope_backend_time_s": 0.0009723780349304434,
+                  "flopscope_overhead_time_s": 0.046862574981787475
+                },
+                "stats.norm.pdf": {
+                  "flop_cost": 7077888,
+                  "calls": 128,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.013140569000825053
+                },
+                "astype": {
+                  "flop_cost": 524288,
+                  "calls": 256,
+                  "flopscope_backend_time_s": 0.000647373977699317,
+                  "flopscope_overhead_time_s": 0.01820357802353101
+                },
+                "stats.norm.cdf": {
+                  "flop_cost": 12582912,
+                  "calls": 128,
+                  "flopscope_backend_time_s": 0.0,
+                  "flopscope_overhead_time_s": 0.025099187976593385
+                },
+                "stack": {
+                  "flop_cost": 9027584,
+                  "calls": 992,
+                  "flopscope_backend_time_s": 0.02027296800588374,
+                  "flopscope_overhead_time_s": 0.07080487394705415
+                },
+                "add": {
+                  "flop_cost": 91289367792,
+                  "calls": 35980,
+                  "flopscope_backend_time_s": 71.68855096120024,
+                  "flopscope_overhead_time_s": 4.577159032225609
+                },
+                "reshape": {
+                  "flop_cost": 1879429120,
+                  "calls": 119,
+                  "flopscope_backend_time_s": 0.0008000090056157205,
+                  "flopscope_overhead_time_s": 0.01071008399958373
+                },
+                "subtract": {
+                  "flop_cost": 39119869952,
+                  "calls": 14986,
+                  "flopscope_backend_time_s": 34.96470418594981,
+                  "flopscope_overhead_time_s": 1.9273148371721618
+                },
+                "linalg.qr": {
+                  "flop_cost": 53943905632,
+                  "calls": 664,
+                  "flopscope_backend_time_s": 1.7507750750119158,
+                  "flopscope_overhead_time_s": 0.05218842796966783
+                },
+                "concatenate": {
+                  "flop_cost": 3932160,
+                  "calls": 120,
+                  "flopscope_backend_time_s": 0.002115659965056693,
+                  "flopscope_overhead_time_s": 0.007174590024078498
+                },
+                "sum": {
+                  "flop_cost": 11372166704,
+                  "calls": 1640,
+                  "flopscope_backend_time_s": 9.621386149992759,
+                  "flopscope_overhead_time_s": 0.4565307429584209
+                },
+                "swapaxes": {
+                  "flop_cost": 0,
+                  "calls": 1272,
+                  "flopscope_backend_time_s": 0.005781002972071292,
+                  "flopscope_overhead_time_s": 0.08266849806750542
+                },
+                "mean": {
+                  "flop_cost": 245760,
+                  "calls": 240,
+                  "flopscope_backend_time_s": 0.005160380016604904,
+                  "flopscope_overhead_time_s": 0.041671056980703725
+                },
+                "clip": {
+                  "flop_cost": 240,
+                  "calls": 120,
+                  "flopscope_backend_time_s": 0.0009992639970732853,
+                  "flopscope_overhead_time_s": 0.008814374010398751
+                },
+                "power": {
+                  "flop_cost": 1836928,
+                  "calls": 232,
+                  "flopscope_backend_time_s": 0.0014489810309896711,
+                  "flopscope_overhead_time_s": 0.024671377021149965
+                },
+                "copy": {
+                  "flop_cost": 4816896,
+                  "calls": 56,
+                  "flopscope_backend_time_s": 0.002414794023934519,
+                  "flopscope_overhead_time_s": 0.0032317099794454407
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
