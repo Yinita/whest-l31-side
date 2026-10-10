@@ -53,3 +53,9 @@
 分片下载失败：session39510 exit1，TLS BAD_RECORD_MAC，非SHA校验结果。原失败日志保留。下载程序每块加入3次有限transport/HTTP重试，SHA验收仍强制；确认旧进程终止后启动session28174、新日志prepare_shard01_retry1.log。未把未完成缓存作为可评测数据。
 
 调研排除项：固定上游commit的findings_log F68及dump_k3_tables2.py说明恢复全项表曾报告MSE不变、residual+40ms；这是别人报告，未自行复现。生成器还依赖lean_k3和term_rels.json，不能简单将阈值改0视为完成合法全项恢复。优先级暂低于完整来源误差诊断。检查点noconfine仍在运行约5分35秒，下载重试已134/538MB；未重复启动。
+
+完成noconfine：raw=2.1704769759267606e-8（改善4.40%），adjusted=6.106147871848858e-9（恶化5.66%），util=0.281318877326612，零失败，峰值RSS12732384KiB，未达标。完整运输未带来大幅精度恢复，降低仅靠来源压缩达十倍的预期。逐网络证据noconfine_vs_v29_local.json。
+
+## P2-E007-nowk431-mini8
+
+唯一机制：NO_WK431默认0→1，禁用matrix-core第四阶非线性使用；保留K4再生和反馈及压缩。该开关控制pmode与WK431项组，是机制消融而非单个代数项。从原V29运行相同Mini8，原reference/预算/版本不变。若改善则定位误配项；若恶化则保留该通道，并转向核心表示/系数推导，停止盲禁用。数据准备session28174丢失且无进程，日志停336MB，无成功标志，记录不完整，不当作合格数据。

@@ -10,6 +10,42 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
+    "id": "P2-E007-nowk431-mini8",
+    "candidate": "estimators/k3_v29_nowk431/estimator.py",
+    "sha256": "441e754afde8eb6601f7a6872a274cb746be8adff610de80935e68f8dc16b19d",
+    "single_change": "NO_WK431 default 0 -> 1",
+    "hypothesis": "Isolate high-order matrix-core nonlinear contribution",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "report": "results/phase2/nowk431_mini8_local.json",
+    "status": "running",
+    "pid": 586468,
+    "pid_start_ticks": "2460132",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_nowk431/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/nowk431_mini8_local.json"
+    ],
+    "started_at_utc": "2026-10-10T10:24:48.664249+00:00"
+  },
+  "next_experiment": {
+    "status": "conditional",
+    "hypothesis": "If removal helps, isolate terms; otherwise study core representation and derive coefficients rather than disable more channels"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T10:11:20.092724+00:00",
+  "previous_experiment": {
     "id": "P2-E006-noconfine-mini8",
     "candidate": "estimators/k3_v29_noconfine/estimator.py",
     "sha256": "25728c13be41384130a133fb57ffdd59b63d041a84f292151ea69f67171c7fe0",
@@ -17,7 +53,7 @@
     "hypothesis": "Measure complete-source transport accuracy versus shared-subspace compression",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "report": "results/phase2/noconfine_mini8_local.json",
-    "status": "running",
+    "status": "completed_negative",
     "pid": 566583,
     "pid_start_ticks": "2404967",
     "command": [
@@ -38,49 +74,13 @@
       "results/phase2/noconfine_mini8_local.json"
     ],
     "started_at_utc": "2026-10-10T10:15:37.012890+00:00",
-    "resource_observation": "Local numerical worker PID566789 RSS10538416KiB observed; diagnostic only, not proof of client/server or 8GiB feasibility"
-  },
-  "next_experiment": {
-    "status": "conditional",
-    "hypothesis": "If full sources do not greatly improve raw MSE, prioritize high-order closure; otherwise develop legal output-sensitive compression"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T10:11:20.092724+00:00",
-  "previous_experiment": {
-    "id": "P2-E005-nofeed-mini8",
-    "candidate": "estimators/k3_v29_nofeed/estimator.py",
-    "sha256": "fe3d2149270dfa3f5c168d440e042882cf805829322d6e925afba49d5a3f2a8d",
-    "single_change": "NO_FEED default 0 -> 1",
-    "hypothesis": "Isolate K4-to-K3 feedback contribution",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "report": "results/phase2/nofeed_mini8_local.json",
-    "status": "completed_negative",
-    "pid": 557443,
-    "pid_start_ticks": "2363967",
-    "command": [
-      "uv",
-      "run",
-      "python",
-      "benchmark/phase2.py",
-      "run",
-      "--estimator",
-      "estimators/k3_v29_nofeed/estimator.py",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--n-mlps",
-      "8",
-      "--runner",
-      "local",
-      "--output",
-      "results/phase2/nofeed_mini8_local.json"
-    ],
-    "started_at_utc": "2026-10-10T10:08:47.006834+00:00",
-    "comparison": "results/phase2/nofeed_vs_v29_local.json",
+    "resource_observation": "Local numerical worker PID566789 RSS10538416KiB observed; diagnostic only, not proof of client/server or 8GiB feasibility",
+    "comparison": "results/phase2/noconfine_vs_v29_local.json",
     "metrics": {
-      "adjusted_final_layer_score": 6.127991349972541e-09,
-      "final_layer_mse": 2.4084116923006604e-08,
+      "adjusted_final_layer_score": 6.106147871848858e-09,
+      "final_layer_mse": 2.1704769759267606e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.25449351901579575
+      "mean_compute_utilization": 0.281318877326612
     }
   },
   "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
@@ -161,6 +161,43 @@
         "n_failed_mlps": 0,
         "mean_compute_utilization": 0.26017454294878917
       }
+    },
+    {
+      "id": "P2-E005-nofeed-mini8",
+      "candidate": "estimators/k3_v29_nofeed/estimator.py",
+      "sha256": "fe3d2149270dfa3f5c168d440e042882cf805829322d6e925afba49d5a3f2a8d",
+      "single_change": "NO_FEED default 0 -> 1",
+      "hypothesis": "Isolate K4-to-K3 feedback contribution",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "report": "results/phase2/nofeed_mini8_local.json",
+      "status": "completed_negative",
+      "pid": 557443,
+      "pid_start_ticks": "2363967",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_nofeed/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/nofeed_mini8_local.json"
+      ],
+      "started_at_utc": "2026-10-10T10:08:47.006834+00:00",
+      "comparison": "results/phase2/nofeed_vs_v29_local.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.127991349972541e-09,
+        "final_layer_mse": 2.4084116923006604e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.25449351901579575
+      }
     }
   ],
   "execution_mode": "continuous_goal",
@@ -170,9 +207,10 @@
     "session_id": 28174,
     "log": "results/phase2/prepare_shard01_retry1.log",
     "output": "benchmark/data/mini_shard01",
-    "status": "running_retry1",
+    "status": "interrupted_or_terminated_no_completion",
     "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
-    "purpose": "public network-split confirmation, not proven independent of upstream tuning"
+    "purpose": "public network-split confirmation, not proven independent of upstream tuning",
+    "observation": "session unavailable; no prepare_public process; log ends 336/538MB, no valid dataset completion"
   },
   "reference_uncertainty_diagnostic": "results/phase2/reference_noise_proxy_mini8.json",
   "upstream_paper_code_lookup": {
