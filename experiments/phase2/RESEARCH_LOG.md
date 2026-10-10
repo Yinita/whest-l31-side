@@ -45,3 +45,5 @@
 ## P2-E006-noconfine-mini8
 
 唯一机制：关闭历史来源共享子空间压缩，其他反馈、再生、系数均沿用V29。目的：测量保留完整来源运输后的误差变化，判断输出导向压缩能回收的空间；不是oracle，不使用reference选方向，也不是独立泛化。full transport可能增加时间/内存，保持原120秒和预算，不放宽失败约束。若raw仍接近V29则不能靠压缩恢复十倍精度，应转向高阶闭合诊断；若大幅改善，再考虑合法输出敏感性代理。
+
+参考噪声诊断：固定Mini8 metadata n_samples=1e9，与采样成本array/1024推导一致。平均reported avg_variance/N约7.914e-11 raw，详见reference_noise_proxy_mini8.json。假设为iid、avg_variance是最终输出方差；非实测CI，未测GPU归约偏差/样本依赖，不是算法下界，不能据此降低目标或宣称噪声地板。后续阈值接近该量级时需独立参考复验。noconfine PID/start_ticks核验仍在运行。
