@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -41,15 +42,22 @@ def main():
         def download(bounds):
             start, end = bounds
             url = f"https://huggingface.co/datasets/{REPO}/resolve/{REVISION}/{file}?part={start}"
-            with httpx.Client(timeout=90, follow_redirects=True) as client:
-                response = client.get(url, headers={"Range": f"bytes={start}-{end}"})
-                response.raise_for_status()
-                content = response.content
-                if response.status_code != 206 or len(content) != end - start + 1:
-                    raise RuntimeError(f"Unexpected range response for offset {start}")
-                with staging.open("r+b") as out:
-                    out.seek(start)
-                    out.write(content)
+            for attempt in range(3):
+                try:
+                    with httpx.Client(timeout=90, follow_redirects=True) as client:
+                        response = client.get(url, headers={"Range": f"bytes={start}-{end}"})
+                        response.raise_for_status()
+                        content = response.content
+                        if response.status_code != 206 or len(content) != end - start + 1:
+                            raise RuntimeError(f"Unexpected range response for offset {start}")
+                        with staging.open("r+b") as out:
+                            out.seek(start)
+                            out.write(content)
+                    break
+                except (httpx.TransportError, httpx.HTTPStatusError):
+                    if attempt == 2:
+                        raise
+                    time.sleep(2 ** attempt)
             return len(content)
 
         total = 0

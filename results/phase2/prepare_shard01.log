@@ -1,0 +1,96 @@
+Downloaded 8/538 MB
+Downloaded 17/538 MB
+Downloaded 25/538 MB
+Downloaded 34/538 MB
+Downloaded 42/538 MB
+Downloaded 50/538 MB
+Downloaded 59/538 MB
+Downloaded 67/538 MB
+Downloaded 75/538 MB
+Downloaded 84/538 MB
+Downloaded 92/538 MB
+Downloaded 101/538 MB
+Downloaded 109/538 MB
+Downloaded 117/538 MB
+Downloaded 126/538 MB
+Downloaded 134/538 MB
+Downloaded 143/538 MB
+Downloaded 151/538 MB
+Downloaded 159/538 MB
+Downloaded 168/538 MB
+Downloaded 176/538 MB
+Downloaded 185/538 MB
+Downloaded 193/538 MB
+Downloaded 201/538 MB
+Downloaded 210/538 MB
+Downloaded 218/538 MB
+Downloaded 226/538 MB
+Downloaded 235/538 MB
+Downloaded 243/538 MB
+Downloaded 252/538 MB
+Downloaded 260/538 MB
+Downloaded 268/538 MB
+Downloaded 277/538 MB
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 127, in __iter__
+    for part in self._httpcore_stream:
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 407, in __iter__
+    raise exc from None
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 403, in __iter__
+    for part in self._stream:
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 342, in __iter__
+    raise exc
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 334, in __iter__
+    for chunk in self._connection._receive_response_body(**kwargs):
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 203, in _receive_response_body
+    event = self._receive_event(timeout=timeout)
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2589)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/prepare_public.py", line 94, in <module>
+    main()
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/prepare_public.py", line 59, in main
+    total += future.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/prepare_public.py", line 45, in download
+    response = client.get(url, headers={"Range": f"bytes={start}-{end}"})
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1053, in get
+    return self.request(
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_client.py", line 928, in send
+    raise exc
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_client.py", line 922, in send
+    response.read()
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_client.py", line 153, in __iter__
+    for chunk in self._stream:
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 126, in __iter__
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2589)

@@ -167,10 +167,10 @@
   "automation_deleted": "whestbench-10",
   "data_preparation": {
     "command": "uv run python benchmark/prepare_public.py --shard 1",
-    "session_id": 39510,
-    "log": "results/phase2/prepare_shard01.log",
+    "session_id": 28174,
+    "log": "results/phase2/prepare_shard01_retry1.log",
     "output": "benchmark/data/mini_shard01",
-    "status": "running",
+    "status": "running_retry1",
     "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
     "purpose": "public network-split confirmation, not proven independent of upstream tuning"
   },
@@ -180,5 +180,17 @@
     "web_result": "404",
     "clone_session": 63999,
     "status": "unavailable: clone exited 128, unauthenticated repository access denied"
-  }
+  },
+  "data_preparation_history": [
+    {
+      "command": "uv run python benchmark/prepare_public.py --shard 1",
+      "session_id": 39510,
+      "log": "results/phase2/prepare_shard01.log",
+      "output": "benchmark/data/mini_shard01",
+      "status": "failed_transport",
+      "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
+      "purpose": "public network-split confirmation, not proven independent of upstream tuning",
+      "exit_code": 1
+    }
+  ]
 }
