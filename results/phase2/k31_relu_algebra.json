@@ -1,0 +1,44 @@
+{
+  "mode": "offline synthetic Gaussian diagnostic; not candidate or benchmark improvement",
+  "formula": "K31_ij = 3*(1-Phi_i)*(E[Y_i^2]-2*E[Y_i]^2)*Phi_j*C_ij + O(C_ij^2)",
+  "derivation": "Gaussian covariance differentiation plus K31 centered-moment identity; ReLU marginal moments from paper S3.4",
+  "source": "https://arxiv.org/html/2605.05179v2#S3.SS4",
+  "limitations": [
+    "Joint Gaussian preactivations only",
+    "First order around zero cross covariance",
+    "Does not include propagated K3/K4 or K211",
+    "Cannot replace complete matrix core without feed/use representation changes"
+  ],
+  "rows": [
+    {
+      "mu": -1.0,
+      "analytic_dK31_dCov": 0.10023332996160544,
+      "quadrature_derivative": 0.1002333297788431,
+      "abs_error": 1.8276234692304882e-10
+    },
+    {
+      "mu": 0.0,
+      "analytic_dK31_dCov": 0.1761039876770409,
+      "quadrature_derivative": 0.1761039872015094,
+      "abs_error": 4.755315030635643e-10
+    },
+    {
+      "mu": 1.0,
+      "analytic_dK31_dCov": -0.12993711847221587,
+      "quadrature_derivative": -0.12993711920648854,
+      "abs_error": 7.342726704440139e-10
+    },
+    {
+      "mu": 2.0,
+      "analytic_dK31_dCov": -0.13556040544077086,
+      "quadrature_derivative": -0.13556040644288364,
+      "abs_error": 1.0021127816450814e-09
+    }
+  ],
+  "offline_versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "command": "uv run --with scipy==1.15.3 python experiments/phase2/probe_k31_relu.py"
+}

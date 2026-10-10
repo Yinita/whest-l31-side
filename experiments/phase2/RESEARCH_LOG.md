@@ -67,3 +67,7 @@ RPC已有预测向量的离线残差分解：与原始float32 reference逐层配
 完成WK431：adjusted=6.653486403379585e-9、raw=2.614290850466716e-8、util=0.25433115689475017，零失败；adjusted恶化约15.13%，高阶非线性使用有正贡献。保留该通道，停止盲禁用。下一方向研究G_new谐波投影缺失结构：上游lean_k3_aug.py用K211_cap、Sym(K31)、来源贡献生成矩阵核心；V29采用diag(g)+lambda*C_off再生。g_regen_probe的拟合G是诊断oracle，不可直接作为候选，需要合法当前状态代理。先推导/小规模验证，再启动主评测。
 
 谐波核心代数验证：probe_harmonic_core.py在n=4/8/16、metric=1/2验证lift/inverse以及按K4/K22/K31/K211拆分trace，共6组，max误差6.66e-16。G=6H/[m(n+4)]-3tr(H)I/[m(n+2)(n+4)]；post-ReLU投影使用identity metric，transport后的avg metric为2，不能混淆并误称系数bug。非对角H需要K31与capped K211，V29用lambda*C_off代理。该probe只证明代数，不证明真实网络误差或提分。下一项先导出当前合法state的低成本K31/K211代理并验证，不能将完整张量或oracle核心放入提交。论文S4.2/S4.3已浏览核查。
+
+第二公共分片完成：官方LFS SHA已校验，network IDs=['8', '9', '10', '11', '12', '13', '14', '15']。与Mini8分离，仍未证明上游训练独立。启动原样V29 control P2-E008，仅变网络集合，冻结未来候选的同网络成对对照；不与Mini8 aggregate直接宣称改善。PID/命令及输出见state。
+
+K31代理推导验证：joint Gaussian弱相关输入，经ReLU的K31_ij一阶项为3(1-Phi_i)(m2_i-2m1_i^2)Phi_j*C_ij，由协方差微分和中心累积量关系导出。四个均值条件下双变量条件积分验证，max误差1.002e-9（导数的绝对差）。离线临时环境SciPy1.15.3，版本/命令见k31_relu_algebra.json；主benchmark uv.lock不改。此只验证Gaussian小相关极限，不包括K3/K4反馈或K211，不能声称完整核心或比赛提分。下一项推导K211收缩并检查保留K3的非高斯影响，再设计可计量代理，避免只加半个核心却误称完整恢复。

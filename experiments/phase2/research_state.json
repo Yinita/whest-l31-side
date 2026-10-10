@@ -9,7 +9,46 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": null,
+  "active_experiment": {
+    "id": "P2-E008-v29-shard01-control",
+    "candidate": "estimators/k3_v29/estimator.py",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "single_change": "network set only; original V29 unchanged",
+    "purpose": "Freeze paired control on reserved public networks before any new candidate evaluation",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "network_ids": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "report": "results/phase2/v29_shard01_local.json",
+    "status": "running",
+    "pid": 596502,
+    "pid_start_ticks": "2516107",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_shard01",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/v29_shard01_local.json"
+    ],
+    "started_at_utc": "2026-10-10T10:34:08.411245+00:00"
+  },
   "next_experiment": {
     "status": "designing",
     "hypothesis": "Improve production of fourth-order core rather than remove useful nonlinear use/feed; inspect harmonic projection and missing structures before coding",
@@ -218,7 +257,7 @@
   "execution_mode": "continuous_goal",
   "automation_deleted": "whestbench-10",
   "data_preparation": {
-    "status": "running",
+    "status": "completed",
     "pid": 587794,
     "pid_start_ticks": "2467310",
     "log": "results/phase2/prepare_shard01_resume.log",
@@ -231,7 +270,36 @@
       "--shard",
       "1"
     ],
-    "started_at_utc": "2026-10-10T10:26:00.438993+00:00"
+    "started_at_utc": "2026-10-10T10:26:00.438993+00:00",
+    "provenance": {
+      "repo": "aicrowd/arc-whestbench-public-2026",
+      "revision": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "file": "prepared/mini/data-00001-of-00014.arrow",
+      "sha256": "c0f70e3beab4b24c0cbc2547b042af50073087e610f945368f104f2c88a6dc85",
+      "selection": "official Mini shard 1; unchanged targets; reserved from local candidate tuning",
+      "network_ids": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "independence_caveat": "Public networks; separation from upstream author tuning has not been established.",
+      "n_mlps": 8,
+      "columns": [
+        "mlp_id",
+        "mlp_name",
+        "mlp_seed",
+        "weights",
+        "all_layer_means",
+        "final_means",
+        "avg_variance",
+        "sampling_budget_breakdown"
+      ]
+    }
   },
   "reference_uncertainty_diagnostic": "results/phase2/reference_noise_proxy_mini8.json",
   "upstream_paper_code_lookup": {
@@ -273,5 +341,6 @@
     "next_primary": "Complete dense-source diagnostic before modifying high-order closure"
   },
   "residual_structure_diagnostic": "results/phase2/v29_rpc_residual_structure.json",
-  "harmonic_core_algebra": "results/phase2/harmonic_core_algebra.json"
+  "harmonic_core_algebra": "results/phase2/harmonic_core_algebra.json",
+  "k31_proxy_algebra": "results/phase2/k31_relu_algebra.json"
 }
