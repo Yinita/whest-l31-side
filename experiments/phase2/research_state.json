@@ -1,0 +1,49 @@
+{
+  "stage": 1,
+  "current_target_score": 5.779e-10,
+  "next_target_score": 5.779e-11,
+  "schedule_interval_minutes": 10,
+  "baseline": {
+    "estimator": "estimators/k3_v29/estimator.py",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "adjusted_score": 5.778979755766664e-09,
+    "report": "results/phase2/v29_mini8_local.json"
+  },
+  "active_experiment": {
+    "id": "P2-E003-age3-mini8",
+    "hypothesis": "Confine third-cumulant sources one layer earlier to reduce cost; measure output-value loss at fixed ranks and all other settings.",
+    "single_change": "AGE_OLD 4 -> 3",
+    "candidate": "estimators/k3_v29_age3/estimator.py",
+    "sha256": "9d927649e7928b38b80e53adb34c5c7d4690e80fbc5a34d85df7c759c261c15e",
+    "dataset": "benchmark/data/mini_first8",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "report": "results/phase2/age3_mini8_local.json",
+    "status": "running",
+    "pid": 492915,
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_age3/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/age3_mini8_local.json"
+    ],
+    "started_at_utc": "2026-10-10T09:38:33.138246+00:00",
+    "pid_start_ticks": "2182580"
+  },
+  "next_experiment": {
+    "hypothesis": "If age3 trades accuracy for compute, compare age5 to distinguish compression loss from closure error before designing an output-aware source-selection proxy.",
+    "status": "planned"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T09:38:33.138307+00:00"
+}
