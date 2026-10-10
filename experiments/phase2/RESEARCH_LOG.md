@@ -97,3 +97,5 @@ Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7
 完整K211转换验证：K_iijk=pk211_i,j,k-2mu_i*K111_i,j,k-2Cov_i,j*Cov_i,k。使用独立set-partition枚举四变量普通累积量与三变量power累积量，在n4/7、53点带偏移非高斯有限分布上核验capped sum（i排除j,k；j≠k），max误差1.28e-14。不是采样估计，也不证明power cumulant近似生成正确。产物k211_conversion_algebra.json。下一步组合已验证weighted source收缩并核查birth/重复项扣除，然后small-shape production parity；禁止重复lambda负面扫描。统筹消息指定归档缺口由统筹保存至既有Notion/Drive，本线程只记录状态，不把官方HF输入当输出目标。后台无评测/下载。
 
 来源/出生/重复项组合完成：n4/7/11任意source腿及Wick/cap向量，用显式sym三阶tensor对矩阵合并公式核验，max差1.78e-15；identity-born D21闭式差<=2.22e-16、D3差<=1.11e-16。合并cap向量ua-2*w*mean，另减old repeated与birth/post repeated；重复扣除必须包括出生源。实现probe_source_birth_combination.py，无正式分数宣称，无后台任务。下一步小形状非线性pk211/K31 production parity；尚未验证完整图表项，不能把本组合通过当端到端正确。
+
+有界完整非线性核算检查：n4/6、41点非高斯有限支持，经一次线性层+ReLU后精确枚举四阶累积量；独立power转换产生K31/K211并按全部重复索引模式组装trace，identity-metric核心最大差3.55e-15。完整证据nonlinear_core_exact_oracle.json。此处完整指精确矩核算链，明确不等于截断Hermite/diagram生产已通过；oracle与全四阶tensor只能离线。当前不能据此启动提分验收。下一步独立枚举K31/K211截断生成项，核查论文vector-partition条件和系数，上游build_term_tables_aug依赖未获取mlp_kprop模块，不伪称已运行。无后台评测/下载。
