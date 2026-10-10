@@ -410,3 +410,11 @@ LLM 工作闭环：假设 → 最小改动 → 正确性 → 快筛 → 独立�
 - **S22 Phase 1 路线综述 [选手整理；阶段不同]**：[Technique census](https://discourse.aicrowd.com/t/a-technique-census-of-phase-1-what-the-mathematics-is-doing-what-walls-it-hit-and-whats-still-open/18157)
 
 建议阅读顺序：S3/S4/S5 → S2 → S18/S20 → S8/S9/S10 → S6/S13/S14 → S7。当前前三完整代码、正式奖金分档、技术报告独立截止与修复后评测状态均不作已确认结论。
+
+## 15. 2026-10-10 执行补充
+
+再次核查 Phase 2 官方公告确认：要求 flopscope>=0.12.0、whestbench>=0.16.0；技术贡献报告截止为 UTC 2026-10-24 23:59，即北京时间 2026-10-25 07:59，更新正文第 3.2 节的未确认状态。
+
+首个公开复现基线选择 504aldo MIT V29，V25 保留为同方法无 Strassen 对照。当前账号允许提交，首次 Phase 2 提交为 #335146（round ID 1429）。工具锁定 flopscope 0.12.1 / whestbench 0.16.1，基础合同和两次真实形状资源检查通过。线上与公共 reference 的最终精度状态见 `results/phase2/`，推进及一致性规范见 `benchmark/README.md`。原样复现不声明独立算法贡献，也不等于复现未知领先者方法。
+
+执行结果更新：#335146 已 graded（adjusted 5.4181681e-9；platform secondary 2.1326516e-8），公开榜单团队 Niko 排名 111，Entries=1。数学本地 Mini-8 与 RPC Mini-8 均零失败，普通子进程 4/8 内存失败的环境差异已记录，见一致性报告。

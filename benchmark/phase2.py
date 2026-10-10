@@ -167,6 +167,10 @@ def run(args):
         )
     except Exception as exc:
         raise RuntimeError("Cannot resolve dataset revision; run not started") from exc
+    local_provenance = Path(args.dataset) / "provenance.json"
+    if local_provenance.exists():
+        manifest["dataset_provenance"] = read(local_provenance)
+        manifest["dataset_commit"] = manifest["dataset_provenance"]["revision"]
     save(output.with_suffix(".manifest.json"), manifest)
     with output.open("w") as out, output.with_suffix(".log").open("w") as err:
         result = subprocess.run(command, cwd=ROOT, env=env, stdout=out, stderr=err)
@@ -182,7 +186,21 @@ def run(args):
     if result.returncode:
         raise RuntimeError(f"Benchmark failed; inspect {output} and its .log")
     report = read(output)
-    print(json.dumps(report.get("results", {}), ensure_ascii=False)[:2500])
+    metrics = report.get("results", {})
+    print(
+        json.dumps(
+            {
+                k: metrics.get(k)
+                for k in (
+                    "adjusted_final_layer_score",
+                    "final_layer_mse",
+                    "mean_compute_utilization",
+                    "n_failed_mlps",
+                )
+            },
+            ensure_ascii=False,
+        )
+    )
 
 
 def status(args):
@@ -232,7 +250,21 @@ def main():
             parser.error("--n-mlps must be positive")
         run(args)
     elif args.action == "compare":
-        result = compare(read(args.left), read(args.right))
+        a, b = read(args.left), read(args.right)
+        manifests = []
+        for name in (args.left, args.right):
+            sidecar = Path(name).with_suffix(".manifest.json")
+            if not sidecar.exists():
+                raise ValueError(f"Missing manifest: {sidecar}")
+            meta = read(sidecar)
+            if meta["report_sha256"] != digest(name):
+                raise ValueError(f"Report SHA-256 differs: {name}")
+            manifests.append(meta)
+        for key in ("versions", "dataset_commit", "dataset_provenance"):
+            if manifests[0].get(key) != manifests[1].get(key):
+                raise ValueError(f"Manifest configuration differs: {key}")
+        result = compare(a, b)
+        result["source_manifests"] = manifests
         save(args.output, result)
         print(f"Compared {result['n_mlps']} networks")
     else:

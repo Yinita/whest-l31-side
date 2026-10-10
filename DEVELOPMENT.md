@@ -9,7 +9,10 @@
 - `experiments/moment_chain/` 保留已有数学探针；其 2026-08 结果来自旧阶段网络，不是 Phase 2 复现。
 - 已原样导入 504aldo MIT V25/V29，来源 commit 与哈希见 `estimators/`。V29 为首次 Phase 2 上榜基线；没有独立算法改进声明。
 - V29 基础合同及两次 1024×16 子进程资源检查通过。低样本自生成 reference 仅作运行检查，不报告为精度。
-- Phase 2 提交 #335146 已接受，round ID 1429，线上结果见 `results/phase2/`；精度 benchmark 与一致性检查仍在推进。
+- Phase 2 提交 #335146 已接受，round ID 1429，线上调整后分数 5.4181681e-9，最后层 MSE 2.1326516e-8，状态 graded。
+- 官方 Mini-8：本地 runner adjusted 5.7789798e-9、raw 2.2702819e-8、util 25.4547%，零失败。
+- 官方 client/server 本地 RPC Mini-8：adjusted 5.7837855e-9、raw 2.2721081e-8，零失败；client 峰值 RSS 约 290MiB。
+- 普通子进程 Mini-8 在 8GB RLIMIT_AS 下 4/8 内存失败，保留原始报告。RPC与本地每网络固定 FLOP 差 16,777,216（astype 路径），最大逐网络 raw MSE 相对差约 0.393%；尚不能称所有环境完全等价。
 - 工具已升级并锁定 flopscope 0.12.1 / whestbench 0.16.1；Phase 2 benchmark 规则明确固定。
 - 可复跑命令与推进计划见 [benchmark/README.md](benchmark/README.md)。
 
@@ -30,3 +33,5 @@
 报告建议的内部冻结时间为北京时间 2026-10-17 18:00，最终提交完成时间为当日 23:00 前。外部截止与最终选择流程执行前需再核查。
 
 历史成绩和旧待办见 [Phase 1 归档](archive/phase1/README.md)。
+
+首次上榜已核验：Phase 2 团队 Niko，2026-10-10 榜单快照排名 111，提交 #335146。

@@ -57,3 +57,30 @@ uv run python benchmark/phase2.py status SUBMISSION_ID --output results/phase2/o
 2026-10-10 首次提交 [#335146](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/335146) 已接受，平台返回 `challenge_round_id=1429`。上传包与本地源码 SHA-256 已逐字节核对。`submission_335146_manifest.json` 保留包哈希和版本；`online_335146.json` 保存实际评分状态，未 graded 前不记上榜成功。
 
 公开 Mini 数据准备使用官方文件 commit `aa99830fdc09fad15407b10e8e3459d3e18bba0a`，以 LFS SHA-256 验证下载完整性。网络准备脚本的并发下载只用于本地数据缓存，绝不进入比赛提交包。
+
+Mini-8 是前 8 个公共网络，仅用于复现与工程快筛；V29 的部分系数已由作者在公共网络拟合，不把 Mini-8 当作独立泛化验证集。后续确认需使用完整 Mini 及单独冻结的未见网络。
+
+
+## 已验证结果与后续门槛
+
+首次提交 #335146 已 graded，线上 adjusted **5.4181681e-9**，平台 secondary **2.1326516e-8**。Mini-8 本地 adjusted **5.7789798e-9**，raw **2.2702819e-8**，util **25.4547%**，零失败。线上 adjusted 比 Mini-8 低约 6.24%，与作者公开的不同网络集合偏移同量级，不声称同网络数值等价。
+
+普通 subprocess 在 8GB RLIMIT_AS 下 **4/8 失败**；报告保存具体 MemoryError 和 WORKER_EOF。限制作用于本地 NumPy backing buffers，与线上 RemoteArray client 分离计算的内存归属不同。这个失败报告保留为资源诊断，不能隐藏失败后只报成功样本。
+
+官方 client/server 0.12.1 的本地 RPC 路径 **8/8 成功**，adjusted **5.7837855e-9**、raw **2.2721081e-8**，client 峰值 RSS **296896 KiB（约 290 MiB）**。RPC 与本地每网络 FLOPs 固定差 **16,777,216**，逐算子定位为权重 `astype` 的计量差，约占预算 0.00076294%。逐网络 raw MSE 最大相对差 **0.393%**，aggregate raw 差约 **0.0804%**；当前记录实际差异，不宣称位级相等。
+
+RPC 使用单独 client 环境，无 NumPy；从已安装 whestbench 加载原始 sdk/domain 文件，避免根模块拉入 server-only 导入。trusted 数值 server 单线程；client 受 8GB RLIMIT_AS 约束。为容纳公开 V29 的大 buffer，本地 server 设置 `FLOPSCOPE_MAX_ARRAY_BYTES=1073741824`，默认 100MiB 单数组上限无法运行 V29。此为本地研发部署参数；官方 grader 的具体 trusted-server 上限和生命周期仍未获得独立确认。代码未修改，FLOP 计量未绕过，tokenless 开发 server 不等于完整官方沙箱。
+
+可重复运行 RPC 对照并核对本地报告：
+
+```bash
+uv run python benchmark/run_rpc.py --n-mlps 8 --output results/phase2/v29_rpc_repeat_predictions.json
+uv run python benchmark/rpc_score.py --predictions results/phase2/v29_rpc_repeat_predictions.json \
+  --local results/phase2/v29_mini8_local.json --output results/phase2/v29_rpc_repeat.json
+```
+
+`run_rpc.py` 自动导出原始公共权重及 grader seeds、建立独立 client 环境、启动和关闭 server。输入缓存不上传 GitHub；具体版本见 client-requirements.txt。自动工作流的单网络检查已通过。
+
+下一步先扩展 Mini-100 并测长期 client/server 内存及资源尾部；再完成 V25/V29 输出与成本消融。只有这些稳定后，才进入 E03 来源扰动及输出导向压缩。暂不以低样本 MC 或 Mini-8 开发集选择证明泛化。
+
+榜单验证：公开页面的 TeamLeaderboardEntry 显示团队 **Niko**、成员 **nikoo_yu**、提交 **335146**、排名 **111**、Entries=1；动态快照见 `results/phase2/leaderboard_335146.json`。下一步不重复提交相同基线，先完成完整公共 benchmark 和自身改进消融。

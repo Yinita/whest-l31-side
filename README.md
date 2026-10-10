@@ -8,7 +8,7 @@
 
 Phase 2 以宽 1024、深 16 的随机 ReLU MLP 为对象，返回 `(16, 1024)` post-ReLU 均值，按最后一层 MSE 与计算用量评分。报告记录预算为 `2**41` FLOPs，公开数据版本为 `v2-phase2`；执行正式实验前须核对 grader 与工具版本。
 
-Phase 2 当前入口是 `estimators/k3_v29/estimator.py`，公开 V29 原样复现；首次提交 #335146 已接受，评分与记录见 `results/phase2/`。本地与线上 benchmark 流程见 [benchmark/README.md](benchmark/README.md)。
+Phase 2 当前入口是 `estimators/k3_v29/estimator.py`，公开 V29 原样复现；首次提交 #335146 已 graded，上榜团队 Niko，2026-10-10 快照排名 111，adjusted 5.4182e-9；评分与记录见 `results/phase2/`。本地与线上 benchmark 流程见 [benchmark/README.md](benchmark/README.md)。
 
 根目录 `estimator.py` 是保留的 Phase 1 Hadamard 采样对照，仍含旧阶段预算标定，且仅填充最后一层预测。它尚未完成 Phase 2 验收。教学例子也不等同于公开 V25/V29 实现。
 
