@@ -10,6 +10,42 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
+    "id": "P2-E005-nofeed-mini8",
+    "candidate": "estimators/k3_v29_nofeed/estimator.py",
+    "sha256": "fe3d2149270dfa3f5c168d440e042882cf805829322d6e925afba49d5a3f2a8d",
+    "single_change": "NO_FEED default 0 -> 1",
+    "hypothesis": "Isolate K4-to-K3 feedback contribution",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "report": "results/phase2/nofeed_mini8_local.json",
+    "status": "running",
+    "pid": 557443,
+    "pid_start_ticks": "2363967",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_nofeed/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/nofeed_mini8_local.json"
+    ],
+    "started_at_utc": "2026-10-10T10:08:47.006834+00:00"
+  },
+  "next_experiment": {
+    "status": "conditional",
+    "hypothesis": "If feedback removal hurts, test source-basis rank or output-sensitivity; if helps, localize feed mismatch by layer"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T10:08:47.006845+00:00",
+  "previous_experiment": {
     "id": "P2-E004-age5-mini8",
     "single_change": "AGE_OLD 4 -> 5",
     "hypothesis": "Delay compression to identify source-confinement accuracy loss",
@@ -18,7 +54,7 @@
     "dataset": "benchmark/data/mini_first8",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "report": "results/phase2/age5_mini8_local.json",
-    "status": "running",
+    "status": "completed_negative",
     "pid": 535199,
     "pid_start_ticks": "2290150",
     "command": [
@@ -39,56 +75,54 @@
       "results/phase2/age5_mini8_local.json"
     ],
     "started_at_utc": "2026-10-10T09:56:28.844032+00:00",
-    "last_verified_status": "running; PID start ticks matched, report incomplete; no duplicate launch"
-  },
-  "next_experiment": {
-    "status": "prepared_conditional",
-    "hypothesis": "If age5 recovers little accuracy, isolate K4-to-K3 feedback rather than sweep ages",
-    "single_change": "V29 NO_FEED default 0 -> 1, all compression gates/ranks unchanged",
-    "interpretation": "Negative control identifies contribution of matrix-core K4 feed; a worse score is useful attribution, not improvement",
-    "source": "https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d/docs/derivation_code_map.md",
-    "caveat": "Author document includes LLM explanations explicitly unvalidated; paper equations not yet independently checked"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T09:56:28.844043+00:00",
-  "previous_experiment": {
-    "id": "P2-E003-age3-mini8",
-    "hypothesis": "Confine third-cumulant sources one layer earlier to reduce cost; measure output-value loss at fixed ranks and all other settings.",
-    "single_change": "AGE_OLD 4 -> 3",
-    "candidate": "estimators/k3_v29_age3/estimator.py",
-    "sha256": "9d927649e7928b38b80e53adb34c5c7d4690e80fbc5a34d85df7c759c261c15e",
-    "dataset": "benchmark/data/mini_first8",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "report": "results/phase2/age3_mini8_local.json",
-    "status": "completed_negative",
-    "pid": 492915,
-    "command": [
-      "uv",
-      "run",
-      "python",
-      "benchmark/phase2.py",
-      "run",
-      "--estimator",
-      "estimators/k3_v29_age3/estimator.py",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--n-mlps",
-      "8",
-      "--runner",
-      "local",
-      "--output",
-      "results/phase2/age3_mini8_local.json"
-    ],
-    "started_at_utc": "2026-10-10T09:38:33.138246+00:00",
-    "pid_start_ticks": "2182580",
-    "comparison": "results/phase2/age3_vs_v29_local.json",
+    "comparison": "results/phase2/age5_vs_v29_local.json",
     "metrics": {
-      "adjusted_final_layer_score": 6.45911031371232e-09,
-      "final_layer_mse": 2.6029440824970607e-08,
+      "adjusted_final_layer_score": 5.799663472450135e-09,
+      "final_layer_mse": 2.2292124812750558e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.24807416885550992,
-      "mean_effective_compute": 545520866415.0
+      "mean_compute_utilization": 0.26017454294878917
     }
   },
-  "last_checkpoint_utc": "2026-10-10T09:58:22.769947+00:00"
+  "last_checkpoint_utc": "2026-10-10T09:58:22.769947+00:00",
+  "history": [
+    {
+      "id": "P2-E003-age3-mini8",
+      "hypothesis": "Confine third-cumulant sources one layer earlier to reduce cost; measure output-value loss at fixed ranks and all other settings.",
+      "single_change": "AGE_OLD 4 -> 3",
+      "candidate": "estimators/k3_v29_age3/estimator.py",
+      "sha256": "9d927649e7928b38b80e53adb34c5c7d4690e80fbc5a34d85df7c759c261c15e",
+      "dataset": "benchmark/data/mini_first8",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "report": "results/phase2/age3_mini8_local.json",
+      "status": "completed_negative",
+      "pid": 492915,
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_age3/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/age3_mini8_local.json"
+      ],
+      "started_at_utc": "2026-10-10T09:38:33.138246+00:00",
+      "pid_start_ticks": "2182580",
+      "comparison": "results/phase2/age3_vs_v29_local.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.45911031371232e-09,
+        "final_layer_mse": 2.6029440824970607e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.24807416885550992,
+        "mean_effective_compute": 545520866415.0
+      }
+    }
+  ]
 }
