@@ -51,3 +51,5 @@
 资源检查点：noconfine父PID566583身份匹配、计算worker566789正常运行，RSS约10538416KiB，完整来源状态代价明显增加。local数学诊断不具备8GiB普通worker通过证据，不因此放宽或宣称RPC资源通过。分片1下载进程563071仍活着，已约277/538MB，禁止重复启动。论文官方代码链接web返回404，git只做只读clone探测session63999；不把不可获取源码当作已复现。下一项高阶核心诊断应区分NO_REGEN组合开关与单独WK431/feedback，避免将多机制禁用误写单因素。
 
 分片下载失败：session39510 exit1，TLS BAD_RECORD_MAC，非SHA校验结果。原失败日志保留。下载程序每块加入3次有限transport/HTTP重试，SHA验收仍强制；确认旧进程终止后启动session28174、新日志prepare_shard01_retry1.log。未把未完成缓存作为可评测数据。
+
+调研排除项：固定上游commit的findings_log F68及dump_k3_tables2.py说明恢复全项表曾报告MSE不变、residual+40ms；这是别人报告，未自行复现。生成器还依赖lean_k3和term_rels.json，不能简单将阈值改0视为完成合法全项恢复。优先级暂低于完整来源误差诊断。检查点noconfine仍在运行约5分35秒，下载重试已134/538MB；未重复启动。

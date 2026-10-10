@@ -83,7 +83,7 @@
       "mean_compute_utilization": 0.25449351901579575
     }
   },
-  "last_checkpoint_utc": "2026-10-10T10:18:28.819201+00:00",
+  "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
   "history": [
     {
       "id": "P2-E003-age3-mini8",
@@ -192,5 +192,15 @@
       "purpose": "public network-split confirmation, not proven independent of upstream tuning",
       "exit_code": 1
     }
-  ]
+  ],
+  "research_triage": {
+    "unpruned_term_tables": {
+      "priority": "low",
+      "evidence": "Upstream findings F68 reports unchanged MSE and +40ms residual; not locally reproduced",
+      "source_commit": "1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+      "source_file": "docs/findings_log.md",
+      "generator_dependency": "lean/dump_k3_tables2.py requires upstream term generator and term_rels.json; does not provide a standalone full table"
+    },
+    "next_primary": "Complete dense-source diagnostic before modifying high-order closure"
+  }
 }
