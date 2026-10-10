@@ -10,26 +10,18 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "id": "P2-E008-v29-shard01-control",
-    "candidate": "estimators/k3_v29/estimator.py",
-    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-    "single_change": "network set only; original V29 unchanged",
-    "purpose": "Freeze paired control on reserved public networks before any new candidate evaluation",
+    "id": "P2-D010-coreproxy-lambda-trace",
+    "candidate": "experiments/phase2/coreproxy_lambda_trace.py",
+    "sha256": "65ed6822f65b2383aef4d8e2b677528bc566b6b85e5c77aa69b0fd8bb280992e",
+    "single_change": "Diagnostic stderr logging of existing native lambda; algorithm unchanged from rejected coreproxy",
+    "report": "results/phase2/coreproxy_lambda_trace_mini1.json",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "network_ids": [
-      "8",
-      "9",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15"
+      "0"
     ],
-    "report": "results/phase2/v29_shard01_local.json",
     "status": "running",
-    "pid": 596502,
-    "pid_start_ticks": "2516107",
+    "pid": 604944,
+    "pid_start_ticks": "2564868",
     "command": [
       "uv",
       "run",
@@ -37,45 +29,37 @@
       "benchmark/phase2.py",
       "run",
       "--estimator",
-      "estimators/k3_v29/estimator.py",
+      "experiments/phase2/coreproxy_lambda_trace.py",
       "--dataset",
-      "benchmark/data/mini_shard01",
+      "benchmark/data/mini_first8",
       "--n-mlps",
-      "8",
+      "1",
       "--runner",
       "local",
       "--output",
-      "results/phase2/v29_shard01_local.json"
+      "results/phase2/coreproxy_lambda_trace_mini1.json"
     ],
-    "started_at_utc": "2026-10-10T10:34:08.411245+00:00"
+    "started_at_utc": "2026-10-10T10:42:16.022271+00:00"
   },
   "next_experiment": {
-    "id": "P2-E009-coreproxy-mini8",
-    "status": "prepared_waiting_for_control",
-    "candidate": "estimators/k3_v29_coreproxy/estimator.py",
-    "sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
-    "single_change": "Replace base offline lambda table by live Gaussian weak-correlation core projection; keep original V25 adaptive multiplier",
-    "hypothesis": "Network/per-neuron moment dependence in core production may reduce mismatch of public offline lambda table",
-    "limitations": [
-      "Ignores propagated non-Gaussian K3/K4 contributions",
-      "K211 other-center coefficients not independently integrated",
-      "Small validate does not execute 1024x16 riders; full-shape check still required"
-    ],
-    "report": "results/phase2/coreproxy_mini8_local.json"
+    "status": "prepared",
+    "hypothesis": "Inspect native scalar lambda trajectory to localize Gaussian proxy mismatch; no Mini8 expansion of harmful screen"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-10T10:39:37.153534+00:00",
   "previous_experiment": {
-    "id": "P2-E007-nowk431-mini8",
-    "candidate": "estimators/k3_v29_nowk431/estimator.py",
-    "sha256": "441e754afde8eb6601f7a6872a274cb746be8adff610de80935e68f8dc16b19d",
-    "single_change": "NO_WK431 default 0 -> 1",
-    "hypothesis": "Isolate high-order matrix-core nonlinear contribution",
+    "id": "P2-E009-coreproxy-mini1-screen",
+    "candidate": "estimators/k3_v29_coreproxy/estimator.py",
+    "sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
+    "single_change": "Replace base lambda production law with live core proxy",
+    "report": "results/phase2/coreproxy_mini1_local.json",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "report": "results/phase2/nowk431_mini8_local.json",
-    "status": "completed_negative",
-    "pid": 586468,
-    "pid_start_ticks": "2460132",
+    "network_ids": [
+      "0"
+    ],
+    "status": "completed_negative_screen",
+    "pid": 603093,
+    "pid_start_ticks": "2550917",
     "command": [
       "uv",
       "run",
@@ -83,23 +67,26 @@
       "benchmark/phase2.py",
       "run",
       "--estimator",
-      "estimators/k3_v29_nowk431/estimator.py",
+      "estimators/k3_v29_coreproxy/estimator.py",
       "--dataset",
       "benchmark/data/mini_first8",
       "--n-mlps",
-      "8",
+      "1",
       "--runner",
       "local",
       "--output",
-      "results/phase2/nowk431_mini8_local.json"
+      "results/phase2/coreproxy_mini1_local.json"
     ],
-    "started_at_utc": "2026-10-10T10:24:48.664249+00:00",
-    "comparison": "results/phase2/nowk431_vs_v29_local.json",
+    "started_at_utc": "2026-10-10T10:39:56.511875+00:00",
     "metrics": {
-      "adjusted_final_layer_score": 6.653486403379585e-09,
-      "final_layer_mse": 2.614290850466716e-08,
+      "adjusted_final_layer_score": 1.526423333031492e-08,
+      "final_layer_mse": 5.4152209827407205e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.25433115689475017
+      "mean_compute_utilization": 0.2818764622711569
+    },
+    "paired_network0_ratios": {
+      "raw": 2.3638726558605927,
+      "adjusted": 2.495055748332
     }
   },
   "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
@@ -254,6 +241,89 @@
         "final_layer_mse": 2.1704769759267606e-08,
         "n_failed_mlps": 0,
         "mean_compute_utilization": 0.281318877326612
+      }
+    },
+    {
+      "id": "P2-E007-nowk431-mini8",
+      "candidate": "estimators/k3_v29_nowk431/estimator.py",
+      "sha256": "441e754afde8eb6601f7a6872a274cb746be8adff610de80935e68f8dc16b19d",
+      "single_change": "NO_WK431 default 0 -> 1",
+      "hypothesis": "Isolate high-order matrix-core nonlinear contribution",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "report": "results/phase2/nowk431_mini8_local.json",
+      "status": "completed_negative",
+      "pid": 586468,
+      "pid_start_ticks": "2460132",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_nowk431/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/nowk431_mini8_local.json"
+      ],
+      "started_at_utc": "2026-10-10T10:24:48.664249+00:00",
+      "comparison": "results/phase2/nowk431_vs_v29_local.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.653486403379585e-09,
+        "final_layer_mse": 2.614290850466716e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.25433115689475017
+      }
+    },
+    {
+      "id": "P2-E008-v29-shard01-control",
+      "candidate": "estimators/k3_v29/estimator.py",
+      "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+      "single_change": "network set only; original V29 unchanged",
+      "purpose": "Freeze paired control on reserved public networks before any new candidate evaluation",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "report": "results/phase2/v29_shard01_local.json",
+      "status": "completed_control",
+      "pid": 596502,
+      "pid_start_ticks": "2516107",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_shard01",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/v29_shard01_local.json"
+      ],
+      "started_at_utc": "2026-10-10T10:34:08.411245+00:00",
+      "metrics": {
+        "adjusted_final_layer_score": 5.896157584946887e-09,
+        "final_layer_mse": 2.3160594775362142e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.25454699648935275
       }
     }
   ],

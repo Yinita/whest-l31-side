@@ -77,3 +77,7 @@ K211代理验证：重复索引star的4组条件积分max差1.67e-9，capped收�
 ## P2-E009-coreproxy-mini8（准备）
 
 唯一机制：用当前pre均值/方差/协方差构造Gaussian弱相关K31与K211，谐波投影Gproxy后向live K11投影得lambda，替换base LAM离线表。保留原V25 adaptive multiplier及REF_R、g_prev对角、feed/use、来源压缩与秩，不声称完全无拟合基线。代码使用允许fnp算子，代理matmul计费；不读取reference或oracle G。弱相关高斯项不包括传播K3/K4，可能恶化，零收益也保留。whest validate小形状通过，但riders只在1024x16执行，不能算完整新路径验证；待control结束后做正式Mini8检查。
+
+Shard1原V29 control完成，指标见state及v29_shard01_local.json，不能把与Mini8不同aggregate称改善。P2-E009先启动官方网络0的1024x16完整新路径单网络筛查，原预算/时间限制，输出coreproxy_mini1_local.json；该结果不能宣称Mini8/独立通过。若失败或明显恶化先归因，再决定是否全8。
+
+coreproxy网络0正式路径筛查完成：raw=5.4152209827407205e-8（V29同网络2.36387倍），adjusted=1.526423333031492e-8（2.49506倍），util0.2818764622711569，零失败；不扩展Mini8。Gaussian代理忽略非高斯来源影响，不能因代数通过宣称准确。准备仅记录已有native scalar lam_prev和原LAM的诊断copy，不读取真值、不额外计算数组。日志走stderr，保留成本/资源约束；该copy不作为候选提交。
