@@ -93,3 +93,5 @@ Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7
 首层proxy筛查完成：raw2.2967631352344142e-8，adjusted6.156340382880013e-9，零失败；同network0 raw恶化0.259%、adjusted恶化0.630%。不扩大Mini8，不称微小差异为独立确认。全链proxy显著恶化，首层proxy亦未改善，停止lambda替换扫描，转向传播来源贡献。原预算与版本未变。
 
 断点监督接续：无评测/下载后台进程。验证weighted K3 source contraction（全收缩与重复索引排除）n4/8/12共3组通过，见source_contraction_algebra.json；不是完整K211非线性更新。下一步推导来源出生/重复项转换系数再做small parity。归档核查Notion/Drive搜索WhestBench均results=[]，未找到目的地；W&B/HF暂无项目输出配置/回执，HF仅官方输入来源。GitHub仍为实际已用归档，不虚报其他平台上传。
+
+完整K211转换验证：K_iijk=pk211_i,j,k-2mu_i*K111_i,j,k-2Cov_i,j*Cov_i,k。使用独立set-partition枚举四变量普通累积量与三变量power累积量，在n4/7、53点带偏移非高斯有限分布上核验capped sum（i排除j,k；j≠k），max误差1.28e-14。不是采样估计，也不证明power cumulant近似生成正确。产物k211_conversion_algebra.json。下一步组合已验证weighted source收缩并核查birth/重复项扣除，然后small-shape production parity；禁止重复lambda负面扫描。统筹消息指定归档缺口由统筹保存至既有Notion/Drive，本线程只记录状态，不把官方HF输入当输出目标。后台无评测/下载。
