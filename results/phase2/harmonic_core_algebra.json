@@ -1,0 +1,46 @@
+{
+  "mode": "synthetic algebra diagnostic; not benchmark accuracy or candidate",
+  "seed": 0,
+  "formula": "H=trace(T); G=6H/[m(n+4)]-3 trace(H)I/[m(n+2)(n+4)]",
+  "convention": "Lift T=m*Sym(G tensor I), distinct from post-ReLU identity-metric projection convention",
+  "source": "https://arxiv.org/html/2605.05179v2#S4.SS2",
+  "rows": [
+    {
+      "n": 4,
+      "metric": 1,
+      "inverse_max_error": 1.1102230246251565e-16,
+      "slice_trace_max_error": 1.1102230246251565e-16
+    },
+    {
+      "n": 4,
+      "metric": 2,
+      "inverse_max_error": 5.551115123125783e-17,
+      "slice_trace_max_error": 2.220446049250313e-16
+    },
+    {
+      "n": 8,
+      "metric": 1,
+      "inverse_max_error": 4.440892098500626e-16,
+      "slice_trace_max_error": 8.881784197001252e-16
+    },
+    {
+      "n": 8,
+      "metric": 2,
+      "inverse_max_error": 4.440892098500626e-16,
+      "slice_trace_max_error": 1.7763568394002505e-15
+    },
+    {
+      "n": 16,
+      "metric": 1,
+      "inverse_max_error": 6.661338147750939e-16,
+      "slice_trace_max_error": 1.7763568394002505e-15
+    },
+    {
+      "n": 16,
+      "metric": 2,
+      "inverse_max_error": 6.661338147750939e-16,
+      "slice_trace_max_error": 2.6645352591003757e-15
+    }
+  ],
+  "implication": "Off-diagonal H needs K31 and capped K211; diagonal K4/K22 alone cannot recover it. No claim about their competition error contribution."
+}

@@ -65,3 +65,5 @@
 RPC已有预测向量的离线残差分解：与原始float32 reference逐层配对，最终层mean(error)^2/MSE的网络均值0.00460037（约0.46%）。每网络统一偏移只解释很少误差，即使oracle偏置消除也无法支持十倍；不把真值拟合修正作为候选。逐网络及逐层数据、预测hash见v29_rpc_residual_structure.json。此为RPC开发集诊断，不是独立泛化。下一方向应关注结构性神经元误差/高阶核心，排除全局偏置校准主线。
 
 完成WK431：adjusted=6.653486403379585e-9、raw=2.614290850466716e-8、util=0.25433115689475017，零失败；adjusted恶化约15.13%，高阶非线性使用有正贡献。保留该通道，停止盲禁用。下一方向研究G_new谐波投影缺失结构：上游lean_k3_aug.py用K211_cap、Sym(K31)、来源贡献生成矩阵核心；V29采用diag(g)+lambda*C_off再生。g_regen_probe的拟合G是诊断oracle，不可直接作为候选，需要合法当前状态代理。先推导/小规模验证，再启动主评测。
+
+谐波核心代数验证：probe_harmonic_core.py在n=4/8/16、metric=1/2验证lift/inverse以及按K4/K22/K31/K211拆分trace，共6组，max误差6.66e-16。G=6H/[m(n+4)]-3tr(H)I/[m(n+2)(n+4)]；post-ReLU投影使用identity metric，transport后的avg metric为2，不能混淆并误称系数bug。非对角H需要K31与capped K211，V29用lambda*C_off代理。该probe只证明代数，不证明真实网络误差或提分。下一项先导出当前合法state的低成本K31/K211代理并验证，不能将完整张量或oracle核心放入提交。论文S4.2/S4.3已浏览核查。
