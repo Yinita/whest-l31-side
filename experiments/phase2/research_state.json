@@ -9,11 +9,41 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": null,
+  "active_experiment": {
+    "id": "P2-E011-coreproxy-first-mini1",
+    "candidate": "estimators/k3_v29_coreproxy_first/estimator.py",
+    "sha256": "62bb459b66864b96ee3bb27517f8b7b9eb7a581724f21049d7628df36d2ca4d7",
+    "single_change": "First-layer base lambda only uses analytic Gaussian core; later original LAM",
+    "report": "results/phase2/coreproxy_first_mini1_local.json",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "network_ids": [
+      "0"
+    ],
+    "status": "running",
+    "pid": 667181,
+    "pid_start_ticks": "2748312",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_coreproxy_first/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "1",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/coreproxy_first_mini1_local.json"
+    ],
+    "started_at_utc": "2026-10-10T11:12:50.459650+00:00"
+  },
   "next_experiment": {
-    "status": "designing",
-    "hypothesis": "Account for propagated non-Gaussian source contributions in harmonic trace rather than clip Gaussian proxy; verify first-layer full Gaussian core before recursive use",
-    "priority": "Reconstruct exact small Gaussian K31/K211 via quadrature or diagrams, compare approximation and lambda projection, then include source-factor terms"
+    "status": "conditional",
+    "hypothesis": "If first-layer replacement helps, confirm Mini8; otherwise reject proxy scale and derive missing source terms rather than sweep lambda"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-10T10:39:37.153534+00:00",
@@ -419,5 +449,6 @@
   "residual_structure_diagnostic": "results/phase2/v29_rpc_residual_structure.json",
   "harmonic_core_algebra": "results/phase2/harmonic_core_algebra.json",
   "k31_proxy_algebra": "results/phase2/k31_relu_algebra.json",
-  "k211_proxy_algebra": "results/phase2/k211_relu_algebra.json"
+  "k211_proxy_algebra": "results/phase2/k211_relu_algebra.json",
+  "equicorrelated_diagnostic": "results/phase2/equicorrelated_core_algebra.json"
 }

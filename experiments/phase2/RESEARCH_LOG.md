@@ -83,3 +83,9 @@ Shard1原V29 control完成，指标见state及v29_shard01_local.json，不能把
 coreproxy网络0正式路径筛查完成：raw=5.4152209827407205e-8（V29同网络2.36387倍），adjusted=1.526423333031492e-8（2.49506倍），util0.2818764622711569，零失败；不扩展Mini8。Gaussian代理忽略非高斯来源影响，不能因代数通过宣称准确。准备仅记录已有native scalar lam_prev和原LAM的诊断copy，不读取真值、不额外计算数组。日志走stderr，保留成本/资源约束；该copy不作为候选提交。
 
 Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7层proxy2.27e-5，第9层起负值，原表保持约0.007–0.009正值。轨迹详见coreproxy_lambda_diagnostic.json；trace与screen成对数值/计量核验见coreproxy_trace_vs_screen.json。显示代理尺度不一致，不能证明具体因果；不盲加clip把失败掩盖。下一步先核查第一层完整Gaussian核心相对近似及来源项，再设计含传播K3的合法收缩。
+
+等相关高斯完整积分诊断：rho0.0001/0.001/0.01/0.05的K31/K211近似相对误差分别约0.014%/0.009%、0.143%/0.092%、1.413%/0.906%、6.685%/4.275%。同一公共latent下条件独立积分用于核验三个star项总和；仅正等相关模型，不能泛化到真实signed Wishart或非高斯递推。
+
+## P2-E011-coreproxy-first-mini1
+
+断点核验无后台评测/下载，未重复启动。唯一机制：仅首层用Gaussian核心proxy产生base lambda，后续恢复原LAM；其余自适应及来源机制不变。用于区分全链失败是否由首层尺度造成，原reference/预算/时间固定，先network0快筛。小形状validate通过但不覆盖riders，新路径由正式快筛验证。若改善再全8，否则拒绝该代理尺度，不盲扫描。PID与hash见state。
