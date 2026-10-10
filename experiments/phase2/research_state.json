@@ -50,18 +50,21 @@
     "started_at_utc": "2026-10-10T10:34:08.411245+00:00"
   },
   "next_experiment": {
-    "status": "designing",
-    "hypothesis": "Improve production of fourth-order core rather than remove useful nonlinear use/feed; inspect harmonic projection and missing structures before coding",
-    "sources": [
-      "upstream lean/lean_k3_aug.py G_new harmonic projection",
-      "upstream lean/g_regen_probe.py legal state modes; offline G fitting is diagnostic only"
+    "id": "P2-E009-coreproxy-mini8",
+    "status": "prepared_waiting_for_control",
+    "candidate": "estimators/k3_v29_coreproxy/estimator.py",
+    "sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
+    "single_change": "Replace base offline lambda table by live Gaussian weak-correlation core projection; keep original V25 adaptive multiplier",
+    "hypothesis": "Network/per-neuron moment dependence in core production may reduce mismatch of public offline lambda table",
+    "limitations": [
+      "Ignores propagated non-Gaussian K3/K4 contributions",
+      "K211 other-center coefficients not independently integrated",
+      "Small validate does not execute 1024x16 riders; full-shape check still required"
     ],
-    "constraint": "No true-reference fitted direction or oracle G allowed in candidate; data-dependent proxies must come from current lawful state and be metered",
-    "algebra_check": "six synthetic inverse and slice checks passed, max abs 6.661e-16",
-    "next_work": "Derive inexpensive K31/K211 contraction proxies from live covariance and source factors; verify against synthetic tensor before benchmark; preserve current compression and feed"
+    "report": "results/phase2/coreproxy_mini8_local.json"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T10:31:57.903983+00:00",
+  "updated_at_utc": "2026-10-10T10:39:37.153534+00:00",
   "previous_experiment": {
     "id": "P2-E007-nowk431-mini8",
     "candidate": "estimators/k3_v29_nowk431/estimator.py",
@@ -342,5 +345,6 @@
   },
   "residual_structure_diagnostic": "results/phase2/v29_rpc_residual_structure.json",
   "harmonic_core_algebra": "results/phase2/harmonic_core_algebra.json",
-  "k31_proxy_algebra": "results/phase2/k31_relu_algebra.json"
+  "k31_proxy_algebra": "results/phase2/k31_relu_algebra.json",
+  "k211_proxy_algebra": "results/phase2/k211_relu_algebra.json"
 }

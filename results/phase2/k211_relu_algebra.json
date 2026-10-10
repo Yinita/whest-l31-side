@@ -1,0 +1,39 @@
+{
+  "mode": "offline algebra only, not benchmark improvement",
+  "rows": [
+    {
+      "mu": -1.0,
+      "analytic_star_coefficient": 0.06266173595054936,
+      "quadrature_mixed_derivative": 0.06266173549509478,
+      "abs_error": 4.5545457683093815e-10
+    },
+    {
+      "mu": 0.0,
+      "analytic_star_coefficient": 0.05023221933148553,
+      "quadrature_mixed_derivative": 0.050232218462956155,
+      "abs_error": 8.685293734211896e-10
+    },
+    {
+      "mu": 1.0,
+      "analytic_star_coefficient": -0.07113449820382323,
+      "quadrature_mixed_derivative": -0.071134499449935,
+      "abs_error": 1.246111769326319e-09
+    },
+    {
+      "mu": 2.0,
+      "analytic_star_coefficient": -0.047668071374096684,
+      "quadrature_mixed_derivative": -0.047668073048870344,
+      "abs_error": 1.6747736600319918e-09
+    }
+  ],
+  "capped_contraction_max_error": 1.7763568394002505e-15,
+  "formula": "K_iijk=B_i*Phi_j*Phi_k*C_ij*C_ik + A_i*w2_j*Phi_k*C_ij*C_jk + A_i*w2_k*Phi_j*C_ik*C_jk + O(C^3)",
+  "definitions": "A_i=2*m1_i*(1-Phi_i); B_i=2*(Phi_i*(1-Phi_i)-m1_i*phi_i/sigma_i); w2_i=phi_i/sigma_i",
+  "derivation": "Connected second-order Gaussian covariance expansion of log moment generating function; marginal ReLU derivatives",
+  "source": "https://arxiv.org/html/2605.05179v2#S3.SS2",
+  "limitations": [
+    "Quadrature validates star centered on repeated index; other star coefficients derived analytically, not independently integrated",
+    "Matrix contraction verified against explicit sums",
+    "Weak-correlation Gaussian only; propagated non-Gaussian cumulants excluded"
+  ]
+}

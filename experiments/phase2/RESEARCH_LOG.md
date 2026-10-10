@@ -71,3 +71,9 @@ RPC已有预测向量的离线残差分解：与原始float32 reference逐层配
 第二公共分片完成：官方LFS SHA已校验，network IDs=['8', '9', '10', '11', '12', '13', '14', '15']。与Mini8分离，仍未证明上游训练独立。启动原样V29 control P2-E008，仅变网络集合，冻结未来候选的同网络成对对照；不与Mini8 aggregate直接宣称改善。PID/命令及输出见state。
 
 K31代理推导验证：joint Gaussian弱相关输入，经ReLU的K31_ij一阶项为3(1-Phi_i)(m2_i-2m1_i^2)Phi_j*C_ij，由协方差微分和中心累积量关系导出。四个均值条件下双变量条件积分验证，max误差1.002e-9（导数的绝对差）。离线临时环境SciPy1.15.3，版本/命令见k31_relu_algebra.json；主benchmark uv.lock不改。此只验证Gaussian小相关极限，不包括K3/K4反馈或K211，不能声称完整核心或比赛提分。下一项推导K211收缩并检查保留K3的非高斯影响，再设计可计量代理，避免只加半个核心却误称完整恢复。
+
+K211代理验证：重复索引star的4组条件积分max差1.67e-9，capped收缩矩阵式对显式求和<1e-12。另两个center系数来自MGF二阶解析展开，尚未独立积分；完整误差限制见k211_relu_algebra.json。
+
+## P2-E009-coreproxy-mini8（准备）
+
+唯一机制：用当前pre均值/方差/协方差构造Gaussian弱相关K31与K211，谐波投影Gproxy后向live K11投影得lambda，替换base LAM离线表。保留原V25 adaptive multiplier及REF_R、g_prev对角、feed/use、来源压缩与秩，不声称完全无拟合基线。代码使用允许fnp算子，代理matmul计费；不读取reference或oracle G。弱相关高斯项不包括传播K3/K4，可能恶化，零收益也保留。whest validate小形状通过，但riders只在1024x16执行，不能算完整新路径验证；待control结束后做正式Mini8检查。
