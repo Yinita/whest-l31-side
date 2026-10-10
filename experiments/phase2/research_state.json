@@ -9,7 +9,19 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": {
+  "active_experiment": null,
+  "next_experiment": {
+    "status": "designing",
+    "hypothesis": "Improve production of fourth-order core rather than remove useful nonlinear use/feed; inspect harmonic projection and missing structures before coding",
+    "sources": [
+      "upstream lean/lean_k3_aug.py G_new harmonic projection",
+      "upstream lean/g_regen_probe.py legal state modes; offline G fitting is diagnostic only"
+    ],
+    "constraint": "No true-reference fitted direction or oracle G allowed in candidate; data-dependent proxies must come from current lawful state and be metered"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T10:31:57.903983+00:00",
+  "previous_experiment": {
     "id": "P2-E007-nowk431-mini8",
     "candidate": "estimators/k3_v29_nowk431/estimator.py",
     "sha256": "441e754afde8eb6601f7a6872a274cb746be8adff610de80935e68f8dc16b19d",
@@ -17,7 +29,7 @@
     "hypothesis": "Isolate high-order matrix-core nonlinear contribution",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "report": "results/phase2/nowk431_mini8_local.json",
-    "status": "running",
+    "status": "completed_negative",
     "pid": 586468,
     "pid_start_ticks": "2460132",
     "command": [
@@ -37,50 +49,13 @@
       "--output",
       "results/phase2/nowk431_mini8_local.json"
     ],
-    "started_at_utc": "2026-10-10T10:24:48.664249+00:00"
-  },
-  "next_experiment": {
-    "status": "conditional",
-    "hypothesis": "If removal helps, isolate terms; otherwise study core representation and derive coefficients rather than disable more channels"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T10:11:20.092724+00:00",
-  "previous_experiment": {
-    "id": "P2-E006-noconfine-mini8",
-    "candidate": "estimators/k3_v29_noconfine/estimator.py",
-    "sha256": "25728c13be41384130a133fb57ffdd59b63d041a84f292151ea69f67171c7fe0",
-    "single_change": "NO_CONFINE default 0 -> 1",
-    "hypothesis": "Measure complete-source transport accuracy versus shared-subspace compression",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "report": "results/phase2/noconfine_mini8_local.json",
-    "status": "completed_negative",
-    "pid": 566583,
-    "pid_start_ticks": "2404967",
-    "command": [
-      "uv",
-      "run",
-      "python",
-      "benchmark/phase2.py",
-      "run",
-      "--estimator",
-      "estimators/k3_v29_noconfine/estimator.py",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--n-mlps",
-      "8",
-      "--runner",
-      "local",
-      "--output",
-      "results/phase2/noconfine_mini8_local.json"
-    ],
-    "started_at_utc": "2026-10-10T10:15:37.012890+00:00",
-    "resource_observation": "Local numerical worker PID566789 RSS10538416KiB observed; diagnostic only, not proof of client/server or 8GiB feasibility",
-    "comparison": "results/phase2/noconfine_vs_v29_local.json",
+    "started_at_utc": "2026-10-10T10:24:48.664249+00:00",
+    "comparison": "results/phase2/nowk431_vs_v29_local.json",
     "metrics": {
-      "adjusted_final_layer_score": 6.106147871848858e-09,
-      "final_layer_mse": 2.1704769759267606e-08,
+      "adjusted_final_layer_score": 6.653486403379585e-09,
+      "final_layer_mse": 2.614290850466716e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.281318877326612
+      "mean_compute_utilization": 0.25433115689475017
     }
   },
   "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
@@ -197,6 +172,44 @@
         "final_layer_mse": 2.4084116923006604e-08,
         "n_failed_mlps": 0,
         "mean_compute_utilization": 0.25449351901579575
+      }
+    },
+    {
+      "id": "P2-E006-noconfine-mini8",
+      "candidate": "estimators/k3_v29_noconfine/estimator.py",
+      "sha256": "25728c13be41384130a133fb57ffdd59b63d041a84f292151ea69f67171c7fe0",
+      "single_change": "NO_CONFINE default 0 -> 1",
+      "hypothesis": "Measure complete-source transport accuracy versus shared-subspace compression",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "report": "results/phase2/noconfine_mini8_local.json",
+      "status": "completed_negative",
+      "pid": 566583,
+      "pid_start_ticks": "2404967",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_noconfine/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/noconfine_mini8_local.json"
+      ],
+      "started_at_utc": "2026-10-10T10:15:37.012890+00:00",
+      "resource_observation": "Local numerical worker PID566789 RSS10538416KiB observed; diagnostic only, not proof of client/server or 8GiB feasibility",
+      "comparison": "results/phase2/noconfine_vs_v29_local.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.106147871848858e-09,
+        "final_layer_mse": 2.1704769759267606e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.281318877326612
       }
     }
   ],
