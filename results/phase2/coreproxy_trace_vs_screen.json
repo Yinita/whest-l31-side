@@ -1,0 +1,180 @@
+{
+  "n_mlps": 1,
+  "left_failed": 0,
+  "right_failed": 0,
+  "per_mlp": [
+    {
+      "mlp_name": "logan-fitzgerald",
+      "seed": null,
+      "final_layer_mse": {
+        "left": 5.4152209827407205e-08,
+        "right": 5.4159762896688335e-08,
+        "delta": 7.553069281129865e-12,
+        "relative_delta": 0.00013947850522079986
+      },
+      "adjusted_final_layer_score": {
+        "left": 1.526423333031492e-08,
+        "right": 1.5266362362763173e-08,
+        "delta": 2.1290324482543246e-12,
+        "relative_delta": 0.00013947850522083184
+      },
+      "flops_used": {
+        "left": 619852895727.0,
+        "right": 619852895727.0,
+        "delta": 0.0,
+        "relative_delta": 0.0
+      }
+    }
+  ],
+  "same_flops": true,
+  "max_relative_mse_delta": 0.00013947850522079986,
+  "interpretation": "Paired same-network comparison; not an online/private-suite parity claim.",
+  "source_manifests": [
+    {
+      "started_at_utc": "2026-10-10T10:39:56.553835+00:00",
+      "experiment_id": "coreproxy_mini1_local",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "whest",
+        "run",
+        "--estimator",
+        "/home/sti/Desktop/projects/whest-l31-side/estimators/k3_v29_coreproxy/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--split",
+        "mini",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--max-threads",
+        "1",
+        "--seed",
+        "0",
+        "--flop-budget",
+        "2199023255552",
+        "--lambda-flops-per-second",
+        "0",
+        "--wall-time-limit",
+        "120",
+        "--setup-timeout",
+        "5",
+        "--residual-wall-time-limit",
+        "0.4",
+        "--detail",
+        "full",
+        "--format",
+        "json"
+      ],
+      "estimator_sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
+      "commit": "4537bf839de6098092c72b45734b00e125b593f3",
+      "dirty_worktree": true,
+      "python": "3.10.12",
+      "versions": {
+        "flopscope": "0.12.1",
+        "whestbench": "0.16.1"
+      },
+      "dataset": "benchmark/data/mini_first8",
+      "seed": 0,
+      "max_threads": 1,
+      "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "dataset_provenance": {
+        "repo": "aicrowd/arc-whestbench-public-2026",
+        "revision": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+        "file": "prepared/mini/data-00000-of-00014.arrow",
+        "sha256": "af3818cd72c33e66dae7acc2758544137c22703f30859499282aa32691892582",
+        "selection": "first 8 official Mini rows; unchanged targets",
+        "n_mlps": 8,
+        "columns": [
+          "mlp_id",
+          "mlp_name",
+          "mlp_seed",
+          "weights",
+          "all_layer_means",
+          "final_means",
+          "avg_variance",
+          "sampling_budget_breakdown"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at_utc": "2026-10-10T10:40:30.656276+00:00",
+      "report_sha256": "ee62f9f4070a34d7283c23e9682d2c36983322a38424f6e05d37ffd00e1200ad",
+      "peak_child_rss_kib": 3934792
+    },
+    {
+      "started_at_utc": "2026-10-10T10:42:16.447558+00:00",
+      "experiment_id": "coreproxy_lambda_trace_mini1",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "whest",
+        "run",
+        "--estimator",
+        "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--split",
+        "mini",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--max-threads",
+        "1",
+        "--seed",
+        "0",
+        "--flop-budget",
+        "2199023255552",
+        "--lambda-flops-per-second",
+        "0",
+        "--wall-time-limit",
+        "120",
+        "--setup-timeout",
+        "5",
+        "--residual-wall-time-limit",
+        "0.4",
+        "--detail",
+        "full",
+        "--format",
+        "json"
+      ],
+      "estimator_sha256": "65ed6822f65b2383aef4d8e2b677528bc566b6b85e5c77aa69b0fd8bb280992e",
+      "commit": "5705b8526a478e8d75b4f6185b2247bd859938c3",
+      "dirty_worktree": true,
+      "python": "3.10.12",
+      "versions": {
+        "flopscope": "0.12.1",
+        "whestbench": "0.16.1"
+      },
+      "dataset": "benchmark/data/mini_first8",
+      "seed": 0,
+      "max_threads": 1,
+      "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "dataset_provenance": {
+        "repo": "aicrowd/arc-whestbench-public-2026",
+        "revision": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+        "file": "prepared/mini/data-00000-of-00014.arrow",
+        "sha256": "af3818cd72c33e66dae7acc2758544137c22703f30859499282aa32691892582",
+        "selection": "first 8 official Mini rows; unchanged targets",
+        "n_mlps": 8,
+        "columns": [
+          "mlp_id",
+          "mlp_name",
+          "mlp_seed",
+          "weights",
+          "all_layer_means",
+          "final_means",
+          "avg_variance",
+          "sampling_budget_breakdown"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at_utc": "2026-10-10T10:42:50.280106+00:00",
+      "report_sha256": "826ec29663fab67ea8603caa0ca003d965a42c8e7710cac4e29e72933cff0bf3",
+      "peak_child_rss_kib": 4003400
+    }
+  ]
+}

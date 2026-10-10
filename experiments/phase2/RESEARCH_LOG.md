@@ -81,3 +81,5 @@ K211代理验证：重复索引star的4组条件积分max差1.67e-9，capped收�
 Shard1原V29 control完成，指标见state及v29_shard01_local.json，不能把与Mini8不同aggregate称改善。P2-E009先启动官方网络0的1024x16完整新路径单网络筛查，原预算/时间限制，输出coreproxy_mini1_local.json；该结果不能宣称Mini8/独立通过。若失败或明显恶化先归因，再决定是否全8。
 
 coreproxy网络0正式路径筛查完成：raw=5.4152209827407205e-8（V29同网络2.36387倍），adjusted=1.526423333031492e-8（2.49506倍），util0.2818764622711569，零失败；不扩展Mini8。Gaussian代理忽略非高斯来源影响，不能因代数通过宣称准确。准备仅记录已有native scalar lam_prev和原LAM的诊断copy，不读取真值、不额外计算数组。日志走stderr，保留成本/资源约束；该copy不作为候选提交。
+
+Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7层proxy2.27e-5，第9层起负值，原表保持约0.007–0.009正值。轨迹详见coreproxy_lambda_diagnostic.json；trace与screen成对数值/计量核验见coreproxy_trace_vs_screen.json。显示代理尺度不一致，不能证明具体因果；不盲加clip把失败掩盖。下一步先核查第一层完整Gaussian核心相对近似及来源项，再设计含传播K3的合法收缩。

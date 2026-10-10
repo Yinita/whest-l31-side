@@ -1,0 +1,40 @@
+memory_limit_mb=8192 is advisory in --runner local: enforcement requires --runner subprocess (uses RLIMIT_AS) or external sandboxing (cgroups).
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:691: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:692: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:706: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:707: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:708: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:708: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:709: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:711: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:712: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:713: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:1137: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/coreproxy_lambda_trace.py:1138: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+CORE_LAMBDA 0 0.014565868303179741 0.004740025
+CORE_LAMBDA 1 0.004595317877829075 0.00768322
+CORE_LAMBDA 2 0.0017578707775101066 0.009337645
+CORE_LAMBDA 3 0.0012954587582498789 0.010021549999999999
+CORE_LAMBDA 4 0.0006195946480147541 0.010308449999999999
+CORE_LAMBDA 5 0.00014147553883958608 0.0102866
+CORE_LAMBDA 6 2.2668175006401725e-05 0.010059549999999999
+CORE_LAMBDA 7 0.0005489223403856158 0.0095456
+CORE_LAMBDA 8 -0.00022389537480194122 0.009165885
+CORE_LAMBDA 9 -0.00030683944351039827 0.0087134
+CORE_LAMBDA 10 -0.00026277676806785166 0.008334349999999999
+CORE_LAMBDA 11 -0.00022517956676892936 0.00797411
+CORE_LAMBDA 12 -0.0005594543181359768 0.007652725
+CORE_LAMBDA 13 -0.0005960199632681906 0.007293149999999999
+CORE_LAMBDA 14 -0.00038979839882813394 0.00689586

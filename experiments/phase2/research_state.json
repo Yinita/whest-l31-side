@@ -9,7 +9,15 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": {
+  "active_experiment": null,
+  "next_experiment": {
+    "status": "designing",
+    "hypothesis": "Account for propagated non-Gaussian source contributions in harmonic trace rather than clip Gaussian proxy; verify first-layer full Gaussian core before recursive use",
+    "priority": "Reconstruct exact small Gaussian K31/K211 via quadrature or diagrams, compare approximation and lambda projection, then include source-factor terms"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T10:39:37.153534+00:00",
+  "previous_experiment": {
     "id": "P2-D010-coreproxy-lambda-trace",
     "candidate": "experiments/phase2/coreproxy_lambda_trace.py",
     "sha256": "65ed6822f65b2383aef4d8e2b677528bc566b6b85e5c77aa69b0fd8bb280992e",
@@ -19,7 +27,7 @@
     "network_ids": [
       "0"
     ],
-    "status": "running",
+    "status": "completed_diagnostic",
     "pid": 604944,
     "pid_start_ticks": "2564868",
     "command": [
@@ -39,55 +47,8 @@
       "--output",
       "results/phase2/coreproxy_lambda_trace_mini1.json"
     ],
-    "started_at_utc": "2026-10-10T10:42:16.022271+00:00"
-  },
-  "next_experiment": {
-    "status": "prepared",
-    "hypothesis": "Inspect native scalar lambda trajectory to localize Gaussian proxy mismatch; no Mini8 expansion of harmful screen"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T10:39:37.153534+00:00",
-  "previous_experiment": {
-    "id": "P2-E009-coreproxy-mini1-screen",
-    "candidate": "estimators/k3_v29_coreproxy/estimator.py",
-    "sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
-    "single_change": "Replace base lambda production law with live core proxy",
-    "report": "results/phase2/coreproxy_mini1_local.json",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "network_ids": [
-      "0"
-    ],
-    "status": "completed_negative_screen",
-    "pid": 603093,
-    "pid_start_ticks": "2550917",
-    "command": [
-      "uv",
-      "run",
-      "python",
-      "benchmark/phase2.py",
-      "run",
-      "--estimator",
-      "estimators/k3_v29_coreproxy/estimator.py",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--n-mlps",
-      "1",
-      "--runner",
-      "local",
-      "--output",
-      "results/phase2/coreproxy_mini1_local.json"
-    ],
-    "started_at_utc": "2026-10-10T10:39:56.511875+00:00",
-    "metrics": {
-      "adjusted_final_layer_score": 1.526423333031492e-08,
-      "final_layer_mse": 5.4152209827407205e-08,
-      "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.2818764622711569
-    },
-    "paired_network0_ratios": {
-      "raw": 2.3638726558605927,
-      "adjusted": 2.495055748332
-    }
+    "started_at_utc": "2026-10-10T10:42:16.022271+00:00",
+    "lambda_diagnostic": "results/phase2/coreproxy_lambda_diagnostic.json"
   },
   "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
   "history": [
@@ -324,6 +285,48 @@
         "final_layer_mse": 2.3160594775362142e-08,
         "n_failed_mlps": 0,
         "mean_compute_utilization": 0.25454699648935275
+      }
+    },
+    {
+      "id": "P2-E009-coreproxy-mini1-screen",
+      "candidate": "estimators/k3_v29_coreproxy/estimator.py",
+      "sha256": "6d7c2c77c2dcd1fb2c4859d3024c3f6a592b7dd49b8b55ce6aa0f15355faabe1",
+      "single_change": "Replace base lambda production law with live core proxy",
+      "report": "results/phase2/coreproxy_mini1_local.json",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "pid": 603093,
+      "pid_start_ticks": "2550917",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_coreproxy/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/coreproxy_mini1_local.json"
+      ],
+      "started_at_utc": "2026-10-10T10:39:56.511875+00:00",
+      "metrics": {
+        "adjusted_final_layer_score": 1.526423333031492e-08,
+        "final_layer_mse": 5.4152209827407205e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.2818764622711569
+      },
+      "paired_network0_ratios": {
+        "raw": 2.3638726558605927,
+        "adjusted": 2.495055748332
       }
     }
   ],
