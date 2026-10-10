@@ -203,14 +203,20 @@
   "execution_mode": "continuous_goal",
   "automation_deleted": "whestbench-10",
   "data_preparation": {
-    "command": "uv run python benchmark/prepare_public.py --shard 1",
-    "session_id": 28174,
-    "log": "results/phase2/prepare_shard01_retry1.log",
+    "status": "running",
+    "pid": 587794,
+    "pid_start_ticks": "2467310",
+    "log": "results/phase2/prepare_shard01_resume.log",
     "output": "benchmark/data/mini_shard01",
-    "status": "interrupted_or_terminated_no_completion",
-    "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
-    "purpose": "public network-split confirmation, not proven independent of upstream tuning",
-    "observation": "session unavailable; no prepare_public process; log ends 336/538MB, no valid dataset completion"
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/prepare_public.py",
+      "--shard",
+      "1"
+    ],
+    "started_at_utc": "2026-10-10T10:26:00.438993+00:00"
   },
   "reference_uncertainty_diagnostic": "results/phase2/reference_noise_proxy_mini8.json",
   "upstream_paper_code_lookup": {
@@ -229,6 +235,16 @@
       "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
       "purpose": "public network-split confirmation, not proven independent of upstream tuning",
       "exit_code": 1
+    },
+    {
+      "command": "uv run python benchmark/prepare_public.py --shard 1",
+      "session_id": 28174,
+      "log": "results/phase2/prepare_shard01_retry1.log",
+      "output": "benchmark/data/mini_shard01",
+      "status": "interrupted_or_terminated_no_completion",
+      "started_at_utc": "2026-10-10T10:13:08.684084+00:00",
+      "purpose": "public network-split confirmation, not proven independent of upstream tuning",
+      "observation": "session unavailable; no prepare_public process; log ends 336/538MB, no valid dataset completion"
     }
   ],
   "research_triage": {

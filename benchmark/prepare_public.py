@@ -36,11 +36,16 @@ def main():
         chunk = 8 * 1024 * 1024
         ranges = [(i, min(i + chunk - 1, entry.size - 1)) for i in range(0, entry.size, chunk)]
         staging = path.with_suffix(".partial")
-        with staging.open("wb") as out:
-            out.truncate(entry.size)
+        parts = path.parent / f"parts-{expected}"
+        parts.mkdir(exist_ok=True)
 
         def download(bounds):
             start, end = bounds
+            part = parts / f"{start}-{end}.bin"
+            digest = part.with_suffix(".sha256")
+            if part.exists() and digest.exists() and part.stat().st_size == end - start + 1:
+                if hashlib.sha256(part.read_bytes()).hexdigest() == digest.read_text().strip():
+                    return part.stat().st_size
             url = f"https://huggingface.co/datasets/{REPO}/resolve/{REVISION}/{file}?part={start}"
             for attempt in range(3):
                 try:
@@ -50,9 +55,10 @@ def main():
                         content = response.content
                         if response.status_code != 206 or len(content) != end - start + 1:
                             raise RuntimeError(f"Unexpected range response for offset {start}")
-                        with staging.open("r+b") as out:
-                            out.seek(start)
-                            out.write(content)
+                        temporary = part.with_suffix(".tmp")
+                        temporary.write_bytes(content)
+                        temporary.replace(part)
+                        digest.write_text(hashlib.sha256(content).hexdigest() + "\n")
                     break
                 except (httpx.TransportError, httpx.HTTPStatusError):
                     if attempt == 2:
@@ -66,6 +72,9 @@ def main():
             for future in as_completed(futures):
                 total += future.result()
                 print(f"Downloaded {total / 1e6:.0f}/{entry.size / 1e6:.0f} MB", flush=True)
+        with staging.open("wb") as out:
+            for start, end in ranges:
+                out.write((parts / f"{start}-{end}.bin").read_bytes())
         actual = hashlib.sha256(staging.read_bytes()).hexdigest()
         if actual != expected:
             raise RuntimeError("Official shard SHA-256 mismatch")
