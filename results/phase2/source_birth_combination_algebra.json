@@ -1,0 +1,31 @@
+{
+  "mode": "synthetic algebra only; no benchmark score",
+  "seed": 7,
+  "rows": [
+    {
+      "n": 4,
+      "merged_capped_error": 1.7763568394002505e-15,
+      "birth_d21_error": 1.1102230246251565e-16,
+      "birth_d3_error": 0.0
+    },
+    {
+      "n": 7,
+      "merged_capped_error": 1.7763568394002505e-15,
+      "birth_d21_error": 2.220446049250313e-16,
+      "birth_d3_error": 1.1102230246251565e-16
+    },
+    {
+      "n": 11,
+      "merged_capped_error": 1.7763568394002505e-15,
+      "birth_d21_error": 2.220446049250313e-16,
+      "birth_d3_error": 5.551115123125783e-17
+    }
+  ],
+  "formula": "cap(old,ua)*w_j*w_k - 2 cap(wicked_old+birth,mean) = merged old contraction with ua-2*w*mean plus repeated-content/birth corrections",
+  "source": "upstream lean/lean_k3_aug.py F52 combined contraction; commit 1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+  "limits": [
+    "Verifies source bookkeeping, not complete power-cumulant diagram production",
+    "Arbitrary weights ua,w,mean; their ReLU assignment requires production formula",
+    "Dense tensor exists offline only"
+  ]
+}
