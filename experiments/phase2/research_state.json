@@ -10,6 +10,42 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
+    "id": "P2-E006-noconfine-mini8",
+    "candidate": "estimators/k3_v29_noconfine/estimator.py",
+    "sha256": "25728c13be41384130a133fb57ffdd59b63d041a84f292151ea69f67171c7fe0",
+    "single_change": "NO_CONFINE default 0 -> 1",
+    "hypothesis": "Measure complete-source transport accuracy versus shared-subspace compression",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "report": "results/phase2/noconfine_mini8_local.json",
+    "status": "running",
+    "pid": 566583,
+    "pid_start_ticks": "2404967",
+    "command": [
+      "uv",
+      "run",
+      "python",
+      "benchmark/phase2.py",
+      "run",
+      "--estimator",
+      "estimators/k3_v29_noconfine/estimator.py",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--n-mlps",
+      "8",
+      "--runner",
+      "local",
+      "--output",
+      "results/phase2/noconfine_mini8_local.json"
+    ],
+    "started_at_utc": "2026-10-10T10:15:37.012890+00:00"
+  },
+  "next_experiment": {
+    "status": "conditional",
+    "hypothesis": "If full sources do not greatly improve raw MSE, prioritize high-order closure; otherwise develop legal output-sensitive compression"
+  },
+  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
+  "updated_at_utc": "2026-10-10T10:11:20.092724+00:00",
+  "previous_experiment": {
     "id": "P2-E005-nofeed-mini8",
     "candidate": "estimators/k3_v29_nofeed/estimator.py",
     "sha256": "fe3d2149270dfa3f5c168d440e042882cf805829322d6e925afba49d5a3f2a8d",
@@ -17,7 +53,7 @@
     "hypothesis": "Isolate K4-to-K3 feedback contribution",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "report": "results/phase2/nofeed_mini8_local.json",
-    "status": "running",
+    "status": "completed_negative",
     "pid": 557443,
     "pid_start_ticks": "2363967",
     "command": [
@@ -37,50 +73,13 @@
       "--output",
       "results/phase2/nofeed_mini8_local.json"
     ],
-    "started_at_utc": "2026-10-10T10:08:47.006834+00:00"
-  },
-  "next_experiment": {
-    "status": "conditional",
-    "hypothesis": "If feedback removal hurts, test source-basis rank or output-sensitivity; if helps, localize feed mismatch by layer"
-  },
-  "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T10:11:20.092724+00:00",
-  "previous_experiment": {
-    "id": "P2-E004-age5-mini8",
-    "single_change": "AGE_OLD 4 -> 5",
-    "hypothesis": "Delay compression to identify source-confinement accuracy loss",
-    "candidate": "estimators/k3_v29_age5/estimator.py",
-    "sha256": "43727ca1a0939f23a210597548432e6d7f2ed43219a20f59688aab46ab0e6283",
-    "dataset": "benchmark/data/mini_first8",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "report": "results/phase2/age5_mini8_local.json",
-    "status": "completed_negative",
-    "pid": 535199,
-    "pid_start_ticks": "2290150",
-    "command": [
-      "uv",
-      "run",
-      "python",
-      "benchmark/phase2.py",
-      "run",
-      "--estimator",
-      "estimators/k3_v29_age5/estimator.py",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--n-mlps",
-      "8",
-      "--runner",
-      "local",
-      "--output",
-      "results/phase2/age5_mini8_local.json"
-    ],
-    "started_at_utc": "2026-10-10T09:56:28.844032+00:00",
-    "comparison": "results/phase2/age5_vs_v29_local.json",
+    "started_at_utc": "2026-10-10T10:08:47.006834+00:00",
+    "comparison": "results/phase2/nofeed_vs_v29_local.json",
     "metrics": {
-      "adjusted_final_layer_score": 5.799663472450135e-09,
-      "final_layer_mse": 2.2292124812750558e-08,
+      "adjusted_final_layer_score": 6.127991349972541e-09,
+      "final_layer_mse": 2.4084116923006604e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.26017454294878917
+      "mean_compute_utilization": 0.25449351901579575
     }
   },
   "last_checkpoint_utc": "2026-10-10T09:58:22.769947+00:00",
@@ -122,6 +121,44 @@
         "n_failed_mlps": 0,
         "mean_compute_utilization": 0.24807416885550992,
         "mean_effective_compute": 545520866415.0
+      }
+    },
+    {
+      "id": "P2-E004-age5-mini8",
+      "single_change": "AGE_OLD 4 -> 5",
+      "hypothesis": "Delay compression to identify source-confinement accuracy loss",
+      "candidate": "estimators/k3_v29_age5/estimator.py",
+      "sha256": "43727ca1a0939f23a210597548432e6d7f2ed43219a20f59688aab46ab0e6283",
+      "dataset": "benchmark/data/mini_first8",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "report": "results/phase2/age5_mini8_local.json",
+      "status": "completed_negative",
+      "pid": 535199,
+      "pid_start_ticks": "2290150",
+      "command": [
+        "uv",
+        "run",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_age5/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "8",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/age5_mini8_local.json"
+      ],
+      "started_at_utc": "2026-10-10T09:56:28.844032+00:00",
+      "comparison": "results/phase2/age5_vs_v29_local.json",
+      "metrics": {
+        "adjusted_final_layer_score": 5.799663472450135e-09,
+        "final_layer_mse": 2.2292124812750558e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.26017454294878917
       }
     }
   ],
