@@ -7,8 +7,11 @@
 - 根目录 `estimator.py` 保留 Phase 1 Hadamard 采样基线，仅作采样对照；尚未验证其 Phase 2 性能与成本，不作为最终候选。
 - `examples/03_covariance_propagation.py` 是教学协方差实现，不等同于公开 K=3 强基线。
 - `experiments/moment_chain/` 保留已有数学探针；其 2026-08 结果来自旧阶段网络，不是 Phase 2 复现。
-- V25/V29 尚未导入或独立复现，当前没有已验证的 Phase 2 改进。
-- 本次清理保留原有依赖约束与锁文件；工具与 grader 版本对齐仍是 E00 的任务。
+- 已原样导入 504aldo MIT V25/V29，来源 commit 与哈希见 `estimators/`。V29 为首次 Phase 2 上榜基线；没有独立算法改进声明。
+- V29 基础合同及两次 1024×16 子进程资源检查通过。低样本自生成 reference 仅作运行检查，不报告为精度。
+- Phase 2 提交 #335146 已接受，round ID 1429，线上结果见 `results/phase2/`；精度 benchmark 与一致性检查仍在推进。
+- 工具已升级并锁定 flopscope 0.12.1 / whestbench 0.16.1；Phase 2 benchmark 规则明确固定。
+- 可复跑命令与推进计划见 [benchmark/README.md](benchmark/README.md)。
 
 ## 当前任务
 

@@ -9,12 +9,13 @@ description = "Starter kit for the ARC Whitebox Estimation Challenge"
 requires-python = ">=3.10"
 license = "MIT"
 dependencies = [
-    "flopscope>=0.10.0",
-    "whestbench>=0.14.0",
+    "flopscope>=0.12.0",
+    "whestbench>=0.16.0",
 ]
 
 [dependency-groups]
 dev = [
+    "httpx[socks]>=0.28.1",
     "pytest>=8.2.0",
     "ruff>=0.6.0",
 ]
@@ -23,7 +24,7 @@ dev = [
 py-modules = ["estimator"]
 
 [tool.ruff]
-extend-exclude = ["archive", "experiments/moment_chain"]
+extend-exclude = ["archive", "experiments/moment_chain", "estimators/k3_v29", "estimators/k3_v25"]
 line-length = 100
 target-version = "py310"
 

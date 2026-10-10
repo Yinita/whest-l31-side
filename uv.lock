@@ -400,7 +400,7 @@ wheels = [
 
 [[package]]
 name = "flopscope"
-version = "0.10.0"
+version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
@@ -408,9 +408,9 @@ dependencies = [
     { name = "opt-einsum" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7c/5b/438b7920ab548d7b1516ab5e4605ca5bf41d4ce752b29afcc455191b42d8/flopscope-0.10.0.tar.gz", hash = "sha256:5cb3ae5405570b0747a87fd38ec2f6651782a14d9f1b0a0383e1e634b13a8c4e", size = 7185914, upload-time = "2026-07-30T23:14:23.991Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e1/06/e39f92bd8880c53cf6ff0f8b4b812a0b03ef9b64a170ca1ea50b644da741/flopscope-0.12.1.tar.gz", hash = "sha256:0510866c5db30adde8fd1815f4d218389101b3cd2ff9264b5d66a1083d86b249", size = 7512527, upload-time = "2026-08-29T03:28:41.037Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/11/00/2f14a7abfb8c3621ba4aea5b392ec111e08447dc0b4e13c4d358627989d0/flopscope-0.10.0-py3-none-any.whl", hash = "sha256:9a296ceb6ef02a620e5a04e85a082217c7d506bb3ccf96e7d92326a56290f642", size = 496126, upload-time = "2026-07-30T23:14:21.699Z" },
+    { url = "https://files.pythonhosted.org/packages/e8/04/ac64ec6c564e477802edaeb6dc455d6af4bb480014bf693bff71f66afe6b/flopscope-0.12.1-py3-none-any.whl", hash = "sha256:cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582", size = 572717, upload-time = "2026-08-29T03:28:39.073Z" },
 ]
 
 [[package]]
@@ -615,6 +615,11 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz", hash = "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc", size = 141406, upload-time = "2024-12-06T15:37:23.222Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2a/39/e50c7c3a983047577ee07d2a9e53faf5a69493943ec3f6a384bdc792deb2/httpx-0.28.1-py3-none-any.whl", hash = "sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad", size = 73517, upload-time = "2024-12-06T15:37:21.509Z" },
+]
+
+[package.optional-dependencies]
+socks = [
+    { name = "socksio" },
 ]
 
 [[package]]
@@ -1624,6 +1629,15 @@ wheels = [
 ]
 
 [[package]]
+name = "socksio"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f8/5c/48a7d9495be3d1c651198fd99dbb6ce190e2274d0f28b9051307bdec6b85/socksio-1.0.0.tar.gz", hash = "sha256:f88beb3da5b5c38b9890469de67d0cb0f9d494b78b106ca1845f96c10b91c4ac", size = 19055, upload-time = "2020-04-17T15:50:34.664Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/37/c3/6eeb6034408dac0fa653d126c9204ade96b819c936e136c5e8a6897eee9c/socksio-1.0.0-py3-none-any.whl", hash = "sha256:95dc1f15f9b34e8d7b16f06d74b8ccf48f609af32ab33c608d08761c5dcbb1f3", size = 12763, upload-time = "2020-04-17T15:50:31.878Z" },
+]
+
+[[package]]
 name = "threadpoolctl"
 version = "3.6.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1760,25 +1774,27 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "httpx", extra = ["socks"] },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "flopscope", specifier = ">=0.10.0" },
-    { name = "whestbench", specifier = ">=0.14.0" },
+    { name = "flopscope", specifier = ">=0.12.0" },
+    { name = "whestbench", specifier = ">=0.16.0" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "httpx", extras = ["socks"], specifier = ">=0.28.1" },
     { name = "pytest", specifier = ">=8.2.0" },
     { name = "ruff", specifier = ">=0.6.0" },
 ]
 
 [[package]]
 name = "whestbench"
-version = "0.14.0"
+version = "0.16.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "datasets" },
@@ -1795,9 +1811,9 @@ dependencies = [
     { name = "toml" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c3/3d/7fa004d198322ac312c08e499f5ef7f9c9b0c66a8e0ee3e741adddf99d32/whestbench-0.14.0.tar.gz", hash = "sha256:7d3c49f7d3052efd5cc04d91dc736d52b09ba63f8ab3e184c3e68457e179b7be", size = 1790697, upload-time = "2026-07-31T03:06:49.051Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fc/00/6858e08bd1e2f93b9c8b225264fd1345a7235d7fc6b399c3ceff94080cc5/whestbench-0.16.1.tar.gz", hash = "sha256:fb5bb24b97d882cb67533aa8726b5b0d314944158f8fde2931f0aeb20c802d3f", size = 1865085, upload-time = "2026-08-29T04:31:56.604Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/78/0d/6dd0187409554cb5b652b0025c616ac47482df1ff971e56152b636494b0e/whestbench-0.14.0-py3-none-any.whl", hash = "sha256:a179b952e39f194583cdf8653cb6d9d55cc37b4854e12eeec6331c8b0cbe543e", size = 185800, upload-time = "2026-07-31T03:06:47.636Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/93/2a94ae80662841cc69a4176620fe92e8dda0ca1f57123947759034f14941/whestbench-0.16.1-py3-none-any.whl", hash = "sha256:1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e", size = 211494, upload-time = "2026-08-29T04:31:55.031Z" },
 ]
 
 [[package]]
