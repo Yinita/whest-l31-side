@@ -89,3 +89,5 @@ Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7
 ## P2-E011-coreproxy-first-mini1
 
 断点核验无后台评测/下载，未重复启动。唯一机制：仅首层用Gaussian核心proxy产生base lambda，后续恢复原LAM；其余自适应及来源机制不变。用于区分全链失败是否由首层尺度造成，原reference/预算/时间固定，先network0快筛。小形状validate通过但不覆盖riders，新路径由正式快筛验证。若改善再全8，否则拒绝该代理尺度，不盲扫描。PID与hash见state。
+
+首层proxy筛查完成：raw2.2967631352344142e-8，adjusted6.156340382880013e-9，零失败；同network0 raw恶化0.259%、adjusted恶化0.630%。不扩大Mini8，不称微小差异为独立确认。全链proxy显著恶化，首层proxy亦未改善，停止lambda替换扫描，转向传播来源贡献。原预算与版本未变。
