@@ -1518,11 +1518,13 @@ after：追加g4row/sigma⁴及乘phi的两列。
 
 状态：partial_negative
 
-诊断结论：Realg4row two features samecycleLOO worsensrelativeL03 +0.04419%; multithreadoffline diagnostic only, fixedthreadcandidate unverified；算法分数前后不适用。
+诊断结论：Singlethread actual g4 trace and samecycle13/15feature networkLOO completed; no charged finalcandidate; negative L03 reliableparent gate retained；算法分数前后不适用。
 
 - [ablation_v30_102_g4_features.json](../../results/phase2/ablation_v30_102_g4_features.json)
 - [ablation_v30_102_g4_cv.json](../../results/phase2/ablation_v30_102_g4_cv.json)
 - [ablation_v30_102_g4_legal_features.json](../../results/phase2/ablation_v30_102_g4_legal_features.json)
+- [ablation_v30_102_r03_singlethread_g4_features.json](../../results/phase2/ablation_v30_102_r03_singlethread_g4_features.json)
+- [ablation_v30_102_r03_singlethread_g4_cv.json](../../results/phase2/ablation_v30_102_r03_singlethread_g4_cv.json)
 
 ### v30.103 L08 最后线性均值传播轨迹特征
 
@@ -1875,4 +1877,5 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 - [ablation_v30_129_selection_ledger.json](../../results/phase2/ablation_v30_129_selection_ledger.json)
 - [ablation_v30_129_r02_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r02_comprehensive_selection_ledger.json)
 - [ablation_v30_129_current_score_ledger_r02.json](../../results/phase2/ablation_v30_129_current_score_ledger_r02.json)
+- [ablation_v30_129_current_score_ledger_r03.json](../../results/phase2/ablation_v30_129_current_score_ledger_r03.json)
 
