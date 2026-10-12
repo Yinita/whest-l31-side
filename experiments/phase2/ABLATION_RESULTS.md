@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 33, 'partial_diagnostic': 19, 'partial_mapping': 1, 'pending_derivation': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'pending_derivation': 3, 'partial_diagnostic': 19, 'partial_derivation': 33, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -81,6 +81,754 @@
 ## 归因与证据
 
 C07/C10单网raw逐值评分相同，收益来自收费减少。C08/C14/C15的微小raw差尚不能排除浮点重排漂移，completed_positive只表示初筛分数更低。诊断条目不产生算法after分数，记录为不适用。
+
+### paper.M01.r01 M01 论文—官方代码—本地映射
+
+before：论文完整算法与V29截断混淆
+
+after：分开basic/augmented/factorized，标记恒等式、截断、适用条件及证据
+
+状态：partial_mapping
+
+诊断结论：Initial primary-paper section and frozen official-code/local evidence mapping; complete algorithm correspondence and reproduction remain pending；算法分数前后不适用。
+
+- [PAPER_M01_MAPPING_2026-10-12.md](../../experiments/phase2/PAPER_M01_MAPPING_2026-10-12.md)
+
+### v30.065 O03 K211完整来源抵消一致性
+
+before：组合部件分别通过
+
+after：一次完整非线性核心生产逐层对照
+
+状态：partial_diagnostic
+
+诊断结论：Completeold/birth/pK211/meanK111/CovCov joint finite-distributionalgebra exact; official matchedbudgetproduction parity pending；算法分数前后不适用。
+
+- [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
+- [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
+- [ablation_v30_065_relu_merged_source_weight.json](../../results/phase2/ablation_v30_065_relu_merged_source_weight.json)
+- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
+
+### v30.067 O05 完整K31/K211生产核的离线表示上限
+
+before：Goff=layer lambda*Coff
+
+after：完整production Gnew与regen G成对诊断
+
+状态：partial_diagnostic
+
+诊断结论：Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending；算法分数前后不适用。
+
+- [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
+- [ablation_v30_067_r02_full_k31_charged_component.json](../../results/phase2/ablation_v30_067_r02_full_k31_charged_component.json)
+- [ablation_v30_067_r03_full_k211_charged_component.json](../../results/phase2/ablation_v30_067_r03_full_k211_charged_component.json)
+- [ablation_v30_067_r04_blocked_k211_charged_component.json](../../results/phase2/ablation_v30_067_r04_blocked_k211_charged_component.json)
+- [ablation_v30_067_r05_cp_input_k211_charged_component.json](../../results/phase2/ablation_v30_067_r05_cp_input_k211_charged_component.json)
+- [ablation_v30_067_r06_p3_wick_charged.json](../../results/phase2/ablation_v30_067_r06_p3_wick_charged.json)
+- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
+- [ablation_v30_067_r08_p3_derivative_contract.json](../../results/phase2/ablation_v30_067_r08_p3_derivative_contract.json)
+
+### v30.068 O06 完整生产核单层替换诊断
+
+before：全部层lambda核
+
+after：预先指定单层完整production核
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.045 H15 历史K3来源生成K211 capped低rank核心
+
+before：当前g_prev只由K4和K22对角汇总，offdiag由lambda*C代理
+
+after：从actual historical K3 sources求K211 capped，再保留明确lowrank core residual
+
+状态：partial_derivation
+
+诊断结论：CP fullcontractionrank and distinctcap corrections checked; diagonalexclusion may makematrixfullrank; fullproduction/candidate pending；算法分数前后不适用。
+
+- [ablation_v30_045_source_cap_rank_bound.json](../../results/phase2/ablation_v30_045_source_cap_rank_bound.json)
+- [ablation_v30_045_radial_capped_contract.json](../../results/phase2/ablation_v30_045_radial_capped_contract.json)
+- [ablation_v30_045_weighted_cp_cap_component.json](../../results/phase2/ablation_v30_045_weighted_cp_cap_component.json)
+
+### v30.046 H16 actual K31低rank核心残差
+
+before：lambda*C代理offdiag core
+
+after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
+
+状态：partial_derivation
+
+诊断结论：ExactK31conversion/projectioncoeff; actualproduction/proxyremoval pending；算法分数前后不适用。
+
+- [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
+- [ablation_v30_046_gaussian_core_projection.json](../../results/phase2/ablation_v30_046_gaussian_core_projection.json)
+- [ablation_v30_046_k31_legal_component.json](../../results/phase2/ablation_v30_046_k31_legal_component.json)
+
+### v30.051 H21 恢复非对角metric的K4到K3 feed
+
+before：mean diagonal metric下上游某feed项为零
+
+after：使用Moff恢复该被零化feed来源
+
+状态：partial_derivation
+
+诊断结论：Official three-factor1/4,1,1/4 matches direct distinct K211 Wick feed; repeat/boundedrank/cost integration pending；算法分数前后不适用。
+
+- [ablation_v30_051_nondiagonal_feed_contract.json](../../results/phase2/ablation_v30_051_nondiagonal_feed_contract.json)
+- [ablation_v30_051_feed_repeat_transport.json](../../results/phase2/ablation_v30_051_feed_repeat_transport.json)
+
+### v30.114 L19 独立参考两次采样一致性
+
+before：官方十亿样本reference只有单份，条件噪声proxy不能当误差地板。
+
+after：在新生成少量确认网络上制作两份互不重叠输入种子的独立reference。
+
+状态：partial_derivation
+
+诊断结论：CPU/reference sample uncertainty budget planned; actual two-reference sampling pending；算法分数前后不适用。
+
+- [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
+- [ablation_v30_114_reference_cpu_pilot.json](../../results/phase2/ablation_v30_114_reference_cpu_pilot.json)
+- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
+- [ablation_v30_114_r02_antithetic_pilot.json](../../results/phase2/ablation_v30_114_r02_antithetic_pilot.json)
+
+### v30.091 O29 高阶校正信号与reference不确定性的分离
+
+before：gain与noise proxy混用
+
+after：paired候选信号和reference误差分离账本
+
+状态：partial_diagnostic
+
+诊断结论：Candidate delta prediction RMS measured without labels; paired independent strong references still absent, noise separation unfulfilled；算法分数前后不适用。
+
+- [ablation_v30_091_h22_prediction_signal.json](../../results/phase2/ablation_v30_091_h22_prediction_signal.json)
+
+### v30.115 L20 新种子网络最终独立确认
+
+before：公共IDs8–15仅是项目内保留集，上游是否使用未知。
+
+after：候选及配置冻结后生成预注册未见种子网络，候选与上一冻结基线成对评分。
+
+状态：partial_diagnostic
+
+诊断结论：Newweight/grader/reference streams and officialHe generation protocol frozen; strongreferencegeneration and independentpairedscore pending；算法分数前后不适用。
+
+- [ablation_v30_115_independent_protocol.json](../../results/phase2/ablation_v30_115_independent_protocol.json)
+- [ablation_v30_115_independent_weights.json](../../results/phase2/ablation_v30_115_independent_weights.json)
+- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
+
+### paper.M02.r01 M02 Wright2024完整精确高斯协方差
+
+before：教学gain covariance和D02仅11替换
+
+after：完整K2及V29 pair替换两个独立对照，复用D02/D04数学证据
+
+状态：partial_diagnostic
+
+诊断结论：network0 adjusted4.0572690522822087e-7 raw4.057269052282209e-6 zero failures, inferior to V29; convergence and complete method audit remain pending；算法分数前后不适用。
+
+- [paper_m02_r01_mini1.json](../../results/phase2/paper_m02_r01_mini1.json)
+- [paper_m02_r01_mini1.manifest.json](../../results/phase2/paper_m02_r01_mini1.manifest.json)
+
+### v30.058 H28 再生core对角和offdiag联合对象闭合
+
+before：diag由K4/K22，offdiag由lambda*C分别给出
+
+after：从同一个可计算selected production object产生两部分
+
+状态：partial_derivation
+
+诊断结论：Jointcore transport contract; selectednonlinearobject/candidate pending；算法分数前后不适用。
+
+- [ablation_v30_058_joint_core_closure.json](../../results/phase2/ablation_v30_058_joint_core_closure.json)
+- [ablation_v30_058_core_projection_component.json](../../results/phase2/ablation_v30_058_core_projection_component.json)
+
+### v30.044 H14 B2两步输出导向收缩
+
+before：B2完全缺失
+
+after：运输指定下一两层mean/variance敏感收缩而不保存完整B2
+
+状态：partial_derivation
+
+诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+
+- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
+
+### v30.053 H23 old-source basis按K21收缩能源选择
+
+before：old basis按sum leg*leg^T Gram
+
+after：同rank和age按legal current K21-contraction proxy选择basis
+
+状态：partial_derivation
+
+诊断结论：K21PSD operator checked; livestate/cost/score pending；算法分数前后不适用。
+
+- [ablation_v30_053_k21_psd_sketch.json](../../results/phase2/ablation_v30_053_k21_psd_sketch.json)
+
+### v30.120 L25 输出敏感性来源排序诊断
+
+before：AGE_OLD按年龄统一压缩；不知道每来源最终影响。
+
+after：用合法末端mean Jacobian代理估计来源贡献并排序，不看reference。
+
+状态：partial_derivation
+
+诊断结论：Mean adjoint and CPsource exactD3 contraction checked; full hub/repeat/covariance sensitivity and ranking still pending；算法分数前后不适用。
+
+- [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
+- [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
+- [ablation_v30_120_coupled_gaussian_jacobian.json](../../results/phase2/ablation_v30_120_coupled_gaussian_jacobian.json)
+- [ablation_v30_120_variance_derivative_grid.json](../../results/phase2/ablation_v30_120_variance_derivative_grid.json)
+
+### v30.121 L26 输出敏感性来源预算分配
+
+before：每个老来源相同年龄阈值与固定共享秩。
+
+after：总预算不变，按照已验证L25代理把高影响来源保留dense，其余更早压缩。
+
+状态：partial_derivation
+
+诊断结论：Fixed2slot surrogate rule exact; livesourcefeedback/eviction/score pending；算法分数前后不适用。
+
+- [ablation_v30_121_output_budget_rule.json](../../results/phase2/ablation_v30_121_output_budget_rule.json)
+
+### v30.055 H25 Rres新增解析可分leading项
+
+before：Rres=S21-S_sep统一rank16近似
+
+after：从已知生产表提取一个准确第二leading separable项；余项仍rank16
+
+状态：partial_derivation
+
+诊断结论：TwoD3column separableterms exact; fullproductionrepeatcoverage pending；算法分数前后不适用。
+
+- [ablation_v30_055_second_separable_term.json](../../results/phase2/ablation_v30_055_second_separable_term.json)
+
+### v30.056 H26 Rres物理机制分组basis
+
+before：Gaussian/K3/K4影响混入单一Rres后QR
+
+after：固定总rank16，对三类已明确分解来源形成统一合成basis
+
+状态：partial_derivation
+
+诊断结论：GroupedPSD fixedtotalrank contract; actualRresmechanismdecomposition pending；算法分数前后不适用。
+
+- [ablation_v30_056_grouped_basis_contract.json](../../results/phase2/ablation_v30_056_grouped_basis_contract.json)
+
+### v30.059 H29 K111乘covariance边新来源
+
+before：当前factored source过滤或剪枝缺部分mixed K3+edge diagram
+
+after：恢复一个明确vector partition轨道的mixed新born source
+
+状态：partial_derivation
+
+诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
+
+- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
+- [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
+- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
+- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
+- [ablation_v30_059_r03_mixed_coverage_audit.json](../../results/phase2/ablation_v30_059_r03_mixed_coverage_audit.json)
+- [ablation_v30_067_r07_cp_k111_charged_component.json](../../results/phase2/ablation_v30_067_r07_cp_k111_charged_component.json)
+- [ablation_v30_059_r04_real_source_columns.json](../../results/phase2/ablation_v30_059_r04_real_source_columns.json)
+- [ablation_v30_059_r05_layer14_real_source_columns.json](../../results/phase2/ablation_v30_059_r05_layer14_real_source_columns.json)
+- [ablation_v30_059_r06_real_layer14_edge_signal.json](../../results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json)
+- [ablation_v30_059_r08_subset_decision.json](../../results/phase2/ablation_v30_059_r08_subset_decision.json)
+- [ablation_v30_059_r08_subset_contract.json](../../results/phase2/ablation_v30_059_r08_subset_contract.json)
+- [ablation_v30_059_r08_subset_mini1.json](../../results/phase2/ablation_v30_059_r08_subset_mini1.json)
+- [ablation_v30_059_r10_subset_decision.json](../../results/phase2/ablation_v30_059_r10_subset_decision.json)
+- [ablation_v30_059_r10_subset_contract.json](../../results/phase2/ablation_v30_059_r10_subset_contract.json)
+
+### v30.060 H30 K111乘covariance边一层收缩
+
+before：同H29 mixed来源缺失
+
+after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
+
+状态：partial_derivation
+
+诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+
+- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
+- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
+- [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
+- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
+- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
+
+### v30.062 H32 高阶newborn直接CP因素生成
+
+before：fully mixed K4/highorder未保留
+
+after：直接从current state和Gaussian diagram生成固定数量CP factors供historical transport
+
+状态：partial_derivation
+
+诊断结论：DirectCP tree factors exact but nR² rankgrowth; fixedboundedrank/state/cost candidate gate pending；算法分数前后不适用。
+
+- [ablation_v30_062_direct_cp_birth.json](../../results/phase2/ablation_v30_062_direct_cp_birth.json)
+- [ablation_v30_062_cp_cost_gate.json](../../results/phase2/ablation_v30_062_cp_cost_gate.json)
+
+### v30.034 H04 精确Gaussian pair核替换
+
+before：纯Gaussian pair使用有限Hermite系列
+
+after：用原始Gaussian ReLU幂矩核的合法在线插值替换pK11/pK21/pK22纯Gaussian部分
+
+状态：partial_derivation
+
+诊断结论：Actualnetwork0layer14 standardized pairgap measured257fixedpairs: rho max.597694, Gaussian11/21/22 gap RMS1.54e-5/2.96e-5/6.21e-5, quadrature delta<6.2e-12; pureGaussian terms isolated as order1+2 from TERM_SPECS. Legal nonzeroalpha fullreplacement pending, not completed.；算法分数前后不适用。
+
+- [ablation_h04_pair_gap.json](../../results/phase2/ablation_h04_pair_gap.json)
+- [ablation_v30_034_nonzero_pair_contract.json](../../results/phase2/ablation_v30_034_nonzero_pair_contract.json)
+- [ablation_v30_034_r02_actual_pair_gap.json](../../results/phase2/ablation_v30_034_r02_actual_pair_gap.json)
+
+### v30.035 H05 Gaussian pair尾项有理重求和
+
+before：pure covariance pair finite polynomial
+
+after：加入由Gaussian核解析系数约束的rational tail，同时保持已知低阶项
+
+状态：partial_derivation
+
+诊断结论：Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_035_pair_tail_pade.json](../../results/phase2/ablation_v30_035_pair_tail_pade.json)
+- [ablation_v30_035_r02_zeroalpha_decision.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_decision.json)
+- [ablation_v30_035_r02_zeroalpha_charged_contract.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_charged_contract.json)
+- [ablation_v30_035_r02_zeroalpha_subset_mini1.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_subset_mini1.json)
+
+### v30.037 H07 WK22到B1出生来源恢复
+
+before：B1删除上游d(w3)*WK22*d(w2)类项
+
+after：仅恢复该出生项并扣除其已重复dslices
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
+- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
+- [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
+- [ablation_v30_037_r02_subset_mini1.json](../../results/phase2/ablation_v30_037_r02_subset_mini1.json)
+- [ablation_v30_037_r02_subset_decision.json](../../results/phase2/ablation_v30_037_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_037_r03_full_mini1.json](../../results/phase2/ablation_v30_037_r03_full_mini1.json)
+
+### v30.038 H08 B1的WK12对称反馈恢复
+
+before：V29只保留部分D21 thin feedback
+
+after：补充上游B1中d(w2)*WK12*d(w2)缺失部分
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_038_r02_feedback_overlap.json](../../results/phase2/ablation_v30_038_r02_feedback_overlap.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_038_r03_subset_mini1.json](../../results/phase2/ablation_v30_038_r03_subset_mini1.json)
+- [ablation_v30_038_r04_subset_mini1.json](../../results/phase2/ablation_v30_038_r04_subset_mini1.json)
+- [ablation_v30_038_r04_subset_decision.json](../../results/phase2/ablation_v30_038_r04_subset_decision.json)
+- [ablation_v30_038_r06_full_mini1.json](../../results/phase2/ablation_v30_038_r06_full_mini1.json)
+
+### v30.039 H09 B2 leading D21乘C来源恢复
+
+before：B2出生整体DS-shadow
+
+after：仅恢复WK12乘WK11 leading hub，移除其重复出生dslices
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_039_r02_subset_mini1.json](../../results/phase2/ablation_v30_039_r02_subset_mini1.json)
+- [ablation_v30_039_r02_subset_decision.json](../../results/phase2/ablation_v30_039_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_039_r03_full_mini1.json](../../results/phase2/ablation_v30_039_r03_full_mini1.json)
+- [ablation_v30_039_r04_full_mini1.json](../../results/phase2/ablation_v30_039_r04_full_mini1.json)
+- [ablation_v30_039_r05_full_mini1.json](../../results/phase2/ablation_v30_039_r05_full_mini1.json)
+
+### v30.040 H10 B2 WK22乘C来源恢复
+
+before：B2的WK22乘WK11 fully mixed channel缺失
+
+after：仅恢复该channel而保留B2其他shadow
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
+- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
+- [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
+- [ablation_v30_040_r02_subset_mini1.json](../../results/phase2/ablation_v30_040_r02_subset_mini1.json)
+- [ablation_v30_040_r02_subset_decision.json](../../results/phase2/ablation_v30_040_r02_subset_decision.json)
+
+### v30.041 H11 B2 D21平方来源恢复
+
+before：B2的WK12乘WK21等D21产品shadow
+
+after：只恢复D21-square symmetric source
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_041_r02_subset_mini1.json](../../results/phase2/ablation_v30_041_r02_subset_mini1.json)
+- [ablation_v30_041_r02_subset_decision.json](../../results/phase2/ablation_v30_041_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+
+### v30.042 H12 B2 WK22乘D21来源恢复
+
+before：B2高阶mixed birth shadow
+
+after：只恢复WK22乘D21来源轨道
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_042_r02_subset_mini1.json](../../results/phase2/ablation_v30_042_r02_subset_mini1.json)
+- [ablation_v30_042_r02_subset_decision.json](../../results/phase2/ablation_v30_042_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+
+### v30.054 H24 old-source basis按下一层D3敏感方向选择
+
+before：腿Gram不区分mean敏感方向
+
+after：用next W和legal w(3,1)proxy reweight相同rank basis
+
+状态：partial_derivation
+
+诊断结论：Fixed downstream gate-weighted PSD residual objective contract; lawful gate estimate/full-state/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
+- [ablation_v30_054_r02_output_metric_mapping.json](../../results/phase2/ablation_v30_054_r02_output_metric_mapping.json)
+- [ablation_v30_054_d3_mean_coefficient.json](../../results/phase2/ablation_v30_054_d3_mean_coefficient.json)
+
+### v30.066 O04 旧lean与当前官方generator语义归因
+
+before：仅完成pair-output False/True diff
+
+after：完整source/output的exact factor inventory
+
+状态：partial_diagnostic
+
+诊断结论：Full dense output classes mapped against actual dynamic V29 tables:45 coefficient matches,19 missing,4 explicit products; proxy equivalence and capped/factored production individual audit pending；算法分数前后不适用。
+
+- [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
+- [ablation_v30_066_wick_gap_map.json](../../results/phase2/ablation_v30_066_wick_gap_map.json)
+- [ablation_v30_066_r02_dense_production_map.json](../../results/phase2/ablation_v30_066_r02_dense_production_map.json)
+- [ablation_v30_066_r03_lean_generator_semantics.json](../../results/phase2/ablation_v30_066_r03_lean_generator_semantics.json)
+
+### v30.069 O07 完整核对角修正非零性与候选
+
+before：gprev由K4+K22 rowsum
+
+after：加入由完整trace投影证明非零的对角修正
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.070 O08 完整production核仅USE替换
+
+before：USE wk431=lambda*Cpreoff
+
+after：USE wk431=完整production核运输结果
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.071 O09 完整production核仅FEED替换
+
+before：FEED X3使用regen diagonal+lambda
+
+after：FEED X3使用完整production核
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.072 O10 完整核剩余误差的state模态诊断
+
+before：单lambda mode
+
+after：增加预先定义state模态的离线解释力测量
+
+状态：partial_diagnostic
+
+诊断结论：Synthetic core residual spectrum50/90/99pct ranks recorded; actual official benchmark state prerequisite pending；算法分数前后不适用。
+
+- [ablation_v30_072_synthetic_core_modes.json](../../results/phase2/ablation_v30_072_synthetic_core_modes.json)
+
+### v30.075 O13 K111乘edge covariance主模态代理
+
+before：该mixed diagram遗漏
+
+after：使用live covariance主模态近似edge并保留K111来源
+
+状态：partial_derivation
+
+诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
+
+- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
+
+### v30.076 O14 K111乘edge代理误差门槛
+
+before：proxy仅通过代数
+
+after：proxy与exact收缩成对误差评估
+
+状态：partial_derivation
+
+诊断结论：Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending；算法分数前后不适用。
+
+- [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
+- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
+- [ablation_v30_076_weighted_output_error_bound.json](../../results/phase2/ablation_v30_076_weighted_output_error_bound.json)
+
+### v30.077 O15 doubled-edge早期来源贡献门槛
+
+before：已否证last-birth三matmul候选
+
+after：有界诊断早期birth跨层贡献
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticearlybirthD3signal only; actualnetworkcost/gain gate unmet；算法分数前后不适用。
+
+- [ablation_v30_077_doubled_edge_lifetime.json](../../results/phase2/ablation_v30_077_doubled_edge_lifetime.json)
+
+### v30.078 O16 covariance triangle exact多层small诊断
+
+before：仅低秩last-only阴性证据
+
+after：exact small triangle跨层传播
+
+状态：partial_diagnostic
+
+诊断结论：Exact distinct synthetic triangle three-layer transport; real benchmark signal/conversion/cost gate pending；算法分数前后不适用。
+
+- [ablation_v30_078_exact_triangle_transport.json](../../results/phase2/ablation_v30_078_exact_triangle_transport.json)
+
+### v30.080 O18 现有birth薄反馈乘积预算审计
+
+before：复合因子乘积未完整power-count
+
+after：每个出生乘积标明预算与重复补偿
+
+状态：partial_diagnostic
+
+诊断结论：All16 lean B1/B2 products power-counted; feedback*feedback cost4 exceedsaug3. Full V29 position/coef/isomorphism attribution and repeated compensation pending；算法分数前后不适用。
+
+- [ablation_v30_080_birth_power_inventory.json](../../results/phase2/ablation_v30_080_birth_power_inventory.json)
+- [ablation_v30_080_r02_b1_repeat_contract.json](../../results/phase2/ablation_v30_080_r02_b1_repeat_contract.json)
+
+### v30.081 O19 K5边缘生产闭合
+
+before：无独立K5状态
+
+after：经验证的选择性marginal K5生产
+
+状态：partial_derivation
+
+诊断结论：ExactGaussianReLUdegree5/6 marginal moment recurrence/quadrature verified; officialaugmented propagatedK5 closure still pending；算法分数前后不适用。
+
+- [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
+- [ablation_v30_081_k5_gaussian_marginal.json](../../results/phase2/ablation_v30_081_k5_gaussian_marginal.json)
+- [ablation_v30_081_r02_k5_charged_marginal.json](../../results/phase2/ablation_v30_081_r02_k5_charged_marginal.json)
+
+### v30.082 O20 K5独立边缘readout
+
+before：PK1无kappa5线性项
+
+after：PK1加入合法K5 marginal readout
+
+状态：partial_derivation
+
+诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
+
+- [ablation_v30_082_k5_readout_contract.json](../../results/phase2/ablation_v30_082_k5_readout_contract.json)
+- [ablation_v30_082_r02_w51_independent.json](../../results/phase2/ablation_v30_082_r02_w51_independent.json)
+- [ablation_v30_082_r02_gaussian_subset_mini1.json](../../results/phase2/ablation_v30_082_r02_gaussian_subset_mini1.json)
+- [ablation_v30_082_r02_subset_decision.json](../../results/phase2/ablation_v30_082_r02_subset_decision.json)
+- [ablation_v30_082_r03_gaussian_subset_mini8.json](../../results/phase2/ablation_v30_082_r03_gaussian_subset_mini8.json)
+- [ablation_v30_082_r03_subset_decision.json](../../results/phase2/ablation_v30_082_r03_subset_decision.json)
+- [ablation_v30_082_r06_paired_decision.json](../../results/phase2/ablation_v30_082_r06_paired_decision.json)
+- [ablation_v30_082_r06_paired_v29_mini8.json](../../results/phase2/ablation_v30_082_r06_paired_v29_mini8.json)
+- [ablation_v30_082_r05_rpc_scored.json](../../results/phase2/ablation_v30_082_r05_rpc_scored.json)
+
+### v30.083 O21 K6纯径向投影生产公式
+
+before：无K6channel
+
+after：完整可审计radial scalar生产定义
+
+状态：partial_derivation
+
+诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
+- [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
+- [ablation_v30_083_r02_k6_charged_marginal.json](../../results/phase2/ablation_v30_083_r02_k6_charged_marginal.json)
+
+### v30.084 O22 K6径向状态合法线性运输
+
+before：无K6运输
+
+after：加入radial harmonic state W运输
+
+状态：partial_derivation
+
+诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
+- [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
+- [ablation_v30_084_r02_charged_metric_transport.json](../../results/phase2/ablation_v30_084_r02_charged_metric_transport.json)
+
+### v30.085 O23 K6独立边缘readout
+
+before：PK1无kappa6线性项
+
+after：合法K6对角读入PK1
+
+状态：partial_derivation
+
+诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
+
+- [ablation_v30_085_k6_readout_contract.json](../../results/phase2/ablation_v30_085_k6_readout_contract.json)
+
+### v30.090 O28 新seed网络的diagram规模law核验
+
+before：只有fixed1024表规模预期
+
+after：预定width/seed上的state diagram rms law
+
+状态：partial_diagnostic
+
+诊断结论：First-layer fixed3width/3seed tree and edge scale measured; deep capped211 and 1024 validation pending；算法分数前后不适用。
+
+- [ablation_v30_090_diagram_width_law.json](../../results/phase2/ablation_v30_090_diagram_width_law.json)
+- [ablation_v30_090_r02_extended_width_law.json](../../results/phase2/ablation_v30_090_r02_extended_width_law.json)
+
+### v30.092 O30 新增图表array操作计量路径合同
+
+before：只运行small数值公式
+
+after：actual fnp路径日志与成本逐算子核验
+
+状态：partial_diagnostic
+
+诊断结论：Actual local fnp float32/64 out/copy/alias contracts checked; complete diagram and remote coverage pending；算法分数前后不适用。
+
+- [ablation_v30_092_new_operator_contract.json](../../results/phase2/ablation_v30_092_new_operator_contract.json)
+
+### v30.096 L01 冻结原轨迹特征缓存
+
+before：只有 aggregate 与逐层 MSE；没有可拟合的逐神经元内部特征缓存。
+
+after：新建 V29 诊断副本，保存原 13 特征、原预测和网络 ID；不改变预测公式。
+
+状态：partial_diagnostic
+
+诊断结论：Two samecycle trace vs2untracedcontrol networks tested: network0 exceedsrepeat envelope, network1within; pernetworkcostequal; full8stricttrace acceptance unfulfilled；算法分数前后不适用。
+
+- [ablation_v30_096_features_manifest.json](../../results/phase2/ablation_v30_096_features_manifest.json)
+- [ablation_v30_096_cache_pairing.json](../../results/phase2/ablation_v30_096_cache_pairing.json)
+- [ablation_v30_096_r02_untraced_control.json](../../results/phase2/ablation_v30_096_r02_untraced_control.json)
+- [ablation_v30_096_r03_samecycle_features_manifest.json](../../results/phase2/ablation_v30_096_r03_samecycle_features_manifest.json)
+
+### v30.097 L02 冻结网络级训练选择流程
+
+before：Mini8同时用于既有快筛；缺少修正器专用网络级选择协议。
+
+after：IDs0–7用leave-one-network-out；IDs8–15保留为一次公共确认集；另列新种子最终独立集。
+
+状态：partial_diagnostic
+
+诊断结论：Network-level leave-one-network-out selection frozen without reading confirmation targets; feature cache prerequisite L01 pending；算法分数前后不适用。
+
+- [ablation_v30_097_selection_protocol.json](../../results/phase2/ablation_v30_097_selection_protocol.json)
+- [ablation_v30_097_128_loo_source_audit.json](../../results/phase2/ablation_v30_097_128_loo_source_audit.json)
+
+### v30.111 L16 单前层修正递推注入
+
+before：验证的修正仅改变final输出，不改变内部状态。
+
+after：仅第8层将已验证修正写入mu，后续原V29递推。
+
+状态：partial_derivation
+
+诊断结论：87 central moment checks; translation preserves higher cumulants, mean-only reestimation needs explicit distribution model；算法分数前后不适用。
+
+- [ablation_v30_111_mean_shift_contract.json](../../results/phase2/ablation_v30_111_mean_shift_contract.json)
+- [ablation_v30_111_translation_state_contract.json](../../results/phase2/ablation_v30_111_translation_state_contract.json)
+
+### v30.112 L17 修正器特征删列归因
+
+before：某修正器整体改善，特征贡献未知。
+
+after：固定已选模型，逐次删除一个特征组再完整重拟合。
+
+状态：partial_diagnostic
+
+诊断结论：Five fixed group deletion networkLOO diagnostics on negative L03 parent done; reliable positive-parent gate unmet, original acceptance not complete；算法分数前后不适用。
+
+- [ablation_v30_112_negative_parent_deletion.json](../../results/phase2/ablation_v30_112_negative_parent_deletion.json)
+
+### v30.122 L27 来源删除负控制
+
+before：L25代理有排序，但没有相同成本的随机删除对照。
+
+after：固定输入权重确定性hash选一来源删除，保留其余机制。
+
+状态：partial_derivation
+
+诊断结论：WholeCPsource and repeat deletion consistent; livecompressedstate/score pending；算法分数前后不适用。
+
+- [ablation_v30_122_source_deletion_contract.json](../../results/phase2/ablation_v30_122_source_deletion_contract.json)
+- [ablation_v30_122_projected_eviction_contract.json](../../results/phase2/ablation_v30_122_projected_eviction_contract.json)
+- [ablation_v30_122_basis_reselection_repeats.json](../../results/phase2/ablation_v30_122_basis_reselection_repeats.json)
+
+### v30.123 L28 末端均值控制变量相关性
+
+before：未确认廉价样本支路能解释V29残差。
+
+after：在少量开发网络离线测合法低阶代理与真实输出样本的残差相关性。
+
+状态：partial_derivation
+
+诊断结论：Fixed train/held control-variate variance/cost gate derived; actualknown-expectation networkproxy and pairedsignals pending；算法分数前后不适用。
+
+- [ablation_v30_122_control_variate_budget.json](../../results/phase2/ablation_v30_122_control_variate_budget.json)
 
 ### v30.001 C01 递归限制C_pre上三角输出
 
@@ -618,35 +1366,6 @@ after：建立实际逐产品差异表并用独立多项式oracle判断差异是
 
 - [ablation_v30_033_inventory.json](../../results/phase2/ablation_v30_033_inventory.json)
 
-### v30.034 H04 精确Gaussian pair核替换
-
-before：纯Gaussian pair使用有限Hermite系列
-
-after：用原始Gaussian ReLU幂矩核的合法在线插值替换pK11/pK21/pK22纯Gaussian部分
-
-状态：partial_derivation
-
-诊断结论：Actualnetwork0layer14 standardized pairgap measured257fixedpairs: rho max.597694, Gaussian11/21/22 gap RMS1.54e-5/2.96e-5/6.21e-5, quadrature delta<6.2e-12; pureGaussian terms isolated as order1+2 from TERM_SPECS. Legal nonzeroalpha fullreplacement pending, not completed.；算法分数前后不适用。
-
-- [ablation_h04_pair_gap.json](../../results/phase2/ablation_h04_pair_gap.json)
-- [ablation_v30_034_nonzero_pair_contract.json](../../results/phase2/ablation_v30_034_nonzero_pair_contract.json)
-- [ablation_v30_034_r02_actual_pair_gap.json](../../results/phase2/ablation_v30_034_r02_actual_pair_gap.json)
-
-### v30.035 H05 Gaussian pair尾项有理重求和
-
-before：pure covariance pair finite polynomial
-
-after：加入由Gaussian核解析系数约束的rational tail，同时保持已知低阶项
-
-状态：partial_derivation
-
-诊断结论：Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending；算法分数前后不适用。
-
-- [ablation_v30_035_pair_tail_pade.json](../../results/phase2/ablation_v30_035_pair_tail_pade.json)
-- [ablation_v30_035_r02_zeroalpha_decision.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_decision.json)
-- [ablation_v30_035_r02_zeroalpha_charged_contract.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_charged_contract.json)
-- [ablation_v30_035_r02_zeroalpha_subset_mini1.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_subset_mini1.json)
-
 ### v30.036 H06 未剪枝SIMPLE生产表恢复
 
 before：V29主体62项剪枝表
@@ -667,108 +1386,6 @@ after：恢复固定生成器的未剪枝SIMPLE生产表，其余闭合不变
 - [ablation_v30_036_r05_historical_dependencies.json](../../results/phase2/ablation_v30_036_r05_historical_dependencies.json)
 - [ablation_v30_036_r06_exact_table_contract.json](../../results/phase2/ablation_v30_036_r06_exact_table_contract.json)
 
-### v30.037 H07 WK22到B1出生来源恢复
-
-before：B1删除上游d(w3)*WK22*d(w2)类项
-
-after：仅恢复该出生项并扣除其已重复dslices
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
-- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
-- [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
-- [ablation_v30_037_r02_subset_mini1.json](../../results/phase2/ablation_v30_037_r02_subset_mini1.json)
-- [ablation_v30_037_r02_subset_decision.json](../../results/phase2/ablation_v30_037_r02_subset_decision.json)
-- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
-- [ablation_v30_037_r03_full_mini1.json](../../results/phase2/ablation_v30_037_r03_full_mini1.json)
-
-### v30.038 H08 B1的WK12对称反馈恢复
-
-before：V29只保留部分D21 thin feedback
-
-after：补充上游B1中d(w2)*WK12*d(w2)缺失部分
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_v30_038_r02_feedback_overlap.json](../../results/phase2/ablation_v30_038_r02_feedback_overlap.json)
-- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
-- [ablation_v30_038_r03_subset_mini1.json](../../results/phase2/ablation_v30_038_r03_subset_mini1.json)
-- [ablation_v30_038_r04_subset_mini1.json](../../results/phase2/ablation_v30_038_r04_subset_mini1.json)
-- [ablation_v30_038_r04_subset_decision.json](../../results/phase2/ablation_v30_038_r04_subset_decision.json)
-- [ablation_v30_038_r06_full_mini1.json](../../results/phase2/ablation_v30_038_r06_full_mini1.json)
-
-### v30.039 H09 B2 leading D21乘C来源恢复
-
-before：B2出生整体DS-shadow
-
-after：仅恢复WK12乘WK11 leading hub，移除其重复出生dslices
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_v30_039_r02_subset_mini1.json](../../results/phase2/ablation_v30_039_r02_subset_mini1.json)
-- [ablation_v30_039_r02_subset_decision.json](../../results/phase2/ablation_v30_039_r02_subset_decision.json)
-- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
-- [ablation_v30_039_r03_full_mini1.json](../../results/phase2/ablation_v30_039_r03_full_mini1.json)
-- [ablation_v30_039_r04_full_mini1.json](../../results/phase2/ablation_v30_039_r04_full_mini1.json)
-- [ablation_v30_039_r05_full_mini1.json](../../results/phase2/ablation_v30_039_r05_full_mini1.json)
-
-### v30.040 H10 B2 WK22乘C来源恢复
-
-before：B2的WK22乘WK11 fully mixed channel缺失
-
-after：仅恢复该channel而保留B2其他shadow
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
-- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
-- [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
-- [ablation_v30_040_r02_subset_mini1.json](../../results/phase2/ablation_v30_040_r02_subset_mini1.json)
-- [ablation_v30_040_r02_subset_decision.json](../../results/phase2/ablation_v30_040_r02_subset_decision.json)
-
-### v30.041 H11 B2 D21平方来源恢复
-
-before：B2的WK12乘WK21等D21产品shadow
-
-after：只恢复D21-square symmetric source
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_v30_041_r02_subset_mini1.json](../../results/phase2/ablation_v30_041_r02_subset_mini1.json)
-- [ablation_v30_041_r02_subset_decision.json](../../results/phase2/ablation_v30_041_r02_subset_decision.json)
-- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
-
-### v30.042 H12 B2 WK22乘D21来源恢复
-
-before：B2高阶mixed birth shadow
-
-after：只恢复WK22乘D21来源轨道
-
-状态：partial_derivation
-
-诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
-
-- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
-- [ablation_v30_042_r02_subset_mini1.json](../../results/phase2/ablation_v30_042_r02_subset_mini1.json)
-- [ablation_v30_042_r02_subset_decision.json](../../results/phase2/ablation_v30_042_r02_subset_decision.json)
-- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
-
 ### v30.043 H13 B2保留一次线性运输再shadow
 
 before：B2从出生就删除
@@ -786,47 +1403,6 @@ after：保留完整指定B2 newborn one transition，随后仅保留其已产�
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
 - [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
 - [ablation_v30_043_r03_mini1.json](../../results/phase2/ablation_v30_043_r03_mini1.json)
-
-### v30.044 H14 B2两步输出导向收缩
-
-before：B2完全缺失
-
-after：运输指定下一两层mean/variance敏感收缩而不保存完整B2
-
-状态：partial_derivation
-
-诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
-
-- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
-- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
-
-### v30.045 H15 历史K3来源生成K211 capped低rank核心
-
-before：当前g_prev只由K4和K22对角汇总，offdiag由lambda*C代理
-
-after：从actual historical K3 sources求K211 capped，再保留明确lowrank core residual
-
-状态：partial_derivation
-
-诊断结论：CP fullcontractionrank and distinctcap corrections checked; diagonalexclusion may makematrixfullrank; fullproduction/candidate pending；算法分数前后不适用。
-
-- [ablation_v30_045_source_cap_rank_bound.json](../../results/phase2/ablation_v30_045_source_cap_rank_bound.json)
-- [ablation_v30_045_radial_capped_contract.json](../../results/phase2/ablation_v30_045_radial_capped_contract.json)
-- [ablation_v30_045_weighted_cp_cap_component.json](../../results/phase2/ablation_v30_045_weighted_cp_cap_component.json)
-
-### v30.046 H16 actual K31低rank核心残差
-
-before：lambda*C代理offdiag core
-
-after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
-
-状态：partial_derivation
-
-诊断结论：ExactK31conversion/projectioncoeff; actualproduction/proxyremoval pending；算法分数前后不适用。
-
-- [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
-- [ablation_v30_046_gaussian_core_projection.json](../../results/phase2/ablation_v30_046_gaussian_core_projection.json)
-- [ablation_v30_046_k31_legal_component.json](../../results/phase2/ablation_v30_046_k31_legal_component.json)
 
 ### v30.047 H17 Gaussian K211完整二阶矩阵核心
 
@@ -901,19 +1477,6 @@ predict=28.545874s；residual=0.241713s；FLOPs=683954591727；peak child RSS=39
 - [ablation_v30_050_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_050_r01_mini1_local.launcher.log)
 - [ablation_v30_050_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_050_r01_mini1_local.validate.log)
 
-### v30.051 H21 恢复非对角metric的K4到K3 feed
-
-before：mean diagonal metric下上游某feed项为零
-
-after：使用Moff恢复该被零化feed来源
-
-状态：partial_derivation
-
-诊断结论：Official three-factor1/4,1,1/4 matches direct distinct K211 Wick feed; repeat/boundedrank/cost integration pending；算法分数前后不适用。
-
-- [ablation_v30_051_nondiagonal_feed_contract.json](../../results/phase2/ablation_v30_051_nondiagonal_feed_contract.json)
-- [ablation_v30_051_feed_repeat_transport.json](../../results/phase2/ablation_v30_051_feed_repeat_transport.json)
-
 ### v30.052 H22 D21反馈basis输出敏感sketch
 
 before：D21 feedback sketch用当前weight列
@@ -933,56 +1496,6 @@ after：相同rank16下改用未来一两层weight和live average ReLU gate构�
 - [ablation_v30_052_r03_mini8_local.validate.log](../../results/phase2/ablation_v30_052_r03_mini8_local.validate.log)
 - [ablation_v30_052_r04_mini8_rpc_scored.json](../../results/phase2/ablation_v30_052_r04_mini8_rpc_scored.json)
 
-### v30.053 H23 old-source basis按K21收缩能源选择
-
-before：old basis按sum leg*leg^T Gram
-
-after：同rank和age按legal current K21-contraction proxy选择basis
-
-状态：partial_derivation
-
-诊断结论：K21PSD operator checked; livestate/cost/score pending；算法分数前后不适用。
-
-- [ablation_v30_053_k21_psd_sketch.json](../../results/phase2/ablation_v30_053_k21_psd_sketch.json)
-
-### v30.054 H24 old-source basis按下一层D3敏感方向选择
-
-before：腿Gram不区分mean敏感方向
-
-after：用next W和legal w(3,1)proxy reweight相同rank basis
-
-状态：partial_derivation
-
-诊断结论：Fixed downstream gate-weighted PSD residual objective contract; lawful gate estimate/full-state/candidate/cost pending；算法分数前后不适用。
-
-- [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
-- [ablation_v30_054_r02_output_metric_mapping.json](../../results/phase2/ablation_v30_054_r02_output_metric_mapping.json)
-- [ablation_v30_054_d3_mean_coefficient.json](../../results/phase2/ablation_v30_054_d3_mean_coefficient.json)
-
-### v30.055 H25 Rres新增解析可分leading项
-
-before：Rres=S21-S_sep统一rank16近似
-
-after：从已知生产表提取一个准确第二leading separable项；余项仍rank16
-
-状态：partial_derivation
-
-诊断结论：TwoD3column separableterms exact; fullproductionrepeatcoverage pending；算法分数前后不适用。
-
-- [ablation_v30_055_second_separable_term.json](../../results/phase2/ablation_v30_055_second_separable_term.json)
-
-### v30.056 H26 Rres物理机制分组basis
-
-before：Gaussian/K3/K4影响混入单一Rres后QR
-
-after：固定总rank16，对三类已明确分解来源形成统一合成basis
-
-状态：partial_derivation
-
-诊断结论：GroupedPSD fixedtotalrank contract; actualRresmechanismdecomposition pending；算法分数前后不适用。
-
-- [ablation_v30_056_grouped_basis_contract.json](../../results/phase2/ablation_v30_056_grouped_basis_contract.json)
-
 ### v30.057 H27 K3 newborn重复内容一致性oracle
 
 before：birth rep3/rep21从保留hub dslices定义，影子来源移入M
@@ -995,62 +1508,6 @@ after：独立逐类检查full mixed和repeated内容账是否一致，只有发
 
 - [ablation_v30_057_bookkeeping.json](../../results/phase2/ablation_v30_057_bookkeeping.json)
 - [source_birth_combination_algebra.json](../../results/phase2/source_birth_combination_algebra.json)
-
-### v30.058 H28 再生core对角和offdiag联合对象闭合
-
-before：diag由K4/K22，offdiag由lambda*C分别给出
-
-after：从同一个可计算selected production object产生两部分
-
-状态：partial_derivation
-
-诊断结论：Jointcore transport contract; selectednonlinearobject/candidate pending；算法分数前后不适用。
-
-- [ablation_v30_058_joint_core_closure.json](../../results/phase2/ablation_v30_058_joint_core_closure.json)
-- [ablation_v30_058_core_projection_component.json](../../results/phase2/ablation_v30_058_core_projection_component.json)
-
-### v30.059 H29 K111乘covariance边新来源
-
-before：当前factored source过滤或剪枝缺部分mixed K3+edge diagram
-
-after：恢复一个明确vector partition轨道的mixed新born source
-
-状态：partial_derivation
-
-诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
-
-- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
-- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
-- [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
-- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
-- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
-- [ablation_v30_059_r03_mixed_coverage_audit.json](../../results/phase2/ablation_v30_059_r03_mixed_coverage_audit.json)
-- [ablation_v30_067_r07_cp_k111_charged_component.json](../../results/phase2/ablation_v30_067_r07_cp_k111_charged_component.json)
-- [ablation_v30_059_r04_real_source_columns.json](../../results/phase2/ablation_v30_059_r04_real_source_columns.json)
-- [ablation_v30_059_r05_layer14_real_source_columns.json](../../results/phase2/ablation_v30_059_r05_layer14_real_source_columns.json)
-- [ablation_v30_059_r06_real_layer14_edge_signal.json](../../results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json)
-- [ablation_v30_059_r08_subset_decision.json](../../results/phase2/ablation_v30_059_r08_subset_decision.json)
-- [ablation_v30_059_r08_subset_contract.json](../../results/phase2/ablation_v30_059_r08_subset_contract.json)
-- [ablation_v30_059_r08_subset_mini1.json](../../results/phase2/ablation_v30_059_r08_subset_mini1.json)
-- [ablation_v30_059_r10_subset_decision.json](../../results/phase2/ablation_v30_059_r10_subset_decision.json)
-- [ablation_v30_059_r10_subset_contract.json](../../results/phase2/ablation_v30_059_r10_subset_contract.json)
-
-### v30.060 H30 K111乘covariance边一层收缩
-
-before：同H29 mixed来源缺失
-
-after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
-
-状态：partial_derivation
-
-诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
-
-- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
-- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
-- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
-- [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
-- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
-- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
 
 ### v30.061 H31 exact covariance triangle无偏收缩
 
@@ -1067,19 +1524,6 @@ after：用原始Coff的lawful random estimator估计exact alloutput triangle co
 - [ablation_v30_061_probe_cost_gate.json](../../results/phase2/ablation_v30_061_probe_cost_gate.json)
 - [ablation_v30_061_r02_charged_probe_contract.json](../../results/phase2/ablation_v30_061_r02_charged_probe_contract.json)
 - [ablation_v30_061_r03_actual_state_noise.json](../../results/phase2/ablation_v30_061_r03_actual_state_noise.json)
-
-### v30.062 H32 高阶newborn直接CP因素生成
-
-before：fully mixed K4/highorder未保留
-
-after：直接从current state和Gaussian diagram生成固定数量CP factors供historical transport
-
-状态：partial_derivation
-
-诊断结论：DirectCP tree factors exact but nR² rankgrowth; fixedboundedrank/state/cost candidate gate pending；算法分数前后不适用。
-
-- [ablation_v30_062_direct_cp_birth.json](../../results/phase2/ablation_v30_062_direct_cp_birth.json)
-- [ablation_v30_062_cp_cost_gate.json](../../results/phase2/ablation_v30_062_cp_cost_gate.json)
 
 ### v30.063 O01 官方K31截断生产逐项一致性
 
@@ -1104,115 +1548,6 @@ after：完整capped diagram生产与显式small tensor一致
 诊断结论：Independent bounded vector multiset enumeration vs official canonical diagram generator; base/augmented full/filter separated,24 smallshape comparisons maxerror1.0658e-14; excludes Torch factor kernel；算法分数前后不适用。
 
 - [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
-
-### v30.065 O03 K211完整来源抵消一致性
-
-before：组合部件分别通过
-
-after：一次完整非线性核心生产逐层对照
-
-状态：partial_diagnostic
-
-诊断结论：Completeold/birth/pK211/meanK111/CovCov joint finite-distributionalgebra exact; official matchedbudgetproduction parity pending；算法分数前后不适用。
-
-- [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
-- [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
-- [ablation_v30_065_relu_merged_source_weight.json](../../results/phase2/ablation_v30_065_relu_merged_source_weight.json)
-- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
-
-### v30.066 O04 旧lean与当前官方generator语义归因
-
-before：仅完成pair-output False/True diff
-
-after：完整source/output的exact factor inventory
-
-状态：partial_diagnostic
-
-诊断结论：Full dense output classes mapped against actual dynamic V29 tables:45 coefficient matches,19 missing,4 explicit products; proxy equivalence and capped/factored production individual audit pending；算法分数前后不适用。
-
-- [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
-- [ablation_v30_066_wick_gap_map.json](../../results/phase2/ablation_v30_066_wick_gap_map.json)
-- [ablation_v30_066_r02_dense_production_map.json](../../results/phase2/ablation_v30_066_r02_dense_production_map.json)
-- [ablation_v30_066_r03_lean_generator_semantics.json](../../results/phase2/ablation_v30_066_r03_lean_generator_semantics.json)
-
-### v30.067 O05 完整K31/K211生产核的离线表示上限
-
-before：Goff=layer lambda*Coff
-
-after：完整production Gnew与regen G成对诊断
-
-状态：partial_diagnostic
-
-诊断结论：Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending；算法分数前后不适用。
-
-- [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
-- [ablation_v30_067_r02_full_k31_charged_component.json](../../results/phase2/ablation_v30_067_r02_full_k31_charged_component.json)
-- [ablation_v30_067_r03_full_k211_charged_component.json](../../results/phase2/ablation_v30_067_r03_full_k211_charged_component.json)
-- [ablation_v30_067_r04_blocked_k211_charged_component.json](../../results/phase2/ablation_v30_067_r04_blocked_k211_charged_component.json)
-- [ablation_v30_067_r05_cp_input_k211_charged_component.json](../../results/phase2/ablation_v30_067_r05_cp_input_k211_charged_component.json)
-- [ablation_v30_067_r06_p3_wick_charged.json](../../results/phase2/ablation_v30_067_r06_p3_wick_charged.json)
-- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
-- [ablation_v30_067_r08_p3_derivative_contract.json](../../results/phase2/ablation_v30_067_r08_p3_derivative_contract.json)
-
-### v30.068 O06 完整生产核单层替换诊断
-
-before：全部层lambda核
-
-after：预先指定单层完整production核
-
-状态：partial_diagnostic
-
-诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
-
-- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
-
-### v30.069 O07 完整核对角修正非零性与候选
-
-before：gprev由K4+K22 rowsum
-
-after：加入由完整trace投影证明非零的对角修正
-
-状态：partial_diagnostic
-
-诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
-
-- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
-
-### v30.070 O08 完整production核仅USE替换
-
-before：USE wk431=lambda*Cpreoff
-
-after：USE wk431=完整production核运输结果
-
-状态：partial_diagnostic
-
-诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
-
-- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
-
-### v30.071 O09 完整production核仅FEED替换
-
-before：FEED X3使用regen diagonal+lambda
-
-after：FEED X3使用完整production核
-
-状态：partial_diagnostic
-
-诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
-
-- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
-
-### v30.072 O10 完整核剩余误差的state模态诊断
-
-before：单lambda mode
-
-after：增加预先定义state模态的离线解释力测量
-
-状态：partial_diagnostic
-
-诊断结论：Synthetic core residual spectrum50/90/99pct ranks recorded; actual official benchmark state prerequisite pending；算法分数前后不适用。
-
-- [ablation_v30_072_synthetic_core_modes.json](../../results/phase2/ablation_v30_072_synthetic_core_modes.json)
 
 ### v30.073 O11 K111乘covariance edge完整公式核验
 
@@ -1257,57 +1592,6 @@ after：证明exact复杂度和内存或给出反例
 - [O12_EXACT_COST_PROOF.md](../../experiments/phase2/O12_EXACT_COST_PROOF.md)
 - [ablation_v30_074_r18_shape_corrected_contract.json](../../results/phase2/ablation_v30_074_r18_shape_corrected_contract.json)
 
-### v30.075 O13 K111乘edge covariance主模态代理
-
-before：该mixed diagram遗漏
-
-after：使用live covariance主模态近似edge并保留K111来源
-
-状态：partial_derivation
-
-诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
-
-- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
-- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
-
-### v30.076 O14 K111乘edge代理误差门槛
-
-before：proxy仅通过代数
-
-after：proxy与exact收缩成对误差评估
-
-状态：partial_derivation
-
-诊断结论：Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending；算法分数前后不适用。
-
-- [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
-- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
-- [ablation_v30_076_weighted_output_error_bound.json](../../results/phase2/ablation_v30_076_weighted_output_error_bound.json)
-
-### v30.077 O15 doubled-edge早期来源贡献门槛
-
-before：已否证last-birth三matmul候选
-
-after：有界诊断早期birth跨层贡献
-
-状态：partial_diagnostic
-
-诊断结论：SyntheticearlybirthD3signal only; actualnetworkcost/gain gate unmet；算法分数前后不适用。
-
-- [ablation_v30_077_doubled_edge_lifetime.json](../../results/phase2/ablation_v30_077_doubled_edge_lifetime.json)
-
-### v30.078 O16 covariance triangle exact多层small诊断
-
-before：仅低秩last-only阴性证据
-
-after：exact small triangle跨层传播
-
-状态：partial_diagnostic
-
-诊断结论：Exact distinct synthetic triangle three-layer transport; real benchmark signal/conversion/cost gate pending；算法分数前后不适用。
-
-- [ablation_v30_078_exact_triangle_transport.json](../../results/phase2/ablation_v30_078_exact_triangle_transport.json)
-
 ### v30.079 O17 当前官方WK22 path与旧lean等价审计
 
 before：旧复合X/Y生产
@@ -1319,93 +1603,6 @@ after：逐diagram核对current official WK22路径
 诊断结论：Official budget3 and composite budget4 WK22 mechanisms differ; separate candidate needed；算法分数前后不适用。
 
 - [ablation_v30_079_wk22_budget_equivalence.json](../../results/phase2/ablation_v30_079_wk22_budget_equivalence.json)
-
-### v30.080 O18 现有birth薄反馈乘积预算审计
-
-before：复合因子乘积未完整power-count
-
-after：每个出生乘积标明预算与重复补偿
-
-状态：partial_diagnostic
-
-诊断结论：All16 lean B1/B2 products power-counted; feedback*feedback cost4 exceedsaug3. Full V29 position/coef/isomorphism attribution and repeated compensation pending；算法分数前后不适用。
-
-- [ablation_v30_080_birth_power_inventory.json](../../results/phase2/ablation_v30_080_birth_power_inventory.json)
-- [ablation_v30_080_r02_b1_repeat_contract.json](../../results/phase2/ablation_v30_080_r02_b1_repeat_contract.json)
-
-### v30.081 O19 K5边缘生产闭合
-
-before：无独立K5状态
-
-after：经验证的选择性marginal K5生产
-
-状态：partial_derivation
-
-诊断结论：ExactGaussianReLUdegree5/6 marginal moment recurrence/quadrature verified; officialaugmented propagatedK5 closure still pending；算法分数前后不适用。
-
-- [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
-- [ablation_v30_081_k5_gaussian_marginal.json](../../results/phase2/ablation_v30_081_k5_gaussian_marginal.json)
-- [ablation_v30_081_r02_k5_charged_marginal.json](../../results/phase2/ablation_v30_081_r02_k5_charged_marginal.json)
-
-### v30.082 O20 K5独立边缘readout
-
-before：PK1无kappa5线性项
-
-after：PK1加入合法K5 marginal readout
-
-状态：partial_derivation
-
-诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
-
-- [ablation_v30_082_k5_readout_contract.json](../../results/phase2/ablation_v30_082_k5_readout_contract.json)
-- [ablation_v30_082_r02_w51_independent.json](../../results/phase2/ablation_v30_082_r02_w51_independent.json)
-- [ablation_v30_082_r02_gaussian_subset_mini1.json](../../results/phase2/ablation_v30_082_r02_gaussian_subset_mini1.json)
-- [ablation_v30_082_r02_subset_decision.json](../../results/phase2/ablation_v30_082_r02_subset_decision.json)
-- [ablation_v30_082_r03_gaussian_subset_mini8.json](../../results/phase2/ablation_v30_082_r03_gaussian_subset_mini8.json)
-- [ablation_v30_082_r03_subset_decision.json](../../results/phase2/ablation_v30_082_r03_subset_decision.json)
-- [ablation_v30_082_r06_paired_decision.json](../../results/phase2/ablation_v30_082_r06_paired_decision.json)
-- [ablation_v30_082_r06_paired_v29_mini8.json](../../results/phase2/ablation_v30_082_r06_paired_v29_mini8.json)
-- [ablation_v30_082_r05_rpc_scored.json](../../results/phase2/ablation_v30_082_r05_rpc_scored.json)
-
-### v30.083 O21 K6纯径向投影生产公式
-
-before：无K6channel
-
-after：完整可审计radial scalar生产定义
-
-状态：partial_derivation
-
-诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
-
-- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
-- [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
-- [ablation_v30_083_r02_k6_charged_marginal.json](../../results/phase2/ablation_v30_083_r02_k6_charged_marginal.json)
-
-### v30.084 O22 K6径向状态合法线性运输
-
-before：无K6运输
-
-after：加入radial harmonic state W运输
-
-状态：partial_derivation
-
-诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
-
-- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
-- [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
-- [ablation_v30_084_r02_charged_metric_transport.json](../../results/phase2/ablation_v30_084_r02_charged_metric_transport.json)
-
-### v30.085 O23 K6独立边缘readout
-
-before：PK1无kappa6线性项
-
-after：合法K6对角读入PK1
-
-状态：partial_derivation
-
-诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
-
-- [ablation_v30_085_k6_readout_contract.json](../../results/phase2/ablation_v30_085_k6_readout_contract.json)
 
 ### v30.086 O24 高阶边缘同阶组合inventory
 
@@ -1460,43 +1657,6 @@ after：新分片state-only机制分布诊断
 - [ablation_v30_089_distribution_shift.json](../../results/phase2/ablation_v30_089_distribution_shift.json)
 - [ablation_v30_089_reserved_state_only.json](../../results/phase2/ablation_v30_089_reserved_state_only.json)
 
-### v30.090 O28 新seed网络的diagram规模law核验
-
-before：只有fixed1024表规模预期
-
-after：预定width/seed上的state diagram rms law
-
-状态：partial_diagnostic
-
-诊断结论：First-layer fixed3width/3seed tree and edge scale measured; deep capped211 and 1024 validation pending；算法分数前后不适用。
-
-- [ablation_v30_090_diagram_width_law.json](../../results/phase2/ablation_v30_090_diagram_width_law.json)
-- [ablation_v30_090_r02_extended_width_law.json](../../results/phase2/ablation_v30_090_r02_extended_width_law.json)
-
-### v30.091 O29 高阶校正信号与reference不确定性的分离
-
-before：gain与noise proxy混用
-
-after：paired候选信号和reference误差分离账本
-
-状态：partial_diagnostic
-
-诊断结论：Candidate delta prediction RMS measured without labels; paired independent strong references still absent, noise separation unfulfilled；算法分数前后不适用。
-
-- [ablation_v30_091_h22_prediction_signal.json](../../results/phase2/ablation_v30_091_h22_prediction_signal.json)
-
-### v30.092 O30 新增图表array操作计量路径合同
-
-before：只运行small数值公式
-
-after：actual fnp路径日志与成本逐算子核验
-
-状态：partial_diagnostic
-
-诊断结论：Actual local fnp float32/64 out/copy/alias contracts checked; complete diagram and remote coverage pending；算法分数前后不适用。
-
-- [ablation_v30_092_new_operator_contract.json](../../results/phase2/ablation_v30_092_new_operator_contract.json)
-
 ### v30.093 O31 完整K31生产对称化与轴方向合同
 
 before：K31方向未actual生产确认
@@ -1534,34 +1694,6 @@ after：完整生成G的actualW数值parity
 诊断结论：Six actualW fourth-order tensor transport versus G/M transport checks maxerror1.776e-15; marginals and trace checked; birth metric and transported metric differ；算法分数前后不适用。
 
 - [ablation_v30_095_actual_transport.json](../../results/phase2/ablation_v30_095_actual_transport.json)
-
-### v30.096 L01 冻结原轨迹特征缓存
-
-before：只有 aggregate 与逐层 MSE；没有可拟合的逐神经元内部特征缓存。
-
-after：新建 V29 诊断副本，保存原 13 特征、原预测和网络 ID；不改变预测公式。
-
-状态：partial_diagnostic
-
-诊断结论：Two samecycle trace vs2untracedcontrol networks tested: network0 exceedsrepeat envelope, network1within; pernetworkcostequal; full8stricttrace acceptance unfulfilled；算法分数前后不适用。
-
-- [ablation_v30_096_features_manifest.json](../../results/phase2/ablation_v30_096_features_manifest.json)
-- [ablation_v30_096_cache_pairing.json](../../results/phase2/ablation_v30_096_cache_pairing.json)
-- [ablation_v30_096_r02_untraced_control.json](../../results/phase2/ablation_v30_096_r02_untraced_control.json)
-- [ablation_v30_096_r03_samecycle_features_manifest.json](../../results/phase2/ablation_v30_096_r03_samecycle_features_manifest.json)
-
-### v30.097 L02 冻结网络级训练选择流程
-
-before：Mini8同时用于既有快筛；缺少修正器专用网络级选择协议。
-
-after：IDs0–7用leave-one-network-out；IDs8–15保留为一次公共确认集；另列新种子最终独立集。
-
-状态：partial_diagnostic
-
-诊断结论：Network-level leave-one-network-out selection frozen without reading confirmation targets; feature cache prerequisite L01 pending；算法分数前后不适用。
-
-- [ablation_v30_097_selection_protocol.json](../../results/phase2/ablation_v30_097_selection_protocol.json)
-- [ablation_v30_097_128_loo_source_audit.json](../../results/phase2/ablation_v30_097_128_loo_source_audit.json)
 
 ### v30.098 L03 最后层13特征残差线性修正
 
@@ -1736,31 +1868,6 @@ after：一个固定13→8→1 tanh小网络预测final残差。
 - [ablation_v30_110_gradient_contract.json](../../results/phase2/ablation_v30_110_gradient_contract.json)
 - [ablation_v30_110_tanh_legal_inference.json](../../results/phase2/ablation_v30_110_tanh_legal_inference.json)
 
-### v30.111 L16 单前层修正递推注入
-
-before：验证的修正仅改变final输出，不改变内部状态。
-
-after：仅第8层将已验证修正写入mu，后续原V29递推。
-
-状态：partial_derivation
-
-诊断结论：87 central moment checks; translation preserves higher cumulants, mean-only reestimation needs explicit distribution model；算法分数前后不适用。
-
-- [ablation_v30_111_mean_shift_contract.json](../../results/phase2/ablation_v30_111_mean_shift_contract.json)
-- [ablation_v30_111_translation_state_contract.json](../../results/phase2/ablation_v30_111_translation_state_contract.json)
-
-### v30.112 L17 修正器特征删列归因
-
-before：某修正器整体改善，特征贡献未知。
-
-after：固定已选模型，逐次删除一个特征组再完整重拟合。
-
-状态：partial_diagnostic
-
-诊断结论：Five fixed group deletion networkLOO diagnostics on negative L03 parent done; reliable positive-parent gate unmet, original acceptance not complete；算法分数前后不适用。
-
-- [ablation_v30_112_negative_parent_deletion.json](../../results/phase2/ablation_v30_112_negative_parent_deletion.json)
-
 ### v30.113 L18 残差条件可预测性上界
 
 before：只知道偏置oracle解释约0.46% MSE。
@@ -1774,35 +1881,6 @@ after：用开发网络级CV测13特征解释方差，给出达到10倍需约90%
 - [ablation_v30_113_predictability.json](../../results/phase2/ablation_v30_113_predictability.json)
 - [ablation_v30_113_r02_charged_predictability.json](../../results/phase2/ablation_v30_113_r02_charged_predictability.json)
 - [ablation_v30_098_r04_full_charged_cv.json](../../results/phase2/ablation_v30_098_r04_full_charged_cv.json)
-
-### v30.114 L19 独立参考两次采样一致性
-
-before：官方十亿样本reference只有单份，条件噪声proxy不能当误差地板。
-
-after：在新生成少量确认网络上制作两份互不重叠输入种子的独立reference。
-
-状态：partial_derivation
-
-诊断结论：CPU/reference sample uncertainty budget planned; actual two-reference sampling pending；算法分数前后不适用。
-
-- [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
-- [ablation_v30_114_reference_cpu_pilot.json](../../results/phase2/ablation_v30_114_reference_cpu_pilot.json)
-- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
-- [ablation_v30_114_r02_antithetic_pilot.json](../../results/phase2/ablation_v30_114_r02_antithetic_pilot.json)
-
-### v30.115 L20 新种子网络最终独立确认
-
-before：公共IDs8–15仅是项目内保留集，上游是否使用未知。
-
-after：候选及配置冻结后生成预注册未见种子网络，候选与上一冻结基线成对评分。
-
-状态：partial_diagnostic
-
-诊断结论：Newweight/grader/reference streams and officialHe generation protocol frozen; strongreferencegeneration and independentpairedscore pending；算法分数前后不适用。
-
-- [ablation_v30_115_independent_protocol.json](../../results/phase2/ablation_v30_115_independent_protocol.json)
-- [ablation_v30_115_independent_weights.json](../../results/phase2/ablation_v30_115_independent_weights.json)
-- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
 
 ### v30.116 L21 公共确认一次解封
 
@@ -1855,59 +1933,6 @@ after：计算e_l−Phi_l⊙(W_l@e_{l−1})的离线一阶残差。
 诊断结论：120 network/layer first-order residual transport decomposition; reference oracle only; nonlinear/reference noise caveat retained；算法分数前后不适用。
 
 - [ablation_v30_119_error_transport.json](../../results/phase2/ablation_v30_119_error_transport.json)
-
-### v30.120 L25 输出敏感性来源排序诊断
-
-before：AGE_OLD按年龄统一压缩；不知道每来源最终影响。
-
-after：用合法末端mean Jacobian代理估计来源贡献并排序，不看reference。
-
-状态：partial_derivation
-
-诊断结论：Mean adjoint and CPsource exactD3 contraction checked; full hub/repeat/covariance sensitivity and ranking still pending；算法分数前后不适用。
-
-- [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
-- [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
-- [ablation_v30_120_coupled_gaussian_jacobian.json](../../results/phase2/ablation_v30_120_coupled_gaussian_jacobian.json)
-- [ablation_v30_120_variance_derivative_grid.json](../../results/phase2/ablation_v30_120_variance_derivative_grid.json)
-
-### v30.121 L26 输出敏感性来源预算分配
-
-before：每个老来源相同年龄阈值与固定共享秩。
-
-after：总预算不变，按照已验证L25代理把高影响来源保留dense，其余更早压缩。
-
-状态：partial_derivation
-
-诊断结论：Fixed2slot surrogate rule exact; livesourcefeedback/eviction/score pending；算法分数前后不适用。
-
-- [ablation_v30_121_output_budget_rule.json](../../results/phase2/ablation_v30_121_output_budget_rule.json)
-
-### v30.122 L27 来源删除负控制
-
-before：L25代理有排序，但没有相同成本的随机删除对照。
-
-after：固定输入权重确定性hash选一来源删除，保留其余机制。
-
-状态：partial_derivation
-
-诊断结论：WholeCPsource and repeat deletion consistent; livecompressedstate/score pending；算法分数前后不适用。
-
-- [ablation_v30_122_source_deletion_contract.json](../../results/phase2/ablation_v30_122_source_deletion_contract.json)
-- [ablation_v30_122_projected_eviction_contract.json](../../results/phase2/ablation_v30_122_projected_eviction_contract.json)
-- [ablation_v30_122_basis_reselection_repeats.json](../../results/phase2/ablation_v30_122_basis_reselection_repeats.json)
-
-### v30.123 L28 末端均值控制变量相关性
-
-before：未确认廉价样本支路能解释V29残差。
-
-after：在少量开发网络离线测合法低阶代理与真实输出样本的残差相关性。
-
-状态：partial_derivation
-
-诊断结论：Fixed train/held control-variate variance/cost gate derived; actualknown-expectation networkproxy and pairedsignals pending；算法分数前后不适用。
-
-- [ablation_v30_122_control_variate_budget.json](../../results/phase2/ablation_v30_122_control_variate_budget.json)
 
 ### v30.124 L29 条件高斯最后层积分对照
 
@@ -1991,29 +2016,4 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 - [ablation_v30_129_current_score_ledger_r03.json](../../results/phase2/ablation_v30_129_current_score_ledger_r03.json)
 - [ablation_v30_129_r04_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r04_comprehensive_selection_ledger.json)
 - [ablation_v30_129_r05_queue_evidence_index.json](../../results/phase2/ablation_v30_129_r05_queue_evidence_index.json)
-
-### paper.M01.r01 M01 论文—官方代码—本地映射
-
-before：论文完整算法与V29截断混淆
-
-after：分开basic/augmented/factorized，标记恒等式、截断、适用条件及证据
-
-状态：partial_mapping
-
-诊断结论：Initial primary-paper section and frozen official-code/local evidence mapping; complete algorithm correspondence and reproduction remain pending；算法分数前后不适用。
-
-- [PAPER_M01_MAPPING_2026-10-12.md](../../experiments/phase2/PAPER_M01_MAPPING_2026-10-12.md)
-
-### paper.M02.r01 M02 Wright2024完整精确高斯协方差
-
-before：教学gain covariance和D02仅11替换
-
-after：完整K2及V29 pair替换两个独立对照，复用D02/D04数学证据
-
-状态：partial_diagnostic
-
-诊断结论：network0 adjusted4.0572690522822087e-7 raw4.057269052282209e-6 zero failures, inferior to V29; convergence and complete method audit remain pending；算法分数前后不适用。
-
-- [paper_m02_r01_mini1.json](../../results/phase2/paper_m02_r01_mini1.json)
-- [paper_m02_r01_mini1.manifest.json](../../results/phase2/paper_m02_r01_mini1.manifest.json)
 

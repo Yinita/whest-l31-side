@@ -4,7 +4,7 @@
   "pricing_source": "https://modal.com/pricing",
   "cpu_usd_per_physical_core_second": 1.31e-05,
   "memory_usd_per_gib_second": 2.22e-06,
-  "reserved_usd": 0.2,
+  "reserved_usd": 1.3,
   "billed_actual_usd": null,
   "runs": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "id": "shards_r01",
-      "status": "reserved",
+      "status": "running",
       "max_tasks": 8,
       "cpu_hard_limit": 1,
       "memory_hard_limit_mib": 1024,
@@ -31,6 +31,29 @@
       "reservation_usd": 0.15,
       "samples_per_shard": 1048576,
       "scope": "independent noise/throughput diagnostic; not strong reference"
+    },
+    {
+      "id": "wide_pilot_r01",
+      "status": "reserved",
+      "max_tasks": 64,
+      "cpu_hard_limit": 1,
+      "memory_hard_limit_mib": 1024,
+      "timeout_seconds": 900,
+      "retries": 0,
+      "reservation_usd": 1.1,
+      "samples_per_shard": 1048576,
+      "networks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "source_sha256": "64ec41a36863fc1477aeef0ae528ee435d93187d0777f758db4a16f1133de127",
+      "scope": "8 independent networks x8 independent seeds; 64CPU max; weak references"
     }
   ],
   "policy": "Reserve before dispatch; no retries or unbounded jobs; leave budget margin for startup and billing differences. Account remaining credit unknown; do not claim billing balance verified.",

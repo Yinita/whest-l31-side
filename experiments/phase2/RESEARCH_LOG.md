@@ -847,3 +847,5 @@ D05Mini8 complete adjusted5.649307159786597e-9/raw2.280926514330872e-8,8zero fai
 M02 order12 completeGaussian network0 adjusted4.0572690522822087e-7/raw4.057269052282209e-6,zero failures,util.0239621; negative relativeV29. Infinite-series convergence not yet accepted; M02 remains partial, no full-method completion claim.
 
 User explicitly authorized Modal CPU with total30USD budget. Token loaded privately; pilot completed two8192sample seeds,1760.12/1617.55samplespersecond; billed balance unknown. Budgetledger reserved0.05pilot+0.15shards,not actualbilling. Eight independent1048576sample shards started,hard1CPU/1GiB,900s,no retries,max8containers; not strongreference or newscore.
+
+User requested is_promising排序 and more CPU pilot. Added judgment/rationale/execution_priority to134tasks,sorted without resetting evidence; PROMISING_PRIORITY.md canonical order. Launched64maxsinglecore containers,8independentnetworks×8seeds×1048576samples,900s hardtimeout,no retries,1GiB hardlimit; reservation1.10USD,total1.30USD,actualbilling unknown. Existing8shard run preserved, distinct seeds avoid duplication. Weakpilot only, no strongreference claim.

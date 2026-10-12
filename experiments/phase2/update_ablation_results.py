@@ -11,7 +11,7 @@ def main():
     queue = json.loads((ROOT / 'experiments/phase2/ablation_queue.json').read_text())
     counts = collections.Counter(t['status'] for t in queue['tasks'])
     lines = ['# WhestBench 消融执行结果\n\n',
-             f'总任务129。当前状态：{dict(counts)}。完成快筛不等于独立确认；阶段1尚未达标。\n\n',
+             f'总任务{len(queue["tasks"])}（原129项＋论文方法）。当前状态：{dict(counts)}。完成快筛不等于独立确认；阶段1尚未达标。\n\n',
              '| 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |\n',
              '|---|---|---|---:|---:|---:|---:|---:|---:|---:|\n']
     for task in queue['tasks']:
