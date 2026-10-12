@@ -1,0 +1,49 @@
+{
+  "rows": [
+    {
+      "edge_rank": 1,
+      "cp_columns": 1024,
+      "transport_flops": 6442450944,
+      "d21_flops": 6442450944,
+      "budget_fraction": 0.005859375
+    },
+    {
+      "edge_rank": 2,
+      "cp_columns": 4096,
+      "transport_flops": 25769803776,
+      "d21_flops": 25769803776,
+      "budget_fraction": 0.0234375
+    },
+    {
+      "edge_rank": 4,
+      "cp_columns": 16384,
+      "transport_flops": 103079215104,
+      "d21_flops": 103079215104,
+      "budget_fraction": 0.09375
+    },
+    {
+      "edge_rank": 8,
+      "cp_columns": 65536,
+      "transport_flops": 412316860416,
+      "d21_flops": 412316860416,
+      "budget_fraction": 0.375
+    },
+    {
+      "edge_rank": 16,
+      "cp_columns": 262144,
+      "transport_flops": 1649267441664,
+      "d21_flops": 1649267441664,
+      "budget_fraction": 1.5
+    },
+    {
+      "edge_rank": 32,
+      "cp_columns": 1048576,
+      "transport_flops": 6597069766656,
+      "d21_flops": 6597069766656,
+      "budget_fraction": 6.0
+    }
+  ],
+  "formula": "Direct tree CP from dense hub and rankR edge requires nR\u00b2 columns; three transports and three D21 products each6n\u00b2columns leading FLOPs",
+  "conclusion": "Exact CP is not rankR\u00b2: even rank16 exceeds full network budget before other work. Structured contractions or approximate compression necessary; these counts exclude all copies/QR and are lower operation-count projections.",
+  "scope": "Analytic cost rejection of direct representation, no score"
+}

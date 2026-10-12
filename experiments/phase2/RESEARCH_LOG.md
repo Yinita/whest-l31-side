@@ -587,3 +587,9 @@ C01完整RPC8/8零失败：adjusted5.748034693185937e-9，raw2.269812404698257e-
 L04/L05/L06/L10/L11/L12/L13合法float32 affine组件networkLOO已测，raw ratio分别1.0041882、1.0061009、1.0062794、1.0305772、1.0873552、1.0054446、1.0016905，均负。原特征construct额外成本未在组件计费，不填整网adjusted；partial_negative保留。数据/cache和held排除规则同冻结版本，报告ablation_learning_charged_components_r02.json。
 
 L08当前冻结V29的NO_CORR=1使前层原始修正及其传播特征恒为0；增添零列的ridge预测不变合同通过。当前父版本无法提供该机制的新增信息，不能暗中开启已禁用旧修正来当同一消融。负CV与partial状态保留，非零parent需独立版本。
+
+H29/H30 rank1 covariance edge新增3R CP完整represented source与自身distinct重复扣除运输合同，n4/7/11通过。仍缺真实covariance主模态误差、existingfeedback覆盖和合法生产成本，不能因线性运输通过宣布完整算法实现。
+
+L19/L20使用实测pilot variance0.0788144与3694.47samples/s做预算gate：将平均sampling variance规划至stage1raw阈值10%约3.47e8samples/seed，8network×2seed吞吐外推17.4天；1%约34.7e8samples/seed、174天。明确这是variance/N模型投影而非实测reference误差/CI，不改十亿样本强reference门槛。
+
+H32直接nR² CP列实现解析计费gate：三条腿transport与D21矩阵产品各6n²columns，1024/rank16即超过整网2**41预算，尚未计QR/copy/其他层。不能将nR²误写成R²并声称可行；需要真正structured contraction或近似compression，partial保持。

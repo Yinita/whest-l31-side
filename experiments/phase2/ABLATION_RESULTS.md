@@ -925,6 +925,7 @@ after：恢复一个明确vector partition轨道的mixed新born source
 诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
 
 - [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
 
 ### v30.060 H30 K111乘covariance边一层收缩
 
@@ -937,6 +938,7 @@ after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
 诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
 
 - [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+- [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
 
 ### v30.061 H31 exact covariance triangle无偏收缩
 
@@ -962,6 +964,7 @@ after：直接从current state和Gaussian diagram生成固定数量CP factors供
 诊断结论：DirectCP tree factors exact but nR² rankgrowth; fixedboundedrank/state/cost candidate gate pending；算法分数前后不适用。
 
 - [ablation_v30_062_direct_cp_birth.json](../../results/phase2/ablation_v30_062_direct_cp_birth.json)
+- [ablation_v30_062_cp_cost_gate.json](../../results/phase2/ablation_v30_062_cp_cost_gate.json)
 
 ### v30.063 O01 官方K31截断生产逐项一致性
 
@@ -1594,6 +1597,7 @@ after：在新生成少量确认网络上制作两份互不重叠输入种子的
 
 - [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
 - [ablation_v30_114_reference_cpu_pilot.json](../../results/phase2/ablation_v30_114_reference_cpu_pilot.json)
+- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
 
 ### v30.115 L20 新种子网络最终独立确认
 
@@ -1607,6 +1611,7 @@ after：候选及配置冻结后生成预注册未见种子网络，候选与上
 
 - [ablation_v30_115_independent_protocol.json](../../results/phase2/ablation_v30_115_independent_protocol.json)
 - [ablation_v30_115_independent_weights.json](../../results/phase2/ablation_v30_115_independent_weights.json)
+- [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
 
 ### v30.117 L22 输出误差与阈值位置分解
 
@@ -1682,6 +1687,7 @@ after：固定输入权重确定性hash选一来源删除，保留其余机制�
 
 - [ablation_v30_122_source_deletion_contract.json](../../results/phase2/ablation_v30_122_source_deletion_contract.json)
 - [ablation_v30_122_projected_eviction_contract.json](../../results/phase2/ablation_v30_122_projected_eviction_contract.json)
+- [ablation_v30_122_basis_reselection_repeats.json](../../results/phase2/ablation_v30_122_basis_reselection_repeats.json)
 
 ### v30.123 L28 末端均值控制变量相关性
 
