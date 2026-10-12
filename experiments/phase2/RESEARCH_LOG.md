@@ -857,3 +857,5 @@ Shortpilot r02 finished32/32 tasks zeroerrors, incremental32record journal persi
 20:46coordination: billing report API Oct1–now empty, actualcost/balance unverifiable; apps allstopped, no cloud dispatch. Restoredofficial93d091a4 temporarycache. M03boundeddegree<=4 inventory K3aug91/87,K4aug331/324;K2factor uses unfactored path, do not apply genericpruning filter as method. Numericalfullvariants pending.
 
 User explicitly removed30USDcap. Launchedr03 independent8networks×128shards×65536samples,max96singlecore containers,180s tasks,incrementalfsync successes/errors;67.1Mtotal/8.39Mpernetwork. Scope intermediate uncertainty reference, not stageacceptance. No repeatedseeds or candidate modification.
+
+R03finished1024/1024 zero failures481.507s,8networks×8388608samples,reference samplingMSE7.87e-9–1.11e-8. Compute-duration costestimate0.63894USD excludesstartup/restarts,actualbilling unavailable. Source/rawjournal/reporthashes archived,compactsummary retained; no algorithm gain or stageacceptance. Next frozenV29/leaf8 pairedindependent prediction and shardwise uncertainty, not noise-biased absoluteMSE comparison. Costcap remains removed peruser.
