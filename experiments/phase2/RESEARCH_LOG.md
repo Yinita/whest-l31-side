@@ -763,3 +763,5 @@ O26 completeddiagnostic all129mechanism provenance: inheritedLAM publicdumps0-7,
 O19 Gaussianmarginal legalproduction through5 independent320point quadrature maxscaled1.25764e-5,864FLOPs fourneurons; fullnonGaussian/crossstate gate still unresolved. O20 w51 independent50digit automaticderivative checked18thresholdscale pairs. GaussianK5 diagonalonly finalsubset candidate prepared, excludes mixedcoordinates/allhistory/nonGaussian input and is not full O19/O20 completion.
 
 C28 fullMini8 local adjusted5.778402479293708e-9/raw2.2700463286895456e-8,8/8zero failures; meanFLOPs identical559754764911. Tinyraw drift no improvement claim. K5 diagonalGaussian subset serialfollowup started.
+
+O20 Gaussianbirthdiagonal finalsubset network0 {"before_raw": 2.290466483145792e-08, "after_raw": 2.2898795748460543e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.115462216455251e-09, "failures": 0, "scope": "Gaussianbirth finaldiagonal subset; tinygain not confirmed; not complete O19/O20"}; fullMini8 confirmation started session80223.

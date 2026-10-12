@@ -1311,6 +1311,8 @@ after：PK1加入合法K5 marginal readout
 
 - [ablation_v30_082_k5_readout_contract.json](../../results/phase2/ablation_v30_082_k5_readout_contract.json)
 - [ablation_v30_082_r02_w51_independent.json](../../results/phase2/ablation_v30_082_r02_w51_independent.json)
+- [ablation_v30_082_r02_gaussian_subset_mini1.json](../../results/phase2/ablation_v30_082_r02_gaussian_subset_mini1.json)
+- [ablation_v30_082_r02_subset_decision.json](../../results/phase2/ablation_v30_082_r02_subset_decision.json)
 
 ### v30.083 O21 K6纯径向投影生产公式
 
