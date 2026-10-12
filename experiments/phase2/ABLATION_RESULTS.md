@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 28, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 20}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 29, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 19}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1313,6 +1313,8 @@ after：PK1加入合法K5 marginal readout
 - [ablation_v30_082_r02_w51_independent.json](../../results/phase2/ablation_v30_082_r02_w51_independent.json)
 - [ablation_v30_082_r02_gaussian_subset_mini1.json](../../results/phase2/ablation_v30_082_r02_gaussian_subset_mini1.json)
 - [ablation_v30_082_r02_subset_decision.json](../../results/phase2/ablation_v30_082_r02_subset_decision.json)
+- [ablation_v30_082_r03_gaussian_subset_mini8.json](../../results/phase2/ablation_v30_082_r03_gaussian_subset_mini8.json)
+- [ablation_v30_082_r03_subset_decision.json](../../results/phase2/ablation_v30_082_r03_subset_decision.json)
 
 ### v30.083 O21 K6纯径向投影生产公式
 
@@ -1418,6 +1420,7 @@ after：预定width/seed上的state diagram rms law
 诊断结论：First-layer fixed3width/3seed tree and edge scale measured; deep capped211 and 1024 validation pending；算法分数前后不适用。
 
 - [ablation_v30_090_diagram_width_law.json](../../results/phase2/ablation_v30_090_diagram_width_law.json)
+- [ablation_v30_090_r02_extended_width_law.json](../../results/phase2/ablation_v30_090_r02_extended_width_law.json)
 
 ### v30.091 O29 高阶校正信号与reference不确定性的分离
 
@@ -1912,11 +1915,12 @@ before：拟合端与fnp推理端标准化可能使用不同精度或特征顺�
 
 after：冻结模型文件的feature_order、mean、scale、coef哈希并在小样本对照fnp预测。
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Frozen fold standardization legal fnp small inference; end-to-end model gate pending；算法分数前后不适用。
+诊断结论：All8 frozenaffine artifacts featureorder/coef/intercept/source hashes and chargedfloat32 inference checked maxabs1.19e-10; actualwholefoldCV already completed L03; no runtimeIDs/targets lookup；算法分数前后不适用。
 
 - [ablation_v30_128_standardization_contract.json](../../results/phase2/ablation_v30_128_standardization_contract.json)
+- [ablation_v30_128_r02_allfold_contract.json](../../results/phase2/ablation_v30_128_r02_allfold_contract.json)
 
 ### v30.129 L35 多次选择偏差账本
 

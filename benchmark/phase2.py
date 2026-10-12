@@ -155,22 +155,19 @@ def run(args):
         "seed": 0,
         "max_threads": 1,
     }
-    try:
-        from huggingface_hub import HfApi
-
-        manifest["dataset_commit"] = (
-            HfApi()
-            .repo_info(
-                "aicrowd/arc-whestbench-public-2026", repo_type="dataset", revision="v2-phase2"
-            )
-            .sha
-        )
-    except Exception as exc:
-        raise RuntimeError("Cannot resolve dataset revision; run not started") from exc
     local_provenance = Path(args.dataset) / "provenance.json"
     if local_provenance.exists():
         manifest["dataset_provenance"] = read(local_provenance)
         manifest["dataset_commit"] = manifest["dataset_provenance"]["revision"]
+    else:
+        try:
+            from huggingface_hub import HfApi
+
+            manifest["dataset_commit"] = HfApi().repo_info(
+                "aicrowd/arc-whestbench-public-2026", repo_type="dataset", revision="v2-phase2"
+            ).sha
+        except Exception as exc:
+            raise RuntimeError("Cannot resolve dataset revision; run not started") from exc
     save(output.with_suffix(".manifest.json"), manifest)
     with output.open("w") as out, output.with_suffix(".log").open("w") as err:
         result = subprocess.run(command, cwd=ROOT, env=env, stdout=out, stderr=err)
