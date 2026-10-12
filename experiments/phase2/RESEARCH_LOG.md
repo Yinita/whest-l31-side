@@ -701,3 +701,5 @@ C26 actual shape resource rows [{"width": 64, "depth": 4, "elapsed_s": 0.1408553
 H29官方mixed K111×covariance轨道((0,1,1),(1,1,1))在augmented top输出存在count3但factored filter明确删除。V29 Xt/Yt/D3feedback实际源码定位，不等于full K111edge覆盖证明；actualwhole-state overlap仍待，无score。
 
 L21 H18公共8RPC {"adjusted_final_layer_score": 5.7590999044793245e-09, "final_layer_mse": 2.2618635853177693e-08, "n_failed_mlps": 0, "max_relative_mse_delta_vs_local": 0.0008881667013111993, "max_client_peak_rss_kib": 1484852}，localRPC开发部署1GiB cap，非官方线上确认，阶段目标不递进。
+
+H29 augmented完整K11135raw展开项含mixed与triangle合法CPinput/slab4 cap核验n4..32relative<4.1e-7；报告机制scope沿用K211模板误写，实际output由冻结official[(1,1,1)]生成，准确以source和此日志为准。synthetic inputs不保证来自同一对称累积量；只是多项式/API contract，actualsource覆盖/CP误差与完整candidate待。
