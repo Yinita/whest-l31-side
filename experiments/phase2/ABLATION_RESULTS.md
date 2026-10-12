@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 33, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 33, 'partial_diagnostic': 18, 'partial_mapping': 1, 'pending_derivation': 4}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1991,4 +1991,16 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 - [ablation_v30_129_current_score_ledger_r03.json](../../results/phase2/ablation_v30_129_current_score_ledger_r03.json)
 - [ablation_v30_129_r04_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r04_comprehensive_selection_ledger.json)
 - [ablation_v30_129_r05_queue_evidence_index.json](../../results/phase2/ablation_v30_129_r05_queue_evidence_index.json)
+
+### paper.M01.r01 M01 论文—官方代码—本地映射
+
+before：论文完整算法与V29截断混淆
+
+after：分开basic/augmented/factorized，标记恒等式、截断、适用条件及证据
+
+状态：partial_mapping
+
+诊断结论：Initial primary-paper section and frozen official-code/local evidence mapping; complete algorithm correspondence and reproduction remain pending；算法分数前后不适用。
+
+- [PAPER_M01_MAPPING_2026-10-12.md](../../experiments/phase2/PAPER_M01_MAPPING_2026-10-12.md)
 

@@ -24,23 +24,14 @@
     "lambda": 0
   },
   "counts": {
-    "total": 129,
-    "by_kind": {
-      "algorithm": 71,
-      "contract": 15,
-      "diagnostic": 43
-    },
-    "by_readiness": {
-      "code_ready": 1,
-      "needs_derivation": 59,
-      "spec_ready": 69
-    },
-    "by_group": {
-      "compute": 30,
-      "highorder": 32,
-      "official": 33,
-      "learning": 34
-    }
+    "completed_positive": 17,
+    "completed_negative": 17,
+    "completed_diagnostic": 30,
+    "partial_negative": 14,
+    "partial_derivation": 33,
+    "partial_diagnostic": 18,
+    "partial_mapping": 1,
+    "pending_derivation": 4
   },
   "first_batch_keys": [
     "C24",
@@ -53148,6 +53139,189 @@
       "result": {
         "conclusion": "All129queue evidence mapping verified no missingpaths; benchmark/offline reports indexed incl failures; effectiveindependent trialcount unknown, public8-15 opened and independentstronglabels absent explicit"
       }
+    },
+    {
+      "key": "M01",
+      "name": "论文—官方代码—本地映射",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "论文完整算法与V29截断混淆",
+      "after": "分开basic/augmented/factorized，标记恒等式、截断、适用条件及证据",
+      "readiness": "needs_derivation",
+      "kind": "diagnostic",
+      "priority": "P0",
+      "dependencies": [],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M01",
+      "version": "paper.M01.r01",
+      "version_state": "reserved; no after score",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "partial_mapping",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m01",
+      "dependency_ids": [],
+      "evidence": [
+        "experiments/phase2/PAPER_M01_MAPPING_2026-10-12.md"
+      ],
+      "result": {
+        "conclusion": "Initial primary-paper section and frozen official-code/local evidence mapping; complete algorithm correspondence and reproduction remain pending",
+        "scope": "mapping only, score not applicable"
+      }
+    },
+    {
+      "key": "M02",
+      "name": "Wright2024完整精确高斯协方差",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "教学gain covariance和D02仅11替换",
+      "after": "完整K2及V29 pair替换两个独立对照，复用D02/D04数学证据",
+      "readiness": "needs_derivation",
+      "kind": "algorithm",
+      "priority": "P0",
+      "dependencies": [
+        "M01"
+      ],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M02",
+      "version": "paper.M02.r01",
+      "version_state": "reserved; no after score",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "pending_derivation",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m02",
+      "dependency_ids": [
+        "WB-P2-M01"
+      ],
+      "evidence": [],
+      "result": {}
+    },
+    {
+      "key": "M03",
+      "name": "Wu2026阶数及表示方法对照",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "V29仅压缩K3，K4/K5探针不完整",
+      "after": "成本可行的官方basic/augmented/factorized端到端K2/K3及可行K4精度成本曲线",
+      "readiness": "needs_derivation",
+      "kind": "algorithm",
+      "priority": "P0",
+      "dependencies": [
+        "M01"
+      ],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M03",
+      "version": "paper.M03.r01",
+      "version_state": "reserved; no after score",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "pending_derivation",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m03",
+      "dependency_ids": [
+        "WB-P2-M01"
+      ],
+      "evidence": [],
+      "result": {}
+    },
+    {
+      "key": "M04",
+      "name": "解析代理和残差采样控制变量",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "单独解析闭合与单独MonteCarlo",
+      "after": "合法可计算E[g]+mean(f-g)，独立采样流与残差方差成本核验",
+      "readiness": "needs_derivation",
+      "kind": "algorithm",
+      "priority": "P1",
+      "dependencies": [
+        "M01"
+      ],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M04",
+      "version": "paper.M04.r01",
+      "version_state": "reserved; no after score",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "pending_derivation",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m04",
+      "dependency_ids": [
+        "WB-P2-M01"
+      ],
+      "evidence": [],
+      "result": {}
+    },
+    {
+      "key": "M05",
+      "name": "Monchot2023条件或混合传播",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "L29固定替代分布负结果",
+      "after": "原文核对后完整有限混合/低维条件规格和同预算采样对照",
+      "readiness": "needs_derivation",
+      "kind": "algorithm",
+      "priority": "P1",
+      "dependencies": [
+        "M01"
+      ],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M05",
+      "version": "paper.M05.r01",
+      "version_state": "reserved; no after score",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "pending_derivation",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m05",
+      "dependency_ids": [
+        "WB-P2-M01"
+      ],
+      "evidence": [],
+      "result": {}
     }
+  ],
+  "method_priority_order": [
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05"
   ]
 }

@@ -22,6 +22,10 @@
 
 论文代码实际仓库是[mlp_cumulant_propagation](https://github.com/alignment-research-center/mlp_cumulant_propagation)，已冻结commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb；此前误查模块名mlp_kprop的404已纠正。官方组合生成器与V29现有pair表精确对照发现22项中19项已有，剩余3项即本轮pairq3，不重复添加已有系数。详见[研究日志](experiments/phase2/RESEARCH_LOG.md)。
 
+## 2026-10-12 用户优先级升级
+
+论文方法级对照提升为P0/P1，当前运行安全完成后优先于其余局部消融。执行顺序、论文来源、已有覆盖和验收见[论文方法级对照](experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md)。保留原129项状态与证据；不得重建队列覆盖结果。
+
 ## 当前任务
 
 1. E00：核对报告中的规则及工具版本，运行官方 baseline，记录形状、评分、FLOPs、时间、内存和失败数。

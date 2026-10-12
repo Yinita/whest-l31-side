@@ -2,6 +2,10 @@
 
 本提示词用于用户下一步指定的低推理强度模型。用户已授权执行全部129项；当前在本聊天执行，未另建线程。清单包含研究储备，执行者按准备度、依赖、证据和成本选择任务，不逐行盲跑。
 
+## 2026-10-12 用户优先级升级
+
+论文方法级对照提升为P0/P1，当前运行安全完成后优先于其余局部消融。执行顺序、论文来源、已有覆盖和验收见[论文方法级对照](PAPER_METHODS_PRIORITY_2026-10-12.md)。保留原129项状态与证据；不得重建队列覆盖结果。
+
 ## 可直接复制的任务
 
 在 `/home/sti/Desktop/projects/whest-l31-side` 接续 Phase 2 消融研究。先阅读 `DEVELOPMENT.md`、`benchmark/README.md`、`experiments/phase2/research_state.json`、`experiments/phase2/RESEARCH_LOG.md`、`experiments/phase2/ablation_queue.json`、`experiments/phase2/ABLATION_BACKLOG.md`。
