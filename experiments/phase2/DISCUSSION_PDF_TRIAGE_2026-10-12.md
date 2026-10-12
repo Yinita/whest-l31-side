@@ -1,0 +1,42 @@
+# 附件技术证据与项目决策
+
+29个PDF链接，29个成功下载并抽取全文；18171原链接返回GitHub HTML，通过官方GitHub contents API找到原PDF，首次失败保留manifest。抽取成功不等同逐页视觉核验。
+
+- Topic18241：18182字符；sha256 feb5579580fec4c43be7b09b442f8848a002276508183cb0d8d7b31c07801f1e。Phase2证据优先，与V29误差和费用比较。
+- Topic18145：23826字符；sha256 2c3a02ef7b04d5f555a1fcde6eeb63b53901a475787c03112582c9b95deec386。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18216：54891字符；sha256 d318337d092d2d154dde3899bfa2eb2b80a57481c2616c82032f29f23b784ae0。Phase2证据优先，与V29误差和费用比较。
+- Topic18200：31881字符；sha256 8d235d34619da2f6a268ef9bf56430f0f85763bebb50e40c75c80cd11942b647。Phase2证据优先，与V29误差和费用比较。
+- Topic18183：189973字符；sha256 b90da51d15697ddbab831812cbf4a4d0b8077b232145dbc844e4488031779deb。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18188：39820字符；sha256 458452c4fa36a826ccd08d246643caef3f5f9b7e5a7bdc38d2ee6e4df7e99d1d。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18157：57915字符；sha256 4bec26df9dad13dd6769700df9154b96df8e08b6a3f407c42b2e0b4aeb00071f。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18185：16170字符；sha256 022ab112fe336978d00eb84ba6da1405e5c5ad8e70c8d5aa5aec7013c6bebee4。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18177：61265字符；sha256 72b836693be5b9c4b375f105e0bc2b6180a4d6091c2c9003e94e3f5b05464826。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18182：73841字符；sha256 0f6508f15165bb7f69d4e0fc685d0f9c6f371ea563e13139f6e366bcb50c2e5c。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18182：145140字符；sha256 1cde118ac403faf43ceed0979f3592a5c71113dbde5119120db38843e1d4870c。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18181：18484字符；sha256 bc4aea024b9a27db947d5a634e05a50c6efdfc5115deac9236bffab8e7656bfd。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18175：50597字符；sha256 b0cf4522341b07c781a1870e01db543ac133e32e89e6598fa9ea7c148f92ebf8。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18175：59959字符；sha256 9f5295200d325f6fa2ae9dd6dbd0953afb10621eb8feecca0b6375c62ff71703。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18176：56740字符；sha256 917e58b871993ad791cb050b03cada498633465000832ac2cea4b7dfe6a225f4。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18106：48122字符；sha256 3c63e3c40551eab039ebd187dca2ddec7aaac29596e2957be8e715a777360454。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18174：14764字符；sha256 961c014980a124a6512539bbf0259ab5b6d2905f595cc21132f70b67c680aaf7。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18173：15128字符；sha256 b68eedcbea883b593ae9789e483876de839b04792396b716ffa72ce981b57910。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18171：Not PDF response；未读取附件。
+- Topic18170：66093字符；sha256 dff94ea1f35bcd3a75d541efe96b726d8fc879c2c9a1b481c472a97d97667057。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18166：71824字符；sha256 c64ed2e42aff61c16fe95b615911499109bded2f70d00b7510095ddc2b7846c3。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18149：27117字符；sha256 4488bf756ae95c142f57f892aa5e31334e61f905845ad54a47c82fda5315bae7。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18154：197379字符；sha256 7e8787f52cb0c46991b3817ce520f150216869443f0a0aba39659a60188810ef。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18097：53295字符；sha256 ce617c54a60941ec0bf8542a7ab6b74ef2da57410ce9427f5b4ed5db0c96cf60。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18097：58526字符；sha256 984dd8899683ffabb8a6d1ec8e940466519dbaafc31e4ac0319aab420e298288。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18097：64316字符；sha256 8c5a789bdab8b8d92bdbeb9efa698305654f2b31ce31504325aa7cfbaec153b6。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18151：22160字符；sha256 22db350a4a88115eae0a336ad8eb337ce68e94dd32374e7816b7f365753a04dd。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18151：380516字符；sha256 c6f9dcae680e95c38e600e4d9060ff43b2150faedc906ac7b2bc152d012c9001。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+- Topic18063：28744字符；sha256 153a713ef053410b94e20dc387050d79cb482423a95520dcbdd66ee2b0e79c3d。Phase1/一般方法，需在Phase2重测，不能移植其分数。
+
+已深读的核心决策：
+
+- 18216：rank4608 CP报告adjusted1.066e-7，作者明确不能冲顶；CP低费说明只涉及特定通道，不是精确完整旧源压缩。原文只给结果，缺完整公式实现，不凭O(rn)口号重写V29。
+- 18188 AppendixA：Price与Plackett推出cov=C PhiPhi+σσ∫(rho−t)phi2dt；已落实D02合法8节点替换并独立conditional积分复验。D02负结果，说明需要完整21/22一致核或重新闭合，不能仅改11。
+- 18200：固定0.75/0.25混合只对弱covariance家族有效；V29费用和精度不支持直接复用该配比。
+- 18241：多项计量修复PR为社区贡献；不能将未部署计量变化包装成算法收益。
+
+剩余PDF已纳入方法/数值关键词检索；涉及公式、图表的具体路线采用前仍需逐页核查。没有声称全部附件已充分复现。
