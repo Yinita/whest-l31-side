@@ -489,12 +489,13 @@ after：诊断同进程shape序列与峰值RSS/RLIMIT_AS、pool keys/bytes
 
 状态：partial_diagnostic
 
-诊断结论：Actual pool retains old shape allocations; full estimator maximum scratch/resource audit remains pending；算法分数前后不适用。
+诊断结论：Actual shape sequence predict under8GiB cap completed; per-shape failure/RSS/VSZ/logical alias bytes retained. RPC same-shape lifetime still outstanding, nonfinite shape diagnostic warnings not numerical acceptance；算法分数前后不适用。
 
 - [ablation_v30_026_pool_shape_probe.json](../../results/phase2/ablation_v30_026_pool_shape_probe.json)
 - [ablation_v30_026_full_pool_r0.json](../../results/phase2/ablation_v30_026_full_pool_r0.json)
 - [ablation_v30_026_full_pool_r1.json](../../results/phase2/ablation_v30_026_full_pool_r1.json)
 - [ablation_v30_026_full_pool_r2.json](../../results/phase2/ablation_v30_026_full_pool_r2.json)
+- [ablation_v30_026_r03_shape_resource.json](../../results/phase2/ablation_v30_026_r03_shape_resource.json)
 
 ### v30.027 C27 shape变更时释放无用旧pool
 
