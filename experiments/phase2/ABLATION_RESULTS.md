@@ -728,6 +728,8 @@ after：仅恢复该channel而保留B2其他shadow
 - [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
 - [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
 - [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
+- [ablation_v30_040_r02_subset_mini1.json](../../results/phase2/ablation_v30_040_r02_subset_mini1.json)
+- [ablation_v30_040_r02_subset_decision.json](../../results/phase2/ablation_v30_040_r02_subset_decision.json)
 
 ### v30.041 H11 B2 D21平方来源恢复
 

@@ -803,3 +803,5 @@ H11 D21square subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted"
 H12 WK22*WK21 subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.141111838305744e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2903153151787592e-08, "failures": 0, "scope": "One B2 WK22*WK21 product fixed16layer14 subset, not fullH12", "conclusion": "Rawtinychange belowfee, adjustedworse, no expansion"}
 
 H07 B1WK22 subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.141853669543694e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2905839003328765e-08, "failures": 0, "scope": "B1WK22 fixed16birthcolumns layer14 subset only", "conclusion": "Negative, no expansion; fullH07 source/rankproof remainspartial"}
+
+H10 WK22*C subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.141474122423482e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2904504959342376e-08, "failures": 0, "scope": "OneWK22*C B2 fixed16birthcolumns layer14 subset, nofullstate", "conclusion": "Costreject no expansion; full H10 gate remains"}
