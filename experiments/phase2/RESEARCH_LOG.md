@@ -627,3 +627,5 @@ C30 C01原8GB subprocess结束3/8error：network2/5 Worker closed stdout，netwo
 L03 actualcharged heldfold0: {"before_raw": 2.290466483145792e-08, "after_raw": 2.284691369425218e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.101409994531986e-09, "before_flops": 587262754287, "after_flops": 587262798345, "failures": 0, "train_ids": [1, 2, 3, 4, 5, 6, 7], "held_id": 0, "scope": "Single held-network fold; not full8fold charged CV or independent final"}
 
 L03真实charged heldnetwork0结束零失败：adjusted6.101409994531986e-9、raw2.284691369425218e-8，对当前控制adjusted6.116832334984139e-9/raw2.290466483145792e-8。单fold有微幅改善，不能覆盖8fold离线负结果、不能当独立确认。C17r02 fullMini8已接续PID4146203。
+
+L03其余held1–7候选与singleton官方row缓存已准备，原网络/seed/reference不改，trainIDs严格排held。串行排在C17/C18后分别当前V29控制和charged候选评测，session55637，目标完整charged8fold，不用fold0小收益外推。singleton数据与references在ignored cache，不提交。
