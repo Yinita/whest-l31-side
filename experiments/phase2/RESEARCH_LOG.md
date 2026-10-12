@@ -611,3 +611,7 @@ Serial followup collection: reserved distribution=True, originalcap C01 subproce
 O27完整8/8 reserved-state trace结束，无target列，固定分位点对照完成；最大shift/developmentIQR0.26598（layer7 variance），其次layer13/15 variance0.26207/0.25465。描述性分布不是显著性或独立score结论。C01原8GB subprocess资源诊断PID4140519运行。收取脚本修正为不解析尚为0字节的运行中输出，原收取错误无实验影响。
 
 C17/C18固定16row slab r02已准备不可变候选，不改变各自core数学机制，仅调度减少calls，diagonal slabs dense；原逐row版本Mini1正微幅结果仍保留。分别fullMini8单因素评测排在L03heldfold后，session8221，尚无新score。
+
+O14输出导向D3误差界新增：每output |<E,w³>|≤||E||F||w||³；weighted整体界使用sum c_a w_a³ Frobenius。small独立核验通过，实际source E和紧度未测，rank1 acceptance未通过。
+
+H21三条official feed factor的自身重复content扣除和transport完整核验通过（n4/7/11）；dense fullmetric对象3n CP列，不能当boundedrank。当前feed删除/替换的一致性和近似core/metric计费仍待。

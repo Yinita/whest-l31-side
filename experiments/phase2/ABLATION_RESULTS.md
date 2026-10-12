@@ -823,6 +823,7 @@ after：使用Moff恢复该被零化feed来源
 诊断结论：Official three-factor1/4,1,1/4 matches direct distinct K211 Wick feed; repeat/boundedrank/cost integration pending；算法分数前后不适用。
 
 - [ablation_v30_051_nondiagonal_feed_contract.json](../../results/phase2/ablation_v30_051_nondiagonal_feed_contract.json)
+- [ablation_v30_051_feed_repeat_transport.json](../../results/phase2/ablation_v30_051_feed_repeat_transport.json)
 
 ### v30.052 H22 D21反馈basis输出敏感sketch
 
@@ -1142,6 +1143,7 @@ after：proxy与exact收缩成对误差评估
 
 - [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
 - [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
+- [ablation_v30_076_weighted_output_error_bound.json](../../results/phase2/ablation_v30_076_weighted_output_error_bound.json)
 
 ### v30.077 O15 doubled-edge早期来源贡献门槛
 
