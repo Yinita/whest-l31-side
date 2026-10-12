@@ -1162,6 +1162,7 @@ after：证明exact复杂度和内存或给出反例
 诊断结论：Exact no-cubic-intermediate diagonal contraction verified; O(R*n^3), not unqualified O(n^3). Full cumulative repeated-content production and charged operator formula remain pending；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
+- [ablation_v30_074_r02_charged_edge_contraction.json](../../results/phase2/ablation_v30_074_r02_charged_edge_contraction.json)
 
 ### v30.075 O13 K111乘edge covariance主模态代理
 
