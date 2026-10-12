@@ -817,3 +817,5 @@ H08 allcolumnfixedWK12birth r06 raw2.2922957754190065e-8 adjusted6.1892135646345
 H07 allcolumnfixedWK22birth raw2.2897467033544672e-8 adjusted6.1823310534122714e-9 zero failures; rawminorimprovementfeeexceeds, no expansion. Fullhistory omitted; partial retained.
 
 H09 allcolumnleadingB2 fixedbirth r03 raw2.2729793158760003e-8 (~−0.763%) adjusted6.137037320892508e-9 stillcostnegative; r04 zerosdiagonalrepeats simplifies exactcurrentD21/Coff zero diag. Fullhistory untested.
+
+H09 r05 deadzeroW³ multiply removed, raw2.274503074772838e-8 adjusted6.140912849874324e-9 zero failures. AllfixedlayerleadingB2 costoptimizations stillnegative; stoprouteexpansion, fullhistory item not completed.

@@ -715,6 +715,9 @@ after：仅恢复WK12乘WK11 leading hub，移除其重复出生dslices
 - [ablation_v30_039_r02_subset_mini1.json](../../results/phase2/ablation_v30_039_r02_subset_mini1.json)
 - [ablation_v30_039_r02_subset_decision.json](../../results/phase2/ablation_v30_039_r02_subset_decision.json)
 - [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_039_r03_full_mini1.json](../../results/phase2/ablation_v30_039_r03_full_mini1.json)
+- [ablation_v30_039_r04_full_mini1.json](../../results/phase2/ablation_v30_039_r04_full_mini1.json)
+- [ablation_v30_039_r05_full_mini1.json](../../results/phase2/ablation_v30_039_r05_full_mini1.json)
 
 ### v30.040 H10 B2 WK22乘C来源恢复
 
