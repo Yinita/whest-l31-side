@@ -463,3 +463,9 @@ Sj=FAj diag(dA) FAj.T+FPj diag(dP) FPj.T完整GEMM → 对真正对称的weighte
 ## H21 feed合同
 
 固定官方factor_k3.py的三因子系数1/4、1、1/4，在任意对称G/M、n4/7上对照完整四阶tensor的K211 Wick feed，distinct坐标精确；重复坐标仍需额外扣除，非对角metric的bridge可能引入额外dense legs，候选秩界和收费未通过。证据ablation_v30_051_nondiagonal_feed_contract.json，不产生分数。
+
+## L25与串行接续
+
+均值冻结门控的切向/伴随dot合同n4/7/11通过；完整source排序仍缺covariance/cumulant响应和删除实验，不把线性代理当全状态敏感性。已安排串行接续脚本：识别当前L07 trace PID与startticks，等其结束后跑C16r03完整RPC与成对评分，再跑H19/H20单网；避免并发heavy benchmark和重复启动，输出全新路径。研究目标仍未完成，所有队列状态如实保留。
+
+L25 CP source的D3=sum_r(WA)(WB)(WC)及first-order均值系数−alpha*phi/(6sigma²)的伴随收缩，对任意小完整tensor核验通过。尚未覆盖完整V29 hub、重复补偿和间接协方差反馈，不产生来源排序/删除收益声明。

@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 14, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 35, 'partial_negative': 12, 'pending': 12, 'ready': 2}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 15, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 34, 'partial_negative': 12, 'pending': 12, 'ready': 2}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1116,6 +1116,19 @@ after：计算e_l−Phi_l⊙(W_l@e_{l−1})的离线一阶残差。
 诊断结论：120 network/layer first-order residual transport decomposition; reference oracle only; nonlinear/reference noise caveat retained；算法分数前后不适用。
 
 - [ablation_v30_119_error_transport.json](../../results/phase2/ablation_v30_119_error_transport.json)
+
+### v30.120 L25 输出敏感性来源排序诊断
+
+before：AGE_OLD按年龄统一压缩；不知道每来源最终影响。
+
+after：用合法末端mean Jacobian代理估计来源贡献并排序，不看reference。
+
+状态：partial_derivation
+
+诊断结论：Mean adjoint and CPsource exactD3 contraction checked; full hub/repeat/covariance sensitivity and ranking still pending；算法分数前后不适用。
+
+- [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
+- [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
 
 ### v30.124 L29 条件高斯最后层积分对照
 
