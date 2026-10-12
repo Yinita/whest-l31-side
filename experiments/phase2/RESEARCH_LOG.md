@@ -849,3 +849,7 @@ M02 order12 completeGaussian network0 adjusted4.0572690522822087e-7/raw4.0572690
 User explicitly authorized Modal CPU with total30USD budget. Token loaded privately; pilot completed two8192sample seeds,1760.12/1617.55samplespersecond; billed balance unknown. Budgetledger reserved0.05pilot+0.15shards,not actualbilling. Eight independent1048576sample shards started,hard1CPU/1GiB,900s,no retries,max8containers; not strongreference or newscore.
 
 User requested is_promising排序 and more CPU pilot. Added judgment/rationale/execution_priority to134tasks,sorted without resetting evidence; PROMISING_PRIORITY.md canonical order. Launched64maxsinglecore containers,8independentnetworks×8seeds×1048576samples,900s hardtimeout,no retries,1GiB hardlimit; reservation1.10USD,total1.30USD,actualbilling unknown. Existing8shard run preserved, distinct seeds avoid duplication. Weakpilot only, no strongreference claim.
+
+Status20261012:8shards completed578–753seconds,1392–1814samples/s,8388608samples. Wide64 batch preempted/restarted despite retries0 then900s input timeout; list(map)aborted, no complete saved result. Earlier1.30USDreservation is not verified actualcost or strict billingcap; appstopped,no new dispatch until usage audit and short-shard incremental persistence.
+
+Shortpilot r02 finished32/32 tasks zeroerrors, incremental32record journal persists. Previous8388608sample reference estimated noiseMSE9.3862e-9, split-half difference3.1267e-8; insufficient to certify tiny candidate gains. No higherbudget dispatch before billingaudit.

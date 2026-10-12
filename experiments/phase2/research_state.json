@@ -46287,7 +46287,7 @@
   ],
   "cloud_reference_experiment": {
     "session_id": 73248,
-    "status": "running",
+    "status": "completed",
     "source": "experiments/phase2/modal_cpu_reference_shards.py",
     "report": "results/phase2/modal_cpu_shards_r01.json",
     "budget_ledger": "experiments/phase2/modal_budget_ledger.json",
@@ -46295,13 +46295,20 @@
   },
   "cloud_wide_pilot": {
     "session_id": 70555,
-    "status": "running",
+    "status": "failed_timeout_with_preemption",
     "max_containers": 64,
     "networks": 8,
     "seeds_per_network": 8,
     "samples_per_shard": 1048576,
     "report": "results/phase2/modal_cpu_wide_pilot_r01.json",
-    "budget_reservation_usd": 1.1
+    "budget_reservation_usd": 1.1,
+    "next": "shorter256Kshards, incrementally save success/error, verify billing before broad dispatch"
   },
-  "execution_priority_document": "experiments/phase2/PROMISING_PRIORITY.md"
+  "execution_priority_document": "experiments/phase2/PROMISING_PRIORITY.md",
+  "cloud_short_pilot": {
+    "status": "completed",
+    "successes": 32,
+    "errors": 0,
+    "report": "results/phase2/modal_cpu_short_pilot_r02.json"
+  }
 }

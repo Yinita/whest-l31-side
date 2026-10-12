@@ -4,7 +4,7 @@
   "pricing_source": "https://modal.com/pricing",
   "cpu_usd_per_physical_core_second": 1.31e-05,
   "memory_usd_per_gib_second": 2.22e-06,
-  "reserved_usd": 1.3,
+  "reserved_usd": 1.9,
   "billed_actual_usd": null,
   "runs": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "id": "shards_r01",
-      "status": "running",
+      "status": "completed",
       "max_tasks": 8,
       "cpu_hard_limit": 1,
       "memory_hard_limit_mib": 1024,
@@ -30,11 +30,12 @@
       "retries": 0,
       "reservation_usd": 0.15,
       "samples_per_shard": 1048576,
-      "scope": "independent noise/throughput diagnostic; not strong reference"
+      "scope": "independent noise/throughput diagnostic; not strong reference",
+      "report": "results/phase2/modal_cpu_shards_r01.json"
     },
     {
       "id": "wide_pilot_r01",
-      "status": "reserved",
+      "status": "failed_timeout_with_preemption",
       "max_tasks": 64,
       "cpu_hard_limit": 1,
       "memory_hard_limit_mib": 1024,
@@ -53,9 +54,25 @@
         7
       ],
       "source_sha256": "64ec41a36863fc1477aeef0ae528ee435d93187d0777f758db4a16f1133de127",
-      "scope": "8 independent networks x8 independent seeds; 64CPU max; weak references"
+      "scope": "8 independent networks x8 independent seeds; 64CPU max; weak references",
+      "completed_report": null,
+      "reservation_is_hard_billing_cap": false,
+      "failure": "preemption restarts observed despite retries=0; input900s timeout aborts list(map), partial outputs not saved"
+    },
+    {
+      "id": "short_pilot_r02",
+      "status": "completed",
+      "max_tasks": 32,
+      "samples_per_shard": 65536,
+      "timeout_seconds": 180,
+      "reservation_usd": 0.6,
+      "scope": "32short tasks incremental fsync journal; billing actual unknown",
+      "report": "results/phase2/modal_cpu_short_pilot_r02.json",
+      "app_id": "ap-gZZ0JA7vXf9Kq5C3SZVusZ",
+      "successes": 32,
+      "errors": 0
     }
   ],
-  "policy": "Reserve before dispatch; no retries or unbounded jobs; leave budget margin for startup and billing differences. Account remaining credit unknown; do not claim billing balance verified.",
-  "updated_at_utc": "2026-10-12T10:15:30.741101+00:00"
+  "policy": "Reservations are planning estimates, not platform billing caps. Preemption can restart despite retries=0. Confirm usage before further broad dispatch; use short shards with incremental durable output and app elapsed cap.",
+  "updated_at_utc": "2026-10-12T10:57:53.708232+00:00"
 }
