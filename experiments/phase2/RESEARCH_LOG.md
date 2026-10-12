@@ -99,3 +99,53 @@ Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7
 来源/出生/重复项组合完成：n4/7/11任意source腿及Wick/cap向量，用显式sym三阶tensor对矩阵合并公式核验，max差1.78e-15；identity-born D21闭式差<=2.22e-16、D3差<=1.11e-16。合并cap向量ua-2*w*mean，另减old repeated与birth/post repeated；重复扣除必须包括出生源。实现probe_source_birth_combination.py，无正式分数宣称，无后台任务。下一步小形状非线性pk211/K31 production parity；尚未验证完整图表项，不能把本组合通过当端到端正确。
 
 有界完整非线性核算检查：n4/6、41点非高斯有限支持，经一次线性层+ReLU后精确枚举四阶累积量；独立power转换产生K31/K211并按全部重复索引模式组装trace，identity-metric核心最大差3.55e-15。完整证据nonlinear_core_exact_oracle.json。此处完整指精确矩核算链，明确不等于截断Hermite/diagram生产已通过；oracle与全四阶tensor只能离线。当前不能据此启动提分验收。下一步独立枚举K31/K211截断生成项，核查论文vector-partition条件和系数，上游build_term_tables_aug依赖未获取mlp_kprop模块，不伪称已运行。无后台评测/下载。
+
+## P2-E012-pairq3-mini1 (2026-10-12T02:42:29.026974+00:00)
+
+用户要求快速推进。核验无在运行评测，原V29不改。上游固定commit F64报告完整aug raw≈2.04e-8且成本高，F88已有旋钮无明显收益；这些是他人结果，降低全面重建aug的优先级。原论文S3.2/S3.4支持Gaussian pair Mehler/Hermite展开。本轮仅补q=3到pk11/pk21/pk22，使用原signed Wick向量，原来源/中心化/反馈/LAM保持默认。无真值输入、无未计量数组计算。
+
+独立条件积分验证9个非零均值power pair cubic系数，最大绝对差2.70e-10；4个零均值arc-cosine检查通过。仅证明Gaussian小相关系数，不代表比赛改进；上游F60在纯covariance链报告q3/q4无收益，本轮完整V29路径未见已有复现。whest validate通过(2x4)，正式1024x16路径待快筛。固定原Mini network0/reference/seed/预算/120s/0.4s/单线程及工具锁。PID 3932720、hash、命令与报告见state；结果未完成不记分。
+
+下一项：网络0没有明显收益则不扩量，测试独立机制USE-only diagonal spill；完整K31/K211生成器留作较长研究路线，不将更多代数检查记作分数进展。
+
+来源：https://arxiv.org/html/2605.05179v2#S3.SS2 ，https://github.com/504aldo/whest-p2-cumulant-k3/blob/1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d/docs/findings_log.md 。
+
+完成pairq3：{"adjusted_final_layer_score": 6.1256881370209195e-09, "final_layer_mse": 2.293037404399456e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.2671429661490947}；network0成对ratios {"final_layer_mse": 1.000965322819025, "adjusted_final_layer_score": 1.0012906032043642, "flops_used": 1.0003249666875804}。零失败，raw与adjusted均略恶化，不扩大Mini8，不进入RPC。逐网络时间/FLOPs/内存见报告与manifest，不将微小差异当泛化结论。
+
+## P2-E013-spilluse-mini1 (2026-10-12T02:44:05.908705+00:00)
+
+唯一变化：WK431 USE恢复W diag(g_prev−adaptive_lambda*var_prev) W^T非对角spill，仍使用原adapted lambda，feed不变。原生fnp pooled multiply+matmul，原预算和时间不改。小n4/9/16与完整WGW^T独立NumPy对照max3.55e-15，whest validate通过；正式suite路径由本快筛覆盖。上游F68报告spill对其torch链不重要，本轮是V29路径的本地复验，不预设提分。两个矩阵池而非n³tensor；约每非末层1个n³matmul收费。PID 3934183及hash见state，固定network0十亿样本reference。
+
+如果raw收益不能支付成本，拒绝扩量；下一主线需超出V29/K3的近似层级，不能重复rank/lambda小扫描。
+
+完成spilluse：{"adjusted_final_layer_score": 6.374435665447056e-09, "final_layer_mse": 2.2705563651470584e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.28074333512677185}；network0成对ratios {"final_layer_mse": 0.9911518149061538, "adjusted_final_layer_score": 1.0419502902815012, "flops_used": 1.0512519622235241}。raw略改善但收费上升导致adjusted更差，拒绝扩量。仅恢复use，不推断feed一起恢复的效果；不自动组合负候选。benchmark/cache测试7通过。下一候选研究现有mean Edgeworth表达遗漏的κ4²项，O(n)额外计算；这是超出formal K3的局部扩展，不能宣称完整高阶闭合。
+
+## P2-E014-k4square-mini1 (2026-10-12T02:46:12.323638+00:00)
+
+唯一机制：现有pre κ4=g4row用于κ4² w8/1152修正PK1 mean；后续中心化按同一修正mean一致执行，raw pk2/pk3/pk4及其他传播/来源/反馈不另外改变。w8=phi*(alpha6−15alpha4+45alpha2−15)/sigma7，系数1/[2!(4!)²]。不使用目标数据或MC。每层只加O(n)收费运算。6个精确分数Gaussian+有限噪声多项式moment残差独立恢复1/1152、5个ReLU H8积分核验max1.78e-14。small whest validate通过，正式1024x16快筛PID 3939482、hash见state。
+
+该项超出论文formal K3的|k|≤5和grade≤3；不是完整K5。原V29已有D3²/w6与D3*K4/w7，因此本实验仅测边缘二阶补全，不把选择性扩展说成严格higher-order方法。上游F83引用annealed H8负面结果，与quenched状态不同；该文献警示渐近扩展可能恶化，不预设收益或收敛。来源原论文S3.2/S3.4/S4.1：https://arxiv.org/html/2605.05179v2 。
+
+完成k4square：{"adjusted_final_layer_score": 6.184569796356216e-09, "final_layer_mse": 2.3158301942771686e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.2670562725902528}；network0成对ratios {"final_layer_mse": 1.0109149172888394, "adjusted_final_layer_score": 1.0109152610182677, "flops_used": 1.000000340018158}。零失败但raw/adjusted更差，不扩量。三项快筛均无足够收益，不组合这些候选。
+
+资料定位纠正：项目报告S20的正式研究仓库mlp_cumulant_propagation可访问，commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb，MIT。之前mlp_kprop是模块名，404只针对错误URL，不能再声称官方生成器不可获取。read-only clone /tmp/whest-official-cumulant-reference。现有官方get_all_terms_iso有augment参数，公开lean未传；正在核查历史API及True/False生成项差异，不先宣称原V29缺项bug。
+
+官方表项对照完成：False→True新增32dense/17capped211/7factored111；现有V29 pair outputs相关22条中，19已实现且系数匹配，唯一缺3条为已测pairq3。不把slice可用数27误解为缺项数，不重复叠加已有系数。AST纯组合定义抽取而非Torch算法执行，源hash与版本见official_augmented_terms_audit_v29diff.json。
+
+下一真实信息候选：新生Gaussian四阶协方差树(4stars/12paths)减去完整identity-metric迹投影，保存其无迹残差一层；通过nextW得到额外marginalκ4，仅用于PK1 powers1–4。6组n4/n6显式n⁴离线tensor对raw/trace/core/residual/transport核验max4.55e-13。合法候选不构建n⁴tensor，约5个n³matmul/transition；成本较高，必须显著减少raw才值得。全互异mask方案包含三角排除O(n⁴)，已放弃，不伪称O(n³)。重复索引处tree是设计闭合；不是exact ReLU K4、不含所有非Gaussian交互、不声称完整高阶方法。
+
+## P2-E015-tree4marg-mini1 (2026-10-12T02:51:52.875123+00:00)
+
+只增加一层新生Gaussian K4 tree无迹残差的marginal生产，经W精确transport后deltaκ4*w(4,p)/24进入p1..4，在原PK2K中心化前执行。其他再生/USE/feed/来源递推公式保留，但数值轨迹间接改变；不能说g_prev数值不变。每birth复制C/Wick/core，避免pooled buffer alias；出生metric为identity，nextW投影扣除精确diag(WW^T)，不套METRIC_C=2平均替代。真实suite1024x16开始快筛，PID3947798，hash/原规则见state。small validate因riders gate不覆盖新机制；正式screen才检验全路径/资源。
+
+如果adjusted明显改善才扩量；此只测选择性marginal生产，不含pair PK2全部使用或多层K4 memory，不能称全K4通过。
+
+完成tree4marg：{"adjusted_final_layer_score": 7.530162640713663e-09, "final_layer_mse": 2.2108128661102455e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.34060606196680965}；network0成对ratios {"final_layer_mse": 0.9650723577263511, "adjusted_final_layer_score": 1.2308627086611679, "flops_used": 1.2754097646740208}。raw有约3.49%改善，但5n³每transition成本太高，adjusted明显恶化，拒绝Mini8扩量。原120s/0.4s预算下零失败，local数学资源不等于RPC确认。下一做相同机制final-only timing消融，只在倒数第二层创建birth，前15层保持原V29轨迹，最后mean用新residual；避免全链费用，检验最终边缘校正贡献。无调系数、无oracle、无其他机制组合。
+
+## P2-E016-tree4last-mini1 (2026-10-12T02:53:29.698187+00:00)
+
+对tree4marg只改变birth时间gate：倒数第二层生成、最后层使用；整网5次n³matmul而非15transition各5次。早期数值轨迹按V29，last只改变marginal生产，原参数不扫描。PID3950404、SHA/命令见state，原network0/reference/预算/工具版本，小形状合同通过但riders全路径需正式快筛。
+
+完成tree4last：{"adjusted_final_layer_score": 6.23004958118477e-09, "final_layer_mse": 2.2908004382315994e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.27195950713166894}；network0成对ratios {"final_layer_mse": 0.9999888339235329, "adjusted_final_layer_score": 1.018349279885368, "flops_used": 1.0183606509782681}。最终raw只差约−0.00112%，adjusted仍差约1.83%；前15层同公式MSE最大相对漂移0.00123046，不能称早层逐值完全相同或将微小raw差归因机制。保持原baseline冻结，重跑原V29单网作为当前环境数值漂移控制，另存新路径。五候选正式快筛零失败、全部adjusted无收益，不扩量/不RPC/不线上再提交。
+
+当前环境V29控制完成：{"adjusted_final_layer_score": 6.116832334984139e-09, "final_layer_mse": 2.290466483145792e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.26705618178630175}，同源码hash/数据commit/版本/规则、FLOPs完全一致；相对冻结network0ratios{"final_layer_mse": 0.9998430545918784, "adjusted_final_layer_score": 0.9998430545918783, "flops_used": 1.0}。浮点raw漂移约−0.0157%，量级小；tree4last相对当前控制raw反而略差，不能将−0.00112%记作机制收益。阶段不推进，基线不覆盖。全套现有测试21通过，ruff check通过。下一项具体是官方factor过滤的covariance triangle/K111×edge mixed项，完整all-neuron运输通常O(n⁴)，需合法低秩/随机代理及small parity后才可启动候选；保留paper full K4成本障碍，不盲补全。

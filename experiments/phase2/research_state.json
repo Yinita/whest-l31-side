@@ -11,35 +11,34 @@
   },
   "active_experiment": null,
   "next_experiment": {
-    "status": "bounded_term_generator_design",
-    "hypothesis": "Build independently enumerated K31/K211 truncated Hermite production terms using paper vector-partition condition, compare to exact finite-support/Gaussian diagnostic before candidate integration",
-    "validated": "Exact nonlinear moment-to-core slice conversion passed n4/6",
-    "missing": "Truncated power-cumulant production remains unvalidated; upstream generator imports unavailable mlp_kprop modules",
-    "candidate_gate": "No full benchmark candidate until production coefficients and source bookkeeping parity checked; oracle never enters estimator"
+    "status": "prepared_research_design",
+    "hypothesis": "Omitted K111 covariance triangle and K111 times edge are concrete mixed-cumulant targets; bound lawful factor compression before candidate",
+    "official_source_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "term_audit": "results/phase2/official_augmented_terms_audit_v29diff.json",
+    "gate": "Exact output-all-neurons covariance triangle transport is generally O(n4); first derive legal low-rank/sketch surrogate and independent small numerical production check, no oracle",
+    "deprioritized": [
+      "Lambda/rank/timing sweeps",
+      "Restoring existing dense augmented terms",
+      "Full K211 expensive port without accuracy gate"
+    ]
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-10T13:28:33.786611+00:00",
+  "updated_at_utc": "2026-10-12T02:56:22.390601+00:00",
   "previous_experiment": {
-    "id": "P2-E011-coreproxy-first-mini1",
-    "candidate": "estimators/k3_v29_coreproxy_first/estimator.py",
-    "sha256": "62bb459b66864b96ee3bb27517f8b7b9eb7a581724f21049d7628df36d2ca4d7",
-    "single_change": "First-layer base lambda only uses analytic Gaussian core; later original LAM",
-    "report": "results/phase2/coreproxy_first_mini1_local.json",
-    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-    "network_ids": [
-      "0"
-    ],
-    "status": "completed_negative_screen",
-    "pid": 667181,
-    "pid_start_ticks": "2748312",
+    "id": "P2-E017-v29-current-env-control",
+    "candidate": "estimators/k3_v29/estimator.py",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "single_change": "No algorithm change; repeat frozen V29 current environment to bound numerical drift",
+    "report": "results/phase2/v29_mini1_control_20261012.json",
     "command": [
       "uv",
       "run",
+      "--frozen",
       "python",
       "benchmark/phase2.py",
       "run",
       "--estimator",
-      "estimators/k3_v29_coreproxy_first/estimator.py",
+      "estimators/k3_v29/estimator.py",
       "--dataset",
       "benchmark/data/mini_first8",
       "--n-mlps",
@@ -47,21 +46,31 @@
       "--runner",
       "local",
       "--output",
-      "results/phase2/coreproxy_first_mini1_local.json"
+      "results/phase2/v29_mini1_control_20261012.json"
     ],
-    "started_at_utc": "2026-10-10T11:12:50.459650+00:00",
+    "pid": 3952501,
+    "pid_start_ticks": "11748623",
+    "started_at_utc": "2026-10-12T02:55:15.286142+00:00",
+    "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "network_ids": [
+      "0"
+    ],
+    "status": "completed_control",
+    "launcher_log": "results/phase2/v29_mini1_control_20261012_launcher.log",
     "metrics": {
-      "adjusted_final_layer_score": 6.156340382880013e-09,
-      "final_layer_mse": 2.2967631352344142e-08,
+      "adjusted_final_layer_score": 6.116832334984139e-09,
+      "final_layer_mse": 2.290466483145792e-08,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.2680442004852921
+      "mean_compute_utilization": 0.26705618178630175
     },
     "paired_ratios": {
-      "raw": 1.0025916928733447,
-      "adjusted": 1.0063009473582452
-    }
+      "final_layer_mse": 0.9998430545918784,
+      "adjusted_final_layer_score": 0.9998430545918783,
+      "flops_used": 1.0
+    },
+    "conclusion": "Identical FLOPs, source/tool/data unchanged; floating drift raw -0.0157%, final-only tiny gain is not attributable"
   },
-  "last_checkpoint_utc": "2026-10-10T10:21:29.665225+00:00",
+  "last_checkpoint_utc": "2026-10-12T02:56:22.390601+00:00",
   "history": [
     {
       "id": "P2-E003-age3-mini8",
@@ -372,6 +381,292 @@
       ],
       "started_at_utc": "2026-10-10T10:42:16.022271+00:00",
       "lambda_diagnostic": "results/phase2/coreproxy_lambda_diagnostic.json"
+    },
+    {
+      "id": "P2-E012-pairq3-mini1",
+      "candidate": "estimators/k3_v29_pairq3/estimator.py",
+      "sha256": "01882801f13783c5a938772ab532336061501a70d065cd0dc37cb8958faa8f1b",
+      "single_change": "Gaussian pair power-covariance Mehler q=3 tail; retain K3/K4 sources and closure",
+      "hypothesis": "Measure whether neglected Gaussian pair tail affects propagated covariance/kurtosis enough to reduce V29 error",
+      "report": "results/phase2/pairq3_mini1_local.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_pairq3/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/pairq3_mini1_local.json"
+      ],
+      "pid": 3932720,
+      "pid_start_ticks": "11671997",
+      "started_at_utc": "2026-10-12T02:42:29.026974+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "launcher_log": "results/phase2/pairq3_mini1_launcher.log",
+      "correctness": "results/phase2/gaussian_pair_tail_validation.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.1256881370209195e-09,
+        "final_layer_mse": 2.293037404399456e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.2671429661490947
+      },
+      "paired_ratios": {
+        "final_layer_mse": 1.000965322819025,
+        "adjusted_final_layer_score": 1.0012906032043642,
+        "flops_used": 1.0003249666875804
+      },
+      "manifest": "results/phase2/pairq3_mini1_local.manifest.json",
+      "conclusion": "raw/adjusted slightly worse; do not expand"
+    },
+    {
+      "id": "P2-E013-spilluse-mini1",
+      "candidate": "estimators/k3_v29_spilluse/estimator.py",
+      "sha256": "801263c3ceaef92acc3dacd624ebde62a9bb8ca1e32f391a7b1c895072fefced",
+      "single_change": "Restore exact W diag(g_prev-adaptive_lambda*var_prev) W^T offdiagonal spill to WK431 USE only",
+      "hypothesis": "Measure discarded diagonal-core transport structure without changing feed/source representation",
+      "report": "results/phase2/spilluse_mini1_local.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_spilluse/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/spilluse_mini1_local.json"
+      ],
+      "pid": 3934183,
+      "pid_start_ticks": "11681686",
+      "started_at_utc": "2026-10-12T02:44:05.908705+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "launcher_log": "results/phase2/spilluse_mini1_launcher.log",
+      "metrics": {
+        "adjusted_final_layer_score": 6.374435665447056e-09,
+        "final_layer_mse": 2.2705563651470584e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.28074333512677185
+      },
+      "paired_ratios": {
+        "final_layer_mse": 0.9911518149061538,
+        "adjusted_final_layer_score": 1.0419502902815012,
+        "flops_used": 1.0512519622235241
+      },
+      "conclusion": "raw slightly lower but extra cost makes adjusted worse; reject expansion"
+    },
+    {
+      "id": "P2-E014-k4square-mini1",
+      "candidate": "estimators/k3_v29_k4square/estimator.py",
+      "sha256": "cfc1294fe7aa64d09c118121c22172b1d74969ad3ba01d73d09b0d469a2d8279",
+      "single_change": "Add kappa4 squared w8/1152 to PK1 mean; downstream centering consistently uses changed mean",
+      "hypothesis": "Complete second-order marginal Edgeworth mean using existing K4, O(n) added cost",
+      "report": "results/phase2/k4square_mini1_local.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_k4square/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/k4square_mini1_local.json"
+      ],
+      "pid": 3939482,
+      "pid_start_ticks": "11694327",
+      "started_at_utc": "2026-10-12T02:46:12.323638+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "launcher_log": "results/phase2/k4square_mini1_launcher.log",
+      "correctness": "results/phase2/kurtosis_squared_mean_validation.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.184569796356216e-09,
+        "final_layer_mse": 2.3158301942771686e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.2670562725902528
+      },
+      "paired_ratios": {
+        "final_layer_mse": 1.0109149172888394,
+        "adjusted_final_layer_score": 1.0109152610182677,
+        "flops_used": 1.000000340018158
+      },
+      "conclusion": "Mean-only kappa4 squared extension worsens raw/adjusted; reject expansion"
+    },
+    {
+      "id": "P2-E015-tree4marg-mini1",
+      "candidate": "estimators/k3_v29_tree4marg/estimator.py",
+      "sha256": "9088453fbe12eac80a6804207d183890a472fa6aae066f3954c0a85293bc23f5",
+      "single_change": "One-layer newborn Gaussian K4 covariance-tree traceless residual to marginal power cumulants 1..4; existing recurrence formulas retained",
+      "hypothesis": "New mixed fourth-order information omitted by harmonic core, evaluated without full tensor",
+      "report": "results/phase2/tree4marg_mini1_local.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_tree4marg/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/tree4marg_mini1_local.json"
+      ],
+      "pid": 3947798,
+      "pid_start_ticks": "11728382",
+      "started_at_utc": "2026-10-12T02:51:52.875123+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "launcher_log": "results/phase2/tree4marg_mini1_launcher.log",
+      "correctness": "results/phase2/distinct_k4_tree_algebra.json",
+      "metrics": {
+        "adjusted_final_layer_score": 7.530162640713663e-09,
+        "final_layer_mse": 2.2108128661102455e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.34060606196680965
+      },
+      "paired_ratios": {
+        "final_layer_mse": 0.9650723577263511,
+        "adjusted_final_layer_score": 1.2308627086611679,
+        "flops_used": 1.2754097646740208
+      },
+      "conclusion": "Raw improves modestly but full-chain n3 cost makes adjusted worse; no Mini8 expansion"
+    },
+    {
+      "id": "P2-E016-tree4last-mini1",
+      "candidate": "estimators/k3_v29_tree4last/estimator.py",
+      "sha256": "14d632532a45a49a5c1cd4309ccd27fc6a428c4872b02c7994dd9bb3e116c899",
+      "single_change": "Same Gaussian K4 tree marginal residual with birth temporal gate penultimate only",
+      "hypothesis": "Isolate final correction to avoid full-chain cost; early V29 trajectory unchanged",
+      "report": "results/phase2/tree4last_mini1_local.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_tree4last/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/tree4last_mini1_local.json"
+      ],
+      "pid": 3950404,
+      "pid_start_ticks": "11738064",
+      "started_at_utc": "2026-10-12T02:53:29.698187+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_negative_screen",
+      "launcher_log": "results/phase2/tree4last_mini1_launcher.log",
+      "correctness": "results/phase2/distinct_k4_tree_algebra.json",
+      "metrics": {
+        "adjusted_final_layer_score": 6.23004958118477e-09,
+        "final_layer_mse": 2.2908004382315994e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.27195950713166894
+      },
+      "paired_ratios": {
+        "final_layer_mse": 0.9999888339235329,
+        "adjusted_final_layer_score": 1.018349279885368,
+        "flops_used": 1.0183606509782681
+      },
+      "conclusion": "Tiny raw difference with early numerical drift; extra cost makes adjusted worse, reject expansion"
+    },
+    {
+      "id": "P2-E017-v29-current-env-control",
+      "candidate": "estimators/k3_v29/estimator.py",
+      "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+      "single_change": "No algorithm change; repeat frozen V29 current environment to bound numerical drift",
+      "report": "results/phase2/v29_mini1_control_20261012.json",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/v29_mini1_control_20261012.json"
+      ],
+      "pid": 3952501,
+      "pid_start_ticks": "11748623",
+      "started_at_utc": "2026-10-12T02:55:15.286142+00:00",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_control",
+      "launcher_log": "results/phase2/v29_mini1_control_20261012_launcher.log",
+      "metrics": {
+        "adjusted_final_layer_score": 6.116832334984139e-09,
+        "final_layer_mse": 2.290466483145792e-08,
+        "n_failed_mlps": 0,
+        "mean_compute_utilization": 0.26705618178630175
+      },
+      "paired_ratios": {
+        "final_layer_mse": 0.9998430545918784,
+        "adjusted_final_layer_score": 0.9998430545918783,
+        "flops_used": 1.0
+      },
+      "conclusion": "Identical FLOPs, source/tool/data unchanged; floating drift raw -0.0157%, final-only tiny gain is not attributable"
     }
   ],
   "execution_mode": "continuous_goal",
@@ -426,7 +721,10 @@
     "url": "https://github.com/alignment-research-center/mlp_kprop",
     "web_result": "404",
     "clone_session": 63999,
-    "status": "unavailable: clone exited 128, unauthenticated repository access denied"
+    "status": "unavailable: clone exited 128, unauthenticated repository access denied",
+    "corrected_url": "https://github.com/alignment-research-center/mlp_cumulant_propagation",
+    "corrected_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "corrected_status": "public official repo cloned read-only; old 404 was wrong repo-name lookup; generators available"
   },
   "data_preparation_history": [
     {
@@ -469,5 +767,6 @@
   "k211_conversion_diagnostic": "results/phase2/k211_conversion_algebra.json",
   "archive_coordination": "Notion/Drive gaps handled by coordinating thread; official HF input repository is not output destination",
   "source_birth_combination": "results/phase2/source_birth_combination_algebra.json",
-  "nonlinear_core_exact_oracle": "results/phase2/nonlinear_core_exact_oracle.json"
+  "nonlinear_core_exact_oracle": "results/phase2/nonlinear_core_exact_oracle.json",
+  "official_term_audit": "results/phase2/official_augmented_terms_audit_v29diff.json"
 }

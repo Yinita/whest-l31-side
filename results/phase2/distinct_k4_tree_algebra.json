@@ -1,0 +1,102 @@
+{
+  "mode": "small synthetic exact tree-polynomial algebra; no accuracy or competition evidence",
+  "seed": 735,
+  "tree_topologies": {
+    "stars": 4,
+    "undirected_paths": 12
+  },
+  "target": "full Gaussian covariance tree polynomial minus its exact h0/h2 identity-metric trace projection",
+  "formulas": {
+    "raw": "U=(W diag(f))C; D=(W diag(h))*U; raw=4 rowsum(W diag(g)*U**3)+12 rowsum((DC)*D)",
+    "trace": "s=(C*C)(f*f); A=(C diag(f*h))(C*C); B=(C diag(f*f))C; H=C*(g f^T diag(s)+transpose)+2[(f h^T)*A+transpose+(h h^T)*C*B]",
+    "core": "G=6H/(n+4)-3tr(H)I/((n+2)(n+4))",
+    "residual_marginal": "raw-rowsum((WG)*W)*rowsum(W*W)"
+  },
+  "cost": {
+    "dense_matmuls_per_layer": 5,
+    "dense_tensor_materialization_in_candidate": false,
+    "persistent_newborn_state": "C plus f/h/g; or cached G and C plus f/h/g",
+    "implementation_ops": "matmul, multiply, add, power, sum, fill_diagonal; all flopscope-supported"
+  },
+  "primary_source": "https://arxiv.org/html/2605.05179v2",
+  "source_sections": [
+    "S.3.2 connected diagram formula",
+    "S.3.4 ReLU Hermite coefficients",
+    "S.4.2 harmonic content tradeoffs"
+  ],
+  "checks": [
+    {
+      "n": 4,
+      "case": 0,
+      "trace_max_error": 1.3322676295501878e-15,
+      "raw_marginal_max_error": 4.263256414560601e-14,
+      "residual_marginal_max_error": 5.861977570020827e-14,
+      "residual_trace_max_error": 1.7763568394002505e-15,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 3.9703788879005186,
+      "all_distinct_leaf_collision_triangle_norm": 0.458533659627702
+    },
+    {
+      "n": 4,
+      "case": 1,
+      "trace_max_error": 2.0816681711721685e-17,
+      "raw_marginal_max_error": 2.220446049250313e-16,
+      "residual_marginal_max_error": 2.7755575615628914e-16,
+      "residual_trace_max_error": 2.0816681711721685e-17,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 0.1624835530328425,
+      "all_distinct_leaf_collision_triangle_norm": 0.10831434123068816
+    },
+    {
+      "n": 4,
+      "case": 2,
+      "trace_max_error": 3.552713678800501e-15,
+      "raw_marginal_max_error": 1.0658141036401503e-14,
+      "residual_marginal_max_error": 2.2737367544323206e-13,
+      "residual_trace_max_error": 4.218847493575595e-15,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 31.802725170702324,
+      "all_distinct_leaf_collision_triangle_norm": 1.4410815376624866
+    },
+    {
+      "n": 6,
+      "case": 0,
+      "trace_max_error": 8.881784197001252e-15,
+      "raw_marginal_max_error": 2.2737367544323206e-13,
+      "residual_marginal_max_error": 4.547473508864641e-13,
+      "residual_trace_max_error": 1.4210854715202004e-14,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 129.71398202827896,
+      "all_distinct_leaf_collision_triangle_norm": 2.1884660456472824
+    },
+    {
+      "n": 6,
+      "case": 1,
+      "trace_max_error": 3.885780586188048e-15,
+      "raw_marginal_max_error": 2.2737367544323206e-13,
+      "residual_marginal_max_error": 1.1368683772161603e-13,
+      "residual_trace_max_error": 4.440892098500626e-15,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 50.43812243564784,
+      "all_distinct_leaf_collision_triangle_norm": 4.698143451890592
+    },
+    {
+      "n": 6,
+      "case": 2,
+      "trace_max_error": 1.1102230246251565e-16,
+      "raw_marginal_max_error": 4.618527782440651e-14,
+      "residual_marginal_max_error": 3.552713678800501e-15,
+      "residual_trace_max_error": 1.1102230246251565e-16,
+      "distinct_trace_max_error": 0.0,
+      "distinct_vs_harmonic_residual_norm": 1.9696799803088947,
+      "all_distinct_leaf_collision_triangle_norm": 12.49393134187502
+    }
+  ],
+  "limitations": [
+    "Repeated-index entries of the full tree polynomial are a designed closure, not the exact ReLU fourth cumulant",
+    "Gaussian weak-correlation newborn production; propagated nonGaussian K3/K4 interactions omitted",
+    "Residual survives only one linear transport in proposed candidate",
+    "Strict all-distinct tensor is traceless too but exact leaf-collision correction generally requires O(n**4) batched triangle contractions",
+    "No claim that this residual has beneficial sign or size on benchmark networks"
+  ]
+}

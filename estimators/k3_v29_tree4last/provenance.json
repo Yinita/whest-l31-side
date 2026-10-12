@@ -1,0 +1,17 @@
+{
+  "author": "504aldo",
+  "license": "MIT",
+  "repository": "https://github.com/504aldo/whest-p2-cumulant-k3",
+  "upstream_commit": "1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+  "upstream_path": "estimators/estimator_v29.py",
+  "sha256": "14d632532a45a49a5c1cd4309ccd27fc6a428c4872b02c7994dd9bb3e116c899",
+  "modifications": [
+    "One-layer newborn Gaussian covariance-tree traceless K4 residual added only to final-layer marginal power moments p=1..4",
+    "Penultimate birth snapshot only: five dense matmuls total per network; original earlier trajectory stays frozen V29"
+  ],
+  "role": "experimental final-only timing ablation; no benchmark improvement established",
+  "validation": "results/phase2/distinct_k4_tree_algebra.json",
+  "parent_candidate": "estimators/k3_v29_tree4marg/estimator.py",
+  "parent_sha256": "9088453fbe12eac80a6804207d183890a472fa6aae066f3954c0a85293bc23f5",
+  "single_change_vs_parent": "Temporal gate: birth only at penultimate layer li=L-2, applying correction only to final layer"
+}

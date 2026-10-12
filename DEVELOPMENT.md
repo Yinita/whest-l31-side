@@ -1,6 +1,6 @@
 # WhestBench Phase 2 开发入口
 
-更新日期：2026-10-10。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
+更新日期：2026-10-12。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
 
 ## 当前状态
 
@@ -15,6 +15,12 @@
 - 普通子进程 Mini-8 在 8GB RLIMIT_AS 下 4/8 内存失败，保留原始报告。RPC与本地每网络固定 FLOP 差 16,777,216（astype 路径），最大逐网络 raw MSE 相对差约 0.393%；尚不能称所有环境完全等价。
 - 工具已升级并锁定 flopscope 0.12.1 / whestbench 0.16.1；Phase 2 benchmark 规则明确固定。
 - 可复跑命令与推进计划见 [benchmark/README.md](benchmark/README.md)。
+
+## 连续研究进展
+
+取消定时触发后持续推进。阶段1 adjusted目标仍为5.779e-10，未达标。2026-10-12已完成Gaussian pair三阶尾项、USE-only diagonal spill、边缘峰度平方、单层新生四阶树无迹残差等真实network0快筛；成本与误差成对记录，负结果保留，不将小规模代数核验当作提分。最后层残差时间消融也无收益；原V29当前环境单网控制已完成：FLOPs完全一致，raw相对冻结报告漂移−0.0157%；最后层残差候选相对当前控制也无收益。
+
+论文代码实际仓库是[mlp_cumulant_propagation](https://github.com/alignment-research-center/mlp_cumulant_propagation)，已冻结commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb；此前误查模块名mlp_kprop的404已纠正。官方组合生成器与V29现有pair表精确对照发现22项中19项已有，剩余3项即本轮pairq3，不重复添加已有系数。详见[研究日志](experiments/phase2/RESEARCH_LOG.md)。
 
 ## 当前任务
 

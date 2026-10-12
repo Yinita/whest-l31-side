@@ -1,0 +1,3784 @@
+{
+  "official_repository": "https://github.com/alignment-research-center/mlp_cumulant_propagation",
+  "official_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+  "license": "MIT Copyright 2026 Alignment Research Center",
+  "mode": "AST-extracted unchanged combinatorial definitions; annotation syntax adapted for Python 3.10; no Torch/nonlinear algorithm execution",
+  "sources": [
+    {
+      "path": "src/mlp_kprop/partitions.py",
+      "sha256": "acb944b9b6f5823affc9baae5946662330abda658ae79c08294ee32aec4536dd"
+    },
+    {
+      "path": "src/mlp_kprop/kprop_harmonic.py",
+      "sha256": "45e5fcc030bdb6bfba526898fdd53a650b83193e992cfad51e9422ccb70e11c1"
+    }
+  ],
+  "python": "3.10.12",
+  "numpy": "2.2.6",
+  "fixed_generator_arguments": {
+    "k_max": 3,
+    "d_max": 4,
+    "use_mean_var": false
+  },
+  "counts_by_output": {
+    "(1,)": {
+      "base": 3,
+      "augment": 3
+    },
+    "(2,)": {
+      "base": 3,
+      "augment": 3
+    },
+    "(1, 1)": {
+      "base": 4,
+      "augment": 10
+    },
+    "(3,)": {
+      "base": 3,
+      "augment": 3
+    },
+    "(2, 1)": {
+      "base": 5,
+      "augment": 15
+    },
+    "(1, 1, 1)": {
+      "base": 2,
+      "augment": 9
+    },
+    "(4,)": {
+      "base": 3,
+      "augment": 3
+    },
+    "(2, 2)": {
+      "base": 4,
+      "augment": 10
+    },
+    "(3, 1)": {
+      "base": 5,
+      "augment": 15
+    },
+    "(2, 1, 1)": {
+      "base": 3,
+      "augment": 20
+    }
+  },
+  "extra_counts": {
+    "dense": 32,
+    "factored111": 7,
+    "capped211": 17
+  },
+  "ready_dense_count": 27,
+  "terms": [
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/3",
+      "coefficient": 0.3333333333333333,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            3
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/12",
+      "coefficient": 0.08333333333333333,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            0,
+            4
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/4",
+      "coefficient": 0.25,
+      "wick_kp": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          3
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/3",
+      "coefficient": 0.3333333333333333,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            3
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            3
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/24",
+      "coefficient": 0.041666666666666664,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            0,
+            4
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            2,
+            1
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/4",
+      "coefficient": 0.25,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          4,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            3,
+            0
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/24",
+      "coefficient": 0.041666666666666664,
+      "wick_kp": [
+        [
+          5,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            4,
+            0
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          3
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            3
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1
+      ],
+      "vector_partition": [
+        [
+          3,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            3,
+            1
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 6,
+      "exact_coefficient": "3",
+      "coefficient": 3.0,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1,
+            0
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": false,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 6,
+      "exact_coefficient": "3",
+      "coefficient": 3.0,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            0,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "iso_count": 3,
+      "exact_coefficient": "3",
+      "coefficient": 3.0,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1,
+            1
+          ],
+          "v29_slice": "factored_k111",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": false,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 6,
+      "exact_coefficient": "3",
+      "coefficient": 3.0,
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            2,
+            0,
+            1
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 6,
+      "exact_coefficient": "3/2",
+      "coefficient": 1.5,
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            0,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        1,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "iso_count": 3,
+      "exact_coefficient": "3/2",
+      "coefficient": 1.5,
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1,
+            1
+          ],
+          "v29_slice": "harmonic_k211",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "factored111",
+      "official_factored_keeps": true,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/3",
+      "coefficient": 0.3333333333333333,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            3
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/12",
+      "coefficient": 0.08333333333333333,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            0,
+            4
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/4",
+      "coefficient": 0.25,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        2
+      ],
+      "vector_partition": [
+        [
+          1,
+          3
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/3",
+      "coefficient": 0.3333333333333333,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            3
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            3
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": false,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/24",
+      "coefficient": 0.041666666666666664,
+      "wick_kp": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            0,
+            4
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": false,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": false,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            2,
+            1
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/4",
+      "coefficient": 0.25,
+      "wick_kp": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          4,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            3,
+            0
+          ],
+          "slice": [
+            3
+          ],
+          "v29_slice": "d3",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/24",
+      "coefficient": 0.041666666666666664,
+      "wick_kp": [
+        [
+          5,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            4,
+            0
+          ],
+          "slice": [
+            4
+          ],
+          "v29_slice": "g4",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": false,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          3
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            3
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": false,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        3,
+        1
+      ],
+      "vector_partition": [
+        [
+          3,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/6",
+      "coefficient": 0.16666666666666666,
+      "wick_kp": [
+        [
+          3,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            3,
+            1
+          ],
+          "slice": [
+            3,
+            1
+          ],
+          "v29_slice": "wk431",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "dense",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1,
+            0
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            0,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1,
+            1
+          ],
+          "v29_slice": "factored_k111",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": false,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            2,
+            0,
+            1
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            0,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            0,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 3,
+          "vector": [
+            0,
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1,
+            0
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            0,
+            2,
+            2
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            1,
+            0
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "2",
+      "coefficient": 2.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            1,
+            1
+          ],
+          "slice": [
+            1,
+            1,
+            1
+          ],
+          "v29_slice": "factored_k111",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": false,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          0
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            1,
+            2,
+            0
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 3,
+          "vector": [
+            2,
+            1,
+            0
+          ],
+          "slice": [
+            2,
+            1
+          ],
+          "v29_slice": "d21",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 2,
+          "vector": [
+            1,
+            0,
+            1
+          ],
+          "slice": [
+            1,
+            1
+          ],
+          "v29_slice": "c_off",
+          "available_dense_v29": true
+        },
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            2,
+            0
+          ],
+          "slice": [
+            2,
+            2
+          ],
+          "v29_slice": "wk4m",
+          "available_dense_v29": true
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": true,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "iso_count": 2,
+      "exact_coefficient": "1",
+      "coefficient": 1.0,
+      "wick_kp": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            1,
+            1,
+            2
+          ],
+          "slice": [
+            2,
+            1,
+            1
+          ],
+          "v29_slice": "harmonic_k211",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    },
+    {
+      "output_part": [
+        2,
+        1,
+        1
+      ],
+      "vector_partition": [
+        [
+          2,
+          1,
+          1
+        ]
+      ],
+      "iso_count": 1,
+      "exact_coefficient": "1/2",
+      "coefficient": 0.5,
+      "wick_kp": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "factors": [
+        {
+          "vsum": 4,
+          "vector": [
+            2,
+            1,
+            1
+          ],
+          "slice": [
+            2,
+            1,
+            1
+          ],
+          "v29_slice": "harmonic_k211",
+          "available_dense_v29": false
+        }
+      ],
+      "category": "capped211",
+      "official_factored_keeps": true,
+      "available_v29_slices": false,
+      "available_v29_wicks": true,
+      "power_count_cost": 3
+    }
+  ],
+  "limitations": [
+    "Does not demonstrate numerical production parity or score improvement.",
+    "Adding a subset is a mechanism ablation, not the full augmented algorithm.",
+    "Full factored AUGMENT drops non-hypertree and top-cumulant cross-edge terms.",
+    "The public lean aug generator does not pass augment=True to get_all_terms_iso."
+  ]
+}

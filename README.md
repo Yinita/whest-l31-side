@@ -1,8 +1,8 @@
 # WhestBench Phase 2 研究项目
 
-本仓库基于 AIcrowd whest-starterkit，当前目标是复现公开 K=3 高阶统计量传播方法，诊断误差与计算来源，再验证一项可解释的精度—成本改进。项目状态更新于 **2026-10-10**。
+本仓库基于 AIcrowd whest-starterkit，当前目标是复现公开 K=3 高阶统计量传播方法，诊断误差与计算来源，再验证一项可解释的精度—成本改进。项目状态更新于 **2026-10-12**。
 
-完整依据见 [项目调研与推进报告](ARC_WhestBench_Project_Report_2026-10-10.md)，当前任务见 [DEVELOPMENT.md](DEVELOPMENT.md)，实验状态见 [EXPERIMENTS_REPORT.md](EXPERIMENTS_REPORT.md)。报告中的公开结果与路线建议不等于本项目已完成的复现。
+完整依据见 [项目调研与推进报告](ARC_WhestBench_Project_Report_2026-10-10.md)，当前任务见 [DEVELOPMENT.md](DEVELOPMENT.md)，实验状态见 [EXPERIMENTS_REPORT.md](EXPERIMENTS_REPORT.md)，最新逐轮研究见 [RESEARCH_LOG.md](experiments/phase2/RESEARCH_LOG.md)。报告中的公开结果与路线建议不等于本项目已完成的复现。
 
 ## 当前阶段
 
