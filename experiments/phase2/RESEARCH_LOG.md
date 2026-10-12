@@ -687,3 +687,5 @@ O05 K31所需p3 Wick k1..5合法构造完成，k1/k2独立320点Gaussian截断qu
 O03/O05合法power→centered K31/K211转换组件实际计费，独立finite-support partitions核验n4/7relative<1.7e-7；cap先扣重复再zero。production误差不等于转换算术误差，无score，fullsource抵消与实际state集成待。
 
 O04实际upstream lean build_term_table AST原样执行配当前冻结official generator：25保留/35classes，whole K31/K211/K111 output排除与diagonal metric K4 slice zero假设均逐项定位。原注释94 terms与当前再生成25不等，历史official依赖commit未知、不能冒充历史精确复现，term_rels缺失无法反推pruning。
+
+H29/H30 exact symmetricCP strict distinct运输：generic repeated tensor不显式展开，通过W²@D21@Wᵀ及W@D21ᵀ薄组合同口径扣除，合法组件n4/8/16relative<1.05e-6。首版W@D21方向错误由独立oracle assertion定位，修复为W@D21.T；失败无report，不算通过。费用含denseGEMM，不等于廉价source运输，无整网score。
