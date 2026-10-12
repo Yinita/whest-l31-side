@@ -10,17 +10,19 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "discussion-D01-RPC",
-    "session_id": 74035,
-    "candidate": "estimators/discussion_leaf8_r01/estimator.py",
-    "report": "results/phase2/discussion_leaf8_r03_rpc_scored.json"
+    "key": "discussion-D03-Mini8",
+    "pid": 207340,
+    "worker_pid": 207349,
+    "candidate": "estimators/discussion_combined_r01/estimator.py",
+    "report": "results/phase2/discussion_combined_r02_mini8.json",
+    "status": "running"
   },
   "next_experiment": {
     "key": "discussion-D03-Mini8",
     "status": "Combinedsingle raw2.2695706647368752e-8 adjusted5.818785780892923e-9 zero fail; fullMini8 afterRPC serial"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-12T09:01:34.940467+00:00",
+  "updated_at_utc": "2026-10-12T09:32:15.009031+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46257,20 +46259,25 @@
   "discussion_pipeline": [
     {
       "key": "D01RPC",
-      "session_id": 74035,
-      "status": "running"
+      "status": "completed",
+      "report": "results/phase2/discussion_leaf8_r03_rpc_scored.json"
     },
     {
       "key": "D03Mini8",
-      "session_id": 81219,
+      "status": "running",
       "pid": 201359,
-      "status": "waitingRPC"
+      "worker_pid": 207349
     },
     {
       "key": "D04pair12",
-      "session_id": 35851,
       "status": "waitingCombo",
-      "scope": "Gaussian allpair degree12 tails; fullH04notexact"
+      "pid": 205530
+    },
+    {
+      "key": "D05outputmetric",
+      "status": "waitingPair12",
+      "session_id": 24617,
+      "manifest": "results/phase2/discussion_outputmetric_r01_manifest.json"
     }
   ]
 }
