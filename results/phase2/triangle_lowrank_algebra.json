@@ -1,0 +1,94 @@
+{
+  "mode": "offline small synthetic correctness; no score improvement",
+  "seed": 279,
+  "formula": "Tijk=w2_i*w2_j*w2_k*Cij*Cjk*Cki for three distinct indices; zero otherwise",
+  "coefficient": "One undirected covariance triangle, coefficient 1 (3!/(3!) from edge-vector partition)",
+  "formal_grade": "Basic algorithm equation14: 1+3*(2-1-0)=4 for edges (1,1,0),(1,0,1),(0,1,1); total Hermite order6 exceeds equation13 K3 limit5. Current V29 factored K111 sources omit the triangle; custom augmented term selection may differ",
+  "exact_dense_cost": "One trace((diag(a)C)**3) per output; O(n**4) for all n outputs",
+  "approximation": "Ctilde=Q B Q^T; indefinite symmetric low-rank projection; exact distinct mask on approximation",
+  "fast_formula": "raw=tr((B Q^T diag(a) Q)^3); correction=raw-3sum_ik a_i\u00b2a_k d_i Ctilde_ik\u00b2+2sum_i a_i\u00b3d_i\u00b3",
+  "cost": "Three n-by-n-by-r\u00b2 matmuls plus O(n*r\u00b3); features O(n*r\u00b2), no n\u00b3 tensor",
+  "candidate_basis": "QR of C_off @ (C_off @ contiguous next-weight sketch), rank16; deterministic, no setup randomness",
+  "primary_source": "https://arxiv.org/html/2605.05179v2",
+  "sections": [
+    "S.3.2 connected diagram combinatorics",
+    "S.3.4 ReLU derivatives",
+    "S.4.1 equation14 truncation"
+  ],
+  "centered_square_isserlis_checks": [
+    {
+      "centered_squares_cumulant": 28.09451809564582,
+      "triangle_wick2_product": 28.09451809564584,
+      "abs_error": 1.7763568394002505e-14
+    },
+    {
+      "centered_squares_cumulant": 105.93246171400665,
+      "triangle_wick2_product": 105.93246171400669,
+      "abs_error": 4.263256414560601e-14
+    },
+    {
+      "centered_squares_cumulant": 0.46011918081200065,
+      "triangle_wick2_product": 0.4601191808120165,
+      "abs_error": 1.587618925213974e-14
+    },
+    {
+      "centered_squares_cumulant": 24.960836692297974,
+      "triangle_wick2_product": 24.960836692297956,
+      "abs_error": 1.7763568394002505e-14
+    }
+  ],
+  "explicit_tensor_checks": [
+    {
+      "n": 4,
+      "rank": 2,
+      "contraction_max_error": 5.242334344401911e-15,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 1.7498024462291972
+    },
+    {
+      "n": 4,
+      "rank": 4,
+      "contraction_max_error": 7.771561172376096e-16,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 0.8369741592529848
+    },
+    {
+      "n": 6,
+      "rank": 2,
+      "contraction_max_error": 3.3306690738754696e-16,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 0.5051020006840653
+    },
+    {
+      "n": 6,
+      "rank": 6,
+      "contraction_max_error": 8.881784197001252e-14,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 2.4950683189148477
+    },
+    {
+      "n": 9,
+      "rank": 2,
+      "contraction_max_error": 6.938893903907228e-18,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 0.22305198141189017
+    },
+    {
+      "n": 9,
+      "rank": 9,
+      "contraction_max_error": 2.220446049250313e-14,
+      "repeats_zero": true,
+      "diagonal_is_not_zero": 2.692590625162271
+    }
+  ],
+  "limitations": [
+    "Low-rank C_off can lose substantial triangle content; exact algebra is only for projected C",
+    "Final-only one-layer marginal power correction does not transport triangle through entire depth",
+    "No truth or target-dependent sketch; network weights determine sketch"
+  ],
+  "allowed_operator_check": {
+    "check": "actual flopscope n6/r3 transpose-axis-tuple, sum-axis-tuple, broadcast matmul contraction",
+    "numpy_formula_max_error": 0.0,
+    "result": "passed"
+  }
+}

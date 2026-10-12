@@ -11,25 +11,17 @@
   },
   "active_experiment": null,
   "next_experiment": {
-    "status": "prepared_research_design",
-    "hypothesis": "Omitted K111 covariance triangle and K111 times edge are concrete mixed-cumulant targets; bound lawful factor compression before candidate",
-    "official_source_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
-    "term_audit": "results/phase2/official_augmented_terms_audit_v29diff.json",
-    "gate": "Exact output-all-neurons covariance triangle transport is generally O(n4); first derive legal low-rank/sketch surrogate and independent small numerical production check, no oracle",
-    "deprioritized": [
-      "Lambda/rank/timing sweeps",
-      "Restoring existing dense augmented terms",
-      "Full K211 expensive port without accuracy gate"
-    ]
+    "status": "user_requested_ablation_backlog_before_delegation",
+    "hypothesis": "Prepare concrete versioned pending ablations and handoff for lower reasoning model; preserve stage1 and prior negative evidence"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-12T02:56:22.390601+00:00",
+  "updated_at_utc": "2026-10-12T03:12:07.048849+00:00",
   "previous_experiment": {
-    "id": "P2-E017-v29-current-env-control",
-    "candidate": "estimators/k3_v29/estimator.py",
-    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-    "single_change": "No algorithm change; repeat frozen V29 current environment to bound numerical drift",
-    "report": "results/phase2/v29_mini1_control_20261012.json",
+    "id": "P2-E020-doubleedge-final-mini1",
+    "hypothesis": "Missing augmented Gaussian doubled covariance edge K111 adds final skewness beyond existing V29 tree birth",
+    "single_change": "Only penultimate zero_repeated(3Sym(A,I,H)) newborn transported to final D3; exact 3 dense matmul",
+    "candidate": "estimators/k3_v29_doubleedge_final/estimator.py",
+    "sha256": "050a96dcf59baebca0336fc784c886116afcf95c689682e5b8051040fc812cdb",
     "command": [
       "uv",
       "run",
@@ -38,7 +30,7 @@
       "benchmark/phase2.py",
       "run",
       "--estimator",
-      "estimators/k3_v29/estimator.py",
+      "estimators/k3_v29_doubleedge_final/estimator.py",
       "--dataset",
       "benchmark/data/mini_first8",
       "--n-mlps",
@@ -46,29 +38,31 @@
       "--runner",
       "local",
       "--output",
-      "results/phase2/v29_mini1_control_20261012.json"
+      "results/phase2/doubleedge_final_mini1_local.json"
     ],
-    "pid": 3952501,
-    "pid_start_ticks": "11748623",
-    "started_at_utc": "2026-10-12T02:55:15.286142+00:00",
+    "pid": 3960729,
+    "pid_start_ticks": "11787202",
+    "started_at_utc": "2026-10-12T03:01:41.071731+00:00",
+    "report": "results/phase2/doubleedge_final_mini1_local.json",
+    "launcher_log": "results/phase2/doubleedge_final_mini1_launcher.log",
     "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
     "network_ids": [
       "0"
     ],
-    "status": "completed_control",
-    "launcher_log": "results/phase2/v29_mini1_control_20261012_launcher.log",
+    "validation": "results/phase2/doubleedge_final_algebra.json",
+    "status": "completed_negative",
     "metrics": {
-      "adjusted_final_layer_score": 6.116832334984139e-09,
-      "final_layer_mse": 2.290466483145792e-08,
-      "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.26705618178630175
+      "final_layer_mse": 2.290487266520813e-08,
+      "adjusted_final_layer_score": 6.1842868592227294e-09,
+      "mean_compute_utilization": 0.2699987443552345,
+      "n_failed_mlps": 0
     },
-    "paired_ratios": {
-      "final_layer_mse": 0.9998430545918784,
-      "adjusted_final_layer_score": 0.9998430545918783,
-      "flops_used": 1.0
+    "ratios_vs_current_v29": {
+      "final_layer_mse": 1.0000090738612304,
+      "adjusted_final_layer_score": 1.011027688931867,
+      "flops_used": 1.0110185150901596
     },
-    "conclusion": "Identical FLOPs, source/tool/data unchanged; floating drift raw -0.0157%, final-only tiny gain is not attributable"
+    "conclusion": "Exact last-only doubled-edge yields no raw gain and worsens adjusted; no expansion"
   },
   "last_checkpoint_utc": "2026-10-12T02:56:22.390601+00:00",
   "history": [
@@ -667,6 +661,148 @@
         "flops_used": 1.0
       },
       "conclusion": "Identical FLOPs, source/tool/data unchanged; floating drift raw -0.0157%, final-only tiny gain is not attributable"
+    },
+    {
+      "id": "P2-E018-v25-mini1-control",
+      "candidate": "estimators/k3_v25/estimator.py",
+      "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+      "single_change": "Unmodified public V25, paired numerical and legal compute-reorganization control against V29",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v25/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/v25_mini1_local_20261012.json"
+      ],
+      "pid": 3957126,
+      "pid_start_ticks": "11773598",
+      "started_at_utc": "2026-10-12T02:59:25.029182+00:00",
+      "report": "results/phase2/v25_mini1_local_20261012.json",
+      "launcher_log": "results/phase2/v25_mini1_launcher_20261012.log",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "status": "completed_control",
+      "metrics": {
+        "final_layer_mse": 2.2909681263172388e-08,
+        "adjusted_final_layer_score": 8.400166403374769e-09,
+        "mean_compute_utilization": 0.36666448157347986,
+        "n_failed_mlps": 0
+      },
+      "ratios_vs_current_v29": {
+        "final_layer_mse": 1.0002190135394418,
+        "adjusted_final_layer_score": 1.373287012516512,
+        "flops_used": 1.37298630992517
+      },
+      "conclusion": "V25 has approximately identical raw error and 37.3% higher billed compute; V29 retained; upstream optimization, no own accuracy claim"
+    },
+    {
+      "id": "P2-E019-trianglelast-mini1",
+      "hypothesis": "Missing Gaussian covariance triangle contributes last marginal skewness; rank16 next-weight projection offers lawful lower-cost contraction",
+      "single_change": "Only penultimate newborn all-distinct Gaussian triangle transported to last marginal powers1..4; deterministic rank16 approximation",
+      "candidate": "estimators/k3_v29_trianglelast/estimator.py",
+      "sha256": "46b2177137e68cbf87d3d39fb9a95001e62fc1270b8615ec6fc1bb39caeaffd2",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_trianglelast/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/trianglelast_mini1_local.json"
+      ],
+      "pid": 3959099,
+      "pid_start_ticks": "11780099",
+      "started_at_utc": "2026-10-12T03:00:30.042679+00:00",
+      "report": "results/phase2/trianglelast_mini1_local.json",
+      "launcher_log": "results/phase2/trianglelast_mini1_launcher.log",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "validation": "results/phase2/triangle_lowrank_algebra.json",
+      "status": "completed_negative",
+      "metrics": {
+        "final_layer_mse": 2.2899000029497074e-08,
+        "adjusted_final_layer_score": 6.133581594643049e-09,
+        "mean_compute_utilization": 0.26785368735500015,
+        "n_failed_mlps": 0
+      },
+      "ratios_vs_current_v29": {
+        "final_layer_mse": 0.9997526791156941,
+        "adjusted_final_layer_score": 1.0027382244177456,
+        "flops_used": 1.0029862838724197
+      },
+      "conclusion": "Tiny raw difference within observed float drift, added rank16 covariance triangle cost worsens adjusted; do not infer full triangle irrelevance"
+    },
+    {
+      "id": "P2-E020-doubleedge-final-mini1",
+      "hypothesis": "Missing augmented Gaussian doubled covariance edge K111 adds final skewness beyond existing V29 tree birth",
+      "single_change": "Only penultimate zero_repeated(3Sym(A,I,H)) newborn transported to final D3; exact 3 dense matmul",
+      "candidate": "estimators/k3_v29_doubleedge_final/estimator.py",
+      "sha256": "050a96dcf59baebca0336fc784c886116afcf95c689682e5b8051040fc812cdb",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/phase2.py",
+        "run",
+        "--estimator",
+        "estimators/k3_v29_doubleedge_final/estimator.py",
+        "--dataset",
+        "benchmark/data/mini_first8",
+        "--n-mlps",
+        "1",
+        "--runner",
+        "local",
+        "--output",
+        "results/phase2/doubleedge_final_mini1_local.json"
+      ],
+      "pid": 3960729,
+      "pid_start_ticks": "11787202",
+      "started_at_utc": "2026-10-12T03:01:41.071731+00:00",
+      "report": "results/phase2/doubleedge_final_mini1_local.json",
+      "launcher_log": "results/phase2/doubleedge_final_mini1_launcher.log",
+      "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "network_ids": [
+        "0"
+      ],
+      "validation": "results/phase2/doubleedge_final_algebra.json",
+      "status": "completed_negative",
+      "metrics": {
+        "final_layer_mse": 2.290487266520813e-08,
+        "adjusted_final_layer_score": 6.1842868592227294e-09,
+        "mean_compute_utilization": 0.2699987443552345,
+        "n_failed_mlps": 0
+      },
+      "ratios_vs_current_v29": {
+        "final_layer_mse": 1.0000090738612304,
+        "adjusted_final_layer_score": 1.011027688931867,
+        "flops_used": 1.0110185150901596
+      },
+      "conclusion": "Exact last-only doubled-edge yields no raw gain and worsens adjusted; no expansion"
     }
   ],
   "execution_mode": "continuous_goal",
@@ -768,5 +904,19 @@
   "archive_coordination": "Notion/Drive gaps handled by coordinating thread; official HF input repository is not output destination",
   "source_birth_combination": "results/phase2/source_birth_combination_algebra.json",
   "nonlinear_core_exact_oracle": "results/phase2/nonlinear_core_exact_oracle.json",
-  "official_term_audit": "results/phase2/official_augmented_terms_audit_v29diff.json"
+  "official_term_audit": "results/phase2/official_augmented_terms_audit_v29diff.json",
+  "backlog": {
+    "version": "1.0",
+    "document": "experiments/phase2/ABLATION_BACKLOG.md",
+    "queue": "experiments/phase2/ablation_queue.json",
+    "handoff": "experiments/phase2/LOW_REASONING_HANDOFF.md",
+    "count": 129,
+    "counts": {
+      "algorithm": 71,
+      "diagnostic": 43,
+      "contract": 15
+    },
+    "dispatched": false,
+    "reason": "User requested concrete list before delegating to a lower-reasoning model"
+  }
 }

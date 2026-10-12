@@ -1,0 +1,549 @@
+[
+  {
+    "key": "L01",
+    "name": "冻结原轨迹特征缓存",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "readiness": "spec_ready",
+    "before": "只有 aggregate 与逐层 MSE；没有可拟合的逐神经元内部特征缓存。",
+    "after": "新建 V29 诊断副本，保存原 13 特征、原预测和网络 ID；不改变预测公式。",
+    "detail": "对开发 IDs0–7 提取每层 ones,mu,var,sigma,alpha,abs(alpha),phi,Phi,pk1,D3,D21norm,K4_sigma,sigma*phi。输出诊断数组至 ignored benchmark/data；预测/FLOPs 与同轮 V29 控制成对核对。序列化在预测计量区外，最终候选不含诊断输出。",
+    "dependencies": [],
+    "cost": "缓存约 8×16×1024×13 float32；无候选性能声明。",
+    "acceptance": "原始预测偏差不超过同轮重复控制，FLOPs相同；manifest有特征顺序和哈希。",
+    "source": "estimators/k3_v29/estimator.py:1215; 项目报告7.5"
+  },
+  {
+    "key": "L02",
+    "name": "冻结网络级训练选择流程",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "readiness": "spec_ready",
+    "before": "Mini8同时用于既有快筛；缺少修正器专用网络级选择协议。",
+    "after": "IDs0–7用leave-one-network-out；IDs8–15保留为一次公共确认集；另列新种子最终独立集。",
+    "detail": "保存split manifest及选择规则。任何特征/模型选择只能使用0–7的网络级交叉验证；不可把同网神经元随机分到训练和验证。8–15与上游调参独立性未知，不能叫真正未见最终集。",
+    "dependencies": [
+      "L01"
+    ],
+    "cost": "离线拟合；不新增提交计算。",
+    "acceptance": "确认集标签在选择前不读取；日志记录每次选择，选定一个候选才解封公共确认。",
+    "source": "ARC_WhestBench_Project_Report_2026-10-10.md:241"
+  },
+  {
+    "key": "L03",
+    "name": "最后层13特征残差线性修正",
+    "kind": "algorithm",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "原V29固定CORR_BETA后仍有final残差。",
+    "after": "只在final输出追加一个开发网络拟合的13特征线性残差预测；早层与原Beta不变。",
+    "detail": "用L01缓存的final合法特征拟合 y=reference−原V29预测，训练集标准化，固定ridge alpha=1e-3于标准化特征，不调alpha。常数、标准化和系数随候选冻结；只追加输出，不写回早层状态。 本任务先拟合一次ridge，在leave-one-network-out评估中不扫正则；若多个头/特征都被查看，必须计入选择账本。",
+    "dependencies": [
+      "L01",
+      "L02"
+    ],
+    "cost": "O(13n)推理；拟合可离线NumPy，推理仅fnp。",
+    "acceptance": "网络级CV平均adjusted收益显著超过同轮重复漂移；负结果停止该模型；最终需独立网络确认。",
+    "source": "项目报告7.5; V29 CORR_BETA"
+  },
+  {
+    "key": "L04",
+    "name": "删除常数特征的修正对照",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03含截距特征，可能只学习整体偏置。",
+    "after": "只删除ones列，保留其余12列及同样训练流程。",
+    "detail": "检查收益是否来自神经元结构而非整体漂移；禁止为此访问确认集。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(12n)。",
+    "acceptance": "相同网络级CV相对L03比较；解释误差减少来源。",
+    "source": "results/phase2/v29_rpc_residual_structure.json"
+  },
+  {
+    "key": "L05",
+    "name": "阈值形状特征增量",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03仅含alpha及abs(alpha)。",
+    "after": "追加alpha²phi、alpha³phi、alpha⁴phi三个确定性特征。",
+    "detail": "只扩一个阈值Hermite形状特征块，保留L03其他设置；这些是合法状态函数，不能声称完整高阶项。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(n)逐元素和3n线性点积。",
+    "acceptance": "开发网络级CV稳定改善，误差与FLOPs都记录；无收益删去整个块。",
+    "source": "原论文S3.4; 项目报告7.5"
+  },
+  {
+    "key": "L06",
+    "name": "标准化偏度特征增量",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03直接用D3，未表达相对于方差的规模。",
+    "after": "追加D3/(sigma³)与该值乘phi的两列，分母仅使用原正sigma。",
+    "detail": "不替换传播D3或人为clip；若出现非有限值则失败，不修改原reference。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(n)，全部fnp计费。",
+    "acceptance": "网络级CV改善且极端sigma网络零非有限；报告新增计算。",
+    "source": "V29 D3与sigma状态"
+  },
+  {
+    "key": "L07",
+    "name": "标准化峰度特征增量",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03含全层K4_sigma，但没有每神经元g4row。",
+    "after": "追加g4row/sigma⁴及乘phi的两列。",
+    "detail": "从合法pre状态提取；仅学习输出残差，不将该特征当已证明正确κ4。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(n)，不新增高阶运输。",
+    "acceptance": "相同训练网络CV改善；与L06单独比较，不先合并。",
+    "source": "estimators/k3_v29/estimator.py:1109"
+  },
+  {
+    "key": "L08",
+    "name": "最后线性均值传播轨迹特征",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03仅用最后pre的本层13特征。",
+    "after": "追加W_final乘上一层预测均值误差代理向量与本层mu的差异特征。",
+    "detail": "代理先定义为上一层原CORR_BETA修正delta，新增列W_final@delta_prev及其乘Phi；不使用上一层真值。缓存上层delta并计入新增matvec。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "1次n² matvec+O(n)。",
+    "acceptance": "CV收益超过计算折扣损失；早层输出及状态完全保留。",
+    "source": "V29 delta与mu递推; 项目报告7.5"
+  },
+  {
+    "key": "L09",
+    "name": "前层方差轨迹特征",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03缺少方差的来源分解。",
+    "after": "追加(W²)@var_prev与var−(W²)@var_prev两列。",
+    "detail": "复用当前dG计算中的t_v/var_prev来源，避免重复matvec；只新增特征块。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "若能合法复用O(n)；否则1 n²matvec并记录。",
+    "acceptance": "独立核对特征与定义；CV improved adjusted才保留。",
+    "source": "V29 t_v = var−WW@var_prev"
+  },
+  {
+    "key": "L10",
+    "name": "跨神经元均值残差特征",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03每神经元只看局部特征。",
+    "after": "追加final层mean(mu),mean(var),mean(D3)三个广播全层状态。",
+    "detail": "全层统计只来自网络权重计算；不读取reference的整体偏移。与已做oracle偏置消除诊断不同。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(n) reductions与常数列。",
+    "acceptance": "CV跨网络收益；若只有训练拟合提升拒绝。",
+    "source": "项目报告7.5; residual_structure诊断"
+  },
+  {
+    "key": "L11",
+    "name": "输出幅度归一化回归",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03在绝对均值误差上拟合。",
+    "after": "训练目标改成残差/sigma，推理修正乘sigma；特征集保持13列。",
+    "detail": "改变一个目标尺度机制；ridge标准化及split不变。不得把raw MSE与归一化损失混同。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "O(n)。",
+    "acceptance": "最终按原raw/adjusted评分比较，非训练损失。",
+    "source": "项目报告7.5"
+  },
+  {
+    "key": "L12",
+    "name": "网络等权训练",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "L03将训练网所有神经元等权拼接。",
+    "after": "每网络归一化为同等总权重，再拟合原残差。",
+    "detail": "对于当前相同宽度此项数学上与L03等价；先明确等价并作为实现一致性对照，只在未来混宽训练时才是算法消融。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "离线；提交推理不变。",
+    "acceptance": "同宽结果一致；若不一致定位拟合实现，不记作提分。",
+    "source": "项目报告网络级验证要求"
+  },
+  {
+    "key": "L13",
+    "name": "逐层共享线性修正",
+    "kind": "algorithm",
+    "priority": "P3",
+    "readiness": "spec_ready",
+    "before": "L03只训练final输出残差。",
+    "after": "对全部层训练一个共享13特征系数，但仍只用于final输出。",
+    "detail": "训练数据增加层深度但模型参数共享；不能把每层当独立网络holdout。每一fold必须排除该网络全部层。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "同13n推理；离线数据16倍。",
+    "acceptance": "最终CV收益与深度误差曲线同时报告；未改善不注入递推。",
+    "source": "项目报告7.5"
+  },
+  {
+    "key": "L14",
+    "name": "分段线性阈值修正",
+    "kind": "algorithm",
+    "priority": "P3",
+    "readiness": "needs_derivation",
+    "before": "L03一个全域线性模型。",
+    "after": "按固定alpha区间(-∞,-1),[-1,0),[0,1),[1,∞)训练四个线性头，final分段使用。",
+    "detail": "固定分界，不搜切点；训练稀疏区间缺样本则保留全局头，明确记录。 分段连续性约束及稀疏区间回退规则尚需冻结，不允许执行模型猜测。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "最多4×13n点积或掩码向量运算，需真实计费。",
+    "acceptance": "CV逐网络改善且边界附近连续性检查；若阶跃导致异常输出拒绝。",
+    "source": "原论文ReLU阈值机制; 项目报告7.5"
+  },
+  {
+    "key": "L15",
+    "name": "小网络非线性修正",
+    "kind": "algorithm",
+    "priority": "P3",
+    "readiness": "needs_derivation",
+    "before": "L03固定13列线性预测残差。",
+    "after": "一个固定13→8→1 tanh小网络预测final残差。",
+    "detail": "先冻结优化器、停止规则、训练seed和标准化，明确fnp可执行tanh路径；不能任低推理模型随意改训练和架构。",
+    "dependencies": [
+      "L03",
+      "L02"
+    ],
+    "cost": "O(13×8n)，非线性也计费。",
+    "acceptance": "严格网络级CV胜过线性后才进入候选；训练集增益不是结论。",
+    "source": "项目报告7.5"
+  },
+  {
+    "key": "L16",
+    "name": "单前层修正递推注入",
+    "kind": "algorithm",
+    "priority": "P3",
+    "readiness": "needs_derivation",
+    "before": "验证的修正仅改变final输出，不改变内部状态。",
+    "after": "仅第8层将已验证修正写入mu，后续原V29递推。",
+    "detail": "必须先核对均值修正与K2/K3/K4中心化一致性，不能只改mu误称状态正确。新父版本需冻结；不把final头的系数直接无依据套第8层。",
+    "dependencies": [
+      "L13"
+    ],
+    "cost": "特征计算+输出状态转换。",
+    "acceptance": "非线性中心化合同先通过；网络CV最终adjusted改善且早层误差不爆炸。",
+    "source": "上游F47在线修正发散警示"
+  },
+  {
+    "key": "L17",
+    "name": "修正器特征删列归因",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "某修正器整体改善，特征贡献未知。",
+    "after": "固定已选模型，逐次删除一个特征组再完整重拟合。",
+    "detail": "每次是一个独立版本；按预注册组阈值、偏度、峰度、历史、全局逐组进行，不穷举所有子集。依赖选定确有CV收益的模型。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "离线重拟合；可删去候选中无用推理成本。",
+    "acceptance": "以网络CV差异归因，保留所有负结果；确认集不用于删列。",
+    "source": "项目报告单因素原则"
+  },
+  {
+    "key": "L18",
+    "name": "残差条件可预测性上界",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "只知道偏置oracle解释约0.46% MSE。",
+    "after": "用开发网络级CV测13特征解释方差，给出达到10倍需约90% MSE减少的差距。",
+    "detail": "这是可学习性诊断，报告R²和adjusted，不把训练oracle R²当可提交收益；负R²保留。",
+    "dependencies": [
+      "L01",
+      "L02"
+    ],
+    "cost": "离线。",
+    "acceptance": "CV网络统计、残差尺度、参考误差写清；解释方差低则降优先级，不扩大模型瞎拟合。",
+    "source": "项目报告7.4与7.5"
+  },
+  {
+    "key": "L19",
+    "name": "独立参考两次采样一致性",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "needs_derivation",
+    "before": "官方十亿样本reference只有单份，条件噪声proxy不能当误差地板。",
+    "after": "在新生成少量确认网络上制作两份互不重叠输入种子的独立reference。",
+    "detail": "先制定CPU样本量与置信区间预算，不购买算力；使用至少同级可靠reference或明确弱参考仅作噪声诊断。reference单独留档不进入候选。",
+    "dependencies": [],
+    "cost": "可能远超10分钟，仅离线参考。",
+    "acceptance": "报告两份差、MC标准误及原始种子；阈值低于reference不确定性时不得声明达标。",
+    "source": "项目报告8; 原论文Monte Carlo reference"
+  },
+  {
+    "key": "L20",
+    "name": "新种子网络最终独立确认",
+    "kind": "contract",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "公共IDs8–15仅是项目内保留集，上游是否使用未知。",
+    "after": "候选及配置冻结后生成预注册未见种子网络，候选与上一冻结基线成对评分。",
+    "detail": "种子清单、shape及权重分布先冻结，reference由L19或等价可信流程生成。不得先看候选误差后选网络；不以弱reference评分作为阶段十倍证据。",
+    "dependencies": [
+      "L19"
+    ],
+    "cost": "网络生成+可靠reference，可跨轮。",
+    "acceptance": "至少10倍阶段收益、零失败、置信不确定性与逐网指标齐全，才能推进stage。",
+    "source": "用户阶段规则; 项目报告8"
+  },
+  {
+    "key": "L21",
+    "name": "公共确认一次解封",
+    "kind": "contract",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "0–7开发CV选择完成，候选尚未在8–15配对。",
+    "after": "只对唯一冻结候选执行8–15与原V29同网络成对确认。",
+    "detail": "记录解封时间和候选hash；失败后该集合不再声称未见，另建确认集。",
+    "dependencies": [
+      "L02"
+    ],
+    "cost": "候选8网，控制已冻结需版本/环境核对。",
+    "acceptance": "0fail且收益跨网络稳定；公共确认仍不替代L20真正独立验收。",
+    "source": "results/phase2/v29_shard01_local.json"
+  },
+  {
+    "key": "L22",
+    "name": "输出误差与阈值位置分解",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "MSE按网络/层汇总，无法定位哪些神经元贡献。",
+    "after": "固定alpha分箱报告最后误差均值、方差、MSE与样本量。",
+    "detail": "使用L01原13特征缓存，只做离线定位，不按真值筛选预测路径。",
+    "dependencies": [
+      "L01"
+    ],
+    "cost": "离线O(N)。",
+    "acceptance": "完整分箱含空箱，网络级而非神经元伪独立置信区间。",
+    "source": "原论文S3.4; 项目报告误差定位闭环"
+  },
+  {
+    "key": "L23",
+    "name": "输出误差与偏度分解",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "未区分高偏度和低偏度神经元误差。",
+    "after": "按固定标准化D3绝对值分位边界，用训练数据定义边界后测逐网MSE。",
+    "detail": "边界在训练集固定；不因结果调整阈值，不把相关性当因果。",
+    "dependencies": [
+      "L01"
+    ],
+    "cost": "离线。",
+    "acceptance": "给出每网结果及阈值冻结记录，用于决定高阶路线优先级。",
+    "source": "V29 D3; 项目报告7.1"
+  },
+  {
+    "key": "L24",
+    "name": "误差沿层积累的增量分解",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "只有逐层MSE，不区分运输误差和局部新误差。",
+    "after": "计算e_l−Phi_l⊙(W_l@e_{l−1})的离线一阶残差。",
+    "detail": "e来自reference−prediction仅离线；Phi来自原V29缓存。非线性误差和reference噪声使该量仅为一阶诊断，不是可提交oracle。",
+    "dependencies": [
+      "L01"
+    ],
+    "cost": "离线每层1 n²matvec。",
+    "acceptance": "报告跨网相关及能量，不把一阶近似当exact decomposition。",
+    "source": "项目报告单步与累计残差对比"
+  },
+  {
+    "key": "L25",
+    "name": "输出敏感性来源排序诊断",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "needs_derivation",
+    "before": "AGE_OLD按年龄统一压缩；不知道每来源最终影响。",
+    "after": "用合法末端mean Jacobian代理估计来源贡献并排序，不看reference。",
+    "detail": "先给出D3变化到final mean的线性敏感性和来源state收缩表达；以oracle最终误差仅评估排序质量。禁用真值选source进入候选。",
+    "dependencies": [],
+    "cost": "额外反向matvec与来源收缩，需估算。",
+    "acceptance": "代理排序在独立网络上预测删除代价；无相关性终止。",
+    "source": "项目报告7.1输出导向来源压缩"
+  },
+  {
+    "key": "L26",
+    "name": "输出敏感性来源预算分配",
+    "kind": "algorithm",
+    "priority": "P2",
+    "readiness": "needs_derivation",
+    "before": "每个老来源相同年龄阈值与固定共享秩。",
+    "after": "总预算不变，按照已验证L25代理把高影响来源保留dense，其余更早压缩。",
+    "detail": "先固定排序规则和dense名额，仅一个输出导向策略；不得扫名额。确切state堆栈顺序/重复扣除需强推理推导。",
+    "dependencies": [
+      "L25"
+    ],
+    "cost": "重分配已有预算+代理cost。",
+    "acceptance": "成对raw/adjusted更优，资源尾部不过限；与相同总dense名额年龄策略对照。",
+    "source": "项目报告7.1"
+  },
+  {
+    "key": "L27",
+    "name": "来源删除负控制",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "needs_derivation",
+    "before": "L25代理有排序，但没有相同成本的随机删除对照。",
+    "after": "固定输入权重确定性hash选一来源删除，保留其余机制。",
+    "detail": "需先明确删除整个source三阶对象及所有重复补偿的一致state，不能只清D3或D21。独立版本对比代理相同名额删除。",
+    "dependencies": [
+      "L25"
+    ],
+    "cost": "省掉该来源运输并记录。",
+    "acceptance": "代理删除平均损伤低于预注册确定性对照；结果只诊断。",
+    "source": "来源扰动E03"
+  },
+  {
+    "key": "L28",
+    "name": "末端均值控制变量相关性",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "needs_derivation",
+    "before": "未确认廉价样本支路能解释V29残差。",
+    "after": "在少量开发网络离线测合法低阶代理与真实输出样本的残差相关性。",
+    "detail": "先固定代理定义、采样seed/样本数及成对V29 residual目标。不可按reference为每测试网拟合混合权重。",
+    "dependencies": [
+      "L01"
+    ],
+    "cost": "离线MC可能较大，算成本折扣上界。",
+    "acceptance": "达到足以支付成本的解释方差才写候选；低相关停止采样支路。",
+    "source": "项目报告7.4"
+  },
+  {
+    "key": "L29",
+    "name": "条件高斯最后层积分对照",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "needs_derivation",
+    "before": "最后层均值依赖Hermite边缘展开。",
+    "after": "对末层pre均值/方差/偏度构造规范化一维积分诊断，和截断展开比较。",
+    "detail": "需先选合法正密度族并验证其匹配矩，禁止使用可能负的Gram-Charlier密度当真实分布。离线oracle只诊断，不自动写提交。",
+    "dependencies": [],
+    "cost": "每神经元一维积分离线；候选成本未定。",
+    "acceptance": "密度非负/归一化/矩一致，跨网络局部误差有稳定收益。",
+    "source": "原论文Hermite展开; 项目报告R3"
+  },
+  {
+    "key": "L30",
+    "name": "末层尾概率数值稳定性",
+    "kind": "contract",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "极端alpha路径只由原正态cdf/pdf与float32演算处理。",
+    "after": "保持原公式，新增离线极端alpha及sigma小值数值对照。",
+    "detail": "测试alpha=±1,±4,±8,±12与多个正sigma，和高精度正态矩对照；没有失败不更换公式。",
+    "dependencies": [],
+    "cost": "小规模诊断。",
+    "acceptance": "有限值、预期单调性及绝对/相对误差记录；任何修复另开算法版本。",
+    "source": "原论文S3.4"
+  },
+  {
+    "key": "L31",
+    "name": "重复实验漂移界限",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "readiness": "spec_ready",
+    "before": "仅一个当前V29复跑和一个冻结报告，已观测raw漂移约0.0157%。",
+    "after": "同环境原V29进行三次独立单网复跑，建立小收益判断的漂移区间。",
+    "detail": "fresh路径、不重定义冻结分数，记录BLAS/CPU/线程。只有需要判别小收益时执行，不把重复run当新算法实验。",
+    "dependencies": [],
+    "cost": "约3×30秒network0控制。",
+    "acceptance": "相同hash/FLOPs，报告raw跨度；候选收益小于跨度标不确定。",
+    "source": "results/phase2/v29_current_vs_frozen_network0.json"
+  },
+  {
+    "key": "L32",
+    "name": "跨网络异质收益检查",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "候选只有网络平均分数改善。",
+    "after": "在同一固定套件报告胜率、每网ratio、最差退化及paired bootstrap。",
+    "detail": "不更换套件或candidate；bootstrap按网络重采样，8网CI可能很宽应如实报告。",
+    "dependencies": [],
+    "cost": "离线评分。",
+    "acceptance": "包含所有失败/网络，不择优展示，阶段必须满足独立确认条件。",
+    "source": "项目报告8与用户阶段规则"
+  },
+  {
+    "key": "L33",
+    "name": "参考dtype贡献诊断",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "readiness": "spec_ready",
+    "before": "官方targets以原float32使用，误差可能受量化贡献。",
+    "after": "离线估计原targets float32 ULP尺度与MSE阈值关系，保留原targets不重评分。",
+    "detail": "不能把float32→float64 cast当reference精度提高，也不能把自行重算reference替换后宣称同协议改进。",
+    "dependencies": [],
+    "cost": "离线O(N)。",
+    "acceptance": "只报告量化尺度proxy及适用限制，与采样噪声分开。",
+    "source": "固定原始reference规则"
+  },
+  {
+    "key": "L34",
+    "name": "标准化计算的候选合同",
+    "kind": "contract",
+    "priority": "P1",
+    "readiness": "spec_ready",
+    "before": "拟合端与fnp推理端标准化可能使用不同精度或特征顺序。",
+    "after": "冻结模型文件的feature_order、mean、scale、coef哈希并在小样本对照fnp预测。",
+    "detail": "禁止运行时重新按测试网络重估训练标准化，除非另立合法机制版本。全部参数与代码在provenance记录。",
+    "dependencies": [
+      "L03"
+    ],
+    "cost": "小规模数学合同。",
+    "acceptance": "同输入回归输出在float32容差内，模型不含网络ID/targets查表。",
+    "source": "项目报告7.5及提交合同"
+  },
+  {
+    "key": "L35",
+    "name": "多次选择偏差账本",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "readiness": "spec_ready",
+    "before": "长消融列表容易反复查看同一确认集而失去独立性。",
+    "after": "每次拟合/调参/查看reference都记录selection ledger，确认集首次查看后降为开发集。",
+    "detail": "记录candidate hash、训练/验证ID、选择次数、目标阈值与解封状态；保存负结果，禁止仅留最优。",
+    "dependencies": [
+      "L02"
+    ],
+    "cost": "metadata，无算法变化。",
+    "acceptance": "ledger与queue及结果路径一一对应；仍未见最终集单独明确。",
+    "source": "用户参考噪声与多次选择偏差要求"
+  }
+]

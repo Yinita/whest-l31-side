@@ -1,0 +1,515 @@
+[
+  {
+    "key": "O01",
+    "name": "官方K31截断生产逐项一致性",
+    "detail": "现有probe证明精确矩转换，不证明Hermite diagram生产。固定输入cum、Wick与预算，比较官方表和独立分区枚举。 必须独立冻结两个口径：get_all_terms_iso(...,augment=True)原始full-generator集合，以及factor=True后factored_keeps_term过滤集合，分别同口径枚举核对；不将因复杂度有意过滤的K111×edge差异判成实现错误或自动恢复。生成项数以保存的inventory为准，不硬编码他人的总项数。",
+    "before": "仅有K31低阶Gaussian代理及精确moment oracle",
+    "after": "独立核验完整官方K31基础和augmented表",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "small n4/6/8离线O(n²)各项；不执行1024主benchmark",
+    "acceptance": "逐项系数、方向和合计均符合浮点容差；保留失败项；不宣称提分",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O02",
+    "name": "官方capped K211逐项生产一致性",
+    "detail": "核验基础3项与augmented20项capped生产；a不得等于b或c，b与c也按输出diagslice约定排除。 必须独立冻结两个口径：get_all_terms_iso(...,augment=True)原始full-generator集合，以及factor=True后factored_keeps_term过滤集合，分别同口径枚举核对；不将因复杂度有意过滤的K111×edge差异判成实现错误或自动恢复。生成项数以保存的inventory为准，不硬编码他人的总项数。",
+    "before": "仅有source contraction和power转换独立probe",
+    "after": "完整capped diagram生产与显式small tensor一致",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "small n4/6/8离线显式O(n³)，生产表达另记成本",
+    "acceptance": "逐项与独立枚举一致，尤其重复排除与轴方向",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O03",
+    "name": "K211完整来源抵消一致性",
+    "detail": "将old-source、birth、pK211与-2mean*K111以及-2CovCov组合为一个完整测试；禁止单独裁掉大正负项。 diagram equality只与相同截断预算和过滤集合比较；相对exact finite-distribution矩的差另记为截断近似误差，不混称production parity失败。",
+    "before": "组合部件分别通过",
+    "after": "一次完整非线性核心生产逐层对照",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [
+      "O01",
+      "O02"
+    ],
+    "cost": "small n4/6，允许离线full tensor",
+    "acceptance": "官方production与独立完整moment/cumulant核对一致；记录截断误差和算术误差分别",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O04",
+    "name": "旧lean与当前官方generator语义归因",
+    "detail": "当前pair输出新增22条中19已在V29，3条pairq3已测负。扩展映射其他输出，严禁重复加同义项。",
+    "before": "仅完成pair-output False/True diff",
+    "after": "完整source/output的exact factor inventory",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "纯组合AST抽取，无Torch巨额安装",
+    "acceptance": "逐项给出存在/遗漏/剪枝/等价重组状态和固定源码hash",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O05",
+    "name": "完整K31/K211生产核的离线表示上限",
+    "detail": "使用合法传播状态生成核，参考只用于诊断最终误差，不能作为candidate输入。先small shapes再有界实际层。",
+    "before": "Goff=layer lambda*Coff",
+    "after": "完整production Gnew与regen G成对诊断",
+    "readiness": "needs_derivation",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [
+      "O01",
+      "O02",
+      "O03"
+    ],
+    "cost": "可能多source n³及capped n³；先账本后正式shape",
+    "acceptance": "发现远大于浮点漂移的核失配及误差潜力；成本不可用则只保留诊断",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O06",
+    "name": "完整生产核单层替换诊断",
+    "detail": "在查看候选成绩前固定一层，只该层使用完整production核，之后恢复regen。不得逐层挑最好冒充泛化。",
+    "before": "全部层lambda核",
+    "after": "预先指定单层完整production核",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O05"
+    ],
+    "cost": "一次额外完整核production，实际成本待O05",
+    "acceptance": "同网络raw/adjusted和失败成对记录，明显改善才扩量",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O07",
+    "name": "完整核对角修正非零性与候选",
+    "detail": "先判定K31/K211 capped输出对角是否严格zero；若zero取消。若非零仅改变gprev对角生产。",
+    "before": "gprev由K4+K22 rowsum",
+    "after": "加入由完整trace投影证明非零的对角修正",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O01",
+      "O02",
+      "O03"
+    ],
+    "cost": "核production成本；禁止声称仅O(n)而隐去收缩",
+    "acceptance": "非零性有公式证据且small tensor parity，通过后真实score筛查",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/harmonic.py"
+  },
+  {
+    "key": "O08",
+    "name": "完整production核仅USE替换",
+    "detail": "与已测weighted-Gram spillUSE不同：此次对象是K31/K211产生的真正offdiag核，不重复叠加旧spill。",
+    "before": "USE wk431=lambda*Cpreoff",
+    "after": "USE wk431=完整production核运输结果",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O05"
+    ],
+    "cost": "完整核与运输成本先计量",
+    "acceptance": "机制单一，feed保持原公式；实质adjusted改善才扩量",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O09",
+    "name": "完整production核仅FEED替换",
+    "detail": "X3使用完整核；必须保留新增dense leg历史，出生重复项统一扣除，USE仍原V29。",
+    "before": "FEED X3使用regen diagonal+lambda",
+    "after": "FEED X3使用完整production核",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O05"
+    ],
+    "cost": "新增dense leg至少n³/source层；先成本门槛",
+    "acceptance": "小tensor出生/运输/D3D21一致，资源合法，score明显改善",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O10",
+    "name": "完整核剩余误差的state模态诊断",
+    "detail": "目标是官方合法production核，不是reference真值。测试固定live-state低维模态能否解释lambda剩余误差，不盲扫模态。",
+    "before": "单lambda mode",
+    "after": "增加预先定义state模态的离线解释力测量",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "dependencies": [
+      "O05"
+    ],
+    "cost": "离线核保存和n²回归诊断",
+    "acceptance": "网络分割后捕获一致显著能量；能量分散则关闭",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O11",
+    "name": "K111乘covariance edge完整公式核验",
+    "detail": "deltaTijk=K111ijk*(w1_i*w2_j*w2_k*Cjk+循环)，distinct索引；官方coef3Sym。",
+    "before": "只有静态遗漏判定",
+    "after": "独立显式tensor与diagram枚举一致",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "small n4/6/8 O(n³)离线",
+    "acceptance": "符号、coef、mask、中心化均通过独立验证",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O12",
+    "name": "K111乘edge的exact final D3成本证明",
+    "detail": "现有CP rank通常乘rank(C)，不能无依据称O(n³)。推导可执行收缩顺序和所有中间维度。",
+    "before": "仅已知rank扩大障碍",
+    "after": "证明exact复杂度和内存或给出反例",
+    "readiness": "needs_derivation",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [
+      "O11"
+    ],
+    "cost": "符号/小shape计数；若O(n⁴)则记录阻碍",
+    "acceptance": "全部array维度与FLOP公式可审计；无隐藏n³tensor",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O13",
+    "name": "K111乘edge covariance主模态代理",
+    "detail": "只有O12证明exact不经济且live C存在明确主模态后才做。固定一项主模态，不扫描rank；先last birth。",
+    "before": "该mixed diagram遗漏",
+    "after": "使用live covariance主模态近似edge并保留K111来源",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O11",
+      "O12"
+    ],
+    "cost": "eig/rangefinder和rank扩张都入账；需small测量",
+    "acceptance": "目标无关选方向、重复扣除正确、近似收缩误差受控、真实score改善",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O14",
+    "name": "K111乘edge代理误差门槛",
+    "detail": "单独评估O13在small exact张量上的D3/D21收缩误差，不只看covariance能量。",
+    "before": "proxy仅通过代数",
+    "after": "proxy与exact收缩成对误差评估",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "dependencies": [
+      "O13"
+    ],
+    "cost": "small tensor offline O(n³)",
+    "acceptance": "若关键收缩误差大取消，不用rank扫参数掩盖",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O15",
+    "name": "doubled-edge早期来源贡献门槛",
+    "detail": "doubleedge-final已测零失败但adjusted恶化约1.10%，不得列重跑默认。只有早期birth离线贡献明显才考虑fullhistory。",
+    "before": "已否证last-birth三matmul候选",
+    "after": "有界诊断早期birth跨层贡献",
+    "readiness": "needs_derivation",
+    "kind": "diagnostic",
+    "priority": "P3",
+    "dependencies": [],
+    "cost": "small fullhistory sources；1024额外cost先证明",
+    "acceptance": "证明明显早期raw潜力和可负担费用，否则关闭fullhistory路线",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O16",
+    "name": "covariance triangle exact多层small诊断",
+    "detail": "rank16/last-only已测负。使用exact all-distinct triangle small形状区分diagram本身小与近似丢信息。",
+    "before": "仅低秩last-only阴性证据",
+    "after": "exact small triangle跨层传播",
+    "readiness": "needs_derivation",
+    "kind": "diagnostic",
+    "priority": "P3",
+    "dependencies": [],
+    "cost": "small n4/6/8 exact O(n³) tensor；不扩1024",
+    "acceptance": "exact仍小则停止，不扫rank；否则需新可计量表示",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O17",
+    "name": "当前官方WK22 path与旧lean等价审计",
+    "detail": "上游F69旧no_wk22机制报告0%，不重复跑。仅核对当前budget线性path与旧复合birth是否同对象。",
+    "before": "旧复合X/Y生产",
+    "after": "逐diagram核对current official WK22路径",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P3",
+    "dependencies": [],
+    "cost": "纯表项+smalltensor，无真实benchmark",
+    "acceptance": "若等价则登记已上游阴性；若不同再提出独立候选",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O18",
+    "name": "现有birth薄反馈乘积预算审计",
+    "detail": "展开V29 X1*Y1并映射diagram，识别feedback×feedback是否超官方aug预算；先审计不删除。",
+    "before": "复合因子乘积未完整power-count",
+    "after": "每个出生乘积标明预算与重复补偿",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "symbolic expansion和smalltensor",
+    "acceptance": "每项位置/coef/cost可追溯，不能把已测NO_FB再包装",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O19",
+    "name": "K5边缘生产闭合",
+    "detail": "提取官方K4-AUG degree5可用marginal项；完整K5是r1三阶core，边缘不能称完整K5。",
+    "before": "无独立K5状态",
+    "after": "经验证的选择性marginal K5生产",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P1",
+    "dependencies": [],
+    "cost": "生产成本未知；先table与state依赖账本",
+    "acceptance": "全部所需cum输入合法，无MC真值，明确遗漏cross terms",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k4.py"
+  },
+  {
+    "key": "O20",
+    "name": "K5独立边缘readout",
+    "detail": "仅加入kappa5*w(5,p)/120，其他新高阶项关闭。先final-only。",
+    "before": "PK1无kappa5线性项",
+    "after": "PK1加入合法K5 marginal readout",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O19",
+      "O25"
+    ],
+    "cost": "已有K5后的O(n)Wick/readout；生产成本另计",
+    "acceptance": "系数small独立积分验证，真实score收益明显，限制披露",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k4.py"
+  },
+  {
+    "key": "O21",
+    "name": "K6纯径向投影生产公式",
+    "detail": "官方rout3 degree6输出scalar，生产未必O(n²)。推导trace/coarsening与diagslice排除全部来源。",
+    "before": "无K6channel",
+    "after": "完整可审计radial scalar生产定义",
+    "readiness": "needs_derivation",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [],
+    "cost": "potential highdim traces；先解析成本门槛",
+    "acceptance": "exact small moments/trace投影一致，生产费用不隐去",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k4.py"
+  },
+  {
+    "key": "O22",
+    "name": "K6径向状态合法线性运输",
+    "detail": "使用实际W-metric，核查average metric2替代误差，不把metric convention错认coef bug。",
+    "before": "无K6运输",
+    "after": "加入radial harmonic state W运输",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O21"
+    ],
+    "cost": "scalar/harmonic contractions依公式，先small测量",
+    "acceptance": "small exact K6 transport parity通过，metric约定冻结",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/harmonic.py"
+  },
+  {
+    "key": "O23",
+    "name": "K6独立边缘readout",
+    "detail": "只加入kappa6*w(6,p)/720；与已测k4square/w8不同。并非完整higher-orderEdgeworth。",
+    "before": "PK1无kappa6线性项",
+    "after": "合法K6对角读入PK1",
+    "readiness": "needs_derivation",
+    "kind": "algorithm",
+    "priority": "P2",
+    "dependencies": [
+      "O21",
+      "O22",
+      "O25"
+    ],
+    "cost": "readout O(n)，生产运输收费",
+    "acceptance": "small系数/中心化正确，资源合法且真实adjusted改善",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k4.py"
+  },
+  {
+    "key": "O24",
+    "name": "高阶边缘同阶组合inventory",
+    "detail": "标明K3K4已有、K4²已测负、K5/K6新增及同阶必须配套内容；先避免不一致truncation。",
+    "before": "选择性补项缺完整预算说明",
+    "after": "budget和exact coefficient可追溯inventory",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "纯组合生成器",
+    "acceptance": "重复项0、每项before/after明确，不把组合高阶称strictK3",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O25",
+    "name": "degree5/6 ordinary与power累积量独立转换",
+    "detail": "使用finite support或Gaussian polynomial真实矩与set partitions，验证生产转换，区别ReLU Wick积分。",
+    "before": "仅degree≤4转换probe",
+    "after": "degree5/6转换独立parity",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [],
+    "cost": "small finite-support O(samples*n^d)仅离线受限shape",
+    "acceptance": "独立转换与setpartition误差达到数值容差，非实现自我镜像",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/cumulants.py"
+  },
+  {
+    "key": "O26",
+    "name": "图表收益的上游调参分割审计",
+    "detail": "L21负责public解封；本项只确认本研究候选production/constants是否依赖同public网络，记录upstream训练范围未知。",
+    "before": "候选网络分割标签不够细",
+    "after": "逐机制报告训练/selection/confirmation来源矩阵",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [
+      "L21"
+    ],
+    "cost": "只读provenance和已有日志，无重复benchmark",
+    "acceptance": "不能把IDs8-15独立于本地调参称独立于upstream",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O27",
+    "name": "封存新分片的diagslice状态分布偏移",
+    "detail": "区别L21解封得分：比较合法prestate的variance/skew/kurtosis与核系数分布，预先冻结特征不用target。",
+    "before": "只有最终分数分割",
+    "after": "新分片state-only机制分布诊断",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "dependencies": [
+      "L21"
+    ],
+    "cost": "缓存state O(n²)统计，无target回归",
+    "acceptance": "冻结特征和统计规则，分布差异只诊断不能调候选后继续称holdout",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O28",
+    "name": "新seed网络的diagram规模law核验",
+    "detail": "L20负责最终确认；本项只核验生成网络上K111 edge/capped211等公式power-count随width变化，reference不参与方向选择。",
+    "before": "只有fixed1024表规模预期",
+    "after": "预定width/seed上的state diagram rms law",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P2",
+    "dependencies": [
+      "L20",
+      "O11",
+      "O02"
+    ],
+    "cost": "small宽度固定3个点，避免全K4巨额tensor",
+    "acceptance": "记录scale置信/样本不确定性，不能用小width结论直接保证1024提分",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py"
+  },
+  {
+    "key": "O29",
+    "name": "高阶校正信号与reference不确定性的分离",
+    "detail": "L19生成独立references；本项使用冻结候选delta prediction本身的方向/rms与reference差异比较，判断tiny gain可验证性。",
+    "before": "gain与noise proxy混用",
+    "after": "paired候选信号和reference误差分离账本",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [
+      "L19"
+    ],
+    "cost": "已有预测矩阵与两references离线O(depth*n)",
+    "acceptance": "不以variance/N当实测CI，不通过换弱target创造收益",
+    "source": "https://arxiv.org/html/2605.05179v2"
+  },
+  {
+    "key": "O30",
+    "name": "新增图表array操作计量路径合同",
+    "detail": "区别泛化/RPC一揽子L检查：专门核对新op的dtype、复制、out缓冲、symmetry和same-object输入，fnp成本不得旁路。",
+    "before": "只运行small数值公式",
+    "after": "actual fnp路径日志与成本逐算子核验",
+    "readiness": "spec_ready",
+    "kind": "contract",
+    "priority": "P0",
+    "dependencies": [],
+    "cost": "small flopscope execution；仅有改善候选才正式RPC",
+    "acceptance": "无numpy candidate计算，无compilation或concurrency，codehash和计量环境冻结",
+    "source": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/allowed-code.md"
+  },
+  {
+    "key": "O31",
+    "name": "完整K31生产对称化与轴方向合同",
+    "detail": "额外审计pK31是row power3 col1，iso classes只有equalmultiplicity轴可对称化；不能擅自对pK31平均转置。",
+    "before": "K31方向未actual生产确认",
+    "after": "actual fnp K31输出与固定axis枚举",
+    "readiness": "spec_ready",
+    "kind": "contract",
+    "priority": "P1",
+    "dependencies": [
+      "O01"
+    ],
+    "cost": "small O(n²)比较",
+    "acceptance": "非对称输入下row3/col1逐项一致，harmonic Sym只在G组装位置执行",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O32",
+    "name": "capped211 diagonal mask因式表示合同",
+    "detail": "eval_capped公开lean只排a=b,a=c，输出b=c是否由外层zero-diag保障需explicit核对；测试narrow和coincidence边界。",
+    "before": "mask分布在多个函数",
+    "after": "mask逐阶段追踪与explicit枚举一致",
+    "readiness": "spec_ready",
+    "kind": "contract",
+    "priority": "P0",
+    "dependencies": [
+      "O02"
+    ],
+    "cost": "small O(n³) oracle仅诊断",
+    "acceptance": "a=b/c和b=c均按定义处理，一次扣除无漏项无双扣",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py"
+  },
+  {
+    "key": "O33",
+    "name": "complete harmonic core actualW transport对照",
+    "detail": "当前高斯代理失败不证明full production核；在small上对actualW G W.T和其trace/marginals验证METRIC_C与birthmetric1区分。",
+    "before": "transport代数与production分离",
+    "after": "完整生成G的actualW数值parity",
+    "readiness": "spec_ready",
+    "kind": "diagnostic",
+    "priority": "P1",
+    "dependencies": [
+      "O03"
+    ],
+    "cost": "small O(n³)matmul",
+    "acceptance": "投影metric1与transportmetric2不能混用，误差仅解释算术非提分",
+    "source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/harmonic.py"
+  }
+]

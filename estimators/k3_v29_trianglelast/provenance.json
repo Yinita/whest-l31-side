@@ -1,0 +1,18 @@
+{
+  "author": "504aldo",
+  "license": "MIT",
+  "repository": "https://github.com/504aldo/whest-p2-cumulant-k3",
+  "upstream_commit": "1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+  "upstream_path": "estimators/estimator_v29.py",
+  "sha256": "46b2177137e68cbf87d3d39fb9a95001e62fc1270b8615ec6fc1bb39caeaffd2",
+  "modifications": [
+    "Final-only newborn Gaussian all-distinct K111 covariance triangle, projected covariance rank16",
+    "Exact inclusion-exclusion on projected tensor; moment p1..4 third-cumulant correction before original centering",
+    "Deterministic C\u00b2 range finder uses contiguous next-weight sketch, no target/reference"
+  ],
+  "role": "experimental new grade4 Gaussian triangle mechanism; score benefit unestablished",
+  "parent_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+  "validation": "results/phase2/triangle_lowrank_algebra.json",
+  "resource_model": "O(n\u00b2r\u00b2+n\u00b2r+nr\u00b3), cached 2 n*r\u00b2 features + r\u00b2 core + 2n vectors; rank16 yields ~2MiB cache",
+  "seed": "No random draw: deterministic next-weight sketch; benchmark seed remains0"
+}

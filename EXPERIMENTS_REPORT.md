@@ -18,7 +18,7 @@ RPC Mini-8 adjusted 5.783785541907926e-9，raw 2.272108123868577e-8，零失败�
 
 ## 2026-10-12 快速候选筛查
 
-在相同冻结Mini network0、原十亿样本reference和原资源规则下完成五项单机制筛查，全部零失败；仅是开发网快筛，没有独立泛化或阶段达标声明。
+在相同冻结Mini network0、原十亿样本reference和原资源规则下完成七项单机制筛查，全部零失败；仅是开发网快筛，没有独立泛化或阶段达标声明。
 
 | 候选 | raw相对原V29 | adjusted相对原V29 | 结论 |
 |---|---:|---:|---|
@@ -27,7 +27,11 @@ RPC Mini-8 adjusted 5.783785541907926e-9，raw 2.272108123868577e-8，零失败�
 | marginal峰度平方 | +1.0915% | +1.0915% | 不扩量 |
 | 新生K4 tree无迹残差，一层记忆全链使用 | −3.4928% | +23.0863% | 全链成本太高 |
 | 同残差仅用于最后层 | −0.00112% | +1.8349% | 微小raw差不能归因，未改公式早层亦有漂移 |
+| covariance triangle rank16 final-only | −0.0404% | +0.2581% | 对当前控制adjusted亦更差；不证明full triangle无价值 |
+| doubled covariance edge final-only | −0.0148% | +1.0869% | 对当前控制raw几乎无差，费用更高 |
 
 原V29保持冻结；阶段1目标adjusted<5.779e-10尚未达到。原始报告、逐网络FLOPs/时间/内存/失败、候选SHA及来源见[研究日志](experiments/phase2/RESEARCH_LOG.md)和`results/phase2/*_mini1_local.*`。原V29当前环境控制已完成：raw为2.290466483145792e-8、adjusted为6.116832334984139e-9，零失败，FLOPs与冻结network0完全一致；raw浮点漂移−0.0157%。最后层残差候选相对当前控制反而略差。新控制另存，不覆盖冻结证据。汇总见[快速筛查结果](results/phase2/rapid_screen_20261012.json)。
 
 纠正资料入口：论文实际公开仓库为[mlp_cumulant_propagation](https://github.com/alignment-research-center/mlp_cumulant_propagation)，冻结commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb。官方生成器与V29既有pair项对照：22个新增项中19已存在且系数匹配，剩下3条正是已测q3。不能把其他slice可用的项重复叠加。下一方向是省略的混合K111/高阶对象表示，需先解决生产及合法成本。
+
+公开V25单网控制raw=2.2909681263172388e-8、adjusted=8.400166403374769e-9，零失败；相对当前V29 FLOPs高37.2986%，不改变最强基线。新的symrecursive仅合成协方差组件核验，组件FLOPs下降19.82%，全网收益未验证、residual有风险；作为清单C01待评测，不记为阳性候选。用户当前要求准备[完整消融队列](experiments/phase2/ABLATION_BACKLOG.md)后再分配模型，未自动派发。

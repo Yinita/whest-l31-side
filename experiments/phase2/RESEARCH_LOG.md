@@ -149,3 +149,25 @@ Lambda诊断完成：首层proxy0.0145659 vs原表0.00474003（3.07倍），第7
 完成tree4last：{"adjusted_final_layer_score": 6.23004958118477e-09, "final_layer_mse": 2.2908004382315994e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.27195950713166894}；network0成对ratios {"final_layer_mse": 0.9999888339235329, "adjusted_final_layer_score": 1.018349279885368, "flops_used": 1.0183606509782681}。最终raw只差约−0.00112%，adjusted仍差约1.83%；前15层同公式MSE最大相对漂移0.00123046，不能称早层逐值完全相同或将微小raw差归因机制。保持原baseline冻结，重跑原V29单网作为当前环境数值漂移控制，另存新路径。五候选正式快筛零失败、全部adjusted无收益，不扩量/不RPC/不线上再提交。
 
 当前环境V29控制完成：{"adjusted_final_layer_score": 6.116832334984139e-09, "final_layer_mse": 2.290466483145792e-08, "n_failed_mlps": 0, "mean_compute_utilization": 0.26705618178630175}，同源码hash/数据commit/版本/规则、FLOPs完全一致；相对冻结network0ratios{"final_layer_mse": 0.9998430545918784, "adjusted_final_layer_score": 0.9998430545918783, "flops_used": 1.0}。浮点raw漂移约−0.0157%，量级小；tree4last相对当前控制raw反而略差，不能将−0.00112%记作机制收益。阶段不推进，基线不覆盖。全套现有测试21通过，ruff check通过。下一项具体是官方factor过滤的covariance triangle/K111×edge mixed项，完整all-neuron运输通常O(n⁴)，需合法低秩/随机代理及small parity后才可启动候选；保留paper full K4成本障碍，不盲补全。
+
+## P2-E018-v25-mini1-control
+
+公开V25原样单网对照启动；填补既定V25/V29计算重组消融，非新算法候选。仅更换公开版本，固定network0/reference/版本/预算和单线程。用于核对Strassen重组的FLOPs节省与数值差异，不将计量变化当自身精度贡献。后台PID/hash/启动身份见state。前轮五项实验与数值控制已提交GitHub，远端main为94f9d44。
+
+V25完成：{"final_layer_mse": 2.2909681263172388e-08, "adjusted_final_layer_score": 8.400166403374769e-09, "mean_compute_utilization": 0.36666448157347986, "n_failed_mlps": 0}，相对当轮V29 ratios={"final_layer_mse": 1.0002190135394418, "adjusted_final_layer_score": 1.373287012516512, "flops_used": 1.37298630992517}。0失败，raw几乎相同，V25计费更高；保留V29。此是公开版本的数值/计算重组对照，不能列为自身精度收益。
+
+## P2-E019-trianglelast-mini1
+
+唯一新增机制为Gaussian K111协方差三角项的final-only rank16压缩，next-weight提供确定性sketch，不读取truth。原张量全输出精确运输O(n⁴)；Q B Qᵀ近似后用r²特征O(n²r²) contraction，并精确扣除低秩近似引入的重复指标。4个Isserlis系数、6个显式n³张量核验max8.88e-14；实际fnp n6/r3路径核验通过。仅验证投影对象及系数，低秩信息损失仍未知。small validate不覆盖riders，正式network0快筛验证。原资源/工具/reference不变。PID/hash见state。
+
+trianglelast完成：{"final_layer_mse": 2.2899000029497074e-08, "adjusted_final_layer_score": 6.133581594643049e-09, "mean_compute_utilization": 0.26785368735500015, "n_failed_mlps": 0}，相对当前V29 ratios={"final_layer_mse": 0.9997526791156941, "adjusted_final_layer_score": 1.0027382244177456, "flops_used": 1.0029862838724197}。零失败，raw微小变化在观测浮点漂移量级附近，费用上升后adjusted更差，不扩量。仅排除该低秩/last-only候选，不断言完整三角项无价值。
+
+## P2-E020-doubleedge-final-mini1
+
+唯一新增penultimate Gaussian doubled covariance edge K111，A=diag(w1)C，H=diag(w2)(C²)diag(w3)，系数3Sym(A,I,H)，重复项R=A*H通过M=−3R.T精确扣除。仅final D3使用，经原D3全部单边项生产均值；不声称全历史augmented。6个有向路径独立枚举与fulltensor n4/7/11 contraction核验max1.56e-13，small validate通过但不覆盖suite分支。候选3个合法dense matmul一次/MLP，不假定便宜有益。固定原network0/reference/资源，PID/hash见state。
+
+doubleedge-final完成：{"final_layer_mse": 2.290487266520813e-08, "adjusted_final_layer_score": 6.1842868592227294e-09, "mean_compute_utilization": 0.2699987443552345, "n_failed_mlps": 0}，对当前V29 ratios={"final_layer_mse": 1.0000090738612304, "adjusted_final_layer_score": 1.011027688931867, "flops_used": 1.0110185150901596}。零失败，raw无可归因收益，adjusted更差，不扩量。用户转向先整理足够长、可交给低推理模型的待验证消融清单；当前无运行评测，不再自动启动新候选。stage1/目标保持。
+
+## 129项消融交接清单 1.0
+
+用户要求先整理越长越好的待验证消融，再分给低推理模型。生成ABLATION_BACKLOG.md、ablation_queue.json及LOW_REASONING_HANDOFF.md。71算法/计算、43诊断、15合同；1 code_ready、69 spec_ready、59 needs_derivation。每项预留v30.001–v30.129，给before/after、来源、依赖、成本和验收；预留版本不是已测分数。L31重复漂移任务合并到C25。依赖有向无环、版本映射、执行准备度及模型交接表核验通过。未派发新模型，无运行benchmark。symrecursive仅合成组件核验，copy residual风险明示；不记阶段阳性。阶段1仍未达标。

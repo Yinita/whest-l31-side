@@ -1,0 +1,257 @@
+{
+  "official_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+  "official_source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py",
+  "source_sha256": "e408aa1d8544e7d77b95dad5a548560098e7265845b7f713846ff8b165007918",
+  "additional_original_source": "https://arxiv.org/html/2605.05179v2#S4.SS3",
+  "upstream_negative_report": "https://github.com/504aldo/whest-p2-cumulant-k3/blob/1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d/docs/findings_log.md",
+  "rows": [
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 6,
+      "coefficient": "3",
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "official_factored_keeps": true,
+      "name": "doubled_covariance_edge",
+      "v29_status": "missing in V29; isolated final-only candidate now implemented",
+      "cost_or_caveat": "Three dense n*n matmuls once per MLP plus O(n^2). Full history costs extra source transport/contraction and is not implemented."
+    },
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "iso_count": 1,
+      "coefficient": "1",
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "official_factored_keeps": false,
+      "name": "covariance_triangle",
+      "v29_status": "missing; official factored path drops non-hypertree diagram; parent tests rank approximation separately",
+      "cost_or_caveat": "Full representation not O(n) rank. Low rank approximation needs explicit algebra/cost validation."
+    },
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 6,
+      "coefficient": "3",
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "official_factored_keeps": true,
+      "name": "covariance_D21_star_shared_high_degree",
+      "v29_status": "present approximately in V29 Yt via 0.5 diag(w1) D21.T diag(w3), D21 rank16",
+      "cost_or_caveat": "V29 lines1278-1289; not a new whole mechanism."
+    },
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "iso_count": 3,
+      "coefficient": "3",
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "official_factored_keeps": false,
+      "name": "K111_times_covariance_edge",
+      "v29_status": "missing; official factored path explicitly drops top cumulant x edge",
+      "cost_or_caveat": "Hadamard product multiplies CP rank by rank(C); dense covariance has rank n. Not a guaranteed O(n^3) exact candidate from existing dense sources."
+    },
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "iso_count": 6,
+      "coefficient": "3",
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "official_factored_keeps": true,
+      "name": "covariance_D21_star_repeated_leaf",
+      "v29_status": "partially present in V29 Xt=1.5 diag(w2)D21 lowrank feedback; other old B2/left-Y terms deliberately omitted",
+      "cost_or_caveat": "Restoring entire old B2 was upstream negative on regen base (F69), not independently reproduced here."
+    },
+    {
+      "diagram": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ]
+      ],
+      "iso_count": 6,
+      "coefficient": "3/2",
+      "wick_kp": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "official_factored_keeps": true,
+      "name": "covariance_K22_path",
+      "v29_status": "missing by no_wk22_fac approximation",
+      "cost_or_caveat": "Upstream F69 reports0% effect; their report, no local reproduction. Current official factor formula is linear WK22 path; lean old algebra contains higher products."
+    },
+    {
+      "diagram": [
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "iso_count": 3,
+      "coefficient": "3/2",
+      "wick_kp": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "official_factored_keeps": true,
+      "name": "harmonic_K211_feed",
+      "v29_status": "present approximately via regenerated K4->K3 feed X3/Y3/M_t1",
+      "cost_or_caveat": "V29 lines1312-1332 and1609; local nofeed ablation was ~6.1% worse, retain."
+    }
+  ],
+  "K111_edge_formula": "deltaT_ijk = K111_ijk * (w1_i*w2_j*w2_k*C_jk + w1_j*w2_i*w2_k*C_ik + w1_k*w2_i*w2_j*C_ij), all i,j,k distinct; coefficient3 times Sym(base).",
+  "K111_edge_limitation": "Cannot substitute final D21 or a birth repeated slice alone. Complete all-distinct tensor times C has generally expanded factor rank. Any low-rank approximation must be labeled and independently tested.",
+  "doubled_edge_candidate": "estimators/k3_v29_doubleedge_final/estimator.py",
+  "doubled_edge_algebra": "results/phase2/doubleedge_final_algebra.json",
+  "limitation": "Static formula/source audit plus separate algebra; no new score and no full-history candidate."
+}

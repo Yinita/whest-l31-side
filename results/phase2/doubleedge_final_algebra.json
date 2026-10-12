@@ -1,0 +1,62 @@
+{
+  "official_source": "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py",
+  "official_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+  "official_diagram": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ]
+  ],
+  "iso_count": 6,
+  "vector_partition_coefficient": "1/2",
+  "iso_aggregated_coefficient": "3",
+  "formula": "zero_repeated(3 Sym(A,I,H)); A=diag(w1)Coff; H=diag(w2)(Coff**2)diag(w3); M=-3(A*H).T",
+  "candidate": "estimators/k3_v29_doubleedge_final/estimator.py",
+  "candidate_sha256": "050a96dcf59baebca0336fc784c886116afcf95c689682e5b8051040fc812cdb",
+  "checks": [
+    {
+      "n": 4,
+      "errors": {
+        "diagram_vs_sym_hub": 4.163336342344337e-17,
+        "birth_repeated_vs_AH": 0.0,
+        "corrected_vs_zero_repeated": 4.163336342344337e-17,
+        "final_d3": 2.220446049250313e-16,
+        "final_d21": 8.881784197001252e-16
+      }
+    },
+    {
+      "n": 7,
+      "errors": {
+        "diagram_vs_sym_hub": 4.440892098500626e-16,
+        "birth_repeated_vs_AH": 0.0,
+        "corrected_vs_zero_repeated": 2.220446049250313e-16,
+        "final_d3": 8.43769498715119e-15,
+        "final_d21": 1.199040866595169e-14
+      }
+    },
+    {
+      "n": 11,
+      "errors": {
+        "diagram_vs_sym_hub": 6.661338147750939e-16,
+        "birth_repeated_vs_AH": 0.0,
+        "corrected_vs_zero_repeated": 6.661338147750939e-16,
+        "final_d3": 1.4210854715202004e-13,
+        "final_d21": 1.5631940186722204e-13
+      }
+    }
+  ],
+  "cost": "Three n*n matmuls once per MLP plus O(n^2); n=1024: <=3*2^31/2^41 = 0.0029296875 budget before pointwise overhead.",
+  "scope": "Only penultimate ReLU birth contributes to final D3. Prior layers and prior source histories unchanged; not full augmented K111 production.",
+  "limitation": "Algebra-only finite-shape NumPy probe; no benchmark score or runtime resource claim."
+}

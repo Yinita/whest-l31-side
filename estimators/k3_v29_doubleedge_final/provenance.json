@@ -1,0 +1,14 @@
+{
+  "author": "504aldo",
+  "license": "MIT",
+  "repository": "https://github.com/504aldo/whest-p2-cumulant-k3",
+  "upstream_commit": "1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+  "upstream_path": "estimators/estimator_v29.py",
+  "sha256": "050a96dcf59baebca0336fc784c886116afcf95c689682e5b8051040fc812cdb",
+  "modifications": [
+    "Add only penultimate-ReLU doubled covariance edge path (cost-3 augmented K111 birth) to final preactivation D3. Compute 3 Sym(A,I,H) with A=diag(w1)C_off, H=diag(w2)(C_off**2)diag(w3), subtract birth repeated coordinates with M=-3(A*H).T, then use three lawful dense fnp matmuls for final D3. All preceding outputs, baseline sources, K4, lambda and other mechanisms unchanged."
+  ],
+  "role": "single-mechanism local research candidate; official augmented diagram coefficient, partial last-birth application, no score improvement demonstrated",
+  "official_repository": "https://github.com/alignment-research-center/mlp_cumulant_propagation",
+  "official_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb"
+}

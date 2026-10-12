@@ -1,0 +1,16 @@
+{
+  "author": "504aldo",
+  "license": "MIT",
+  "repository": "https://github.com/504aldo/whest-p2-cumulant-k3",
+  "upstream_commit": "1a4083f89184d6b1cc55d2e55a5a561d2ae50a8d",
+  "upstream_path": "estimators/estimator_v29.py",
+  "sha256": "5aabbc37886e0cff75a487c58ec724d7bc930d488b23190ea4156e460dfbc8ce",
+  "modifications": [
+    "Recursive output triangle restriction for the symmetric C_pre sandwich only; same source transport, Strassen level settings, term tables, and fitted constants"
+  ],
+  "role": "experimental exact real-arithmetic reorganization; no benchmark gain established",
+  "parent_candidate": "estimators/k3_v29/estimator.py",
+  "parent_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+  "validation": "results/phase2/symrecursive_validation_20261012.json",
+  "single_change_vs_parent": "Compute only upper off-diagonal output blocks at each scale; batched dense diagonal leaves; lower off-diagonal blocks copied as transposes"
+}

@@ -18,7 +18,7 @@
 
 ## 连续研究进展
 
-取消定时触发后持续推进。阶段1 adjusted目标仍为5.779e-10，未达标。2026-10-12已完成Gaussian pair三阶尾项、USE-only diagonal spill、边缘峰度平方、单层新生四阶树无迹残差等真实network0快筛；成本与误差成对记录，负结果保留，不将小规模代数核验当作提分。最后层残差时间消融也无收益；原V29当前环境单网控制已完成：FLOPs完全一致，raw相对冻结报告漂移−0.0157%；最后层残差候选相对当前控制也无收益。
+取消定时触发后持续推进。阶段1 adjusted目标仍为5.779e-10，未达标。2026-10-12已完成Gaussian pair三阶尾项、USE-only diagonal spill、边缘峰度平方、单层新生四阶树无迹残差等真实network0快筛；成本与误差成对记录，负结果保留，不将小规模代数核验当作提分。最后层残差时间消融也无收益；原V29当前环境单网控制已完成：FLOPs完全一致，raw相对冻结报告漂移−0.0157%；最后层残差候选相对当前控制也无收益。后续triangle rank16和doubleedge final-only快筛亦未改善adjusted。
 
 论文代码实际仓库是[mlp_cumulant_propagation](https://github.com/alignment-research-center/mlp_cumulant_propagation)，已冻结commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb；此前误查模块名mlp_kprop的404已纠正。官方组合生成器与V29现有pair表精确对照发现22项中19项已有，剩余3项即本轮pairq3，不重复添加已有系数。详见[研究日志](experiments/phase2/RESEARCH_LOG.md)。
 
@@ -41,3 +41,7 @@
 历史成绩和旧待办见 [Phase 1 归档](archive/phase1/README.md)。
 
 首次上榜已核验：Phase 2 团队 Niko，2026-10-10 榜单快照排名 111，提交 #335146。
+
+## 消融执行队列
+
+用户要求先准备清单再交低推理模型：已整理[129项待验证消融](experiments/phase2/ABLATION_BACKLOG.md)，每项含预留v30.xxx版本、before/after、详情、依赖、成本和验收。机器队列见`experiments/phase2/ablation_queue.json`，执行提示见[交接文件](experiments/phase2/LOW_REASONING_HANDOFF.md)。71项算法/计算、43项诊断、15项合同；59项需先推导，不允许执行模型猜公式后正式评测。尚未派发新模型，当前无运行benchmark。
