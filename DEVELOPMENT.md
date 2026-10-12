@@ -75,3 +75,5 @@ O12 exact表示CP成本诊断、C26真实local/RPC形状生命周期诊断、C28
 K5 Gaussianbirth对角final子集Mini8 local5.7773073237326585e-9，RPC5.777750550380405e-9均8/8零失败；同周期V29控制5.777513736227004e-9，差仅−0.00357%，无法认定可靠收益。fullK5/cross/nonGaussian门槛仍未覆盖。L18/L34/L35合法计费解释力、冻结模型推理及证据账本已补齐；当前60项相应快筛/诊断完成，69项partial，不代表十倍达标。L01同周期trace/repeated control首网输出差超过重复包络，保留partial，原始证据不覆盖。
 
 H31真实layer14固定4output方差gate否决（optimistic250probes SE/signal0.344–1.464），完成negative。H06历史90条未剪枝重建合法评测adjusted6.2350e-9，劣于控制；历史依赖未确认，仍partial。H08/H09/H11/H12固定layer14first16出生子集均零失败但增费后adjusted恶化（6.141–6.144e-9 vs6.1168e-9），完整来源不宣称验证。当前61项快筛/诊断完成，68项partial。
+
+H13完整B2固定第14层出生、1024全列单次运输零失败：初版adjusted6.2450e-9，identity精确重组降为6.1516e-9；raw约−0.53%仍不足支付费用，完成negative。H07/H08全列单次出生分别adjusted6.1823e-9/6.1892e-9，负；历史来源覆盖仍partial。当前62项相应快筛/诊断完成，67项partial。

@@ -815,3 +815,5 @@ FullB1missingY combinedr05 raw2.291441525414939e-8 adjusted6.1869398740487536e-9
 H08 allcolumnfixedWK12birth r06 raw2.2922957754190065e-8 adjusted6.189213564634539e-9 zero failures, no expansion; fullhistory remainspartial. H07 isolatedWK22 allcolumns next.
 
 H07 allcolumnfixedWK22birth raw2.2897467033544672e-8 adjusted6.1823310534122714e-9 zero failures; rawminorimprovementfeeexceeds, no expansion. Fullhistory omitted; partial retained.
+
+H09 allcolumnleadingB2 fixedbirth r03 raw2.2729793158760003e-8 (~−0.763%) adjusted6.137037320892508e-9 stillcostnegative; r04 zerosdiagonalrepeats simplifies exactcurrentD21/Coff zero diag. Fullhistory untested.
