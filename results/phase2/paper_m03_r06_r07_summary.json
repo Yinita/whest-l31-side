@@ -1,0 +1,154 @@
+{
+  "rows": [
+    {
+      "seed": 13026031,
+      "reference_sampling_mse": 1.4804754982725895e-06,
+      "v29_noisy_mse": 1.9517204858756775e-05,
+      "v29_charged_flops": 28541708,
+      "paper_variants": [
+        {
+          "order": 2,
+          "kind": "SIMPLE",
+          "noisy_mse": 0.0001249714109082667,
+          "paper_adjusted_flops": 3460352,
+          "torch_raw_counted_flops": 4762368,
+          "elapsed_s": 0.5098808670009021,
+          "all_returned_state_tensor_logical_bytes": 270848,
+          "process_peak_rss_kib": 319696
+        },
+        {
+          "order": 2,
+          "kind": "AUGMENT",
+          "noisy_mse": 3.3322296434067204e-05,
+          "paper_adjusted_flops": 5302708,
+          "torch_raw_counted_flops": 6831028,
+          "elapsed_s": 0.14212517700070748,
+          "all_returned_state_tensor_logical_bytes": 277560,
+          "process_peak_rss_kib": 320368
+        },
+        {
+          "order": 3,
+          "kind": "SIMPLE",
+          "noisy_mse": 1.258654308757743e-05,
+          "paper_adjusted_flops": 50562732,
+          "torch_raw_counted_flops": 52091052,
+          "elapsed_s": 0.10701209000035306,
+          "all_returned_state_tensor_logical_bytes": 3418168,
+          "process_peak_rss_kib": 325296
+        },
+        {
+          "order": 3,
+          "kind": "AUGMENT",
+          "noisy_mse": 5.752207186170315e-06,
+          "paper_adjusted_flops": 428526064,
+          "torch_raw_counted_flops": 470495472,
+          "elapsed_s": 0.3531694779994723,
+          "all_returned_state_tensor_logical_bytes": 9644032,
+          "process_peak_rss_kib": 368036
+        },
+        {
+          "order": 4,
+          "kind": "SIMPLE",
+          "noisy_mse": 2.4465297246336027e-06,
+          "paper_adjusted_flops": 4169408768,
+          "torch_raw_counted_flops": 4463326080,
+          "elapsed_s": 0.7006303170019237,
+          "all_returned_state_tensor_logical_bytes": 149170176,
+          "process_peak_rss_kib": 660092
+        },
+        {
+          "order": 4,
+          "kind": "AUGMENT",
+          "noisy_mse": 2.5525938967606142e-06,
+          "paper_adjusted_flops": 45211785160,
+          "torch_raw_counted_flops": 68561621320,
+          "elapsed_s": 87.1956491710007,
+          "all_returned_state_tensor_logical_bytes": 381957176,
+          "process_peak_rss_kib": 1850656
+        }
+      ]
+    },
+    {
+      "seed": 13026032,
+      "reference_sampling_mse": 1.2771568041357127e-06,
+      "v29_noisy_mse": 7.500593133883927e-06,
+      "v29_charged_flops": 28541708,
+      "paper_variants": [
+        {
+          "order": 2,
+          "kind": "SIMPLE",
+          "noisy_mse": 7.097149093613927e-05,
+          "paper_adjusted_flops": 3460352,
+          "torch_raw_counted_flops": 4762368,
+          "elapsed_s": 0.032522315999813145,
+          "all_returned_state_tensor_logical_bytes": 270848,
+          "process_peak_rss_kib": 1850656
+        },
+        {
+          "order": 2,
+          "kind": "AUGMENT",
+          "noisy_mse": 2.4919711054160714e-05,
+          "paper_adjusted_flops": 5302708,
+          "torch_raw_counted_flops": 6831028,
+          "elapsed_s": 0.09414382699833368,
+          "all_returned_state_tensor_logical_bytes": 277560,
+          "process_peak_rss_kib": 1850656
+        },
+        {
+          "order": 3,
+          "kind": "SIMPLE",
+          "noisy_mse": 6.365065232208099e-06,
+          "paper_adjusted_flops": 50562732,
+          "torch_raw_counted_flops": 52091052,
+          "elapsed_s": 0.10544489400126622,
+          "all_returned_state_tensor_logical_bytes": 3418168,
+          "process_peak_rss_kib": 1850656
+        },
+        {
+          "order": 3,
+          "kind": "AUGMENT",
+          "noisy_mse": 1.4612605128660548e-06,
+          "paper_adjusted_flops": 428526064,
+          "torch_raw_counted_flops": 470495472,
+          "elapsed_s": 0.3195200289992499,
+          "all_returned_state_tensor_logical_bytes": 9644032,
+          "process_peak_rss_kib": 1850656
+        },
+        {
+          "order": 4,
+          "kind": "SIMPLE",
+          "noisy_mse": 1.3480732022373205e-06,
+          "paper_adjusted_flops": 4169408768,
+          "torch_raw_counted_flops": 4463326080,
+          "elapsed_s": 0.6076083539992396,
+          "all_returned_state_tensor_logical_bytes": 149170176,
+          "process_peak_rss_kib": 1850656
+        },
+        {
+          "order": 4,
+          "kind": "AUGMENT",
+          "noisy_mse": 1.27530359181101e-06,
+          "paper_adjusted_flops": 45211785160,
+          "torch_raw_counted_flops": 68561621320,
+          "elapsed_s": 86.93056172800061,
+          "all_returned_state_tensor_logical_bytes": 381957176,
+          "process_peak_rss_kib": 1852864
+        }
+      ]
+    }
+  ],
+  "errors": 0,
+  "limitations": [
+    "V29off-suitegenericpath excludescompetition riders",
+    "V29float32roundedinputs vs officialfloat64",
+    "paper FLOPs not flopscope costs",
+    "weakMC sampling uncertainty can dominate tiny K4 differences",
+    "returnedstate logicalbytes may alias;processRSS cumulative"
+  ],
+  "source_hashes": {
+    "estimators/k3_v29/estimator.py": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "experiments/phase2/paper_m03_relu64.py": "c1039984728792cd708604f423697397d1e6bb6ed505cef2b71dee717644747c",
+    "experiments/phase2/paper_m03_v29_same64.py": "4b5dcfe50ebef458bbfc7e0f90c88d2db94050e6fb13e092faac008f734844f8"
+  },
+  "conclusion": "K4aug87seconds and45.2Gpaperflops vsK4basic~.6-.7seconds4.17G with similar noisyerror; no reason to port fullaugK4 directly. K3augdirection promising requires lawful productioncost and stronger pairedreference."
+}

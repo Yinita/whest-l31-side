@@ -111,6 +111,9 @@ after：成本可行的官方basic/augmented/factorized端到端K2/K3及可行K4
 - [paper_m03_r04_matrix_summary.json](../../results/phase2/paper_m03_r04_matrix_summary.json)
 - [paper_m03_r05_relu32.json](../../results/phase2/paper_m03_r05_relu32.json)
 - [paper_m03_r05_relu32_summary.json](../../results/phase2/paper_m03_r05_relu32_summary.json)
+- [paper_m03_r06_relu64.json](../../results/phase2/paper_m03_r06_relu64.json)
+- [paper_m03_r07_v29_same64.json](../../results/phase2/paper_m03_r07_v29_same64.json)
+- [paper_m03_r06_r07_summary.json](../../results/phase2/paper_m03_r06_r07_summary.json)
 
 ### v30.065 O03 K211完整来源抵消一致性
 
