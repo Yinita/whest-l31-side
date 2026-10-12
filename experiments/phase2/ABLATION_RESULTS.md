@@ -102,9 +102,11 @@ after：成本可行的官方basic/augmented/factorized端到端K2/K3及可行K4
 
 状态：partial_diagnostic
 
-诊断结论：K3augmented91dense/87factor retained;K4augmented331/324. K2factor same unfactored, no score or FLOP claim；算法分数前后不适用。
+诊断结论：r02 factor failures autograd/out interaction preserved; r03 no_grad12/12 zeroerrors. K3augfactor noisyMSE.0001523 vsK2simple.0039388;K4aug1.23diverges. Smallshape result insufficient generalization; no adjusted/FLOP claim；算法分数前后不适用。
 
 - [paper_m03_r01_variant_inventory.json](../../results/phase2/paper_m03_r01_variant_inventory.json)
+- [paper_m03_r02_small_variants.json](../../results/phase2/paper_m03_r02_small_variants.json)
+- [paper_m03_r03_small_variants.json](../../results/phase2/paper_m03_r03_small_variants.json)
 
 ### v30.065 O03 K211完整来源抵消一致性
 
