@@ -29,3 +29,5 @@
 两次零异常，但全秩残差不能恢复论文逐层一致性，不扩大秩扫描。小形状使用旧共同MC reference，仅作诊断，不能转换为比赛adjusted或独立泛化声明。下一项是第二层preactivation协方差和K3对角收缩分解。
 
 证据：`results/phase2/paper_m03_r11_layer_{v29,official,summary}.json`与`paper_m03_r12_resfull_{same64,summary}.json`；实现脚本`experiments/phase2/paper_m03_layer_parity.py`、`paper_m03_resfull_same64.py`。ruff和diff检查通过。
+
+M03r13: Frozen two64x4 inputs; firstact covariance exact. Secondpre covariance MSE1.290e-15/1.323e-15 maxabs2.384e-7/2.980e-7 (roundoff). Secondpre K3diag MSE6.100e-7/9.513e-7 maxabs.002970/.004226; K321 MSE1.844e-7/2.123e-7. Ordinary/power/harmonic mapping required before defect attribution. Charged28,541,708 each equals baseline; extraction timing nondeployment. First official KeyError3 implicitGaussianzero retained; retry complete. No oracle, scoregain or submission. Next firstbirth tensor semantics. Evidence results/phase2/paper_m03_r13_state_{v29,official,summary}.json.
