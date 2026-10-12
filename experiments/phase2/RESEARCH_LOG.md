@@ -811,3 +811,7 @@ H13 completeB2 fixedlayer14one-transition {"before_raw": 2.290466483145792e-08, 
 H13 r03 exactidentity algebra sameB2birth lowerscost but raw2.278309096936937e-8/adjusted6.151590660493219e-9 stillnegative, zero failures. FullB1missingY combinedbirth diagnostic next, not singlemechanism H08 completion.
 
 FullB1missingY combinedr05 raw2.291441525414939e-8 adjusted6.1869398740487536e-9 zero failures, negative; r06 isolatedWK12 allcolumns fixedbirth underway.
+
+H08 allcolumnfixedWK12birth r06 raw2.2922957754190065e-8 adjusted6.189213564634539e-9 zero failures, no expansion; fullhistory remainspartial. H07 isolatedWK22 allcolumns next.
+
+H07 allcolumnfixedWK22birth raw2.2897467033544672e-8 adjusted6.1823310534122714e-9 zero failures; rawminorimprovementfeeexceeds, no expansion. Fullhistory omitted; partial retained.

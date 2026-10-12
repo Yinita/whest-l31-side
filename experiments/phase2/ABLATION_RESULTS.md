@@ -681,6 +681,7 @@ after：仅恢复该出生项并扣除其已重复dslices
 - [ablation_v30_037_r02_subset_mini1.json](../../results/phase2/ablation_v30_037_r02_subset_mini1.json)
 - [ablation_v30_037_r02_subset_decision.json](../../results/phase2/ablation_v30_037_r02_subset_decision.json)
 - [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_037_r03_full_mini1.json](../../results/phase2/ablation_v30_037_r03_full_mini1.json)
 
 ### v30.038 H08 B1的WK12对称反馈恢复
 
@@ -698,6 +699,7 @@ after：补充上游B1中d(w2)*WK12*d(w2)缺失部分
 - [ablation_v30_038_r03_subset_mini1.json](../../results/phase2/ablation_v30_038_r03_subset_mini1.json)
 - [ablation_v30_038_r04_subset_mini1.json](../../results/phase2/ablation_v30_038_r04_subset_mini1.json)
 - [ablation_v30_038_r04_subset_decision.json](../../results/phase2/ablation_v30_038_r04_subset_decision.json)
+- [ablation_v30_038_r06_full_mini1.json](../../results/phase2/ablation_v30_038_r06_full_mini1.json)
 
 ### v30.039 H09 B2 leading D21乘C来源恢复
 
@@ -777,6 +779,7 @@ after：保留完整指定B2 newborn one transition，随后仅保留其已产�
 - [ablation_v30_043_r02_decision.json](../../results/phase2/ablation_v30_043_r02_decision.json)
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
 - [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_043_r03_mini1.json](../../results/phase2/ablation_v30_043_r03_mini1.json)
 
 ### v30.044 H14 B2两步输出导向收缩
 
