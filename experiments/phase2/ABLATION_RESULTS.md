@@ -707,6 +707,9 @@ after：仅恢复WK12乘WK11 leading hub，移除其重复出生dslices
 诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_039_r02_subset_mini1.json](../../results/phase2/ablation_v30_039_r02_subset_mini1.json)
+- [ablation_v30_039_r02_subset_decision.json](../../results/phase2/ablation_v30_039_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
 
 ### v30.040 H10 B2 WK22乘C来源恢复
 
