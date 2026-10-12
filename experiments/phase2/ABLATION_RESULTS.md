@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 14, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 36, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1016,13 +1016,15 @@ before：trianglelast用rank16 approximate C
 
 after：用原始Coff的lawful random estimator估计exact alloutput triangle contraction
 
-状态：partial_derivation
+状态：completed_negative
 
-诊断结论：Unbiased expectation and exact Rademacher variance law checked; actual network signal/cost/variance candidate gate pending；算法分数前后不适用。
+诊断结论：Legalexhaustive probe verified; actualstate fixedoutputs0-3 optimistic250probes SE/signal0.34..1.46, output3 exceeds signal. Reject randomizedroute undervariancegate before candidate, no raw/adjusted score claim；算法分数前后不适用。
 
 - [ablation_v30_061_triangle_unbiased.json](../../results/phase2/ablation_v30_061_triangle_unbiased.json)
 - [ablation_v30_061_triangle_variance_formula.json](../../results/phase2/ablation_v30_061_triangle_variance_formula.json)
 - [ablation_v30_061_probe_cost_gate.json](../../results/phase2/ablation_v30_061_probe_cost_gate.json)
+- [ablation_v30_061_r02_charged_probe_contract.json](../../results/phase2/ablation_v30_061_r02_charged_probe_contract.json)
+- [ablation_v30_061_r03_actual_state_noise.json](../../results/phase2/ablation_v30_061_r03_actual_state_noise.json)
 
 ### v30.062 H32 高阶newborn直接CP因素生成
 

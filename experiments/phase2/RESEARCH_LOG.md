@@ -781,3 +781,5 @@ K5 RPC fullMini8 adjusted5.777750550380405e-9/raw2.269654553188616e-8,8zero fail
 L01 samecycle2network complete: n0 traceΔ3.33786e-6 repeatΔ2.38419e-6 fails envelope; n1 traceΔ4.05312e-6 repeatΔ4.29153e-6 within. PerFLOPs identical. No full8acceptance or resourcepass, partial retained. H05 zeroalphacovariance Pade subset started serial.
 
 H05 zeroalphafirstcovariance Pade {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.117659882376649e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2907027386054324e-08, "failures": 0, "conclusion": "No measuredgain, no Mini8expansion; firstlayercovarianceonly subset, H05nonzero completepath remains untested"}; partialfullnonzero retained.
+
+H31 actualtargetfree publicnetwork0 layer14 fixedoutput0-3 exactvariance noisegate: budgetoptimistic250probes SE/signal0.720/0.938/0.344/1.464. One exceeds signal, reject route as specified before noisywholecandidate. Completednegative with no benchmark score.
