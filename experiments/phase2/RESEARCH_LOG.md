@@ -571,3 +571,11 @@ V29仅在第一层输出分块计算11、12、22三个block；两个对角block�
 状态completed_positive；Mini8开发集，独立确认及RPC尚未完成。
 
 C01r02完整Mini8 adjusted5.750454989509922e-9（−0.493595%），raw2.2708409819216513e-8（+0.024628%），FLOPs−0.518029%，零失败，最大residual0.322118s。同hash RPC已运行PID4123936。O28首层tree RMS slope平均−0.990602、edge−1.46844（3seed spread0.05008/0.06924），不推断深层或1024收益。
+
+O19新增Gaussian ReLU K5 marginal生产与独立积分核验，尚缺非Gaussian输入项及完整r1 core。C29完整grid reshape scatter与逐block上三角copy/mirror逐元素一致并实测计费；packed方案需要两三角已填充，不等于完成稀疏三角compute/scatter。两项均继续partial，原本实验边界不变。
+
+H15新增radial K4的distinct K_aabc完整cap合同：G=diag(g)下cap=(sum(g)-g_b-g_c)M_bc/6且b=c为0，显式small四阶tensor一致。该结果不等于全core低秩：dense M可使cap满秩；完整非线性production和官方归一化映射继续待办。
+
+O29新收集同公共网络H22与冻结V29 RPC预测的无标签delta RMS、均值和逐层RMS。这里只量化候选信号，未生成独立强references，不给实测CI，不将RPC数值变化混称纯算法改善；状态partial_diagnostic。
+
+L03新增合法float32 affine推理组件：按网络LOO训练时排除held labels，缓存特征映射到flopscope matmul+add，逐network收费与NumPy预测对齐。组件不包含真实特征构建的收费/时间，因此保留partial_negative与原CV负结果，不能填写官方adjusted。

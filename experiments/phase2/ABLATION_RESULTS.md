@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 20, 'partial_diagnostic': 21, 'partial_negative': 15, 'pending': 5}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 20, 'partial_diagnostic': 22, 'partial_negative': 15, 'pending': 4}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -518,6 +518,7 @@ after：保持相同上三角算法，将同尺度的输入/输出布局用持�
 诊断结论：Exact layout packing charges75% more; full scatter and candidate pending；算法分数前后不适用。
 
 - [ablation_v30_029_layout_contract.json](../../results/phase2/ablation_v30_029_layout_contract.json)
+- [ablation_v30_029_scatter_contract.json](../../results/phase2/ablation_v30_029_scatter_contract.json)
 
 ### v30.031 H01 边际D3平方产品补全
 
@@ -714,6 +715,7 @@ after：从actual historical K3 sources求K211 capped，再保留明确lowrank c
 诊断结论：CP fullcontractionrank and distinctcap corrections checked; diagonalexclusion may makematrixfullrank; fullproduction/candidate pending；算法分数前后不适用。
 
 - [ablation_v30_045_source_cap_rank_bound.json](../../results/phase2/ablation_v30_045_source_cap_rank_bound.json)
+- [ablation_v30_045_radial_capped_contract.json](../../results/phase2/ablation_v30_045_radial_capped_contract.json)
 
 ### v30.046 H16 actual K31低rank核心残差
 
@@ -1177,6 +1179,7 @@ after：经验证的选择性marginal K5生产
 诊断结论：ExactGaussianReLUdegree5/6 marginal moment recurrence/quadrature verified; officialaugmented propagatedK5 closure still pending；算法分数前后不适用。
 
 - [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
+- [ablation_v30_081_k5_gaussian_marginal.json](../../results/phase2/ablation_v30_081_k5_gaussian_marginal.json)
 
 ### v30.082 O20 K5独立边缘readout
 
@@ -1276,6 +1279,18 @@ after：预定width/seed上的state diagram rms law
 
 - [ablation_v30_090_diagram_width_law.json](../../results/phase2/ablation_v30_090_diagram_width_law.json)
 
+### v30.091 O29 高阶校正信号与reference不确定性的分离
+
+before：gain与noise proxy混用
+
+after：paired候选信号和reference误差分离账本
+
+状态：partial_diagnostic
+
+诊断结论：Candidate delta prediction RMS measured without labels; paired independent strong references still absent, noise separation unfulfilled；算法分数前后不适用。
+
+- [ablation_v30_091_h22_prediction_signal.json](../../results/phase2/ablation_v30_091_h22_prediction_signal.json)
+
 ### v30.092 O30 新增图表array操作计量路径合同
 
 before：只运行small数值公式
@@ -1363,6 +1378,7 @@ after：只在final输出追加一个开发网络拟合的13特征线性残差�
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_v30_098_charged_readout_component.json](../../results/phase2/ablation_v30_098_charged_readout_component.json)
 
 ### v30.099 L04 删除常数特征的修正对照
 
