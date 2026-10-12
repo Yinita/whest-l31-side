@@ -855,3 +855,5 @@ Status20261012:8shards completed578–753seconds,1392–1814samples/s,8388608sam
 Shortpilot r02 finished32/32 tasks zeroerrors, incremental32record journal persists. Previous8388608sample reference estimated noiseMSE9.3862e-9, split-half difference3.1267e-8; insufficient to certify tiny candidate gains. No higherbudget dispatch before billingaudit.
 
 20:46coordination: billing report API Oct1–now empty, actualcost/balance unverifiable; apps allstopped, no cloud dispatch. Restoredofficial93d091a4 temporarycache. M03boundeddegree<=4 inventory K3aug91/87,K4aug331/324;K2factor uses unfactored path, do not apply genericpruning filter as method. Numericalfullvariants pending.
+
+User explicitly removed30USDcap. Launchedr03 independent8networks×128shards×65536samples,max96singlecore containers,180s tasks,incrementalfsync successes/errors;67.1Mtotal/8.39Mpernetwork. Scope intermediate uncertainty reference, not stageacceptance. No repeatedseeds or candidate modification.
