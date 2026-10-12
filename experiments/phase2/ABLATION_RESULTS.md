@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 11, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -20,8 +20,8 @@
 | v30.014 | C14 | completed_positive | 2.29046648315e-08 | 2.2903094532e-08 | 6.11683233498e-09 | 6.11624916111e-09 | -0.009534% | -0.002678% | 0 |
 | v30.015 | C15 | completed_positive | 2.29046648315e-08 | 2.29023822129e-08 | 6.11683233498e-09 | 6.11622274759e-09 | -0.009966% | +0.000000% | 0 |
 | v30.016 | C16 | completed_positive | 2.2702818514e-08 | 2.27096401684e-08 | 5.77897975577e-09 | 5.750992776e-09 | -0.484289% | -0.513692% | 0 |
-| v30.017 | C17 | completed_positive | 2.29046648315e-08 | 2.29078516156e-08 | 6.11683233498e-09 | 6.11241916501e-09 | -0.072148% | -0.086049% | 0 |
-| v30.018 | C18 | completed_positive | 2.29046648315e-08 | 2.29071996927e-08 | 6.11683233498e-09 | 6.11611893274e-09 | -0.011663% | -0.022727% | 0 |
+| v30.017 | C17 | completed_positive | 2.2702818514e-08 | 2.27078900128e-08 | 5.77897975577e-09 | 5.77523628482e-09 | -0.064777% | -0.086777% | 0 |
+| v30.018 | C18 | completed_negative | 2.2702818514e-08 | 2.27121395024e-08 | 5.77897975577e-09 | 5.78005020674e-09 | +0.018523% | -0.022251% | 0 |
 | v30.019 | C19 | completed_positive | 2.29046648315e-08 | 2.28964882609e-08 | 6.11683233498e-09 | 6.11494351448e-09 | -0.030879% | +0.004821% | 0 |
 | v30.021 | C21 | completed_negative | 2.28947385494e-08 | 2.29046648315e-08 | 6.09062553181e-09 | 6.09291669639e-09 | +0.037618% | -0.005736% | 0 |
 | v30.022 | C22 | completed_negative | 2.29046648315e-08 | 2.29066454693e-08 | 6.11683233498e-09 | 6.11736893529e-09 | +0.008773% | +0.000125% | 0 |
@@ -336,13 +336,13 @@ after：保留第一乘法，末次上三角block计算并copy
 
 状态：completed_positive
 
-predict=28.293577s；residual=0.338997s；FLOPs=586757419119；peak child RSS=3967088KiB；失败=0。
+逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4474152211320；peak child RSS=6699860KiB；失败=0。
 
-- [ablation_v30_017_r01_mini1_local.json](../../results/phase2/ablation_v30_017_r01_mini1_local.json)
-- [ablation_v30_017_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_017_r01_mini1_local.manifest.json)
-- [ablation_v30_017_r01_mini1_local.log](../../results/phase2/ablation_v30_017_r01_mini1_local.log)
-- [ablation_v30_017_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_017_r01_mini1_local.launcher.log)
-- [ablation_v30_017_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_017_r01_mini1_local.validate.log)
+前次快筛：Mini1 development only; no independent generalization claim；raw=2.29078516156e-08；adjusted=6.11241916501e-09；报告 `results/phase2/ablation_v30_017_r01_mini1_local.json`。
+
+- [ablation_v30_017_r02_mini8_local.json](../../results/phase2/ablation_v30_017_r02_mini8_local.json)
+- [ablation_v30_017_r02_mini8_local.manifest.json](../../results/phase2/ablation_v30_017_r02_mini8_local.manifest.json)
+- [ablation_v30_017_r02_mini8_local.log](../../results/phase2/ablation_v30_017_r02_mini8_local.log)
 
 ### v30.018 C18 S2子空间投影的末次乘法三角化
 
@@ -350,15 +350,15 @@ before：S2=Un.T @ (G2 @ Un)完整r2×r2
 
 after：仅末次计算上三角输出并copy
 
-状态：completed_positive
+状态：completed_negative
 
-predict=28.053274s；residual=0.284572s；FLOPs=587129284559；peak child RSS=3933056KiB；失败=0。
+逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4477041724280；peak child RSS=6711800KiB；失败=0。
 
-- [ablation_v30_018_r01_mini1_local.json](../../results/phase2/ablation_v30_018_r01_mini1_local.json)
-- [ablation_v30_018_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_018_r01_mini1_local.manifest.json)
-- [ablation_v30_018_r01_mini1_local.log](../../results/phase2/ablation_v30_018_r01_mini1_local.log)
-- [ablation_v30_018_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_018_r01_mini1_local.launcher.log)
-- [ablation_v30_018_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_018_r01_mini1_local.validate.log)
+前次快筛：Mini1 development only; no independent generalization claim；raw=2.29071996927e-08；adjusted=6.11611893274e-09；报告 `results/phase2/ablation_v30_018_r01_mini1_local.json`。
+
+- [ablation_v30_018_r02_mini8_local.json](../../results/phase2/ablation_v30_018_r02_mini8_local.json)
+- [ablation_v30_018_r02_mini8_local.manifest.json](../../results/phase2/ablation_v30_018_r02_mini8_local.manifest.json)
+- [ablation_v30_018_r02_mini8_local.log](../../results/phase2/ablation_v30_018_r02_mini8_local.log)
 
 ### v30.019 C19 joiner两路Gram operator共享布局
 
@@ -1598,6 +1598,7 @@ after：仅第8层将已验证修正写入mu，后续原V29递推。
 诊断结论：87 central moment checks; translation preserves higher cumulants, mean-only reestimation needs explicit distribution model；算法分数前后不适用。
 
 - [ablation_v30_111_mean_shift_contract.json](../../results/phase2/ablation_v30_111_mean_shift_contract.json)
+- [ablation_v30_111_translation_state_contract.json](../../results/phase2/ablation_v30_111_translation_state_contract.json)
 
 ### v30.112 L17 修正器特征删列归因
 

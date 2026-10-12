@@ -649,3 +649,11 @@ L14连续hinge推理合法组件及边界finite核验通过；synthetic coeffici
 L15实际train1–7、held0、500step固定tanh模型已合法float32matmul/tanh推理核验，收费与float64偏差记录。未构建完整candidate，原8foldraw+1.91998%负结果不变。
 
 H13/H14/H30真实合法CP transport后D3/D21组件核验及计费完成，n8/16/32float32误差<2e-5；完整birthcoef/repeatedstate/有限生命eviction仍待，不填candidate score。
+
+L16新增显式distribution translation语义合同：若Y' = Y+delta，则中心cumulants不变但rawmoments必须一致平移；有限support核验通过。此假设可能破坏ReLU非负support且不解释真实error covariance，因此不接受中层候选、不越过positiveCV门槛。
+
+C17r02 Mini8 {"ratios": {"final_layer_mse": 1.0002233863065662, "adjusted_final_layer_score": 0.9993522263265825, "flops_used": 0.999132229814824}, "failures": 0}
+
+C18r02 Mini8 {"ratios": {"final_layer_mse": 1.000410565252935, "adjusted_final_layer_score": 1.0001852318253959, "flops_used": 0.999777492959761}, "failures": 0}
+
+C18r02完整Mini8零fail：adjusted5.7800502067357505e-9/raw2.271213950244544e-8，相对adjusted+0.018523%负。C17r02adjusted−0.064777%/raw+0.022339%/FLOPs−0.086777%，零fail。自动全量队列前后表已收取，旧row版本结果不覆盖。L03remainingfold1pairedcontrolPID4157714开始。
