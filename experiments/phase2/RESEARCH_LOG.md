@@ -809,3 +809,5 @@ H10 WK22*C subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6
 H13 completeB2 fixedlayer14one-transition {"before_raw": 2.290466483145792e-08, "after_raw": 2.2799234500325838e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.244998152087151e-09, "failures": 0, "raw_ratio": 0.9953969930619861, "adjusted_ratio": 1.0209529720751034, "scope": "CompleteB2 newborn fixedlayer14, all1024columns onefinaltransition, currentlawfulD21/WK22proxy and exactstrictdistinct subtraction", "conclusion": "Rawimproves but cost worsensadjusted; rejectfixedbirth one-transition implementation, no Mini8expansion"}; negativeadjustedgate, no expansion.
 
 H13 r03 exactidentity algebra sameB2birth lowerscost but raw2.278309096936937e-8/adjusted6.151590660493219e-9 stillnegative, zero failures. FullB1missingY combinedbirth diagnostic next, not singlemechanism H08 completion.
+
+FullB1missingY combinedr05 raw2.291441525414939e-8 adjusted6.1869398740487536e-9 zero failures, negative; r06 isolatedWK12 allcolumns fixedbirth underway.
