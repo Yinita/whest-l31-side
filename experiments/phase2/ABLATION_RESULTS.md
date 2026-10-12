@@ -1417,6 +1417,7 @@ after：IDs0–7用leave-one-network-out；IDs8–15保留为一次公共确认�
 诊断结论：Network-level leave-one-network-out selection frozen without reading confirmation targets; feature cache prerequisite L01 pending；算法分数前后不适用。
 
 - [ablation_v30_097_selection_protocol.json](../../results/phase2/ablation_v30_097_selection_protocol.json)
+- [ablation_v30_097_128_loo_source_audit.json](../../results/phase2/ablation_v30_097_128_loo_source_audit.json)
 
 ### v30.098 L03 最后层13特征残差线性修正
 
@@ -1701,6 +1702,7 @@ after：用合法末端mean Jacobian代理估计来源贡献并排序，不看re
 - [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
 - [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
 - [ablation_v30_120_coupled_gaussian_jacobian.json](../../results/phase2/ablation_v30_120_coupled_gaussian_jacobian.json)
+- [ablation_v30_120_variance_derivative_grid.json](../../results/phase2/ablation_v30_120_variance_derivative_grid.json)
 
 ### v30.121 L26 输出敏感性来源预算分配
 
@@ -1790,6 +1792,7 @@ after：离线估计原targets float32 ULP尺度与MSE阈值关系，保留原ta
 
 - [ablation_v30_127_reference_dtype.json](../../results/phase2/ablation_v30_127_reference_dtype.json)
 - [ablation_v30_128_feature_finiteness.json](../../results/phase2/ablation_v30_128_feature_finiteness.json)
+- [ablation_v30_097_128_loo_source_audit.json](../../results/phase2/ablation_v30_097_128_loo_source_audit.json)
 
 ### v30.128 L34 标准化计算的候选合同
 
@@ -1815,4 +1818,5 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 
 - [ablation_v30_129_selection_ledger.json](../../results/phase2/ablation_v30_129_selection_ledger.json)
 - [ablation_v30_129_r02_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r02_comprehensive_selection_ledger.json)
+- [ablation_v30_129_current_score_ledger_r02.json](../../results/phase2/ablation_v30_129_current_score_ledger_r02.json)
 

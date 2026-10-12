@@ -659,3 +659,7 @@ C18r02 Mini8 {"ratios": {"final_layer_mse": 1.000410565252935, "adjusted_final_l
 C18r02完整Mini8零fail：adjusted5.7800502067357505e-9/raw2.271213950244544e-8，相对adjusted+0.018523%负。C17r02adjusted−0.064777%/raw+0.022339%/FLOPs−0.086777%，零fail。自动全量队列前后表已收取，旧row版本结果不覆盖。L03remainingfold1pairedcontrolPID4157714开始。
 
 L25 mean/variance coupled derivative扩展到mu−2..2、variance0.25/1/4固定grid，观测Gaussian响应；fullcovariance/cumulant derivatives尚待。L03remainingfold1pairedcontrol已结束零fail，候选fold1进行中。
+
+L02/L33全部8fold模型train/eval排除规则与候选哈希审计通过，reference独立性与完整score验收仍另计。L03fold2control已结束，继续candidate。
+
+L35追加current score ledger r02，区分queue状态、真实reportscore、RPC及CV/components范围，计数为报告数非独立假设数。未经完成报告不补分数。
