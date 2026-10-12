@@ -954,6 +954,8 @@ after：恢复一个明确vector partition轨道的mixed新born source
 - [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
 - [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
 - [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
+- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
+- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
 
 ### v30.060 H30 K111乘covariance边一层收缩
 
@@ -969,6 +971,8 @@ after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
 - [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
 - [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
 - [ablation_v30_059_060_r02_charged_repeats.json](../../results/phase2/ablation_v30_059_060_r02_charged_repeats.json)
+- [ablation_v30_059_060_r03_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r03_factor_repeats.json)
+- [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
 
 ### v30.061 H31 exact covariance triangle无偏收缩
 

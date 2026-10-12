@@ -1,0 +1,35 @@
+{
+  "rows": [
+    {
+      "n": 4,
+      "rank": 2,
+      "d3_relative_error": 2.913475043442304e-07,
+      "d21_relative_error": 4.571630540795013e-07,
+      "flops": 1720,
+      "max_charged_elements": 16
+    },
+    {
+      "n": 8,
+      "rank": 3,
+      "d3_relative_error": 2.3900597057036066e-07,
+      "d21_relative_error": 3.484911701434612e-07,
+      "flops": 10088,
+      "max_charged_elements": 64
+    },
+    {
+      "n": 16,
+      "rank": 4,
+      "d3_relative_error": 1.247329777243067e-07,
+      "d21_relative_error": 2.0175443182779418e-07,
+      "flops": 57280,
+      "max_charged_elements": 256
+    }
+  ],
+  "formula": "R_abc=delta_ab D21_ac+delta_ac D21_ab+delta_bc D21_ba-2delta_abdelta_ac D3_a; transport contracted without n3 arrays",
+  "scope": "Exact symmetric CP distinct transport component; dense oracle only outside charged computation",
+  "limitations": [
+    "Repeated correction retains dense n3-cost GEMM (matrix*transported)@matrix.T; first term and transported reuse CP factors",
+    "Rank1 edge source factors and birth coverage integration pending",
+    "No real network score"
+  ]
+}

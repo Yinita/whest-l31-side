@@ -689,3 +689,5 @@ O03/O05合法power→centered K31/K211转换组件实际计费，独立finite-su
 O04实际upstream lean build_term_table AST原样执行配当前冻结official generator：25保留/35classes，whole K31/K211/K111 output排除与diagonal metric K4 slice zero假设均逐项定位。原注释94 terms与当前再生成25不等，历史official依赖commit未知、不能冒充历史精确复现，term_rels缺失无法反推pruning。
 
 H29/H30 exact symmetricCP strict distinct运输：generic repeated tensor不显式展开，通过W²@D21@Wᵀ及W@D21ᵀ薄组合同口径扣除，合法组件n4/8/16relative<1.05e-6。首版W@D21方向错误由独立oracle assertion定位，修复为W@D21.T；失败无report，不算通过。费用含denseGEMM，不等于廉价source运输，无整网score。
+
+H29/H30 r03/r04以CP factors重组重复扣除第一项与transported项，r03保留unusedD21收费负担，r04删除实际不需要D21并重新计费。n16 old62464→50944（−18.45%）组件FLOPs，误差<4.6e-7；n4反增，remaining dense GEMM仍n³。无整网score，保留r03。
