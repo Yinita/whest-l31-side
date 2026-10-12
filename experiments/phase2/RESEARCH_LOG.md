@@ -521,3 +521,5 @@ D21 feedback sketch用当前weight列 → 相同rank16下改用未来一两层we
 ## H19/H20/H22真实快筛
 
 H19单网raw比0.99428936（−0.5711%），FLOPs比1.16456266（+16.4563%），adjusted比1.15791226（+15.7912%），零失败；H20 raw比1.01103537、FLOPs比1.16464834、adjusted比1.17750066，零失败，两dense实现否决。H22未来权重sketch raw比0.97395848、adjusted比0.97408259（−2.59174%）、FLOPs比1.00012743，零失败；单网初筛收益，需完整Mini8和RPC确认，不组合H18。K5/K6独立线性readout Hermite系数已推导，不等于完整Edgeworth或合法累积量闭合，尚无候选。
+
+L35 r02选择账本扩展到队列前benchmark和可辨认offlineCV报告，包括失败与负筛，保留路径/hash；report数量不等于独立假设数量，有效选择偏差仍未估计，不虚报统计保证。全pytest21通过（31.59s），ruff通过。

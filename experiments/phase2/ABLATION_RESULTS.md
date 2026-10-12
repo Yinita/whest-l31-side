@@ -1384,7 +1384,8 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 
 状态：partial_diagnostic
 
-诊断结论：Backlog candidate/report/hash selection ledger generated; pre-backlog screens and full training manifest integration pending；算法分数前后不适用。
+诊断结论：Prequeue benchmarks and identifiable offlineCV runs indexed; hypothesis/effective-selection count and final confirmation pending；算法分数前后不适用。
 
 - [ablation_v30_129_selection_ledger.json](../../results/phase2/ablation_v30_129_selection_ledger.json)
+- [ablation_v30_129_r02_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r02_comprehensive_selection_ledger.json)
 
