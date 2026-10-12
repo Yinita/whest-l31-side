@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "shape": [
+        7,
+        9
+      ],
+      "view": "slice",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        7,
+        9
+      ],
+      "view": "transpose",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        7,
+        9
+      ],
+      "view": "reshape",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        7,
+        9
+      ],
+      "view": "copy",
+      "aliases": false,
+      "poison_detected": false
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "view": "slice",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "view": "transpose",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "view": "reshape",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "view": "copy",
+      "aliases": false,
+      "poison_detected": false
+    },
+    {
+      "shape": [
+        3,
+        7,
+        9
+      ],
+      "view": "slice",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        3,
+        7,
+        9
+      ],
+      "view": "transpose",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        3,
+        7,
+        9
+      ],
+      "view": "reshape",
+      "aliases": true,
+      "poison_detected": true
+    },
+    {
+      "shape": [
+        3,
+        7,
+        9
+      ],
+      "view": "copy",
+      "aliases": false,
+      "poison_detected": false
+    }
+  ],
+  "conclusion": "Runtime poison catches escaped slice/transpose/reshape views and spares copies. This proves oracle behavior, not live V29 pool reuse safety: remote-array aliases and actual use-after-recycle callsites still require instrumented integration.",
+  "scope": "Offline alias diagnostic; no estimator modification or score"
+}

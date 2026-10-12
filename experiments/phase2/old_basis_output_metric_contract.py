@@ -13,10 +13,12 @@ def main():
         a, p = rng.normal(size=(2, n, n))
         da, dp = rng.uniform(0.1, 1, size=(2, n))
         gram = (a * da) @ a.T + (p * dp) @ p.T
-        # A final-mean proxy coefficient on D3 is phi/(6 sigma²).
+        # D3 mean coefficient is -alpha*phi/(6 sigma²); PSD metric uses its magnitude.
         mu = rng.normal(size=n)
         sigma = rng.uniform(0.3, 2, size=n)
-        sensitivity = np.exp(-0.5 * (mu / sigma) ** 2) / (np.sqrt(2 * np.pi) * 6 * sigma**2)
+        sensitivity = (
+            abs(mu / sigma) * np.exp(-0.5 * (mu / sigma) ** 2) / (np.sqrt(2 * np.pi) * 6 * sigma**2)
+        )
         # Normalize to preserve scale. This is a proxy, not full adjoint.
         scale = np.sqrt(sensitivity / sensitivity.mean())
         metric = scale[:, None] * gram * scale[None, :]
@@ -41,13 +43,13 @@ def main():
                 unscaled_orthogonality_error=float(np.max(abs(q.T @ q - np.eye(rank)))),
             )
         )
-    path = Path("results/phase2/ablation_v30_054_output_metric_mapping.json")
+    path = Path("results/phase2/ablation_v30_054_r02_output_metric_mapping.json")
     assert not path.exists()
     path.write_text(
         json.dumps(
             dict(
                 rows=rows,
-                rule="D G D; D=sqrt(normalized legal current phi/(6 sigma²)); apply matrix-free, unscale then QR before physical leg projection",
+                rule="D G D; D=sqrt(normalized legal current abs(alpha)*phi/(6 sigma²)); apply matrix-free, unscale then QR before physical leg projection",
                 conclusion="Lawful proxy metric mapping checked. Next-layer coefficient requires approximate next moments; current sensitivity alone does not satisfy H24 next-layer specification. Full covariance feedback adjoint absent; production not accepted.",
                 scope="Synthetic contract only, no before/after score",
             ),
