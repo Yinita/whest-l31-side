@@ -473,3 +473,7 @@ L25 CP source的D3=sum_r(WA)(WB)(WC)及first-order均值系数−alpha*phi/(6sig
 ## H22/H24 sketch目标
 
 下一层固定W/gate的PSD目标S=(Wnext*gate)(Wnext*gate)ᵀ及weighted residual trace恒等式核验通过。H22选择固定一个future W和当前合法post-ReLU均值/方差估计的scalar平均门控，rank16/power迭代不变；scalar缩放实数下不改变子空间，不能将收益归因于门控。预flight已通过（实际分数待），候选在运行前纠正future variance使用K2v并冻结新hash。H24完整basis映射仍待。串行脚本后续快筛增H22，不新增线上提交。
+
+## 完整core表示诊断准备
+
+H17三条Gaussian covariance path的K211 cap在n4/7/11显式distinct指标核验通过，尚缺完整pK→K转换、projection和已有proxy去重。O05合成有限支撑fullκ4计算identity-metriccore，记录diag-only及diag+oracleλC的表示残差和谱；O10保存50/90/99%能量的秩需求。这些是合成offline上限，不是实际比赛network完整production，也不解锁尚缺真实父对象的候选。

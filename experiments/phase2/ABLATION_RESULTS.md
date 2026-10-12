@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 16, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 32, 'partial_negative': 12, 'pending': 12, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 17, 'completed_diagnostic': 20, 'partial_diagnostic': 11, 'blocked_derivation': 30, 'partial_negative': 12, 'pending': 11, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -619,6 +619,18 @@ after：只恢复WK22乘D21来源轨道
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
 
+### v30.047 H17 Gaussian K211完整二阶矩阵核心
+
+before：已测Gaussian core只压成scalar lambda且失败
+
+after：保持核验Gaussian capped K211 matrix，作为去重core residual直接运输
+
+状态：partial_derivation
+
+诊断结论：Exact three Gaussian covariance paths and distinct cappedsum; full cumulant/coreproxy subtraction and legal candidate pending；算法分数前后不适用。
+
+- [ablation_v30_047_gaussian_capped_k211.json](../../results/phase2/ablation_v30_047_gaussian_capped_k211.json)
+
 ### v30.048 H18 K4边际真实metric系数
 
 before：g4row=METRIC_C*dG with fixed mean metric
@@ -763,6 +775,30 @@ after：完整source/output的exact factor inventory
 诊断结论：126 bounded signatures; V29 coefficient mapping pending；算法分数前后不适用。
 
 - [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
+
+### v30.067 O05 完整K31/K211生产核的离线表示上限
+
+before：Goff=layer lambda*Coff
+
+after：完整production Gnew与regen G成对诊断
+
+状态：partial_diagnostic
+
+诊断结论：Synthetic full cumulant diag+oraclelambda representation bound/spectrum measured; actual official truncated production benchmark state pending；算法分数前后不适用。
+
+- [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
+
+### v30.072 O10 完整核剩余误差的state模态诊断
+
+before：单lambda mode
+
+after：增加预先定义state模态的离线解释力测量
+
+状态：partial_diagnostic
+
+诊断结论：Synthetic core residual spectrum50/90/99pct ranks recorded; actual official benchmark state prerequisite pending；算法分数前后不适用。
+
+- [ablation_v30_072_synthetic_core_modes.json](../../results/phase2/ablation_v30_072_synthetic_core_modes.json)
 
 ### v30.073 O11 K111乘covariance edge完整公式核验
 
