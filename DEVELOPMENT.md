@@ -53,3 +53,7 @@ C16 r03固定16行调度Mini8 adjusted 5.750992775997765e-9（−0.4843%），8/
 C16 r05完整Mini8 RPC adjusted 5.7525138595226505e-9、8/8零失败，最大residual0.1502s；r04输入CRC失败单独保留。H22未来权重sketch单网adjusted−2.5917%，完整Mini8 r03运行中；H19/H20 dense metric slices分别adjusted+15.791%/+17.750%，否决当前高费实现。
 
 H22 r03完整Mini8 adjusted 5.764482499205733e-9（−0.2509%），零失败，单网收益在全集明显缩小；RPC复验运行中。部分推导合同不代表任务完成，独立确认与十倍目标均未通过。
+
+2026-10-12连续执行补充：H22完整Mini8 RPC adjusted5.761097169765404e-9、raw2.263240195254923e-8，8/8零失败。C01r02完整Mini8 local adjusted5.750454989509922e-9、raw2.2708409819216513e-8（计算量−0.5180%，raw+0.02463%），同hashRPC adjusted5.748034693185937e-9、raw2.269812404698257e-8，8/8零失败，local最大residual0.3221s。两者均未获独立确认，当前最强Mini8仍为H18，阶段阈值不递进。
+
+L20预注册8个1024×16新seed网络权重已实体生成，无reference labels。L19实测单线程约3700samples/s，1e9×2seed×8network约50CPU天的吞吐外推；4096样本pilot只是弱噪声诊断，不能替代强reference或验证10倍收益。O27冻结特征后正在进行公共reserved shard无label状态采集，原8GB subprocess C01资源对照已串行安排。

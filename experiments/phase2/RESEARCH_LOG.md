@@ -583,3 +583,7 @@ L03新增合法float32 affine推理组件：按网络LOO训练时排除held labe
 O27目标列在dataset接口删除后再采集封存分片8–15状态的脚本已准备，并串行排在C01 RPC→reference CPU pilot之后。冻结原V29 sourcehash与特征分位点；不读取label/预测误差，不用分布观察调候选后继续声称该分片状态未见。session85632等待中。
 
 C01完整RPC8/8零失败：adjusted5.748034693185937e-9，raw2.269812404698257e-8，最大local raw差0.284769%，clientRSS1484768KiB。C30暂partial，原8GB subprocess后续检查排在reserved state之后。L19双seed4096样本pilot实测3684.5/3704.4 samples/s；十亿样本单reference预计269947–271406秒（3.12–3.14天），8network×2seed约50.1天，属于吞吐外推不是已完成强reference。实测mean差MSE4.45824e-5明显不足验收1e-9量级候选，不改reference质量门槛。O27无target状态采集运行中。
+
+L04/L05/L06/L10/L11/L12/L13合法float32 affine组件networkLOO已测，raw ratio分别1.0041882、1.0061009、1.0062794、1.0305772、1.0873552、1.0054446、1.0016905，均负。原特征construct额外成本未在组件计费，不填整网adjusted；partial_negative保留。数据/cache和held排除规则同冻结版本，报告ablation_learning_charged_components_r02.json。
+
+L08当前冻结V29的NO_CORR=1使前层原始修正及其传播特征恒为0；增添零列的ridge预测不变合同通过。当前父版本无法提供该机制的新增信息，不能暗中开启已禁用旧修正来当同一消融。负CV与partial状态保留，非零parent需独立版本。

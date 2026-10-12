@@ -1416,6 +1416,7 @@ after：只删除ones列，保留其余12列及同样训练流程。
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.100 L05 阈值形状特征增量
 
@@ -1428,6 +1429,7 @@ after：追加alpha²phi、alpha³phi、alpha⁴phi三个确定性特征。
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.101 L06 标准化偏度特征增量
 
@@ -1440,6 +1442,7 @@ after：追加D3/(sigma³)与该值乘phi的两列，分母仅使用原正sigma�
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.102 L07 标准化峰度特征增量
 
@@ -1465,6 +1468,7 @@ after：追加W_final乘上一层预测均值误差代理向量与本层mu的差
 诊断结论：NetworkCV predefined extra features negative; chargedcandidate pending；算法分数前后不适用。
 
 - [ablation_learning_extra_r01.json](../../results/phase2/ablation_learning_extra_r01.json)
+- [ablation_v30_103_zero_trajectory_contract.json](../../results/phase2/ablation_v30_103_zero_trajectory_contract.json)
 
 ### v30.104 L09 前层方差轨迹特征
 
@@ -1489,6 +1493,7 @@ after：追加final层mean(mu),mean(var),mean(D3)三个广播全层状态。
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.106 L11 输出幅度归一化回归
 
@@ -1501,6 +1506,7 @@ after：训练目标改成残差/sigma，推理修正乘sigma；特征集保持1
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.107 L12 网络等权训练
 
@@ -1513,6 +1519,7 @@ after：每网络归一化为同等总权重，再拟合原残差。
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.108 L13 逐层共享线性修正
 
@@ -1525,6 +1532,7 @@ after：对全部层训练一个共享13特征系数，但仍只用于final输�
 诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+- [ablation_learning_charged_components_r02.json](../../results/phase2/ablation_learning_charged_components_r02.json)
 
 ### v30.109 L14 分段线性阈值修正
 
