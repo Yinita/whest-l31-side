@@ -715,3 +715,5 @@ L07 singlethread samecycleCV {"control_L03": {"scope": "Development leave-one-ne
 O12 exact CP×covedge outputD3严格排除全部source重复index，legal n² intermediate n4/8/16relative<2e-6，收费2828/28376/273968；O(Rn³)并高calls，真实state/errorcoverage/time仍待，无benchmark score。
 
 O12 slab4 output batch对照exactformula通过，r03重复mask费用339632@16，r04共享mask320456，对scalar273968增费16.97%；减少calls未测wholetime，保留负cost。不进入正式候选，无score。
+
+O12 r05唯一主要变化covariance先zero diagonal一次，再所有output batch共享，n16费用271560（对scalar273968−0.879%），n4/8也略降；sameexact error<2e-6，calls/timing未测，真实state尚待，无整网score。
