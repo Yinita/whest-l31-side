@@ -71,3 +71,5 @@ L19 antithetic参考两个独立4096pair种子相同forward次数finalvariance r
 2026-10-12 H29真实来源子集接入：r07误用半系数，r08/r09导数阶次为替代轨道w2*w1*w1，不能否决目标w1*w2*w2；保留所有报告。目标轨道r10已通过独立对称CP显式tensor小shape核验，单网正式计费筛选中。C26 RPC同进程64×4→1024×16→64×4→1024×16四次无异常，client peakRSS959580KiB；逐次VSZ补测待完成，不能提前标记全部验收。
 
 O12 exact表示CP成本诊断、C26真实local/RPC形状生命周期诊断、C28最后层deadLA/LP复用合同已补齐。C28 local单网adjusted6.1167127894412344e-9，RPC6.120838343176817e-9，均零失败；local FLOPs与控制相同，RPC固定astype增费保留，不宣称精度提升。H29正确目标阶次first1子集adjusted6.116832334984139e-9→6.251611877719655e-9，负结果，完整来源仍待。剩余74项partial，十倍门槛未通过。
+
+K5 Gaussianbirth对角final子集Mini8 local5.7773073237326585e-9，RPC5.777750550380405e-9均8/8零失败；同周期V29控制5.777513736227004e-9，差仅−0.00357%，无法认定可靠收益。fullK5/cross/nonGaussian门槛仍未覆盖。L18/L34/L35合法计费解释力、冻结模型推理及证据账本已补齐；当前60项相应快筛/诊断完成，69项partial，不代表十倍达标。L01同周期trace/repeated control首网输出差超过重复包络，保留partial，原始证据不覆盖。

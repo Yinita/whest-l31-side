@@ -777,3 +777,5 @@ L34 all8fold modelhash/order/affine normalization contracts maxabs1.185e-10 comp
 K5 contemporarypairedcontrol {"before_adjusted": 5.777513736227004e-09, "after_adjusted": 5.7773073237326585e-09, "before_raw": 2.269703291979397e-08, "after_raw": 2.2695439749753632e-08, "adjusted_ratio": 0.9999642731278939, "control_failures": 0, "candidate_failures": 0, "scope": "ContemporarysameMini8 control; tinyaggregate difference not reliably attributed; Gaussian diagonalK5 subset only"}; tiny0.00357% adjustedgain unproven, RPC serialstarted.
 
 K5 RPC fullMini8 adjusted5.777750550380405e-9/raw2.269654553188616e-8,8zero failures; maxlocalrawdelta0.10073%, contemporaryadjustedgain0.00357% remains unproven. L01 samecycle first2network trace+2controls running pid111346, network0done.
+
+L01 samecycle2network complete: n0 traceΔ3.33786e-6 repeatΔ2.38419e-6 fails envelope; n1 traceΔ4.05312e-6 repeatΔ4.29153e-6 within. PerFLOPs identical. No full8acceptance or resourcepass, partial retained. H05 zeroalphacovariance Pade subset started serial.

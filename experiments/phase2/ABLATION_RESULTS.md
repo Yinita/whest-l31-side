@@ -1495,11 +1495,12 @@ after：新建 V29 诊断副本，保存原 13 特征、原预测和网络 ID；
 
 状态：partial_diagnostic
 
-诊断结论：All8 networks original13 features/predictions cached; per-network charged FLOPs equal frozen; same-run untraced numerical paired control pending; tracing timing excluded；算法分数前后不适用。
+诊断结论：Two samecycle trace vs2untracedcontrol networks tested: network0 exceedsrepeat envelope, network1within; pernetworkcostequal; full8stricttrace acceptance unfulfilled；算法分数前后不适用。
 
 - [ablation_v30_096_features_manifest.json](../../results/phase2/ablation_v30_096_features_manifest.json)
 - [ablation_v30_096_cache_pairing.json](../../results/phase2/ablation_v30_096_cache_pairing.json)
 - [ablation_v30_096_r02_untraced_control.json](../../results/phase2/ablation_v30_096_r02_untraced_control.json)
+- [ablation_v30_096_r03_samecycle_features_manifest.json](../../results/phase2/ablation_v30_096_r03_samecycle_features_manifest.json)
 
 ### v30.097 L02 冻结网络级训练选择流程
 
