@@ -922,6 +922,7 @@ after：从同一个可计算selected production object产生两部分
 诊断结论：Jointcore transport contract; selectednonlinearobject/candidate pending；算法分数前后不适用。
 
 - [ablation_v30_058_joint_core_closure.json](../../results/phase2/ablation_v30_058_joint_core_closure.json)
+- [ablation_v30_058_core_projection_component.json](../../results/phase2/ablation_v30_058_core_projection_component.json)
 
 ### v30.059 H29 K111乘covariance边新来源
 

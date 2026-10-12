@@ -631,3 +631,5 @@ L03真实charged heldnetwork0结束零失败：adjusted6.101409994531986e-9、ra
 L03其余held1–7候选与singleton官方row缓存已准备，原网络/seed/reference不改，trainIDs严格排held。串行排在C17/C18后分别当前V29控制和charged候选评测，session55637，目标完整charged8fold，不用fold0小收益外推。singleton数据与references在ignored cache，不提交。
 
 C20现已实际合法计费两项薄收缩与dense对照，同时保留不可省XtYt交叉项；n32/64/128数值relative<1e-6，cost增加。候选单机制cost gate否决朴素重组，shared contraction还未实现，暂无整网score。
+
+H28 harmonic trace inverse的对角/offdiag联合投影合法组件通过，保留isotropic trace subtraction；完整非线性H生产及与V29对象口径一致替换仍待，无整网score。
