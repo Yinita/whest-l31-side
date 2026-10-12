@@ -34,4 +34,8 @@ RPC Mini-8 adjusted 5.783785541907926e-9，raw 2.272108123868577e-8，零失败�
 
 纠正资料入口：论文实际公开仓库为[mlp_cumulant_propagation](https://github.com/alignment-research-center/mlp_cumulant_propagation)，冻结commit93d091a4c26c042bfffa28f2e76a81bc0aba94bb。官方生成器与V29既有pair项对照：22个新增项中19已存在且系数匹配，剩下3条正是已测q3。不能把其他slice可用的项重复叠加。下一方向是省略的混合K111/高阶对象表示，需先解决生产及合法成本。
 
-公开V25单网控制raw=2.2909681263172388e-8、adjusted=8.400166403374769e-9，零失败；相对当前V29 FLOPs高37.2986%，不改变最强基线。新的symrecursive仅合成协方差组件核验，组件FLOPs下降19.82%，全网收益未验证、residual有风险；作为清单C01待评测，不记为阳性候选。用户当前要求准备[完整消融队列](experiments/phase2/ABLATION_BACKLOG.md)后再分配模型，未自动派发。
+公开V25单网控制raw=2.2909681263172388e-8、adjusted=8.400166403374769e-9，零失败；相对当前V29 FLOPs高37.2986%，不改变最强基线。C01全网单网快筛现已完成，adjusted降低0.489%，raw略升，独立/RPC待验证。用户已授权执行129项队列，真实进度见[消融结果](experiments/phase2/ABLATION_RESULTS.md)。
+
+## 129项队列执行结果
+
+H18 v30.048完整Mini-8与冻结V29成对核对通过：adjusted **5.778979755766664e-9 → 5.646816493872825e-9（−2.2870%）**，raw **2.2702818514019896e-8 → 2.218065286996307e-8（−2.3000%）**，总FLOPs增加0.002807%，零失败。8个开发网络全部adjusted下降（0.654%–3.599%）。此结果尚未通过独立网络/RPC确认，不满足阶段1十倍目标。逐项before/after、资源、版本、负结果及待验证项目由[结果文档](experiments/phase2/ABLATION_RESULTS.md)和live queue维护，不能把129项清单描述为全部完成。

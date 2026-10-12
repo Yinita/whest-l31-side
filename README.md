@@ -60,3 +60,5 @@ uv run whest run --estimator examples/03_covariance_propagation.py \
 报告建议北京时间 **2026-10-17 18:00** 内部冻结、当日 **23:00 前**完成提交；报告记录官方截止为 **2026-10-18 07:59**。最终选择界面与外部截止执行前需再次核查。
 
 上游来源：[AIcrowd/whest-starterkit](https://github.com/AIcrowd/whest-starterkit)。许可证见 [LICENSE](LICENSE)。公开参赛代码的许可与署名须在导入时单独记录。
+
+129项消融正在执行；真实before/after与资源记录见[消融结果](experiments/phase2/ABLATION_RESULTS.md)。H18在Mini-8开发集adjusted降低2.287%，独立/RPC仍待确认，阶段1尚未达标。

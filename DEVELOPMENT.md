@@ -44,4 +44,6 @@
 
 ## 消融执行队列
 
-用户要求先准备清单再交低推理模型：已整理[129项待验证消融](experiments/phase2/ABLATION_BACKLOG.md)，每项含预留v30.xxx版本、before/after、详情、依赖、成本和验收。机器队列见`experiments/phase2/ablation_queue.json`，执行提示见[交接文件](experiments/phase2/LOW_REASONING_HANDOFF.md)。71项算法/计算、43项诊断、15项合同；59项需先推导，不允许执行模型猜公式后正式评测。尚未派发新模型，当前无运行benchmark。
+用户要求先准备清单再交低推理模型：已整理[129项待验证消融](experiments/phase2/ABLATION_BACKLOG.md)，每项含预留v30.xxx版本、before/after、详情、依赖、成本和验收。机器队列见`experiments/phase2/ablation_queue.json`，执行提示见[交接文件](experiments/phase2/LOW_REASONING_HANDOFF.md)。71项算法/计算、43项诊断、15项合同；59项需先推导，不允许执行模型猜公式后正式评测。用户已授权执行全部队列。真实结果持续写入[消融结果](experiments/phase2/ABLATION_RESULTS.md)，运行身份和进程以research_state.json为准。
+
+当前H18完整Mini8 adjusted 5.646816493872825e-9（相对冻结基线−2.287%，零失败）；独立/RPC未确认，目标不递进。C03/C05增费未通过条目门槛，C06微小差待重复控制归因。逐项真实结果见消融结果。
