@@ -384,6 +384,8 @@ after：在trim将两个线性项重排为(AP) @ R2T与(AP·w2) @ R1T再与F2/F1
 诊断结论：Exact two linearterm factor formulas checked; crossXtYt still needs denseXt/Yt; naive newGEMMs increase cost, candidate/full score pending；算法分数前后不适用。
 
 - [ablation_v30_020_feedback_cost.json](../../results/phase2/ablation_v30_020_feedback_cost.json)
+- [ablation_v30_020_charged_feedback_component.json](../../results/phase2/ablation_v30_020_charged_feedback_component.json)
+- [ablation_v30_020_exact_operation_cost.json](../../results/phase2/ablation_v30_020_exact_operation_cost.json)
 
 ### v30.021 C21 nonlinearity中广播d3/g4向量不materialize
 

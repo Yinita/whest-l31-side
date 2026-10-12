@@ -629,3 +629,5 @@ L03 actualcharged heldfold0: {"before_raw": 2.290466483145792e-08, "after_raw": 
 L03真实charged heldnetwork0结束零失败：adjusted6.101409994531986e-9、raw2.284691369425218e-8，对当前控制adjusted6.116832334984139e-9/raw2.290466483145792e-8。单fold有微幅改善，不能覆盖8fold离线负结果、不能当独立确认。C17r02 fullMini8已接续PID4146203。
 
 L03其余held1–7候选与singleton官方row缓存已准备，原网络/seed/reference不改，trainIDs严格排held。串行排在C17/C18后分别当前V29控制和charged候选评测，session55637，目标完整charged8fold，不用fold0小收益外推。singleton数据与references在ignored cache，不提交。
+
+C20现已实际合法计费两项薄收缩与dense对照，同时保留不可省XtYt交叉项；n32/64/128数值relative<1e-6，cost增加。候选单机制cost gate否决朴素重组，shared contraction还未实现，暂无整网score。
