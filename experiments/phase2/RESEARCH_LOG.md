@@ -819,3 +819,9 @@ H07 allcolumnfixedWK22birth raw2.2897467033544672e-8 adjusted6.1823310534122714e
 H09 allcolumnleadingB2 fixedbirth r03 raw2.2729793158760003e-8 (~−0.763%) adjusted6.137037320892508e-9 stillcostnegative; r04 zerosdiagonalrepeats simplifies exactcurrentD21/Coff zero diag. Fullhistory untested.
 
 H09 r05 deadzeroW³ multiply removed, raw2.274503074772838e-8 adjusted6.140912849874324e-9 zero failures. AllfixedlayerleadingB2 costoptimizations stillnegative; stoprouteexpansion, fullhistory item not completed.
+
+H17 actualnetwork0layer14 Gaussian3pathcap projectedCoff lambda−0.0127281, explainedfraction5.411%, residualRMS.00126031. Targetfree projection alone does not identify existingcore cumulant/harmonic scaling, no candidate yet, partial retained.
+
+H17 r04 allbirth Gaussiandegree2 centered cappedcore, postcovariance metricprojection dedup, legal fullmatrix transport: {"conclusion": "Allbirth Gaussian degree2 matrix residual, centered cumulant and postcov metric orthogonalization checked; adjusted worsens16.89%, zero failures, reject without expansion. Full nonGaussian core excluded as outside Gaussian H17 scope.", "before_adjusted": 6.116832334984139e-09, "after_adjusted": 7.150011123478984e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2978715819022e-08, "before_flops": 587262754287.0, "after_flops": 684243665391.0, "failures": 0}; independentedgeexpansion n4/7/11 error<2.7e-15. Completednegative per network0gate; no expansion. Next H04 actualcorrelation/pureGaussian inventory.
+
+H04 r02 actualstate fixed257pairs(256seed3404+maxrho): Actualnetwork0layer14 standardized pairgap measured257fixedpairs: rho max.597694, Gaussian11/21/22 gap RMS1.54e-5/2.96e-5/6.21e-5, quadrature delta<6.2e-12; pureGaussian terms isolated as order1+2 from TERM_SPECS. Legal nonzeroalpha fullreplacement pending, not completed. First invocation missingSciPy; removed dependency using math.erfc, same locked environment. No candidate score yet.

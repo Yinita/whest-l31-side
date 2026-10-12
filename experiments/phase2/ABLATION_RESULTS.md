@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 15, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 35, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 16, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 34, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -626,10 +626,11 @@ after：用原始Gaussian ReLU幂矩核的合法在线插值替换pK11/pK21/pK22
 
 状态：partial_derivation
 
-诊断结论：Zero/nonzeroGaussian pair quadrature checked; actual correlation distribution, highorder subtraction and lawfulcandidate pending；算法分数前后不适用。
+诊断结论：Actualnetwork0layer14 standardized pairgap measured257fixedpairs: rho max.597694, Gaussian11/21/22 gap RMS1.54e-5/2.96e-5/6.21e-5, quadrature delta<6.2e-12; pureGaussian terms isolated as order1+2 from TERM_SPECS. Legal nonzeroalpha fullreplacement pending, not completed.；算法分数前后不适用。
 
 - [ablation_h04_pair_gap.json](../../results/phase2/ablation_h04_pair_gap.json)
 - [ablation_v30_034_nonzero_pair_contract.json](../../results/phase2/ablation_v30_034_nonzero_pair_contract.json)
+- [ablation_v30_034_r02_actual_pair_gap.json](../../results/phase2/ablation_v30_034_r02_actual_pair_gap.json)
 
 ### v30.035 H05 Gaussian pair尾项有理重求和
 
@@ -831,13 +832,18 @@ before：已测Gaussian core只压成scalar lambda且失败
 
 after：保持核验Gaussian capped K211 matrix，作为去重core residual直接运输
 
-状态：partial_derivation
+状态：completed_negative
 
-诊断结论：Exact three Gaussian covariance paths and distinct cappedsum; full cumulant/coreproxy subtraction and legal candidate pending；算法分数前后不适用。
+诊断结论：Allbirth Gaussian degree2 matrix residual, centered cumulant and postcov metric orthogonalization checked; adjusted worsens16.89%, zero failures, reject without expansion. Full nonGaussian core excluded as outside Gaussian H17 scope.；算法分数前后不适用。
 
 - [ablation_v30_047_gaussian_capped_k211.json](../../results/phase2/ablation_v30_047_gaussian_capped_k211.json)
 - [k211_wing_quadrature.json](../../results/phase2/k211_wing_quadrature.json)
 - [ablation_v30_047_gaussian_core_component.json](../../results/phase2/ablation_v30_047_gaussian_core_component.json)
+- [ablation_v30_047_r02_actual_projection.json](../../results/phase2/ablation_v30_047_r02_actual_projection.json)
+- [ablation_v30_047_r03_centering_projection_contract.json](../../results/phase2/ablation_v30_047_r03_centering_projection_contract.json)
+- [ablation_v30_047_r04_mini1.json](../../results/phase2/ablation_v30_047_r04_mini1.json)
+- [ablation_v30_047_r05_paired_v29_mini1.json](../../results/phase2/ablation_v30_047_r05_paired_v29_mini1.json)
+- [H17_CENTERING_DEDUP.md](../../experiments/phase2/H17_CENTERING_DEDUP.md)
 
 ### v30.048 H18 K4边际真实metric系数
 

@@ -77,3 +77,5 @@ K5 Gaussianbirth对角final子集Mini8 local5.7773073237326585e-9，RPC5.7777505
 H31真实layer14固定4output方差gate否决（optimistic250probes SE/signal0.344–1.464），完成negative。H06历史90条未剪枝重建合法评测adjusted6.2350e-9，劣于控制；历史依赖未确认，仍partial。H08/H09/H11/H12固定layer14first16出生子集均零失败但增费后adjusted恶化（6.141–6.144e-9 vs6.1168e-9），完整来源不宣称验证。当前61项快筛/诊断完成，68项partial。
 
 H13完整B2固定第14层出生、1024全列单次运输零失败：初版adjusted6.2450e-9，identity精确重组降为6.1516e-9；raw约−0.53%仍不足支付费用，完成negative。H07/H08全列单次出生分别adjusted6.1823e-9/6.1892e-9，负；历史来源覆盖仍partial。当前62项相应快筛/诊断完成，67项partial。
+
+H17完整Gaussian二阶矩阵残差（全出生层）去重合同通过，同期单网V29 adjusted6.116832334984139e-9→7.150011123478984e-9，raw2.290466483145792e-8→2.2978715819022e-8，零失败；增加费用且无收益，完成negative，不扩量。当前63项相应验收完成、66项partial，129项尚未全部完成。
