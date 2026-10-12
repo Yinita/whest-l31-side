@@ -637,3 +637,7 @@ H28 harmonic trace inverse的对角/offdiag联合投影合法组件通过，保�
 L33真实冻结development16layer×8network特征边界核验：sigma范围、标准化skew/K4 proxy和阈值多项式特征均finite；只是观测cache检查，不能保证任意网络，无更改variancefloor或阈值。
 
 C17r02完整Mini8结束：adjusted5.7752362848216655e-9、raw2.2707890012796383e-8、零fail；相对冻结基线微幅−0.0648%adjusted。C18r02完整Mini8PID4151550运行中，完整收取脚本等待两项报告，不覆盖旧row实验。
+
+L17固定5组删列网络LOO实际诊断完成（negative L03parent），ratio threshold1.0000797/skew1.0005549/kurtosis0.9989657/amplitude1.0005153/constant0.9987988；无可靠positive parent，不能满足原positive归因条目，partial_diagnostic。未解封confirmation target。
+
+L29实际finalprestate固定48neuron subset无label积分收敛核验48/96/192点完成，保留原8network family负分数，不把小subset收敛当8192输出误差完整保证。legalquadrature candidate仍无。

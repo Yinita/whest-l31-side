@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 22, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1593,6 +1593,18 @@ after：仅第8层将已验证修正写入mu，后续原V29递推。
 
 - [ablation_v30_111_mean_shift_contract.json](../../results/phase2/ablation_v30_111_mean_shift_contract.json)
 
+### v30.112 L17 修正器特征删列归因
+
+before：某修正器整体改善，特征贡献未知。
+
+after：固定已选模型，逐次删除一个特征组再完整重拟合。
+
+状态：partial_diagnostic
+
+诊断结论：Five fixed group deletion networkLOO diagnostics on negative L03 parent done; reliable positive-parent gate unmet, original acceptance not complete；算法分数前后不适用。
+
+- [ablation_v30_112_negative_parent_deletion.json](../../results/phase2/ablation_v30_112_negative_parent_deletion.json)
+
 ### v30.113 L18 残差条件可预测性上界
 
 before：只知道偏置oracle解释约0.46% MSE。
@@ -1733,6 +1745,7 @@ after：对末层pre均值/方差/偏度构造规范化一维积分诊断，和�
 
 - [ablation_v30_123_positive_skew_family.json](../../results/phase2/ablation_v30_123_positive_skew_family.json)
 - [ablation_v30_123_positive_family_network_screen.json](../../results/phase2/ablation_v30_123_positive_family_network_screen.json)
+- [ablation_v30_124_positive_quadrature_convergence.json](../../results/phase2/ablation_v30_124_positive_quadrature_convergence.json)
 
 ### v30.125 L30 末层尾概率数值稳定性
 
@@ -1769,6 +1782,7 @@ after：离线估计原targets float32 ULP尺度与MSE阈值关系，保留原ta
 诊断结论：Mini8 float32 uniform rounding proxy 6.120378688436097e-16; sampling uncertainty not estimated；算法分数前后不适用。
 
 - [ablation_v30_127_reference_dtype.json](../../results/phase2/ablation_v30_127_reference_dtype.json)
+- [ablation_v30_128_feature_finiteness.json](../../results/phase2/ablation_v30_128_feature_finiteness.json)
 
 ### v30.128 L34 标准化计算的候选合同
 
