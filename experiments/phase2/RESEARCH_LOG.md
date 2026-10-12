@@ -791,3 +791,5 @@ H06 rebuiltunprunedr04 {"before_raw": 2.290466483145792e-08, "after_raw": 2.3258
 O18 B1 fullsymmetricCP explicitdense birth andtransport D3/D21 vs V29 groupedLA/LP/thinfeedback compensation n4/7/11 error<1.5e-14. FullB2/WK22 officialisomorphism remainsmissing, partial retained.
 
 H08 thinfeedback derivativegrade targetw2/w2 vs V29w1/w3 distinct; firstorientation assertion caughtwrongtranspose. CorrectsyntheticD=.QBm comparator passed, but officialK21/K12 conventions notyetaligned, nofullcoverage or candidateclaim.
+
+H08 officialD21[a,c]=T_aac verified; WK12=.5D21.T, Ymissing=.5diag(w2)D21diag(w2). Fixedlayer14/first16CP source directoutput with exactrepeat subtraction legalcandidate adjusted6.116832334984139e-9→6.14417056822764e-9 zero failures. Denseindependentrepeatcontract max<1e-10; first1 costgate followup running. Fullrestoration incomplete.
