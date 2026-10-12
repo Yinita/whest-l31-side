@@ -1,0 +1,24 @@
+{
+  "scope": "Exact diagonal final W contraction of represented CP K111 times covariance edge, before additional K111 repeated-content subtraction",
+  "formula": "For each output o,rank t,orientation: sum_j!=k Cjk*yj*zk*(sum_i xi-xj-xk)",
+  "largest_intermediate": "n by n, per output/rank/orientation",
+  "cost": "3*R*n outputs * O(n^2): O(R*n^3), plus O(R*n^2) leg scaling; covariance rank not required; CP symmetrization multiplies constant",
+  "gate": "At n1024,R16, leading elementwise cost comparable to full network FLOPs; no end-to-end score or admissible120s/0.4s resource claim",
+  "rows": [
+    {
+      "n": 4,
+      "rank": 2,
+      "max_error": 3.3306690738754696e-16
+    },
+    {
+      "n": 7,
+      "rank": 3,
+      "max_error": 1.4210854715202004e-14
+    },
+    {
+      "n": 11,
+      "rank": 4,
+      "max_error": 1.1368683772161603e-13
+    }
+  ]
+}

@@ -27,13 +27,14 @@ def main():
     lock = (ROOT / 'benchmark/data/ablation_execution.lock').open('w')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     baseline_path = 'results/phase2/v29_mini1_control_20261012.json' if args.n_mlps == 1 else 'results/phase2/v29_mini8_local.json'
-    baseline = json.loads((ROOT / baseline_path).read_text())
-    before = baseline['results']['per_mlp'][0] if args.n_mlps == 1 else baseline['results']
     for key in keys:
         queue = json.loads(QUEUE.read_text())
         task = next(t for t in queue['tasks'] if t['key'] == key)
         if task['status'].startswith('completed') and args.revision == 'r01':
             continue
+        task_baseline_path = task.get('explicit_parent_report', baseline_path)
+        task_baseline = json.loads((ROOT / task_baseline_path).read_text())
+        before = task_baseline['results']['per_mlp'][0] if args.n_mlps == 1 else task_baseline['results']
         candidate = ROOT / task['candidate_path']
         if 'candidate_sha256' not in task:
             task['candidate_sha256'] = json.loads(candidate.with_name('provenance.json').read_text())['sha256']
@@ -65,12 +66,12 @@ def main():
             report = json.loads(output.read_text())
             after = report['results']['per_mlp'][0] if args.n_mlps == 1 else report['results']
             if args.n_mlps != 1:
-                before = dict(before, flops_used=sum(r['flops_used'] for r in baseline['results']['per_mlp']))
+                before = dict(before, flops_used=sum(r['flops_used'] for r in task_baseline['results']['per_mlp']))
                 after = dict(after, flops_used=sum(r['flops_used'] for r in report['results']['per_mlp']))
             ratios = {metric: after[metric] / before[metric] for metric in ['final_layer_mse', 'adjusted_final_layer_score', 'flops_used']}
             passed = report['results']['n_failed_mlps'] == 0
             status = 'completed_positive' if passed and ratios['adjusted_final_layer_score'] < 1 else 'completed_negative' if passed else 'completed_failed'
-            result = dict(scope=f'Mini{args.n_mlps} development only; no independent generalization claim', before_report=baseline_path, after_report=record['report'], before=before, after=after, ratios=ratios, failures=report['results']['n_failed_mlps'])
+            result = dict(scope=f'Mini{args.n_mlps} development only; no independent generalization claim', before_report=task_baseline_path, after_report=record['report'], before=before, after=after, ratios=ratios, failures=report['results']['n_failed_mlps'])
         except (ValueError, KeyError):
             status = 'completed_failed'
             result = dict(exit_code=process.returncode, reason='Missing parseable benchmark evidence')

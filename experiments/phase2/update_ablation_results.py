@@ -42,6 +42,8 @@ def main():
             lines.append(f'诊断结论：{result.get("conclusion", "见原始证据")}；算法分数前后不适用。\n\n')
         histories = task.get('previous_results', [])
         for previous in histories:
+            if 'after' not in previous:
+                continue
             lines.append(f'前次快筛：{previous.get("scope")}；raw={previous["after"]["final_layer_mse"]:.12g}；adjusted={previous["after"]["adjusted_final_layer_score"]:.12g}；报告 `{previous["after_report"]}`。\n\n')
         for evidence in task['evidence']:
             lines.append(f'- [{Path(evidence).name}](../../{evidence})\n')
