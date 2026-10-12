@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 10, 'partial_derivation': 29, 'completed_diagnostic': 20, 'partial_diagnostic': 13, 'partial_negative': 15, 'pending': 8, 'blocked_derivation': 16, 'failed_validation': 1}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 39, 'completed_diagnostic': 20, 'partial_diagnostic': 18, 'partial_negative': 15, 'pending': 8, 'blocked_derivation': 1}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -31,7 +31,7 @@
 | v30.048 | H18 | completed_positive | 2.2702818514e-08 | 2.218065287e-08 | 5.77897975577e-09 | 5.64681649387e-09 | -2.286965% | +0.002807% | 0 |
 | v30.049 | H19 | completed_negative | 2.29046648315e-08 | 2.27738645719e-08 | 6.11683233498e-09 | 7.08275516689e-09 | +15.791226% | +16.456266% | 0 |
 | v30.050 | H20 | completed_negative | 2.29046648315e-08 | 2.31574261988e-08 | 6.11683233498e-09 | 7.20257411616e-09 | +17.750066% | +16.464834% | 0 |
-| v30.052 | H22 | failed_validation | 2.29046648315e-08 | 2.23081926265e-08 | 6.11683233498e-09 | 5.95829990493e-09 | -2.591741% | +0.012743% | 0 |
+| v30.052 | H22 | completed_positive | 2.2702818514e-08 | 2.26464844655e-08 | 5.77897975577e-09 | 5.76448249921e-09 | -0.250862% | +0.013369% | 0 |
 
 ## 离线学习快筛
 
@@ -674,6 +674,42 @@ after：只恢复WK22乘D21来源轨道
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
 
+### v30.043 H13 B2保留一次线性运输再shadow
+
+before：B2从出生就删除
+
+after：保留完整指定B2 newborn one transition，随后仅保留其已产生边际/slice修正
+
+状态：partial_derivation
+
+诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+
+- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+
+### v30.044 H14 B2两步输出导向收缩
+
+before：B2完全缺失
+
+after：运输指定下一两层mean/variance敏感收缩而不保存完整B2
+
+状态：partial_derivation
+
+诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+
+- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+
+### v30.046 H16 actual K31低rank核心残差
+
+before：lambda*C代理offdiag core
+
+after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
+
+状态：partial_derivation
+
+诊断结论：ExactK31conversion/projectioncoeff; actualproduction/proxyremoval pending；算法分数前后不适用。
+
+- [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
+
 ### v30.047 H17 Gaussian K211完整二阶矩阵核心
 
 before：已测Gaussian core只压成scalar lambda且失败
@@ -758,11 +794,29 @@ before：D21 feedback sketch用当前weight列
 
 after：相同rank16下改用未来一两层weight和live average ReLU gate构造sketch
 
-状态：failed_validation
+状态：completed_positive
 
-predict=27.595352s；residual=0.234341s；FLOPs=587337588207；peak child RSS=3969560KiB；失败=0。
+逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4478636790648；peak child RSS=6712364KiB；失败=0。
 
-- [ablation_v30_052_r02_mini8_local.validate.log](../../results/phase2/ablation_v30_052_r02_mini8_local.validate.log)
+前次快筛：Mini1 development only; no independent generalization claim；raw=2.23081926265e-08；adjusted=5.95829990493e-09；报告 `results/phase2/ablation_v30_052_r01_mini1_local.json`。
+
+- [ablation_v30_052_r03_mini8_local.json](../../results/phase2/ablation_v30_052_r03_mini8_local.json)
+- [ablation_v30_052_r03_mini8_local.manifest.json](../../results/phase2/ablation_v30_052_r03_mini8_local.manifest.json)
+- [ablation_v30_052_r03_mini8_local.log](../../results/phase2/ablation_v30_052_r03_mini8_local.log)
+- [ablation_v30_052_r03_mini8_local.launcher.log](../../results/phase2/ablation_v30_052_r03_mini8_local.launcher.log)
+- [ablation_v30_052_r03_mini8_local.validate.log](../../results/phase2/ablation_v30_052_r03_mini8_local.validate.log)
+
+### v30.053 H23 old-source basis按K21收缩能源选择
+
+before：old basis按sum leg*leg^T Gram
+
+after：同rank和age按legal current K21-contraction proxy选择basis
+
+状态：partial_derivation
+
+诊断结论：K21PSD operator checked; livestate/cost/score pending；算法分数前后不适用。
+
+- [ablation_v30_053_k21_psd_sketch.json](../../results/phase2/ablation_v30_053_k21_psd_sketch.json)
 
 ### v30.054 H24 old-source basis按下一层D3敏感方向选择
 
@@ -775,6 +829,30 @@ after：用next W和legal w(3,1)proxy reweight相同rank basis
 诊断结论：Fixed downstream gate-weighted PSD residual objective contract; lawful gate estimate/full-state/candidate/cost pending；算法分数前后不适用。
 
 - [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
+
+### v30.055 H25 Rres新增解析可分leading项
+
+before：Rres=S21-S_sep统一rank16近似
+
+after：从已知生产表提取一个准确第二leading separable项；余项仍rank16
+
+状态：partial_derivation
+
+诊断结论：TwoD3column separableterms exact; fullproductionrepeatcoverage pending；算法分数前后不适用。
+
+- [ablation_v30_055_second_separable_term.json](../../results/phase2/ablation_v30_055_second_separable_term.json)
+
+### v30.056 H26 Rres物理机制分组basis
+
+before：Gaussian/K3/K4影响混入单一Rres后QR
+
+after：固定总rank16，对三类已明确分解来源形成统一合成basis
+
+状态：partial_derivation
+
+诊断结论：GroupedPSD fixedtotalrank contract; actualRresmechanismdecomposition pending；算法分数前后不适用。
+
+- [ablation_v30_056_grouped_basis_contract.json](../../results/phase2/ablation_v30_056_grouped_basis_contract.json)
 
 ### v30.057 H27 K3 newborn重复内容一致性oracle
 
@@ -789,6 +867,18 @@ after：独立逐类检查full mixed和repeated内容账是否一致，只有发
 - [ablation_v30_057_bookkeeping.json](../../results/phase2/ablation_v30_057_bookkeeping.json)
 - [source_birth_combination_algebra.json](../../results/phase2/source_birth_combination_algebra.json)
 
+### v30.058 H28 再生core对角和offdiag联合对象闭合
+
+before：diag由K4/K22，offdiag由lambda*C分别给出
+
+after：从同一个可计算selected production object产生两部分
+
+状态：partial_derivation
+
+诊断结论：Jointcore transport contract; selectednonlinearobject/candidate pending；算法分数前后不适用。
+
+- [ablation_v30_058_joint_core_closure.json](../../results/phase2/ablation_v30_058_joint_core_closure.json)
+
 ### v30.059 H29 K111乘covariance边新来源
 
 before：当前factored source过滤或剪枝缺部分mixed K3+edge diagram
@@ -800,6 +890,18 @@ after：恢复一个明确vector partition轨道的mixed新born source
 诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
 
 - [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+
+### v30.060 H30 K111乘covariance边一层收缩
+
+before：同H29 mixed来源缺失
+
+after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
+
+状态：partial_derivation
+
+诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+
+- [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
 
 ### v30.061 H31 exact covariance triangle无偏收缩
 
@@ -886,6 +988,54 @@ after：完整production Gnew与regen G成对诊断
 
 - [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
 
+### v30.068 O06 完整生产核单层替换诊断
+
+before：全部层lambda核
+
+after：预先指定单层完整production核
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.069 O07 完整核对角修正非零性与候选
+
+before：gprev由K4+K22 rowsum
+
+after：加入由完整trace投影证明非零的对角修正
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.070 O08 完整production核仅USE替换
+
+before：USE wk431=lambda*Cpreoff
+
+after：USE wk431=完整production核运输结果
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
+### v30.071 O09 完整production核仅FEED替换
+
+before：FEED X3使用regen diagonal+lambda
+
+after：FEED X3使用完整production核
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticUSE/FEED path split only; fullactualproduction and replacement pending；算法分数前后不适用。
+
+- [ablation_v30_068_071_kernel_path_split.json](../../results/phase2/ablation_v30_068_071_kernel_path_split.json)
+
 ### v30.072 O10 完整核剩余误差的state模态诊断
 
 before：单lambda mode
@@ -946,6 +1096,18 @@ after：proxy与exact收缩成对误差评估
 诊断结论：Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending；算法分数前后不适用。
 
 - [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
+
+### v30.077 O15 doubled-edge早期来源贡献门槛
+
+before：已否证last-birth三matmul候选
+
+after：有界诊断早期birth跨层贡献
+
+状态：partial_diagnostic
+
+诊断结论：SyntheticearlybirthD3signal only; actualnetworkcost/gain gate unmet；算法分数前后不适用。
+
+- [ablation_v30_077_doubled_edge_lifetime.json](../../results/phase2/ablation_v30_077_doubled_edge_lifetime.json)
 
 ### v30.078 O16 covariance triangle exact多层small诊断
 
@@ -1384,6 +1546,30 @@ after：用合法末端mean Jacobian代理估计来源贡献并排序，不看re
 
 - [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
 - [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
+
+### v30.121 L26 输出敏感性来源预算分配
+
+before：每个老来源相同年龄阈值与固定共享秩。
+
+after：总预算不变，按照已验证L25代理把高影响来源保留dense，其余更早压缩。
+
+状态：partial_derivation
+
+诊断结论：Fixed2slot surrogate rule exact; livesourcefeedback/eviction/score pending；算法分数前后不适用。
+
+- [ablation_v30_121_output_budget_rule.json](../../results/phase2/ablation_v30_121_output_budget_rule.json)
+
+### v30.122 L27 来源删除负控制
+
+before：L25代理有排序，但没有相同成本的随机删除对照。
+
+after：固定输入权重确定性hash选一来源删除，保留其余机制。
+
+状态：partial_derivation
+
+诊断结论：WholeCPsource and repeat deletion consistent; livecompressedstate/score pending；算法分数前后不适用。
+
+- [ablation_v30_122_source_deletion_contract.json](../../results/phase2/ablation_v30_122_source_deletion_contract.json)
 
 ### v30.123 L28 末端均值控制变量相关性
 

@@ -51,3 +51,5 @@
 C16 r03固定16行调度Mini8 adjusted 5.750992775997765e-9（−0.4843%），8/8零失败，最大residual0.2527s；r02原2/8超residual失败保留。RPC及独立确认仍待。
 
 C16 r05完整Mini8 RPC adjusted 5.7525138595226505e-9、8/8零失败，最大residual0.1502s；r04输入CRC失败单独保留。H22未来权重sketch单网adjusted−2.5917%，完整Mini8 r03运行中；H19/H20 dense metric slices分别adjusted+15.791%/+17.750%，否决当前高费实现。
+
+H22 r03完整Mini8 adjusted 5.764482499205733e-9（−0.2509%），零失败，单网收益在全集明显缩小；RPC复验运行中。部分推导合同不代表任务完成，独立确认与十倍目标均未通过。
