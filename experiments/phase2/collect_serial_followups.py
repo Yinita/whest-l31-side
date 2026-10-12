@@ -19,7 +19,7 @@ def main():
             "conclusion": "Frozen state-only feature quantiles on 8 development and 8 reserved public networks compared without labels; descriptive distribution shift, not score or independent generalization",
             "score_applicable": False,
         }
-    if resource.exists():
+    if resource.exists() and resource.stat().st_size:
         r = json.loads(resource.read_text())["results"]
         t = next(t for t in q["tasks"] if t["key"] == "C30")
         t["status"] = "completed_diagnostic"
@@ -34,7 +34,7 @@ def main():
     s = json.loads(state_path.read_text())
     if distribution.exists():
         s["reserved_state_followup"]["status"] = "completed target-free distribution diagnostic"
-    if resource.exists():
+    if resource.exists() and resource.stat().st_size:
         s["resource_followup"]["status"] = "completed diagnostic; inspect retained failures"
     state_path.write_text(json.dumps(s, ensure_ascii=False, indent=2) + "\n")
     with Path("experiments/phase2/RESEARCH_LOG.md").open("a") as log:

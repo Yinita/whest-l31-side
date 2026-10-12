@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 20, 'partial_diagnostic': 24, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 21, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -742,6 +742,7 @@ after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
 
 - [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
 - [ablation_v30_046_gaussian_core_projection.json](../../results/phase2/ablation_v30_046_gaussian_core_projection.json)
+- [ablation_v30_046_k31_legal_component.json](../../results/phase2/ablation_v30_046_k31_legal_component.json)
 
 ### v30.047 H17 Gaussian K211完整二阶矩阵核心
 
@@ -755,6 +756,7 @@ after：保持核验Gaussian capped K211 matrix，作为去重core residual直�
 
 - [ablation_v30_047_gaussian_capped_k211.json](../../results/phase2/ablation_v30_047_gaussian_capped_k211.json)
 - [k211_wing_quadrature.json](../../results/phase2/k211_wing_quadrature.json)
+- [ablation_v30_047_gaussian_core_component.json](../../results/phase2/ablation_v30_047_gaussian_core_component.json)
 
 ### v30.048 H18 K4边际真实metric系数
 
@@ -1294,11 +1296,13 @@ before：只有最终分数分割
 
 after：新分片state-only机制分布诊断
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Development lawful feature quantiles fixed without labels; reserved-shard state collection pending；算法分数前后不适用。
+诊断结论：Frozen state-only feature quantiles on 8 development and 8 reserved public networks compared without labels; descriptive distribution shift, not score or independent generalization；算法分数前后不适用。
 
 - [ablation_v30_089_frozen_shift_features.json](../../results/phase2/ablation_v30_089_frozen_shift_features.json)
+- [ablation_v30_089_distribution_shift.json](../../results/phase2/ablation_v30_089_distribution_shift.json)
+- [ablation_v30_089_reserved_state_only.json](../../results/phase2/ablation_v30_089_reserved_state_only.json)
 
 ### v30.090 O28 新seed网络的diagram规模law核验
 

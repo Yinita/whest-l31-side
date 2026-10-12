@@ -603,3 +603,9 @@ H17 Gaussian K211 wing-centered star系数新增独立条件1D积分核验（256
 O13/O14实际预注册网络首层covariance无标签诊断：64step幂迭代方向fullenergy0.7337%–0.7761%，offdiag relative Frobenius error99.61%–99.64%。不是全eigh精确主方向证明，不代表深层covariance；首层rank1近似没有dominantmode依据。保存残差、逐network数值，不将该数据用于候选调参后仍称完全未见。
 
 H31新增alloutput Hutchinson remaining-budget gate：每probe三次dense matvec/output，leading6n³，冻结V29平均compute后最多254probes（尚未扣其他成本）。仍需真实深层triangle signal/variance与合法runtime，不以unbiased自动接受。
+
+H17 Gaussian三条second-order capped211路径已实现合法flopscope组件，n8/16/32对独立公式误差<2e-5，收费记录保留。一次cubic matmul主成本；existingproxy删除与非Gaussian贡献未解决，所以仍不是全网络候选，无adjusted。
+
+Serial followup collection: reserved distribution=True, originalcap C01 subprocess=True. Actual reports retained; resource failures do not imply algorithm score improvement or stage acceptance.
+
+O27完整8/8 reserved-state trace结束，无target列，固定分位点对照完成；最大shift/developmentIQR0.26598（layer7 variance），其次layer13/15 variance0.26207/0.25465。描述性分布不是显著性或独立score结论。C01原8GB subprocess资源诊断PID4140519运行。收取脚本修正为不解析尚为0字节的运行中输出，原收取错误无实验影响。

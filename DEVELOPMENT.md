@@ -57,3 +57,5 @@ H22 r03完整Mini8 adjusted 5.764482499205733e-9（−0.2509%），零失败，�
 2026-10-12连续执行补充：H22完整Mini8 RPC adjusted5.761097169765404e-9、raw2.263240195254923e-8，8/8零失败。C01r02完整Mini8 local adjusted5.750454989509922e-9、raw2.2708409819216513e-8（计算量−0.5180%，raw+0.02463%），同hashRPC adjusted5.748034693185937e-9、raw2.269812404698257e-8，8/8零失败，local最大residual0.3221s。两者均未获独立确认，当前最强Mini8仍为H18，阶段阈值不递进。
 
 L20预注册8个1024×16新seed网络权重已实体生成，无reference labels。L19实测单线程约3700samples/s，1e9×2seed×8network约50CPU天的吞吐外推；4096样本pilot只是弱噪声诊断，不能替代强reference或验证10倍收益。O27冻结特征后正在进行公共reserved shard无label状态采集，原8GB subprocess C01资源对照已串行安排。
+
+O27公共reserved shard状态分布对照已完成：冻结variance/alpha/标准化D3/K4代理/Phi特征，8/8网络无target访问；最大平均分位点偏移/developmentIQR0.266。该结论为描述性状态诊断，不能用于声称公共分片仍未见或独立分数提高。C01原8GB subprocess资源对照继续运行。
