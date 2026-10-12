@@ -633,3 +633,7 @@ L03其余held1–7候选与singleton官方row缓存已准备，原网络/seed/re
 C20现已实际合法计费两项薄收缩与dense对照，同时保留不可省XtYt交叉项；n32/64/128数值relative<1e-6，cost增加。候选单机制cost gate否决朴素重组，shared contraction还未实现，暂无整网score。
 
 H28 harmonic trace inverse的对角/offdiag联合投影合法组件通过，保留isotropic trace subtraction；完整非线性H生产及与V29对象口径一致替换仍待，无整网score。
+
+L33真实冻结development16layer×8network特征边界核验：sigma范围、标准化skew/K4 proxy和阈值多项式特征均finite；只是观测cache检查，不能保证任意网络，无更改variancefloor或阈值。
+
+C17r02完整Mini8结束：adjusted5.7752362848216655e-9、raw2.2707890012796383e-8、零fail；相对冻结基线微幅−0.0648%adjusted。C18r02完整Mini8PID4151550运行中，完整收取脚本等待两项报告，不覆盖旧row实验。
