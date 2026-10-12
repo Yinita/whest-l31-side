@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 15, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 36, 'partial_negative': 12, 'pending': 12}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 14, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 35, 'partial_negative': 12, 'pending': 12, 'ready': 2}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -647,11 +647,12 @@ before：WK431=(METRIC_C/2)*lambda*Coff
 
 after：对固定Gproxy使用0.5*(Gij*Mii+Gii*Mij)，仅改WK431 use
 
-状态：partial_derivation
+状态：ready
 
-诊断结论：Actualmetric sixsym31/22 formulas exact smallshape; Wicknormalization/proxyGmapping/chargedcandidate pending；算法分数前后不适用。
+诊断结论：Full transported frozenG mapping exact; independent31/22 lawful candidates ready for charged screen；算法分数前后不适用。
 
 - [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
+- [ablation_h19_h20_proxy_mapping.json](../../results/phase2/ablation_h19_h20_proxy_mapping.json)
 
 ### v30.050 H20 WK22真实metric交叉项
 
@@ -659,11 +660,24 @@ before：wk4m=(METRIC_C/6)*(dGi+dGj)
 
 after：使用(Gii*Mjj+Gjj*Mii+4Gij*Mij)/6，仅改WK22 use
 
-状态：partial_derivation
+状态：ready
 
-诊断结论：Actualmetric sixsym31/22 formulas exact smallshape; Wicknormalization/proxyGmapping/chargedcandidate pending；算法分数前后不适用。
+诊断结论：Full transported frozenG mapping exact; independent31/22 lawful candidates ready for charged screen；算法分数前后不适用。
 
 - [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
+- [ablation_h19_h20_proxy_mapping.json](../../results/phase2/ablation_h19_h20_proxy_mapping.json)
+
+### v30.051 H21 恢复非对角metric的K4到K3 feed
+
+before：mean diagonal metric下上游某feed项为零
+
+after：使用Moff恢复该被零化feed来源
+
+状态：partial_derivation
+
+诊断结论：Official three-factor1/4,1,1/4 matches direct distinct K211 Wick feed; repeat/boundedrank/cost integration pending；算法分数前后不适用。
+
+- [ablation_v30_051_nondiagonal_feed_contract.json](../../results/phase2/ablation_v30_051_nondiagonal_feed_contract.json)
 
 ### v30.057 H27 K3 newborn重复内容一致性oracle
 

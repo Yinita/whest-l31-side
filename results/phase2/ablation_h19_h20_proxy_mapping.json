@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "n": 4,
+      "max_slice_error": 7.105427357601002e-15,
+      "diagonal_mapping_error": 8.881784197001252e-16
+    },
+    {
+      "n": 7,
+      "max_slice_error": 2.1316282072803006e-14,
+      "diagonal_mapping_error": 1.7763568394002505e-15
+    },
+    {
+      "n": 11,
+      "max_slice_error": 1.4210854715202004e-14,
+      "diagonal_mapping_error": 1.7763568394002505e-15
+    }
+  ],
+  "proxy_definition": "G_pre = W[diag(g_prev)+lambda(C_prev-diag(var_prev))]W.T; diagonal equals frozen dG. Use full G_pre, do not replace its offdiagonal by lambda*C_pre.",
+  "cost": "Extra full G_pre sandwich + metricGram ~6n^3 dense FLOPs/layer before Strassen/copies; actual cost still must be measured.",
+  "constant_metric_limit": "M=METRIC_C*I gives frozen WK22 offdiag=(dGi+dGj)*METRIC_C/6; WK31 gives METRIC_C*Gij/2, but V29 lambda*Coff is an additional proxy assumption.",
+  "conclusion": "Exact full proxy mapping and six-sym slice contract established; legal candidate and network score pending."
+}

@@ -455,3 +455,11 @@ Sj=FAj diag(dA) FAj.T+FPj diag(dP) FPj.T完整GEMM → 对真正对称的weighte
 ## L07诊断环境记录
 
 当前direct trace进程4076743观察约650%CPU，直接离线脚本继承BLAS多线程环境。保留运行不打断，不授予benchmark时间/资源通过，也不将其数值变化直接记为固定单线程算法收益。已准备run_g4_single_thread.py在import前固定所有线程变量，后续对照用新revision。L19当前仅参考计算预算计划；L29正密度skew-normal前三阶矩合成核验，偏度有效域有限，实际网络尚未验收。
+
+## H19/H20候选准备
+
+独立proxy_metric_mapping小n4/7/11证明Gpre=W[diag(gprev)+lambda(Cprev−diag(varprev))]Wᵀ对角等于V29 dG。不能用lambda*Cpre替代完整offdiag。实际M=W Wᵀ的31/22 slices六项对称公式通过，常数metric极限WK22与原版一致；WK31原lambda*C代理还有额外近似。冻结v30.049/050各只替换单slice并完整收费新增sandwich/Gram，尚无真实分数。等待现有L07缓存结束后串行筛选。
+
+## H21 feed合同
+
+固定官方factor_k3.py的三因子系数1/4、1、1/4，在任意对称G/M、n4/7上对照完整四阶tensor的K211 Wick feed，distinct坐标精确；重复坐标仍需额外扣除，非对角metric的bridge可能引入额外dense legs，候选秩界和收费未通过。证据ablation_v30_051_nondiagonal_feed_contract.json，不产生分数。
