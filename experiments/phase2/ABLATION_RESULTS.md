@@ -707,6 +707,7 @@ after：保留完整指定B2 newborn one transition，随后仅保留其已产�
 诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
 
 - [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
 
 ### v30.044 H14 B2两步输出导向收缩
 
@@ -719,6 +720,7 @@ after：运输指定下一两层mean/variance敏感收缩而不保存完整B2
 诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
 
 - [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
+- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
 
 ### v30.045 H15 历史K3来源生成K211 capped低rank核心
 
@@ -949,6 +951,7 @@ after：仅追踪H29 newborn下一层K21/variance收缩，一层后删除
 
 - [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
 - [ablation_v30_059_060_edge_transport_repeats.json](../../results/phase2/ablation_v30_059_060_edge_transport_repeats.json)
+- [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
 
 ### v30.061 H31 exact covariance triangle无偏收缩
 

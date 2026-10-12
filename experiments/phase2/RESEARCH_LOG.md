@@ -647,3 +647,5 @@ O03/H15合并oldsource系数的Gaussian ReLU赋值核验：ua=2m1,w=Phi，ua−2
 L14连续hinge推理合法组件及边界finite核验通过；synthetic coefficients只验证API/连续表示，不是实际负CV模型整网score，partial_negative保持。
 
 L15实际train1–7、held0、500step固定tanh模型已合法float32matmul/tanh推理核验，收费与float64偏差记录。未构建完整candidate，原8foldraw+1.91998%负结果不变。
+
+H13/H14/H30真实合法CP transport后D3/D21组件核验及计费完成，n8/16/32float32误差<2e-5；完整birthcoef/repeatedstate/有限生命eviction仍待，不填candidate score。
