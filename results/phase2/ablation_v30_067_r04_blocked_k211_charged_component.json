@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "n": 4,
+      "raw_terms": 35,
+      "relative_error": 2.4275019833218245e-07,
+      "flops": 21212,
+      "maximum_tensor_elements": 64
+    },
+    {
+      "n": 8,
+      "raw_terms": 35,
+      "relative_error": 3.0820145435678743e-07,
+      "flops": 168464,
+      "maximum_tensor_elements": 256
+    },
+    {
+      "n": 16,
+      "raw_terms": 35,
+      "relative_error": 2.894251554485115e-07,
+      "flops": 1322400,
+      "maximum_tensor_elements": 1024
+    },
+    {
+      "n": 32,
+      "raw_terms": 35,
+      "relative_error": 3.6104359306007287e-07,
+      "flops": 10481984,
+      "maximum_tensor_elements": 4096
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/mlp_kprop/partitions.py",
+      "sha256": "acb944b9b6f5823affc9baae5946662330abda658ae79c08294ee32aec4536dd"
+    },
+    {
+      "path": "src/mlp_kprop/kprop_harmonic.py",
+      "sha256": "45e5fcc030bdb6bfba526898fdd53a650b83193e992cfad51e9422ccb70e11c1"
+    }
+  ],
+  "scope": "Full augmented K211 blocked polynomial; source input tensors still dense offline diagnostics",
+  "limitations": [
+    "Intermediate slab4 at1024 needs16MiB; dense input K111/K211 still requires4GiB and must be factored before candidate",
+    "No complete candidate or score",
+    "Full centered conversion and source integration pending"
+  ]
+}

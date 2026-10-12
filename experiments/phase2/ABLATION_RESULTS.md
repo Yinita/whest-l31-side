@@ -1041,10 +1041,11 @@ after：完整source/output的exact factor inventory
 
 状态：partial_diagnostic
 
-诊断结论：126 bounded signatures; V29 coefficient mapping pending；算法分数前后不适用。
+诊断结论：Full dense output classes mapped against actual dynamic V29 tables:45 coefficient matches,19 missing,4 explicit products; proxy equivalence and capped/factored production individual audit pending；算法分数前后不适用。
 
 - [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
 - [ablation_v30_066_wick_gap_map.json](../../results/phase2/ablation_v30_066_wick_gap_map.json)
+- [ablation_v30_066_r02_dense_production_map.json](../../results/phase2/ablation_v30_066_r02_dense_production_map.json)
 
 ### v30.067 O05 完整K31/K211生产核的离线表示上限
 
@@ -1054,9 +1055,12 @@ after：完整production Gnew与regen G成对诊断
 
 状态：partial_diagnostic
 
-诊断结论：Synthetic full cumulant diag+oraclelambda representation bound/spectrum measured; actual official truncated production benchmark state pending；算法分数前后不适用。
+诊断结论：Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending；算法分数前后不适用。
 
 - [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
+- [ablation_v30_067_r02_full_k31_charged_component.json](../../results/phase2/ablation_v30_067_r02_full_k31_charged_component.json)
+- [ablation_v30_067_r03_full_k211_charged_component.json](../../results/phase2/ablation_v30_067_r03_full_k211_charged_component.json)
+- [ablation_v30_067_r04_blocked_k211_charged_component.json](../../results/phase2/ablation_v30_067_r04_blocked_k211_charged_component.json)
 
 ### v30.068 O06 完整生产核单层替换诊断
 

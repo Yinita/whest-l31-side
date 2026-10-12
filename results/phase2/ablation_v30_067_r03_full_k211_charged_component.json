@@ -1,0 +1,41 @@
+{
+  "rows": [
+    {
+      "n": 4,
+      "raw_terms": 35,
+      "relative_error": 2.2885954494593777e-07,
+      "flops": 21212,
+      "maximum_tensor_elements": 64
+    },
+    {
+      "n": 8,
+      "raw_terms": 35,
+      "relative_error": 1.437696337436414e-07,
+      "flops": 151656,
+      "maximum_tensor_elements": 512
+    },
+    {
+      "n": 16,
+      "raw_terms": 35,
+      "relative_error": 1.653133748335771e-07,
+      "flops": 1147024,
+      "maximum_tensor_elements": 4096
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/mlp_kprop/partitions.py",
+      "sha256": "acb944b9b6f5823affc9baae5946662330abda658ae79c08294ee32aec4536dd"
+    },
+    {
+      "path": "src/mlp_kprop/kprop_harmonic.py",
+      "sha256": "45e5fcc030bdb6bfba526898fdd53a650b83193e992cfad51e9422ccb70e11c1"
+    }
+  ],
+  "scope": "Full augmented K211 legal polynomial component with synthetic cumulant/Wick inputs; n-cubed intermediates only for bounded offline diagnostics",
+  "limitations": [
+    "No production1024 tensor allocation allowed:one float32 tensor needs4GiB, above localRPC1GiB array cap",
+    "No complete candidate or score",
+    "Full centered conversion and source integration pending"
+  ]
+}
