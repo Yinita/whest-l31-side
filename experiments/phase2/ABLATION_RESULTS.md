@@ -1166,6 +1166,7 @@ after：证明exact复杂度和内存或给出反例
 - [ablation_v30_074_r03_batched_edge_contraction.json](../../results/phase2/ablation_v30_074_r03_batched_edge_contraction.json)
 - [ablation_v30_074_r04_batched_edge_sharedmask.json](../../results/phase2/ablation_v30_074_r04_batched_edge_sharedmask.json)
 - [ablation_v30_074_r05_batched_edge_prezero.json](../../results/phase2/ablation_v30_074_r05_batched_edge_prezero.json)
+- [ablation_v30_074_r06_mediumscale_prezero.json](../../results/phase2/ablation_v30_074_r06_mediumscale_prezero.json)
 
 ### v30.075 O13 K111乘edge covariance主模态代理
 

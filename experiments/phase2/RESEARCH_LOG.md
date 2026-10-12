@@ -717,3 +717,5 @@ O12 exact CP×covedge outputD3严格排除全部source重复index，legal n² in
 O12 slab4 output batch对照exactformula通过，r03重复mask费用339632@16，r04共享mask320456，对scalar273968增费16.97%；减少calls未测wholetime，保留负cost。不进入正式候选，无score。
 
 O12 r05唯一主要变化covariance先zero diagonal一次，再所有output batch共享，n16费用271560（对scalar273968−0.879%），n4/8也略降；sameexact error<2e-6，calls/timing未测，真实state尚待，无整网score。
+
+O12固定mediumscale n32/r4、n64/r8 actual legalcost [{"n": 32, "rank": 4, "relative_error": 1.5193423905657255e-06, "flops": 2069136, "max_intermediate_elements": 4096}, {"n": 64, "rank": 8, "relative_error": 1.8658543012861628e-06, "flops": 32262432, "max_intermediate_elements": 16384}]，synthetic exactoracle，未生产1024或真实state，无score。
