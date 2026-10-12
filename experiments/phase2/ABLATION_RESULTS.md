@@ -729,6 +729,7 @@ after：从actual historical K3 sources求K211 capped，再保留明确lowrank c
 
 - [ablation_v30_045_source_cap_rank_bound.json](../../results/phase2/ablation_v30_045_source_cap_rank_bound.json)
 - [ablation_v30_045_radial_capped_contract.json](../../results/phase2/ablation_v30_045_radial_capped_contract.json)
+- [ablation_v30_045_weighted_cp_cap_component.json](../../results/phase2/ablation_v30_045_weighted_cp_cap_component.json)
 
 ### v30.046 H16 actual K31低rank核心残差
 
@@ -1007,6 +1008,7 @@ after：一次完整非线性核心生产逐层对照
 诊断结论：Completeold/birth/pK211/meanK111/CovCov joint finite-distributionalgebra exact; official matchedbudgetproduction parity pending；算法分数前后不适用。
 
 - [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
+- [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
 
 ### v30.066 O04 旧lean与当前官方generator语义归因
 

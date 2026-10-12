@@ -615,3 +615,7 @@ C17/C18固定16row slab r02已准备不可变候选，不改变各自core数学�
 O14输出导向D3误差界新增：每output |<E,w³>|≤||E||F||w||³；weighted整体界使用sum c_a w_a³ Frobenius。small独立核验通过，实际source E和紧度未测，rank1 acceptance未通过。
 
 H21三条official feed factor的自身重复content扣除和transport完整核验通过（n4/7/11）；dense fullmetric对象3n CP列，不能当boundedrank。当前feed删除/替换的一致性和近似core/metric计费仍待。
+
+O03新增删除birth只改K111 conversion而冻结pK211时的精确mismatch=2sum(mu_a birth_abc)，distinct cap显式核验通过。这证明孤立删项破坏抵消，production/conversion必须同对象配对；官方truncated production map仍待。
+
+H15加权CP capped收缩合法组件通过，完整a=b/c与b=c排除、float32计费n8/16/32记录。此为真实合法ops组件，尚缺V29 hub extraction和生产coef全映射，无全网score。
