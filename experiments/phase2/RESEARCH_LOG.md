@@ -757,3 +757,5 @@ C28 finalLA/LP reuse localnetwork0 FLOPs unchanged, raw2.290466483145792e-8→2.
 C20 r02 naive fullnegative control adjusted6.116832334984139e-9→6.1269025013580705e-9 zero failures, extra dense linear retained; r03 removes nowunused finaldense linear operations, exactcross unchanged, started serial.
 
 C20 completednegative exactregroup finalthin linears plus densecross r03: [{"version": 2, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.1269025013580705e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2901870622149545e-08, "flops": 588301336047.0, "failures": 0}, {"version": 3, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.130125528545197e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.291820777600151e-08, "flops": 588191220207.0, "failures": 0}]; no Mini8 expansion.
+
+O26 completeddiagnostic all129mechanism provenance: inheritedLAM publicdumps0-7, pooledREF_R, exactupstreamIDs unknown. No independentconfirmation invented. C28 fullMini8 lifecycle confirmation started session79088.

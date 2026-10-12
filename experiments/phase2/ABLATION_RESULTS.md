@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 26, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 22}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 27, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 21}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1379,11 +1379,12 @@ before：候选网络分割标签不够细
 
 after：逐机制报告训练/selection/confirmation来源矩阵
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Frozenupstream README split/calibration disclosures captured; exactauthortrainIDs unknown, L21sealed；算法分数前后不适用。
+诊断结论：129 mechanism source/data/constants provenance matrix recorded, LAM public0-7 fitting and upstream ID uncertainty explicit; no independence claimed；算法分数前后不适用。
 
 - [ablation_v30_088_upstream_split_audit.json](../../results/phase2/ablation_v30_088_upstream_split_audit.json)
+- [ablation_v30_088_r02_mechanism_provenance.json](../../results/phase2/ablation_v30_088_r02_mechanism_provenance.json)
 
 ### v30.089 O27 封存新分片的diagslice状态分布偏移
 
