@@ -544,6 +544,7 @@ after：明确final-only路径可复用废弃PK2/legs buffers而非申请新scra
 - [ablation_v30_028_r02_mini1.json](../../results/phase2/ablation_v30_028_r02_mini1.json)
 - [ablation_v30_028_r02_rpc_predictions.json](../../results/phase2/ablation_v30_028_r02_rpc_predictions.json)
 - [ablation_v30_028_r02_rpc_scored.json](../../results/phase2/ablation_v30_028_r02_rpc_scored.json)
+- [ablation_v30_028_r03_mini8.json](../../results/phase2/ablation_v30_028_r03_mini8.json)
 
 ### v30.029 C29 三角C_pre阶段批量copy调度
 
