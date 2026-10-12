@@ -793,3 +793,5 @@ O18 B1 fullsymmetricCP explicitdense birth andtransport D3/D21 vs V29 groupedLA/
 H08 thinfeedback derivativegrade targetw2/w2 vs V29w1/w3 distinct; firstorientation assertion caughtwrongtranspose. CorrectsyntheticD=.QBm comparator passed, but officialK21/K12 conventions notyetaligned, nofullcoverage or candidateclaim.
 
 H08 officialD21[a,c]=T_aac verified; WK12=.5D21.T, Ymissing=.5diag(w2)D21diag(w2). Fixedlayer14/first16CP source directoutput with exactrepeat subtraction legalcandidate adjusted6.116832334984139e-9→6.14417056822764e-9 zero failures. Denseindependentrepeatcontract max<1e-10; first1 costgate followup running. Fullrestoration incomplete.
+
+H08 first1subset raw exactlycontrol, adjusted6.1395716301182e-9 worse. Note correctedinterpretation: first1 identitybornhub is NOT generallyidenticallyzero; this particular selected factors/source cancellation produced no measuredmean difference. No mathematicalzero claim without proof. Fullsource remainspartial.

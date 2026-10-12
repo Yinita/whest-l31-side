@@ -690,6 +690,11 @@ after：补充上游B1中d(w2)*WK12*d(w2)缺失部分
 诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_038_r02_feedback_overlap.json](../../results/phase2/ablation_v30_038_r02_feedback_overlap.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
+- [ablation_v30_038_r03_subset_mini1.json](../../results/phase2/ablation_v30_038_r03_subset_mini1.json)
+- [ablation_v30_038_r04_subset_mini1.json](../../results/phase2/ablation_v30_038_r04_subset_mini1.json)
+- [ablation_v30_038_r04_subset_decision.json](../../results/phase2/ablation_v30_038_r04_subset_decision.json)
 
 ### v30.039 H09 B2 leading D21乘C来源恢复
 
@@ -1294,6 +1299,7 @@ after：每个出生乘积标明预算与重复补偿
 诊断结论：All16 lean B1/B2 products power-counted; feedback*feedback cost4 exceedsaug3. Full V29 position/coef/isomorphism attribution and repeated compensation pending；算法分数前后不适用。
 
 - [ablation_v30_080_birth_power_inventory.json](../../results/phase2/ablation_v30_080_birth_power_inventory.json)
+- [ablation_v30_080_r02_b1_repeat_contract.json](../../results/phase2/ablation_v30_080_r02_b1_repeat_contract.json)
 
 ### v30.081 O19 K5边缘生产闭合
 
