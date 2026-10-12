@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 16, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 34, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 33, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -653,9 +653,9 @@ before：V29主体62项剪枝表
 
 after：恢复固定生成器的未剪枝SIMPLE生产表，其余闭合不变
 
-状态：partial_derivation
+状态：completed_negative
 
-诊断结论：Lean static table25 current official vs older generator count recorded; source version affects diagram budget. Candidate mapping/reproduction pending；算法分数前后不适用。
+诊断结论：Historical partitions byteidentical; actual oldgenerator functions extracted and table90records/Wickpolys exactmatch chargedr04 candidate. Stale94docstring is not missing4records. DenseSIMPLEunpruned ablation raw2.3258568404571633e-8/adjusted6.234977996005021e-9 vspairedV29 2.290466483145792e-8/6.116832334984139e-9, zero failures; reject no expansion; baseline augmentedWK431 retained.；算法分数前后不适用。
 
 - [ablation_v30_036_simple_table.json](../../results/phase2/ablation_v30_036_simple_table.json)
 - [ablation_v30_036_r02_generator_history.json](../../results/phase2/ablation_v30_036_r02_generator_history.json)
@@ -664,6 +664,8 @@ after：恢复固定生成器的未剪枝SIMPLE生产表，其余闭合不变
 - [ablation_v30_036_r03_mini1.log](../../results/phase2/ablation_v30_036_r03_mini1.log)
 - [ablation_v30_036_r04_mini1.json](../../results/phase2/ablation_v30_036_r04_mini1.json)
 - [ablation_v30_036_r04_decision.json](../../results/phase2/ablation_v30_036_r04_decision.json)
+- [ablation_v30_036_r05_historical_dependencies.json](../../results/phase2/ablation_v30_036_r05_historical_dependencies.json)
+- [ablation_v30_036_r06_exact_table_contract.json](../../results/phase2/ablation_v30_036_r06_exact_table_contract.json)
 
 ### v30.037 H07 WK22到B1出生来源恢复
 
