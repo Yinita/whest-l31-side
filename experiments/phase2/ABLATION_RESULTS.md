@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 20, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 25, 'partial_negative': 14, 'pending': 10, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 24, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 21, 'partial_negative': 14, 'pending': 10}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -29,6 +29,9 @@
 | v30.031 | H01 | completed_positive | 2.29046648315e-08 | 2.2881678774e-08 | 6.11683233498e-09 | 6.11070767115e-09 | -0.100128% | +0.000228% | 0 |
 | v30.032 | H02 | completed_positive | 2.29046648315e-08 | 2.29027996568e-08 | 6.11683233498e-09 | 6.11635118582e-09 | -0.007866% | +0.000277% | 0 |
 | v30.048 | H18 | completed_positive | 2.2702818514e-08 | 2.218065287e-08 | 5.77897975577e-09 | 5.64681649387e-09 | -2.286965% | +0.002807% | 0 |
+| v30.049 | H19 | completed_negative | 2.29046648315e-08 | 2.27738645719e-08 | 6.11683233498e-09 | 7.08275516689e-09 | +15.791226% | +16.456266% | 0 |
+| v30.050 | H20 | completed_negative | 2.29046648315e-08 | 2.31574261988e-08 | 6.11683233498e-09 | 7.20257411616e-09 | +17.750066% | +16.464834% | 0 |
+| v30.052 | H22 | completed_positive | 2.29046648315e-08 | 2.23081926265e-08 | 6.11683233498e-09 | 5.95829990493e-09 | -2.591741% | +0.012743% | 0 |
 
 ## 离线学习快筛
 
@@ -698,12 +701,15 @@ before：WK431=(METRIC_C/2)*lambda*Coff
 
 after：对固定Gproxy使用0.5*(Gij*Mii+Gii*Mij)，仅改WK431 use
 
-状态：ready
+状态：completed_negative
 
-诊断结论：Full transported frozenG mapping exact; independent31/22 lawful candidates ready for charged screen；算法分数前后不适用。
+predict=28.808261s；residual=0.239175s；FLOPs=683904274401；peak child RSS=3946664KiB；失败=0。
 
-- [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
-- [ablation_h19_h20_proxy_mapping.json](../../results/phase2/ablation_h19_h20_proxy_mapping.json)
+- [ablation_v30_049_r01_mini1_local.json](../../results/phase2/ablation_v30_049_r01_mini1_local.json)
+- [ablation_v30_049_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_049_r01_mini1_local.manifest.json)
+- [ablation_v30_049_r01_mini1_local.log](../../results/phase2/ablation_v30_049_r01_mini1_local.log)
+- [ablation_v30_049_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_049_r01_mini1_local.launcher.log)
+- [ablation_v30_049_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_049_r01_mini1_local.validate.log)
 
 ### v30.050 H20 WK22真实metric交叉项
 
@@ -711,12 +717,15 @@ before：wk4m=(METRIC_C/6)*(dGi+dGj)
 
 after：使用(Gii*Mjj+Gjj*Mii+4Gij*Mij)/6，仅改WK22 use
 
-状态：ready
+状态：completed_negative
 
-诊断结论：Full transported frozenG mapping exact; independent31/22 lawful candidates ready for charged screen；算法分数前后不适用。
+predict=28.545874s；residual=0.241713s；FLOPs=683954591727；peak child RSS=3946384KiB；失败=0。
 
-- [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
-- [ablation_h19_h20_proxy_mapping.json](../../results/phase2/ablation_h19_h20_proxy_mapping.json)
+- [ablation_v30_050_r01_mini1_local.json](../../results/phase2/ablation_v30_050_r01_mini1_local.json)
+- [ablation_v30_050_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_050_r01_mini1_local.manifest.json)
+- [ablation_v30_050_r01_mini1_local.log](../../results/phase2/ablation_v30_050_r01_mini1_local.log)
+- [ablation_v30_050_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_050_r01_mini1_local.launcher.log)
+- [ablation_v30_050_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_050_r01_mini1_local.validate.log)
 
 ### v30.051 H21 恢复非对角metric的K4到K3 feed
 
@@ -736,11 +745,15 @@ before：D21 feedback sketch用当前weight列
 
 after：相同rank16下改用未来一两层weight和live average ReLU gate构造sketch
 
-状态：ready
+状态：completed_positive
 
-诊断结论：Fixed future weight + lawful scalar average gate candidate passes basic contract; unchangedrank, future weight is main subspace change; real screen pending；算法分数前后不适用。
+predict=27.595352s；residual=0.234341s；FLOPs=587337588207；peak child RSS=3969560KiB；失败=0。
 
-- [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
+- [ablation_v30_052_r01_mini1_local.json](../../results/phase2/ablation_v30_052_r01_mini1_local.json)
+- [ablation_v30_052_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_052_r01_mini1_local.manifest.json)
+- [ablation_v30_052_r01_mini1_local.log](../../results/phase2/ablation_v30_052_r01_mini1_local.log)
+- [ablation_v30_052_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_052_r01_mini1_local.launcher.log)
+- [ablation_v30_052_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_052_r01_mini1_local.validate.log)
 
 ### v30.054 H24 old-source basis按下一层D3敏感方向选择
 
@@ -912,6 +925,54 @@ after：经验证的选择性marginal K5生产
 诊断结论：ExactGaussianReLUdegree5/6 marginal moment recurrence/quadrature verified; officialaugmented propagatedK5 closure still pending；算法分数前后不适用。
 
 - [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
+
+### v30.082 O20 K5独立边缘readout
+
+before：PK1无kappa5线性项
+
+after：PK1加入合法K5 marginal readout
+
+状态：partial_derivation
+
+诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
+
+- [ablation_v30_082_k5_readout_contract.json](../../results/phase2/ablation_v30_082_k5_readout_contract.json)
+
+### v30.083 O21 K6纯径向投影生产公式
+
+before：无K6channel
+
+after：完整可审计radial scalar生产定义
+
+状态：partial_derivation
+
+诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
+
+### v30.084 O22 K6径向状态合法线性运输
+
+before：无K6运输
+
+after：加入radial harmonic state W运输
+
+状态：partial_derivation
+
+诊断结论：Radial6 average15pairings/tripletrace and actualWmetric transport exact; full production/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
+
+### v30.085 O23 K6独立边缘readout
+
+before：PK1无kappa6线性项
+
+after：合法K6对角读入PK1
+
+状态：partial_derivation
+
+诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
+
+- [ablation_v30_085_k6_readout_contract.json](../../results/phase2/ablation_v30_085_k6_readout_contract.json)
 
 ### v30.086 O24 高阶边缘同阶组合inventory
 

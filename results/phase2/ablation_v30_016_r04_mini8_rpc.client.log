@@ -1,0 +1,30 @@
+RPC network 0 completed
+RPC network 1 completed
+RPC network 2 completed
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/client-venv/lib/python3.10/site-packages/flopscope/_codec.py", line 157, in read_npz
+    member = zf.read(name)  # decompresses into memory
+  File "/usr/lib/python3.10/zipfile.py", line 1500, in read
+    return fp.read()
+  File "/usr/lib/python3.10/zipfile.py", line 932, in read
+    buf += self._read1(self.MAX_N)
+  File "/usr/lib/python3.10/zipfile.py", line 1036, in _read1
+    self._update_crc(data)
+  File "/usr/lib/python3.10/zipfile.py", line 964, in _update_crc
+    raise BadZipFile("Bad CRC-32 for file %r" % self.name)
+zipfile.BadZipFile: Bad CRC-32 for file 'weights.npy'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/rpc_worker.py", line 92, in <module>
+    main()
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/rpc_worker.py", line 64, in main
+    weights = fnp.load(entry["weights"])["weights"]
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/client-venv/lib/python3.10/site-packages/flopscope/_dispatch.py", line 194, in wrapped
+    return fn(*args, **kwargs)
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/client-venv/lib/python3.10/site-packages/flopscope/_io.py", line 119, in load
+    arrays, meta = _codec.read_npz(blob)
+  File "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/client-venv/lib/python3.10/site-packages/flopscope/_codec.py", line 159, in read_npz
+    raise ValueError(f"corrupt .npz member {name!r}: {exc}") from exc
+ValueError: corrupt .npz member 'weights.npy': Bad CRC-32 for file 'weights.npy'

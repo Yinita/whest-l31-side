@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
 import sys
 import tempfile
 import time
+import zipfile
 from pathlib import Path
 
 import flopscope.numpy as fnp
@@ -46,14 +48,20 @@ def main():
         check=True,
     )
     data = load_dataset(args.dataset, split="mini")
-    inputs = ROOT / "benchmark/data/rpc_inputs"
-    inputs.mkdir(parents=True, exist_ok=True)
+    # A run owns its inputs: other probes cannot overwrite files while a client reads.
+    inputs = ROOT / "benchmark/data/rpc_inputs" / output.stem
+    inputs.mkdir(parents=True, exist_ok=False)
     entries = []
     for i in range(min(args.n_mlps, len(data))):
         mlp = mlp_at(data, i)
         file = inputs / f"mlp_{i}.npz"
         fnp.savez(str(file), weights=fnp.stack(mlp.weights))
-        entries.append({"index": i, "name": mlp.name, "seed": mlp.seed, "weights": str(file)})
+        with zipfile.ZipFile(file) as archive:
+            corrupt = archive.testzip()
+        if corrupt:
+            raise ValueError(f"Exported RPC input failed CRC check: network {i}, member {corrupt}")
+        entries.append({"index": i, "name": mlp.name, "seed": mlp.seed, "weights": str(file),
+                        "sha256": hashlib.sha256(file.read_bytes()).hexdigest()})
     (inputs / "inputs.json").write_text(json.dumps(entries, indent=2) + "\n")
     with tempfile.TemporaryDirectory(prefix="whest-rpc-") as tmp:
         url = f"ipc://{tmp}/server.sock"
