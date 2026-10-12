@@ -525,3 +525,5 @@ H19单网raw比0.99428936（−0.5711%），FLOPs比1.16456266（+16.4563%），
 L35 r02选择账本扩展到队列前benchmark和可辨认offlineCV报告，包括失败与负筛，保留路径/hash；report数量不等于独立假设数量，有效选择偏差仍未估计，不虚报统计保证。全pytest21通过（31.59s），ruff通过。
 
 C28静态liveness记录pool调用与scratch词法范围，明确views/functioncalls/跨层引用不能由最后词法use推断释放，动态poison和alias合同仍待。L29正密度skew-normal用真实缓存final mu/var/D3、固定96点积分零拟合，8网无偏度越界但全部raw更差，aggregate2.2701659663e-8→3.4408556889e-8（+51.5685%），否决当前family。L28推导固定训练/独立held控制变量beta与费用门槛rho²>1−1/k，仅合成合同；实际knownexpectation networkproxy仍未定。
+
+O03old/birth任意split+pK211−2mean*K111−2CovCov整体有限分布合同n4/7通过，官方同预算生产尚待。O13/H29固定rank1edge乘CPsource可表达成3类symCP（总3R列），小完整tensor和distinct排除核验通过；真实live covariance主模态/近似误差、diagramcoverage/Wick系数和计费未通过，不自动解锁候选。

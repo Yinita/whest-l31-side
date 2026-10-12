@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 25, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'partial_negative': 15, 'pending': 10, 'blocked_derivation': 19}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 27, 'completed_diagnostic': 20, 'partial_diagnostic': 13, 'partial_negative': 15, 'pending': 9, 'blocked_derivation': 17}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -793,6 +793,18 @@ after：独立逐类检查full mixed和repeated内容账是否一致，只有发
 - [ablation_v30_057_bookkeeping.json](../../results/phase2/ablation_v30_057_bookkeeping.json)
 - [source_birth_combination_algebra.json](../../results/phase2/source_birth_combination_algebra.json)
 
+### v30.059 H29 K111乘covariance边新来源
+
+before：当前factored source过滤或剪枝缺部分mixed K3+edge diagram
+
+after：恢复一个明确vector partition轨道的mixed新born source
+
+状态：partial_derivation
+
+诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
+
+- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+
 ### v30.061 H31 exact covariance triangle无偏收缩
 
 before：trianglelast用rank16 approximate C
@@ -829,6 +841,18 @@ after：完整capped diagram生产与显式small tensor一致
 诊断结论：Independent bounded vector multiset enumeration vs official canonical diagram generator; base/augmented full/filter separated,24 smallshape comparisons maxerror1.0658e-14; excludes Torch factor kernel；算法分数前后不适用。
 
 - [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
+
+### v30.065 O03 K211完整来源抵消一致性
+
+before：组合部件分别通过
+
+after：一次完整非线性核心生产逐层对照
+
+状态：partial_diagnostic
+
+诊断结论：Completeold/birth/pK211/meanK111/CovCov joint finite-distributionalgebra exact; official matchedbudgetproduction parity pending；算法分数前后不适用。
+
+- [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
 
 ### v30.066 O04 旧lean与当前官方generator语义归因
 
@@ -890,6 +914,18 @@ after：证明exact复杂度和内存或给出反例
 诊断结论：Exact no-cubic-intermediate diagonal contraction verified; O(R*n^3), not unqualified O(n^3). Full cumulative repeated-content production and charged operator formula remain pending；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
+
+### v30.075 O13 K111乘edge covariance主模态代理
+
+before：该mixed diagram遗漏
+
+after：使用live covariance主模态近似edge并保留K111来源
+
+状态：partial_derivation
+
+诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
+
+- [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
 
 ### v30.078 O16 covariance triangle exact多层small诊断
 
