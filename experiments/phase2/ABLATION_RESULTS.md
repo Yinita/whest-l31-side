@@ -1296,6 +1296,7 @@ after：经验证的选择性marginal K5生产
 
 - [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
 - [ablation_v30_081_k5_gaussian_marginal.json](../../results/phase2/ablation_v30_081_k5_gaussian_marginal.json)
+- [ablation_v30_081_r02_k5_charged_marginal.json](../../results/phase2/ablation_v30_081_r02_k5_charged_marginal.json)
 
 ### v30.082 O20 K5独立边缘readout
 
@@ -1308,6 +1309,7 @@ after：PK1加入合法K5 marginal readout
 诊断结论：Isolated linearcumulant ReLU coefficient derived; validfullstateproduction/chargedcandidate/score pending；算法分数前后不适用。
 
 - [ablation_v30_082_k5_readout_contract.json](../../results/phase2/ablation_v30_082_k5_readout_contract.json)
+- [ablation_v30_082_r02_w51_independent.json](../../results/phase2/ablation_v30_082_r02_w51_independent.json)
 
 ### v30.083 O21 K6纯径向投影生产公式
 
