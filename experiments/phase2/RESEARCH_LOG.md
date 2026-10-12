@@ -729,3 +729,5 @@ O12 rank4唯一slab4→16实测费用相同64529895936，wall26.534→39.083s、
 O12 bilinear exactformula: sum(x)*yᵀCz−(xy)ᵀCz−(xz)ᵀCᵀy。r11 slab4 productionrank4费用51707920896、9.6046s/residual0.83149失败；唯一slab4→64 r12同费用0.94850s/residual0.052625组件通过，largestn²。r13 medium32/64独立denseoracle复验通过。真实source与fullnetworkcandidate分数尚待，绝不当stage提升。
 
 O12 fixedslab64生产rank16真实组件费用206817513984、wall3.76778s、residual0.20665，component满足单项限额但不证明fullV29合规，需source构造以及原算法residual合并实测。无benchmark score。
+
+C29完整triangular compute+mirror+packedscatter合法数值逐值相同，但n32/64/128增费2048/8192/32768且calls+3。当前grid方案失败FLOPs不增门槛，不准备无效wholecandidate；其他合法layout及资源仍待。

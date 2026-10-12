@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "n": 32,
+      "before_flops": 51456,
+      "after_flops": 53504,
+      "before_calls": 10,
+      "after_calls": 13,
+      "exact_equal": true
+    },
+    {
+      "n": 64,
+      "before_flops": 337408,
+      "after_flops": 345600,
+      "before_calls": 29,
+      "after_calls": 32,
+      "exact_equal": true
+    },
+    {
+      "n": 128,
+      "before_flops": 2399232,
+      "after_flops": 2432000,
+      "before_calls": 103,
+      "after_calls": 106,
+      "exact_equal": true
+    }
+  ],
+  "conclusion": "Full triangular-only block compute and mirrored populated grid scatter exact; packing adds copies/reshape and calls, fails nonincreasing FLOP gate. Does not warrant whole candidate under this layout.",
+  "scope": "Fixed component negative, not C01 full estimator timing or memory acceptance"
+}

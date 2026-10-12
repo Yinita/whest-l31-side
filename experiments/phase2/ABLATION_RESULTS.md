@@ -534,10 +534,11 @@ after：保持相同上三角算法，将同尺度的输入/输出布局用持�
 
 状态：partial_negative
 
-诊断结论：Exact layout packing charges75% more; full scatter and candidate pending；算法分数前后不适用。
+诊断结论：Full triangular-only block compute/mirror/grid scatter checked exactly; gridpacking increases FLOPs and calls, rejects tested layout. Full alternative layout and8GiB acceptance remain outstanding；算法分数前后不适用。
 
 - [ablation_v30_029_layout_contract.json](../../results/phase2/ablation_v30_029_layout_contract.json)
 - [ablation_v30_029_scatter_contract.json](../../results/phase2/ablation_v30_029_scatter_contract.json)
+- [ablation_v30_029_r03_full_triangular_layout.json](../../results/phase2/ablation_v30_029_r03_full_triangular_layout.json)
 
 ### v30.030 C30 不同backend上合法matmul计费与resource对照
 
