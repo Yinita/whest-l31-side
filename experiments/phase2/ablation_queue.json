@@ -23599,14 +23599,21 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
       "dependency_evidence_rule": "Mathematical/contract prerequisites require accepted checks and evidence, not merely completed status; algorithm prerequisites named as parents require frozen source and their explicit result gate",
       "candidate_path": "estimators/ablation_v30_034/estimator.py",
       "output_prefix": "results/phase2/ablation_v30_034",
-      "dependency_ids": []
+      "dependency_ids": [],
+      "evidence": [
+        "results/phase2/ablation_h04_pair_gap.json",
+        "results/phase2/ablation_v30_034_nonzero_pair_contract.json"
+      ],
+      "result": {
+        "conclusion": "Zero/nonzeroGaussian pair quadrature checked; actual correlation distribution, highorder subtraction and lawfulcandidate pending"
+      }
     },
     {
       "key": "H05",
@@ -23630,14 +23637,20 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
       "dependency_evidence_rule": "Mathematical/contract prerequisites require accepted checks and evidence, not merely completed status; algorithm prerequisites named as parents require frozen source and their explicit result gate",
       "candidate_path": "estimators/ablation_v30_035/estimator.py",
       "output_prefix": "results/phase2/ablation_v30_035",
-      "dependency_ids": []
+      "dependency_ids": [],
+      "evidence": [
+        "results/phase2/ablation_v30_035_pair_tail_pade.json"
+      ],
+      "result": {
+        "conclusion": "Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending"
+      }
     },
     {
       "key": "H06",
@@ -31277,7 +31290,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "pending",
+      "status": "partial_negative",
       "allow_lower_reasoning_execution": true,
       "lower_reasoning_boundary": "May implement the exact specification and validate; any absent formula/coefficient/API/cost proof changes status to blocked_derivation, no guessing",
       "conditional_gate": "L03 or named parent shows reliable network-level CV gain; confirmation labels remain sealed",
@@ -31286,7 +31299,86 @@
       "output_prefix": "results/phase2/ablation_v30_102",
       "dependency_ids": [
         "WB-P2-A098"
-      ]
+      ],
+      "evidence": [
+        "results/phase2/ablation_v30_102_g4_features.json",
+        "results/phase2/ablation_v30_102_g4_cv.json"
+      ],
+      "result": {
+        "offline_cv": {
+          "scope": "Development leave-one-network-out predictions; held network target excluded from training; not independent final validation",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "per_network": [
+            {
+              "network_id": 0,
+              "before_raw": 2.2919939989976077e-08,
+              "after_raw": 2.283084036571688e-08,
+              "raw_ratio": 0.9961125716603899
+            },
+            {
+              "network_id": 1,
+              "before_raw": 2.0851047177904386e-08,
+              "after_raw": 2.122607238237166e-08,
+              "raw_ratio": 1.0179859170269723
+            },
+            {
+              "network_id": 2,
+              "before_raw": 2.6103211001102324e-08,
+              "after_raw": 2.6265760648555454e-08,
+              "raw_ratio": 1.0062271897295036
+            },
+            {
+              "network_id": 3,
+              "before_raw": 2.4973422492524268e-08,
+              "after_raw": 2.5000639182749682e-08,
+              "raw_ratio": 1.0010898262035794
+            },
+            {
+              "network_id": 4,
+              "before_raw": 2.2055574290697815e-08,
+              "after_raw": 2.1974320399809902e-08,
+              "raw_ratio": 0.9963159476231738
+            },
+            {
+              "network_id": 5,
+              "before_raw": 1.961030434104687e-08,
+              "after_raw": 1.965638066057866e-08,
+              "raw_ratio": 1.0023495973713854
+            },
+            {
+              "network_id": 6,
+              "before_raw": 2.0811663324542285e-08,
+              "after_raw": 2.1297805932921172e-08,
+              "raw_ratio": 1.0233591424576622
+            },
+            {
+              "network_id": 7,
+              "before_raw": 2.4287170489924153e-08,
+              "after_raw": 2.442332739020631e-08,
+              "raw_ratio": 1.0056061244490642
+            }
+          ],
+          "before_raw": 2.2701541638464772e-08,
+          "after_raw": 2.2834393370363714e-08
+        },
+        "conclusion": "Realg4row two features samecycleLOO worsensrelativeL03 +0.04419%; multithreadoffline diagnostic only, fixedthreadcandidate unverified"
+      }
     },
     {
       "key": "L08",
@@ -32185,7 +32277,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_negative",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "L03 or named parent shows reliable network-level CV gain; confirmation labels remain sealed",
@@ -32328,7 +32420,8 @@
           "adjusted_score": null,
           "before_raw": 2.270165994135025e-08,
           "after_raw": 2.313752811476192e-08
-        }
+        },
+        "conclusion": "Frozen13-8-1 networkLOO raw+1.91998%, all121gradient finite-difference contract passed; chargedcandidate and independent confirmation not passed"
       }
     },
     {

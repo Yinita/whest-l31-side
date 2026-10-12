@@ -481,3 +481,5 @@ H17三条Gaussian covariance path的K211 cap在n4/7/11显式distinct指标核验
 ## triangle精确合同
 
 O16 n4/7/11 exact all-distinct covariance triangle及三层冻结门控运输核验通过，真实比赛状态和贡献仍待。H31 Rademacher无偏trace估计精确方差Var=2||offdiag(Sym((diag(a)Coff)^3))||F²，n3/4/7穷举全部probe通过；记录10%相对标准误所需probe，真实信号/预算未测。不能因无偏性声称可提分。
+
+H04非零均值Gaussian pair条件积分128/256点Legendre对照稳定，零均值arccos核一致；仅离线积分，不是合法候选。H05固定Padé尾rho⁴/[48π(1−0.3rho²)]由rho4/rho6解析系数决定，无reference拟合，在|rho|<=1无极点；非零推广和实际网络state/费用仍待。

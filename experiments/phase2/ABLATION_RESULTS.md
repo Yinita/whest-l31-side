@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 17, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 29, 'partial_negative': 12, 'pending': 11, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 19, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 26, 'partial_negative': 14, 'pending': 10, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -40,6 +40,7 @@
 | v30.099 | L04 | 2.27016599414e-08 | 2.27967393532e-08 | +0.418821% | 未计费验证 |
 | v30.100 | L05 | 2.27016599414e-08 | 2.28401608462e-08 | +0.610092% | 未计费验证 |
 | v30.101 | L06 | 2.27016599414e-08 | 2.28442126705e-08 | +0.627940% | 未计费验证 |
+| v30.102 | L07 | 2.27015416385e-08 | 2.28343933704e-08 | +0.585210% | 未计费验证 |
 | v30.103 | L08 | 2.27016599414e-08 | 2.28241554222e-08 | +0.539588% | 未计费验证 |
 | v30.104 | L09 | 2.27016599414e-08 | 2.28416995875e-08 | +0.616870% | 未计费验证 |
 | v30.105 | L10 | 2.27016599414e-08 | 2.33958133005e-08 | +3.057721% | 未计费验证 |
@@ -543,6 +544,31 @@ after：建立实际逐产品差异表并用独立多项式oracle判断差异是
 
 - [ablation_v30_033_inventory.json](../../results/phase2/ablation_v30_033_inventory.json)
 
+### v30.034 H04 精确Gaussian pair核替换
+
+before：纯Gaussian pair使用有限Hermite系列
+
+after：用原始Gaussian ReLU幂矩核的合法在线插值替换pK11/pK21/pK22纯Gaussian部分
+
+状态：partial_derivation
+
+诊断结论：Zero/nonzeroGaussian pair quadrature checked; actual correlation distribution, highorder subtraction and lawfulcandidate pending；算法分数前后不适用。
+
+- [ablation_h04_pair_gap.json](../../results/phase2/ablation_h04_pair_gap.json)
+- [ablation_v30_034_nonzero_pair_contract.json](../../results/phase2/ablation_v30_034_nonzero_pair_contract.json)
+
+### v30.035 H05 Gaussian pair尾项有理重求和
+
+before：pure covariance pair finite polynomial
+
+after：加入由Gaussian核解析系数约束的rational tail，同时保持已知低阶项
+
+状态：partial_derivation
+
+诊断结论：Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_v30_035_pair_tail_pade.json](../../results/phase2/ablation_v30_035_pair_tail_pade.json)
+
 ### v30.037 H07 WK22到B1出生来源恢复
 
 before：B1删除上游d(w3)*WK22*d(w2)类项
@@ -1022,6 +1048,19 @@ after：追加D3/(sigma³)与该值乘phi的两列，分母仅使用原正sigma�
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
 
+### v30.102 L07 标准化峰度特征增量
+
+before：L03含全层K4_sigma，但没有每神经元g4row。
+
+after：追加g4row/sigma⁴及乘phi的两列。
+
+状态：partial_negative
+
+诊断结论：Realg4row two features samecycleLOO worsensrelativeL03 +0.04419%; multithreadoffline diagnostic only, fixedthreadcandidate unverified；算法分数前后不适用。
+
+- [ablation_v30_102_g4_features.json](../../results/phase2/ablation_v30_102_g4_features.json)
+- [ablation_v30_102_g4_cv.json](../../results/phase2/ablation_v30_102_g4_cv.json)
+
 ### v30.103 L08 最后线性均值传播轨迹特征
 
 before：L03仅用最后pre的本层13特征。
@@ -1112,9 +1151,9 @@ before：L03固定13列线性预测残差。
 
 after：一个固定13→8→1 tanh小网络预测final残差。
 
-状态：blocked_derivation
+状态：partial_negative
 
-诊断结论：见原始证据；算法分数前后不适用。
+诊断结论：Frozen13-8-1 networkLOO raw+1.91998%, all121gradient finite-difference contract passed; chargedcandidate and independent confirmation not passed；算法分数前后不适用。
 
 - [ablation_v30_110_gradient_contract.json](../../results/phase2/ablation_v30_110_gradient_contract.json)
 
