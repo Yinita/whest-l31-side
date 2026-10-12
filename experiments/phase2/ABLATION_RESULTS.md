@@ -1582,6 +1582,7 @@ after：一个固定13→8→1 tanh小网络预测final残差。
 诊断结论：Frozen13-8-1 networkLOO raw+1.91998%, all121gradient finite-difference contract passed; chargedcandidate and independent confirmation not passed；算法分数前后不适用。
 
 - [ablation_v30_110_gradient_contract.json](../../results/phase2/ablation_v30_110_gradient_contract.json)
+- [ablation_v30_110_tanh_legal_inference.json](../../results/phase2/ablation_v30_110_tanh_legal_inference.json)
 
 ### v30.111 L16 单前层修正递推注入
 

@@ -645,3 +645,5 @@ L29实际finalprestate固定48neuron subset无label积分收敛核验48/96/192�
 O03/H15合并oldsource系数的Gaussian ReLU赋值核验：ua=2m1,w=Phi，ua−2w*m1=2m1(1−Phi)，与K211wing A吻合。NonGaussian derivative修正和官方budgetclass完整映射仍待。
 
 L14连续hinge推理合法组件及边界finite核验通过；synthetic coefficients只验证API/连续表示，不是实际负CV模型整网score，partial_negative保持。
+
+L15实际train1–7、held0、500step固定tanh模型已合法float32matmul/tanh推理核验，收费与float64偏差记录。未构建完整candidate，原8foldraw+1.91998%负结果不变。
