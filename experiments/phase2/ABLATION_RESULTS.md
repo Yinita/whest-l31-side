@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 17, 'completed_diagnostic': 20, 'partial_diagnostic': 11, 'blocked_derivation': 30, 'partial_negative': 12, 'pending': 11, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 17, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 29, 'partial_negative': 12, 'pending': 11, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -736,9 +736,10 @@ after：用原始Coff的lawful random estimator估计exact alloutput triangle co
 
 状态：partial_derivation
 
-诊断结论：Exhaustive small Rademacher expectation exact; actual signal/variance/cost gate pending；算法分数前后不适用。
+诊断结论：Unbiased expectation and exact Rademacher variance law checked; actual network signal/cost/variance candidate gate pending；算法分数前后不适用。
 
 - [ablation_v30_061_triangle_unbiased.json](../../results/phase2/ablation_v30_061_triangle_unbiased.json)
+- [ablation_v30_061_triangle_variance_formula.json](../../results/phase2/ablation_v30_061_triangle_variance_formula.json)
 
 ### v30.063 O01 官方K31截断生产逐项一致性
 
@@ -824,6 +825,18 @@ after：证明exact复杂度和内存或给出反例
 诊断结论：Exact no-cubic-intermediate diagonal contraction verified; O(R*n^3), not unqualified O(n^3). Full cumulative repeated-content production and charged operator formula remain pending；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
+
+### v30.078 O16 covariance triangle exact多层small诊断
+
+before：仅低秩last-only阴性证据
+
+after：exact small triangle跨层传播
+
+状态：partial_diagnostic
+
+诊断结论：Exact distinct synthetic triangle three-layer transport; real benchmark signal/conversion/cost gate pending；算法分数前后不适用。
+
+- [ablation_v30_078_exact_triangle_transport.json](../../results/phase2/ablation_v30_078_exact_triangle_transport.json)
 
 ### v30.079 O17 当前官方WK22 path与旧lean等价审计
 

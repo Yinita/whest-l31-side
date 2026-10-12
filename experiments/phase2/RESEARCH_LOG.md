@@ -477,3 +477,7 @@ L25 CP source的D3=sum_r(WA)(WB)(WC)及first-order均值系数−alpha*phi/(6sig
 ## 完整core表示诊断准备
 
 H17三条Gaussian covariance path的K211 cap在n4/7/11显式distinct指标核验通过，尚缺完整pK→K转换、projection和已有proxy去重。O05合成有限支撑fullκ4计算identity-metriccore，记录diag-only及diag+oracleλC的表示残差和谱；O10保存50/90/99%能量的秩需求。这些是合成offline上限，不是实际比赛network完整production，也不解锁尚缺真实父对象的候选。
+
+## triangle精确合同
+
+O16 n4/7/11 exact all-distinct covariance triangle及三层冻结门控运输核验通过，真实比赛状态和贡献仍待。H31 Rademacher无偏trace估计精确方差Var=2||offdiag(Sym((diag(a)Coff)^3))||F²，n3/4/7穷举全部probe通过；记录10%相对标准误所需probe，真实信号/预算未测。不能因无偏性声称可提分。
