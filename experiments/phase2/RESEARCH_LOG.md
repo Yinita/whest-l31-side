@@ -719,3 +719,9 @@ O12 slab4 output batch对照exactformula通过，r03重复mask费用339632@16，
 O12 r05唯一主要变化covariance先zero diagonal一次，再所有output batch共享，n16费用271560（对scalar273968−0.879%），n4/8也略降；sameexact error<2e-6，calls/timing未测，真实state尚待，无整网score。
 
 O12固定mediumscale n32/r4、n64/r8 actual legalcost [{"n": 32, "rank": 4, "relative_error": 1.5193423905657255e-06, "flops": 2069136, "max_intermediate_elements": 4096}, {"n": 64, "rank": 8, "relative_error": 1.8658543012861628e-06, "flops": 32262432, "max_intermediate_elements": 16384}]，synthetic exactoracle，未生产1024或真实state，无score。
+
+O12真实1024/rank1合法exact component：FLOPs16136016384、wall6.74018s、residual0.16807s、max4n²intermediate；无fulloracle at1024、boundedcontracts separate，syntheticstate不算candidate score。rank4资源接续测量，不从rank1线性外推通过。
+
+O12 productionrank4 slab4实际wall26.534s、FLOPs64529895936、residual0.65928s>0.4，component资源否决，不作candidate合规；固定slab16单因素重测已开始。
+
+O12 rank4唯一slab4→16实测费用相同64529895936，wall26.534→39.083s、residual0.65928→0.68671s，仍失败且更慢。负结果保留，不能以calls减少假称resource通过。1024/16/16 intermediate64MiB。
