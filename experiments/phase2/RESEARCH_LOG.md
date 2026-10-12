@@ -787,3 +787,7 @@ H31 actualtargetfree publicnetwork0 layer14 fixedoutput0-3 exactvariance noisega
 H06 rebuilt90unpruned SIMPLE historicalrecords with30Wickpairs, independent96Hermitechecks passed. r03 predict failed alpha6/sigma−7 basis needed; r04 extends lawfulalpha/sigmabasis, new immutableversion underway. Not an algorithmnegative before fix.
 
 H06 rebuiltunprunedr04 {"before_raw": 2.290466483145792e-08, "after_raw": 2.3258568404571633e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.234977996005021e-09, "failures": 0, "scope": "90historicalunpruned reconstruction, inferred dependencyalignment, augmentedappend retained; not exact94term historical replication", "conclusion": "Worsens raw and adjusted, no expansion; H06 stricthistoricalgenerator proof remains incomplete"}; partialhistoricalproof retained.
+
+O18 B1 fullsymmetricCP explicitdense birth andtransport D3/D21 vs V29 groupedLA/LP/thinfeedback compensation n4/7/11 error<1.5e-14. FullB2/WK22 officialisomorphism remainsmissing, partial retained.
+
+H08 thinfeedback derivativegrade targetw2/w2 vs V29w1/w3 distinct; firstorientation assertion caughtwrongtranspose. CorrectsyntheticD=.QBm comparator passed, but officialK21/K12 conventions notyetaligned, nofullcoverage or candidateclaim.
