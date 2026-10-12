@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 29, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 19}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1928,12 +1928,14 @@ before：长消融列表容易反复查看同一确认集而失去独立性。
 
 after：每次拟合/调参/查看reference都记录selection ledger，确认集首次查看后降为开发集。
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Prequeue benchmarks and identifiable offlineCV runs indexed; hypothesis/effective-selection count and final confirmation pending；算法分数前后不适用。
+诊断结论：All129queue evidence mapping verified no missingpaths; benchmark/offline reports indexed incl failures; effectiveindependent trialcount unknown, public8-15 opened and independentstronglabels absent explicit；算法分数前后不适用。
 
 - [ablation_v30_129_selection_ledger.json](../../results/phase2/ablation_v30_129_selection_ledger.json)
 - [ablation_v30_129_r02_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r02_comprehensive_selection_ledger.json)
 - [ablation_v30_129_current_score_ledger_r02.json](../../results/phase2/ablation_v30_129_current_score_ledger_r02.json)
 - [ablation_v30_129_current_score_ledger_r03.json](../../results/phase2/ablation_v30_129_current_score_ledger_r03.json)
+- [ablation_v30_129_r04_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r04_comprehensive_selection_ledger.json)
+- [ablation_v30_129_r05_queue_evidence_index.json](../../results/phase2/ablation_v30_129_r05_queue_evidence_index.json)
 
