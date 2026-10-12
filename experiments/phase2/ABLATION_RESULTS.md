@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 24, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 21, 'partial_negative': 14, 'pending': 10}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 25, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'partial_negative': 15, 'pending': 10, 'blocked_derivation': 19}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -52,6 +52,7 @@
 | v30.108 | L13 | 2.27016599414e-08 | 2.27400364103e-08 | +0.169047% | 未计费验证 |
 | v30.109 | L14 | 2.27016599414e-08 | 2.28363089459e-08 | +0.593124% | 未计费验证 |
 | v30.110 | L15 | 2.27016599414e-08 | 2.31375281148e-08 | +1.919984% | 未计费验证 |
+| v30.124 | L29 | 2.27016596632e-08 | 3.44085568893e-08 | +51.568464% | 未计费验证 |
 
 ## 归因与证据
 
@@ -490,6 +491,18 @@ predict=27.788835s；residual=0.233054s；FLOPs=587262754287；peak child RSS=39
 - [ablation_v30_027_r01_mini1_local.log](../../results/phase2/ablation_v30_027_r01_mini1_local.log)
 - [ablation_v30_027_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_027_r01_mini1_local.launcher.log)
 - [ablation_v30_027_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_027_r01_mini1_local.validate.log)
+
+### v30.028 C28 分区清理不再需要的scratch常驻
+
+before：最终层仍保留早层宽大bufs，8GiB虚拟内存接近界限
+
+after：明确final-only路径可复用废弃PK2/legs buffers而非申请新scratch
+
+状态：partial_derivation
+
+诊断结论：Static scratch use bounds inventoried; dynamic escapedview alias/poison contracts required before reuse；算法分数前后不适用。
+
+- [ablation_v30_028_static_liveness.json](../../results/phase2/ablation_v30_028_static_liveness.json)
 
 ### v30.029 C29 三角C_pre阶段批量copy调度
 
@@ -1316,17 +1329,30 @@ after：用合法末端mean Jacobian代理估计来源贡献并排序，不看re
 - [ablation_v30_120_mean_adjoint_contract.json](../../results/phase2/ablation_v30_120_mean_adjoint_contract.json)
 - [ablation_v30_120_source_d3_contract.json](../../results/phase2/ablation_v30_120_source_d3_contract.json)
 
+### v30.123 L28 末端均值控制变量相关性
+
+before：未确认廉价样本支路能解释V29残差。
+
+after：在少量开发网络离线测合法低阶代理与真实输出样本的残差相关性。
+
+状态：partial_derivation
+
+诊断结论：Fixed train/held control-variate variance/cost gate derived; actualknown-expectation networkproxy and pairedsignals pending；算法分数前后不适用。
+
+- [ablation_v30_122_control_variate_budget.json](../../results/phase2/ablation_v30_122_control_variate_budget.json)
+
 ### v30.124 L29 条件高斯最后层积分对照
 
 before：最后层均值依赖Hermite边缘展开。
 
 after：对末层pre均值/方差/偏度构造规范化一维积分诊断，和截断展开比较。
 
-状态：partial_derivation
+状态：partial_negative
 
-诊断结论：Positive normalized skew-normal mu/var/skew matching checked; actual network final-state integration pending；算法分数前后不适用。
+诊断结论：Positive normalized moment-matched skew-normal finalreadout worsens all8raw networks ~52%; no chargedcandidate；算法分数前后不适用。
 
 - [ablation_v30_123_positive_skew_family.json](../../results/phase2/ablation_v30_123_positive_skew_family.json)
+- [ablation_v30_123_positive_family_network_screen.json](../../results/phase2/ablation_v30_123_positive_family_network_screen.json)
 
 ### v30.125 L30 末层尾概率数值稳定性
 

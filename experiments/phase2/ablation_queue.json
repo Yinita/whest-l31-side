@@ -22384,7 +22384,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -22393,7 +22393,13 @@
       "output_prefix": "results/phase2/ablation_v30_028",
       "dependency_ids": [
         "WB-P2-A026"
-      ]
+      ],
+      "evidence": [
+        "results/phase2/ablation_v30_028_static_liveness.json"
+      ],
+      "result": {
+        "conclusion": "Static scratch use bounds inventoried; dynamic escapedview alias/poison contracts required before reuse"
+      }
     },
     {
       "key": "C29",
@@ -34427,7 +34433,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -34436,7 +34442,13 @@
       "output_prefix": "results/phase2/ablation_v30_123",
       "dependency_ids": [
         "WB-P2-A096"
-      ]
+      ],
+      "evidence": [
+        "results/phase2/ablation_v30_122_control_variate_budget.json"
+      ],
+      "result": {
+        "conclusion": "Fixed train/held control-variate variance/cost gate derived; actualknown-expectation networkproxy and pairedsignals pending"
+      }
     },
     {
       "key": "L29",
@@ -34460,7 +34472,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_derivation",
+      "status": "partial_negative",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -34469,10 +34481,74 @@
       "output_prefix": "results/phase2/ablation_v30_124",
       "dependency_ids": [],
       "evidence": [
-        "results/phase2/ablation_v30_123_positive_skew_family.json"
+        "results/phase2/ablation_v30_123_positive_skew_family.json",
+        "results/phase2/ablation_v30_123_positive_family_network_screen.json"
       ],
       "result": {
-        "conclusion": "Positive normalized skew-normal mu/var/skew matching checked; actual network final-state integration pending"
+        "conclusion": "Positive normalized moment-matched skew-normal finalreadout worsens all8raw networks ~52%; no chargedcandidate",
+        "offline_cv": {
+          "before_raw": 2.2701659663226792e-08,
+          "after_raw": 3.440855688928956e-08,
+          "per_network": [
+            {
+              "network_id": 0,
+              "before_raw": 2.290466483145792e-08,
+              "after_raw": 3.4813506590471304e-08,
+              "ratio": 1.519930845818684,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 1,
+              "before_raw": 2.0846220749604072e-08,
+              "after_raw": 3.3215539252961605e-08,
+              "ratio": 1.5933602379027125,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 2,
+              "before_raw": 2.6134832964430643e-08,
+              "after_raw": 3.963617069909279e-08,
+              "ratio": 1.516603176803823,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 3,
+              "before_raw": 2.5000305825528812e-08,
+              "after_raw": 3.646473705766251e-08,
+              "ratio": 1.458571639568781,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 4,
+              "before_raw": 2.2059433391063976e-08,
+              "after_raw": 3.3959946836297305e-08,
+              "ratio": 1.539475027951266,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 5,
+              "before_raw": 1.96105212069142e-08,
+              "after_raw": 3.058797615061511e-08,
+              "ratio": 1.5597737473612137,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 6,
+              "before_raw": 2.0804666434059982e-08,
+              "after_raw": 3.244648218755134e-08,
+              "ratio": 1.559577140560743,
+              "invalid_skews": 0
+            },
+            {
+              "network_id": 7,
+              "before_raw": 2.425263190275473e-08,
+              "after_raw": 3.4144096339664495e-08,
+              "ratio": 1.4078511757639898,
+              "invalid_skews": 0
+            }
+          ],
+          "scope": "fixedpositivefamilyoffline nofit"
+        }
       }
     },
     {
