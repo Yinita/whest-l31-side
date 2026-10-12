@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 38, 'completed_diagnostic': 26, 'partial_negative': 14, 'partial_diagnostic': 22}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 26, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 22}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -403,13 +403,16 @@ before：D3 feedback先显式Xt、Yt完整n²矩阵，再计算A·Yt和Xt·A·w2
 
 after：在trim将两个线性项重排为(AP) @ R2T与(AP·w2) @ R1T再与F2/F1逐行收缩，XtYt交叉项保持旧式
 
-状态：partial_derivation
+状态：completed_negative
 
-诊断结论：Exact two linearterm factor formulas checked; crossXtYt still needs denseXt/Yt; naive newGEMMs increase cost, candidate/full score pending；算法分数前后不适用。
+诊断结论：Thinlinear exact regroup with densecross preserved tested whole network0, extraGEMM fee exceeds savings; zero failures but adjusted worse, reject implementation；算法分数前后不适用。
 
 - [ablation_v30_020_feedback_cost.json](../../results/phase2/ablation_v30_020_feedback_cost.json)
 - [ablation_v30_020_charged_feedback_component.json](../../results/phase2/ablation_v30_020_charged_feedback_component.json)
 - [ablation_v30_020_exact_operation_cost.json](../../results/phase2/ablation_v30_020_exact_operation_cost.json)
+- [ablation_v30_020_r03_decision.json](../../results/phase2/ablation_v30_020_r03_decision.json)
+- [ablation_v30_020_r02_mini1.json](../../results/phase2/ablation_v30_020_r02_mini1.json)
+- [ablation_v30_020_r03_mini1.json](../../results/phase2/ablation_v30_020_r03_mini1.json)
 
 ### v30.021 C21 nonlinearity中广播d3/g4向量不materialize
 
