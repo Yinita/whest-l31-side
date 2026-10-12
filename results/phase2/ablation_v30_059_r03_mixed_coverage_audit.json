@@ -1,0 +1,61 @@
+{
+  "output": [
+    1,
+    1,
+    1
+  ],
+  "partition": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "official_orbit_count": 3,
+  "official_factored_keeps": false,
+  "source_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+  "source_evidence": {
+    "Xt = fnp.einsum": [
+      {
+        "line": 1569,
+        "text": "Xt = fnp.einsum(\"kiq,kjq->kij\", F1, R1T_st, out=bufs[\"xt\"][:k])"
+      }
+    ],
+    "Yt = fnp.einsum": [
+      {
+        "line": 1570,
+        "text": "Yt = fnp.einsum(\"kiq,kjq->kij\", F2, R2T_st, out=bufs[\"yt\"][:k])"
+      }
+    ],
+    "X1 = 3 a_b + Xt": [
+      {
+        "line": 65,
+        "text": "X1 = 3 a_b + Xt,   Xt = 1.5 d(w2) D21            ~ F1 R1,  F1 = d(w2) Q,   R1 = 1.5 Bm"
+      }
+    ],
+    "LPadd = A*Yt": [
+      {
+        "line": 1572,
+        "text": "# LPadd = A*Yt + (1/3) Xt*A*w2 + (1/3) Xt*Yt  (in T);  D3 += 3 rowsum(P*LPadd)"
+      }
+    ]
+  },
+  "official_sources": [
+    {
+      "path": "src/mlp_kprop/partitions.py",
+      "sha256": "acb944b9b6f5823affc9baae5946662330abda658ae79c08294ee32aec4536dd"
+    },
+    {
+      "path": "src/mlp_kprop/kprop_harmonic.py",
+      "sha256": "45e5fcc030bdb6bfba526898fdd53a650b83193e992cfad51e9422ccb70e11c1"
+    }
+  ],
+  "conclusion": "Target K111*covariance orbit is explicitly excluded by official factored filter. V29 feedback constructs D21/covariance products and transports thin legs; that alone does not prove mixed full K111 is present. Birth mapping of all sources and raw third-state factors must be audited before restoration.",
+  "scope": "Static source coverage triage; missing in official filter proven, V29 whole-state overlap not yet resolved",
+  "score": null
+}
