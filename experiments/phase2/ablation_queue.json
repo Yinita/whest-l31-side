@@ -29,9 +29,9 @@
     "completed_diagnostic": 30,
     "partial_negative": 14,
     "partial_derivation": 33,
-    "partial_diagnostic": 18,
+    "partial_diagnostic": 19,
     "partial_mapping": 1,
-    "pending_derivation": 4
+    "pending_derivation": 3
   },
   "first_batch_keys": [
     "C24",
@@ -53200,16 +53200,26 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "pending_derivation",
+      "status": "partial_diagnostic",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
-      "candidate_path": null,
+      "candidate_path": "estimators/paper_m02_gaussian_r01/estimator.py",
       "output_prefix": "results/phase2/paper_m02",
       "dependency_ids": [
         "WB-P2-M01"
       ],
-      "evidence": [],
-      "result": {}
+      "evidence": [
+        "results/phase2/paper_m02_r01_mini1.json",
+        "results/phase2/paper_m02_r01_mini1.manifest.json"
+      ],
+      "result": {
+        "scope": "full layerwise Gaussian closure with finite order12 covariance series, not infinite exact kernel",
+        "conclusion": "network0 adjusted4.0572690522822087e-7 raw4.057269052282209e-6 zero failures, inferior to V29; convergence and complete method audit remain pending",
+        "after_adjusted": 4.0572690522822087e-07,
+        "after_raw": 4.057269052282209e-06,
+        "failures": 0
+      },
+      "candidate_sha256": "4bb45dc34f923a6098476270fbca7beabf5bd6277c989118f018e850857f2453"
     },
     {
       "key": "M03",

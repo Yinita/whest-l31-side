@@ -841,3 +841,7 @@ D01 RPC completed: adjusted5.571416345804054e-9/raw2.270960353101259e-8,8zero fa
 D03combined fullMini8 completed:8/8residual failures0.40158–0.44373s; official failure score/raw0.9508292376995087,not usable numericalquality evidence. Reject currentcomposition resourcegate; no relaxlimit. D04consistentHermite12 single adjusted6.1520273258060704e-9/raw2.296076573315986e-8,zero fail; vscontemporaryV29 adjusted+0.5754%,negative no expansion. D05outputmetric starts serial pid223833/worker223843; next priorityM01–M03paper methods.
 
 D05current-outputmetric single leaf8parent: raw2.2903643426275266e-8→2.233110940608185e-8,adjusted5.936366116712754e-9→5.841760241627047e-9,zero fail,575258774255FLOPs. Provisionalsingle gain only,fullMini8r02 started serial; no independence/stage/top3 claim.
+
+D05Mini8 complete adjusted5.649307159786597e-9/raw2.280926514330872e-8,8zero failure; leaf8parent adjusted5.573952118067259e-9/raw2.2720653136687474e-8; adjusted+1.352%, reject promotion. M02 fullGaussian closure order12 covariance series launched; Wright2024PDFp3 visual checked, finite truncation explicitly distinguished from infinite analytic solution. Additional CPU resource access pending user details; measured prior single-core1e9 reference projection~75hours/network/seed, not completed reference.
+
+M02 order12 completeGaussian network0 adjusted4.0572690522822087e-7/raw4.057269052282209e-6,zero failures,util.0239621; negative relativeV29. Infinite-series convergence not yet accepted; M02 remains partial, no full-method completion claim.
