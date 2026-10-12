@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 21, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 22, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -526,12 +526,13 @@ before：math/local与RPC、普通subprocess环境行为差异已有但新重组
 
 after：固定candidate/source/data同网络逐operator/API和报告对照
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：C01 full Mini8 local/RPC measured; ordinary subprocess original resource-cap diagnostic still pending；算法分数前后不适用。
+诊断结论：C01 samehash full Mini8 math/local, RPC and originalcap subprocess measured; preserve resource failures, development server cap not official deployment proof；算法分数前后不适用。
 
 - [ablation_v30_030_r01_c01_mini8_rpc_scored.json](../../results/phase2/ablation_v30_030_r01_c01_mini8_rpc_scored.json)
 - [ablation_v30_001_r02_mini8_local.json](../../results/phase2/ablation_v30_001_r02_mini8_local.json)
+- [ablation_v30_030_r02_c01_mini8_subprocess.json](../../results/phase2/ablation_v30_030_r02_c01_mini8_subprocess.json)
 
 ### v30.031 H01 边际D3平方产品补全
 
@@ -1307,6 +1308,8 @@ after：新分片state-only机制分布诊断
 - [ablation_v30_089_frozen_shift_features.json](../../results/phase2/ablation_v30_089_frozen_shift_features.json)
 - [ablation_v30_089_distribution_shift.json](../../results/phase2/ablation_v30_089_distribution_shift.json)
 - [ablation_v30_089_reserved_state_only.json](../../results/phase2/ablation_v30_089_reserved_state_only.json)
+- [ablation_v30_089_distribution_shift.json](../../results/phase2/ablation_v30_089_distribution_shift.json)
+- [ablation_v30_089_reserved_state_only.json](../../results/phase2/ablation_v30_089_reserved_state_only.json)
 
 ### v30.090 O28 新seed网络的diagram规模law核验
 
@@ -1420,6 +1423,7 @@ after：只在final输出追加一个开发网络拟合的13特征线性残差�
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
 - [ablation_v30_098_charged_readout_component.json](../../results/phase2/ablation_v30_098_charged_readout_component.json)
+- [ablation_v30_098_r03_fold0_mini1_local.json](../../results/phase2/ablation_v30_098_r03_fold0_mini1_local.json)
 
 ### v30.099 L04 删除常数特征的修正对照
 

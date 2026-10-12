@@ -26826,7 +26826,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_diagnostic",
+      "status": "completed_diagnostic",
       "allow_lower_reasoning_execution": true,
       "lower_reasoning_boundary": "May implement the exact specification and validate; any absent formula/coefficient/API/cost proof changes status to blocked_derivation, no guessing",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -26838,14 +26838,17 @@
       ],
       "evidence": [
         "results/phase2/ablation_v30_030_r01_c01_mini8_rpc_scored.json",
-        "results/phase2/ablation_v30_001_r02_mini8_local.json"
+        "results/phase2/ablation_v30_001_r02_mini8_local.json",
+        "results/phase2/ablation_v30_030_r02_c01_mini8_subprocess.json"
       ],
       "result": {
-        "conclusion": "C01 full Mini8 local/RPC measured; ordinary subprocess original resource-cap diagnostic still pending",
+        "conclusion": "C01 samehash full Mini8 math/local, RPC and originalcap subprocess measured; preserve resource failures, development server cap not official deployment proof",
         "rpc_adjusted": 5.748034693185937e-09,
         "rpc_raw": 2.269812404698257e-08,
         "rpc_failures": 0,
-        "score_applicable": false
+        "score_applicable": false,
+        "subprocess_failures": 3,
+        "subprocess_adjusted": 0.4106652624053433
       }
     },
     {
@@ -40893,6 +40896,8 @@
       "evidence": [
         "results/phase2/ablation_v30_089_frozen_shift_features.json",
         "results/phase2/ablation_v30_089_distribution_shift.json",
+        "results/phase2/ablation_v30_089_reserved_state_only.json",
+        "results/phase2/ablation_v30_089_distribution_shift.json",
         "results/phase2/ablation_v30_089_reserved_state_only.json"
       ],
       "result": {
@@ -41271,7 +41276,8 @@
       ],
       "evidence": [
         "results/phase2/ablation_learning_loocv_r01.json",
-        "results/phase2/ablation_v30_098_charged_readout_component.json"
+        "results/phase2/ablation_v30_098_charged_readout_component.json",
+        "results/phase2/ablation_v30_098_r03_fold0_mini1_local.json"
       ],
       "result": {
         "conclusion": "OfflineCV negative; charged estimator pending",
@@ -41347,6 +41353,26 @@
           "adjusted_score": null,
           "reason": "Offline learned readout not yet implemented in charged flopscope estimator; cannot claim official adjusted score"
         }
+      },
+      "charged_fold0_result": {
+        "before_raw": 2.290466483145792e-08,
+        "after_raw": 2.284691369425218e-08,
+        "before_adjusted": 6.116832334984139e-09,
+        "after_adjusted": 6.101409994531986e-09,
+        "before_flops": 587262754287,
+        "after_flops": 587262798345,
+        "failures": 0,
+        "train_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "held_id": 0,
+        "scope": "Single held-network fold; not full8fold charged CV or independent final"
       }
     },
     {

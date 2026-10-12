@@ -619,3 +619,11 @@ H21三条official feed factor的自身重复content扣除和transport完整核�
 O03新增删除birth只改K111 conversion而冻结pK211时的精确mismatch=2sum(mu_a birth_abc)，distinct cap显式核验通过。这证明孤立删项破坏抵消，production/conversion必须同对象配对；官方truncated production map仍待。
 
 H15加权CP capped收缩合法组件通过，完整a=b/c与b=c排除、float32计费n8/16/32记录。此为真实合法ops组件，尚缺V29 hub extraction和生产coef全映射，无全网score。
+
+Serial followup collection: reserved distribution=True, originalcap C01 subprocess=True. Actual reports retained; resource failures do not imply algorithm score improvement or stage acceptance.
+
+C30 C01原8GB subprocess结束3/8error：network2/5 Worker closed stdout，network7 MemoryError无法分配375MiB。失败评分adjusted0.4106652624（含失败惩罚），不是精度收益；local/RPC零fail事实分别保留。L03 held0实际chargedPID4145765开始。
+
+L03 actualcharged heldfold0: {"before_raw": 2.290466483145792e-08, "after_raw": 2.284691369425218e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.101409994531986e-09, "before_flops": 587262754287, "after_flops": 587262798345, "failures": 0, "train_ids": [1, 2, 3, 4, 5, 6, 7], "held_id": 0, "scope": "Single held-network fold; not full8fold charged CV or independent final"}
+
+L03真实charged heldnetwork0结束零失败：adjusted6.101409994531986e-9、raw2.284691369425218e-8，对当前控制adjusted6.116832334984139e-9/raw2.290466483145792e-8。单fold有微幅改善，不能覆盖8fold离线负结果、不能当独立确认。C17r02 fullMini8已接续PID4146203。
