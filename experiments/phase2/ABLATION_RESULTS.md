@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 27, 'completed_diagnostic': 20, 'partial_diagnostic': 13, 'partial_negative': 15, 'pending': 9, 'blocked_derivation': 17}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 10, 'partial_derivation': 29, 'completed_diagnostic': 20, 'partial_diagnostic': 13, 'partial_negative': 15, 'pending': 8, 'blocked_derivation': 16, 'failed_validation': 1}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -31,7 +31,7 @@
 | v30.048 | H18 | completed_positive | 2.2702818514e-08 | 2.218065287e-08 | 5.77897975577e-09 | 5.64681649387e-09 | -2.286965% | +0.002807% | 0 |
 | v30.049 | H19 | completed_negative | 2.29046648315e-08 | 2.27738645719e-08 | 6.11683233498e-09 | 7.08275516689e-09 | +15.791226% | +16.456266% | 0 |
 | v30.050 | H20 | completed_negative | 2.29046648315e-08 | 2.31574261988e-08 | 6.11683233498e-09 | 7.20257411616e-09 | +17.750066% | +16.464834% | 0 |
-| v30.052 | H22 | completed_positive | 2.29046648315e-08 | 2.23081926265e-08 | 6.11683233498e-09 | 5.95829990493e-09 | -2.591741% | +0.012743% | 0 |
+| v30.052 | H22 | failed_validation | 2.29046648315e-08 | 2.23081926265e-08 | 6.11683233498e-09 | 5.95829990493e-09 | -2.591741% | +0.012743% | 0 |
 
 ## 离线学习快筛
 
@@ -758,15 +758,11 @@ before：D21 feedback sketch用当前weight列
 
 after：相同rank16下改用未来一两层weight和live average ReLU gate构造sketch
 
-状态：completed_positive
+状态：failed_validation
 
 predict=27.595352s；residual=0.234341s；FLOPs=587337588207；peak child RSS=3969560KiB；失败=0。
 
-- [ablation_v30_052_r01_mini1_local.json](../../results/phase2/ablation_v30_052_r01_mini1_local.json)
-- [ablation_v30_052_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_052_r01_mini1_local.manifest.json)
-- [ablation_v30_052_r01_mini1_local.log](../../results/phase2/ablation_v30_052_r01_mini1_local.log)
-- [ablation_v30_052_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_052_r01_mini1_local.launcher.log)
-- [ablation_v30_052_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_052_r01_mini1_local.validate.log)
+- [ablation_v30_052_r02_mini8_local.validate.log](../../results/phase2/ablation_v30_052_r02_mini8_local.validate.log)
 
 ### v30.054 H24 old-source basis按下一层D3敏感方向选择
 
@@ -817,6 +813,18 @@ after：用原始Coff的lawful random estimator估计exact alloutput triangle co
 
 - [ablation_v30_061_triangle_unbiased.json](../../results/phase2/ablation_v30_061_triangle_unbiased.json)
 - [ablation_v30_061_triangle_variance_formula.json](../../results/phase2/ablation_v30_061_triangle_variance_formula.json)
+
+### v30.062 H32 高阶newborn直接CP因素生成
+
+before：fully mixed K4/highorder未保留
+
+after：直接从current state和Gaussian diagram生成固定数量CP factors供historical transport
+
+状态：partial_derivation
+
+诊断结论：DirectCP tree factors exact but nR² rankgrowth; fixedboundedrank/state/cost candidate gate pending；算法分数前后不适用。
+
+- [ablation_v30_062_direct_cp_birth.json](../../results/phase2/ablation_v30_062_direct_cp_birth.json)
 
 ### v30.063 O01 官方K31截断生产逐项一致性
 
@@ -926,6 +934,18 @@ after：使用live covariance主模态近似edge并保留K111来源
 诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
 
 - [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+
+### v30.076 O14 K111乘edge代理误差门槛
+
+before：proxy仅通过代数
+
+after：proxy与exact收缩成对误差评估
+
+状态：partial_derivation
+
+诊断结论：Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending；算法分数前后不适用。
+
+- [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
 
 ### v30.078 O16 covariance triangle exact多层small诊断
 

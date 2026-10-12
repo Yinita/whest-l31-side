@@ -30138,7 +30138,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "completed_positive",
+      "status": "running",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -30147,11 +30147,7 @@
       "output_prefix": "results/phase2/ablation_v30_052",
       "dependency_ids": [],
       "evidence": [
-        "results/phase2/ablation_v30_052_r01_mini1_local.json",
-        "results/phase2/ablation_v30_052_r01_mini1_local.manifest.json",
-        "results/phase2/ablation_v30_052_r01_mini1_local.log",
-        "results/phase2/ablation_v30_052_r01_mini1_local.launcher.log",
-        "results/phase2/ablation_v30_052_r01_mini1_local.validate.log"
+        "results/phase2/ablation_v30_052_r02_mini8_local.validate.log"
       ],
       "result": {
         "scope": "Mini1 development only; no independent generalization claim",
@@ -30988,14 +30984,20 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "blocked_derivation",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
       "dependency_evidence_rule": "Mathematical/contract prerequisites require accepted checks and evidence, not merely completed status; algorithm prerequisites named as parents require frozen source and their explicit result gate",
       "candidate_path": "estimators/ablation_v30_062/estimator.py",
       "output_prefix": "results/phase2/ablation_v30_062",
-      "dependency_ids": []
+      "dependency_ids": [],
+      "evidence": [
+        "results/phase2/ablation_v30_062_direct_cp_birth.json"
+      ],
+      "result": {
+        "conclusion": "DirectCP tree factors exact but nR² rankgrowth; fixedboundedrank/state/cost candidate gate pending"
+      }
     },
     {
       "key": "O01",
@@ -31530,7 +31532,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "pending",
+      "status": "partial_derivation",
       "allow_lower_reasoning_execution": true,
       "lower_reasoning_boundary": "May implement the exact specification and validate; any absent formula/coefficient/API/cost proof changes status to blocked_derivation, no guessing",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -31539,7 +31541,13 @@
       "output_prefix": "results/phase2/ablation_v30_076",
       "dependency_ids": [
         "WB-P2-A075"
-      ]
+      ],
+      "evidence": [
+        "results/phase2/ablation_v30_076_edge_proxy_error_bound.json"
+      ],
+      "result": {
+        "conclusion": "Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending"
+      }
     },
     {
       "key": "O15",

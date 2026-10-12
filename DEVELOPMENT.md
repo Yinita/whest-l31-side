@@ -49,3 +49,5 @@
 当前H18完整Mini8 adjusted 5.646816493872825e-9（相对冻结基线−2.287%，零失败）；本地RPC完整Mini8 adjusted 5.647856469248522e-9，零失败；独立确认仍未完成，目标不递进。C03/C05增费未通过条目门槛，C06微小差待重复控制归因。逐项真实结果见消融结果。
 
 C16 r03固定16行调度Mini8 adjusted 5.750992775997765e-9（−0.4843%），8/8零失败，最大residual0.2527s；r02原2/8超residual失败保留。RPC及独立确认仍待。
+
+C16 r05完整Mini8 RPC adjusted 5.7525138595226505e-9、8/8零失败，最大residual0.1502s；r04输入CRC失败单独保留。H22未来权重sketch单网adjusted−2.5917%，完整Mini8 r03运行中；H19/H20 dense metric slices分别adjusted+15.791%/+17.750%，否决当前高费实现。

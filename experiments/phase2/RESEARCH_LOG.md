@@ -527,3 +527,9 @@ L35 r02选择账本扩展到队列前benchmark和可辨认offlineCV报告，包�
 C28静态liveness记录pool调用与scratch词法范围，明确views/functioncalls/跨层引用不能由最后词法use推断释放，动态poison和alias合同仍待。L29正密度skew-normal用真实缓存final mu/var/D3、固定96点积分零拟合，8网无偏度越界但全部raw更差，aggregate2.2701659663e-8→3.4408556889e-8（+51.5685%），否决当前family。L28推导固定训练/独立held控制变量beta与费用门槛rho²>1−1/k，仅合成合同；实际knownexpectation networkproxy仍未定。
 
 O03old/birth任意split+pK211−2mean*K111−2CovCov整体有限分布合同n4/7通过，官方同预算生产尚待。O13/H29固定rank1edge乘CPsource可表达成3类symCP（总3R列），小完整tensor和distinct排除核验通过；真实live covariance主模态/近似误差、diagramcoverage/Wick系数和计费未通过，不自动解锁候选。
+
+## C16 RPC确认与H22扩量启动诊断
+
+C16 r05修复输入独立目录+CRC/SHA后8/8RPC完成：adjusted5.7525138595226505e-9，raw2.271493215744158e-8，max localrawdelta0.0955182%，clientRSS1488080KiB，逐网FLOP固定+16,777,216，零失败。tokenless研发部署1GiBcap仍非官方参数确认；独立未见网络未验收。H22 r02 validation异常非零且日志0byte，启动根因未确立（可能前RPC评分仍运行争资源）；单独r03preflight68ms通过，r03Mini8现已串行启动，保留r02空日志不作算法否决。
+
+H32直接treeCP构造小tensor合同通过，但列数nR²随宽度增长，不能当fixedsmallrank候选。O14固定edge近似误差上界||E||max||T||F合成核验，真实主模态/丢失信号门槛仍待。
