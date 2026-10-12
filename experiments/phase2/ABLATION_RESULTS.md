@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'pending_derivation': 3, 'partial_diagnostic': 19, 'partial_derivation': 33, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'partial_diagnostic': 20, 'partial_derivation': 33, 'pending_derivation': 2, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -93,6 +93,18 @@ after：分开basic/augmented/factorized，标记恒等式、截断、适用条�
 诊断结论：Initial primary-paper section and frozen official-code/local evidence mapping; complete algorithm correspondence and reproduction remain pending；算法分数前后不适用。
 
 - [PAPER_M01_MAPPING_2026-10-12.md](../../experiments/phase2/PAPER_M01_MAPPING_2026-10-12.md)
+
+### paper.M03.r01 M03 Wu2026阶数及表示方法对照
+
+before：V29仅压缩K3，K4/K5探针不完整
+
+after：成本可行的官方basic/augmented/factorized端到端K2/K3及可行K4精度成本曲线
+
+状态：partial_diagnostic
+
+诊断结论：K3augmented91dense/87factor retained;K4augmented331/324. K2factor same unfactored, no score or FLOP claim；算法分数前后不适用。
+
+- [paper_m03_r01_variant_inventory.json](../../results/phase2/paper_m03_r01_variant_inventory.json)
 
 ### v30.065 O03 K211完整来源抵消一致性
 

@@ -853,3 +853,5 @@ User requested is_promising排序 and more CPU pilot. Added judgment/rationale/e
 Status20261012:8shards completed578–753seconds,1392–1814samples/s,8388608samples. Wide64 batch preempted/restarted despite retries0 then900s input timeout; list(map)aborted, no complete saved result. Earlier1.30USDreservation is not verified actualcost or strict billingcap; appstopped,no new dispatch until usage audit and short-shard incremental persistence.
 
 Shortpilot r02 finished32/32 tasks zeroerrors, incremental32record journal persists. Previous8388608sample reference estimated noiseMSE9.3862e-9, split-half difference3.1267e-8; insufficient to certify tiny candidate gains. No higherbudget dispatch before billingaudit.
+
+20:46coordination: billing report API Oct1–now empty, actualcost/balance unverifiable; apps allstopped, no cloud dispatch. Restoredofficial93d091a4 temporarycache. M03boundeddegree<=4 inventory K3aug91/87,K4aug331/324;K2factor uses unfactored path, do not apply genericpruning filter as method. Numericalfullvariants pending.

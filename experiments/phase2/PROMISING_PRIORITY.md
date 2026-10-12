@@ -5,7 +5,7 @@
 | 顺序 | is_promising | 执行优先级 | key | 版本 | 名称 | 状态 | 判断依据 |
 |---:|---|---|---|---|---|---|---|
 | 1 | true | P0 | M01 | paper.M01.r01 | 论文—官方代码—本地映射 | partial_mapping | 结构性机制或论文完整对照；尚未证明收益 |
-| 2 | true | P0 | M03 | paper.M03.r01 | Wu2026阶数及表示方法对照 | pending_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 2 | true | P0 | M03 | paper.M03.r01 | Wu2026阶数及表示方法对照 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 3 | true | P0 | O03 | v30.065 | K211完整来源抵消一致性 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 4 | true | P0 | O05 | v30.067 | 完整K31/K211生产核的离线表示上限 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 5 | true | P0 | O06 | v30.068 | 完整生产核单层替换诊断 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
