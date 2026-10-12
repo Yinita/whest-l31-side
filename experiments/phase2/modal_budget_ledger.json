@@ -1,0 +1,38 @@
+{
+  "authorized_cap_usd": 30,
+  "confirmed_account_remaining_credit_usd": null,
+  "pricing_source": "https://modal.com/pricing",
+  "cpu_usd_per_physical_core_second": 1.31e-05,
+  "memory_usd_per_gib_second": 2.22e-06,
+  "reserved_usd": 0.2,
+  "billed_actual_usd": null,
+  "runs": [
+    {
+      "id": "pilot_r01",
+      "app_id": "ap-hZCb6G1n31USbeaUdRDbTn",
+      "status": "completed",
+      "max_tasks": 2,
+      "cpu_hard_limit": 1,
+      "memory_hard_limit_mib": 1024,
+      "timeout_seconds": 180,
+      "retries": 0,
+      "reservation_usd": 0.05,
+      "source_sha256": "15c3a09ff63efa1f673cf8d20dd0c93edf82dc79377b5e05cd9d6e58cecf2f5c",
+      "report": "results/phase2/modal_cpu_pilot_r01.json"
+    },
+    {
+      "id": "shards_r01",
+      "status": "reserved",
+      "max_tasks": 8,
+      "cpu_hard_limit": 1,
+      "memory_hard_limit_mib": 1024,
+      "timeout_seconds": 900,
+      "retries": 0,
+      "reservation_usd": 0.15,
+      "samples_per_shard": 1048576,
+      "scope": "independent noise/throughput diagnostic; not strong reference"
+    }
+  ],
+  "policy": "Reserve before dispatch; no retries or unbounded jobs; leave budget margin for startup and billing differences. Account remaining credit unknown; do not claim billing balance verified.",
+  "updated_at_utc": "2026-10-12T10:15:30.741101+00:00"
+}
