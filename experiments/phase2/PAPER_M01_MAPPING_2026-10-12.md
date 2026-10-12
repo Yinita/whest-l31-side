@@ -16,3 +16,16 @@
 论文报告：basic成本上界c_K L n^(K+1)，factorized(K≥3)为c_K L² n^K；计量使用论文自己的对称核调整，不能直接移植为本比赛flopscope收费。论文经验实验宽度4–256、深度2–12、阶数1–4，不等于竞赛1024×16验证。论文指出宽256深8的K4可差于采样，需先成本门槛。
 
 后续M01：冻结每个official入口参数、状态shape、输出项与本地完整对应；随后M02完整Gaussian闭合与M03小/中shape四种变体，竞赛候选只通过允许算子端到端计费。已有D02 covariance-only负结果/D04三通道Hermite尾项分别复用，不称完整Wright方法。
+
+## M03 r11/r12：最早分叉与残差全秩消融（2026-10-13）
+
+相同float32权重、64×4、两固定seed下，V29与官方SIMPLE/AUGMENT第一层均值逐元素完全一致；差距首次出现在第二层。SIMPLE第二层均值差MSE为9.614e-8/1.252e-7。这是预测间差异，不是真值误差或分数提升。
+
+| 单因素版本 | seed | before raw MSE | after raw MSE | 变化 | charged FLOPs before → after |
+|---|---|---:|---:|---:|---:|
+| M03-r12，R_RES16→64，R_FB保持16 | 13026031 | 1.9517205e-5 | 1.8978465e-5 | −2.7603% | 28,541,708 → 44,239,628 |
+| 同上 | 13026032 | 7.5005931e-6 | 7.9081352e-6 | +5.4335% | 同上 |
+
+两次零异常，但全秩残差不能恢复论文逐层一致性，不扩大秩扫描。小形状使用旧共同MC reference，仅作诊断，不能转换为比赛adjusted或独立泛化声明。下一项是第二层preactivation协方差和K3对角收缩分解。
+
+证据：`results/phase2/paper_m03_r11_layer_{v29,official,summary}.json`与`paper_m03_r12_resfull_{same64,summary}.json`；实现脚本`experiments/phase2/paper_m03_layer_parity.py`、`paper_m03_resfull_same64.py`。ruff和diff检查通过。
