@@ -961,6 +961,9 @@ after：恢复一个明确vector partition轨道的mixed新born source
 - [ablation_v30_059_060_r04_factor_repeats.json](../../results/phase2/ablation_v30_059_060_r04_factor_repeats.json)
 - [ablation_v30_059_r03_mixed_coverage_audit.json](../../results/phase2/ablation_v30_059_r03_mixed_coverage_audit.json)
 - [ablation_v30_067_r07_cp_k111_charged_component.json](../../results/phase2/ablation_v30_067_r07_cp_k111_charged_component.json)
+- [ablation_v30_059_r04_real_source_columns.json](../../results/phase2/ablation_v30_059_r04_real_source_columns.json)
+- [ablation_v30_059_r05_layer14_real_source_columns.json](../../results/phase2/ablation_v30_059_r05_layer14_real_source_columns.json)
+- [ablation_v30_059_r06_real_layer14_edge_signal.json](../../results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json)
 
 ### v30.060 H30 K111乘covariance边一层收缩
 

@@ -735,3 +735,7 @@ C29完整triangular compute+mirror+packedscatter合法数值逐值相同，但n3
 O12 rank16 freshprocess相同syntheticseed资源复验wall3.76513/residual0.20622，FLOPs206817513984完全同，非independent network。report文件名independent仅指新进程，不可当独立泛化；actualsource integration未完成。
 
 O12 fulloutput GEMM batchrank16唯一调度变化slab64→1024，FLOPs206817513984同，wall1.73510s/residual0.015146，largestn²；32/64独立denseoracle fullbatch合同再通过。组件瓶颈解决，但source因子范围/fullnetwork分数仍待。
+
+H29 r04原finalprestate trace保存layer15固定16B1columns，但C_off为None（trim），因此covariance缓存无效，不用于edge诊断；process读入旧代码，编辑准备仅后续生效。新r05固定layer14串行重新采集，旧report/cache保留。
+
+H29 actual network0 fixedlayer14年轻B1first16columns targetfree采集后mixededge nextlayerD3 RMS1.25492e-6/max5.38290e-6，合法费用206817513984/wall2.174/residual0.01561；omit othercolumns/sources/feedback/feed/M，非fullK111，scope不称提分。r04 finalNone covariance明确无效，r05有效covariance1024²。
