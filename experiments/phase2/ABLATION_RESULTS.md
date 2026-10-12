@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 20, 'partial_diagnostic': 22, 'partial_negative': 15, 'pending': 4}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 18, 'completed_negative': 10, 'partial_derivation': 40, 'completed_diagnostic': 20, 'partial_diagnostic': 24, 'partial_negative': 15, 'pending': 2}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -519,6 +519,19 @@ after：保持相同上三角算法，将同尺度的输入/输出布局用持�
 
 - [ablation_v30_029_layout_contract.json](../../results/phase2/ablation_v30_029_layout_contract.json)
 - [ablation_v30_029_scatter_contract.json](../../results/phase2/ablation_v30_029_scatter_contract.json)
+
+### v30.030 C30 不同backend上合法matmul计费与resource对照
+
+before：math/local与RPC、普通subprocess环境行为差异已有但新重组未确认
+
+after：固定candidate/source/data同网络逐operator/API和报告对照
+
+状态：partial_diagnostic
+
+诊断结论：C01 full Mini8 local/RPC measured; ordinary subprocess original resource-cap diagnostic still pending；算法分数前后不适用。
+
+- [ablation_v30_030_r01_c01_mini8_rpc_scored.json](../../results/phase2/ablation_v30_030_r01_c01_mini8_rpc_scored.json)
+- [ablation_v30_001_r02_mini8_local.json](../../results/phase2/ablation_v30_001_r02_mini8_local.json)
 
 ### v30.031 H01 边际D3平方产品补全
 
@@ -1267,6 +1280,18 @@ after：逐机制报告训练/selection/confirmation来源矩阵
 
 - [ablation_v30_088_upstream_split_audit.json](../../results/phase2/ablation_v30_088_upstream_split_audit.json)
 
+### v30.089 O27 封存新分片的diagslice状态分布偏移
+
+before：只有最终分数分割
+
+after：新分片state-only机制分布诊断
+
+状态：partial_diagnostic
+
+诊断结论：Development lawful feature quantiles fixed without labels; reserved-shard state collection pending；算法分数前后不适用。
+
+- [ablation_v30_089_frozen_shift_features.json](../../results/phase2/ablation_v30_089_frozen_shift_features.json)
+
 ### v30.090 O28 新seed网络的diagram规模law核验
 
 before：只有fixed1024表规模预期
@@ -1560,6 +1585,7 @@ after：在新生成少量确认网络上制作两份互不重叠输入种子的
 诊断结论：CPU/reference sample uncertainty budget planned; actual two-reference sampling pending；算法分数前后不适用。
 
 - [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
+- [ablation_v30_114_reference_cpu_pilot.json](../../results/phase2/ablation_v30_114_reference_cpu_pilot.json)
 
 ### v30.115 L20 新种子网络最终独立确认
 

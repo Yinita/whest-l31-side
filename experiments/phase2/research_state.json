@@ -43960,7 +43960,8 @@
     "pid": 4123936,
     "pid_start_ticks": "12518495",
     "output": "results/phase2/ablation_v30_030_r01_c01_mini8_rpc.json",
-    "status": "running"
+    "status": "completed",
+    "scored_report": "results/phase2/ablation_v30_030_r01_c01_mini8_rpc_scored.json"
   },
   "independent_weights": {
     "report": "results/phase2/ablation_v30_115_independent_weights.json",
@@ -43974,6 +43975,16 @@
   "reference_pilot_followup": {
     "session_id": 88351,
     "script": "experiments/phase2/run_reference_pilot_after_checks.sh",
-    "status": "wait full C01 RPC before numerical pilot"
+    "status": "completed weak noise/throughput diagnostic"
+  },
+  "reserved_state_followup": {
+    "session_id": 85632,
+    "script": "experiments/phase2/run_reserved_state_after_pilot.sh",
+    "status": "running"
+  },
+  "resource_followup": {
+    "session_id": 91679,
+    "script": "experiments/phase2/run_c01_resource_after_reserved.sh",
+    "status": "wait reserved-state trace then original8GB subprocess C01 diagnostic"
   }
 }

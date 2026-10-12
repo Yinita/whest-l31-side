@@ -579,3 +579,7 @@ H15新增radial K4的distinct K_aabc完整cap合同：G=diag(g)下cap=(sum(g)-g_
 O29新收集同公共网络H22与冻结V29 RPC预测的无标签delta RMS、均值和逐层RMS。这里只量化候选信号，未生成独立强references，不给实测CI，不将RPC数值变化混称纯算法改善；状态partial_diagnostic。
 
 L03新增合法float32 affine推理组件：按网络LOO训练时排除held labels，缓存特征映射到flopscope matmul+add，逐network收费与NumPy预测对齐。组件不包含真实特征构建的收费/时间，因此保留partial_negative与原CV负结果，不能填写官方adjusted。
+
+O27目标列在dataset接口删除后再采集封存分片8–15状态的脚本已准备，并串行排在C01 RPC→reference CPU pilot之后。冻结原V29 sourcehash与特征分位点；不读取label/预测误差，不用分布观察调候选后继续声称该分片状态未见。session85632等待中。
+
+C01完整RPC8/8零失败：adjusted5.748034693185937e-9，raw2.269812404698257e-8，最大local raw差0.284769%，clientRSS1484768KiB。C30暂partial，原8GB subprocess后续检查排在reserved state之后。L19双seed4096样本pilot实测3684.5/3704.4 samples/s；十亿样本单reference预计269947–271406秒（3.12–3.14天），8network×2seed约50.1天，属于吞吐外推不是已完成强reference。实测mean差MSE4.45824e-5明显不足验收1e-9量级候选，不改reference质量门槛。O27无target状态采集运行中。
