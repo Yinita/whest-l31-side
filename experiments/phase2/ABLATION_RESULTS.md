@@ -1032,6 +1032,7 @@ after：一次完整非线性核心生产逐层对照
 - [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
 - [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
 - [ablation_v30_065_relu_merged_source_weight.json](../../results/phase2/ablation_v30_065_relu_merged_source_weight.json)
+- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
 
 ### v30.066 O04 旧lean与当前官方generator语义归因
 
@@ -1046,6 +1047,7 @@ after：完整source/output的exact factor inventory
 - [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
 - [ablation_v30_066_wick_gap_map.json](../../results/phase2/ablation_v30_066_wick_gap_map.json)
 - [ablation_v30_066_r02_dense_production_map.json](../../results/phase2/ablation_v30_066_r02_dense_production_map.json)
+- [ablation_v30_066_r03_lean_generator_semantics.json](../../results/phase2/ablation_v30_066_r03_lean_generator_semantics.json)
 
 ### v30.067 O05 完整K31/K211生产核的离线表示上限
 
@@ -1063,6 +1065,7 @@ after：完整production Gnew与regen G成对诊断
 - [ablation_v30_067_r04_blocked_k211_charged_component.json](../../results/phase2/ablation_v30_067_r04_blocked_k211_charged_component.json)
 - [ablation_v30_067_r05_cp_input_k211_charged_component.json](../../results/phase2/ablation_v30_067_r05_cp_input_k211_charged_component.json)
 - [ablation_v30_067_r06_p3_wick_charged.json](../../results/phase2/ablation_v30_067_r06_p3_wick_charged.json)
+- [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
 
 ### v30.068 O06 完整生产核单层替换诊断
 

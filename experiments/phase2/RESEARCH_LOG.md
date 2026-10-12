@@ -683,3 +683,7 @@ O05分块K211：slab4完整35项与strict重复扣除，n4/8/16/32误差<3.7e-7�
 O05 r05将3index输入改rank3CP、仅4row slab重建，charged路径无n³输入，35项与offline展开oracle误差<3.5e-7。n32 FLOPs11520448，source实际CP构造及近似误差未知；无candidate score，不可声称完整1024机制已实现。报告scope原措辞沿用r04，准确机制以脚本/此日志为准，原证据不覆盖。
 
 O05 K31所需p3 Wick k1..5合法构造完成，k1/k2独立320点Gaussian截断quadrature五阈值最大abs6.15e-7，收费880；k3..5当前只analytic，尚缺独立导数检查。fullcandidate仍待，不填分数。
+
+O03/O05合法power→centered K31/K211转换组件实际计费，独立finite-support partitions核验n4/7relative<1.7e-7；cap先扣重复再zero。production误差不等于转换算术误差，无score，fullsource抵消与实际state集成待。
+
+O04实际upstream lean build_term_table AST原样执行配当前冻结official generator：25保留/35classes，whole K31/K211/K111 output排除与diagonal metric K4 slice zero假设均逐项定位。原注释94 terms与当前再生成25不等，历史official依赖commit未知、不能冒充历史精确复现，term_rels缺失无法反推pruning。
