@@ -725,3 +725,5 @@ O12真实1024/rank1合法exact component：FLOPs16136016384、wall6.74018s、res
 O12 productionrank4 slab4实际wall26.534s、FLOPs64529895936、residual0.65928s>0.4，component资源否决，不作candidate合规；固定slab16单因素重测已开始。
 
 O12 rank4唯一slab4→16实测费用相同64529895936，wall26.534→39.083s、residual0.65928→0.68671s，仍失败且更慢。负结果保留，不能以calls减少假称resource通过。1024/16/16 intermediate64MiB。
+
+O12 bilinear exactformula: sum(x)*yᵀCz−(xy)ᵀCz−(xz)ᵀCᵀy。r11 slab4 productionrank4费用51707920896、9.6046s/residual0.83149失败；唯一slab4→64 r12同费用0.94850s/residual0.052625组件通过，largestn²。r13 medium32/64独立denseoracle复验通过。真实source与fullnetworkcandidate分数尚待，绝不当stage提升。

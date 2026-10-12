@@ -1,0 +1,85 @@
+{
+  "rows": [
+    {
+      "n": 1024,
+      "rank": 4,
+      "elapsed_s": 0.9485153660061769,
+      "flops": 51707920896,
+      "max_intermediate_elements": 1048576,
+      "budget_summary": {
+        "flop_budget": 2199023255552,
+        "flops_used": 51707920896,
+        "flops_remaining": 2147315334656,
+        "operations": {
+          "array": {
+            "flop_cost": 2111488,
+            "calls": 7,
+            "flopscope_backend_time_s": 0.00035554097848944366,
+            "flopscope_overhead_time_s": 0.0006090180249884725
+          },
+          "ones": {
+            "flop_cost": 1048576,
+            "calls": 1,
+            "flopscope_backend_time_s": 0.0006217699992703274,
+            "flopscope_overhead_time_s": 0.00011360300413798541
+          },
+          "eye": {
+            "flop_cost": 1024,
+            "calls": 1,
+            "flopscope_backend_time_s": 0.0006448770000133663,
+            "flopscope_overhead_time_s": 8.22750007500872e-05
+          },
+          "subtract": {
+            "flop_cost": 549376,
+            "calls": 385,
+            "flopscope_backend_time_s": 0.0015084100305102766,
+            "flopscope_overhead_time_s": 0.03509125886193942
+          },
+          "multiply": {
+            "flop_cost": 139472896,
+            "calls": 2305,
+            "flopscope_backend_time_s": 0.03542802312585991,
+            "flopscope_overhead_time_s": 0.19836645264877006
+          },
+          "zeros": {
+            "flop_cost": 0,
+            "calls": 16,
+            "flopscope_backend_time_s": 2.7568021323531866e-05,
+            "flopscope_overhead_time_s": 0.0007187480514403433
+          },
+          "matmul": {
+            "flop_cost": 51514441728,
+            "calls": 384,
+            "flopscope_backend_time_s": 0.4341651738213841,
+            "flopscope_overhead_time_s": 0.03756564324430656
+          },
+          "sum": {
+            "flop_cost": 50282496,
+            "calls": 768,
+            "flopscope_backend_time_s": 0.012218436255352572,
+            "flopscope_overhead_time_s": 0.12112330780655611
+          },
+          "add": {
+            "flop_cost": 12288,
+            "calls": 192,
+            "flopscope_backend_time_s": 0.00024401290284004062,
+            "flopscope_overhead_time_s": 0.016555297042941675
+          },
+          "concatenate": {
+            "flop_cost": 1024,
+            "calls": 1,
+            "flopscope_backend_time_s": 6.893998943269253e-06,
+            "flopscope_overhead_time_s": 0.00010961299994960427
+          }
+        },
+        "wall_time_s": 0.9485005940077826,
+        "flopscope_backend_time_s": 0.4852207061339868,
+        "flopscope_overhead_time_s": 0.4106544346868759,
+        "residual_wall_time_s": 0.05262545318691991
+      }
+    }
+  ],
+  "scope": "Production1024 rank1 exact component cost diagnostic; no dense oracle at this scale, previous bounded oracle contracts separate, no actual network score",
+  "cost": "3Rn matrix elementwise contractions; O(Rn3) plus O(Rn2), many API calls; full network timing not established",
+  "score": null
+}

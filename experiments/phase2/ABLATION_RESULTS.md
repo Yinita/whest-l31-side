@@ -1159,7 +1159,7 @@ after：证明exact复杂度和内存或给出反例
 
 状态：partial_derivation
 
-诊断结论：Exact no-cubic-intermediate diagonal contraction verified; O(R*n^3), not unqualified O(n^3). Full cumulative repeated-content production and charged operator formula remain pending；算法分数前后不适用。
+诊断结论：Exact distinct CP edge outputD3 fully costed; bilinear slab64 production1024/r4 component0.9485s residual0.05263s, no n3 tensor. Actualsource integration and fullnetwork resources/score pending；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
 - [ablation_v30_074_r02_charged_edge_contraction.json](../../results/phase2/ablation_v30_074_r02_charged_edge_contraction.json)
@@ -1170,6 +1170,10 @@ after：证明exact复杂度和内存或给出反例
 - [ablation_v30_074_r07_production_cost.json](../../results/phase2/ablation_v30_074_r07_production_cost.json)
 - [ablation_v30_074_r08_production_rank4_cost.json](../../results/phase2/ablation_v30_074_r08_production_rank4_cost.json)
 - [ablation_v30_074_r09_production_rank4_slab16_cost.json](../../results/phase2/ablation_v30_074_r09_production_rank4_slab16_cost.json)
+- [ablation_v30_074_r10_bilinear_edge_contraction.json](../../results/phase2/ablation_v30_074_r10_bilinear_edge_contraction.json)
+- [ablation_v30_074_r11_production_bilinear_cost.json](../../results/phase2/ablation_v30_074_r11_production_bilinear_cost.json)
+- [ablation_v30_074_r12_production_bilinear_slab64_cost.json](../../results/phase2/ablation_v30_074_r12_production_bilinear_slab64_cost.json)
+- [ablation_v30_074_r13_bilinear_slab64_contract.json](../../results/phase2/ablation_v30_074_r13_bilinear_slab64_contract.json)
 
 ### v30.075 O13 K111乘edge covariance主模态代理
 
