@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 14, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 40, 'completed_diagnostic': 23, 'partial_diagnostic': 23, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -68,6 +68,7 @@
 
 | key | before raw | after raw | before adjusted | after adjusted | 失败 |
 |---|---:|---:|---:|---:|---:|
+| L21 | 2.31618710878e-08 | 2.26111294133e-08 | 5.89649201873e-09 | 5.75702524657e-09 | 0 |
 
 ## 归因与证据
 
@@ -1670,6 +1671,7 @@ after：在新生成少量确认网络上制作两份互不重叠输入种子的
 - [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
 - [ablation_v30_114_reference_cpu_pilot.json](../../results/phase2/ablation_v30_114_reference_cpu_pilot.json)
 - [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
+- [ablation_v30_114_r02_antithetic_pilot.json](../../results/phase2/ablation_v30_114_r02_antithetic_pilot.json)
 
 ### v30.115 L20 新种子网络最终独立确认
 
@@ -1684,6 +1686,21 @@ after：候选及配置冻结后生成预注册未见种子网络，候选与上
 - [ablation_v30_115_independent_protocol.json](../../results/phase2/ablation_v30_115_independent_protocol.json)
 - [ablation_v30_115_independent_weights.json](../../results/phase2/ablation_v30_115_independent_weights.json)
 - [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
+
+### v30.116 L21 公共确认一次解封
+
+before：0–7开发CV选择完成，候选尚未在8–15配对。
+
+after：只对唯一冻结候选执行8–15与原V29同网络成对确认。
+
+状态：completed_diagnostic
+
+诊断结论：Paired public confirmation executed with failures retained; reliable benefit decision in decision report, no independent acceptance；算法分数前后不适用。
+
+- [ablation_v30_116_r01_paired_v29_public.json](../../results/phase2/ablation_v30_116_r01_paired_v29_public.json)
+- [ablation_v30_116_r01_h18_public.json](../../results/phase2/ablation_v30_116_r01_h18_public.json)
+- [ablation_v30_116_r01_confirmation_decision.json](../../results/phase2/ablation_v30_116_r01_confirmation_decision.json)
+- [ablation_v30_116_r01_preregistration.json](../../results/phase2/ablation_v30_116_r01_preregistration.json)
 
 ### v30.117 L22 输出误差与阈值位置分解
 

@@ -63,3 +63,7 @@ O27公共reserved shard状态分布对照已完成：冻结variance/alpha/标准
 L03 r04完整合法计费networkLOO完成：每fold只评测训练排除的一个网络，当前成对V29 adjusted6.061515659222411e-9→candidate6.096439781475735e-9（+0.5762%），raw2.269752985561979e-8→2.282830258160118e-8，8fold零失败。该固定13feature线性模型否决，不能将fold0微幅改善当整体收益。singleton逐网络控制因pool生命周期不同于连续Mini8，必须用本次成对控制，不能替换冻结Mini8阶段门槛。
 
 L21已冻结H18 hash da7154bb8170c9deda98ed82b97c826bafbea7740054e8b04567dcf2837a7891，串行执行公共8–15当前V29与H18配对确认。O27已查看该集合状态，上游公共调参重叠未知，不称独立验收。接续实验为L19 antithetic reference弱pilot和C26实际predict shape序列8GiB资源审计。
+
+H18公共8–15一次冻结配对确认完成：当前V29 adjusted5.896492018734529e-9/raw2.316187108775125e-8→H18 adjusted5.757025246568847e-9/raw2.2611129413263598e-8，8/8网络adjusted均改善，aggregate−2.36525%，双方零失败。仅公共确认；状态先前已查看、上游调参重叠未知，不代替独立reference验证，阶段1目标不递进。
+
+L19 antithetic参考两个独立4096pair种子相同forward次数finalvariance ratios0.91035/0.90858，约9%降方差；弱pilot不是benchmark labels，不能声明十倍目标。C26记录器tuple处理错误已保留原log并修复重跑。

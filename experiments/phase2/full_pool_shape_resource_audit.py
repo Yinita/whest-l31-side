@@ -64,7 +64,8 @@ def main():
             if pool is None
             else [
                 dict(key=repr(k), shape=list(v.shape), logical_bytes=v.size * 4)
-                for k, v in pool.bufs.items()
+                for k, slot in pool.bufs.items()
+                for v in (slot if isinstance(slot, tuple) else (slot,))
             ]
         )
         rows.append(
