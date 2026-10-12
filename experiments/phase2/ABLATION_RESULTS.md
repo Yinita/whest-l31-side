@@ -1289,6 +1289,7 @@ after：加入radial harmonic state W运输
 
 - [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
 - [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
+- [ablation_v30_084_r02_charged_metric_transport.json](../../results/phase2/ablation_v30_084_r02_charged_metric_transport.json)
 
 ### v30.085 O23 K6独立边缘readout
 

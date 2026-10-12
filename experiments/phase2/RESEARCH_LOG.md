@@ -707,3 +707,5 @@ H29 augmented完整K11135raw展开项含mixed与triangle合法CPinput/slab4 cap�
 O05补齐p3 Wick k3..5独立central finite-difference两步核验，五阈值最大abs7.79e-7；与先前k1/k2独立quadrature分开，不等于fullsource/candidate验证。
 
 O21合法GaussianReLU degree6边缘moment/cumulant生产，独立320点quadrature四阈值最大scaled5.493e-5，float32高阶抵消误差披露，收费948。mixedtrace/fullradial production未补齐，无整网分数。
+
+O22径向K6 metric运输合法M′=WMWᵀ和marginal q diag(M′)³，与完整sixthtensor独立oracle n2/3/4relative<3.1e-7，candidate路径只n²；dense metric成本n³/fullnonlinear production待，无score。
