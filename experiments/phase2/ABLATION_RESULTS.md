@@ -741,6 +741,7 @@ after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
 诊断结论：ExactK31conversion/projectioncoeff; actualproduction/proxyremoval pending；算法分数前后不适用。
 
 - [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
+- [ablation_v30_046_gaussian_core_projection.json](../../results/phase2/ablation_v30_046_gaussian_core_projection.json)
 
 ### v30.047 H17 Gaussian K211完整二阶矩阵核心
 
@@ -753,6 +754,7 @@ after：保持核验Gaussian capped K211 matrix，作为去重core residual直�
 诊断结论：Exact three Gaussian covariance paths and distinct cappedsum; full cumulant/coreproxy subtraction and legal candidate pending；算法分数前后不适用。
 
 - [ablation_v30_047_gaussian_capped_k211.json](../../results/phase2/ablation_v30_047_gaussian_capped_k211.json)
+- [k211_wing_quadrature.json](../../results/phase2/k211_wing_quadrature.json)
 
 ### v30.048 H18 K4边际真实metric系数
 

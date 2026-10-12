@@ -595,3 +595,7 @@ L19/L20使用实测pilot variance0.0788144与3694.47samples/s做预算gate：将
 H32直接nR² CP列实现解析计费gate：三条腿transport与D21矩阵产品各6n²columns，1024/rank16即超过整网2**41预算，尚未计QR/copy/其他层。不能将nR²误写成R²并声称可行；需要真正structured contraction或近似compression，partial保持。
 
 L03已构建真实charged final-only fold0候选estimators/ablation_v30_098_fold0：训练网络1–7，唯一合法开发评测网络0；13特征全部flopscope构建，最终输出affine修正，无interlayer feedback、predict不含targets。候选hash/provenance冻结；整网评测串行排在resource诊断后，session55338。不得用该fold候选评测训练网络后填Mini8泛化平均。
+
+H16 Gaussian一阶K31生产与identitymetric core投影新增合同，保持K31非对称，投影时才12Sym/(n+4)。完整非Gaussian项与V29lambdaC proxy去重仍未解决，不能直接替换当完整core；暂无candidate score。
+
+H17 Gaussian K211 wing-centered star系数新增独立条件1D积分核验（256点split quadrature，eps0.001/0.0005），补齐原报告仅repeated-index star独立积分的缺口。完整非Gaussian production、原proxy去重和计费仍待，partial保持。
