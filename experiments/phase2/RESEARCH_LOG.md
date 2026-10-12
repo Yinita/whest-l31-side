@@ -665,3 +665,5 @@ L02/L33全部8fold模型train/eval排除规则与候选哈希审计通过，refe
 L35追加current score ledger r02，区分queue状态、真实reportscore、RPC及CV/components范围，计数为报告数非独立假设数。未经完成报告不补分数。
 
 L03fold2chargedadjusted7.005190495859036e-9对当前V29control6.9735606864713195e-9，零fail、负；fold3控制启动。129项完整性gap audit保存candidate存在/hash/evidence及原acceptance，不按文件存在改完成状态。
+
+L07 actualg4row/sigma4、乘phi两个feature合法component与费用已测，未用K4sigma标量代替。真实finalcandidate/修正单线程trace未完成，原samecycleLOO负结果保留。L03fold3chargedadjusted6.678024681155756e-9对control6.670989019830227e-9，零fail、微负；fold4控制进行中。

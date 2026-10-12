@@ -1484,6 +1484,7 @@ after：追加g4row/sigma⁴及乘phi的两列。
 
 - [ablation_v30_102_g4_features.json](../../results/phase2/ablation_v30_102_g4_features.json)
 - [ablation_v30_102_g4_cv.json](../../results/phase2/ablation_v30_102_g4_cv.json)
+- [ablation_v30_102_g4_legal_features.json](../../results/phase2/ablation_v30_102_g4_legal_features.json)
 
 ### v30.103 L08 最后线性均值传播轨迹特征
 
