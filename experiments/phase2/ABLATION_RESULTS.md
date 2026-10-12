@@ -1917,11 +1917,12 @@ after：对末层pre均值/方差/偏度构造规范化一维积分诊断，和�
 
 状态：partial_negative
 
-诊断结论：Positive normalized moment-matched skew-normal finalreadout worsens all8raw networks ~52%; no chargedcandidate；算法分数前后不适用。
+诊断结论：All8192neurons quadrature96vs192 maxdelta5.773e-14, positive normalized momentmatching checked; fixedfamily raw worsens51.568% all8networks. Existing tracedstate uncertainty remains; no charged score or independentgeneralization. Negative offline gate stops sampled family candidate; conditionalGaussian fullmechanism not equated with skewnormal surrogate, partial retained.；算法分数前后不适用。
 
 - [ablation_v30_123_positive_skew_family.json](../../results/phase2/ablation_v30_123_positive_skew_family.json)
 - [ablation_v30_123_positive_family_network_screen.json](../../results/phase2/ablation_v30_123_positive_family_network_screen.json)
 - [ablation_v30_124_positive_quadrature_convergence.json](../../results/phase2/ablation_v30_124_positive_quadrature_convergence.json)
+- [ablation_v30_124_r02_full_quadrature_convergence.json](../../results/phase2/ablation_v30_124_r02_full_quadrature_convergence.json)
 
 ### v30.125 L30 末层尾概率数值稳定性
 
