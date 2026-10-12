@@ -593,3 +593,5 @@ H29/H30 rank1 covariance edge新增3R CP完整represented source与自身distinc
 L19/L20使用实测pilot variance0.0788144与3694.47samples/s做预算gate：将平均sampling variance规划至stage1raw阈值10%约3.47e8samples/seed，8network×2seed吞吐外推17.4天；1%约34.7e8samples/seed、174天。明确这是variance/N模型投影而非实测reference误差/CI，不改十亿样本强reference门槛。
 
 H32直接nR² CP列实现解析计费gate：三条腿transport与D21矩阵产品各6n²columns，1024/rank16即超过整网2**41预算，尚未计QR/copy/其他层。不能将nR²误写成R²并声称可行；需要真正structured contraction或近似compression，partial保持。
+
+L03已构建真实charged final-only fold0候选estimators/ablation_v30_098_fold0：训练网络1–7，唯一合法开发评测网络0；13特征全部flopscope构建，最终输出affine修正，无interlayer feedback、predict不含targets。候选hash/provenance冻结；整网评测串行排在resource诊断后，session55338。不得用该fold候选评测训练网络后填Mini8泛化平均。
