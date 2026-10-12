@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 14, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 36, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 15, 'completed_diagnostic': 30, 'partial_negative': 14, 'partial_derivation': 35, 'partial_diagnostic': 18}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -767,12 +767,16 @@ before：B2从出生就删除
 
 after：保留完整指定B2 newborn one transition，随后仅保留其已产生边际/slice修正
 
-状态：partial_derivation
+状态：completed_negative
 
-诊断结论：FiniteCP one/twosteptransport contract; actualdiagram/repeat/eviction pending；算法分数前后不适用。
+诊断结论：Complete B2newborn fixedlayer14 one-transition allcolumns tested legalnetwork0, raw−0.4603% but adjusted+2.095%, zero failures, no expansion；算法分数前后不适用。
 
 - [ablation_h13_h14_h30_lifetime_contract.json](../../results/phase2/ablation_h13_h14_h30_lifetime_contract.json)
 - [ablation_h13_h14_h30_cp_slice_component.json](../../results/phase2/ablation_h13_h14_h30_cp_slice_component.json)
+- [ablation_v30_043_r02_mini1.json](../../results/phase2/ablation_v30_043_r02_mini1.json)
+- [ablation_v30_043_r02_decision.json](../../results/phase2/ablation_v30_043_r02_decision.json)
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
 
 ### v30.044 H14 B2两步输出导向收缩
 
