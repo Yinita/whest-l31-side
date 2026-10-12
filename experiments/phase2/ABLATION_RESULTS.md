@@ -1177,6 +1177,8 @@ after：证明exact复杂度和内存或给出反例
 - [ablation_v30_074_r13_bilinear_slab64_contract.json](../../results/phase2/ablation_v30_074_r13_bilinear_slab64_contract.json)
 - [ablation_v30_074_r14_production_bilinear_rank16_cost.json](../../results/phase2/ablation_v30_074_r14_production_bilinear_rank16_cost.json)
 - [ablation_v30_074_r15_independent_rank16_repeat.json](../../results/phase2/ablation_v30_074_r15_independent_rank16_repeat.json)
+- [ablation_v30_074_r16_production_fullslab_cost.json](../../results/phase2/ablation_v30_074_r16_production_fullslab_cost.json)
+- [ablation_v30_074_r17_bilinear_fullslab_contract.json](../../results/phase2/ablation_v30_074_r17_bilinear_fullslab_contract.json)
 
 ### v30.075 O13 K111乘edge covariance主模态代理
 

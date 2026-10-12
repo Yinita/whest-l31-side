@@ -733,3 +733,5 @@ O12 fixedslab64生产rank16真实组件费用206817513984、wall3.76778s、resid
 C29完整triangular compute+mirror+packedscatter合法数值逐值相同，但n32/64/128增费2048/8192/32768且calls+3。当前grid方案失败FLOPs不增门槛，不准备无效wholecandidate；其他合法layout及资源仍待。
 
 O12 rank16 freshprocess相同syntheticseed资源复验wall3.76513/residual0.20622，FLOPs206817513984完全同，非independent network。report文件名independent仅指新进程，不可当独立泛化；actualsource integration未完成。
+
+O12 fulloutput GEMM batchrank16唯一调度变化slab64→1024，FLOPs206817513984同，wall1.73510s/residual0.015146，largestn²；32/64独立denseoracle fullbatch合同再通过。组件瓶颈解决，但source因子范围/fullnetwork分数仍待。
