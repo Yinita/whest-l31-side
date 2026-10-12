@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 15, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 34, 'partial_negative': 12, 'pending': 12, 'ready': 2}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 16, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 32, 'partial_negative': 12, 'pending': 12, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -678,6 +678,30 @@ after：使用Moff恢复该被零化feed来源
 诊断结论：Official three-factor1/4,1,1/4 matches direct distinct K211 Wick feed; repeat/boundedrank/cost integration pending；算法分数前后不适用。
 
 - [ablation_v30_051_nondiagonal_feed_contract.json](../../results/phase2/ablation_v30_051_nondiagonal_feed_contract.json)
+
+### v30.052 H22 D21反馈basis输出敏感sketch
+
+before：D21 feedback sketch用当前weight列
+
+after：相同rank16下改用未来一两层weight和live average ReLU gate构造sketch
+
+状态：ready
+
+诊断结论：Fixed future weight + lawful scalar average gate candidate passes basic contract; unchangedrank, future weight is main subspace change; real screen pending；算法分数前后不适用。
+
+- [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
+
+### v30.054 H24 old-source basis按下一层D3敏感方向选择
+
+before：腿Gram不区分mean敏感方向
+
+after：用next W和legal w(3,1)proxy reweight相同rank basis
+
+状态：partial_derivation
+
+诊断结论：Fixed downstream gate-weighted PSD residual objective contract; lawful gate estimate/full-state/candidate/cost pending；算法分数前后不适用。
+
+- [ablation_h22_h24_sketch_objective.json](../../results/phase2/ablation_h22_h24_sketch_objective.json)
 
 ### v30.057 H27 K3 newborn重复内容一致性oracle
 

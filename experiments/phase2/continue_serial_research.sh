@@ -10,5 +10,5 @@ while test -e /proc/4076743/stat; do
 done
 uv run --frozen python benchmark/run_rpc.py --estimator estimators/ablation_v30_016_r03/estimator.py --n-mlps 8 --output results/phase2/ablation_v30_016_r04_mini8_rpc.json
 uv run --frozen python benchmark/rpc_score.py --predictions results/phase2/ablation_v30_016_r04_mini8_rpc.json --local results/phase2/ablation_v30_016_r03_mini8_local.json --output results/phase2/ablation_v30_016_r04_mini8_rpc_scored.json
-uv run --frozen python experiments/phase2/execute_ready_batch.py --keys H19 H20 --n-mlps 1 --revision r01
+uv run --frozen python experiments/phase2/execute_ready_batch.py --keys H19 H20 H22 --n-mlps 1 --revision r01
 uv run --frozen python experiments/phase2/update_ablation_results.py
