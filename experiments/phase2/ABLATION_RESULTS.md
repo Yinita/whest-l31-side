@@ -1703,6 +1703,7 @@ after：只对唯一冻结候选执行8–15与原V29同网络成对确认。
 - [ablation_v30_116_r01_h18_public.json](../../results/phase2/ablation_v30_116_r01_h18_public.json)
 - [ablation_v30_116_r01_confirmation_decision.json](../../results/phase2/ablation_v30_116_r01_confirmation_decision.json)
 - [ablation_v30_116_r01_preregistration.json](../../results/phase2/ablation_v30_116_r01_preregistration.json)
+- [ablation_v30_116_r02_h18_public_rpc_scored.json](../../results/phase2/ablation_v30_116_r02_h18_public_rpc_scored.json)
 
 ### v30.117 L22 输出误差与阈值位置分解
 

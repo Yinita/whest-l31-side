@@ -9,15 +9,10 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": {
-    "key": "L21",
-    "session_id": 17460,
-    "status": "H18 public8 RPC running",
-    "output": "results/phase2/ablation_v30_116_r02_h18_public_rpc.json"
-  },
+  "active_experiment": null,
   "next_experiment": {
     "key": "O05",
-    "status": "integrate full production component with actual source factors and centered conversion"
+    "status": "Full production requires actual K211 factor state integration; charged bounded components complete"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-12T05:03:33.948501+00:00",
@@ -44060,7 +44055,14 @@
     "control": "estimators/k3_v29/estimator.py",
     "scope": "Public paired confirmation only; states inspected in O27, labels not used in candidate selection, upstream public tuning overlap unknown; not independent acceptance",
     "script": "experiments/phase2/run_h18_public_confirmation.sh",
-    "status": "completed8/8zero failures, all networks improved; public only"
+    "status": "completed8/8zero failures, all networks improved; public only",
+    "rpc": {
+      "adjusted_final_layer_score": 5.7590999044793245e-09,
+      "final_layer_mse": 2.2618635853177693e-08,
+      "n_failed_mlps": 0,
+      "max_relative_mse_delta_vs_local": 0.0008881667013111993,
+      "max_client_peak_rss_kib": 1484852
+    }
   },
   "queued_resource_audit": {
     "key": "C26",
