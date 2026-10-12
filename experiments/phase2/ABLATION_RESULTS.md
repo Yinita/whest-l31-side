@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 19, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 26, 'partial_negative': 14, 'pending': 10, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 20, 'completed_diagnostic': 20, 'partial_diagnostic': 12, 'blocked_derivation': 25, 'partial_negative': 14, 'pending': 10, 'ready': 3}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -568,6 +568,19 @@ after：加入由Gaussian核解析系数约束的rational tail，同时保持已
 诊断结论：Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending；算法分数前后不适用。
 
 - [ablation_v30_035_pair_tail_pade.json](../../results/phase2/ablation_v30_035_pair_tail_pade.json)
+
+### v30.036 H06 未剪枝SIMPLE生产表恢复
+
+before：V29主体62项剪枝表
+
+after：恢复固定生成器的未剪枝SIMPLE生产表，其余闭合不变
+
+状态：partial_derivation
+
+诊断结论：Lean static table25 current official vs older generator count recorded; source version affects diagram budget. Candidate mapping/reproduction pending；算法分数前后不适用。
+
+- [ablation_v30_036_simple_table.json](../../results/phase2/ablation_v30_036_simple_table.json)
+- [ablation_v30_036_r02_generator_history.json](../../results/phase2/ablation_v30_036_r02_generator_history.json)
 
 ### v30.037 H07 WK22到B1出生来源恢复
 

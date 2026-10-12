@@ -483,3 +483,9 @@ H17三条Gaussian covariance path的K211 cap在n4/7/11显式distinct指标核验
 O16 n4/7/11 exact all-distinct covariance triangle及三层冻结门控运输核验通过，真实比赛状态和贡献仍待。H31 Rademacher无偏trace估计精确方差Var=2||offdiag(Sym((diag(a)Coff)^3))||F²，n3/4/7穷举全部probe通过；记录10%相对标准误所需probe，真实信号/预算未测。不能因无偏性声称可提分。
 
 H04非零均值Gaussian pair条件积分128/256点Legendre对照稳定，零均值arccos核一致；仅离线积分，不是合法候选。H05固定Padé尾rho⁴/[48π(1−0.3rho²)]由rho4/rho6解析系数决定，无reference拟合，在|rho|<=1无极点；非零推广和实际网络state/费用仍待。
+
+L07 actual g4row cache8/8完成，LOO未修正raw2.2701541638464772e-8，13特征头2.2824307311893216e-8，新增两列2.2834393370363714e-8，相对13头+0.04419%，保留负筛。直接trace读MLP与标准runner权重dtype路径不同，逐网FLOPs固定多16,777,216，须沿astype操作归因；不能宣称收费逐值一致。trace多线程，无正式资源验收，所有原证据保留。
+
+## H06生成器历史归因
+
+冻结lean build_term_table通过当前官方generator得到25条，旧注释94不匹配。官方f4325dd修正Edgeworth预算前commit6e80f7f2af0d33e252731ad9611dff17880b12fb生成90条（仍非注释94），静态提取和source hash另存r02_generator_history。官方规则变更改变diagram预算，不能把不同表的费用/精度当本项目改进。候选完整系数映射与合法控制仍待。
