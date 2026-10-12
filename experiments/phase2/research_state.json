@@ -10,17 +10,16 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "M03-relu64-fullstate",
-    "session_id": 76588,
-    "status": "completed",
-    "source": "experiments/phase2/paper_m03_relu64.py",
-    "sha256": "5255018c8819d39772f7704778e490299693bd20b1765b3240a7b588672ae694",
-    "report": "results/phase2/paper_m03_r06_relu64.json",
-    "scope": "width64,4ReLU,12factorvariants,allreturnedstate logicalbytes/cumulativeRSS,papercost"
+    "key": "M03-dtype-alignment",
+    "status": "completed_with_preserved_mixed_dtype_failures",
+    "reports": [
+      "results/phase2/paper_m03_r08_dtype_align.json",
+      "results/phase2/paper_m03_r09_dtype64_isolated.json"
+    ]
   },
   "next_experiment": {
-    "key": "M03 K3augmented source gap/cost",
-    "status": "Isolate fullK3augmented vsV29generic birth differences with exactsame dtype/input before productionport; avoid fullK4aug expansion"
+    "key": "M03 source attribution",
+    "status": "Compare SIMPLE source births and state truncations with V29generic; official AUGMENT fullsource difference not explained by dtype"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-12T10:13:33.816996+00:00",
