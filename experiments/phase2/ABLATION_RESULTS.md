@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 27, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 21}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 13, 'completed_diagnostic': 28, 'partial_negative': 14, 'partial_derivation': 37, 'partial_diagnostic': 20}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -1712,11 +1712,13 @@ before：只知道偏置oracle解释约0.46% MSE。
 
 after：用开发网络级CV测13特征解释方差，给出达到10倍需约90% MSE减少的差距。
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Held-network13feature R2 negative;10x requires0.9. Charged adjusted candidate pending；算法分数前后不适用。
+诊断结论：Charged8fold networkCV R² negative, residualRMS and adjusted before/after recorded; independentreference noise unknown explicit; demote13feature learning；算法分数前后不适用。
 
 - [ablation_v30_113_predictability.json](../../results/phase2/ablation_v30_113_predictability.json)
+- [ablation_v30_113_r02_charged_predictability.json](../../results/phase2/ablation_v30_113_r02_charged_predictability.json)
+- [ablation_v30_098_r04_full_charged_cv.json](../../results/phase2/ablation_v30_098_r04_full_charged_cv.json)
 
 ### v30.114 L19 独立参考两次采样一致性
 
