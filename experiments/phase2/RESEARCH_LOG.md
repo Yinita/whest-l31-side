@@ -767,3 +767,5 @@ C28 fullMini8 local adjusted5.778402479293708e-9/raw2.2700463286895456e-8,8/8zer
 O20 Gaussianbirthdiagonal finalsubset network0 {"before_raw": 2.290466483145792e-08, "after_raw": 2.2898795748460543e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.115462216455251e-09, "failures": 0, "scope": "Gaussianbirth finaldiagonal subset; tinygain not confirmed; not complete O19/O20"}; fullMini8 confirmation started session80223.
 
 L18 completeddiagnostic charged8heldfold CV R²−0.00576154, adjusted6.061515659222411e-9→6.096439781475737e-9; residualRMS and explicit unknownstrongreference uncertainty recorded. Demote13feature learning; no more learningmodel expansion justified by this evidence.
+
+O28 extendedwidth16/32/64/128 same3seeds tree−1.098, edge−1.609, capped211proxy−2.270 slopes; seedspread not populationCI; proxy does not complete officialdeepcapped211 production. Partial preserved.
