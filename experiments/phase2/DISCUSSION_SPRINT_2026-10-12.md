@@ -14,3 +14,5 @@
 D01全Mini8：adjusted5.573952118067259e-9、raw2.2720653136687474e-8、零失败、maxresidual0.3018511s，adjusted−3.5478%；raw略恶化，属于降费。D03组合已开始。
 
 D03单网组合：adjusted5.818785780892923e-9，raw2.2695706647368752e-8，零失败；较V29−4.872%，较leaf8−1.9807%。叶块8RPC正在运行；组合Mini8已串行排队，结果未出不宣称全集收益。
+
+D04 consistentGaussian12：11/21/22全通道尾项，冻结V29parent、保留mixedterms，独立conditional积分grid最大截断差2.081e-7；不是exactnear1。排在RPC→组合Mini8之后串行快筛。此前q3已测，本次只用于完整consistenttail的额外gate，不冒充H04完成。
