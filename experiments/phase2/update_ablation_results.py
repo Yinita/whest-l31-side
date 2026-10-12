@@ -22,11 +22,21 @@ def main():
         if task['kind'] == 'diagnostic':
             continue
         lines.append(f'| {task["version"]} | {task["key"]} | {task["status"]} | {before["final_layer_mse"]:.12g} | {after["final_layer_mse"]:.12g} | {before["adjusted_final_layer_score"]:.12g} | {after["adjusted_final_layer_score"]:.12g} | {(ratios["adjusted_final_layer_score"]-1)*100:+.6f}% | {(ratios["flops_used"]-1)*100:+.6f}% | {result["failures"]} |\n')
-    lines.append('\n## 离线学习快筛\n\n仅为开发网络LOO raw误差，尚无合法候选的adjusted分数。\n\n| 版本 | key | before raw | after raw | raw变化 | adjusted |\n|---|---|---:|---:|---:|---|\n')
+    lines.append('\n## 合法计费网络交叉验证\n\n每折模型仅评测训练时排除的网络；开发集交叉验证不替代独立确认。\n\n| 版本 | key | before raw | after raw | before adjusted | after adjusted | adjusted变化 | 失败 |\n|---|---|---:|---:|---:|---:|---:|---:|\n')
+    for task in queue['tasks']:
+        cv = task.get('charged_full_cv', {})
+        if 'before_adjusted' in cv:
+            lines.append(f'| {task["version"]} | {task["key"]} | {cv["before_raw"]:.12g} | {cv["after_raw"]:.12g} | {cv["before_adjusted"]:.12g} | {cv["after_adjusted"]:.12g} | {(cv["after_adjusted"]/cv["before_adjusted"]-1)*100:+.6f}% | {cv["failures"]} |\n')
+    lines.append('\n## 离线学习快筛\n\n以下为离线开发网络LOO raw误差；已完成合法计费的模型见上表，其余没有adjusted分数。\n\n| 版本 | key | before raw | after raw | raw变化 | adjusted |\n|---|---|---:|---:|---:|---|\n')
     for task in queue['tasks']:
         cv = task.get('result', {}).get('offline_cv', {})
         if 'before_raw' in cv and 'after_raw' in cv:
             lines.append(f'| {task["version"]} | {task["key"]} | {cv["before_raw"]:.12g} | {cv["after_raw"]:.12g} | {(cv["after_raw"]/cv["before_raw"]-1)*100:+.6f}% | 未计费验证 |\n')
+    lines.append('\n## 公共配对确认\n\n已查看公共状态，上游调参重叠未知；不替代独立验收。\n\n| key | before raw | after raw | before adjusted | after adjusted | 失败 |\n|---|---:|---:|---:|---:|---:|\n')
+    for task in queue['tasks']:
+        cv = task.get('public_confirmation', {})
+        if 'before_adjusted' in cv:
+            lines.append(f'| {task["key"]} | {cv["before_raw"]:.12g} | {cv["after_raw"]:.12g} | {cv["before_adjusted"]:.12g} | {cv["after_adjusted"]:.12g} | {cv["failures"]} |\n')
     lines.append('\n## 归因与证据\n\nC07/C10单网raw逐值评分相同，收益来自收费减少。C08/C14/C15的微小raw差尚不能排除浮点重排漂移，completed_positive只表示初筛分数更低。诊断条目不产生算法after分数，记录为不适用。\n\n')
     for task in queue['tasks']:
         if not task.get('evidence'):

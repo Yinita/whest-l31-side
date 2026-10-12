@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 11, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 15, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 40, 'completed_diagnostic': 22, 'partial_diagnostic': 23, 'partial_negative': 14, 'pending': 1}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -33,9 +33,17 @@
 | v30.050 | H20 | completed_negative | 2.29046648315e-08 | 2.31574261988e-08 | 6.11683233498e-09 | 7.20257411616e-09 | +17.750066% | +16.464834% | 0 |
 | v30.052 | H22 | completed_positive | 2.2702818514e-08 | 2.26464844655e-08 | 5.77897975577e-09 | 5.76448249921e-09 | -0.250862% | +0.013369% | 0 |
 
+## 合法计费网络交叉验证
+
+每折模型仅评测训练时排除的网络；开发集交叉验证不替代独立确认。
+
+| 版本 | key | before raw | after raw | before adjusted | after adjusted | adjusted变化 | 失败 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| v30.098 | L03 | 2.26975298556e-08 | 2.28283025816e-08 | 6.06151565922e-09 | 6.09643978148e-09 | +0.576162% | 0 |
+
 ## 离线学习快筛
 
-仅为开发网络LOO raw误差，尚无合法候选的adjusted分数。
+以下为离线开发网络LOO raw误差；已完成合法计费的模型见上表，其余没有adjusted分数。
 
 | 版本 | key | before raw | after raw | raw变化 | adjusted |
 |---|---|---:|---:|---:|---|
@@ -53,6 +61,13 @@
 | v30.109 | L14 | 2.27016599414e-08 | 2.28363089459e-08 | +0.593124% | 未计费验证 |
 | v30.110 | L15 | 2.27016599414e-08 | 2.31375281148e-08 | +1.919984% | 未计费验证 |
 | v30.124 | L29 | 2.27016596632e-08 | 3.44085568893e-08 | +51.568464% | 未计费验证 |
+
+## 公共配对确认
+
+已查看公共状态，上游调参重叠未知；不替代独立验收。
+
+| key | before raw | after raw | before adjusted | after adjusted | 失败 |
+|---|---:|---:|---:|---:|---:|
 
 ## 归因与证据
 
@@ -1425,13 +1440,14 @@ before：原V29固定CORR_BETA后仍有final残差。
 
 after：只在final输出追加一个开发网络拟合的13特征线性残差预测；早层与原Beta不变。
 
-状态：partial_negative
+状态：completed_negative
 
-诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+诊断结论：Actual charged full8fold CV completed; independent/RPC validation required for positive adoption, negative can close tested model.；算法分数前后不适用。
 
 - [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
 - [ablation_v30_098_charged_readout_component.json](../../results/phase2/ablation_v30_098_charged_readout_component.json)
 - [ablation_v30_098_r03_fold0_mini1_local.json](../../results/phase2/ablation_v30_098_r03_fold0_mini1_local.json)
+- [ablation_v30_098_r04_full_charged_cv.json](../../results/phase2/ablation_v30_098_r04_full_charged_cv.json)
 
 ### v30.099 L04 删除常数特征的修正对照
 

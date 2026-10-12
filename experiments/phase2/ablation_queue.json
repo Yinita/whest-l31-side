@@ -49980,7 +49980,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_negative",
+      "status": "completed_negative",
       "allow_lower_reasoning_execution": true,
       "lower_reasoning_boundary": "May implement the exact specification and validate; any absent formula/coefficient/API/cost proof changes status to blocked_derivation, no guessing",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -49994,10 +49994,11 @@
       "evidence": [
         "results/phase2/ablation_learning_loocv_r01.json",
         "results/phase2/ablation_v30_098_charged_readout_component.json",
-        "results/phase2/ablation_v30_098_r03_fold0_mini1_local.json"
+        "results/phase2/ablation_v30_098_r03_fold0_mini1_local.json",
+        "results/phase2/ablation_v30_098_r04_full_charged_cv.json"
       ],
       "result": {
-        "conclusion": "OfflineCV negative; charged estimator pending",
+        "conclusion": "Actual charged full8fold CV completed; independent/RPC validation required for positive adoption, negative can close tested model.",
         "offline_cv": {
           "scope": "Development leave-one-network-out predictions; held network target excluded from training; not independent final validation",
           "columns": [
@@ -50090,6 +50091,112 @@
         ],
         "held_id": 0,
         "scope": "Single held-network fold; not full8fold charged CV or independent final"
+      },
+      "charged_full_cv": {
+        "rows": [
+          {
+            "held_id": 0,
+            "control_report": "results/phase2/v29_mini1_control_20261012.json",
+            "candidate_report": "results/phase2/ablation_v30_098_r03_fold0_mini1_local.json",
+            "before_raw": 2.290466483145792e-08,
+            "after_raw": 2.284691369425218e-08,
+            "before_adjusted": 6.116832334984139e-09,
+            "after_adjusted": 6.101409994531986e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 1,
+            "control_report": "results/phase2/l03_fold1_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold1_charged_candidate.json",
+            "before_raw": 2.0848574422416277e-08,
+            "after_raw": 2.1107975811673896e-08,
+            "before_adjusted": 5.567740680938042e-09,
+            "after_adjusted": 5.637015848407002e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 2,
+            "control_report": "results/phase2/l03_fold2_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold2_charged_candidate.json",
+            "before_raw": 2.6112710216352752e-08,
+            "after_raw": 2.6231147032262925e-08,
+            "before_adjusted": 6.9735606864713195e-09,
+            "after_adjusted": 7.005190495859036e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 3,
+            "control_report": "results/phase2/l03_fold3_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold3_charged_candidate.json",
+            "before_raw": 2.4979721402473842e-08,
+            "after_raw": 2.5006064774402148e-08,
+            "before_adjusted": 6.670989019830227e-09,
+            "after_adjusted": 6.678024681155756e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 4,
+            "control_report": "results/phase2/l03_fold4_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold4_charged_candidate.json",
+            "before_raw": 2.2062067728256807e-08,
+            "after_raw": 2.1982806686082768e-08,
+            "before_adjusted": 5.891811569819051e-09,
+            "after_adjusted": 5.87064485896287e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 5,
+            "control_report": "results/phase2/l03_fold5_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold5_charged_candidate.json",
+            "before_raw": 1.9603939804824222e-08,
+            "after_raw": 1.9682531160469807e-08,
+            "before_adjusted": 5.235353312244854e-09,
+            "after_adjusted": 5.256342013949579e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 6,
+            "control_report": "results/phase2/l03_fold6_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold6_charged_candidate.json",
+            "before_raw": 2.0804842293387082e-08,
+            "after_raw": 2.1261836735675388e-08,
+            "before_adjusted": 5.55606174553812e-09,
+            "after_adjusted": 5.678105362379596e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          },
+          {
+            "held_id": 7,
+            "control_report": "results/phase2/l03_fold7_paired_v29_control.json",
+            "candidate_report": "results/phase2/l03_fold7_charged_candidate.json",
+            "before_raw": 2.4263718145789426e-08,
+            "after_raw": 2.4507144757990318e-08,
+            "before_adjusted": 6.479775923953529e-09,
+            "after_adjusted": 6.544784996560062e-09,
+            "before_flops": 587262754287,
+            "after_flops": 587262798345,
+            "failures": 0
+          }
+        ],
+        "before_raw": 2.269752985561979e-08,
+        "after_raw": 2.282830258160118e-08,
+        "before_adjusted": 6.061515659222411e-09,
+        "after_adjusted": 6.096439781475735e-09,
+        "failures": 0,
+        "scope": "Development networkLOO, frozenmodels trained excluding each held; no independent final confirmation"
       }
     },
     {

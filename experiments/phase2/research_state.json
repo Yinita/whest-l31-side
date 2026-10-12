@@ -9,11 +9,15 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": null,
+  "active_experiment": {
+    "key": "L21",
+    "script": "experiments/phase2/run_h18_public_confirmation.sh",
+    "status": "public paired control running"
+  },
   "next_experiment": {
-    "key": "H22",
-    "status": "scheduled_after_rpc",
-    "command": "uv run --frozen python experiments/phase2/execute_ready_batch.py --keys H22 --n-mlps 8 --revision r02"
+    "key": "L19",
+    "script": "experiments/phase2/run_antithetic_after_confirmation.sh",
+    "status": "queued antithetic variance pilot"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-12T05:03:33.948501+00:00",
@@ -44027,13 +44031,35 @@
   "l03_remaining_folds": {
     "session_id": 55637,
     "script": "experiments/phase2/run_remaining_l03_folds.sh",
-    "status": "held1/2 complete, held3 pairedcontrol running",
+    "status": "completed8fold chargedCV negative, zero failures",
     "active_pid": 4157714
   },
   "l03_fullcv_collection": {
     "session_id": 2289,
     "script": "experiments/phase2/finish_l03_cv_records.sh",
-    "status": "wait paired8fold completion; actualraw/adjusted/failures recorded"
+    "status": "completed"
   },
-  "completeness_audit": "results/phase2/ablation_gap_inventory_20261012.json"
+  "completeness_audit": "results/phase2/ablation_gap_inventory_20261012.json",
+  "public_confirmation": {
+    "key": "L21",
+    "candidate": "estimators/ablation_v30_048/estimator.py",
+    "candidate_sha256": "da7154bb8170c9deda98ed82b97c826bafbea7740054e8b04567dcf2837a7891",
+    "selected_at_utc": "2026-10-12T05:41:45.617172+00:00",
+    "selection": "Lowest completed Mini8 local adjusted candidate H18; no public confirmation score used for selection",
+    "network_ids": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "dataset": "benchmark/data/mini_shard01",
+    "control": "estimators/k3_v29/estimator.py",
+    "scope": "Public paired confirmation only; states inspected in O27, labels not used in candidate selection, upstream public tuning overlap unknown; not independent acceptance",
+    "script": "experiments/phase2/run_h18_public_confirmation.sh",
+    "status": "queued serially after L03 fullCV"
+  }
 }

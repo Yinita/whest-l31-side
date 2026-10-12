@@ -59,3 +59,7 @@ H22 r03完整Mini8 adjusted 5.764482499205733e-9（−0.2509%），零失败，�
 L20预注册8个1024×16新seed网络权重已实体生成，无reference labels。L19实测单线程约3700samples/s，1e9×2seed×8network约50CPU天的吞吐外推；4096样本pilot只是弱噪声诊断，不能替代强reference或验证10倍收益。O27冻结特征后正在进行公共reserved shard无label状态采集，原8GB subprocess C01资源对照已串行安排。
 
 O27公共reserved shard状态分布对照已完成：冻结variance/alpha/标准化D3/K4代理/Phi特征，8/8网络无target访问；最大平均分位点偏移/developmentIQR0.266。该结论为描述性状态诊断，不能用于声称公共分片仍未见或独立分数提高。C01原8GB subprocess资源对照继续运行。
+
+L03 r04完整合法计费networkLOO完成：每fold只评测训练排除的一个网络，当前成对V29 adjusted6.061515659222411e-9→candidate6.096439781475735e-9（+0.5762%），raw2.269752985561979e-8→2.282830258160118e-8，8fold零失败。该固定13feature线性模型否决，不能将fold0微幅改善当整体收益。singleton逐网络控制因pool生命周期不同于连续Mini8，必须用本次成对控制，不能替换冻结Mini8阶段门槛。
+
+L21已冻结H18 hash da7154bb8170c9deda98ed82b97c826bafbea7740054e8b04567dcf2837a7891，串行执行公共8–15当前V29与H18配对确认。O27已查看该集合状态，上游公共调参重叠未知，不称独立验收。接续实验为L19 antithetic reference弱pilot和C26实际predict shape序列8GiB资源审计。
