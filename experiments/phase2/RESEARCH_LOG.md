@@ -599,3 +599,7 @@ L03已构建真实charged final-only fold0候选estimators/ablation_v30_098_fold
 H16 Gaussian一阶K31生产与identitymetric core投影新增合同，保持K31非对称，投影时才12Sym/(n+4)。完整非Gaussian项与V29lambdaC proxy去重仍未解决，不能直接替换当完整core；暂无candidate score。
 
 H17 Gaussian K211 wing-centered star系数新增独立条件1D积分核验（256点split quadrature，eps0.001/0.0005），补齐原报告仅repeated-index star独立积分的缺口。完整非Gaussian production、原proxy去重和计费仍待，partial保持。
+
+O13/O14实际预注册网络首层covariance无标签诊断：64step幂迭代方向fullenergy0.7337%–0.7761%，offdiag relative Frobenius error99.61%–99.64%。不是全eigh精确主方向证明，不代表深层covariance；首层rank1近似没有dominantmode依据。保存残差、逐network数值，不将该数据用于候选调参后仍称完全未见。
+
+H31新增alloutput Hutchinson remaining-budget gate：每probe三次dense matvec/output，leading6n³，冻结V29平均compute后最多254probes（尚未扣其他成本）。仍需真实深层triangle signal/variance与合法runtime，不以unbiased自动接受。

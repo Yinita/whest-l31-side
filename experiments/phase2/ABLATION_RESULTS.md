@@ -954,6 +954,7 @@ after：用原始Coff的lawful random estimator估计exact alloutput triangle co
 
 - [ablation_v30_061_triangle_unbiased.json](../../results/phase2/ablation_v30_061_triangle_unbiased.json)
 - [ablation_v30_061_triangle_variance_formula.json](../../results/phase2/ablation_v30_061_triangle_variance_formula.json)
+- [ablation_v30_061_probe_cost_gate.json](../../results/phase2/ablation_v30_061_probe_cost_gate.json)
 
 ### v30.062 H32 高阶newborn直接CP因素生成
 
@@ -1125,6 +1126,7 @@ after：使用live covariance主模态近似edge并保留K111来源
 诊断结论：Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending；算法分数前后不适用。
 
 - [ablation_v30_075_rank1_edge_contract.json](../../results/phase2/ablation_v30_075_rank1_edge_contract.json)
+- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
 
 ### v30.076 O14 K111乘edge代理误差门槛
 
@@ -1137,6 +1139,7 @@ after：proxy与exact收缩成对误差评估
 诊断结论：Fixedproxy error bound checked; actualnetwork dominantmode/source loss threshold pending；算法分数前后不适用。
 
 - [ablation_v30_076_edge_proxy_error_bound.json](../../results/phase2/ablation_v30_076_edge_proxy_error_bound.json)
+- [ablation_v30_075_076_actual_first_layer_modes.json](../../results/phase2/ablation_v30_075_076_actual_first_layer_modes.json)
 
 ### v30.077 O15 doubled-edge早期来源贡献门槛
 
