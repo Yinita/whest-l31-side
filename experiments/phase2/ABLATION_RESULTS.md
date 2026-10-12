@@ -1013,6 +1013,7 @@ after：一次完整非线性核心生产逐层对照
 
 - [ablation_v30_065_joint_source_conversion.json](../../results/phase2/ablation_v30_065_joint_source_conversion.json)
 - [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
+- [ablation_v30_065_relu_merged_source_weight.json](../../results/phase2/ablation_v30_065_relu_merged_source_weight.json)
 
 ### v30.066 O04 旧lean与当前官方generator语义归因
 
@@ -1568,6 +1569,7 @@ after：按固定alpha区间(-∞,-1),[-1,0),[0,1),[1,∞)训练四个线性头�
 诊断结论：Continuous four-head LOO raw +0.5931%; charged candidate and parent gain gate unmet；算法分数前后不适用。
 
 - [ablation_v30_109_continuous_heads_cv.json](../../results/phase2/ablation_v30_109_continuous_heads_cv.json)
+- [ablation_v30_109_hinge_legal_component.json](../../results/phase2/ablation_v30_109_hinge_legal_component.json)
 
 ### v30.110 L15 小网络非线性修正
 

@@ -641,3 +641,7 @@ C17r02完整Mini8结束：adjusted5.7752362848216655e-9、raw2.2707890012796383e
 L17固定5组删列网络LOO实际诊断完成（negative L03parent），ratio threshold1.0000797/skew1.0005549/kurtosis0.9989657/amplitude1.0005153/constant0.9987988；无可靠positive parent，不能满足原positive归因条目，partial_diagnostic。未解封confirmation target。
 
 L29实际finalprestate固定48neuron subset无label积分收敛核验48/96/192点完成，保留原8network family负分数，不把小subset收敛当8192输出误差完整保证。legalquadrature candidate仍无。
+
+O03/H15合并oldsource系数的Gaussian ReLU赋值核验：ua=2m1,w=Phi，ua−2w*m1=2m1(1−Phi)，与K211wing A吻合。NonGaussian derivative修正和官方budgetclass完整映射仍待。
+
+L14连续hinge推理合法组件及边界finite核验通过；synthetic coefficients只验证API/连续表示，不是实际负CV模型整网score，partial_negative保持。
