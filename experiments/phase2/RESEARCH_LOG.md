@@ -779,3 +779,5 @@ K5 contemporarypairedcontrol {"before_adjusted": 5.777513736227004e-09, "after_a
 K5 RPC fullMini8 adjusted5.777750550380405e-9/raw2.269654553188616e-8,8zero failures; maxlocalrawdelta0.10073%, contemporaryadjustedgain0.00357% remains unproven. L01 samecycle first2network trace+2controls running pid111346, network0done.
 
 L01 samecycle2network complete: n0 traceΔ3.33786e-6 repeatΔ2.38419e-6 fails envelope; n1 traceΔ4.05312e-6 repeatΔ4.29153e-6 within. PerFLOPs identical. No full8acceptance or resourcepass, partial retained. H05 zeroalphacovariance Pade subset started serial.
+
+H05 zeroalphafirstcovariance Pade {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.117659882376649e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2907027386054324e-08, "failures": 0, "conclusion": "No measuredgain, no Mini8expansion; firstlayercovarianceonly subset, H05nonzero completepath remains untested"}; partialfullnonzero retained.

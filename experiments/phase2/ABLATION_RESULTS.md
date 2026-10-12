@@ -642,6 +642,9 @@ after：加入由Gaussian核解析系数约束的rational tail，同时保持已
 诊断结论：Fixed zero-mean analytic Pade tail and pole-free denominator derived; nonzero/candidate/cost pending；算法分数前后不适用。
 
 - [ablation_v30_035_pair_tail_pade.json](../../results/phase2/ablation_v30_035_pair_tail_pade.json)
+- [ablation_v30_035_r02_zeroalpha_decision.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_decision.json)
+- [ablation_v30_035_r02_zeroalpha_charged_contract.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_charged_contract.json)
+- [ablation_v30_035_r02_zeroalpha_subset_mini1.json](../../results/phase2/ablation_v30_035_r02_zeroalpha_subset_mini1.json)
 
 ### v30.036 H06 未剪枝SIMPLE生产表恢复
 
