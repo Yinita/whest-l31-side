@@ -705,3 +705,5 @@ L21 H18公共8RPC {"adjusted_final_layer_score": 5.7590999044793245e-09, "final_
 H29 augmented完整K11135raw展开项含mixed与triangle合法CPinput/slab4 cap核验n4..32relative<4.1e-7；报告机制scope沿用K211模板误写，实际output由冻结official[(1,1,1)]生成，准确以source和此日志为准。synthetic inputs不保证来自同一对称累积量；只是多项式/API contract，actualsource覆盖/CP误差与完整candidate待。
 
 O05补齐p3 Wick k3..5独立central finite-difference两步核验，五阈值最大abs7.79e-7；与先前k1/k2独立quadrature分开，不等于fullsource/candidate验证。
+
+O21合法GaussianReLU degree6边缘moment/cumulant生产，独立320点quadrature四阈值最大scaled5.493e-5，float32高阶抵消误差披露，收费948。mixedtrace/fullradial production未补齐，无整网分数。

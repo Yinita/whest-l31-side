@@ -1275,6 +1275,7 @@ after：完整可审计radial scalar生产定义
 
 - [ablation_v30_083_084_radial_k6_contract.json](../../results/phase2/ablation_v30_083_084_radial_k6_contract.json)
 - [ablation_v30_083_084_k6_production_marginals.json](../../results/phase2/ablation_v30_083_084_k6_production_marginals.json)
+- [ablation_v30_083_r02_k6_charged_marginal.json](../../results/phase2/ablation_v30_083_r02_k6_charged_marginal.json)
 
 ### v30.084 O22 K6径向状态合法线性运输
 
