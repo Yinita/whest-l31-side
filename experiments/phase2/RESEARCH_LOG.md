@@ -797,3 +797,5 @@ H08 officialD21[a,c]=T_aac verified; WK12=.5D21.T, Ymissing=.5diag(w2)D21diag(w2
 H08 first1subset raw exactlycontrol, adjusted6.1395716301182e-9 worse. Note correctedinterpretation: first1 identitybornhub is NOT generallyidenticallyzero; this particular selected factors/source cancellation produced no measuredmean difference. No mathematicalzero claim without proof. Fullsource remainspartial.
 
 H09 B2leadingsubset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.1417451379643735e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2905515706383994e-08, "failures": 0, "scope": "B2 leading X=1.5diag(w1)D21.T,Y=abar diag(w3), fixed16columns layer14; codecomments copiedfromH08 stale, actualformula/report authoritative", "conclusion": "Negative subset, no expansion; full H09 restoration remainspartial"}
+
+H11 D21square subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.142494541536741e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.290830991569237e-08, "failures": 0, "scope": "B2 D21square actualstate fixed16columns layer14 subset only", "conclusion": "No gain, no expansion; fullH11 source/rankproof remainspartial"}
