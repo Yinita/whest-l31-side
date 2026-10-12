@@ -47,3 +47,5 @@
 用户要求先准备清单再交低推理模型：已整理[129项待验证消融](experiments/phase2/ABLATION_BACKLOG.md)，每项含预留v30.xxx版本、before/after、详情、依赖、成本和验收。机器队列见`experiments/phase2/ablation_queue.json`，执行提示见[交接文件](experiments/phase2/LOW_REASONING_HANDOFF.md)。71项算法/计算、43项诊断、15项合同；59项需先推导，不允许执行模型猜公式后正式评测。用户已授权执行全部队列。真实结果持续写入[消融结果](experiments/phase2/ABLATION_RESULTS.md)，运行身份和进程以research_state.json为准。
 
 当前H18完整Mini8 adjusted 5.646816493872825e-9（相对冻结基线−2.287%，零失败）；本地RPC完整Mini8 adjusted 5.647856469248522e-9，零失败；独立确认仍未完成，目标不递进。C03/C05增费未通过条目门槛，C06微小差待重复控制归因。逐项真实结果见消融结果。
+
+C16 r03固定16行调度Mini8 adjusted 5.750992775997765e-9（−0.4843%），8/8零失败，最大residual0.2527s；r02原2/8超residual失败保留。RPC及独立确认仍待。

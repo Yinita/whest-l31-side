@@ -1,0 +1,26 @@
+{
+  "rows": [
+    {
+      "n": 64,
+      "size": 32,
+      "individual_flops": 16384,
+      "packed_flops": 28672,
+      "ratio": 1.75
+    },
+    {
+      "n": 64,
+      "size": 16,
+      "individual_flops": 16384,
+      "packed_flops": 28672,
+      "ratio": 1.75
+    },
+    {
+      "n": 128,
+      "size": 16,
+      "individual_flops": 65536,
+      "packed_flops": 114688,
+      "ratio": 1.75
+    }
+  ],
+  "conclusion": "Legal reshape/transpose/copy packing is exactly equal but charged reshape may increase FLOPs. Full triangular scatter layout/cost and residual gates pending; do not silently use NumPy strided views."
+}

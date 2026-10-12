@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 16, 'completed_negative': 8, 'completed_failed': 1, 'partial_derivation': 13, 'completed_diagnostic': 19, 'partial_diagnostic': 8, 'blocked_derivation': 39, 'pending': 14, 'partial_negative': 11}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 8, 'partial_derivation': 15, 'completed_diagnostic': 20, 'partial_diagnostic': 9, 'blocked_derivation': 36, 'partial_negative': 12, 'pending': 12}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -19,7 +19,7 @@
 | v30.013 | C13 | completed_negative | 2.29046648315e-08 | 2.29035599375e-08 | 6.11683233498e-09 | 6.14547572661e-09 | +0.468272% | +0.473118% | 0 |
 | v30.014 | C14 | completed_positive | 2.29046648315e-08 | 2.2903094532e-08 | 6.11683233498e-09 | 6.11624916111e-09 | -0.009534% | -0.002678% | 0 |
 | v30.015 | C15 | completed_positive | 2.29046648315e-08 | 2.29023822129e-08 | 6.11683233498e-09 | 6.11622274759e-09 | -0.009966% | +0.000000% | 0 |
-| v30.016 | C16 | completed_failed | 2.2702818514e-08 | 0.213074359073 | 5.77897975577e-09 | 0.213074345897 | +3687058081.578456% | -0.534756% | 2 |
+| v30.016 | C16 | completed_positive | 2.2702818514e-08 | 2.27096401684e-08 | 5.77897975577e-09 | 5.750992776e-09 | -0.484289% | -0.513692% | 0 |
 | v30.017 | C17 | completed_positive | 2.29046648315e-08 | 2.29078516156e-08 | 6.11683233498e-09 | 6.11241916501e-09 | -0.072148% | -0.086049% | 0 |
 | v30.018 | C18 | completed_positive | 2.29046648315e-08 | 2.29071996927e-08 | 6.11683233498e-09 | 6.11611893274e-09 | -0.011663% | -0.022727% | 0 |
 | v30.019 | C19 | completed_positive | 2.29046648315e-08 | 2.28964882609e-08 | 6.11683233498e-09 | 6.11494351448e-09 | -0.030879% | +0.004821% | 0 |
@@ -47,6 +47,7 @@
 | v30.107 | L12 | 2.27016599414e-08 | 2.2825262429e-08 | +0.544465% | 未计费验证 |
 | v30.108 | L13 | 2.27016599414e-08 | 2.27400364103e-08 | +0.169047% | 未计费验证 |
 | v30.109 | L14 | 2.27016599414e-08 | 2.28363089459e-08 | +0.593124% | 未计费验证 |
+| v30.110 | L15 | 2.27016599414e-08 | 2.31375281148e-08 | +1.919984% | 未计费验证 |
 
 ## 归因与证据
 
@@ -306,17 +307,19 @@ before：Sj=FAj diag(dA) FAj.T+FPj diag(dP) FPj.T完整GEMM
 
 after：对真正对称的weighted Gram计算上三角block并copy下三角
 
-状态：completed_failed
+状态：completed_positive
 
-逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4454091529080；peak child RSS=6712164KiB；失败=2。
+逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4455034786680；peak child RSS=6716400KiB；失败=0。
 
 前次快筛：Mini1 development only; no independent generalization claim；raw=2.28905161492e-08；adjusted=6.08189781882e-09；报告 `results/phase2/ablation_v30_016_r01_mini1_local.json`。
 
-- [ablation_v30_016_r02_mini8_local.json](../../results/phase2/ablation_v30_016_r02_mini8_local.json)
-- [ablation_v30_016_r02_mini8_local.manifest.json](../../results/phase2/ablation_v30_016_r02_mini8_local.manifest.json)
-- [ablation_v30_016_r02_mini8_local.log](../../results/phase2/ablation_v30_016_r02_mini8_local.log)
-- [ablation_v30_016_r02_mini8_local.launcher.log](../../results/phase2/ablation_v30_016_r02_mini8_local.launcher.log)
-- [ablation_v30_016_r02_mini8_local.validate.log](../../results/phase2/ablation_v30_016_r02_mini8_local.validate.log)
+前次快筛：Mini8 development only; no independent generalization claim；raw=0.213074359073；adjusted=0.213074345897；报告 `results/phase2/ablation_v30_016_r02_mini8_local.json`。
+
+- [ablation_v30_016_r03_mini8_local.json](../../results/phase2/ablation_v30_016_r03_mini8_local.json)
+- [ablation_v30_016_r03_mini8_local.manifest.json](../../results/phase2/ablation_v30_016_r03_mini8_local.manifest.json)
+- [ablation_v30_016_r03_mini8_local.log](../../results/phase2/ablation_v30_016_r03_mini8_local.log)
+- [ablation_v30_016_r03_mini8_local.launcher.log](../../results/phase2/ablation_v30_016_r03_mini8_local.launcher.log)
+- [ablation_v30_016_r03_mini8_local.validate.log](../../results/phase2/ablation_v30_016_r03_mini8_local.validate.log)
 
 ### v30.017 C17 Sg双边旋转的末次乘法对称化
 
@@ -484,6 +487,18 @@ predict=27.788835s；residual=0.233054s；FLOPs=587262754287；peak child RSS=39
 - [ablation_v30_027_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_027_r01_mini1_local.launcher.log)
 - [ablation_v30_027_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_027_r01_mini1_local.validate.log)
 
+### v30.029 C29 三角C_pre阶段批量copy调度
+
+before：C01逐blockPython循环触发多次copyto
+
+after：保持相同上三角算法，将同尺度的输入/输出布局用持久块slab按批次copy
+
+状态：partial_negative
+
+诊断结论：Exact layout packing charges75% more; full scatter and candidate pending；算法分数前后不适用。
+
+- [ablation_v30_029_layout_contract.json](../../results/phase2/ablation_v30_029_layout_contract.json)
+
 ### v30.031 H01 边际D3平方产品补全
 
 before：实际V29 p1含D3²w(6,1)/72；p2,p3,p4均只含Gaussian、D3线性、g4线性
@@ -539,6 +554,8 @@ after：仅恢复该出生项并扣除其已重复dslices
 诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
+- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
 
 ### v30.038 H08 B1的WK12对称反馈恢复
 
@@ -575,6 +592,8 @@ after：仅恢复该channel而保留B2其他shadow
 诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
+- [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
 
 ### v30.041 H11 B2 D21平方来源恢复
 
@@ -695,6 +714,18 @@ after：完整capped diagram生产与显式small tensor一致
 
 - [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
 
+### v30.066 O04 旧lean与当前官方generator语义归因
+
+before：仅完成pair-output False/True diff
+
+after：完整source/output的exact factor inventory
+
+状态：partial_diagnostic
+
+诊断结论：126 bounded signatures; V29 coefficient mapping pending；算法分数前后不适用。
+
+- [ablation_v30_066_full_output_inventory.json](../../results/phase2/ablation_v30_066_full_output_inventory.json)
+
 ### v30.073 O11 K111乘covariance edge完整公式核验
 
 before：只有静态遗漏判定
@@ -719,6 +750,18 @@ after：证明exact复杂度和内存或给出反例
 诊断结论：Exact no-cubic-intermediate diagonal contraction verified; O(R*n^3), not unqualified O(n^3). Full cumulative repeated-content production and charged operator formula remain pending；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
+
+### v30.079 O17 当前官方WK22 path与旧lean等价审计
+
+before：旧复合X/Y生产
+
+after：逐diagram核对current official WK22路径
+
+状态：completed_diagnostic
+
+诊断结论：Official budget3 and composite budget4 WK22 mechanisms differ; separate candidate needed；算法分数前后不适用。
+
+- [ablation_v30_079_wk22_budget_equivalence.json](../../results/phase2/ablation_v30_079_wk22_budget_equivalence.json)
 
 ### v30.080 O18 现有birth薄反馈乘积预算审计
 
@@ -976,6 +1019,18 @@ after：按固定alpha区间(-∞,-1),[-1,0),[0,1),[1,∞)训练四个线性头�
 
 - [ablation_v30_109_continuous_heads_cv.json](../../results/phase2/ablation_v30_109_continuous_heads_cv.json)
 
+### v30.110 L15 小网络非线性修正
+
+before：L03固定13列线性预测残差。
+
+after：一个固定13→8→1 tanh小网络预测final残差。
+
+状态：blocked_derivation
+
+诊断结论：见原始证据；算法分数前后不适用。
+
+- [ablation_v30_110_gradient_contract.json](../../results/phase2/ablation_v30_110_gradient_contract.json)
+
 ### v30.111 L16 单前层修正递推注入
 
 before：验证的修正仅改变final输出，不改变内部状态。
@@ -999,6 +1054,18 @@ after：用开发网络级CV测13特征解释方差，给出达到10倍需约90%
 诊断结论：Held-network13feature R2 negative;10x requires0.9. Charged adjusted candidate pending；算法分数前后不适用。
 
 - [ablation_v30_113_predictability.json](../../results/phase2/ablation_v30_113_predictability.json)
+
+### v30.114 L19 独立参考两次采样一致性
+
+before：官方十亿样本reference只有单份，条件噪声proxy不能当误差地板。
+
+after：在新生成少量确认网络上制作两份互不重叠输入种子的独立reference。
+
+状态：partial_derivation
+
+诊断结论：CPU/reference sample uncertainty budget planned; actual two-reference sampling pending；算法分数前后不适用。
+
+- [ablation_v30_114_reference_budget_plan.json](../../results/phase2/ablation_v30_114_reference_budget_plan.json)
 
 ### v30.117 L22 输出误差与阈值位置分解
 
@@ -1035,6 +1102,18 @@ after：计算e_l−Phi_l⊙(W_l@e_{l−1})的离线一阶残差。
 诊断结论：120 network/layer first-order residual transport decomposition; reference oracle only; nonlinear/reference noise caveat retained；算法分数前后不适用。
 
 - [ablation_v30_119_error_transport.json](../../results/phase2/ablation_v30_119_error_transport.json)
+
+### v30.124 L29 条件高斯最后层积分对照
+
+before：最后层均值依赖Hermite边缘展开。
+
+after：对末层pre均值/方差/偏度构造规范化一维积分诊断，和截断展开比较。
+
+状态：partial_derivation
+
+诊断结论：Positive normalized skew-normal mu/var/skew matching checked; actual network final-state integration pending；算法分数前后不适用。
+
+- [ablation_v30_123_positive_skew_family.json](../../results/phase2/ablation_v30_123_positive_skew_family.json)
 
 ### v30.125 L30 末层尾概率数值稳定性
 

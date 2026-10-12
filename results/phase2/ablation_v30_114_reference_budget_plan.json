@@ -1,0 +1,38 @@
+{
+  "scope": "Planning only; variance grid hypothetical, actual empirical variance required",
+  "dense_forward_flops_per_sample": 33554432,
+  "stage_raw_target_at_baseline_util": 2.2703076758722337e-09,
+  "rows": [
+    {
+      "assumed_neuron_variance": 0.001,
+      "samples_for_mean_variance_below_10pct_target": 4404690,
+      "flops_one_reference": 147796871086080,
+      "flops_two_references": 295593742172160
+    },
+    {
+      "assumed_neuron_variance": 0.01,
+      "samples_for_mean_variance_below_10pct_target": 44046894,
+      "flops_one_reference": 1477968509534208,
+      "flops_two_references": 2955937019068416
+    },
+    {
+      "assumed_neuron_variance": 0.1,
+      "samples_for_mean_variance_below_10pct_target": 440468934,
+      "flops_one_reference": 14779684894015488,
+      "flops_two_references": 29559369788030976
+    },
+    {
+      "assumed_neuron_variance": 1,
+      "samples_for_mean_variance_below_10pct_target": 4404689332,
+      "flops_one_reference": 147796848671719424,
+      "flops_two_references": 295593697343438848
+    }
+  ],
+  "protocol": [
+    "Two independent fixed seeds; batch means estimate per-neuron variance and cross-batch covariance",
+    "Record actual samples, seed, network identity, summation dtype and confidence intervals",
+    "Compare two means with variance/N1+variance/N2; strong reference must match official1e9 sample quality or demonstrate tighter uncertainty",
+    "Small CPU pilot is weak noise diagnostic only, never replaces frozen official reference or grants stage acceptance"
+  ],
+  "conclusion": "CPU budget must be measured before selecting feasible N; no reference generated, no uncertainty inferred from dtype or hypothetical variance."
+}
