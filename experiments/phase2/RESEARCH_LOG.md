@@ -801,3 +801,5 @@ H09 B2leadingsubset {"before_adjusted": 6.116832334984139e-09, "after_adjusted":
 H11 D21square subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.142494541536741e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.290830991569237e-08, "failures": 0, "scope": "B2 D21square actualstate fixed16columns layer14 subset only", "conclusion": "No gain, no expansion; fullH11 source/rankproof remainspartial"}
 
 H12 WK22*WK21 subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.141111838305744e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2903153151787592e-08, "failures": 0, "scope": "One B2 WK22*WK21 product fixed16layer14 subset, not fullH12", "conclusion": "Rawtinychange belowfee, adjustedworse, no expansion"}
+
+H07 B1WK22 subset {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.141853669543694e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2905839003328765e-08, "failures": 0, "scope": "B1WK22 fixed16birthcolumns layer14 subset only", "conclusion": "Negative, no expansion; fullH07 source/rankproof remainspartial"}

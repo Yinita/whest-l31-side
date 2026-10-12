@@ -73,3 +73,5 @@ L19 antithetic参考两个独立4096pair种子相同forward次数finalvariance r
 O12 exact表示CP成本诊断、C26真实local/RPC形状生命周期诊断、C28最后层deadLA/LP复用合同已补齐。C28 local单网adjusted6.1167127894412344e-9，RPC6.120838343176817e-9，均零失败；local FLOPs与控制相同，RPC固定astype增费保留，不宣称精度提升。H29正确目标阶次first1子集adjusted6.116832334984139e-9→6.251611877719655e-9，负结果，完整来源仍待。剩余74项partial，十倍门槛未通过。
 
 K5 Gaussianbirth对角final子集Mini8 local5.7773073237326585e-9，RPC5.777750550380405e-9均8/8零失败；同周期V29控制5.777513736227004e-9，差仅−0.00357%，无法认定可靠收益。fullK5/cross/nonGaussian门槛仍未覆盖。L18/L34/L35合法计费解释力、冻结模型推理及证据账本已补齐；当前60项相应快筛/诊断完成，69项partial，不代表十倍达标。L01同周期trace/repeated control首网输出差超过重复包络，保留partial，原始证据不覆盖。
+
+H31真实layer14固定4output方差gate否决（optimistic250probes SE/signal0.344–1.464），完成negative。H06历史90条未剪枝重建合法评测adjusted6.2350e-9，劣于控制；历史依赖未确认，仍partial。H08/H09/H11/H12固定layer14first16出生子集均零失败但增费后adjusted恶化（6.141–6.144e-9 vs6.1168e-9），完整来源不宣称验证。当前61项快筛/诊断完成，68项partial。

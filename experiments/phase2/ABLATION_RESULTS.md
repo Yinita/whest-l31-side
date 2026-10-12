@@ -678,6 +678,9 @@ after：仅恢复该出生项并扣除其已重复dslices
 - [ablation_h07_h10_wk22_separable_rank.json](../../results/phase2/ablation_h07_h10_wk22_separable_rank.json)
 - [ablation_h07_h10_distinct_contract.json](../../results/phase2/ablation_h07_h10_distinct_contract.json)
 - [ablation_h07_h10_thin_transport_contract.json](../../results/phase2/ablation_h07_h10_thin_transport_contract.json)
+- [ablation_v30_037_r02_subset_mini1.json](../../results/phase2/ablation_v30_037_r02_subset_mini1.json)
+- [ablation_v30_037_r02_subset_decision.json](../../results/phase2/ablation_v30_037_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
 
 ### v30.038 H08 B1的WK12对称反馈恢复
 
