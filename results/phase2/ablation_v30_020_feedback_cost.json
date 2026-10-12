@@ -1,0 +1,23 @@
+{
+  "scope": "Exact factor linearD3feedback only; XtYt cross term remains materialized",
+  "rows": [
+    {
+      "n": 4,
+      "rank": 2,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "n": 7,
+      "rank": 3,
+      "error": 3.552713678800501e-15
+    },
+    {
+      "n": 11,
+      "rank": 4,
+      "error": 1.4210854715202004e-14
+    }
+  ],
+  "formula": "3rowsum(P*A*F2R2T)=3rowsum((AP@R2)*F2); rowsum(P*A*w2*F1R1T)=rowsum(((AP*w2)@R1)*F1)",
+  "cost": "Two new n\u00b2r GEMMs while original Xt/Yt must remain for cross term: +4n\u00b2r leading billed FLOPs unless shared other contractions; no cost-saving proof",
+  "conclusion": "Factor formula correct, naive replacement expected cost increase; implementation test still pending"
+}

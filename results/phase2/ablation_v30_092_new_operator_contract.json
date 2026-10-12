@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "dtype": "<class 'numpy.float32'>",
+      "max_error": 0.0,
+      "flops": 697,
+      "summary": {
+        "flop_budget": 1073741824,
+        "flops_used": 697,
+        "flops_remaining": 1073741127,
+        "operations": {
+          "asarray": {
+            "flop_cost": 0,
+            "calls": 2,
+            "flopscope_backend_time_s": 3.4280092222616076e-06,
+            "flopscope_overhead_time_s": 0.0001917469926411286
+          },
+          "empty": {
+            "flop_cost": 0,
+            "calls": 1,
+            "flopscope_backend_time_s": 1.3829994713887572e-06,
+            "flopscope_overhead_time_s": 6.932599353604019e-05
+          },
+          "multiply": {
+            "flop_cost": 56,
+            "calls": 2,
+            "flopscope_backend_time_s": 8.939998224377632e-06,
+            "flopscope_overhead_time_s": 0.00036996799462940544
+          },
+          "matmul": {
+            "flop_cost": 637,
+            "calls": 1,
+            "flopscope_backend_time_s": 9.536001016385853e-06,
+            "flopscope_overhead_time_s": 0.0008621640008641407
+          },
+          "copyto": {
+            "flop_cost": 4,
+            "calls": 1,
+            "flopscope_backend_time_s": 4.35100810136646e-06,
+            "flopscope_overhead_time_s": 0.00010921400098595768
+          }
+        },
+        "wall_time_s": 0.0019320599967613816,
+        "flopscope_backend_time_s": 2.763801603578031e-05,
+        "flopscope_overhead_time_s": 0.001735717974952422,
+        "residual_wall_time_s": 0.00016870400577317923
+      }
+    },
+    {
+      "dtype": "<class 'numpy.float64'>",
+      "max_error": 0.0,
+      "flops": 1394,
+      "summary": {
+        "flop_budget": 1073741824,
+        "flops_used": 1394,
+        "flops_remaining": 1073740430,
+        "operations": {
+          "asarray": {
+            "flop_cost": 0,
+            "calls": 2,
+            "flopscope_backend_time_s": 1.6499980119988322e-06,
+            "flopscope_overhead_time_s": 0.00010619900422170758
+          },
+          "empty": {
+            "flop_cost": 0,
+            "calls": 1,
+            "flopscope_backend_time_s": 2.5679910322651267e-06,
+            "flopscope_overhead_time_s": 6.49350113235414e-05
+          },
+          "multiply": {
+            "flop_cost": 112,
+            "calls": 2,
+            "flopscope_backend_time_s": 6.166999810375273e-06,
+            "flopscope_overhead_time_s": 0.0002807110140565783
+          },
+          "matmul": {
+            "flop_cost": 1274,
+            "calls": 1,
+            "flopscope_backend_time_s": 5.209003575146198e-06,
+            "flopscope_overhead_time_s": 0.0001450220006518066
+          },
+          "copyto": {
+            "flop_cost": 8,
+            "calls": 1,
+            "flopscope_backend_time_s": 2.63300898950547e-06,
+            "flopscope_overhead_time_s": 7.866999658290297e-05
+          }
+        },
+        "wall_time_s": 0.0009378329996252432,
+        "flopscope_backend_time_s": 1.82270014192909e-05,
+        "flopscope_overhead_time_s": 0.0007666490273550153,
+        "residual_wall_time_s": 0.00015295697085093707
+      }
+    }
+  ],
+  "conclusion": "Small local actual fnp broadcast/matmul/out/copy/same-object contract; complete candidates retain per-operator reports. No unmetered NumPy candidate computation. Remote parity and all high-order candidate operations remain pending."
+}

@@ -1,24 +1,52 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 12, 'blocked_derivation': 58, 'completed_negative': 3, 'pending': 44, 'completed_diagnostic': 8, 'partial_diagnostic': 3, 'partial_derivation': 1}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 16, 'completed_negative': 8, 'completed_failed': 1, 'partial_derivation': 13, 'completed_diagnostic': 19, 'partial_diagnostic': 8, 'blocked_derivation': 39, 'pending': 14, 'partial_negative': 11}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
 | v30.001 | C01 | completed_positive | 2.29046648315e-08 | 2.29064394119e-08 | 6.11683233498e-09 | 6.08690650979e-09 | -0.489237% | -0.496946% | 0 |
+| v30.002 | C02 | completed_negative | 2.29046648315e-08 | 2.29302052901e-08 | 6.11683233498e-09 | 6.15664203556e-09 | +0.650822% | +0.538714% | 0 |
 | v30.003 | C03 | completed_negative | 2.29046648315e-08 | 2.29254784045e-08 | 6.11683233498e-09 | 6.12256687422e-09 | +0.093750% | +0.002877% | 0 |
+| v30.004 | C04 | completed_negative | 2.29046648315e-08 | 2.29219256909e-08 | 6.11683233498e-09 | 6.12153417628e-09 | +0.076867% | +0.001507% | 0 |
 | v30.005 | C05 | completed_positive | 2.29046648315e-08 | 2.28935501667e-08 | 6.11683233498e-09 | 6.11390439228e-09 | -0.047867% | +0.000659% | 0 |
 | v30.006 | C06 | completed_positive | 2.29046648315e-08 | 2.29046417388e-08 | 6.11683233498e-09 | 6.11682904772e-09 | -0.000054% | +0.000047% | 0 |
 | v30.007 | C07 | completed_positive | 2.29046648315e-08 | 2.29046648315e-08 | 6.11683233498e-09 | 6.11682139186e-09 | -0.000179% | -0.000179% | 0 |
 | v30.008 | C08 | completed_positive | 2.29046648315e-08 | 2.28957883763e-08 | 6.11683233498e-09 | 6.11445658898e-09 | -0.038839% | -0.000086% | 0 |
+| v30.009 | C09 | completed_positive | 2.29046648315e-08 | 2.29010748143e-08 | 6.11683233498e-09 | 6.11572771322e-09 | -0.018059% | -0.002385% | 0 |
 | v30.010 | C10 | completed_positive | 2.29046648315e-08 | 2.29046648315e-08 | 6.11683233498e-09 | 6.11621386699e-09 | -0.010111% | -0.010111% | 0 |
 | v30.011 | C11 | completed_positive | 2.29046648315e-08 | 2.28947385494e-08 | 6.11683233498e-09 | 6.09062553181e-09 | -0.428437% | -0.385267% | 0 |
 | v30.012 | C12 | completed_negative | 2.28947385494e-08 | 2.29095018511e-08 | 6.09062553181e-09 | 6.09455297313e-09 | +0.064483% | +0.000000% | 0 |
+| v30.013 | C13 | completed_negative | 2.29046648315e-08 | 2.29035599375e-08 | 6.11683233498e-09 | 6.14547572661e-09 | +0.468272% | +0.473118% | 0 |
 | v30.014 | C14 | completed_positive | 2.29046648315e-08 | 2.2903094532e-08 | 6.11683233498e-09 | 6.11624916111e-09 | -0.009534% | -0.002678% | 0 |
 | v30.015 | C15 | completed_positive | 2.29046648315e-08 | 2.29023822129e-08 | 6.11683233498e-09 | 6.11622274759e-09 | -0.009966% | +0.000000% | 0 |
+| v30.016 | C16 | completed_failed | 2.2702818514e-08 | 0.213074359073 | 5.77897975577e-09 | 0.213074345897 | +3687058081.578456% | -0.534756% | 2 |
+| v30.017 | C17 | completed_positive | 2.29046648315e-08 | 2.29078516156e-08 | 6.11683233498e-09 | 6.11241916501e-09 | -0.072148% | -0.086049% | 0 |
+| v30.018 | C18 | completed_positive | 2.29046648315e-08 | 2.29071996927e-08 | 6.11683233498e-09 | 6.11611893274e-09 | -0.011663% | -0.022727% | 0 |
+| v30.019 | C19 | completed_positive | 2.29046648315e-08 | 2.28964882609e-08 | 6.11683233498e-09 | 6.11494351448e-09 | -0.030879% | +0.004821% | 0 |
+| v30.021 | C21 | completed_negative | 2.28947385494e-08 | 2.29046648315e-08 | 6.09062553181e-09 | 6.09291669639e-09 | +0.037618% | -0.005736% | 0 |
 | v30.022 | C22 | completed_negative | 2.29046648315e-08 | 2.29066454693e-08 | 6.11683233498e-09 | 6.11736893529e-09 | +0.008773% | +0.000125% | 0 |
+| v30.027 | C27 | completed_negative | 2.29046648315e-08 | 2.29075904912e-08 | 6.11683233498e-09 | 6.1176136505e-09 | +0.012773% | +0.000000% | 0 |
 | v30.031 | H01 | completed_positive | 2.29046648315e-08 | 2.2881678774e-08 | 6.11683233498e-09 | 6.11070767115e-09 | -0.100128% | +0.000228% | 0 |
 | v30.032 | H02 | completed_positive | 2.29046648315e-08 | 2.29027996568e-08 | 6.11683233498e-09 | 6.11635118582e-09 | -0.007866% | +0.000277% | 0 |
 | v30.048 | H18 | completed_positive | 2.2702818514e-08 | 2.218065287e-08 | 5.77897975577e-09 | 5.64681649387e-09 | -2.286965% | +0.002807% | 0 |
+
+## 离线学习快筛
+
+仅为开发网络LOO raw误差，尚无合法候选的adjusted分数。
+
+| 版本 | key | before raw | after raw | raw变化 | adjusted |
+|---|---|---:|---:|---:|---|
+| v30.098 | L03 | 2.27016599414e-08 | 2.28241554222e-08 | +0.539588% | 未计费验证 |
+| v30.099 | L04 | 2.27016599414e-08 | 2.27967393532e-08 | +0.418821% | 未计费验证 |
+| v30.100 | L05 | 2.27016599414e-08 | 2.28401608462e-08 | +0.610092% | 未计费验证 |
+| v30.101 | L06 | 2.27016599414e-08 | 2.28442126705e-08 | +0.627940% | 未计费验证 |
+| v30.103 | L08 | 2.27016599414e-08 | 2.28241554222e-08 | +0.539588% | 未计费验证 |
+| v30.104 | L09 | 2.27016599414e-08 | 2.28416995875e-08 | +0.616870% | 未计费验证 |
+| v30.105 | L10 | 2.27016599414e-08 | 2.33958133005e-08 | +3.057721% | 未计费验证 |
+| v30.106 | L11 | 2.27016599414e-08 | 2.4684767688e-08 | +8.735519% | 未计费验证 |
+| v30.107 | L12 | 2.27016599414e-08 | 2.2825262429e-08 | +0.544465% | 未计费验证 |
+| v30.108 | L13 | 2.27016599414e-08 | 2.27400364103e-08 | +0.169047% | 未计费验证 |
+| v30.109 | L14 | 2.27016599414e-08 | 2.28363089459e-08 | +0.593124% | 未计费验证 |
 
 ## 归因与证据
 
@@ -40,6 +68,24 @@ predict=28.503507s；residual=0.311622s；FLOPs=584344372719；peak child RSS=38
 - [ablation_v30_001_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_001_r01_mini1_local.launcher.log)
 - [ablation_v30_001_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_001_r01_mini1_local.validate.log)
 
+### v30.002 C02 Strassen–Winograd共享加法链
+
+before：现_Strassen采用标准7乘法18加减的组合/组装
+
+after：保持每层7个乘法，使用Winograd15加减共享中间链
+
+状态：completed_negative
+
+predict=27.773421s；residual=0.240963s；FLOPs=590426419695；peak child RSS=5776884KiB；失败=0。
+
+前次快筛：Mini1 development only; no independent generalization claim；raw=0.943476319313；adjusted=0.943476319313；报告 `results/phase2/ablation_v30_002_r01_mini1_local.json`。
+
+- [ablation_v30_002_r02_mini1_local.json](../../results/phase2/ablation_v30_002_r02_mini1_local.json)
+- [ablation_v30_002_r02_mini1_local.manifest.json](../../results/phase2/ablation_v30_002_r02_mini1_local.manifest.json)
+- [ablation_v30_002_r02_mini1_local.log](../../results/phase2/ablation_v30_002_r02_mini1_local.log)
+- [ablation_v30_002_r02_mini1_local.launcher.log](../../results/phase2/ablation_v30_002_r02_mini1_local.launcher.log)
+- [ablation_v30_002_r02_mini1_local.validate.log](../../results/phase2/ablation_v30_002_r02_mini1_local.validate.log)
+
 ### v30.003 C03 将Z与Zf薄腿合并运输
 
 before：同一WD分别乘Z_st与Zf_st，两个GEMM调用
@@ -57,6 +103,22 @@ predict=28.801238s；residual=0.240171s；FLOPs=587279650287；peak child RSS=39
 - [ablation_v30_003_r01_mini1_local.log](../../results/phase2/ablation_v30_003_r01_mini1_local.log)
 - [ablation_v30_003_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_003_r01_mini1_local.launcher.log)
 - [ablation_v30_003_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_003_r01_mini1_local.validate.log)
+
+### v30.004 C04 将两条D21反馈收缩合并薄列
+
+before：GYR R2/F2与GXR R1/F1分别GEMM后sum
+
+after：合并[GYR,GXR]和[F2,F1]薄列一次乘法并一次k-sum
+
+状态：completed_negative
+
+predict=28.215100s；residual=0.235373s；FLOPs=587271601646；peak child RSS=3975412KiB；失败=0。
+
+- [ablation_v30_004_r01_mini1_local.json](../../results/phase2/ablation_v30_004_r01_mini1_local.json)
+- [ablation_v30_004_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_004_r01_mini1_local.manifest.json)
+- [ablation_v30_004_r01_mini1_local.log](../../results/phase2/ablation_v30_004_r01_mini1_local.log)
+- [ablation_v30_004_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_004_r01_mini1_local.launcher.log)
+- [ablation_v30_004_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_004_r01_mini1_local.validate.log)
 
 ### v30.005 C05 PPL与Z的末次薄腿收缩写成扁平GEMM
 
@@ -124,6 +186,22 @@ predict=27.798984s；residual=0.230228s；FLOPs=587262251608；peak child RSS=39
 - [ablation_v30_008_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_008_r01_mini1_local.launcher.log)
 - [ablation_v30_008_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_008_r01_mini1_local.validate.log)
 
+### v30.009 C09 稀疏wick多项式代替dense表乘
+
+before：APOW @ C1、APOW @ C2、SB @ SELC计入零系数乘法
+
+after：逐WICK_PAIR用明确稀疏Horner/单项式选择构造
+
+状态：completed_positive
+
+predict=28.130338s；residual=0.257135s；FLOPs=587248745967；peak child RSS=3924308KiB；失败=0。
+
+- [ablation_v30_009_r01_mini1_local.json](../../results/phase2/ablation_v30_009_r01_mini1_local.json)
+- [ablation_v30_009_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_009_r01_mini1_local.manifest.json)
+- [ablation_v30_009_r01_mini1_local.log](../../results/phase2/ablation_v30_009_r01_mini1_local.log)
+- [ablation_v30_009_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_009_r01_mini1_local.launcher.log)
+- [ablation_v30_009_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_009_r01_mini1_local.validate.log)
+
 ### v30.010 C10 稀疏Wick selector改indexed选取
 
 before：SL2/SR2为onehot/单系数表却做dense GEMM @ WT
@@ -174,6 +252,22 @@ predict=27.677843s；residual=0.256349s；FLOPs=585000224239；peak child RSS=40
 - [ablation_v30_012_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_012_r01_mini1_local.launcher.log)
 - [ablation_v30_012_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_012_r01_mini1_local.validate.log)
 
+### v30.013 C13 PK11和PK22对称输出block化
+
+before：每组计算完整PK矩阵再平均transpose
+
+after：每个上三角输出block同时合并正向/反向term，复制下三角
+
+状态：completed_negative
+
+predict=27.790413s；residual=0.266294s；FLOPs=590041202159；peak child RSS=3924376KiB；失败=0。
+
+- [ablation_v30_013_r01_mini1_local.json](../../results/phase2/ablation_v30_013_r01_mini1_local.json)
+- [ablation_v30_013_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_013_r01_mini1_local.manifest.json)
+- [ablation_v30_013_r01_mini1_local.log](../../results/phase2/ablation_v30_013_r01_mini1_local.log)
+- [ablation_v30_013_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_013_r01_mini1_local.launcher.log)
+- [ablation_v30_013_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_013_r01_mini1_local.validate.log)
+
 ### v30.014 C14 避免二次covariance对称平均
 
 before：pk11已平均其transpose；assembly又C=(K11+K11.T)*0.5
@@ -206,6 +300,97 @@ predict=27.781575s；residual=0.230117s；FLOPs=587262754287；peak child RSS=39
 - [ablation_v30_015_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_015_r01_mini1_local.launcher.log)
 - [ablation_v30_015_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_015_r01_mini1_local.validate.log)
 
+### v30.016 C16 小核心Sj只计算上三角
+
+before：Sj=FAj diag(dA) FAj.T+FPj diag(dP) FPj.T完整GEMM
+
+after：对真正对称的weighted Gram计算上三角block并copy下三角
+
+状态：completed_failed
+
+逐网络时间/residual见原始报告，不与单网比较aggregate；FLOPs=4454091529080；peak child RSS=6712164KiB；失败=2。
+
+前次快筛：Mini1 development only; no independent generalization claim；raw=2.28905161492e-08；adjusted=6.08189781882e-09；报告 `results/phase2/ablation_v30_016_r01_mini1_local.json`。
+
+- [ablation_v30_016_r02_mini8_local.json](../../results/phase2/ablation_v30_016_r02_mini8_local.json)
+- [ablation_v30_016_r02_mini8_local.manifest.json](../../results/phase2/ablation_v30_016_r02_mini8_local.manifest.json)
+- [ablation_v30_016_r02_mini8_local.log](../../results/phase2/ablation_v30_016_r02_mini8_local.log)
+- [ablation_v30_016_r02_mini8_local.launcher.log](../../results/phase2/ablation_v30_016_r02_mini8_local.launcher.log)
+- [ablation_v30_016_r02_mini8_local.validate.log](../../results/phase2/ablation_v30_016_r02_mini8_local.validate.log)
+
+### v30.017 C17 Sg双边旋转的末次乘法对称化
+
+before：Sg=Tq @ (Sg @ Tq.T)完整输出
+
+after：保留第一乘法，末次上三角block计算并copy
+
+状态：completed_positive
+
+predict=28.293577s；residual=0.338997s；FLOPs=586757419119；peak child RSS=3967088KiB；失败=0。
+
+- [ablation_v30_017_r01_mini1_local.json](../../results/phase2/ablation_v30_017_r01_mini1_local.json)
+- [ablation_v30_017_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_017_r01_mini1_local.manifest.json)
+- [ablation_v30_017_r01_mini1_local.log](../../results/phase2/ablation_v30_017_r01_mini1_local.log)
+- [ablation_v30_017_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_017_r01_mini1_local.launcher.log)
+- [ablation_v30_017_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_017_r01_mini1_local.validate.log)
+
+### v30.018 C18 S2子空间投影的末次乘法三角化
+
+before：S2=Un.T @ (G2 @ Un)完整r2×r2
+
+after：仅末次计算上三角输出并copy
+
+状态：completed_positive
+
+predict=28.053274s；residual=0.284572s；FLOPs=587129284559；peak child RSS=3933056KiB；失败=0。
+
+- [ablation_v30_018_r01_mini1_local.json](../../results/phase2/ablation_v30_018_r01_mini1_local.json)
+- [ablation_v30_018_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_018_r01_mini1_local.manifest.json)
+- [ablation_v30_018_r01_mini1_local.log](../../results/phase2/ablation_v30_018_r01_mini1_local.log)
+- [ablation_v30_018_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_018_r01_mini1_local.launcher.log)
+- [ablation_v30_018_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_018_r01_mini1_local.validate.log)
+
+### v30.019 C19 joiner两路Gram operator共享布局
+
+before：Aj.T Om→Aj weighted结果与Pj两路四GEMM
+
+after：组[Aj,Pj]在一个持久layout两batched GEMM，最后相加
+
+状态：completed_positive
+
+predict=29.327210s；residual=0.248162s；FLOPs=587291065839；peak child RSS=3968104KiB；失败=0。
+
+- [ablation_v30_019_r01_mini1_local.json](../../results/phase2/ablation_v30_019_r01_mini1_local.json)
+- [ablation_v30_019_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_019_r01_mini1_local.manifest.json)
+
+### v30.020 C20 final D3 feedback的线性两项薄收缩
+
+before：D3 feedback先显式Xt、Yt完整n²矩阵，再计算A·Yt和Xt·A·w2
+
+after：在trim将两个线性项重排为(AP) @ R2T与(AP·w2) @ R1T再与F2/F1逐行收缩，XtYt交叉项保持旧式
+
+状态：partial_derivation
+
+诊断结论：Exact two linearterm factor formulas checked; crossXtYt still needs denseXt/Yt; naive newGEMMs increase cost, candidate/full score pending；算法分数前后不适用。
+
+- [ablation_v30_020_feedback_cost.json](../../results/phase2/ablation_v30_020_feedback_cost.json)
+
+### v30.021 C21 nonlinearity中广播d3/g4向量不materialize
+
+before：d3col/g4col先乘ones_row变n²矩阵，再用于AB products
+
+after：只保存n×1/1×n view；fnp广播时构造真正需要的AB
+
+状态：completed_negative
+
+predict=26.507250s；residual=0.247601s；FLOPs=584966669807；peak child RSS=3994384KiB；失败=0。
+
+- [ablation_v30_021_r01_mini1_local.json](../../results/phase2/ablation_v30_021_r01_mini1_local.json)
+- [ablation_v30_021_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_021_r01_mini1_local.manifest.json)
+- [ablation_v30_021_r01_mini1_local.log](../../results/phase2/ablation_v30_021_r01_mini1_local.log)
+- [ablation_v30_021_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_021_r01_mini1_local.launcher.log)
+- [ablation_v30_021_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_021_r01_mini1_local.validate.log)
+
 ### v30.022 C22 PK1 duplicate一维因子缓存去重
 
 before：B1stack每termAB但有重复ones,d3,g4pair
@@ -221,6 +406,18 @@ predict=33.644752s；residual=0.297424s；FLOPs=587263489519；peak child RSS=39
 - [ablation_v30_022_r01_mini1_local.log](../../results/phase2/ablation_v30_022_r01_mini1_local.log)
 - [ablation_v30_022_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_022_r01_mini1_local.launcher.log)
 - [ablation_v30_022_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_022_r01_mini1_local.validate.log)
+
+### v30.023 C23 数值对称误差审计
+
+before：目前X=W C舍入而输出视为对称，没有量化逐层偏差
+
+after：离线包装捕获C,X,Y,按原同一浮点数据比较XY和XY.T
+
+状态：completed_diagnostic
+
+诊断结论：Network0 state/cores plus raw X@Y offline asymmetry captured; original chargedFLOPs saved; no time score；算法分数前后不适用。
+
+- [ablation_v30_023_symmetry_trace.json](../../results/phase2/ablation_v30_023_symmetry_trace.json)
 
 ### v30.024 C24 逐组件实际计费归因
 
@@ -271,6 +468,22 @@ after：诊断同进程shape序列与峰值RSS/RLIMIT_AS、pool keys/bytes
 - [ablation_v30_026_full_pool_r1.json](../../results/phase2/ablation_v30_026_full_pool_r1.json)
 - [ablation_v30_026_full_pool_r2.json](../../results/phase2/ablation_v30_026_full_pool_r2.json)
 
+### v30.027 C27 shape变更时释放无用旧pool
+
+before：pool保留之前n/L的buffer；当前已有smm重建但_Pool按key存历史shape
+
+after：当模型shape发生变化明确新建_Pool并释放历史引用
+
+状态：completed_negative
+
+predict=27.788835s；residual=0.233054s；FLOPs=587262754287；peak child RSS=3921036KiB；失败=0。
+
+- [ablation_v30_027_r01_mini1_local.json](../../results/phase2/ablation_v30_027_r01_mini1_local.json)
+- [ablation_v30_027_r01_mini1_local.manifest.json](../../results/phase2/ablation_v30_027_r01_mini1_local.manifest.json)
+- [ablation_v30_027_r01_mini1_local.log](../../results/phase2/ablation_v30_027_r01_mini1_local.log)
+- [ablation_v30_027_r01_mini1_local.launcher.log](../../results/phase2/ablation_v30_027_r01_mini1_local.launcher.log)
+- [ablation_v30_027_r01_mini1_local.validate.log](../../results/phase2/ablation_v30_027_r01_mini1_local.validate.log)
+
 ### v30.031 H01 边际D3平方产品补全
 
 before：实际V29 p1含D3²w(6,1)/72；p2,p3,p4均只含Gaussian、D3线性、g4线性
@@ -315,6 +528,78 @@ after：建立实际逐产品差异表并用独立多项式oracle判断差异是
 
 - [ablation_v30_033_inventory.json](../../results/phase2/ablation_v30_033_inventory.json)
 
+### v30.037 H07 WK22到B1出生来源恢复
+
+before：B1删除上游d(w3)*WK22*d(w2)类项
+
+after：仅恢复该出生项并扣除其已重复dslices
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
+### v30.038 H08 B1的WK12对称反馈恢复
+
+before：V29只保留部分D21 thin feedback
+
+after：补充上游B1中d(w2)*WK12*d(w2)缺失部分
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
+### v30.039 H09 B2 leading D21乘C来源恢复
+
+before：B2出生整体DS-shadow
+
+after：仅恢复WK12乘WK11 leading hub，移除其重复出生dslices
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
+### v30.040 H10 B2 WK22乘C来源恢复
+
+before：B2的WK22乘WK11 fully mixed channel缺失
+
+after：仅恢复该channel而保留B2其他shadow
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
+### v30.041 H11 B2 D21平方来源恢复
+
+before：B2的WK12乘WK21等D21产品shadow
+
+after：只恢复D21-square symmetric source
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
+### v30.042 H12 B2 WK22乘D21来源恢复
+
+before：B2高阶mixed birth shadow
+
+after：只恢复WK22乘D21来源轨道
+
+状态：partial_derivation
+
+诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
+
+- [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+
 ### v30.048 H18 K4边际真实metric系数
 
 before：g4row=METRIC_C*dG with fixed mean metric
@@ -336,6 +621,79 @@ after：只将边际metric改为current diag(W W^T)，保持Gproxy和其他通�
 - [ablation_v30_048_r03_mini1_rpc.json](../../results/phase2/ablation_v30_048_r03_mini1_rpc.json)
 - [ablation_v30_048_r03_mini1_rpc_scored.json](../../results/phase2/ablation_v30_048_r03_mini1_rpc_scored.json)
 - [ablation_v30_048_r04_mini8_rpc_scored.json](../../results/phase2/ablation_v30_048_r04_mini8_rpc_scored.json)
+
+### v30.049 H19 WK431真实metric混合项
+
+before：WK431=(METRIC_C/2)*lambda*Coff
+
+after：对固定Gproxy使用0.5*(Gij*Mii+Gii*Mij)，仅改WK431 use
+
+状态：partial_derivation
+
+诊断结论：Actualmetric sixsym31/22 formulas exact smallshape; Wicknormalization/proxyGmapping/chargedcandidate pending；算法分数前后不适用。
+
+- [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
+
+### v30.050 H20 WK22真实metric交叉项
+
+before：wk4m=(METRIC_C/6)*(dGi+dGj)
+
+after：使用(Gii*Mjj+Gjj*Mii+4Gij*Mij)/6，仅改WK22 use
+
+状态：partial_derivation
+
+诊断结论：Actualmetric sixsym31/22 formulas exact smallshape; Wicknormalization/proxyGmapping/chargedcandidate pending；算法分数前后不适用。
+
+- [ablation_h19_h20_metric_slices.json](../../results/phase2/ablation_h19_h20_metric_slices.json)
+
+### v30.057 H27 K3 newborn重复内容一致性oracle
+
+before：birth rep3/rep21从保留hub dslices定义，影子来源移入M
+
+after：独立逐类检查full mixed和repeated内容账是否一致，只有发现具体错配才修复
+
+状态：completed_diagnostic
+
+诊断结论：Arbitrary identity-born hub and oldCP Wick full/repeated content exact on three smallshapes; no bookkeeping mismatch; not full truncated production accuracy；算法分数前后不适用。
+
+- [ablation_v30_057_bookkeeping.json](../../results/phase2/ablation_v30_057_bookkeeping.json)
+- [source_birth_combination_algebra.json](../../results/phase2/source_birth_combination_algebra.json)
+
+### v30.061 H31 exact covariance triangle无偏收缩
+
+before：trianglelast用rank16 approximate C
+
+after：用原始Coff的lawful random estimator估计exact alloutput triangle contraction
+
+状态：partial_derivation
+
+诊断结论：Exhaustive small Rademacher expectation exact; actual signal/variance/cost gate pending；算法分数前后不适用。
+
+- [ablation_v30_061_triangle_unbiased.json](../../results/phase2/ablation_v30_061_triangle_unbiased.json)
+
+### v30.063 O01 官方K31截断生产逐项一致性
+
+before：仅有K31低阶Gaussian代理及精确moment oracle
+
+after：独立核验完整官方K31基础和augmented表
+
+状态：completed_diagnostic
+
+诊断结论：Independent bounded vector multiset enumeration vs official canonical diagram generator; base/augmented full/filter separated,24 smallshape comparisons maxerror1.0658e-14; excludes Torch factor kernel；算法分数前后不适用。
+
+- [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
+
+### v30.064 O02 官方capped K211逐项生产一致性
+
+before：仅有source contraction和power转换独立probe
+
+after：完整capped diagram生产与显式small tensor一致
+
+状态：completed_diagnostic
+
+诊断结论：Independent bounded vector multiset enumeration vs official canonical diagram generator; base/augmented full/filter separated,24 smallshape comparisons maxerror1.0658e-14; excludes Torch factor kernel；算法分数前后不适用。
+
+- [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
 
 ### v30.073 O11 K111乘covariance edge完整公式核验
 
@@ -362,6 +720,30 @@ after：证明exact复杂度和内存或给出反例
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
 
+### v30.080 O18 现有birth薄反馈乘积预算审计
+
+before：复合因子乘积未完整power-count
+
+after：每个出生乘积标明预算与重复补偿
+
+状态：partial_diagnostic
+
+诊断结论：All16 lean B1/B2 products power-counted; feedback*feedback cost4 exceedsaug3. Full V29 position/coef/isomorphism attribution and repeated compensation pending；算法分数前后不适用。
+
+- [ablation_v30_080_birth_power_inventory.json](../../results/phase2/ablation_v30_080_birth_power_inventory.json)
+
+### v30.081 O19 K5边缘生产闭合
+
+before：无独立K5状态
+
+after：经验证的选择性marginal K5生产
+
+状态：partial_derivation
+
+诊断结论：ExactGaussianReLUdegree5/6 marginal moment recurrence/quadrature verified; officialaugmented propagatedK5 closure still pending；算法分数前后不适用。
+
+- [ablation_degree5_6_marginal_derivation.json](../../results/phase2/ablation_degree5_6_marginal_derivation.json)
+
 ### v30.086 O24 高阶边缘同阶组合inventory
 
 before：选择性补项缺完整预算说明
@@ -386,6 +768,70 @@ after：degree5/6转换独立parity
 
 - [ablation_v30_087_degree6_conversion.json](../../results/phase2/ablation_v30_087_degree6_conversion.json)
 
+### v30.092 O30 新增图表array操作计量路径合同
+
+before：只运行small数值公式
+
+after：actual fnp路径日志与成本逐算子核验
+
+状态：partial_diagnostic
+
+诊断结论：Actual local fnp float32/64 out/copy/alias contracts checked; complete diagram and remote coverage pending；算法分数前后不适用。
+
+- [ablation_v30_092_new_operator_contract.json](../../results/phase2/ablation_v30_092_new_operator_contract.json)
+
+### v30.093 O31 完整K31生产对称化与轴方向合同
+
+before：K31方向未actual生产确认
+
+after：actual fnp K31输出与固定axis枚举
+
+状态：completed_diagnostic
+
+诊断结论：Row3/col1 asymmetry and distinct-index cap tested on n2,3,4,7,8; no transpose averaging; diagonal output explicit; generator production separately validated；算法分数前后不适用。
+
+- [ablation_v30_093_094_production_contracts.json](../../results/phase2/ablation_v30_093_094_production_contracts.json)
+- [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
+
+### v30.094 O32 capped211 diagonal mask因式表示合同
+
+before：mask分布在多个函数
+
+after：mask逐阶段追踪与explicit枚举一致
+
+状态：completed_diagnostic
+
+诊断结论：Row3/col1 asymmetry and distinct-index cap tested on n2,3,4,7,8; no transpose averaging; diagonal output explicit; generator production separately validated；算法分数前后不适用。
+
+- [ablation_v30_093_094_production_contracts.json](../../results/phase2/ablation_v30_093_094_production_contracts.json)
+- [ablation_v30_063_064_production_parity.json](../../results/phase2/ablation_v30_063_064_production_parity.json)
+
+### v30.095 O33 complete harmonic core actualW transport对照
+
+before：transport代数与production分离
+
+after：完整生成G的actualW数值parity
+
+状态：completed_diagnostic
+
+诊断结论：Six actualW fourth-order tensor transport versus G/M transport checks maxerror1.776e-15; marginals and trace checked; birth metric and transported metric differ；算法分数前后不适用。
+
+- [ablation_v30_095_actual_transport.json](../../results/phase2/ablation_v30_095_actual_transport.json)
+
+### v30.096 L01 冻结原轨迹特征缓存
+
+before：只有 aggregate 与逐层 MSE；没有可拟合的逐神经元内部特征缓存。
+
+after：新建 V29 诊断副本，保存原 13 特征、原预测和网络 ID；不改变预测公式。
+
+状态：partial_diagnostic
+
+诊断结论：All8 networks original13 features/predictions cached; per-network charged FLOPs equal frozen; same-run untraced numerical paired control pending; tracing timing excluded；算法分数前后不适用。
+
+- [ablation_v30_096_features_manifest.json](../../results/phase2/ablation_v30_096_features_manifest.json)
+- [ablation_v30_096_cache_pairing.json](../../results/phase2/ablation_v30_096_cache_pairing.json)
+- [ablation_v30_096_r02_untraced_control.json](../../results/phase2/ablation_v30_096_r02_untraced_control.json)
+
 ### v30.097 L02 冻结网络级训练选择流程
 
 before：Mini8同时用于既有快筛；缺少修正器专用网络级选择协议。
@@ -397,6 +843,198 @@ after：IDs0–7用leave-one-network-out；IDs8–15保留为一次公共确认�
 诊断结论：Network-level leave-one-network-out selection frozen without reading confirmation targets; feature cache prerequisite L01 pending；算法分数前后不适用。
 
 - [ablation_v30_097_selection_protocol.json](../../results/phase2/ablation_v30_097_selection_protocol.json)
+
+### v30.098 L03 最后层13特征残差线性修正
+
+before：原V29固定CORR_BETA后仍有final残差。
+
+after：只在final输出追加一个开发网络拟合的13特征线性残差预测；早层与原Beta不变。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.099 L04 删除常数特征的修正对照
+
+before：L03含截距特征，可能只学习整体偏置。
+
+after：只删除ones列，保留其余12列及同样训练流程。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.100 L05 阈值形状特征增量
+
+before：L03仅含alpha及abs(alpha)。
+
+after：追加alpha²phi、alpha³phi、alpha⁴phi三个确定性特征。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.101 L06 标准化偏度特征增量
+
+before：L03直接用D3，未表达相对于方差的规模。
+
+after：追加D3/(sigma³)与该值乘phi的两列，分母仅使用原正sigma。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.103 L08 最后线性均值传播轨迹特征
+
+before：L03仅用最后pre的本层13特征。
+
+after：追加W_final乘上一层预测均值误差代理向量与本层mu的差异特征。
+
+状态：partial_negative
+
+诊断结论：NetworkCV predefined extra features negative; chargedcandidate pending；算法分数前后不适用。
+
+- [ablation_learning_extra_r01.json](../../results/phase2/ablation_learning_extra_r01.json)
+
+### v30.104 L09 前层方差轨迹特征
+
+before：L03缺少方差的来源分解。
+
+after：追加(W²)@var_prev与var−(W²)@var_prev两列。
+
+状态：partial_negative
+
+诊断结论：NetworkCV predefined extra features negative; chargedcandidate pending；算法分数前后不适用。
+
+- [ablation_learning_extra_r01.json](../../results/phase2/ablation_learning_extra_r01.json)
+
+### v30.105 L10 跨神经元均值残差特征
+
+before：L03每神经元只看局部特征。
+
+after：追加final层mean(mu),mean(var),mean(D3)三个广播全层状态。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.106 L11 输出幅度归一化回归
+
+before：L03在绝对均值误差上拟合。
+
+after：训练目标改成残差/sigma，推理修正乘sigma；特征集保持13列。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.107 L12 网络等权训练
+
+before：L03将训练网所有神经元等权拼接。
+
+after：每网络归一化为同等总权重，再拟合原残差。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.108 L13 逐层共享线性修正
+
+before：L03只训练final输出残差。
+
+after：对全部层训练一个共享13特征系数，但仍只用于final输出。
+
+状态：partial_negative
+
+诊断结论：OfflineCV negative; charged estimator pending；算法分数前后不适用。
+
+- [ablation_learning_loocv_r01.json](../../results/phase2/ablation_learning_loocv_r01.json)
+
+### v30.109 L14 分段线性阈值修正
+
+before：L03一个全域线性模型。
+
+after：按固定alpha区间(-∞,-1),[-1,0),[0,1),[1,∞)训练四个线性头，final分段使用。
+
+状态：partial_negative
+
+诊断结论：Continuous four-head LOO raw +0.5931%; charged candidate and parent gain gate unmet；算法分数前后不适用。
+
+- [ablation_v30_109_continuous_heads_cv.json](../../results/phase2/ablation_v30_109_continuous_heads_cv.json)
+
+### v30.111 L16 单前层修正递推注入
+
+before：验证的修正仅改变final输出，不改变内部状态。
+
+after：仅第8层将已验证修正写入mu，后续原V29递推。
+
+状态：partial_derivation
+
+诊断结论：87 central moment checks; translation preserves higher cumulants, mean-only reestimation needs explicit distribution model；算法分数前后不适用。
+
+- [ablation_v30_111_mean_shift_contract.json](../../results/phase2/ablation_v30_111_mean_shift_contract.json)
+
+### v30.113 L18 残差条件可预测性上界
+
+before：只知道偏置oracle解释约0.46% MSE。
+
+after：用开发网络级CV测13特征解释方差，给出达到10倍需约90% MSE减少的差距。
+
+状态：partial_diagnostic
+
+诊断结论：Held-network13feature R2 negative;10x requires0.9. Charged adjusted candidate pending；算法分数前后不适用。
+
+- [ablation_v30_113_predictability.json](../../results/phase2/ablation_v30_113_predictability.json)
+
+### v30.117 L22 输出误差与阈值位置分解
+
+before：MSE按网络/层汇总，无法定位哪些神经元贡献。
+
+after：固定alpha分箱报告最后误差均值、方差、MSE与样本量。
+
+状态：completed_diagnostic
+
+诊断结论：Fixedalpha/trainonlyskew bins error statistics; localization only；算法分数前后不适用。
+
+- [ablation_v30_117_118_error_bins.json](../../results/phase2/ablation_v30_117_118_error_bins.json)
+
+### v30.118 L23 输出误差与偏度分解
+
+before：未区分高偏度和低偏度神经元误差。
+
+after：按固定标准化D3绝对值分位边界，用训练数据定义边界后测逐网MSE。
+
+状态：completed_diagnostic
+
+诊断结论：Fixedalpha/trainonlyskew bins error statistics; localization only；算法分数前后不适用。
+
+- [ablation_v30_117_118_error_bins.json](../../results/phase2/ablation_v30_117_118_error_bins.json)
+
+### v30.119 L24 误差沿层积累的增量分解
+
+before：只有逐层MSE，不区分运输误差和局部新误差。
+
+after：计算e_l−Phi_l⊙(W_l@e_{l−1})的离线一阶残差。
+
+状态：completed_diagnostic
+
+诊断结论：120 network/layer first-order residual transport decomposition; reference oracle only; nonlinear/reference noise caveat retained；算法分数前后不适用。
+
+- [ablation_v30_119_error_transport.json](../../results/phase2/ablation_v30_119_error_transport.json)
 
 ### v30.125 L30 末层尾概率数值稳定性
 
@@ -410,6 +1048,18 @@ after：保持原公式，新增离线极端alpha及sigma小值数值对照。
 
 - [ablation_v30_125_relu_tail.json](../../results/phase2/ablation_v30_125_relu_tail.json)
 
+### v30.126 L32 跨网络异质收益检查
+
+before：候选只有网络平均分数改善。
+
+after：在同一固定套件报告胜率、每网ratio、最差退化及paired bootstrap。
+
+状态：completed_diagnostic
+
+诊断结论：Per-network gains/losses reported for all8 offline readout screens; no independent confirmation；算法分数前后不适用。
+
+- [ablation_v30_126_heterogeneous_gains.json](../../results/phase2/ablation_v30_126_heterogeneous_gains.json)
+
 ### v30.127 L33 参考dtype贡献诊断
 
 before：官方targets以原float32使用，误差可能受量化贡献。
@@ -421,6 +1071,18 @@ after：离线估计原targets float32 ULP尺度与MSE阈值关系，保留原ta
 诊断结论：Mini8 float32 uniform rounding proxy 6.120378688436097e-16; sampling uncertainty not estimated；算法分数前后不适用。
 
 - [ablation_v30_127_reference_dtype.json](../../results/phase2/ablation_v30_127_reference_dtype.json)
+
+### v30.128 L34 标准化计算的候选合同
+
+before：拟合端与fnp推理端标准化可能使用不同精度或特征顺序。
+
+after：冻结模型文件的feature_order、mean、scale、coef哈希并在小样本对照fnp预测。
+
+状态：partial_diagnostic
+
+诊断结论：Frozen fold standardization legal fnp small inference; end-to-end model gate pending；算法分数前后不适用。
+
+- [ablation_v30_128_standardization_contract.json](../../results/phase2/ablation_v30_128_standardization_contract.json)
 
 ### v30.129 L35 多次选择偏差账本
 

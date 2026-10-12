@@ -22,6 +22,11 @@ def main():
         if task['kind'] == 'diagnostic':
             continue
         lines.append(f'| {task["version"]} | {task["key"]} | {task["status"]} | {before["final_layer_mse"]:.12g} | {after["final_layer_mse"]:.12g} | {before["adjusted_final_layer_score"]:.12g} | {after["adjusted_final_layer_score"]:.12g} | {(ratios["adjusted_final_layer_score"]-1)*100:+.6f}% | {(ratios["flops_used"]-1)*100:+.6f}% | {result["failures"]} |\n')
+    lines.append('\n## 离线学习快筛\n\n仅为开发网络LOO raw误差，尚无合法候选的adjusted分数。\n\n| 版本 | key | before raw | after raw | raw变化 | adjusted |\n|---|---|---:|---:|---:|---|\n')
+    for task in queue['tasks']:
+        cv = task.get('result', {}).get('offline_cv', {})
+        if 'before_raw' in cv and 'after_raw' in cv:
+            lines.append(f'| {task["version"]} | {task["key"]} | {cv["before_raw"]:.12g} | {cv["after_raw"]:.12g} | {(cv["after_raw"]/cv["before_raw"]-1)*100:+.6f}% | 未计费验证 |\n')
     lines.append('\n## 归因与证据\n\nC07/C10单网raw逐值评分相同，收益来自收费减少。C08/C14/C15的微小raw差尚不能排除浮点重排漂移，completed_positive只表示初筛分数更低。诊断条目不产生算法after分数，记录为不适用。\n\n')
     for task in queue['tasks']:
         if not task.get('evidence'):

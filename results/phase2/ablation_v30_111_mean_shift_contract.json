@@ -1,0 +1,9 @@
+{
+  "max_moment_error": 8.526512829121202e-14,
+  "checks": 87,
+  "conclusion": "Cumulants of order >=2 are invariant under deterministic translation, but changing only the estimated mean of the same distribution is not translation: its residual has mean -delta. L16 needs an explicit corrected distribution model and layer8 CV benefit before candidate integration.",
+  "translation_model": "X_new = X + delta: mean shifts; covariance and cumulants >=2 unchanged; ReLU-support/nonnegativity must still be checked.",
+  "recentering_model": "E[(X-mu-delta)^k] = sum_r binom(k,r)(-delta)^(k-r) E[(X-mu)^r]; first central moment is -delta.",
+  "adjusted_score": null,
+  "acceptance": "Algebra only; no candidate, score, resource or learning acceptance"
+}
