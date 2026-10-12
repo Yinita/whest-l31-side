@@ -859,3 +859,5 @@ Shortpilot r02 finished32/32 tasks zeroerrors, incremental32record journal persi
 User explicitly removed30USDcap. Launchedr03 independent8networks×128shards×65536samples,max96singlecore containers,180s tasks,incrementalfsync successes/errors;67.1Mtotal/8.39Mpernetwork. Scope intermediate uncertainty reference, not stageacceptance. No repeatedseeds or candidate modification.
 
 R03finished1024/1024 zero failures481.507s,8networks×8388608samples,reference samplingMSE7.87e-9–1.11e-8. Compute-duration costestimate0.63894USD excludesstartup/restarts,actualbilling unavailable. Source/rawjournal/reporthashes archived,compactsummary retained; no algorithm gain or stageacceptance. Next frozenV29/leaf8 pairedindependent prediction and shardwise uncertainty, not noise-biased absoluteMSE comparison. Costcap remains removed peruser.
+
+Hourlybilling correctedrange Oct12UTC:5apps reportedtotal1.37113223USD,r03.57857313USD; creditbalance/netcash unknown,maylag. Prior dailyemptyreport didnotmeanzero.
