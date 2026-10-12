@@ -752,6 +752,9 @@ after：只恢复WK22乘D21来源轨道
 诊断结论：Arbitrary source birth products checked; official coefficients, charged lowrank representation and candidate pending；算法分数前后不适用。
 
 - [ablation_h07_h12_birth_derivation.json](../../results/phase2/ablation_h07_h12_birth_derivation.json)
+- [ablation_v30_042_r02_subset_mini1.json](../../results/phase2/ablation_v30_042_r02_subset_mini1.json)
+- [ablation_v30_042_r02_subset_decision.json](../../results/phase2/ablation_v30_042_r02_subset_decision.json)
+- [ablation_v30_038_r03_repeat_contract.json](../../results/phase2/ablation_v30_038_r03_repeat_contract.json)
 
 ### v30.043 H13 B2保留一次线性运输再shadow
 
