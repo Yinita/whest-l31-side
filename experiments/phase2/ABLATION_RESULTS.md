@@ -1061,6 +1061,8 @@ after：完整production Gnew与regen G成对诊断
 - [ablation_v30_067_r02_full_k31_charged_component.json](../../results/phase2/ablation_v30_067_r02_full_k31_charged_component.json)
 - [ablation_v30_067_r03_full_k211_charged_component.json](../../results/phase2/ablation_v30_067_r03_full_k211_charged_component.json)
 - [ablation_v30_067_r04_blocked_k211_charged_component.json](../../results/phase2/ablation_v30_067_r04_blocked_k211_charged_component.json)
+- [ablation_v30_067_r05_cp_input_k211_charged_component.json](../../results/phase2/ablation_v30_067_r05_cp_input_k211_charged_component.json)
+- [ablation_v30_067_r06_p3_wick_charged.json](../../results/phase2/ablation_v30_067_r06_p3_wick_charged.json)
 
 ### v30.068 O06 完整生产核单层替换诊断
 

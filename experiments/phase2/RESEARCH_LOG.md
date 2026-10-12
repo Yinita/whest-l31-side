@@ -679,3 +679,7 @@ O05补充完整augmented15term K31合法dense production polynomial，n8/32/64 r
 O05完整35rawterm K211合法bounded组件n4/8/16与独立逐index cap核验relative<2.3e-7，明确a=b/c扣除再zero b=c。flopscope indexedassignment不支持，修正为stack functional构造；第一次失败无结果文件，不能作为通过。1024 n³ float32单tensor4GiB，当前1GiB localRPC cap不允许，需factor/block实现，fullcandidate未完成。
 
 O05分块K211：slab4完整35项与strict重复扣除，n4/8/16/32误差<3.7e-7，中间最大4n²。n32收费10481984。输入dense三阶tensor未移除，不能假称可在1024合法部署；bounded表示已证实，中间块非最终input表示。
+
+O05 r05将3index输入改rank3CP、仅4row slab重建，charged路径无n³输入，35项与offline展开oracle误差<3.5e-7。n32 FLOPs11520448，source实际CP构造及近似误差未知；无candidate score，不可声称完整1024机制已实现。报告scope原措辞沿用r04，准确机制以脚本/此日志为准，原证据不覆盖。
+
+O05 K31所需p3 Wick k1..5合法构造完成，k1/k2独立320点Gaussian截断quadrature五阈值最大abs6.15e-7，收费880；k3..5当前只analytic，尚缺独立导数检查。fullcandidate仍待，不填分数。
