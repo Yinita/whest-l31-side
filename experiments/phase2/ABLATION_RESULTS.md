@@ -658,6 +658,11 @@ after：恢复固定生成器的未剪枝SIMPLE生产表，其余闭合不变
 
 - [ablation_v30_036_simple_table.json](../../results/phase2/ablation_v30_036_simple_table.json)
 - [ablation_v30_036_r02_generator_history.json](../../results/phase2/ablation_v30_036_r02_generator_history.json)
+- [ablation_v30_036_r03_unpruned_manifest.json](../../results/phase2/ablation_v30_036_r03_unpruned_manifest.json)
+- [ablation_v30_036_r03_wick_contract.json](../../results/phase2/ablation_v30_036_r03_wick_contract.json)
+- [ablation_v30_036_r03_mini1.log](../../results/phase2/ablation_v30_036_r03_mini1.log)
+- [ablation_v30_036_r04_mini1.json](../../results/phase2/ablation_v30_036_r04_mini1.json)
+- [ablation_v30_036_r04_decision.json](../../results/phase2/ablation_v30_036_r04_decision.json)
 
 ### v30.037 H07 WK22到B1出生来源恢复
 

@@ -783,3 +783,7 @@ L01 samecycle2network complete: n0 traceΔ3.33786e-6 repeatΔ2.38419e-6 fails en
 H05 zeroalphafirstcovariance Pade {"before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.117659882376649e-09, "before_raw": 2.290466483145792e-08, "after_raw": 2.2907027386054324e-08, "failures": 0, "conclusion": "No measuredgain, no Mini8expansion; firstlayercovarianceonly subset, H05nonzero completepath remains untested"}; partialfullnonzero retained.
 
 H31 actualtargetfree publicnetwork0 layer14 fixedoutput0-3 exactvariance noisegate: budgetoptimistic250probes SE/signal0.720/0.938/0.344/1.464. One exceeds signal, reject route as specified before noisywholecandidate. Completednegative with no benchmark score.
+
+H06 rebuilt90unpruned SIMPLE historicalrecords with30Wickpairs, independent96Hermitechecks passed. r03 predict failed alpha6/sigma−7 basis needed; r04 extends lawfulalpha/sigmabasis, new immutableversion underway. Not an algorithmnegative before fix.
+
+H06 rebuiltunprunedr04 {"before_raw": 2.290466483145792e-08, "after_raw": 2.3258568404571633e-08, "before_adjusted": 6.116832334984139e-09, "after_adjusted": 6.234977996005021e-09, "failures": 0, "scope": "90historicalunpruned reconstruction, inferred dependencyalignment, augmentedappend retained; not exact94term historical replication", "conclusion": "Worsens raw and adjusted, no expansion; H06 stricthistoricalgenerator proof remains incomplete"}; partialhistoricalproof retained.

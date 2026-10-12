@@ -121,6 +121,16 @@ def main():
         "SIG_EMIN, SIG_EMAX = -6, 4",
         "SIG_EMIN, SIG_EMAX = " + repr((min(u[1] for u in unified), max(u[1] for u in unified))),
     )
+    assert max(max(len(u[2]), len(u[3])) for u in unified) - 1 == 6
+    assert min(u[1] for u in unified) == -7
+    source = source.replace(
+        "fnp.stack([ones_n, alpha, a2, a3, a4, a5], axis=1)",
+        "fnp.stack([ones_n, alpha, a2, a3, a4, a5, a5 * alpha], axis=1)",
+    )
+    source = source.replace(
+        "fnp.stack([i6, i5, i4, i3, i2, inv, ones_n, sigma, s2, s3, s4], axis=1)",
+        "fnp.stack([i6 * inv, i6, i5, i4, i3, i2, inv, ones_n, sigma, s2, s3, s4], axis=1)",
+    )
     (out / "estimator.py").write_text(source)
     report = Path("results/phase2/ablation_v30_036_r03_unpruned_manifest.json")
     report.write_text(

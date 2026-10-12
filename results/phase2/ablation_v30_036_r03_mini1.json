@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.1",
+  "mode": "agent",
+  "results": {
+    "adjusted_final_layer_score": 0.9434763193130493,
+    "final_layer_mse": 0.9434763193130493,
+    "all_layers_mse": 0.7062501907348633,
+    "per_layer_mse": [
+      0.3180968165397644,
+      0.47636178135871887,
+      0.6078811287879944,
+      0.6392258405685425,
+      0.7083872556686401,
+      0.6762359142303467,
+      0.7076292037963867,
+      0.6471665501594543,
+      0.675173282623291,
+      0.7265635132789612,
+      0.7172238826751709,
+      0.7717386484146118,
+      0.8619272708892822,
+      0.911322832107544,
+      0.9115918278694153,
+      0.9434763193130493
+    ],
+    "best_mlp_adjusted_final_layer_score": 0.9434763193130493,
+    "worst_mlp_adjusted_final_layer_score": 0.9434763193130493,
+    "mean_score_multiplier": 1.0,
+    "mean_compute_utilization": 0.0,
+    "n_failed_mlps": 1,
+    "mean_effective_compute": 0.0,
+    "failure_breakdown": {
+      "budget_exhausted": 0,
+      "time_exhausted": 0,
+      "residual_wall_time_exhausted": 0,
+      "combined_budget_exhausted": 0,
+      "error": 1
+    },
+    "per_mlp": [
+      {
+        "mlp_index": 0,
+        "mlp_name": "logan-fitzgerald",
+        "error": "matmul: contracted axis 1 of the first operand has extent 6, but axis 0 of the second operand has extent 7; contracted extents must be equal (shapes (1024, 6) and (7, 30))",
+        "error_code": "PREDICT_ERROR",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/whestbench/runner.py\", line 210, in predict\n    return self._estimator.predict(mlp, budget)\n  File \"/home/sti/Desktop/projects/whest-l31-side/estimators/ablation_v30_036_r03/estimator.py\", line 788, in predict\n    return self._predict_core(mlp, budget)\n  File \"/home/sti/Desktop/projects/whest-l31-side/estimators/ablation_v30_036_r03/estimator.py\", line 1202, in _predict_core\n    W_all = ((APOW @ C1) * phic + (APOW @ C2) * Phic) * (SB @ SELC)\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_ndarray.py\", line 1099, in __matmul__\n    return _me().matmul(self, other)\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_budget.py\", line 1208, in wrapped\n    return inner_fn(*args, **kwargs)\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_pointwise.py\", line 5792, in matmul\n    return _einsum_routed_binary(\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_pointwise.py\", line 5587, in _einsum_routed_binary\n    _validate_contracted_extents(\n  File \"/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_pointwise.py\", line 5413, in _validate_contracted_extents\n    raise ValueError(\nValueError: matmul: contracted axis 1 of the first operand has extent 6, but axis 0 of the second operand has extent 7; contracted extents must be equal (shapes (1024, 6) and (7, 30))\n",
+        "final_layer_mse": 0.9434763193130493,
+        "all_layers_mse": 0.7062501907348633,
+        "per_layer_mse": [
+          0.3180968165397644,
+          0.47636178135871887,
+          0.6078811287879944,
+          0.6392258405685425,
+          0.7083872556686401,
+          0.6762359142303467,
+          0.7076292037963867,
+          0.6471665501594543,
+          0.675173282623291,
+          0.7265635132789612,
+          0.7172238826751709,
+          0.7717386484146118,
+          0.8619272708892822,
+          0.911322832107544,
+          0.9115918278694153,
+          0.9434763193130493
+        ],
+        "adjusted_final_layer_score": 0.9434763193130493,
+        "flops_used": 0,
+        "effective_compute": 0.0,
+        "budget_exhausted": false,
+        "time_exhausted": false,
+        "residual_wall_time_exhausted": false,
+        "combined_budget_exhausted": false,
+        "wall_time_s": 0.0,
+        "flopscope_backend_time_s": 0.0,
+        "flopscope_overhead_time_s": 0.0,
+        "residual_wall_time_s": 0.0,
+        "breakdowns": {
+          "estimator": null
+        }
+      }
+    ],
+    "breakdowns": {
+      "sampling": {
+        "flop_budget": 33674240000140288,
+        "flops_used": 33674240000140288,
+        "flops_remaining": 0,
+        "wall_time_s": 1625.702021862031,
+        "flopscope_backend_time_s": 0.0,
+        "flopscope_overhead_time_s": 0.0,
+        "residual_wall_time_s": 1625.702021862031,
+        "by_namespace": {
+          "sampling.sample_layer_statistics": {
+            "flops_used": 33674240000140288,
+            "calls": 164114,
+            "flopscope_backend_time_s": 0.0,
+            "flopscope_overhead_time_s": 0.0,
+            "operations": {
+              "random.Generator.standard_normal": {
+                "flop_cost": 16384000000000,
+                "calls": 1908,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "array": {
+                "flop_cost": 1024000000000,
+                "calls": 1908,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "matmul": {
+                "flop_cost": 33538048000000000,
+                "calls": 30528,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "maximum": {
+                "flop_cost": 16384000000000,
+                "calls": 30528,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "asarray": {
+                "flop_cost": 34816000034816,
+                "calls": 32438,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "sum": {
+                "flop_cost": 34815933571072,
+                "calls": 32436,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "add": {
+                "flop_cost": 66428928,
+                "calls": 32436,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "power": {
+                "flop_cost": 32768000032768,
+                "calls": 1909,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "zeros": {
+                "flop_cost": 0,
+                "calls": 17,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "stack": {
+                "flop_cost": 32768,
+                "calls": 1,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "true_divide": {
+                "flop_cost": 34816,
+                "calls": 2,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "subtract": {
+                "flop_cost": 2048,
+                "calls": 1,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "mean": {
+                "flop_cost": 2048,
+                "calls": 1,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              },
+              "copy": {
+                "flop_cost": 1024,
+                "calls": 1,
+                "flopscope_backend_time_s": 0.0,
+                "flopscope_overhead_time_s": 0.0
+              }
+            }
+          }
+        },
+        "time_source": "bake"
+      },
+      "estimator": null
+    }
+  },
+  "run_meta": {
+    "run_started_at_utc": "2026-10-12T08:31:39.009851+00:00",
+    "run_finished_at_utc": "2026-10-12T08:31:39.009866+00:00",
+    "run_duration_s": 0.13674020767211914,
+    "host": {
+      "hostname": "sti",
+      "os": "Linux",
+      "os_release": "6.8.0-138-generic",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "machine": "x86_64",
+      "python_version": "3.10.12",
+      "cpu_brand": "x86_64",
+      "cpu_count_logical": 28,
+      "cpu_count_physical": 20,
+      "ram_total_bytes": 67063185408,
+      "ram_available_bytes": null,
+      "numpy_version": "2.2.6",
+      "flopscope_version": "0.12.1"
+    }
+  },
+  "run_config": {
+    "n_mlps": 1,
+    "width": 1024,
+    "depth": 16,
+    "seed": 0,
+    "flop_budget": 2199023255552,
+    "setup_timeout_s": 5.0,
+    "wall_time_limit_s": 120.0,
+    "residual_wall_time_limit_s": 0.4,
+    "lambda_flops_per_second": 0.0,
+    "dataset": {
+      "path": "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/mini_first8",
+      "sha256": "9d3acd0b3b55a01f446ce4d1e3afcd9e0b93c63d3f5dbd831b149c457f7f7ccf",
+      "seed": null,
+      "n_mlps": 8
+    }
+  },
+  "whestbench_version": "0.16.1"
+}
