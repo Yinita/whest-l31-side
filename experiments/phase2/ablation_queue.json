@@ -34873,7 +34873,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_diagnostic",
+      "status": "completed_diagnostic",
       "allow_lower_reasoning_execution": true,
       "lower_reasoning_boundary": "May implement the exact specification and validate; any absent formula/coefficient/API/cost proof changes status to blocked_derivation, no guessing",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -34886,10 +34886,13 @@
         "results/phase2/ablation_v30_026_full_pool_r0.json",
         "results/phase2/ablation_v30_026_full_pool_r1.json",
         "results/phase2/ablation_v30_026_full_pool_r2.json",
-        "results/phase2/ablation_v30_026_r03_shape_resource.json"
+        "results/phase2/ablation_v30_026_r03_shape_resource.json",
+        "results/phase2/ablation_v30_026_r04_shape_rpc.json",
+        "results/phase2/ablation_v30_026_r05_shape_decision.json",
+        "results/phase2/ablation_v30_026_r05_shape_rpc.json"
       ],
       "result": {
-        "conclusion": "Actual shape sequence predict under8GiB cap completed; per-shape failure/RSS/VSZ/logical alias bytes retained. RPC same-shape lifetime still outstanding, nonfinite shape diagnostic warnings not numerical acceptance"
+        "conclusion": "Original8GiB offline actualpredict sequence with poolshape/logicalbytes plus RPC perpredictRSS/VSZ completed; smallshape numerical warnings retained, no accuracy claim"
       }
     },
     {
@@ -35454,7 +35457,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_derivation",
+      "status": "completed_diagnostic",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -35466,10 +35469,15 @@
       ],
       "evidence": [
         "results/phase2/ablation_v30_028_static_liveness.json",
-        "results/phase2/ablation_v30_028_poison_alias_contract.json"
+        "results/phase2/ablation_v30_028_poison_alias_contract.json",
+        "experiments/phase2/C28_LIVENESS.md",
+        "results/phase2/ablation_v30_028_r02_poison_contract.json",
+        "results/phase2/ablation_v30_028_r02_mini1.json",
+        "results/phase2/ablation_v30_028_r02_rpc_predictions.json",
+        "results/phase2/ablation_v30_028_r02_rpc_scored.json"
       ],
       "result": {
-        "conclusion": "Static scratch use bounds inventoried; dynamic escapedview alias/poison contracts required before reuse"
+        "conclusion": "FinaldeadLA/LP scratch liveness, poisoned smallshape equality and FLOPs equality, realnetwork0 local and RPC zero failures; RPC fixedastype extra cost retained; no peakmemory or precisiongain claimed"
       }
     },
     {
@@ -48408,10 +48416,54 @@
         "results/phase2/ablation_v30_067_r07_cp_k111_charged_component.json",
         "results/phase2/ablation_v30_059_r04_real_source_columns.json",
         "results/phase2/ablation_v30_059_r05_layer14_real_source_columns.json",
-        "results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json"
+        "results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json",
+        "results/phase2/ablation_v30_059_r08_subset_decision.json",
+        "results/phase2/ablation_v30_059_r08_subset_contract.json",
+        "results/phase2/ablation_v30_059_r08_subset_mini1.json",
+        "results/phase2/ablation_v30_059_r10_subset_decision.json",
+        "results/phase2/ablation_v30_059_r10_subset_contract.json"
       ],
       "result": {
         "conclusion": "Rank1edge*CP algebra and distinctmask verified; live dominantmode, full diagram Wick/coef/coverage and candidatecost pending"
+      },
+      "subset_screen_r08": {
+        "rows": [
+          {
+            "version": 7,
+            "report": "results/phase2/ablation_v30_059_r07_subset_mini1.json",
+            "before_raw": 2.290466483145792e-08,
+            "after_raw": 2.2905188856725545e-08,
+            "before_adjusted": 6.116832334984139e-09,
+            "after_adjusted": 8.270128770064008e-09,
+            "adjusted_ratio": 1.3520280297310867,
+            "flops": 793977539567.0,
+            "failures": 0,
+            "valid_coefficient": false
+          },
+          {
+            "version": 8,
+            "report": "results/phase2/ablation_v30_059_r08_subset_mini1.json",
+            "before_raw": 2.290466483145792e-08,
+            "after_raw": 2.2915354946917432e-08,
+            "before_adjusted": 6.116832334984139e-09,
+            "after_adjusted": 8.27379931960998e-09,
+            "adjusted_ratio": 1.3526281033222785,
+            "flops": 793977538543.0,
+            "failures": 0,
+            "valid_coefficient": true
+          }
+        ],
+        "scope": "Alternate degree w2*w1*w1, NOT target w1*w2*w2; does not reject H29"
+      },
+      "target_subset_r10": {
+        "before_raw": 2.290466483145792e-08,
+        "after_raw": 2.2905341623413733e-08,
+        "before_adjusted": 6.116832334984139e-09,
+        "after_adjusted": 6.251611877719655e-09,
+        "failures": 0,
+        "adjusted_ratio": 1.0220342058363556,
+        "scope": "Correct targetorbit w1*w2*w2; fixedfirst1youngB1 only, no complete source coverage",
+        "conclusion": "Negative singlecolumn screen; no Mini8 expansion"
       }
     },
     {
@@ -49023,7 +49075,7 @@
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "partial_derivation",
+      "status": "completed_diagnostic",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "May collect fixed-source evidence only; no production candidate until formula, repeated-index rules, and complexity are reviewed",
       "conditional_gate": "All dependencies satisfy the required evidence type and pass mathematical/contract acceptance; a completed_negative score alone cannot unlock a correctness dependency; obey item-specific cost gates",
@@ -49050,10 +49102,12 @@
         "results/phase2/ablation_v30_074_r14_production_bilinear_rank16_cost.json",
         "results/phase2/ablation_v30_074_r15_independent_rank16_repeat.json",
         "results/phase2/ablation_v30_074_r16_production_fullslab_cost.json",
-        "results/phase2/ablation_v30_074_r17_bilinear_fullslab_contract.json"
+        "results/phase2/ablation_v30_074_r17_bilinear_fullslab_contract.json",
+        "experiments/phase2/O12_EXACT_COST_PROOF.md",
+        "results/phase2/ablation_v30_074_r18_shape_corrected_contract.json"
       ],
       "result": {
-        "conclusion": "Exact distinct CP edge outputD3 fully costed; bilinear slab64 production1024/r4 component0.9485s residual0.05263s, no n3 tensor. Actualsource integration and fullnetwork resources/score pending"
+        "conclusion": "Represented rankR CP edge exact D3 has 6R GEMMs, O(Rn³) cost and only 2D intermediate arrays; fullsource R may grow. Cost diagnostic complete, no fullcandidate score."
       }
     },
     {

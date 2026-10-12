@@ -37,6 +37,11 @@ def main():
         cv = task.get('public_confirmation', {})
         if 'before_adjusted' in cv:
             lines.append(f'| {task["key"]} | {cv["before_raw"]:.12g} | {cv["after_raw"]:.12g} | {cv["before_adjusted"]:.12g} | {cv["after_adjusted"]:.12g} | {cv["failures"]} |\n')
+    lines.append('\n## 部分来源整网筛选\n\n这些候选仅覆盖固定来源子集，不能将负结果推广到完整轨道。\n\n| key | version | before raw | after raw | before adjusted | after adjusted | 失败 |\n|---|---|---:|---:|---:|---:|---:|\n')
+    for task in queue['tasks']:
+        result = task.get('target_subset_r10', {})
+        if result:
+            lines.append(f'| {task["key"]} | v30.059-subset-r10 | {result["before_raw"]:.12g} | {result["after_raw"]:.12g} | {result["before_adjusted"]:.12g} | {result["after_adjusted"]:.12g} | {result["failures"]} |\n')
     lines.append('\n## 归因与证据\n\nC07/C10单网raw逐值评分相同，收益来自收费减少。C08/C14/C15的微小raw差尚不能排除浮点重排漂移，completed_positive只表示初筛分数更低。诊断条目不产生算法after分数，记录为不适用。\n\n')
     for task in queue['tasks']:
         if not task.get('evidence'):

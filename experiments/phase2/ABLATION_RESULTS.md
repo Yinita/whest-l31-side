@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 40, 'completed_diagnostic': 23, 'partial_diagnostic': 23, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务129。当前状态：{'completed_positive': 17, 'completed_negative': 12, 'partial_derivation': 38, 'completed_diagnostic': 26, 'partial_negative': 14, 'partial_diagnostic': 22}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -69,6 +69,14 @@
 | key | before raw | after raw | before adjusted | after adjusted | 失败 |
 |---|---:|---:|---:|---:|---:|
 | L21 | 2.31618710878e-08 | 2.26111294133e-08 | 5.89649201873e-09 | 5.75702524657e-09 | 0 |
+
+## 部分来源整网筛选
+
+这些候选仅覆盖固定来源子集，不能将负结果推广到完整轨道。
+
+| key | version | before raw | after raw | before adjusted | after adjusted | 失败 |
+|---|---|---:|---:|---:|---:|---:|
+| H29 | v30.059-subset-r10 | 2.29046648315e-08 | 2.29053416234e-08 | 6.11683233498e-09 | 6.25161187772e-09 | 0 |
 
 ## 归因与证据
 
@@ -487,15 +495,18 @@ before：pool在width/depth切换后保留历史大buffer，subprocess内存失�
 
 after：诊断同进程shape序列与峰值RSS/RLIMIT_AS、pool keys/bytes
 
-状态：partial_diagnostic
+状态：completed_diagnostic
 
-诊断结论：Actual shape sequence predict under8GiB cap completed; per-shape failure/RSS/VSZ/logical alias bytes retained. RPC same-shape lifetime still outstanding, nonfinite shape diagnostic warnings not numerical acceptance；算法分数前后不适用。
+诊断结论：Original8GiB offline actualpredict sequence with poolshape/logicalbytes plus RPC perpredictRSS/VSZ completed; smallshape numerical warnings retained, no accuracy claim；算法分数前后不适用。
 
 - [ablation_v30_026_pool_shape_probe.json](../../results/phase2/ablation_v30_026_pool_shape_probe.json)
 - [ablation_v30_026_full_pool_r0.json](../../results/phase2/ablation_v30_026_full_pool_r0.json)
 - [ablation_v30_026_full_pool_r1.json](../../results/phase2/ablation_v30_026_full_pool_r1.json)
 - [ablation_v30_026_full_pool_r2.json](../../results/phase2/ablation_v30_026_full_pool_r2.json)
 - [ablation_v30_026_r03_shape_resource.json](../../results/phase2/ablation_v30_026_r03_shape_resource.json)
+- [ablation_v30_026_r04_shape_rpc.json](../../results/phase2/ablation_v30_026_r04_shape_rpc.json)
+- [ablation_v30_026_r05_shape_decision.json](../../results/phase2/ablation_v30_026_r05_shape_decision.json)
+- [ablation_v30_026_r05_shape_rpc.json](../../results/phase2/ablation_v30_026_r05_shape_rpc.json)
 
 ### v30.027 C27 shape变更时释放无用旧pool
 
@@ -519,12 +530,17 @@ before：最终层仍保留早层宽大bufs，8GiB虚拟内存接近界限
 
 after：明确final-only路径可复用废弃PK2/legs buffers而非申请新scratch
 
-状态：partial_derivation
+状态：completed_diagnostic
 
-诊断结论：Static scratch use bounds inventoried; dynamic escapedview alias/poison contracts required before reuse；算法分数前后不适用。
+诊断结论：FinaldeadLA/LP scratch liveness, poisoned smallshape equality and FLOPs equality, realnetwork0 local and RPC zero failures; RPC fixedastype extra cost retained; no peakmemory or precisiongain claimed；算法分数前后不适用。
 
 - [ablation_v30_028_static_liveness.json](../../results/phase2/ablation_v30_028_static_liveness.json)
 - [ablation_v30_028_poison_alias_contract.json](../../results/phase2/ablation_v30_028_poison_alias_contract.json)
+- [C28_LIVENESS.md](../../experiments/phase2/C28_LIVENESS.md)
+- [ablation_v30_028_r02_poison_contract.json](../../results/phase2/ablation_v30_028_r02_poison_contract.json)
+- [ablation_v30_028_r02_mini1.json](../../results/phase2/ablation_v30_028_r02_mini1.json)
+- [ablation_v30_028_r02_rpc_predictions.json](../../results/phase2/ablation_v30_028_r02_rpc_predictions.json)
+- [ablation_v30_028_r02_rpc_scored.json](../../results/phase2/ablation_v30_028_r02_rpc_scored.json)
 
 ### v30.029 C29 三角C_pre阶段批量copy调度
 
@@ -964,6 +980,11 @@ after：恢复一个明确vector partition轨道的mixed新born source
 - [ablation_v30_059_r04_real_source_columns.json](../../results/phase2/ablation_v30_059_r04_real_source_columns.json)
 - [ablation_v30_059_r05_layer14_real_source_columns.json](../../results/phase2/ablation_v30_059_r05_layer14_real_source_columns.json)
 - [ablation_v30_059_r06_real_layer14_edge_signal.json](../../results/phase2/ablation_v30_059_r06_real_layer14_edge_signal.json)
+- [ablation_v30_059_r08_subset_decision.json](../../results/phase2/ablation_v30_059_r08_subset_decision.json)
+- [ablation_v30_059_r08_subset_contract.json](../../results/phase2/ablation_v30_059_r08_subset_contract.json)
+- [ablation_v30_059_r08_subset_mini1.json](../../results/phase2/ablation_v30_059_r08_subset_mini1.json)
+- [ablation_v30_059_r10_subset_decision.json](../../results/phase2/ablation_v30_059_r10_subset_decision.json)
+- [ablation_v30_059_r10_subset_contract.json](../../results/phase2/ablation_v30_059_r10_subset_contract.json)
 
 ### v30.060 H30 K111乘covariance边一层收缩
 
@@ -1161,9 +1182,9 @@ before：仅已知rank扩大障碍
 
 after：证明exact复杂度和内存或给出反例
 
-状态：partial_derivation
+状态：completed_diagnostic
 
-诊断结论：Exact distinct CP edge outputD3 fully costed; bilinear slab64 production1024/r4 component0.9485s residual0.05263s, no n3 tensor. Actualsource integration and fullnetwork resources/score pending；算法分数前后不适用。
+诊断结论：Represented rankR CP edge exact D3 has 6R GEMMs, O(Rn³) cost and only 2D intermediate arrays; fullsource R may grow. Cost diagnostic complete, no fullcandidate score.；算法分数前后不适用。
 
 - [ablation_v30_074_edge_cost.json](../../results/phase2/ablation_v30_074_edge_cost.json)
 - [ablation_v30_074_r02_charged_edge_contraction.json](../../results/phase2/ablation_v30_074_r02_charged_edge_contraction.json)
@@ -1182,6 +1203,8 @@ after：证明exact复杂度和内存或给出反例
 - [ablation_v30_074_r15_independent_rank16_repeat.json](../../results/phase2/ablation_v30_074_r15_independent_rank16_repeat.json)
 - [ablation_v30_074_r16_production_fullslab_cost.json](../../results/phase2/ablation_v30_074_r16_production_fullslab_cost.json)
 - [ablation_v30_074_r17_bilinear_fullslab_contract.json](../../results/phase2/ablation_v30_074_r17_bilinear_fullslab_contract.json)
+- [O12_EXACT_COST_PROOF.md](../../experiments/phase2/O12_EXACT_COST_PROOF.md)
+- [ablation_v30_074_r18_shape_corrected_contract.json](../../results/phase2/ablation_v30_074_r18_shape_corrected_contract.json)
 
 ### v30.075 O13 K111乘edge covariance主模态代理
 

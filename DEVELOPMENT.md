@@ -67,3 +67,7 @@ L21已冻结H18 hash da7154bb8170c9deda98ed82b97c826bafbea7740054e8b04567dcf2837
 H18公共8–15一次冻结配对确认完成：当前V29 adjusted5.896492018734529e-9/raw2.316187108775125e-8→H18 adjusted5.757025246568847e-9/raw2.2611129413263598e-8，8/8网络adjusted均改善，aggregate−2.36525%，双方零失败。仅公共确认；状态先前已查看、上游调参重叠未知，不代替独立reference验证，阶段1目标不递进。
 
 L19 antithetic参考两个独立4096pair种子相同forward次数finalvariance ratios0.91035/0.90858，约9%降方差；弱pilot不是benchmark labels，不能声明十倍目标。C26记录器tuple处理错误已保留原log并修复重跑。
+
+2026-10-12 H29真实来源子集接入：r07误用半系数，r08/r09导数阶次为替代轨道w2*w1*w1，不能否决目标w1*w2*w2；保留所有报告。目标轨道r10已通过独立对称CP显式tensor小shape核验，单网正式计费筛选中。C26 RPC同进程64×4→1024×16→64×4→1024×16四次无异常，client peakRSS959580KiB；逐次VSZ补测待完成，不能提前标记全部验收。
+
+O12 exact表示CP成本诊断、C26真实local/RPC形状生命周期诊断、C28最后层deadLA/LP复用合同已补齐。C28 local单网adjusted6.1167127894412344e-9，RPC6.120838343176817e-9，均零失败；local FLOPs与控制相同，RPC固定astype增费保留，不宣称精度提升。H29正确目标阶次first1子集adjusted6.116832334984139e-9→6.251611877719655e-9，负结果，完整来源仍待。剩余74项partial，十倍门槛未通过。
