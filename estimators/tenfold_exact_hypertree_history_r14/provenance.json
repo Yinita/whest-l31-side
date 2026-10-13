@@ -1,0 +1,44 @@
+{
+  "version": "tenfold.exacthypertree.history.r14",
+  "parent": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+  "parent_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "candidate_sha256": "832bb894ca238fa2014d963ab1f81c3ca08bb6d27de7434bef9eec70d9e4d7ad",
+  "primary_change": "Replace thin D21 feedback product with every official cost3 heavy+light hypertree path, independent exact birth-distinct full-row four-matrix history",
+  "sources": [
+    "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/factor_k3.py#L367-L393",
+    "https://github.com/alignment-research-center/mlp_cumulant_propagation/blob/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py#L73-L106"
+  ],
+  "contracts": [
+    "results/phase2/tenfold_exact_hypertree_history_contract_r14.json",
+    "results/phase2/tenfold_exact_hypertree_history_integration_r14.json"
+  ],
+  "scope": "StrictRPC1 negative, zero failures; no promotion",
+  "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+  "tool_versions": {
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1"
+  },
+  "constraints": {
+    "flop_budget": 2199023255552,
+    "predict_seconds": 120,
+    "residual_seconds": 0.4,
+    "setup_seconds": 5,
+    "thread_count": 1
+  },
+  "limitations": [
+    "Parent covariance/K4 proxies and residual rank16 inherited",
+    "All non-hypertree K111*edge and covariance-triangle orbits still missing",
+    "n8depth16 smoke nonfinite retained; no1024 resource claim"
+  ],
+  "strict1_result": {
+    "raw_mse": 2.2287540702e-08,
+    "parent_raw_mse": 2.2281179568e-08,
+    "adjusted_score": 1.6548841062e-08,
+    "parent_adjusted_score": 4.8714160494e-09,
+    "flops": 1632808519965,
+    "wall_seconds": 99.4213,
+    "residual_seconds": 0.2866,
+    "failures": 0,
+    "conclusion": "All-history heavy trees not useful; do not expand leg-reuse optimization"
+  }
+}

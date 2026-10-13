@@ -1,0 +1,89 @@
+{
+  "url": "https://raw.githubusercontent.com/alignment-research-center/mlp_cumulant_propagation/93d091a4c26c042bfffa28f2e76a81bc0aba94bb/src/mlp_kprop/kprop_harmonic.py",
+  "fetched_utc": "2026-10-13T10:03:25.895406+00:00",
+  "sha256": "45e5fcc030bdb6bfba526898fdd53a650b83193e992cfad51e9422ccb70e11c1",
+  "bytes": 23631,
+  "selected_lines": [
+    {
+      "line": 52,
+      "text": "def get_vec_cond(k_max: int, augment: bool = False):"
+    },
+    {
+      "line": 55,
+      "text": "    # The augmented algorithm raises the cap by one, summing every diagram of squared"
+    },
+    {
+      "line": 59,
+      "text": "    budget = k_max - 1 + augment"
+    },
+    {
+      "line": 68,
+      "text": "def is_hypertree(vec_part: VecPartition) -> bool:"
+    },
+    {
+      "line": 86,
+      "text": "def factored_keeps_term(k_max: int, int_part: IntPartition, vec_part: VecPartition) -> bool:"
+    },
+    {
+      "line": 89,
+      "text": "    In augment mode this is a strict subset of the full term set: factored kind=AUGMENT"
+    },
+    {
+      "line": 100,
+      "text": "        return is_hypertree(vec_part)"
+    },
+    {
+      "line": 106,
+      "text": "def get_all_terms("
+    },
+    {
+      "line": 110,
+      "text": "    augment: bool = False,"
+    },
+    {
+      "line": 113,
+      "text": "    vec_cond = get_vec_cond(k_max, augment=augment)"
+    },
+    {
+      "line": 133,
+      "text": "            sum_max=2 * (k_max - 1 + augment),"
+    },
+    {
+      "line": 147,
+      "text": "def get_all_terms_iso("
+    },
+    {
+      "line": 151,
+      "text": "    augment: bool = False,"
+    },
+    {
+      "line": 153,
+      "text": "    terms = get_all_terms(k_max, d_max=d_max, use_mean_var=use_mean_var, augment=augment)"
+    },
+    {
+      "line": 349,
+      "text": "            the factored algorithm drops the augmented diagrams it cannot afford"
+    },
+    {
+      "line": 351,
+      "text": "            size as the augmented diagrams it keeps."
+    },
+    {
+      "line": 372,
+      "text": "                augment=(kind==AUGMENT),"
+    },
+    {
+      "line": 381,
+      "text": "                augment=(kind==AUGMENT),"
+    },
+    {
+      "line": 412,
+      "text": "    terms_iso = get_all_terms_iso(k_max, d_max=get_d_max(k_max, kind), augment=(kind == AUGMENT))"
+    },
+    {
+      "line": 538,
+      "text": "            WARNING: factor=True with kind=AUGMENT drops the augmented diagrams that"
+    }
+  ],
+  "scope": "Original official augmented order and factored nonhypertree filtering; source evidence, no candidate gain"
+}

@@ -1,0 +1,35 @@
+{
+  "version": "tenfold.exacthypertree.history.r14.preflight",
+  "failures": [
+    {
+      "attempt": "helper initial",
+      "message": "TypeError: in-place add arr += x unsupported by immutable flopscope arrays",
+      "repair": "fnp.add(...,out=...)"
+    },
+    {
+      "attempt": "actual cached contract",
+      "message": "real distinct assertion failed before C/G canonical sym",
+      "repair": "helper-local sym(C/G); parent object remains unchanged",
+      "original_script": "experiments/phase2/tenfold_exact_hypertree_history_contract_r14_pre_sym.py"
+    },
+    {
+      "attempt": "whole smoke n8depth16",
+      "message": "np.isfinite(prediction) assertion failed; overflow/invalid multiply warnings",
+      "status": "negative preserved; changed only integration smoke shape to n32/n64depth4, no estimator repair",
+      "original_script": "experiments/phase2/tenfold_exact_hypertree_history_integration_r14_deep16_failed.py"
+    },
+    {
+      "attempt": "FP32 component harness retry02",
+      "message": "Size of label d for operand1(7) does not match previousterms(28)",
+      "repair": "test-only reshape four legs into batch axis; production already correct",
+      "log": "results/phase2/tenfold_exact_hypertree_history_integration_r14_retry02.log"
+    },
+    {
+      "attempt": "FP32 component harness retry03",
+      "message": "NumPy offline unoptimized six-index contraction interrupted because it was excessive",
+      "repair": "test-only np.einsum optimize=True",
+      "log": "results/phase2/tenfold_exact_hypertree_history_integration_r14_retry03.log"
+    }
+  ],
+  "acceptance": "No failed attempt qualifies as score/resource acceptance; final reports standalone small contracts"
+}

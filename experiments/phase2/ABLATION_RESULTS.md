@@ -2150,3 +2150,17 @@ r32/r33补官方5类出生tree均值中心化，两网partial K211范数36.29/37
 ### tenfold.marginal.edgeworth2.r15 — complete negative
 
 名称：二阶边际Edgeworth闭合。详情：同parentstate、固定理论系数κ3²/72、κ3κ4/144、κ4²/1152，补p2–4二阶项及p1κ4²，pair不变。Before/after（network0，原reference，strictRPC）：raw2.2281179568e-8→2.2521675191e-8、adjusted4.8714160494e-9→4.9240060860e-9，约+1.08%，零失败。FLOPs480781460599 / residual.210547197s。实际公式合同pass1.45e-15。完整Mini8、独立确认未跑；该机制负结果停止，不计十倍完成。证据见tenfold_marginal_edgeworth2_r15_samecycle_comparison.json。
+
+### 完整heavyhypertree历史 r14：真实负结果
+
+固定新完整来源机制：关闭parentthinFB，恢复官方cost3的K21/K12/K22/双covariance与lightedge所有hypertreepaths；合并成H腿并用M=-6(A*H).T精确剔除出生重指标，4腿全宽全历史运输，无新增rank/age/row近似。独立generator n4/7/12/32合同max2.49e-14，n32/64depth4wholepredictfinite；FP32Strassen相对误差≤3.90e-7。n8depth16nonfinite原失败保留，实际1024严格验证独立进行。
+
+network0严格RPC零失败：before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.228754070188e-08 / adjusted1.654884106169e-08，raw+0.02855%、adjusted+239.713%。FLOPs1632808519965，wall99.421335/residual0.286602129s，client287916KiB。候选SHA832bb894ca238fa2014d963ab1f81c3ca08bb6d27de7434bef9eec70d9e4d7ad。没有精度收益，停止该历史扩展及leg共享降费支线；不扩量、不上传。它只否决这些retainedhypertree缺项，未验证官方本身过滤的triangle/K111×edge等nonhypertree图项。r16fullmetric两层候选开始串行strict，完成前不报成绩。
+
+## 真metric两层 r16：真实负结果
+
+仅倒数第二层将parent近似G与实际B=W W.T配对，D4/D31/D22完整替换USE，跳过该层旧averagefeed；外部保存官方三feedCP及严格重指标扣除，rawW运输一次到final。早层与parentG生产freeze。actualn8/32depth3对象/CP/actualfinalreadout合同通过（float32≤1.17e-7），generic表nonregen未完全读D31的范围限制已注明，不扩大成全部图项parity。
+
+同原network0严格RPC，before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.231846352174e-08 / adjusted5.163226797216e-09（raw+0.16733%、adjusted+5.99027%），零失败。FLOPs508729276534，wall44.609014/residual0.193475329s、client288208KiB。候选SHAa1672cc0d2dedaa65eb668213612c1b47855ec46102bb0cb35721c6df1b7cfce。否决tail2currentGmetric机制，不扫层、不扩量、无raw信号故不做final收缩降费支线。真正全历史K4 birth/metric闭合仍未实现，不可从局部负结果全盘否决。
+
+更大双流全链离线oracle以固定K2/K3/K4系数和PhiW递推：parentfinalraw2.22819e-8；两流平均effect后的真实positive residualK2=1.275e-8，K3=1.866e-8，K4=1.609e-8，K2+3=8.328e-9，K2+3+4=2.019e-9。组合oracle约11倍不是合法候选成绩；整链早层MC噪声大，8chunkcross残余1.336e-9±1.348e-9，不能据此认证30倍。下一重点仍联合真实state生产，source非树项成本门槛和真K4历史闭合。
