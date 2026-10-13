@@ -267,3 +267,16 @@ separate train-only r44 CV. Layer0 target noise is preserved in evidence,
 but any learned layer0 correction is fixedzero. Final16th prefatures are
 unavailable in original15state cache and require a distinct future capture;
 this prototype covers layers0..14 only.
+
+
+R43 train24 transports allcomplete0fail. At layer14, observed totalMCmean error
+MSE1.97842855e-8 versus linearized local innovation4.07296822e-9; inherited
+error explains much of the discrepancy, not a candidate gain. R44 fixed local
+innovation model's train-CV effect was onlyabout1.4%, below its.90 gate.
+R45 replays its held-network predicted innovations through exact regenerated
+W and frozen Phi, all24complete0fail. Layer14 local-replay/before ratio
+.99420693, versus total-error-injection/before1.12483026. This first-order
+train-CV result rejects further full mean-only rollout; it is not full16layer
+finalMSE or a lawful resource run. Next scientific data requirements are in
+`JOINT_INNOVATION_DATA_REQUIREMENTS_R46.md`: the existing MC marginal corpus
+cannot identify transported off-diagonal covariance or joint cumulant error.

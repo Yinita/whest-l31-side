@@ -1158,3 +1158,7 @@ SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469，仅替换r
 |r42|固定22feature ridge分层模型，layer0zero|2.223778510747e-8|2.459668120859e-8|+10.6076%|0/8|
 
 两版相同新8网512..624/原MC N1e8 reference/权重sha配对，严格提交资源未测，诊断内存16GiB、sys.settrace/NumPy不进入提交。lawfulfnp模板及exactmodelhelperparity只组件，不称提分。r43 e_l−Phi_l*(W_l.T@e_l−1)为firstorder局部error target，忽略协方差和source响应；canonicalCDF/features/weights严格匹配，不能冒称完整真实innovation。目标训练仅24旧train网络，已用16验证网络不再称未见最终验收。
+
+## r43–r45 局部均值创新：排除双计数，但收益不足
+
+r43实际24网络canonical权重SHA全核验，固定Phi W meanJacobian剥离继承误差，零失败；layer14局部error MSE/total.20587只目标分解，不算法提分。r44 24train/4blockedfold fixed22features/perlayerlinear.01，normalizedlocalratio.9888608、raw.9861997（22/24wins），未过预设.90门槛。r45同OOF预测真实W tangent递推至layer14，localratio.9942069；将totalerror逐层注入反而1.1248303。只改善.58%，不扩mean-only、不线上提交。firstorder只含均值响应，无完整cov/sourceJacobian，MC跨层共享样本，不假设iid去噪。next r46实际oracle四diag共同rollin训练网0/16、layers1..14，final不注入，用于检验真正非线性状态闭合的诊断上限，绝不是合法候选。

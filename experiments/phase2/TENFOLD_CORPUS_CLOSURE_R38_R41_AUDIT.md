@@ -124,3 +124,40 @@ that baseline cost and evidence are not duplicated.
 
 The strict first-stage adjusted target remains below5.779e-10, with independent
 tenfold confirmation, legal operators, RPC and resource checks still required.
+
+## R43–R45 causal mean innovation
+
+Fitting total post-layer error and injecting it at every layer can double-count
+inherited error. R43 computed, on only the original24 training networks,
+`innovation_l = total_error_l − Phi_l * W_l.T @ total_error_(l−1)` using the
+canonical gate/order and regenerated weights whose hashes matched each H18
+baseline. All24 transports completed; the exact decomposition held. The
+smaller innovation label is a change of target, not an achieved score. Same
+MC draws across layers induce label-noise covariance, so subtracting an iid
+noise floor from this residual would be unjustified.
+
+R44 kept the same22 features, per-layer linear lambda0.01 and sigma-scaled
+residual. Four blocked train24 network folds each fit18/hold6, exclude analytic
+layer0 from fitting, and leave final-layer local correction zero. The pooled
+normalized innovation MSE ratio was0.988860806 (raw0.986199688);22/24 networks
+improved. Paired network bootstrap95 was0.985569–0.992352. The predeclared
+mechanism gate required ratio<0.90, so it failed. A frozen all24 model is
+retained for audit, SHA
+`4cd60179babfd045b3b4947343f6b96e5879a4b42e3fe06d63fc71f9f850bb8a`.
+The style-cleaned source only renames a comprehension variable; the executed
+snapshot/hash is retained in `source_style_provenance.json`.
+
+R45 replayed held-network predictions through the actual regenerated weight
+Jacobian, without fitting or changing a trajectory. At layer14, original
+error MSE1.9784285518494912e-8 became1.966967378410733e-8 for local innovations
+(ratio0.994206931), whereas repeatedly injecting predicted total error gave
+2.2253962994861504e-8 (ratio1.124830259). This attributes an actual duplication
+problem but offers only about0.58% development replay improvement. It is not
+the final16th-layer score or nonlinear closed-loop candidate. The fixed linear
+mean-only mechanism stops without a full candidate launch.
+
+Evidence folders: `modal_mean_innovation_targets_r43`,
+`causal_mean_innovation_cv_r44` and `modal_mean_innovation_replay_r45` under
+`results/phase2/`. Earlier V29 Mini8 local-innovation LOO was a separate,
+similarly small diagnostic (ratio0.984852), not an independent improvement to
+H18 or the tenfold stage.
