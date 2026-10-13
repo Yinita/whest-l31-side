@@ -122,3 +122,6 @@ uv run --frozen python benchmark/prepare_rpc_inputs.py \
 
 
 严格同runner成对归因使用分片2–5（28网，ID16–43），避免将较早不同runner控制混入。[28网成对汇总](../results/phase2/frozen_strict_public28_paired_r01.json)：adjusted−21.6099%、raw−1.85164%、FLOPs−20.1160%，28/28 adjusted改善但19/28 raw改善，双方零失败。公共上游调参未知，不代替独立门槛。
+
+
+14:54分片6 ID44–50已LFS校验，双方串行流程启动并启用状态同步；覆盖保持44网，完成后再汇总51网。PID/子进程/阶段见research_state与`frozen_pair_frozen_public_shard06_r01.json`；禁止重复启动。
