@@ -131,3 +131,5 @@ QU是scratch，它在当前层只写ro:ns，尾/头可能陈旧；候选合法as
 权重存储是input-by-output；当前input permutation作用在其第一轴，之后转置。未来output permutation不会改变Frobenius LS。post covariance对角用float64的 `pk2v-pk1v**2`，非对角用Sym(pk11)。新lambda所在层停止旧V25 beta，该beta原来针对LAM表拟合；没有新lambda的首层仍继承parent。此版本保留后继scalar regeneration与average metric近似，未切换dense G记忆。
 
 独立 `tenfold_prels_transport_contract_r01.json` 用六置换三阶tensor、distinct cap、任意对称残差及对角，直接比较dense `W*Gpost*W.T` 与adjoint/source scalar，n8/n32绝对误差为1.35525e-20/1.11173e-21，权重方向与两种permutation均通过。无reference、无整网score或资源通过声明。Lookahead额外4个dense float64 GEMM每层，shape-only估计约2.40518e11 FLOPs，叠加r04实测1.69246e12约1.93298e12；实际elementwise/astype及资源必须严格评测，不能提前称通过。
+
+合同导入排序修复后原r01脚本按已记录SHA恢复并保存在 `tenfold_prels_transport_contract_r01.executed.py`，旧报告不覆盖；新r02脚本ruff通过、合同同误差/计费通过，script SHA `123ef7b1e4e5664722c48f77b6d01ec23342568006afb5eb504a2b850ca5a039`。候选代码未改变。Root严格RPC单网实测r07约1.933e12 FLOPs、raw2.3226395e-8、adjusted2.0416878e-8、零失败；较冻结parent单网raw2.22811796e-8恶化约4.24%，计费增加后score明显恶化，否决。pre/post表示修复的代数正确性不能抵消完整生产和scalar regeneration的近似误差，不把此负结果称十倍进展。

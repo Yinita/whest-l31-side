@@ -1,5 +1,7 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13十倍精度接续：两网GH2条件积分raw−11.91%/−7.37%但费用翻倍，adjusted未改善；r10cheapdiag否决（raw+33.52%），r11fullcov响应raw−7.00%但adjusted+105.61%，均零失败。下一单链解析径向分布版本正在做实际source合同；云逐层矩采集首版大量timeout，保留全部失败，不记候选收益。阶段1目标5.779e-10、当前线上最佳V37bH18均未改变。见[真实before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
+
 最新检查点（2026-10-13）：V37bH18严格RPC累计65公共网零失败，adjusted **4.4596111651e-9**，raw **2.1926280101e-8**。同runner成对49网，V29→V37bH18 adjusted下降21.54%、raw下降1.76%、FLOPs下降20.12%；49/49 adjusted改善、34/49 raw改善，主要收益来自降费。[65网汇总](results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)与[49网成对归因](results/phase2/frozen_strict_public49_paired_r04.json)保留逐网证据。阶段1目标5.779e-10未达，Mini100未完成，公共集不称最终独立holdout；线上最佳仍#335678的4.2937797168e-9，未新上传。
 
 本轮新增真实高阶组件：r21利用重复P与rank-one feed精确收缩，全14来源成本下降33.06%；r22年龄裁剪及r23列抽样偏差较大，不接入候选。r25 float32完整K31中心化精度失败，r26仅改float64后独立核验通过，1024宽15类图项成本2.678亿FLOPs。均无整网分数，完整K211和proxy去重仍待。版本、before/after、失败与成本见[真实来源记录](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)。

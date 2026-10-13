@@ -42,3 +42,21 @@ r07下一preactivation目标整链已严格RPC零失败：raw2.322639502950e-08�
 多层已知均值Gaussian-linear控制变量：两独立heldstream variance ratio0.66484/0.67292，约3倍sample成本。乐观全预算float32误差约2.5e-6，不通过预注册5e-4variance ratio门槛，停止该路线。不混成benchmark分数。
 
 下一新分布机制r08：rank1输入条件积分，4固定Gaussian quadrature节点，残余1023维完整Gaussian K3母链；方向仅weight-only Gaussian diagonal skeleton的outputmean sensitivity，不跑额外parent全链、无reference读取。第一层mean=tq/Cpre=Gram−qqT，其余保持parent。四链同一计费context，不重置预算；高阶接口/conditional分布校准/4nodequadraturebias与资源均待实际验证。
+
+r09 GH2 rank1条件链实际strict1零失败：raw1.962775897368e-08，相对parent改善11.908%，adjusted8.339351717318e-09（更差），FLOPs934310859798，wall99.503029/residual0.381472s。有raw信号，但新候选未达到adjusted改善门槛，不成为最佳、不得上传。
+
+8公共网络的首层解析quadrature gate（无targets）：GH2 mean MSE2.9204e-12、GH4 5.7782e-21、GH8/16约3e-32。首层单方向mean variance占比0.20%，说明明显firstlayerquadraturebias不是当前深链残余主因；深层积分误差仍未知。
+
+下一定位云CPU单publicnetwork0两独立32m streams，全16层pre/post mean/variance/fourth及分片不确定性，不更改原benchmarkreference、不进入提交。方差truth仅oracle诊断，用于检验meanlocalinnovation是否由DeltaVar解释；只有零泄露合法替代才能进生产。用户已授权Modal费用，按短片64worker保存journal失败而非900smonolith。
+
+## 2026-10-13 接续：第二公共网络复验与方差诊断
+
+冻结network16（mini_shard02首行、原reference），parent/r09严格RPC同输入/seed/工具串行配对，双方零失败。before raw 1.810610328334e-08、adjusted 3.958603800869e-09；after raw 1.677138428136e-08、adjusted 7.125748410506e-09；raw变化-7.3717%、adjusted变化80.0066%。parent与candidate FLOPs分别480780523639、934310859798，wall/residual分别43.920273/0.191472、102.763497/0.388126秒。证据：`results/phase2/tenfold_conditioning2node_network16_r01_paired.json`；workflow `results/phase2/tenfold_conditioning2node_network16_r01_workflow.json`，保留command/PID/hash。两网GH2均raw改善但费用使adjusted更差，不晋升、不上传、不称十倍或独立最终验收。
+
+方差诊断Modal `covariance.causal.r01` 64×1CPU、256短片×262144、两stream运行中；第一wave1成功/63 timeout，原300秒失败全部保留，禁止放宽后伪称资源通过。这是离线truth诊断非候选资源评测；下一版拟仅缩为65536/片、交错stream，原自然完成后执行。母链canonical trace另执行一次，不读取reference选参数。
+
+下一候选r10为一次t=0条件母链加GH8廉价diagonal-Gaussian response差值，数学上是有偏近似，不是已知均值无偏CV。固定三toy中diag近似有一个恶化，保留风险；先严格单网否决/确认，再按证据选择低成本variance机制。阶段1阈值5.779e-10不变，最佳仍V37bH18线上4.2937797168e-9。
+
+r10 strict1同network0新结果：raw2.974875101813268e-8、adjusted6.525045206060913e-9，零失败；同cycleparent raw2.2281179568039988e-8、adjusted4.8714160493622575e-9。raw+33.515%、adjusted+33.946%，cheapdiag条件响应否决。r11仅cheapdiag→fullcovfirstchaos，GH8及t0母链冻结，严格RPC单网正在运行；不得提前报成功。
+
+r11 fullcovcheap response严格单网完成：raw2.072104088313e-08（相对parent-7.0020%），adjusted1.001602295015e-08（105.6080%），零失败、FLOPs1062951785084、wall50.432606/residual0.226421s、clientRSS287840KiB。全协方差响应比diag正确但其成本仍抵消收益，停止该CV路线节点/参数扫描。下一项r12球面输入分布的解析径向剥离正在做实际representedK3/core合同，不以理论合同称整网提分。

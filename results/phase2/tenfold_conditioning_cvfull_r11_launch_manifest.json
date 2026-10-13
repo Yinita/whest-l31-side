@@ -1,0 +1,30 @@
+{
+  "version": "tenfold.conditioning.cvfull.r11",
+  "status": "running",
+  "candidate": "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
+  "sha256": "bbf7bafbd9fd93d431290b6da6b17776de79dcf42aeee6d57f90ecb2873e949d",
+  "pid": 1563177,
+  "pid_start_ticks": "2186246",
+  "started_at_utc": "2026-10-13T09:32:36.508223+00:00",
+  "command": [
+    "uv",
+    "run",
+    "--frozen",
+    "python",
+    "benchmark/run_rpc_strict.py",
+    "--estimator",
+    "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
+    "--inputs",
+    "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
+    "--dataset",
+    "benchmark/data/mini_first8",
+    "--n-mlps",
+    "1",
+    "--output",
+    "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json"
+  ],
+  "output": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json",
+  "log": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.launcher.log",
+  "single_change": "r10 cheapdiagonal\u2192fullcovGaussian firstchaos response; fixedGH8, same t0mother",
+  "limitations": "biased response approximation; wall/resource still unverified; exact bivariate cov not represented"
+}

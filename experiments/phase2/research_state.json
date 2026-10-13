@@ -11,12 +11,13 @@
   },
   "active_experiment": null,
   "next_experiment": {
-    "key": "Rank1 Gaussian conditioning with remaining full Gaussian cumulantmother",
-    "status": "researching",
-    "reason": "Fullpost/preLS andfinaldense highorder core raw near2.2e-8 cannotapproachnecessary5.779e-9; no morelambda scan"
+    "version": "tenfold.radial.sphere.r12",
+    "status": "preparing_contract",
+    "single_change": "analytic inputradial removal with firstrawmoments/specialK3channel and exacthomogeneity rescaling",
+    "limitations": "parentrepresentedsource and originalLAM/regen approximation remain"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T09:11:45.578285+00:00",
+  "updated_at_utc": "2026-10-13T09:34:18.975891+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -47133,19 +47134,17 @@
   "tenfold_focus": {
     "target": 5.779e-10,
     "minimum_raw_needed_at_multiplier_floor": 5.779e-09,
-    "priority": "Integrate fulljoint highorder correction and benchmark candidate, no publiccohort expansion now",
+    "priority": "Reproducible rank1 conditional raw gain vs doubled cost; cheap response correction and variance causal diagnosis",
     "stage_accepted": false
   },
   "latest_tenfold_experiment": {
-    "version": "tenfold.precorelambda.alllayers.r07",
-    "candidate": "estimators/tenfold_precorelambda_alllayers_r07/estimator.py",
-    "sha256": "b20fd6a1044c462914acabb1c01b0ccd98c337e28583bc66585f9fbd9b1ce005",
+    "version": "tenfold.conditioning.cvfull.r11",
     "status": "completed_negative",
-    "pid": 1540656,
-    "pid_start_ticks": "2049606",
-    "started_at_utc": "2026-10-13T09:09:50.112612+00:00",
-    "output": "results/phase2/tenfold_precorelambda_alllayers_r07_strict1.json",
-    "log": "results/phase2/tenfold_precorelambda_alllayers_r07_strict1.launcher.log",
+    "candidate": "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
+    "sha256": "bbf7bafbd9fd93d431290b6da6b17776de79dcf42aeee6d57f90ecb2873e949d",
+    "pid": 1563177,
+    "pid_start_ticks": "2186246",
+    "started_at_utc": "2026-10-13T09:32:36.508223+00:00",
     "command": [
       "uv",
       "run",
@@ -47153,7 +47152,7 @@
       "python",
       "benchmark/run_rpc_strict.py",
       "--estimator",
-      "estimators/tenfold_precorelambda_alllayers_r07/estimator.py",
+      "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
       "--inputs",
       "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
       "--dataset",
@@ -47161,19 +47160,25 @@
       "--n-mlps",
       "1",
       "--output",
-      "results/phase2/tenfold_precorelambda_alllayers_r07_strict1.json"
+      "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json"
     ],
-    "single_change": "Fullchain LS target next transported preactivationG/C rather than currentpostG/C; includesdiagmixing, suppressoldbeta afterlivepreLS",
-    "limitations": "Scalarregeneration remains; parent inputK4/source confinement/meanmetric2 retained",
-    "target": 5.779e-10,
-    "score": "results/phase2/tenfold_precorelambda_alllayers_r07_strict1_score.json",
+    "output": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json",
+    "log": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.launcher.log",
+    "single_change": "r10 cheapdiagonal\u2192fullcovGaussian firstchaos response; fixedGH8, same t0mother",
+    "limitations": "biased response approximation; wall/resource still unverified; exact bivariate cov not represented",
+    "score": "results/phase2/tenfold_conditioning_cvfull_r11_strict1_score.json",
+    "comparison": "results/phase2/tenfold_conditioning_cvfull_r11_samecycle_comparison.json",
     "result": {
-      "final_layer_mse": 2.3226395029496416e-08,
-      "adjusted_final_layer_score": 2.041687781312781e-08,
+      "final_layer_mse": 2.0721040883131536e-08,
+      "adjusted_final_layer_score": 1.0016022950150368e-08,
       "n_failed_mlps": 0,
-      "flops_used": 1933024434477,
-      "wall_time_s": 76.952829229,
-      "residual_wall_time_s": 0.37244023899999945
+      "mean_compute_utilization": 0.48337450838698715,
+      "flops_used": 1062951785084,
+      "wall_time_s": 50.432605544,
+      "residual_wall_time_s": 0.2264213619999964,
+      "client_peak_rss_kib": 287840,
+      "limits_passed": true,
+      "failure_reasons": []
     }
   },
   "latest_tenfold_parent": {
@@ -47204,5 +47209,74 @@
       "results/phase2/tenfold_parent_h18_samecycle_r01_strict1.json"
     ],
     "score": "results/phase2/tenfold_parent_h18_samecycle_r01_strict1_score.json"
+  },
+  "cloud_diagnostic": {
+    "version": "covariance.causal.r01",
+    "pid": 1551390,
+    "pid_start_ticks": "2113723",
+    "manifest": "results/phase2/modal_covariance_causal_r01/manifest.json",
+    "app_url": "https://modal.com/apps/gydctet/main/ap-6HXuKhwbXYtT0zh7WDhWji",
+    "status": "running",
+    "scope": "Offline pre/post moments, no candidate truth dependency"
+  },
+  "latest_tenfold_second_network": {
+    "version": "tenfold.conditioning2node.r09",
+    "workflow": "results/phase2/tenfold_conditioning2node_network16_r01_workflow.json",
+    "comparison": "results/phase2/tenfold_conditioning2node_network16_r01_paired.json",
+    "comparison_sha256": "33c86c07c55e66b210ff21f1d68b8643772badc0d68334e613cb11bdfb026036",
+    "network_id": 16,
+    "status": "completed_negative_adjusted_raw_signal",
+    "before": {
+      "final_layer_mse": 1.8106103283344055e-08,
+      "adjusted_final_layer_score": 3.958603800869228e-09,
+      "n_failed_mlps": 0,
+      "mean_compute_utilization": 0.2186336694826423
+    },
+    "after": {
+      "final_layer_mse": 1.6771384281355495e-08,
+      "adjusted_final_layer_score": 7.125748410506237e-09,
+      "n_failed_mlps": 0,
+      "mean_compute_utilization": 0.4248753883975951
+    },
+    "relative_adjusted": 0.8000660760598393,
+    "relative_raw": -0.07371652426264341,
+    "per_network_resources": {
+      "mlp_index": 0,
+      "mlp_name": "adam-morrison",
+      "seed": 250561177,
+      "before": {
+        "final_layer_mse": 1.8106103283344055e-08,
+        "adjusted_final_layer_score": 3.958603800869228e-09,
+        "flops_used": 480780523639,
+        "wall_time_s": 43.920273216,
+        "residual_wall_time_s": 0.19147169099999672,
+        "client_peak_rss_kib": 287904,
+        "limits_passed": true,
+        "failure_reasons": []
+      },
+      "after": {
+        "final_layer_mse": 1.6771384281355495e-08,
+        "adjusted_final_layer_score": 7.125748410506237e-09,
+        "flops_used": 934310859798,
+        "wall_time_s": 102.763497083,
+        "residual_wall_time_s": 0.388125555000002,
+        "client_peak_rss_kib": 288144,
+        "limits_passed": true,
+        "failure_reasons": []
+      },
+      "relative_raw": -0.07371652426264341,
+      "relative_adjusted": 0.8000660760598393
+    },
+    "stage_accepted": false
+  },
+  "latest_cvdiag_negative": {
+    "version": "tenfold.conditioning.cvdiag.r10",
+    "score": "results/phase2/tenfold_conditioning_cvdiag_r10_strict1_score.json",
+    "comparison": "results/phase2/tenfold_conditioning_cvdiag_r10_samecycle_comparison.json",
+    "raw": 2.974875101813268e-08,
+    "adjusted": 6.525045206060913e-09,
+    "failures": 0,
+    "status": "completed_negative",
+    "single_change": "one residualGaussian mother + cheap diagonalGH8 response"
   }
 }

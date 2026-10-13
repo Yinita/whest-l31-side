@@ -1,6 +1,6 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
-2026-10-13最新执行进展：冻结最佳V37bH18严格RPC公共覆盖65网零失败，adjusted4.4596111651e-9；同runner49网成对较V29 adjusted下降21.54%，原始误差下降1.76%，主要来自20.12%的FLOPs减少。线上已验证最佳#335678为4.2937797168e-9。当前仍未达到阶段1的5.779e-10或第一名目标。新增全14来源K211单轨道精确收缩成本下降33.06%，真实K31的15类图项与中心化在float64下通过独立核验；完整K211、代理去重和整网评分待完成。详见[开发入口](DEVELOPMENT.md)及[版本化组件证据](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)。
+2026-10-13最新执行进展：最佳仍为V37bH18（线上#335678 adjusted4.2937797168e-9；公共65网严格RPC零失败adjusted4.4596111651e-9）。阶段1目标5.779e-10未达。完整当前represented source/K4 proxy的retained非对角K31/K211生产已做整网负结果，不再写为尚未集成；它不等于完整真实K4。新rank1 GH2条件分布在两公共网络raw分别改善11.91%/7.37%，费用近翻倍导致adjusted恶化，未晋升。cheapdiag响应r10 raw恶化33.52%；fullcov响应r11 raw改善7.00%但adjusted恶化105.61%，均严格RPC零失败。当前转向解析径向剥离和离线逐层矩诊断，详见[十倍记录](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 > 调研日期：2026-10-10，北京时间。对象：WhestBench Phase 2。本文是立项与实验执行报告，不是已完成的算法复现报告。
 >

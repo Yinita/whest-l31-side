@@ -2129,3 +2129,16 @@ r32/r33补官方5类出生tree均值中心化，两网partial K211范数36.29/37
 ## 十倍专项整网新结果 2026-10-13
 
 新候选r01资源失败；r02/r03单层raw约0.09%改善但adjusted变差；r04全层raw恶化13.02%。所有before/after、合同、精度限定见[TENFOLD_PROGRESS_20261013.md](TENFOLD_PROGRESS_20261013.md)。不修改原134项状态为完成；新候选负结果保留。
+
+## 十倍条件分布新消融（2026-10-13）
+
+同network0、originalreference、严格RPC及冻结同cycleV37bH18。不得把单网结果写成Mini8均分。
+
+| 版本 | before raw / adjusted | after raw / adjusted | 结论 |
+|---|---|---|---|
+| r09 rank1 GH2双母链 | 2.2281179568e-8 / 4.8714160494e-9 | 1.9627758974e-8 / 8.3393517173e-9 | raw−11.91%，cost近双倍；negative adjusted |
+| r09第二网络16复验 | 1.8106103283e-8 / 3.9586038009e-9 | 1.6771384281e-8 / 7.1257484105e-9 | raw−7.37%，negative adjusted |
+| r10 t0母链+GH8cheapdiag响应 | 2.2281179568e-8 / 4.8714160494e-9 | 2.9748751018e-8 / 6.5250452061e-9 | raw+33.52%，否决简化 |
+| r11 cheap响应fullcovfirstchaos | 2.2281179568e-8 / 4.8714160494e-9 | 2.0721040883e-8 / 1.0016022950e-8 | raw−7.00%，adjusted+105.61%，否决费用 |
+
+双方严格RPC零失败；详细FLOPs/time/memory/hash及原报告见[TENFOLD_PROGRESS](TENFOLD_PROGRESS_20261013.md)。r08四完整条件母链仅prepared未运行，不算消融完成；earlybranchmerge/radial/cheapresponse toy只合同不冒充整网score。最佳未晋升、阶段1未达。

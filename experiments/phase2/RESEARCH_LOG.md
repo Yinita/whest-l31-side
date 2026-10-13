@@ -1018,3 +1018,19 @@ M03r22 Mini8complete adjusted5.787544250514655e-9/raw2.273748767045447e-8,8zeroe
 2026-10-13T09:09:50.112612+00:00 r07transportaware preLS1..14 startedPID1540656,SHAb20fd6a1044c462914acabb1c01b0ccd98c337e28583bc66585f9fbd9b1ce005. IndependentnextWperm/directfullG vsadjointscalar n8/32 error1.35e-20 passed. Cost~1.94t budget2.199t/time120/residual.4 actualpending. MultilevelGaussiancontrolvariance .665/.673,3forwardcostprojectedMSE~2.5e-6, fails5e-4varianceratio gate; no production.
 
 2026-10-13T09:11:45.578285+00:00 r07preactivationtarget allchainstrict1zero {'final_layer_mse': 2.3226395029496416e-08, 'adjusted_final_layer_score': 2.041687781312781e-08, 'n_failed_mlps': 0, 'flops_used': 1933024434477, 'wall_time_s': 76.952829229, 'residual_wall_time_s': 0.37244023899999945}. Fullcore scalarclosure stillnottenfold. No morepost/prelambda fine sweeps. NonlinearbiasLOOonly2.25%,multilevel analyticCVvariance .665/.673 failscost~2.5e-6. Nextdistribution rank1conditioning fullGaussianmother4nodes feasibility beforecandidate, notM05UTfullinput.
+
+2026-10-13T09:15:16.941785+00:00 r09rank1conditionalGaussian2GHnodes strict1startedPID1546200,SHA1e67ccba8497913208c827074786cf00f89bcaea5880be36f3a08801cb4e9d3b. n4/8direction/inputcov/genericcontractspass. GH4r08preparedbutnotrun4parent~186s likely>120; two fixed±1/.5nodes minimalfeasiblecandidate. Existingparentconditionalcalibrationremains, firstlayerGH2→4→8→16analyticbiasgateindependentpending. No stageadvance.
+
+2026-10-13T09:17:34.789588+00:00 r09rank1GH2strict1zero {'final_layer_mse': 1.962775897368374e-08, 'adjusted_final_layer_score': 8.339351717318261e-09, 'n_failed_mlps': 0, 'flops_used': 934310859798, 'wall_time_s': 99.503029017, 'residual_wall_time_s': 0.3814721110000079}. Firstactualconditionaldistributiongate poor, no stageadvance. Goaltooldurableactive forfulltenfoldobjective; goalcontinuesbeyondcheckpoint. Nextdiagnosequadratureanalyticbias andcovariancebottleneck,beforemorewidth/depthresource.
+
+## 2026-10-13 接续：第二公共网络复验与方差诊断
+
+冻结network16（mini_shard02首行、原reference），parent/r09严格RPC同输入/seed/工具串行配对，双方零失败。before raw 1.810610328334e-08、adjusted 3.958603800869e-09；after raw 1.677138428136e-08、adjusted 7.125748410506e-09；raw变化-7.3717%、adjusted变化80.0066%。parent与candidate FLOPs分别480780523639、934310859798，wall/residual分别43.920273/0.191472、102.763497/0.388126秒。证据：`results/phase2/tenfold_conditioning2node_network16_r01_paired.json`；workflow `results/phase2/tenfold_conditioning2node_network16_r01_workflow.json`，保留command/PID/hash。两网GH2均raw改善但费用使adjusted更差，不晋升、不上传、不称十倍或独立最终验收。
+
+方差诊断Modal `covariance.causal.r01` 64×1CPU、256短片×262144、两stream运行中；第一wave1成功/63 timeout，原300秒失败全部保留，禁止放宽后伪称资源通过。这是离线truth诊断非候选资源评测；下一版拟仅缩为65536/片、交错stream，原自然完成后执行。母链canonical trace另执行一次，不读取reference选参数。
+
+下一候选r10为一次t=0条件母链加GH8廉价diagonal-Gaussian response差值，数学上是有偏近似，不是已知均值无偏CV。固定三toy中diag近似有一个恶化，保留风险；先严格单网否决/确认，再按证据选择低成本variance机制。阶段1阈值5.779e-10不变，最佳仍V37bH18线上4.2937797168e-9。
+
+r10 strict1同network0新结果：raw2.974875101813268e-8、adjusted6.525045206060913e-9，零失败；同cycleparent raw2.2281179568039988e-8、adjusted4.8714160493622575e-9。raw+33.515%、adjusted+33.946%，cheapdiag条件响应否决。r11仅cheapdiag→fullcovfirstchaos，GH8及t0母链冻结，严格RPC单网正在运行；不得提前报成功。
+
+r11 fullcovcheap response严格单网完成：raw2.072104088313e-08（相对parent-7.0020%），adjusted1.001602295015e-08（105.6080%），零失败、FLOPs1062951785084、wall50.432606/residual0.226421s、clientRSS287840KiB。全协方差响应比diag正确但其成本仍抵消收益，停止该CV路线节点/参数扫描。下一项r12球面输入分布的解析径向剥离正在做实际representedK3/core合同，不以理论合同称整网提分。
