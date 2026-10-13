@@ -282,3 +282,9 @@ newc=ordinaryK4v−g_prev−D4(Eoldpost)
 新G是joint affine约束解，不再oldorthogonalharmonicprojection，但postmetric仍I。D22crossrow=`((n−2)diagG+trG)/6`；combinedpostH同时匹配普通D4和K22rowtrace，不能称完整K22/211/1111tensor匹配。parentlambda/REF_R仍冻结配置，adaptiveformula会响应新G，不把自适应记录当新fit。
 
 冻结candidate `estimators/tenfold_joint_trace_d4_r37/estimator.py` SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469。`tenfold_joint_trace_d4_production_contract_r37_r01.json`仅ridersTrue诊断copy、原candidatebody反向assert一致，n32depth4 USE≤7.51e-8，完整feed≤1.85e-8，postD4≤3.07e-8，crossrowtrace≤2.05e-7。root管理整网strict归因；未接受十倍stage，不扩量预期收益。若失败不能继续将相同表示缩放或盲扫rank/layers。
+
+### R37 归因成功、精度机制否决
+
+R37 strict1零失败/资源通过：FLOPs1,903,631,419,511，raw2.2737705052122692e-8（parent+2.04893%），adjusted1.9683379716659492e-8（parent+304.059%、ratio4.04059）。这从R34raw4.779e-7恢复到parent附近，却没有新precision收益；不晋升、扩量、上传、costopt或缩放/rank扫描。
+
+无truth sameinput层差 `tenfold_diagonal_joint_targetfree_layerdiff_r01.json`：li1R25RMS3.58e-5/mean+2.87e-5，R34RMS9.80e-5/mean−8.00e-5，R37RMS5.11e-6/mean−1.24e-7；finalR37RMS1.66e-5/mean+3.30e-6，对比R25/R34约6.6e-4。这验证双约束确实消除了trace不一致造成的大累计偏差，但精确D4残差对分数无改善。**CP4 D4 projection这条分支停止**；其组件、合法全history预算与独立账本证据保存，后续仅科学上不同的完整distinct coupled-state来源可重新开启，不能从这里再盲扫附近版本。

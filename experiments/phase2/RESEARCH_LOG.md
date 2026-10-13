@@ -1107,3 +1107,11 @@ r25targetfree逐层delta从li1已出现mean+2.875e-5，li15 RMS6.55e-4，不是�
 独立joint约束推导指出signedD4补回虽然匹配D4，却改变trace；`tenfold_joint_diagonal_trace_projection_contract.json` n4/8/16同时对densefulltensor与独立2n线性方程解合同<1e-16，并检测r34broken反例。下一r37固定projection：s_eff=K22row−(traceDiag(Eoldpost)−D4(Eoldpost))，g=6s_eff/(n−2)−3sum(s_eff)/[(n−2)(n−1)]，cnew=K4v−g−D4(Eoldpost)。这是模型内精确两个约束，不oracle、不rank/layer/系数搜索；cross仍近似。后续actualbody合同/strict才能判断是否提分。
 
 新增r36对已完成strict预测和原reference逐层只诊断，第二层r25 MSE1.99837e-9/bias2.94005e-5，而parent7.40447e-10/bias6.51e-7；最终r25 centerederrorvariance3.74358e-7，不能靠一个meanoffset解释或修复。两个新脚本loader失败及executedsource保留，最终显式split=mini读取原prepared目标，不改reference；结果`tenfold_completed_layer_scores_r36.json`。
+
+## r37 joint D4+trace：消除错误，仍无分数改进
+
+SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469，仅替换r34出生projection为同时匹配ordinaryD4和K22rowtrace的固定affine解（扣oldEcross）；无拟合、层/rank/系数扫描。独立dense+2n方程解及actualbodyledger通过，saveddiagnostic onlyforcedriders与原source哈希分别记录。
+
+同原network0 strict零失败：parent raw2.228117956804e-8→candidate2.273770505212e-8（+2.04893%）；adjusted4.871416049362e-9→1.968337971666e-8（+304.0587%，4.04059倍）。严格FLOPs/时间/残差/内存逐网见`results/phase2/tenfold_joint_trace_d4_r37_samecycle_comparison.json`。相比r34raw4.779058713211e-7明显恢复：sameinput targetfree第二层deltaRMS9.80e-5→5.11e-6，最终deltaRMS约6.6e-4→1.66e-5；证据`tenfold_diagonal_joint_targetfree_layerdiff_r01.json`。这解释了一种状态不一致，但没有超越parent，不能将修错恢复说成自身提分。停止CP4/D4projection邻近候选、降费、rank/layer/scale扫描，不扩量、不上传。
+
+下一P0为真正不同的jointstate rollout校正pilot：公开独立随机He网络corpus14048，实际shard00 idx0,16,…2032；前32row固定前24train/后8validation。仅用离线独立网络高精度MC目标训练，禁止Mini8或公共比赛reference作训练，网络划分与工具/数据哈希预先冻结。先验证torchseed生成与首层解析均值/MCnoise匹配，再捕获原H18完整actualpost μ/K2/K3/K4，固定理论features/一项ridge模型；后续闭环注入必须同步Cdiag、ordinaryM出生、G和所有centering，不能在未校正状态上teacher-force。云pilot不是受测候选/最终holdout，若失败/噪声/资源门槛不过原样保留；不保证十倍可行。阶段1阈值未改，最佳仍V37bH18。

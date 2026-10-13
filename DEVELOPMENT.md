@@ -1,5 +1,8 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13 19:00最新：r25/r34/r37真实四阶残差历史及r29完整pairgrade4严格单网均零失败，全部adjusted未改善，否决。r37纠正总迹后消除灾难退化，但raw仍+2.05%；停止该分支。下一P0为独立corpus网络的联合状态闭环训练pilot。十倍目标5.779e-10未达，线上最佳V37bH18未变。见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
+
+
 2026-10-13 18:44最新：r25真实D4-only全历史严格单网零失败但raw恶化19.415倍；r29完整pair grade4 raw−0.4766%但adjusted+3.1703%，均否决。下一r34保留harmoniccross并补signedD4残差历史；最佳V37bH18与阶段1目标5.779e-10不变，十倍未达。详见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 
