@@ -20,10 +20,10 @@ def main():
     for row in capture['rows']:
         seed = row['seed']
         b = {k: np.array(v, dtype=np.float64) for k, v in row['birth'].items()}
-        I = np.eye(64)
+        identity = np.eye(64)
         M = np.diag(b['s'])+3*b['A']*b['e'][None,:]+b['R']@b['L'].T
-        birth = sym(np.einsum('ir,jr,kr->ijk',3*b['A'],b['A']*b['w2'][None,:],I))
-        birth += sym(np.einsum('ir,jr,kr->ijk',M,I,I))
+        birth = sym(np.einsum('ir,jr,kr->ijk',3*b['A'],b['A']*b['w2'][None,:],identity))
+        birth += sym(np.einsum('ir,jr,kr->ijk',M,I,identity))
         official = np.load(f'benchmark/data/paper_m03_r14_birth_objects_{seed}.npz')
         W = official['W']
         U = np.einsum('ia,abc->ibc',W,birth)
