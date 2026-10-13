@@ -1,0 +1,14 @@
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py:32: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(fnp.float32)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py:33: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  gate = flops.stats.norm.cdf(alpha).astype(fnp.float32)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py:84: SymmetryLossWarning: Symmetry lost along dims (0, 1): multiply — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  value = value*fnp.reshape(factors[v], tuple(n if s else 1 for s in v))
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py:87: SymmetryLossWarning: Symmetry lost along dims (0, 1): add — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  pk31 = pk31+value
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py", line 146, in <module>
+    main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/real_k31_production.py", line 120, in main
+    assert centered_error < 5e-5*max(float(np.max(np.abs(expected_centered))), 1e-12)+1e-8
+AssertionError

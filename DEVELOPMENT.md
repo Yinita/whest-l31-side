@@ -1,5 +1,9 @@
 # WhestBench Phase 2 开发入口
 
+最新检查点（2026-10-13）：V37bH18严格RPC累计65公共网零失败，adjusted **4.4596111651e-9**，raw **2.1926280101e-8**。同runner成对49网，V29→V37bH18 adjusted下降21.54%、raw下降1.76%、FLOPs下降20.12%；49/49 adjusted改善、34/49 raw改善，主要收益来自降费。[65网汇总](results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)与[49网成对归因](results/phase2/frozen_strict_public49_paired_r04.json)保留逐网证据。阶段1目标5.779e-10未达，Mini100未完成，公共集不称最终独立holdout；线上最佳仍#335678的4.2937797168e-9，未新上传。
+
+本轮新增真实高阶组件：r21利用重复P与rank-one feed精确收缩，全14来源成本下降33.06%；r22年龄裁剪及r23列抽样偏差较大，不接入候选。r25 float32完整K31中心化精度失败，r26仅改float64后独立核验通过，1024宽15类图项成本2.678亿FLOPs。均无整网分数，完整K211和proxy去重仍待。版本、before/after、失败与成本见[真实来源记录](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)。
+
 更新日期：2026-10-13。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
 
 官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，最佳候选严格RPC累计覆盖58个公共网络；Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。

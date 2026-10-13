@@ -2104,3 +2104,19 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 - [ablation_v30_129_r04_comprehensive_selection_ledger.json](../../results/phase2/ablation_v30_129_r04_comprehensive_selection_ledger.json)
 - [ablation_v30_129_r05_queue_evidence_index.json](../../results/phase2/ablation_v30_129_r05_queue_evidence_index.json)
 
+
+## 2026-10-13 本轮实际组件与公共验收
+
+完整状态仍为134项中64完成、70未完整验收。新增组件证据没有把O03/O05/H15/H16改成completed。线上已验证最佳仍V37bH18 #335678 adjusted4.2937797168e-9，没有新整网候选分数。
+
+| 版本 | 名称 | before | after | 分数或表现 |
+|---|---|---|---|---|
+| V37bH18 shard08 r14 | 冻结新公共7网成对严格RPC | V29 adjusted5.497525e-9/raw2.160708e-8 | V37bH18 adjusted4.298409e-9/raw2.117398e-8 | adjusted−21.81%、raw−2.00%，双方0失败 |
+| public65 r06 | 最佳候选扩展验收 | 58网adjusted4.479067e-9 | 65网adjusted4.459611e-9 | 样本扩展，算法未变，不能把均值变化当算法收益；65网0失败 |
+| strictpaired49 r04 | 成本与误差归因 | V29 adjusted5.617423e-9/raw2.204831e-8 | V37bH18 adjusted4.407335e-9/raw2.166018e-8 | adjusted−21.54%、raw−1.76%、FLOPs−20.12%，双方0失败 |
+| v30.067.r21 | 全来源精确结构收缩 | 2732.84亿FLOPs | 1829.43亿FLOPs | −33.06%，输出相对差1.42e-7；无整网分数 |
+| v30.067.r22 | 年龄裁剪 | 14来源完整单轨道 | 8/4/1来源 | 组件误差37.30%/75.25%/97.72%，不接入；无整网分数 |
+| v30.067.r23 | 列抽样 | 全来源1024列 | 512/256/128列 | 组件误差49.67%/84.95%/127.97%，不接入；无整网分数 |
+| v30.067.r25→r26 | 完整实际K31精度 | float32中心化误差3.63e-7，未过门槛 | 相同公式与输入改float64，1024固定条目误差1.11e-16 | 成本2.678亿FLOPs，未放宽门槛；输入四阶仍为V29代理；无整网分数 |
+
+独立代数oracle仅用于诊断，无reference输入或目标选择。所有raw预测、失败日志、源码快照及新报告保留，组件不代替完整算法、资源或RPC验收。[详细版本证据](REAL_SOURCE_K211_2026-10-13.md)。

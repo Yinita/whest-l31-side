@@ -9,74 +9,15 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": {
-    "key": "frozen shard08 paired workflow",
-    "status": "running",
-    "workflow": "results/phase2/frozen_pair_frozen_public_shard08_r01.json",
-    "lock": "results/phase2/frozen_pair_frozen_public_shard08.lock",
-    "report": "results/phase2/sprint_public_v37b_h18_r14_strict_shard08.json",
-    "dataset": "benchmark/data/mini_shard08",
-    "n_mlps": 7,
-    "network_ids": [
-      "58",
-      "59",
-      "60",
-      "61",
-      "62",
-      "63",
-      "64"
-    ],
-    "phase": "V29_predict",
-    "command": [
-      "uv",
-      "run",
-      "--frozen",
-      "python",
-      "benchmark/run_frozen_public_pair.py",
-      "--cohort",
-      "frozen_public_shard08",
-      "--run-id",
-      "r01",
-      "--sync-research-state"
-    ],
-    "next": "serialinputs/V29/best/scores/compare; completecoverage remains58 until finished",
-    "workflow_updated_at_utc": "2026-10-13T07:45:09.865792+00:00",
-    "pid": 1230827,
-    "pid_start_ticks": "1539114",
-    "session_id": 24505,
-    "started_at_utc": "2026-10-13T07:44:45.211046+00:00",
-    "current_child": {
-      "name": "V29_predict",
-      "command": [
-        "uv",
-        "run",
-        "--frozen",
-        "python",
-        "benchmark/run_rpc_strict.py",
-        "--estimator",
-        "estimators/k3_v29/estimator.py",
-        "--inputs",
-        "benchmark/data/rpc_inputs/frozen_shard08_r01/inputs.json",
-        "--dataset",
-        "benchmark/data/mini_shard08",
-        "--n-mlps",
-        "7",
-        "--output",
-        "results/phase2/v29_r14_strict_shard08.json"
-      ],
-      "started_at_utc": "2026-10-13T07:45:09.385750+00:00",
-      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard08_r01_V29_predict.log",
-      "pid": 1232392
-    }
-  },
+  "active_experiment": null,
   "next_experiment": {
-    "key": "collect frozen shard08 results then compression cost gate",
-    "status": "waiting_on_active_pair",
-    "hypothesis": "Fullrank allsource one-orbit 12.43%budget requires compression or shared-basis contractions before full nonlinear integration",
-    "scope": "target-free state, exact mapping frozen; score absent until complete candidate"
+    "key": "Complete K211 lower-support diagrams and CovCov/source centering",
+    "status": "prepared_derivation",
+    "hypothesis": "Use supported matrix contractions for two-index terms; reserve exact fullsource orbit, keep official diagram filtering fixed; finish proxy subtraction before score",
+    "scope": "full core remains pending, no next-stage claim"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T07:45:09.865803+00:00",
+  "updated_at_utc": "2026-10-13T08:01:59.904942+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46432,7 +46373,7 @@
       "335678": "graded4.293779716792071e-9"
     },
     "latest_followup": "experiments/phase2/CONTINUATION_2026-10-13.md",
-    "strict_public_networks_completed": 58
+    "strict_public_networks_completed": 65
   },
   "latest_completed_rpc": {
     "key": "sprint-v37b-h18-fullRPC8",
@@ -46725,44 +46666,12 @@
     "scope": "onecomponentfloat64deep16 allmatrixops; not1024evidence"
   },
   "latest_completed_experiment": {
-    "key": "frozen shard07 paired workflow",
-    "status": "completed_zero_failures",
-    "workflow": "results/phase2/frozen_pair_frozen_public_shard07_r01.json",
-    "lock": "results/phase2/frozen_pair_frozen_public_shard07.lock",
-    "report": "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json",
-    "dataset": "benchmark/data/mini_shard07",
-    "n_mlps": 7,
-    "network_ids": [
-      "51",
-      "52",
-      "53",
-      "54",
-      "55",
-      "56",
-      "57"
-    ],
-    "phase": null,
-    "command": [
-      "uv",
-      "run",
-      "--frozen",
-      "python",
-      "benchmark/run_frozen_public_pair.py",
-      "--cohort",
-      "frozen_public_shard07",
-      "--run-id",
-      "r01",
-      "--sync-research-state"
-    ],
-    "next": "serial inputs/V29/best/scoring/comparison; aggregate58 only after complete",
-    "workflow_updated_at_utc": "2026-10-13T07:36:43.002357+00:00",
-    "pid": 1135682,
-    "pid_start_ticks": "1421611",
-    "session_id": 9349,
-    "started_at_utc": "2026-10-13T07:25:10.175087+00:00",
-    "finished_at_utc": "2026-10-13T07:36:42.992167+00:00",
-    "comparison": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_before_after.json",
-    "completion_recheck": "results/phase2/shard07_completion_recheck_r02.json"
+    "key": "Second-network realK31float64 reproduction",
+    "status": "completed_component",
+    "report": "results/phase2/ablation_v30_067_r28_real_k31_float64.json",
+    "network_id": "1",
+    "no_score": true,
+    "not_resource_acceptance": true
   },
   "latest_m05_w2_contract": {
     "report": "results/phase2/m05_w2_independent_contract_r01.json",
@@ -46796,15 +46705,15 @@
     "no_competition_score": true
   },
   "strict_public_aggregate": {
-    "n_mlps": 58,
+    "n_mlps": 65,
     "n_failed_mlps": 0,
-    "final_layer_mse": 2.2017074676826638e-08,
-    "adjusted_final_layer_score": 4.479066547509381e-09,
-    "mean_flops": 447400073229.34485,
+    "final_layer_mse": 2.1926280100960693e-08,
+    "adjusted_final_layer_score": 4.459611165100404e-09,
+    "mean_flops": 447428778454.2,
     "max_wall_s": 58.75250673,
     "max_residual_s": 0.1978317510000025,
     "max_client_peak_rss_kib": 301072,
-    "report": "results/phase2/sprint_public_v37b_h18_strict_public58_r05.json"
+    "report": "results/phase2/sprint_public_v37b_h18_strict_public65_r06.json"
   },
   "prepared_m05_next": {
     "script": "experiments/phase2/m05_official_network_gate.py",
@@ -46945,23 +46854,23 @@
     "network_identity_dedup_passed": true
   },
   "strict_paired_public_attribution": {
-    "scope": "Strict paired public IDs16–57; frozen before project score access, upstream tuning unknown, not final unseen holdout",
-    "n_mlps": 42,
+    "scope": "Strict paired public IDs16–64; frozen before project score access, upstream public tuning unknown, not final unseen holdout",
+    "n_mlps": 49,
     "stage_accepted": false,
-    "before_adjusted": 5.637405938567002e-09,
-    "before_raw": 2.2121851440628928e-08,
+    "before_adjusted": 5.6174229978703895e-09,
+    "before_raw": 2.204831317973625e-08,
     "before_flops": 560395979393.2858,
     "before_failures": 0,
-    "after_adjusted": 4.425489688968347e-09,
-    "after_raw": 2.1741210123221456e-08,
+    "after_adjusted": 4.407335365564341e-09,
+    "after_raw": 2.1660177560853086e-08,
     "after_flops": 447666621745.8571,
     "after_failures": 0,
-    "relative_adjusted": -0.2149776444707684,
-    "relative_raw": -0.01720657596987507,
+    "relative_adjusted": -0.21541686156887285,
+    "relative_raw": -0.017603869090533575,
     "relative_flops": -0.20116018278624237,
-    "adjusted_improved_networks": 42,
-    "raw_improved_networks": 28,
-    "report": "results/phase2/frozen_strict_public42_paired_r03.json"
+    "adjusted_improved_networks": 49,
+    "raw_improved_networks": 34,
+    "report": "results/phase2/frozen_strict_public49_paired_r04.json"
   },
   "latest_real_source_component": {
     "report": "results/phase2/ablation_v30_067_r10_real_source_k211.json",
@@ -47020,5 +46929,168 @@
     "component_budget_fraction": 0.12427518144249916,
     "no_score": true,
     "not_resource_acceptance": true
+  },
+  "latest_allsource_exact_reorganization": {
+    "report": "results/phase2/ablation_v30_067_r21_structured_source.json",
+    "source_slots": 14,
+    "source_columns_each": 1024,
+    "before_flops": 273284178944,
+    "after_flops": 182943179762,
+    "relative_flops": -0.3305752990571482,
+    "relative_output_delta": 1.4170763164915742e-07,
+    "fixed16_scalar_error": 1.0277249728324334e-09,
+    "component_budget_fraction": 0.0831929263595157,
+    "no_score": true,
+    "not_resource_acceptance": true
+  },
+  "latest_source_age_gate": {
+    "report": "results/phase2/ablation_v30_067_r22_source_age.json",
+    "rows": [
+      {
+        "source_slots_kept": 14,
+        "source_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "relative_error_vs_full_orbit": 0.0,
+        "max_abs_delta": 0.0,
+        "orbit_norm": 1.826359628271535,
+        "projected_core_delta_norm": 0.0,
+        "budget_fraction": 0.0831929263595157,
+        "flops_used": 182943179762
+      },
+      {
+        "source_slots_kept": 8,
+        "source_indices": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "relative_error_vs_full_orbit": 0.37297473100232104,
+        "max_abs_delta": 0.012578820809721947,
+        "orbit_norm": 1.320171676797284,
+        "projected_core_delta_norm": 0.003975793722187208,
+        "budget_fraction": 0.04753884719320922,
+        "flops_used": 104539030520
+      },
+      {
+        "source_slots_kept": 4,
+        "source_indices": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "relative_error_vs_full_orbit": 0.7524969438706115,
+        "max_abs_delta": 0.02392023243010044,
+        "orbit_norm": 0.8106153838529104,
+        "projected_core_delta_norm": 0.008021381548733442,
+        "budget_fraction": 0.02376946108233824,
+        "flops_used": 52269597692
+      },
+      {
+        "source_slots_kept": 1,
+        "source_indices": [
+          13
+        ],
+        "relative_error_vs_full_orbit": 0.9771892030086622,
+        "max_abs_delta": 0.03213616665743757,
+        "orbit_norm": 0.4145185458796185,
+        "projected_core_delta_norm": 0.010416530600532244,
+        "budget_fraction": 0.005942421499185002,
+        "flops_used": 13067523071
+      }
+    ],
+    "conclusion": "large component distortion; do not integrate simple truncation",
+    "no_score": true
+  },
+  "latest_source_columns_gate": {
+    "report": "results/phase2/ablation_v30_067_r23_source_columns.json",
+    "rows": [
+      {
+        "source_columns_each": 1024,
+        "source_slots": 14,
+        "deterministic_column_stride": 1,
+        "column_offset": 0,
+        "weight": 1,
+        "relative_error_vs_full_orbit": 0.0,
+        "max_abs_delta": 0.0,
+        "orbit_norm": 1.826359628271535,
+        "projected_core_delta_norm": 0.0,
+        "budget_fraction": 0.0831929263595157,
+        "flops_used": 182943179762
+      },
+      {
+        "source_columns_each": 512,
+        "source_slots": 14,
+        "deterministic_column_stride": 2,
+        "column_offset": 0,
+        "weight": 2,
+        "relative_error_vs_full_orbit": 0.49667427151756705,
+        "max_abs_delta": 0.009001238271594048,
+        "orbit_norm": 2.060379441766748,
+        "projected_core_delta_norm": 0.005294392050005014,
+        "budget_fraction": 0.04167664190117648,
+        "flops_used": 91647904754
+      },
+      {
+        "source_columns_each": 256,
+        "source_slots": 14,
+        "deterministic_column_stride": 4,
+        "column_offset": 0,
+        "weight": 4,
+        "relative_error_vs_full_orbit": 0.8495281752045355,
+        "max_abs_delta": 0.015623033046722412,
+        "orbit_norm": 2.4824162132483325,
+        "projected_core_delta_norm": 0.009055704059957691,
+        "budget_fraction": 0.020915161811899452,
+        "flops_used": 45992927218
+      },
+      {
+        "source_columns_each": 128,
+        "source_slots": 14,
+        "deterministic_column_stride": 8,
+        "column_offset": 0,
+        "weight": 8,
+        "relative_error_vs_full_orbit": 1.2797123148179153,
+        "max_abs_delta": 0.027736149728298187,
+        "orbit_norm": 3.092779441704099,
+        "projected_core_delta_norm": 0.013641332145439805,
+        "budget_fraction": 0.010534421767260937,
+        "flops_used": 23165438450
+      }
+    ],
+    "conclusion": "large component distortion; do not integrate simple truncation",
+    "no_score": true
+  },
+  "latest_actual_k31_component": {
+    "report": "results/phase2/ablation_v30_067_r26_real_k31_float64.json",
+    "capture": "results/phase2/ablation_v30_067_r24_real_k31_capture.json",
+    "width": 1024,
+    "diagram_classes": 15,
+    "flops": 267828224,
+    "scalar_max_error": 1.1102230246251565e-16,
+    "dtype": "float64",
+    "previous_float32_failed": true,
+    "input_fourth_order_proxies_unresolved": true,
+    "no_score": true,
+    "second_network_report": "results/phase2/ablation_v30_067_r28_real_k31_float64.json"
   }
 }

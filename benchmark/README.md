@@ -128,4 +128,4 @@ uv run --frozen python benchmark/prepare_rpc_inputs.py \
 
 14:54分片6 ID44–50已LFS校验，双方串行流程启动并启用状态同步；覆盖保持44网，完成后再汇总51网。PID/子进程/阶段见research_state与`frozen_pair_frozen_public_shard06_r01.json`；禁止重复启动。
 
-15:37最新验收：分片7已完成，严格RPC累计58网零失败，等网络去重adjusted4.4790665475e-9/raw2.2017074677e-8，见[报告](../results/phase2/sprint_public_v37b_h18_strict_public58_r05.json)。前述51网记录为历史检查点；Mini100未完成。
+最新验收：分片8（ID58–64）双方7网严格RPC零失败，adjusted5.4975253537e-9→4.2984094251e-9（−21.81%）、raw下降2.00%。最佳累计65网零失败，等网络去重adjusted4.4596111651e-9/raw2.1926280101e-8，见[65网报告](../results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)。同runner成对49网adjusted下降21.54%、raw下降1.76%、FLOPs下降20.12%，见[归因](../results/phase2/frozen_strict_public49_paired_r04.json)。前述58网和更早记录为历史检查点；Mini100未完成，公共上游调参未知，不替代独立确认。
