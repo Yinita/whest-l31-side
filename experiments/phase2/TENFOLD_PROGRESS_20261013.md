@@ -157,3 +157,14 @@ SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469，仅替换r
 |exact_mean|2.267771679777e-08|2.392908622113e-08|+5.5181%|否决，0/8失败|
 
 不扩原Mini8、不线上上传、不扫λ/scale。模型48909c1ab79be77b30699dd1b66385a4a50d048718cc31f70a7fd1f604a795d0仅训练24网；当前共同线性模型对高阶误差没有迁移收益。训练24内另固定degree2交互、λ.01、4个18train/6held网络fold，quad/linear ratio μ.98816/var.97669/K3.87129/K4.76683，后两通过预设门槛；这只CV预测性，不闭环提分。冻结新模型SHA0610032b01bb3538a5ca6bea09079c92601222e7155775d1ea4ff0b292231e3b，接下来新8网idx512..624 step16闭环。不把已用384..496验证网当最终未见holdout。最佳仍V37bH18，十倍未达。
+
+## r41/r42 新8网完整闭环负结果
+
+2026-10-13 19:20：r41二次交互及r42分层联合状态闭合在新8网完整完成，raw分别+8.44%/+10.61%，均零失败、均否决。train24静态CV改善没有迁移到闭环，不重复扩量/线上提交。r43正在仅24train上用固定Phi/W剥离继承均值误差，下一CV检验局部innovation预测；这是待验证假设，非已有提分。十倍目标未达、最佳仍V37bH18。
+
+|版本|唯一机制|raw before|raw after|变化|失败|
+|---|---|---:|---:|---:|---:|
+|r41|22feature→253quadratic共享jointmodel，layer0zero|2.223778510747e-8|2.411489836404e-8|+8.4411%|0/8|
+|r42|固定22feature ridge分层模型，layer0zero|2.223778510747e-8|2.459668120859e-8|+10.6076%|0/8|
+
+两版相同新8网512..624/原MC N1e8 reference/权重sha配对，严格提交资源未测，诊断内存16GiB、sys.settrace/NumPy不进入提交。lawfulfnp模板及exactmodelhelperparity只组件，不称提分。r43 e_l−Phi_l*(W_l.T@e_l−1)为firstorder局部error target，忽略协方差和source响应；canonicalCDF/features/weights严格匹配，不能冒称完整真实innovation。目标训练仅24旧train网络，已用16验证网络不再称未见最终验收。

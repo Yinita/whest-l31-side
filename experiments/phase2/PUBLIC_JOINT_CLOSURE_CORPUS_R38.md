@@ -234,3 +234,36 @@ experiment via `results/phase2/modal_joint_closure_quadratic_rollout_r41/`,
 avoiding duplicate baseline compute. Separate local scoring will verify actual
 weight hashes/label indices before scoring. No first-layer correction or floor
 is performed in r42. First-layer state mean remains exact analytic.
+
+
+R42 CV attribution removes an analytic layer0 control difference without
+changing/refitting the frozen deployment model. Same4 train-network folds,
+shared and per-layer corrected layer0 both fixedzero, yield aggregate ratios
+μ.99878535,var.97456187,K3.74020653,K4.58446251. Restricting score to layers
+1..14 yields.99872568/.97249665/.71471739/.50907323. Thus K3/K4 training-CV
+signal is still present after isolating exact-layer0 correction. This
+train-only attribution uses no held8 labels and performs no layer selection;
+`analytic_layer0_attribution.json` preserves each network/layer metric.
+
+
+R42 fresh8 complete0fail: originalraw2.22377851e-8→2.45966812e-8,
++10.6076%, all8 worse. `paired_score.json` checks weight and output digests,
+shared MC IDs and matched canonical ordering. Unchanged first-layer outputs
+have cross-container float32 roundoff on some networks rather than being all
+bitwise identical; their maxabs is recorded, not silently made bitwise.
+Training-CV improvement in K3/K4 did not transfer to a closed rollout, so this
+fixed per-layer intervention is rejected.
+
+Next r43 constructs **linearized local mean innovations** rather than total
+post-state error. On train24 only, e_l=MCpostmean−actualH18postmean and
+z_l=e_l−Phi_l*(W_l.T@e_(l−1)). Regenerated full weights must hash-match the
+same baseline before transport. This is a first-order frozen-mean Jacobian
+and omits covariance/higher-source responses; it is not exact nonlinear
+innovation. Oracle MC error vectors are offline training-target construction
+inputs, never candidate inputs or accuracy results. App needs only24 small
+matrix-vector transports, not24 new H18 rolls. R43 PID1667283, output
+`results/phase2/modal_mean_innovation_targets_r43/`; alternative agent owns
+separate train-only r44 CV. Layer0 target noise is preserved in evidence,
+but any learned layer0 correction is fixedzero. Final16th prefatures are
+unavailable in original15state cache and require a distinct future capture;
+this prototype covers layers0..14 only.

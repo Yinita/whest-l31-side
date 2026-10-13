@@ -1,5 +1,7 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
+2026-10-13 19:20：r41二次交互及r42分层联合状态闭合在新8网完整完成，raw分别+8.44%/+10.61%，均零失败、均否决。train24静态CV改善没有迁移到闭环，不重复扩量/线上提交。r43正在仅24train上用固定Phi/W剥离继承均值误差，下一CV检验局部innovation预测；这是待验证假设，非已有提分。十倍目标未达、最佳仍V37bH18。
+
 2026-10-13 19:16最新：独立corpus24train/8held的完整闭环已完成，线性mean-only raw+5.52%、joint4diag+19.43%，均0/8数值失败，否决；首轮4GiB32SIGKILL另保留。固定二次交互及perlayer机制通过train24网络CV，已冻结并启动新8网idx512..624完整闭环，尚无成绩。此为N1e8离线诊断，非Mini8/严格资源或十倍验收；最佳仍V37bH18。见[本轮before/after](results/phase2/corpus_joint_rollout_before_after_r38_r39.json)。
 
 2026-10-13 19:11：独立corpus32完整baseline零失败、首层解析/MC噪声ratio0.99324通过；24train固定22feature ridge已冻结，静态held8误差比mean0.9934/var0.9858/K3 1.1707/K4 1.2568，无强信号。完整closed8的mean+variancefloor、formal4diag及真正K1only r39分别运行，未提前报提分。首版4GiB 32SIGKILL失败全部保留，r02是16GiB离线诊断，不比赛资源验收。最佳及十倍目标不变。

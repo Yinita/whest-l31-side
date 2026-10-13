@@ -114,3 +114,13 @@ gain/rawW once, static signed coefs and exact residual births. Root owns strict
 1024 score/resource screening; the affine core changes projection semantics
 from orthogonal harmonic to joint constraints while retaining inherited lambda
 table/adaptation. No new fitted parameter or rank/age selection is introduced.
+
+R37 strictRPC1 is also negative: raw MSE 2.2737705052122692e-8
+(+2.0489% versus the frozen same-cycle H18) and adjusted score
+1.9683379716659492e-8 (+304.059%), zero failures and mean budget utilization
+0.8656713450868665. Evidence:
+`results/phase2/tenfold_joint_trace_d4_r37_strict1_score.json`. Correcting the
+joint D4/trace ledger removed r34's large raw error increase but did not improve
+accuracy. The CP4 diagonal residual path stops here; no cost optimization or
+nearby rank/age sweep is justified by this negative. Passing a tensor ledger
+contract establishes arithmetic consistency, not a better statistical closure.

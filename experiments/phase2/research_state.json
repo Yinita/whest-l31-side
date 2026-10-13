@@ -10,53 +10,17 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "experiment_id": "quadratic_joint.r41",
-    "pid": 1663482,
-    "pid_start_ticks": "2806015",
-    "output": "results/phase2/modal_joint_closure_quadratic_rollout_r41",
-    "log": "results/phase2/modal_joint_closure_quadratic_rollout_r41.launcher.log",
+    "experiment_id": "mean.innovation.targets.r43",
+    "pid": 1667283,
+    "pid_start_ticks": "2833176",
     "status": "running",
-    "scope": "fresh8corpus512..624, offlinepaired closed rollout, no competition score",
-    "frozen_train_indices": [
-      0,
-      16,
-      32,
-      48,
-      64,
-      80,
-      96,
-      112,
-      128,
-      144,
-      160,
-      176,
-      192,
-      208,
-      224,
-      240,
-      256,
-      272,
-      288,
-      304,
-      320,
-      336,
-      352,
-      368
-    ],
-    "validation_indices": [
-      512,
-      528,
-      544,
-      560,
-      576,
-      592,
-      608,
-      624
-    ]
+    "output": "results/phase2/modal_mean_innovation_targets_r43",
+    "log": "results/phase2/modal_mean_innovation_targets_r43.launcher.log",
+    "scope": "offline24train oracle targetconstruction viafixedPhiWmeanJacobian; noaccuracy score"
   },
   "next_experiment": "H18 sharedactualcapture; paircost4 consistencygate; pureD4/repeatsupporthistory actualproductioncontract andstrictcandidate ifcostpasses",
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T11:16:18.694916+00:00",
+  "updated_at_utc": "2026-10-13T11:21:01.098478+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -47541,24 +47505,50 @@
     "finding": "Official factorizedaugment explicitly drops covariance triangles/K3edge at leading MSE order; current pureD4 persistence is project mechanism, not claiming official full algorithm."
   },
   "last_completed_experiment": {
-    "experiment_id": "joint.closure.pilot.r38.r02",
-    "pid": 1655576,
-    "pid_start_ticks": "2752997",
-    "script_sha256": "c63802b1c119e11f19dfd0b8d3015caf823aba0846ff37894a31618bc3473fdf",
+    "experiment_id": "quadratic_joint.r41",
+    "pid": 1663482,
+    "pid_start_ticks": "2806015",
+    "output": "results/phase2/modal_joint_closure_quadratic_rollout_r41",
+    "log": "results/phase2/modal_joint_closure_quadratic_rollout_r41.launcher.log",
     "status": "completed_rejected",
-    "command": [
-      "/home/sti/.local/bin/modal",
-      "run",
-      "experiments/phase2/modal_joint_closure_pilot_r38_r02.py"
+    "scope": "fresh8corpus512..624, offlinepaired closed rollout, no competition score",
+    "frozen_train_indices": [
+      0,
+      16,
+      32,
+      48,
+      64,
+      80,
+      96,
+      112,
+      128,
+      144,
+      160,
+      176,
+      192,
+      208,
+      224,
+      240,
+      256,
+      272,
+      288,
+      304,
+      320,
+      336,
+      352,
+      368
     ],
-    "output": "results/phase2/modal_joint_closure_pilot_r38_r02",
-    "log": "results/phase2/modal_joint_closure_pilot_r38_r02.launcher.log",
-    "single_change": "same fixed22feature ridge model pilot; offlinememory16GiB and2smoke preflight repair; mean-only thenformal4diag isolatedrollouts",
-    "scope": "offline diagnostics; no competition memory/resource acceptance",
-    "completion": "results/phase2/modal_joint_closure_pilot_r38_r02/completion.json",
-    "successful_baselines": 32,
-    "failed_baselines": 0,
-    "validation_failures": 0
+    "validation_indices": [
+      512,
+      528,
+      544,
+      560,
+      576,
+      592,
+      608,
+      624
+    ],
+    "completion": "results/phase2/modal_joint_closure_quadratic_rollout_r41/completion.json"
   },
   "tenfold_production_results": {
     "r25_sparse_d4": {
@@ -47615,54 +47605,8 @@
       "conclusion": "trace fixes r34 catastrophic error but raw+2.0489%; close CP4D4projection branch"
     }
   },
-  "next_tenfold_mechanism": "Frozen nonlinear r41 24train-only blockedCV signal; new8 network512..624 wholejointclosed validation. Independent perlayer r42 CV prepared.",
-  "active_auxiliary_experiments": [
-    {
-      "experiment_id": "per_layer_joint.r42",
-      "pid": 1663266,
-      "pid_start_ticks": "2804884",
-      "output": "results/phase2/modal_corpus_per_layer_r42",
-      "log": "results/phase2/modal_corpus_per_layer_r42.launcher.log",
-      "status": "running",
-      "scope": "fresh8corpus512..624, offlinepaired closed rollout, no competition score",
-      "frozen_train_indices": [
-        0,
-        16,
-        32,
-        48,
-        64,
-        80,
-        96,
-        112,
-        128,
-        144,
-        160,
-        176,
-        192,
-        208,
-        224,
-        240,
-        256,
-        272,
-        288,
-        304,
-        320,
-        336,
-        352,
-        368
-      ],
-      "validation_indices": [
-        512,
-        528,
-        544,
-        560,
-        576,
-        592,
-        608,
-        624
-      ]
-    }
-  ],
+  "next_tenfold_mechanism": "Await r41 fullclosed; r43 fixedtrain24 causalmeaninnovation removes inheritedmeanerror; no further totalstatefit sweeps",
+  "active_auxiliary_experiments": [],
   "latest_corpus_model": {
     "version": "joint.closure.r38.r02",
     "path": "results/phase2/modal_joint_closure_pilot_r38_r02/frozen_joint_ridge.json",
@@ -47706,5 +47650,21 @@
       "report": "results/phase2/modal_corpus_exact_mean_r39/completion.json",
       "scope": "offlinecorpusN1e8; notadjustedscore/stage"
     }
+  },
+  "latest_perlayer_corpus_rollout": {
+    "status": "completed_rejected",
+    "before_raw": 2.2237785107468484e-08,
+    "after_raw": 2.4596681208587964e-08,
+    "failures": 0,
+    "report": "results/phase2/modal_corpus_per_layer_r42/paired_score.json",
+    "scope": "8freshcorpusnetwork no competition score"
+  },
+  "latest_quadratic_corpus_rollout": {
+    "status": "completed_rejected",
+    "before_raw": 2.2237785107468484e-08,
+    "after_raw": 2.4114898364038576e-08,
+    "relative": 0.08441098101715516,
+    "failures": 0,
+    "report": "results/phase2/modal_joint_closure_quadratic_rollout_r41/completion.json"
   }
 }
