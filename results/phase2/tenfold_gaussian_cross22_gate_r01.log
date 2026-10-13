@@ -1,0 +1,18 @@
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_gaussian_cross22_gate.py:19: SymmetryLossWarning: Symmetry lost along dims (0, 1): subtract — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  mean=w[0,1];off=cov-fnp.diag(fnp.diag(cov));p11=fnp.zeros((n,n),dtype=fnp.float64);raw=fnp.zeros((n,n),dtype=fnp.float64)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_gaussian_cross22_gate.py:22: SymmetryLossWarning: Symmetry lost along dims (0, 1): add — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  raw=raw+core*a[:,None]*a[None,:]
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_gaussian_cross22_gate.py:23: SymmetryLossWarning: Symmetry lost along dims (0, 1): add — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  p11=p11+core*w[d,1][:,None]*w[d,1][None,:]
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_gaussian_cross22_gate.py", line 56, in <module>
+    if __name__=='__main__':main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_gaussian_cross22_gate.py", line 35, in main
+    oracle=numpy_producer(mu[:small],cov[:small,:small],np.zeros((small,)*3),[])[3]
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 78, in numpy_producer
+    for block in part:term*=raw(tuple(idx[i] for i in block))
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 68, in raw
+    term*=power(tuple(counts[groups[t]] for t in block),tuple(groups[t] for t in block))
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 55, in power
+    t*=({2:cov,3:k3,4:h}[len(ids)])[ids]
+TypeError: 'int' object is not subscriptable

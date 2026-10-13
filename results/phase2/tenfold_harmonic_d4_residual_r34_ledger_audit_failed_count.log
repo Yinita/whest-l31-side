@@ -1,0 +1,34 @@
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:877: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:878: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:892: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:893: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:894: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:897: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:898: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:1534: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:1535: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:1898: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_q=fnp.concatenate([sparse_post_q,fnp.eye(n,dtype=f32)],axis=1)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_diagnostic_snapshot.py:1899: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_x=fnp.concatenate([sparse_x,fnp.zeros((n,n),dtype=f32)],axis=1)
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_audit.py", line 270, in <module>
+    main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_r34_ledger_audit.py", line 237, in main
+    assert counts["actual_X_oldgain_newfeed_once_newborn_zero"] == depth - 2
+AssertionError

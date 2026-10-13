@@ -248,3 +248,37 @@ K4→K3 fullfeed为`Sym(X,q,q)`，Xnew=`1.5*c*w2*qpre²`、qpost=`w1*qpre`、Xpo
 root同cycle strict1零失败，合法资源通过：FLOPs1,902,713,679,991，predict55.289s，residual0.20114s。但raw `2.2281179568e-8 → 4.32590525179e-7`（19.415倍更差），adjusted `4.8714160494e-9 → 3.7430068464e-7`（76.836倍更差）。因此它不是最佳版，不扩Mini8、不上传；sharedCP4/feed组织资源可行并不意味着纯D4出生足够。
 
 无truth逐层比较旧同input strict预测 `tenfold_sparse_d4_r25_targetfree_layerdiff_r01.json`：li0完全一致；li1RMS3.58e-5/mean+2.875e-5，li2RMS9.99e-5，li5RMS2.60e-4，li10RMS4.75e-4，li15RMS6.55e-4/mean+2.374e-4，呈逐层积累而非尾层突然失效。独立actualledgerpassed已排除已测oldgain/rawW和重复feed问题；crossbirth删掉是待归因因素，不能凭delta认定唯一原因。尤其li0GaussianReLU已有K22 birth，母版将其投影入harmonictrace，pureD4删除它后li1即改变。晚层D31大不能证明只补D31即可恢复早层；下一完整来源应先解析/保留GaussianleadingK22结构，避免再盲纯subset替换。
+
+## Gaussian cross22 门槛与 R34 hybrid（已实现待strict）
+
+`tenfold_gaussian_cross22_gate_r02.json` 在actualnetwork0第一层Gaussianinput、1024fullwidth，原权重canonical顺序计算完整 budget3 ordinaryD22，不读reference。解析式
+
+```
+a_di=w(d,2)_i−2postmean_i*w(d,1)_i
+pK11_ij=Σd=1..3 Cij^d/d! w(d,1)_i w(d,1)_j
+D22off_ij=Σd=1..3 Cij^d/d! a_di a_dj−2pK11_ij²
+```
+
+它不仅是简单Cov²项：含ρ¹/ρ²/ρ³以及pK11平方带ρ²..6。独立scalarrawmoment四阶n8≤3.82e-16。D4norm35.96、D22offnorm20.43、D22rowsumnorm23.49；D4mean1.1195、D22rowmean.40627。repeat-trace中22row占norm44.56%，radialGdiagwith22norm.18393/without22.10635。该证据仅归因内部cross content重要，不证明r25失败唯一原因。
+
+R34 `estimators/tenfold_harmonic_d4_residual_r34/estimator.py` SHA `83d81b99c7bd38db184686d63ddbe5b39402c3bff0597289ab10c34aa6665799` 保留全部parentharmoniccross USE/feed，在其上加signedCP4univariate residual及完整共享CP3反馈。**postproxy是S(G,I)，D4=g_prev；不是METRIC_C*g_prev**。每birth `newc=K4v−g_prev−EoldpostD4` 去重；只有pretransport metric平均才是2。所有feed重叠由parentM residual账本扣除，oldgain/rawW一次。
+
+production只原suite-shape riders分支激活，generic原fallback未改。独立joint和identitynorm合同通过；实际bodyr05 n32depth4诊断copy只literalforce ridersTrue，反向replacementassert主体不变，报告original/snapshothash；残差USE≤7.71e-8，fullfeed/marginal≤1.08e-8，combinedpostD4≤5.83e-8。r01旧genericdraftwk431undefined、r02/03forcedsmall16suiteNaN、r04合同wrongtrace trigger失败原log均保留。不将诊断copy当true1024资源；root管理whole strict。候选冻结不在运行时改。R34不是oraclecorrector，不保留任意newcrosssupport真值；hypothesis是恢复parentcross同时精确保留D4被radialprojection丢失的分量。
+
+### R34 严格负结果；R37 同时保持 D4 与 trace
+
+R34 strict1资源通过/零失败，FLOPs1,902,860,669,047、predict55.1714s、residual0.200424s。但raw4.77905871321127e-7，为parent21.44886倍；adjusted4.135419140055134e-7，为parent84.89152倍（comparison字段relative值存增量83.89152，绝对ratio需+1）。停止扩量/上传。
+
+固定oldharmonicG再补diagresidual保D4，却同时改变trace：原harmonicprojection已把D4部分投影进crosssupport。R37只改变这个代数split，必须把Eoldpost的crossrow从producedK22row扣掉：
+
+```
+q2=qpost²
+oldCross=q2@(c*sum(q2,axis=0))−sum(c*q2²,axis=1)
+s=ordinaryK22@ones−oldCross
+g_prev=6/(n−2)*s−3/((n−2)(n−1))*sum(s)
+newc=ordinaryK4v−g_prev−D4(Eoldpost)
+```
+
+新G是joint affine约束解，不再oldorthogonalharmonicprojection，但postmetric仍I。D22crossrow=`((n−2)diagG+trG)/6`；combinedpostH同时匹配普通D4和K22rowtrace，不能称完整K22/211/1111tensor匹配。parentlambda/REF_R仍冻结配置，adaptiveformula会响应新G，不把自适应记录当新fit。
+
+冻结candidate `estimators/tenfold_joint_trace_d4_r37/estimator.py` SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469。`tenfold_joint_trace_d4_production_contract_r37_r01.json`仅ridersTrue诊断copy、原candidatebody反向assert一致，n32depth4 USE≤7.51e-8，完整feed≤1.85e-8，postD4≤3.07e-8，crossrowtrace≤2.05e-7。root管理整网strict归因；未接受十倍stage，不扩量预期收益。若失败不能继续将相同表示缩放或盲扫rank/layers。

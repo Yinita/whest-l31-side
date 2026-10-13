@@ -1,0 +1,44 @@
+{
+  "version": "tenfold.jointD4diagonalTrace.affineProjection.contract",
+  "complete": true,
+  "rows": [
+    {
+      "width": 4,
+      "D4_error": 6.938893903907228e-18,
+      "diagonaltrace_error": 1.0408340855860843e-17,
+      "independent2n_linear_system_error": 4.85722573273506e-17,
+      "unadjusted_parentG_plus_D4_residual_trace_error": 0.043706725362518656,
+      "legal_projection_flops": 264
+    },
+    {
+      "width": 8,
+      "D4_error": 3.2959746043559335e-17,
+      "diagonaltrace_error": 7.112366251504909e-17,
+      "independent2n_linear_system_error": 5.551115123125783e-17,
+      "unadjusted_parentG_plus_D4_residual_trace_error": 0.155615129508646,
+      "legal_projection_flops": 976
+    },
+    {
+      "width": 16,
+      "D4_error": 2.7755575615628914e-17,
+      "diagonaltrace_error": 1.249000902703301e-16,
+      "independent2n_linear_system_error": 9.71445146547012e-17,
+      "unadjusted_parentG_plus_D4_residual_trace_error": 0.2971526307593164,
+      "legal_projection_flops": 3744
+    }
+  ],
+  "formula": {
+    "cross": "K22row - (trace(Eold)-D4(Eold))",
+    "gdiag": "6/(n-2)*cross - 3/((n-2)*(n-1))*sum(cross)",
+    "cnew": "K4v-gdiag-D4(Eold)"
+  },
+  "script_sha256": "4f27de07c56daf23df2a492c30ba91f520422762723050474676288ad6b4c546",
+  "scope": "ExactD4 and diagonaltrace affineprojection ofrepresentedoldE; offdiagcore requiresseparateconstraints",
+  "no_reference_or_target_access": true,
+  "no_adjusted_score": true,
+  "limitations": [
+    "Maintains K22row sums, not individualK22matrix orGaussian22exacttensor",
+    "Fulloffdiagtrace and nonlinearfeed mapping notimplemented",
+    "No productioncandidate orresource/scoreclaim"
+  ]
+}

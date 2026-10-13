@@ -1,0 +1,40 @@
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:877: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:878: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:892: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:893: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:897: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:898: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:1534: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:1535: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py:1864: SymmetryLossWarning: Symmetry lost along dims (0, 1), (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  Ff_b = fnp.concatenate([F1_b, F2_b], axis=1) if rfb > 0 else None
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_production_contract_r34.py", line 61, in <module>
+    if __name__=='__main__':main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_production_contract_r34.py", line 58, in main
+    rows=[run(n) for n in (8,32)];q=Path('estimators/tenfold_harmonic_d4_residual_r34/estimator.py')
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_production_contract_r34.py", line 58, in <listcomp>
+    rows=[run(n) for n in (8,32)];q=Path('estimators/tenfold_harmonic_d4_residual_r34/estimator.py')
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_harmonic_d4_production_contract_r34.py", line 34, in run
+    try:pred=est.predict(SimpleNamespace(width=n,depth=depth,weights=[fnp.asarray(w) for w in weights]),2**41)
+  File "/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py", line 928, in predict
+    return self._predict_core(mlp, budget)
+  File "/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_harmonic_d4_residual_r34/estimator.py", line 1526, in _predict_core
+    wk431=sparse_D31 if wk431 is None else wk431+sparse_D31
+UnboundLocalError: local variable 'wk431' referenced before assignment

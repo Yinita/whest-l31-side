@@ -1,0 +1,146 @@
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_joint_harmonic_diagonal_contract_r34.py:101: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fullq = fnp.concatenate([qpost, fnp.eye(n, dtype=fnp.float64)], axis=1)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_joint_harmonic_diagonal_contract_r34.py:103: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fullx = fnp.concatenate([xpost, fnp.zeros((n, n), dtype=fnp.float64)], axis=1)
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_joint_harmonic_diagonal_contract_r34.py:110: SymmetryLossWarning: Symmetry lost along dims (0, 1): subtract — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  extraD21 = extraD21 - fnp.diag(fnp.diag(extraD21))
+{
+  "version": "tenfold.jointHarmonicDiagonal.r34.contract",
+  "complete": true,
+  "rows": [
+    {
+      "width": 4,
+      "steps": [
+        {
+          "step": 0,
+          "errors": {
+            "jointpost_D4_exact": 1.214306433183765e-17,
+            "jointpost_full_tensor": 3.469446951953614e-18,
+            "signedEfeed_fulltensor_once": 0.0,
+            "currentjoint_feed_linear_split": 8.673617379884035e-19,
+            "newEfeedD3": 1.734723475976807e-18,
+            "newEfeedD21": 0.0,
+            "ordinaryM_D3_repeated_exact_dedup": 3.469446951953614e-18,
+            "ordinaryM_D21_repeated_exact_dedup": 3.469446951953614e-18,
+            "next_rawW_CP4": 6.938893903907228e-18,
+            "next_rawW_CP3": 6.938893903907228e-18
+          },
+          "broken_proxyD4_doublecount": 0.053566659105931426,
+          "broken_newfeed_doublecount": 0.01499877864291379,
+          "legal_joint_component_flops": 1944
+        },
+        {
+          "step": 1,
+          "errors": {
+            "jointpost_D4_exact": 3.469446951953614e-18,
+            "jointpost_full_tensor": 6.938893903907228e-18,
+            "signedEfeed_fulltensor_once": 8.673617379884035e-19,
+            "currentjoint_feed_linear_split": 8.673617379884035e-19,
+            "newEfeedD3": 8.673617379884035e-19,
+            "newEfeedD21": 8.673617379884035e-19,
+            "ordinaryM_D3_repeated_exact_dedup": 1.3877787807814457e-17,
+            "ordinaryM_D21_repeated_exact_dedup": 1.734723475976807e-18,
+            "next_rawW_CP4": 1.734723475976807e-18,
+            "next_rawW_CP3": 8.673617379884035e-19
+          },
+          "broken_proxyD4_doublecount": 0.08225615808217258,
+          "broken_newfeed_doublecount": 0.01801710523188817,
+          "legal_joint_component_flops": 3488
+        }
+      ]
+    },
+    {
+      "width": 8,
+      "steps": [
+        {
+          "step": 0,
+          "errors": {
+            "jointpost_D4_exact": 8.673617379884035e-18,
+            "jointpost_full_tensor": 6.938893903907228e-18,
+            "signedEfeed_fulltensor_once": 1.734723475976807e-18,
+            "currentjoint_feed_linear_split": 6.938893903907228e-18,
+            "newEfeedD3": 1.734723475976807e-18,
+            "newEfeedD21": 0.0,
+            "ordinaryM_D3_repeated_exact_dedup": 3.469446951953614e-18,
+            "ordinaryM_D21_repeated_exact_dedup": 1.734723475976807e-18,
+            "next_rawW_CP4": 5.204170427930421e-18,
+            "next_rawW_CP3": 1.734723475976807e-18
+          },
+          "broken_proxyD4_doublecount": 0.09633021091824191,
+          "broken_newfeed_doublecount": 0.03730475123665041,
+          "legal_joint_component_flops": 9392
+        },
+        {
+          "step": 1,
+          "errors": {
+            "jointpost_D4_exact": 1.3877787807814457e-17,
+            "jointpost_full_tensor": 6.938893903907228e-18,
+            "signedEfeed_fulltensor_once": 2.168404344971009e-18,
+            "currentjoint_feed_linear_split": 1.734723475976807e-18,
+            "newEfeedD3": 5.421010862427522e-20,
+            "newEfeedD21": 1.0842021724855044e-19,
+            "ordinaryM_D3_repeated_exact_dedup": 6.938893903907228e-18,
+            "ordinaryM_D21_repeated_exact_dedup": 3.469446951953614e-18,
+            "next_rawW_CP4": 1.0408340855860843e-17,
+            "next_rawW_CP3": 1.3010426069826053e-18
+          },
+          "broken_proxyD4_doublecount": 0.062096529534543025,
+          "broken_newfeed_doublecount": 0.002075153865781407,
+          "legal_joint_component_flops": 17600
+        }
+      ]
+    },
+    {
+      "width": 16,
+      "steps": [
+        {
+          "step": 0,
+          "errors": {
+            "jointpost_D4_exact": 1.214306433183765e-17,
+            "jointpost_full_tensor": 3.469446951953614e-18,
+            "signedEfeed_fulltensor_once": 3.469446951953614e-18,
+            "currentjoint_feed_linear_split": 1.734723475976807e-18,
+            "newEfeedD3": 3.469446951953614e-18,
+            "newEfeedD21": 0.0,
+            "ordinaryM_D3_repeated_exact_dedup": 3.469446951953614e-18,
+            "ordinaryM_D21_repeated_exact_dedup": 6.938893903907228e-18,
+            "next_rawW_CP4": 6.938893903907228e-18,
+            "next_rawW_CP3": 1.3010426069826053e-18
+          },
+          "broken_proxyD4_doublecount": 0.11164528931914999,
+          "broken_newfeed_doublecount": 0.019251668535024073,
+          "legal_joint_component_flops": 53088
+        },
+        {
+          "step": 1,
+          "errors": {
+            "jointpost_D4_exact": 1.3877787807814457e-17,
+            "jointpost_full_tensor": 3.1712913545201005e-18,
+            "signedEfeed_fulltensor_once": 4.336808689942018e-19,
+            "currentjoint_feed_linear_split": 8.673617379884035e-19,
+            "newEfeedD3": 6.505213034913027e-19,
+            "newEfeedD21": 2.168404344971009e-19,
+            "ordinaryM_D3_repeated_exact_dedup": 3.469446951953614e-18,
+            "ordinaryM_D21_repeated_exact_dedup": 3.469446951953614e-18,
+            "next_rawW_CP4": 8.673617379884035e-18,
+            "next_rawW_CP3": 1.3010426069826053e-18
+          },
+          "broken_proxyD4_doublecount": 0.11072506996267024,
+          "broken_newfeed_doublecount": 0.0022762761951937113,
+          "legal_joint_component_flops": 102272
+        }
+      ]
+    }
+  ],
+  "script_sha256": "643907f7de6ef3976b2e7992b88ac37254db9adefbde93c56b9f46e5aec66c3e",
+  "helper_sha256": "e1c4037ac2d0f76c3decf201fde2949c98ccf4035c14e2e745e228690b66e82f",
+  "no_reference_or_target_access": true,
+  "raw_mse": null,
+  "adjusted_score": null,
+  "scope": "Dense independent signed jointprojection/feed/dedup/rawW algebra; candidate actualintegration separate",
+  "limitations": [
+    "Parentharmoniccross support remainsapproximate",
+    "No exactGaussian22production or1024resourceacceptance",
+    "Arbitrarysignedtoy verifiesalgebra notdistributionaccuracy"
+  ]
+}

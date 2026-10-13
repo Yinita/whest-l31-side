@@ -1,0 +1,29 @@
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:877: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:878: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:892: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:893: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:894: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:897: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:898: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:1534: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:1535: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:1898: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_q=fnp.concatenate([sparse_post_q,fnp.eye(n,dtype=f32)],axis=1)
+/tmp/tenfold_harmonic_r34_diagnostic_n32.py:1899: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_x=fnp.concatenate([sparse_x,fnp.zeros((n,n),dtype=f32)],axis=1)
+{"sha": "83d81b99c7bd38db184686d63ddbe5b39402c3bff0597289ab10c34aa6665799", "rows": [{"width": 32, "errors": [{"layer": 1, "maxerrors": {"D4": 2.922030312157986e-08, "feedpriorD3": 0.0, "D31": 4.1595327793242376e-08, "D22": 6.501324267826902e-08, "feedpriorD21": 0.0, "complete_feedtensor": 3.984605253387619e-09, "birthfeedD3": 1.045723112269581e-08, "birthfeedD21": 9.163263411937628e-09}}, {"layer": 2, "maxerrors": {"D4": 4.045301604804763e-08, "feedpriorD3": 4.130805864033249e-09, "D31": 7.709486082863037e-08, "D22": 5.248585202566325e-08, "feedpriorD21": 1.0750429255135252e-08, "complete_feedtensor": 2.3271064936158936e-09, "birthfeedD3": 8.831451125956846e-09, "birthfeedD21": 7.870315291841345e-09}}, {"layer": 3, "maxerrors": {"D4": 1.9292919983815437e-08, "feedpriorD3": 4.832572231272536e-09}}, {"layer": 0, "birthD4exact": 0.0}, {"layer": 1, "birthD4exact": 5.827380333833787e-08}, {"layer": 2, "birthD4exact": 5.326171992336981e-08}], "flops": 7322079}]}

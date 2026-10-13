@@ -2199,3 +2199,13 @@ r25 SHA b6fe6506fe37061a9efe48326349100bae18dead466ff6d80657b8e920447438；r29 S
 r25targetfree逐层delta从li1已出现mean+2.875e-5，li15 RMS6.55e-4，不是尾层突变；genericactualledger独立PASS排除已测gain/rawW与重复feed，但未假称actual1024trace。D4only删除parent交叉出生，尤其早Gaussian K22，可能解释链偏差，仍需归因。fullGaussianK22并非仅Cov²：含rho1..3 power cumulant及pK11²的rho2..6中心化项。新exact31历史组件n4/8/16合同<2.78e-17，但完整allhistory naive总约3.77T超预算，否决直接candidate，不age/rank扫。
 
 下一固定机制r34：保留parent harmonic cross producer/USE/feed，同时精确携带signed univariate CP4 residualhistory及一致feedback，按postmetric合同去掉已有D4再出生。它仍是crossapprox，不称fullK4；先独立tensor与actualwholecall合同，再单网strict。另推导Gaussian22 structured transport成本。最佳V37bH18/线上335678仍不变，阶段1<5.779e-10未达。
+
+## r34 signed D4 residual + parentcross：严格否决
+
+冻结SHA83d81b99c7bd38db184686d63ddbe5b39402c3bff0597289ab10c34aa6665799；postidentitymetric使proxyD4=g_prev，残差出生K4v−g_prev−oldEpostD4。parentcrossUSE/原近似feed完整保留，extra E completefeed独立去重。独立jointtensor、identitynorm、实际bodydiagnostic小合同与ledger通过；forcedriders小16层NaN失败、traceharness失败保留，不将snapshot当真实suite验收。
+
+真实同network0 strict1 zero failures，before raw2.228117956804e-8/adjusted4.871416049362e-9；after raw4.779058713211e-7/adjusted4.135419140055e-7（raw21.44886倍、adjusted84.89152倍更差）。资源限制通过，但不是算法改进；逐网/FLOPs/wall/residual/hash见`results/phase2/tenfold_harmonic_d4_residual_r34_samecycle_comparison.json`。不扩Mini8、不上传。
+
+独立joint约束推导指出signedD4补回虽然匹配D4，却改变trace；`tenfold_joint_diagonal_trace_projection_contract.json` n4/8/16同时对densefulltensor与独立2n线性方程解合同<1e-16，并检测r34broken反例。下一r37固定projection：s_eff=K22row−(traceDiag(Eoldpost)−D4(Eoldpost))，g=6s_eff/(n−2)−3sum(s_eff)/[(n−2)(n−1)]，cnew=K4v−g−D4(Eoldpost)。这是模型内精确两个约束，不oracle、不rank/layer/系数搜索；cross仍近似。后续actualbody合同/strict才能判断是否提分。
+
+新增r36对已完成strict预测和原reference逐层只诊断，第二层r25 MSE1.99837e-9/bias2.94005e-5，而parent7.40447e-10/bias6.51e-7；最终r25 centerederrorvariance3.74358e-7，不能靠一个meanoffset解释或修复。两个新脚本loader失败及executedsource保留，最终显式split=mini读取原prepared目标，不改reference；结果`tenfold_completed_layer_scores_r36.json`。
