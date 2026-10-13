@@ -176,3 +176,23 @@ r43实际24网络canonical权重SHA全核验，固定Phi W meanJacobian剥离继
 ## r46实际partialdiag oracle有信号，推进局部闭合训练
 
 r46 twoTRAINnet0/16实际post4diag MC真值rollin（layers1..14、layer0/final原样）零失败，raw2.407213e-8→4.623101e-9、2.478599e-8→4.35853e-9，约5.2/5.7倍。它是目标依赖的partialdiag closure诊断，非候选/十倍证明/通用精度上界；idx0换repeatreference为6.42125e-9，噪声影响保留。两网各15层covPSD检查无低于−1e-9特征值。r47剩余22TRAIN网络oraclecapture PID1673549已启动，同reset，移除离线eig cost并保存actualf32post。next r48训练localjointclosure，freshlearnedrollout必须无真值。
+
+## r47/r48完成，r49独立无真值closed已启动
+
+2026-10-13 19:33：r47全部24TRAIN actualpartialdiag oracle raw2.212115e-8→4.454531e-9（约4.97倍），仅目标依赖诊断。r48 localjoint26训练网络CV改善K3/K4，模型已冻结；r49新8网640..752正在无真值完整递推，结果尚未收齐。此前totalstate模型均负，最佳仍V37bH18、十倍未达。
+
+固定22→26加ownpost四矩/σ^p为训练内单因素，26/base normalized μ.97244/var.95886/K3.74860/K4.55781；真实物理raw四channel为.9740/.9595/.8381/.6163，不当整网分数。modelSHAf50a3ac0990ed659dd39dd66ff18a998a733305a09a8bc4dbcda5fe32bc5f559，train24/4blockedfold，λ.01、first0/final15zero，无验证选系数。lawfulfnp候选actualmodel组件合同误差<1.12e-16，尚无wholeparity/strict。r49PID1678259新8网actuallearnt全联合closure验证；reference仅localscore，worker模型inputs无标签。
+
+
+## r49 fresh8真实闭环否决，转向联合图context / final-only检验
+
+2026-10-13 19:40 CST：固定train24 local26模型在首次完整新8网idx640,656,672,688,704,720,736,752上，raw MSE **2.324412918841486e-8→2.330233565377604e-8（+0.250414%）**；4/8逐网改善、零失败。modelSHA f50a3ac0990ed659dd39dd66ff18a998a733305a09a8bc4dbcda5fe32bc5f559，parent/input hashes逐网保留。bootstrap95 ratio [.9734716407,1.0342133276]，不能称可靠收益。MC N1e8离线raw、16GiB与NumPy trace只作诊断，非adjusted/RPC/资源验收；不扩Mini8、不上传、不扫λ/scale/layers。最佳仍V37bH18、stage1阈值5.779e-10不变。
+
+R50六个固定target-free有向协方差/混合source图context正确性及实际小网络只读capture已过；1024宽6feature计费4.343G/层，14层约60.8G，只有组件成本。r51将同train24 oracle轨迹仅capture六列，固定26→32网络CV检验剩余信息。独立r52将仅最终输出的固定26feature affine readout在独立corpus train24网络CV检验；与旧L03(V29/publicMini8/13列)负结果区别仅为H18/新数据/固定26，不调参、不复用已读fresh标签。只有可靠raw闭环信号再跑严格RPC与冻结Mini8；不把oracle约5倍或CV当十倍成功。
+
+
+### r51 capture完成但旧状态拼接门禁未过；r54训练递推机制
+
+2026-10-13 19:47 CST：r51 TRAIN24 fixedgraph6只读采集全部成功，compact15MiB、零运行失败。旧26与新6来自跨容器不同浮点轨迹，预设拼接绝对门禁仅14/24通过，最大features26差.0122045/state差.0024414/pred差3.7551e-6。拒绝拼接拟合R53，不放宽门槛、不重复采oracle24。R52 finalonly2smoke运行成功但旧prediction1e-6一致性门禁失败（max4.2915e-6、finalRMS~9e-7），原失败保留；r02新离线数值诊断1e-5仅用于同capture内fit，22remaining接续中，不比赛资源通过。
+
+原公开实现HenryMIT commit8d6cd4f4f6ec6672914bc002350f6a40da92ca84使用真正逐层on-policy拟合：每层模型面对自己previouslearned纠正的TRAIN轨迹。它的强成绩是Phase1 256×32/probe，并非我们Phase2复现；独立1024×16只是Gaussian链合成研究，分数不可移植。R48oraclepreviousreset teacherforcing存在exposurebias，R38baseline一次拟合也不是sequential。下一唯一改变R54训练rollin机制：固定26/λ.01/floors/4blocked网络fold，每个foldprefixheads只由其TRAIN18拟合，held6不参与任何prefix；fullTRAIN24独立第五branch。worker只有weights+prefixmodel，MC标签仅本地拟合/评分。先1..3门禁再决定扩14，候选完整无truth递推/strict与十倍仍未验收。

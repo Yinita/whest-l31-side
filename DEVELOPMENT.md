@@ -1,48 +1,19 @@
 # WhestBench Phase 2 开发入口
 
-2026-10-13 19:28：实际partialdiag oracle两TRAIN网raw平均2.442906e-8→4.490815e-9（约5.44倍），仅目标依赖诊断，十倍未达/最佳不变。r47剩余22TRAIN网络正在采集localjointclosure输入，随后固定网络CV与无真值freshlearnedrollout；先前r38/r39/r41/r42完整学习候选均否决。参见[本轮真实结果](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
+更新：2026-10-13 19:40 CST。最佳仍为 **V37bH18**，线上#335678 adjusted **4.293779716792071e-9**；65公共网严格RPC零失败，adjusted4.459611165100404e-9/raw2.1926280100960693e-8。阶段1目标 **冻结Mini8 adjusted <5.779e-10**，并要求独立未见网络成对至少十倍、零失败及严格资源通过；尚未达标。
 
-2026-10-13 19:20：r41二次交互及r42分层联合状态闭合在新8网完整完成，raw分别+8.44%/+10.61%，均零失败、均否决。train24静态CV改善没有迁移到闭环，不重复扩量/线上提交。r43正在仅24train上用固定Phi/W剥离继承均值误差，下一CV检验局部innovation预测；这是待验证假设，非已有提分。十倍目标未达、最佳仍V37bH18。
+最新已完成 r49：固定local26模型新8网无真值完整递推，raw2.324412918841486e-8→2.330233565377604e-8（+0.25%），4/8逐网改善、零失败，否决。r38/r39/r41/r42/r49的静态/teacher-forced矩预测改善没有形成完整闭环收益，禁止扫λ/scale/layers或重复上传。r47 TRAIN24四diag oracle约4.97倍仅是目标依赖诊断，不计候选成绩。
 
-2026-10-13 19:16最新：独立corpus24train/8held的完整闭环已完成，线性mean-only raw+5.52%、joint4diag+19.43%，均0/8数值失败，否决；首轮4GiB32SIGKILL另保留。固定二次交互及perlayer机制通过train24网络CV，已冻结并启动新8网idx512..624完整闭环，尚无成绩。此为N1e8离线诊断，非Mini8/严格资源或十倍验收；最佳仍V37bH18。见[本轮before/after](results/phase2/corpus_joint_rollout_before_after_r38_r39.json)。
+当前 P0：r54真正逐层on-policy训练，fixed26/λ.01，各foldprefix仅TRAIN18拟合；独立r52仅最终输出26feature affine readout固定网络CV。r51新6与旧26跨容器轨迹拼接门禁未过（14/24通过），不拼接、不fit、不重复oracle24。组件成本/正确性不等于实际提分；只有可靠完整raw收益才进入严格RPC/冻结Mini8。原reference、2**41预算、120/.4/5秒、线程数、工具版本保持冻结。
 
-2026-10-13 19:11：独立corpus32完整baseline零失败、首层解析/MC噪声ratio0.99324通过；24train固定22feature ridge已冻结，静态held8误差比mean0.9934/var0.9858/K3 1.1707/K4 1.2568，无强信号。完整closed8的mean+variancefloor、formal4diag及真正K1only r39分别运行，未提前报提分。首版4GiB 32SIGKILL失败全部保留，r02是16GiB离线诊断，不比赛资源验收。最佳及十倍目标不变。
+- [逐版本before/after与失败](experiments/phase2/TENFOLD_PROGRESS_20261013.md)
+- [研究日志与历史检查点](experiments/phase2/RESEARCH_LOG.md)
+- [机器可读状态](experiments/phase2/research_state.json)
+- [本地/严格RPC可复跑流程](benchmark/README.md)
+- [公共65网证据](results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)与[成对归因](results/phase2/frozen_strict_public49_paired_r04.json)
+- [语料闭合证据与边界](experiments/phase2/PUBLIC_JOINT_CLOSURE_CORPUS_R38.md)
 
-2026-10-13 19:00最新：r25/r34/r37真实四阶残差历史及r29完整pairgrade4严格单网均零失败，全部adjusted未改善，否决。r37纠正总迹后消除灾难退化，但raw仍+2.05%；停止该分支。下一P0为独立corpus网络的联合状态闭环训练pilot。十倍目标5.779e-10未达，线上最佳V37bH18未变。见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
-
-
-2026-10-13 18:44最新：r25真实D4-only全历史严格单网零失败但raw恶化19.415倍；r29完整pair grade4 raw−0.4766%但adjusted+3.1703%，均否决。下一r34保留harmoniccross并补signedD4残差历史；最佳V37bH18与阶段1目标5.779e-10不变，十倍未达。详见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
-
-
-2026-10-13最新：r20严格单网raw−3.7406%但adjusted+114.03%，未晋升；双流离线诊断1015成功/9timeout收齐，真实状态联合闭合仍是重点。最佳V37bH18与阶段1目标5.779e-10不变，十倍未达。最新候选、失败、before/after与局限见[专项进展](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
-
-2026-10-13严格新结果：r14完整heavyhypertree全历史raw+0.029%/adjusted+239.7%；r16tail2真metric完整USE/feed raw+0.167%/adjusted+5.99%，均零失败、均否决。转向官方舍弃nonhypertree与真正四阶历史联合闭合，十倍尚未达标。
-2026-10-13当前：r15固定二阶边际闭合严格单网零失败，但raw/adjusted均+1.08%，否决；完整三阶反馈新表示正在实现。双流离线oracle残余已接近原参考噪声，只作机制定位，不能称候选十倍收益。最佳与阶段1阈值不变。
-2026-10-13后续：r12解析球面径向版本严格RPC单网raw仅−0.145%、adjusted+13.30%，零失败，未晋升。云独立新seed两流初步复现边际K2/K3/K4缺口与late局部mean误差的关联；后续出现基础设施失败并完整保留；oracle归因不可当作候选分数，正在完整采集与设计新的高阶表示。
-
-2026-10-13十倍精度接续：两网GH2条件积分raw−11.91%/−7.37%但费用翻倍，adjusted未改善；r10cheapdiag否决（raw+33.52%），r11fullcov响应raw−7.00%但adjusted+105.61%，均零失败。下一单链解析径向分布版本正在做实际source合同；云逐层矩采集首版大量timeout，保留全部失败，不记候选收益。阶段1目标5.779e-10、当前线上最佳V37bH18均未改变。见[真实before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
-
-最新检查点（2026-10-13）：V37bH18严格RPC累计65公共网零失败，adjusted **4.4596111651e-9**，raw **2.1926280101e-8**。同runner成对49网，V29→V37bH18 adjusted下降21.54%、raw下降1.76%、FLOPs下降20.12%；49/49 adjusted改善、34/49 raw改善，主要收益来自降费。[65网汇总](results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)与[49网成对归因](results/phase2/frozen_strict_public49_paired_r04.json)保留逐网证据。阶段1目标5.779e-10未达，Mini100未完成，公共集不称最终独立holdout；线上最佳仍#335678的4.2937797168e-9，未新上传。
-
-本轮新增真实高阶组件：r21利用重复P与rank-one feed精确收缩，全14来源成本下降33.06%；r22年龄裁剪及r23列抽样偏差较大，不接入候选。r25 float32完整K31中心化精度失败，r26仅改float64后独立核验通过，1024宽15类图项成本2.678亿FLOPs。均无整网分数，完整K211和proxy去重仍待。版本、before/after、失败与成本见[真实来源记录](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)。
-
-十倍专项已进入整网验证：[本轮before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。新完整retained非对角core→LS候选单层仅raw改善0.09%，全1–14层raw恶化13.02%；均严格RPC单网零失败，成本使adjusted变差。已否决这些版本，不称十倍。当前单因素beta归因与局部新增误差模型继续推进；V37bH18仍最佳。
-
-更新日期：2026-10-13。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
-
-官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，最佳候选严格RPC累计覆盖58个公共网络；Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。
-
-后续核验：同候选local8已完成但3网residual超过400ms，失败保留；新严格RPC执行器故障验收已完成，Mini8 **4.6043530011e-9**、扩展公共8网 **4.6350586013e-9**，各8/8零失败。扩展集较V29 adjusted下降21.39%、raw下降1.55%，主要降费；这些公共网曾用于研究，不能称最终未见holdout。线上335678已graded **4.2937797168e-9**，本队当前最佳；上次榜单快照rank67；335677原样V37b为4.3922571600e-9。最新证据与执行状态见[严格RPC验证](experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。
-
-12:33接续：V38-S4-H18仅将Strassen递归上限5→4，local8零失败，最高residual0.380914秒，adjusted4.876619e-9；这是成本略高的资源备选，未替代线上最佳。同候选严格RPC8也零失败，raw逐网与local完全一致；同runner相比parent adjusted+5.92%，不提升为线上最佳。新公共分片2（7网、ID16–22）双方严格RPC零失败，V29 adjusted5.485889e-9→V37b+H18 4.303414e-9（-21.55%），raw改善1.74%，最佳候选覆盖23公共网；Mini100未完成。M04两个已知期望代理pilot含成本后预计MSE分别恶化12.45%和9–10%，M05完成原论文/代码映射及未分裂UT偏差诊断；完整方法仍未完成。详见[本轮记录](experiments/phase2/CONTINUATION_2026-10-13.md)。
-
-13:39接续：分片3（ID23–29）V29/最佳候选严格RPC双方7网零失败，adjusted **5.565246e-9→4.337734e-9（−22.06%）**，raw **2.184545e-8→2.132122e-8（−2.40%）**，逐网adjusted均改善。最佳候选累计严格RPC覆盖44公共网，合并adjusted4.532173e-9/raw2.228391e-8、零失败；阶段1目标未达。M05小对象分裂/UT/Taylor/W2正确性及非对角W2独立合同通过，1024宽float64单分量完整实测307371364362 FLOPs（预算13.98%，约7次评估），尚非官方资源验收。精确一维深度5→12的总误差降低包含UT与分裂偏差抵消，逐分量阈值通过不等于总误差界。见[M05小流程](experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md)。M05真实1024宽9叶/13评估进一步诊断raw0.07479、占预算90.86%、阈值未达，当前实现降到P2，未提交。已[冻结公共验收队列](experiments/phase2/PUBLIC_ACCEPTANCE_QUEUE_20261013_r03.json)，分片4已完成V29adjusted5.712536e-9→最佳4.459808e-9（−21.93%）、raw下降2.20%、双方7网零失败；分片5已完成V29adjusted6.107346e-9→最佳4.827658e-9（−20.95%）、raw下降1.13%、双方7网零失败；分片6（ID44–50）14:54已启动同候选严格RPC串行验收并启用状态同步，复用原始reference；不重复Mini8或上传原包。
-
-14:51成对归因：新公共分片2–5共28网，双方同严格RPC/原reference，V29 adjusted5.717754e-9→最佳4.482154e-9（−21.61%），raw下降1.85%、FLOPs下降20.12%；28/28 adjusted改善，19/28 raw改善，双方零失败。见[冻结28网成对汇总](results/phase2/frozen_strict_public28_paired_r01.json)。主要仍是计算收益，不能把所有adjusted收益解释为精度提升。
-
-15:25接续：分片6（ID44–50）已完成，全部6阶段输出及候选/工具哈希核验通过；V29 adjusted **5.557312e-9→V37b+H18 4.352294e-9（−21.68%）**，raw **2.180149e-8→2.138083e-8（−1.93%）**，双方7网零失败。最佳候选51公共网去重汇总adjusted **4.507483e-9**、raw **2.215995e-8**，零失败；同runner新公共35网成对adjusted下降21.62%、raw下降1.87%、FLOPs下降20.12%。见[51网汇总](results/phase2/sprint_public_v37b_h18_strict_public51_r04.json)和[35网归因](results/phase2/frozen_strict_public35_paired_r02.json)。分片7（ID51–57）已冻结原候选并启动串行严格RPC，不提前计入完成网络。阶段1目标仍5.779e-10。
-
-高阶来源接入新增[真实B1组件验证](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)：从人工CP推进到真实layer14来源的全部1024列、实际pk1v及严格重复指标剔除。1024宽固定条目最大误差7.61e-10，完整组件计费12,907,085,824 FLOPs；实际均值与Gaussian均值代理使该组件改变1.32%。当前只有一个来源的K111 Wick/中心化轨道，其他来源、feedback/feed/M、其他K211轨道及完整整网接入未覆盖，不能报告candidate提分。
+历史检查点见上述日志。公共开发集不称最终独立holdout；private语料派生模型与标签不Git发布。
 
 ## 当前状态
 

@@ -1,0 +1,39 @@
+{
+  "version": "r49-lawful-integration-source-audit-r01",
+  "utc": "2026-10-13T11:36:16.541486+00:00",
+  "scope": "read-only source and existing helper-parity audit, no whole predict/RPC or score/resource acceptance",
+  "candidate_sha256": "e177526a1781091f7127388891f935598c30c627d817dacff063612f2faea0e2",
+  "baseline_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "pilot_sha256": "73eaf6c20a79bbe909423f99863a1be7f85393f2f2c845db931f100d3582e3b5",
+  "component_parity_path": "results/phase2/tenfold_local_model_parity_r48_r01.json",
+  "component_parity_sha256": "b2bece08ad534507bdca41b1250cb8ad40075a2ab363997f46ba1ad1ba9197de",
+  "checks": {
+    "baseline_source_hash_matches_frozen": true,
+    "candidate_hash_matches_component_parity": true,
+    "frozen_model_hash_matches_component_parity": true,
+    "new_arithmetic_helpers_use_no_numpy_torch_attributes": true,
+    "isolated_diagnostic_prediction_worker_reads_no_label_identifiers": true,
+    "first0_last15_skipped": true,
+    "ordinary_diagonals_updated_before_assemble": true,
+    "mean_own_feature_adds_existing_delta_once": true,
+    "mean_update_subtracts_existing_delta_before_original_assemble": true,
+    "mixed_cross_cumulants_unmodified_by_new_injection": true
+  },
+  "passed": true,
+  "runtime_arithmetic_numpy_attributes": [],
+  "prediction_worker_label_identifiers": [],
+  "semantics": [
+    "post ordinary K1/K2/K3/K4 formal diagonal closure; internal neuron order",
+    "existing H18 deterministic mean rider delta is included once",
+    "central cross K11/K21/K22 and original nonlinear feed remain original",
+    "C diagonal, S3c and g_prev rebuild downstream from updated marginal diagonals",
+    "first analytic layer0 and final layer15 own correction fixed off"
+  ],
+  "not_established": [
+    "whole-predict parity",
+    "frozen Mini8 adjusted score",
+    "independent-network tenfold improvement",
+    "strict RPC residual/time/memory acceptance",
+    "joint-distribution validity after changing only marginals"
+  ]
+}

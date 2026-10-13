@@ -161,3 +161,151 @@ Evidence folders: `modal_mean_innovation_targets_r43`,
 `results/phase2/`. Earlier V29 Mini8 local-innovation LOO was a separate,
 similarly small diagnostic (ratio0.984852), not an independent improvement to
 H18 or the tenfold stage.
+
+## R46 partial diagonal oracle probe
+
+On two predeclared training networks0/16, the offline probe resets only the
+post-ReLU marginal mean/K2/K3/K4 at layers1–14 to the MC labels. Layer0 stays
+analytic, mixed central slices and original nonlinear source births remain
+the inherited approximation, and the final layer is not reset. This is a
+nondeployable diagnostic of this partial diagonal mechanism; it is not a
+rigorous upper bound on the full recurrence or a trained candidate.
+
+| Network | Original final raw MSE | Oracle final raw MSE | After / before |
+|---|---:|---:|---:|
+|0|2.4072134117e-8|4.6231006666e-9|0.192052|
+|16|2.4785994874e-8|4.3585294953e-9|0.175846|
+|Mean|2.4429064495e-8|4.4908150809e-9|0.183831|
+
+Both completed without failure. Captured means match the reset fp32 MC means;
+covariance eigenvalues never fall below−1e-9 across the captured15 layers.
+Tiny negatives down to−2.36e-12 are recorded. Positive covariance does not
+prove that all higher-order joint moments are realizable.
+
+The repeated-reference vector is empirically nearest to network0 among the32
+available labels (MSE1.7989558940e-9 versus the next network1.06494). The README
+does not state its network ID, so this pairing is explicitly inferred. Using
+that reference gives network0 original2.5308377645e-8 versus oracle
+6.4212465088e-9, ratio0.253720. No noise floor is subtracted. Same MC draws
+across layers/reference can inflate oracle agreement, and two training
+networks cannot certify a tenfold gain. Evidence:
+`results/phase2/joint_oracle_reset_r46_independent_audit.json`.
+
+The useful next question is whether train-only local closure errors, captured
+under corrected previous states, can be predicted without oracle access.
+R47 captures the remaining22 training networks with the same reset mechanism;
+R48 will compare fixed per-layer22-feature ridge against26 features that add
+the model's own four pre-reset post states, using only network splits inside
+train24. This remains a research checkpoint, not a stage transition.
+
+R47 completed all22 remaining traces without failures. R48 then completed the
+prespecified train24 network CV; no validation or final-output labels selected
+features or regularization. The local target is MC post-state minus the model's
+own pre-reset post-state, given corrected previous layers. The appended26-state
+features are those own pre-reset states divided by sigma powers, not truth.
+
+| Channel | Feature22 / baseline normalized MSE | Feature26 / baseline normalized MSE | Feature26 / baseline physical raw MSE | Feature26 wins |
+|---|---:|---:|---:|---:|
+|mean|0.974451|0.972440|0.974000|22/24|
+|variance|0.959771|0.958857|0.959485|24/24|
+|kappa3|0.751931|0.748595|0.838127|24/24|
+|kappa4|0.577425|0.557808|0.616321|24/24|
+
+Kappa3/Kappa4 passed the predeclared development gate (normalized ratio<0.80
+and at least16/24 network wins). The frozen26 model SHA is
+`f50a3ac0990ed659dd39dd66ff18a998a733305a09a8bc4dbcda5fe32bc5f559` at
+`results/phase2/local_joint_closure_cv_r48/frozen_train24_local_closure_26.json`.
+Feature26 adds only modest incremental improvement over22, and teacher-forced
+CV still has exposure bias and correlated MC noise. Neither error table is a
+competition adjusted score.
+
+R49 launches the frozen learned26 model on fresh networks640..752 step16,
+paired H18 baseline8 followed by candidate8, with CPU1/16GiB, at most8 workers,
+no retries and timeout300s. PID1678259 launched in this checkpoint; source
+`experiments/phase2/modal_local_joint_closure_rollout_r49.py`, outputs
+`results/phase2/modal_local_joint_closure_rollout_r49/`. Runtime rollout sees
+weights and frozen coefficients only, not MC labels. First-layer injection is
+completely skipped; final-layer local correction remains zero. All four
+channels change through the declared signed diagonal closure.
+
+R49 finished at `2026-10-13T11:36:30Z`: all paired8 networks completed with
+zero failures. Frozen source SHA was
+`73eaf6c20a79bbe909423f99863a1be7f85393f2f2c845db931f100d3582e3b5`.
+
+| Network | H18 final raw MSE | Learned26 final raw MSE | After / before |
+|---|---:|---:|---:|
+|640|2.4316773131e-8|2.3103409139e-8|0.950102|
+|656|2.2137768927e-8|2.2916874768e-8|1.035194|
+|672|2.1667704519e-8|2.1164174102e-8|0.976761|
+|688|2.1456167913e-8|2.2011980580e-8|1.025905|
+|704|2.3812213915e-8|2.4267318773e-8|1.019112|
+|720|2.5376245675e-8|2.7393893727e-8|1.079509|
+|736|2.1742393038e-8|2.1254884728e-8|0.977578|
+|752|2.5443766388e-8|2.4306149413e-8|0.955289|
+|Mean|2.3244129188e-8|2.3302335654e-8|1.002504|
+
+The aggregate worsened0.2504%;4/8 networks improved. The paired-network
+bootstrap95 interval for the after/before ratio was0.973471641–1.034213328
+(20,000 resamples, seed261041), so it provides no resolved gain. MC sampling
+uncertainty is retained in the raw paired scores and is not covered by that
+network-bootstrap interval. Source/model/data/weight/version/payload hashes
+passed the generic closed-pair audit. Candidate observed peak RSS was
+5.159–5.214GiB and wall time64.97–105.73s in the16GiB diagnostic containers;
+these are not a strict resource pass. First-layer injections are skipped;
+5/8 first-layer outputs were bit-identical, the other3 show backend numerical
+path differences before correction. No adjusted score is claimed for the
+unmetered diagnostic.
+
+Conclusion: teacher-forced K3/K4 CV improvement did not become closed-loop
+final-mean improvement. Stop the frozen26 mechanism without lambda/scale
+scanning or promotion. Evidence:
+`results/phase2/local_joint_closure_rollout_r49_network_audit.json` and the
+immutable `modal_local_joint_closure_rollout_r49/` raw manifests/journal.
+
+
+## R50/R51 fixed six preactivation graph-context features
+
+The new single change appends six target-free graph contractions to the R48
+26 features: rho2 row mean, rho3 row mean, normalized diagonal triangle,
+rho times left/right K21 row means, and rho2 times K22 row mean. The helper
+uses permitted flopscope arithmetic; C_off, D21, wk4m and sigma are observed
+before the original nonlinear rider correction and never mutated. Graph
+features are canonicalized with the same inverse permutation as the original
+22 features and own post states. Layer0 is exactly zero, layer15 is skipped.
+Small actual-width16/32, prune on/off observer checks found unchanged outputs;
+this is a component check, not a full candidate or resource pass.
+
+R51 source `modal_local_joint_pre6_capture_r51.py` froze SHA
+`778645219a8b9e41e9e262891181ffc4d5f13b853076411906c51b1a47f01c40` and launched
+PID1684090 at `2026-10-13T11:40:11Z`. No corpus shard or new baseline is
+created. The worker reconstructs the same24 teacher-forced trajectories with
+original MC post-state resets, first runs0/16 smoke, then the remaining22.
+Only graph15x1024x6 is stored; old R46/R47 state/features/scales are intended
+for reuse. Both smoke networks passed finite/source-weight/hash/nonmutation
+integrity checks. However, network0 showed absolute differences from R46:
+features26 max0.0041660234, state max0.000732421875, prediction max3.5763e-7;
+network16 was exact. Other returned networks also show differences. These
+are retained as numerical-path diagnostics, not accepted trajectory parity.
+
+The planned R53 fixed26 versus32 CV keeps R48 ridge0.01 and network splits,
+with a stricter graph signal gate: at least one channel32/26 normalized
+ratio<0.90, at least16/24 wins, and paired-network-bootstrap95 upper<1.
+Mean/variance results must be shown explicitly. Fit is not launched until
+the new graph and reused old26 trajectory pairing passes its stated check;
+current absolute state/features differences do not pass. No gate is silently
+relaxed, and no graph correction is promoted from these capture checks.
+
+
+R51 completed24/24 with zero worker failures. Every compact payload passed
+hash, finite/shape and analytic-first-layer-zero checks; stored graph data
+is15,710,116 bytes total. The stated legacy-pair absolute gate passed14/24
+and failed10/24. Maximum differences across24 were features26=0.01220452064,
+state=0.00244140625 and prediction=3.75509262085e-6. Capture does not mutate
+input arrays, but backend/container arithmetic plus central high-order
+cancellation can still change captured own states. Final-mean differences
+alone cannot certify identical high-order trajectories. R53 has therefore
+not run, and no old26/newgraph mixed-trajectory model is fitted. Evidence:
+`results/phase2/local_joint_pre6_capture_r51_network_audit.json`. A scientifically
+valid continuation needs own26/state/scales captured on the same graph
+trajectory, or a separately justified invariant-preserving comparison;
+increasing an absolute tolerance without that evidence is not a repair.

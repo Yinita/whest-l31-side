@@ -1,0 +1,291 @@
+{
+  "version": "teacher-forced-local-joint-closure-cv-r48",
+  "pid": 1677116,
+  "source_sha256": "cc63588ada931b81fffde6b242089b6e1e625a1906eee307ed7cae198c3de51a",
+  "parent_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "dataset_revision": "cc3405a9393bc398e0af4b0e5d6e78da0ad5f6c8",
+  "labels_sha256": "4b62629a2cf5bb7ade8f8c20bc09c259d7922b684c4b0b6b7722f0a7aaeb7930",
+  "train_indices": [
+    0,
+    16,
+    32,
+    48,
+    64,
+    80,
+    96,
+    112,
+    128,
+    144,
+    160,
+    176,
+    192,
+    208,
+    224,
+    240,
+    256,
+    272,
+    288,
+    304,
+    320,
+    336,
+    352,
+    368
+  ],
+  "feature_orders": {
+    "22": [
+      "ones",
+      "mu",
+      "var",
+      "sigma",
+      "alpha",
+      "abs_alpha",
+      "phi",
+      "Phi",
+      "pk1",
+      "D3",
+      "D21norm",
+      "K4_sigma",
+      "sigma_phi",
+      "skew_H2phi",
+      "kurt_H3phi",
+      "skew2_H5phi",
+      "skewkurt_H6phi",
+      "kurt2_H7phi",
+      "skew",
+      "kurt",
+      "gate",
+      "depth_fraction"
+    ],
+    "26": [
+      "ones",
+      "mu",
+      "var",
+      "sigma",
+      "alpha",
+      "abs_alpha",
+      "phi",
+      "Phi",
+      "pk1",
+      "D3",
+      "D21norm",
+      "K4_sigma",
+      "sigma_phi",
+      "skew_H2phi",
+      "kurt_H3phi",
+      "skew2_H5phi",
+      "skewkurt_H6phi",
+      "kurt2_H7phi",
+      "skew",
+      "kurt",
+      "gate",
+      "depth_fraction",
+      "own_post_mean_over_sigma",
+      "own_post_variance_over_sigma2",
+      "own_post_kappa3_over_sigma3",
+      "own_post_kappa4_over_sigma4"
+    ]
+  },
+  "ridge_lambda": 0.01,
+  "fitted_layers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "first_layer_zero": true,
+  "last_layer_zero": true,
+  "folds": [
+    [
+      0,
+      16,
+      32,
+      48,
+      64,
+      80
+    ],
+    [
+      96,
+      112,
+      128,
+      144,
+      160,
+      176
+    ],
+    [
+      192,
+      208,
+      224,
+      240,
+      256,
+      272
+    ],
+    [
+      288,
+      304,
+      320,
+      336,
+      352,
+      368
+    ]
+  ],
+  "target": "MCpost4\u2212ownpost4beforecurrentreset, normalizedsigma^1..4; priorlayersoraclecorrected",
+  "single_change": "feature22\u219226 ownpoststates added; fixedperlayerlinear/localtarget both",
+  "fixed_signal_gate": "atleastonechannel model/base normalizedMSE<.80 with>=16/24wins; compareallchannels; no validation tuning",
+  "trace_provenance": [
+    {
+      "idx": 0,
+      "teacher_forced_trace_sha256": "156ff0159c03b34a9bffa02171fee0a95aa4606428062f735c9fc71b024018a4",
+      "weight_sha256": "2fe17c4a373605446bc004c93ed0ab560c9130c8e7be3642e68bbfb58561a27c",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r46/oracle_idx0000.npz"
+    },
+    {
+      "idx": 16,
+      "teacher_forced_trace_sha256": "f25f836539eb6d2dcfe6e9544cd9814ef5ef3939f6338de3904168870e64da3e",
+      "weight_sha256": "1340c5c475f919883f54c6f1925e5fe3b88fbe28dad87734f89f0183894ce5ca",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r46/oracle_idx0016.npz"
+    },
+    {
+      "idx": 32,
+      "teacher_forced_trace_sha256": "a6cb745bcf4e4e3272e323657968eca249c545ecf821308d76345288206c9ef4",
+      "weight_sha256": "f44b3a0cf4d3249b8f991e0a05c1e7a1c2d3f009dd15030fd2d40345ea2ebf59",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0032.npz"
+    },
+    {
+      "idx": 48,
+      "teacher_forced_trace_sha256": "24f96dd2061fc3a1ad0af04ccd2e6b806328affba4177a333b8e3346cdab56bd",
+      "weight_sha256": "86a57b3ba0e6188a95f23a55c65669105d47ecbfa688696086db2b39c091fad1",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0048.npz"
+    },
+    {
+      "idx": 64,
+      "teacher_forced_trace_sha256": "7c26f857601953d8f768bc925497d4b4d8ecd9de4ac1b213ab1b9603728534f4",
+      "weight_sha256": "431e5f85b7d543a4eaca6e8b018d6e114877661fd4d51ee2232ac1c855b56167",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0064.npz"
+    },
+    {
+      "idx": 80,
+      "teacher_forced_trace_sha256": "a649712ea161baecc4fca435b64b3e25fbc151d43a19795d2518562bbe47b723",
+      "weight_sha256": "88045c10e4fe758dc9628d65ae8b8343eabc6791eb36910f31abc84cdebcc7ae",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0080.npz"
+    },
+    {
+      "idx": 96,
+      "teacher_forced_trace_sha256": "cd56916e4e410be3a1c75a54f295e8db387b0c02f73b339ccf136d9a6273ce8d",
+      "weight_sha256": "e7f8de00a4596de616fcbaa451ff58ff3868c23df94d607e274b026868b39319",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0096.npz"
+    },
+    {
+      "idx": 112,
+      "teacher_forced_trace_sha256": "04b190afaa782442cc14902939732bc84a97b00dad57021896401b267513e614",
+      "weight_sha256": "3d32ba37136056bf2b6df5f0d8d99fcb1b8a5972dd17c37d42f8291826e8febc",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0112.npz"
+    },
+    {
+      "idx": 128,
+      "teacher_forced_trace_sha256": "54df45c506cd747c5174a01e0aef88f24f594e74f759d8e0794fc8bec5cc87ce",
+      "weight_sha256": "a4aed2ab6a32352c362eb37804fbe27a24760e15e7601ffcc039d9ef3bc2d18f",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0128.npz"
+    },
+    {
+      "idx": 144,
+      "teacher_forced_trace_sha256": "ac48bd6ca21bad8bca5ecaa2fbe72016a6badffb116c436133705670a50536eb",
+      "weight_sha256": "f07cf05acfb6bd04a5da80d23bfa7912d6e5fa2835f87e7805faa7ea24636d02",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0144.npz"
+    },
+    {
+      "idx": 160,
+      "teacher_forced_trace_sha256": "61daa5b7d45819cc65f075c2aad5fcd9a218a5aad201fc90cdc12c21777d271f",
+      "weight_sha256": "12fd1161dc9401930330df6425e375c77e412e53d6758ca41f511aa6793ac84e",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0160.npz"
+    },
+    {
+      "idx": 176,
+      "teacher_forced_trace_sha256": "e5139327b741c6e6e0e4d92cc57417548eee82298fa58e51b30f0a7f470d8f1c",
+      "weight_sha256": "dbcabed86be2dff040ed8261bed36049e229e43b0d6f2a49d5371527a238a668",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0176.npz"
+    },
+    {
+      "idx": 192,
+      "teacher_forced_trace_sha256": "5ed73af4ed8038223fb02ceec24034deabd60f927566608675ac4d192fd3ef27",
+      "weight_sha256": "fd526835d1096d779a00fab9fbf7556e5e93578e8bacb0c810fe907bede29b91",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0192.npz"
+    },
+    {
+      "idx": 208,
+      "teacher_forced_trace_sha256": "c9a94ed2e501567d70e0817ce661e4677b2c76133c845da05e80d34a4522ad61",
+      "weight_sha256": "e2e95eac42ce3c755657f0aaaefc49ea3bc9c667d72f587e2c95be5a8552350a",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0208.npz"
+    },
+    {
+      "idx": 224,
+      "teacher_forced_trace_sha256": "cc0d66caf160a94efb20fd39260948bce0643bbc485c2ac5d9f8bf28487d29f4",
+      "weight_sha256": "ac5d39259eec71412d53c5b4fe6548d08e89f33e3604c2ee1a3d87326bd03d92",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0224.npz"
+    },
+    {
+      "idx": 240,
+      "teacher_forced_trace_sha256": "89d9e2f073453a799de906f8a5a04610faa8dac104e3bba9bc848d2527e4474c",
+      "weight_sha256": "c1be73679a1414c7ddad080b27147887ac4f08acf8fa0a52040a563f5a172799",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0240.npz"
+    },
+    {
+      "idx": 256,
+      "teacher_forced_trace_sha256": "a60b5244e9d3259b82d34f97369be302bd8ae71c318af619df858701e678d1a2",
+      "weight_sha256": "2da1cba4731c2b98bd0fe2ec95ed37cdebd1a04b581632458ef65e8beda846c9",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0256.npz"
+    },
+    {
+      "idx": 272,
+      "teacher_forced_trace_sha256": "c2efd60cc41e01ed6fed6e4328e8dc2e83cddd6160b01eeae5d6a45b19c61340",
+      "weight_sha256": "674f236b19efd9b1f1b309016d07c0043fb545889588bc576dbfadd96946b200",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0272.npz"
+    },
+    {
+      "idx": 288,
+      "teacher_forced_trace_sha256": "258f5a4e45e179e107787b9fad1201f3b3263f5ed37ea6960dfb0be1835a3a41",
+      "weight_sha256": "dd97a13b643b7b6c67db3772feaa7a6a8b26873054be462969ec6b6ab53b131e",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0288.npz"
+    },
+    {
+      "idx": 304,
+      "teacher_forced_trace_sha256": "74674ba74d5fcdb8c1edccaf1f7416e72588e1ae9fa20bf1c7e956b647ded6d2",
+      "weight_sha256": "2210c9e768e7a8040c275679f6553a8b83c2ed0eb2b506719d63b93e4ed08ad5",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0304.npz"
+    },
+    {
+      "idx": 320,
+      "teacher_forced_trace_sha256": "bbc13f1d29c052289ff8549e4337af28c8f78213cd30d26e8551995af29fea2f",
+      "weight_sha256": "50551f9829fb94039c2eb698edb4cd7ff52106e71701b72d1304a5077d583b82",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0320.npz"
+    },
+    {
+      "idx": 336,
+      "teacher_forced_trace_sha256": "1a02c7ca1344a77719c269841df2e6de486cbb48115cf186d3b842ce12ef05cf",
+      "weight_sha256": "0f48a4bec69bfb9567de83280ac57e44e0a18e1ce6fa95499250e82d65cb0168",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0336.npz"
+    },
+    {
+      "idx": 352,
+      "teacher_forced_trace_sha256": "c5a19adebfe37e6914921a87fcc051abecef5f68c898f5dcde315f991e32d35b",
+      "weight_sha256": "7fe1fc4dec77445c5948f2925df5a337dd9f5c66acec139db8bfabe466f21908",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0352.npz"
+    },
+    {
+      "idx": 368,
+      "teacher_forced_trace_sha256": "1d85f88cda02c5da9f66e07fa8dc354c880f3e275488aeef5da20f3f1bac06a5",
+      "weight_sha256": "11e0f59a53c7961c6345f2ff8f46a9dff19d0b782394c80f4b08b5be39879ab5",
+      "source_path": "results/phase2/modal_joint_oracle_reset_r47/oracle_idx0368.npz"
+    }
+  ],
+  "scope": "train24teacherforcednetworkCV, not closed learned model score; MCoracle covariate noise/exposurebias remain"
+}

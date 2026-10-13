@@ -317,3 +317,35 @@ all4 states are also captured canonical to distinguish desired float64truth.
 These are oracle training targets explicitly permitted onlyoffline, no
 candidate score. R48 independent train-network CV will fit truepost minus
 own closure output given previous truepost states, not baseline total error.
+
+
+R47 remaining22 completed allsuccessful; final24 combined oracle before
+2.21211547e-8→4.45453077e-9, ratio.20136972(about4.97×). This is still
+oracle-only diagnostic, not a tenfold/deployable result. Full small combined
+identity and per-network score evidence is`joint_oracle_train24_r47_summary.json`.
+Private desired/actual state arrays are retained, no retry or duplicate run.
+R48 independent train-only local-closure CV is now complete; the next26-feature
+learner adds current own pre-reset poststate4/σpowers to frozen22features.
+Alternative agent owns its fresh8 natural closed rollout on indices640..752,
+with original baseline and separate local MC reference; no oracle labels
+are available to the learned prediction worker. Its results are pending.
+
+R49fresh8 complete0fail: frozen teacherforced-local26 natural closed rollout
+raw2.32441291884e-8→2.33023356538e-8(+0.2504%),4/8wins, paired network
+bootstrap95ratio[.97347164,1.03421333]. No reliable gain, no Mini8/strict RPC
+or stage promotion. Source integration audit passes only explicit metadata,
+label-boundary and existing helper semantics, not wholepredict acceptance;
+`tenfold_local_closure_integration_source_audit_r49_r01.json` records scope.
+Next separate mechanisms are fixed6signed graph context on TRAIN oracle
+trajectory(R50/R51) and one final-only26total-error readout on unchangedH18
+TRAIN24(R52). The latter bypasses middle-source intervention and tests actual
+final_mean labels; previous L03final13 negative is documented rather than
+forgotten. Fixedgate/spec and originalR52numerical smoke failure are recorded
+in `TENFOLD_FINAL_READOUT_R52.md`. Neither route has a demonstrated scoregain.
+
+
+## r49 fresh8真实闭环否决，转向联合图context / final-only检验
+
+2026-10-13 19:40 CST：固定train24 local26模型在首次完整新8网idx640,656,672,688,704,720,736,752上，raw MSE **2.324412918841486e-8→2.330233565377604e-8（+0.250414%）**；4/8逐网改善、零失败。modelSHA f50a3ac0990ed659dd39dd66ff18a998a733305a09a8bc4dbcda5fe32bc5f559，parent/input hashes逐网保留。bootstrap95 ratio [.9734716407,1.0342133276]，不能称可靠收益。MC N1e8离线raw、16GiB与NumPy trace只作诊断，非adjusted/RPC/资源验收；不扩Mini8、不上传、不扫λ/scale/layers。最佳仍V37bH18、stage1阈值5.779e-10不变。
+
+R50六个固定target-free有向协方差/混合source图context正确性及实际小网络只读capture已过；1024宽6feature计费4.343G/层，14层约60.8G，只有组件成本。r51将同train24 oracle轨迹仅capture六列，固定26→32网络CV检验剩余信息。独立r52将仅最终输出的固定26feature affine readout在独立corpus train24网络CV检验；与旧L03(V29/publicMini8/13列)负结果区别仅为H18/新数据/固定26，不调参、不复用已读fresh标签。只有可靠raw闭环信号再跑严格RPC与冻结Mini8；不把oracle约5倍或CV当十倍成功。

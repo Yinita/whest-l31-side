@@ -1,5 +1,7 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
+2026-10-13 19:33：r47全部24TRAIN actualpartialdiag oracle raw2.212115e-8→4.454531e-9（约4.97倍），仅目标依赖诊断。r48 localjoint26训练网络CV改善K3/K4，模型已冻结；r49新8网640..752正在无真值完整递推，结果尚未收齐。此前totalstate模型均负，最佳仍V37bH18、十倍未达。
+
 2026-10-13 19:28：实际partialdiag oracle两TRAIN网raw平均2.442906e-8→4.490815e-9（约5.44倍），仅目标依赖诊断，十倍未达/最佳不变。r47剩余22TRAIN网络正在采集localjointclosure输入，随后固定网络CV与无真值freshlearnedrollout；先前r38/r39/r41/r42完整学习候选均否决。参见[本轮真实结果](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 2026-10-13 19:20：r41二次交互及r42分层联合状态闭合在新8网完整完成，raw分别+8.44%/+10.61%，均零失败、均否决。train24静态CV改善没有迁移到闭环，不重复扩量/线上提交。r43正在仅24train上用固定Phi/W剥离继承均值误差，下一CV检验局部innovation预测；这是待验证假设，非已有提分。十倍目标未达、最佳仍V37bH18。
@@ -440,3 +442,17 @@ LLM 工作闭环：假设 → 最小改动 → 正确性 → 快筛 → 独立�
 首个公开复现基线选择 504aldo MIT V29，V25 保留为同方法无 Strassen 对照。当前账号允许提交，首次 Phase 2 提交为 #335146（round ID 1429）。工具锁定 flopscope 0.12.1 / whestbench 0.16.1，基础合同和两次真实形状资源检查通过。线上与公共 reference 的最终精度状态见 `results/phase2/`，推进及一致性规范见 `benchmark/README.md`。原样复现不声明独立算法贡献，也不等于复现未知领先者方法。
 
 执行结果更新：#335146 已 graded（adjusted 5.4181681e-9；platform secondary 2.1326516e-8），公开榜单团队 Niko 排名 111，Entries=1。数学本地 Mini-8 与 RPC Mini-8 均零失败，普通子进程 4/8 内存失败的环境差异已记录，见一致性报告。
+
+
+## r49 fresh8真实闭环否决，转向联合图context / final-only检验
+
+2026-10-13 19:40 CST：固定train24 local26模型在首次完整新8网idx640,656,672,688,704,720,736,752上，raw MSE **2.324412918841486e-8→2.330233565377604e-8（+0.250414%）**；4/8逐网改善、零失败。modelSHA f50a3ac0990ed659dd39dd66ff18a998a733305a09a8bc4dbcda5fe32bc5f559，parent/input hashes逐网保留。bootstrap95 ratio [.9734716407,1.0342133276]，不能称可靠收益。MC N1e8离线raw、16GiB与NumPy trace只作诊断，非adjusted/RPC/资源验收；不扩Mini8、不上传、不扫λ/scale/layers。最佳仍V37bH18、stage1阈值5.779e-10不变。
+
+R50六个固定target-free有向协方差/混合source图context正确性及实际小网络只读capture已过；1024宽6feature计费4.343G/层，14层约60.8G，只有组件成本。r51将同train24 oracle轨迹仅capture六列，固定26→32网络CV检验剩余信息。独立r52将仅最终输出的固定26feature affine readout在独立corpus train24网络CV检验；与旧L03(V29/publicMini8/13列)负结果区别仅为H18/新数据/固定26，不调参、不复用已读fresh标签。只有可靠raw闭环信号再跑严格RPC与冻结Mini8；不把oracle约5倍或CV当十倍成功。
+
+
+### r51 capture完成但旧状态拼接门禁未过；r54训练递推机制
+
+2026-10-13 19:47 CST：r51 TRAIN24 fixedgraph6只读采集全部成功，compact15MiB、零运行失败。旧26与新6来自跨容器不同浮点轨迹，预设拼接绝对门禁仅14/24通过，最大features26差.0122045/state差.0024414/pred差3.7551e-6。拒绝拼接拟合R53，不放宽门槛、不重复采oracle24。R52 finalonly2smoke运行成功但旧prediction1e-6一致性门禁失败（max4.2915e-6、finalRMS~9e-7），原失败保留；r02新离线数值诊断1e-5仅用于同capture内fit，22remaining接续中，不比赛资源通过。
+
+原公开实现HenryMIT commit8d6cd4f4f6ec6672914bc002350f6a40da92ca84使用真正逐层on-policy拟合：每层模型面对自己previouslearned纠正的TRAIN轨迹。它的强成绩是Phase1 256×32/probe，并非我们Phase2复现；独立1024×16只是Gaussian链合成研究，分数不可移植。R48oraclepreviousreset teacherforcing存在exposurebias，R38baseline一次拟合也不是sequential。下一唯一改变R54训练rollin机制：固定26/λ.01/floors/4blocked网络fold，每个foldprefixheads只由其TRAIN18拟合，held6不参与任何prefix；fullTRAIN24独立第五branch。worker只有weights+prefixmodel，MC标签仅本地拟合/评分。先1..3门禁再决定扩14，候选完整无truth递推/strict与十倍仍未验收。
