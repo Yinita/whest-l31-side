@@ -1,0 +1,95 @@
+{
+  "versions": {
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "numpy": "2.2.6"
+  },
+  "python": "3.10.12",
+  "method_code_sha256": "46a801f5ed4c111f239947076e8e88d4198692b74cdc8ec7aa6b4a67a3d00786",
+  "method_report_sha256": "d329b6a49ed72252501efc88f7a395194aba30a657ea3c4699f1c039c9c386fb",
+  "confirmation_code_sha256": "a40a2b3bb44679828a8fdbe1796e5406a2536777d16d8982bd0619d60203be0b",
+  "confirmation_report_sha256": "51591bf0bbfda54b5d2fb38ab143d14318b0bd6e2911739b5fc2f8f9f7c7ddd6",
+  "commands": [
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_small_split_ut.py",
+      "--output",
+      "results/phase2/m05_small_split_ut_r04.json"
+    ],
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_split_error_confirmation.py"
+    ]
+  ],
+  "diagnostic_limits": {
+    "flop_budget": 34359738368,
+    "max_components": 27,
+    "max_depth": 5,
+    "threshold": 0.02,
+    "dtype": "float64",
+    "threads": 1
+  },
+  "scope": "small-object math/cost diagnosis; not official1024shape120/.4/5 resource acceptance",
+  "failed_launch": {
+    "log": "results/phase2/m05_small_split_ut_r03.log",
+    "reason": "missingSciPy",
+    "no_result": true
+  },
+  "adaptive_tree_observation": "all27leaf cases40evaluations; rejected13ancestors also paid",
+  "next_component_scaling_report": "results/phase2/m05_component_cost_scaling_r06.json",
+  "cost_rate_caveat": "float64billedrates versus analyticforwardmultiply-add count differ; smallscale ratios notpurecostoverhead or directfloat32estimate",
+  "extension_evidence_sha256": {
+    "experiments/phase2/m05_w2_independent_contract.py": "3be9cfdcc9da89af74086e1332cd3fc049165b751d78e3091b0a74c15e94e78c",
+    "results/phase2/m05_w2_independent_contract_r01.json": "c23225bb1f042640bc4f587067faf1f91dcd91de1e9e5e8dec072fd9679f7a6a",
+    "experiments/phase2/m05_highwidth_component_cost.py": "6289dc47f781ecdb8f6b3c612921cddc4bdbb93057fdd625f3fd3649d3f601d7",
+    "results/phase2/m05_highwidth_component_cost_r07.json": "b990a629b3e9277b7d8d0938eca3c78bcbb00aa56eeec37223c6c9d716ba0e4e",
+    "experiments/phase2/m05_exact_cap_depth_ablation.py": "fc36a005f81efd9b6fbca006baea2659a826f63d10bbc4e36c2592f7c9f5e245",
+    "results/phase2/m05_exact_cap_depth_ablation_r08.json": "6aa82583363003eea01be98ca3b8ca6baee07bcd94163ea83015274a9c76d963",
+    "experiments/phase2/m05_float32_method.py": "708c1c2f9d2a9938b8843d62bbbbbca45d90d5060e0d4d23492fed41d4531227",
+    "results/phase2/m05_float32_component_ablation_r09_source.py": "f0853666b47d5eaa123526840cb893fea2321c066a9d2cbea65cdc335ddadfe6",
+    "results/phase2/m05_float32_component_ablation_r09.json": "f3b9cc4a8df950332306ce2c9e39a763922c8351946dfd95aca87eeb92b39776",
+    "experiments/phase2/m05_float32_component_ablation.py": "17daef42b13dcbb84853bcd8dddce237eb6d1a7441a7e3c9e085e7c2fb43051a",
+    "results/phase2/m05_float32_component_ablation_r10.json": "1eb46e0b3d294344ba870a3003f4f1074a6b15299f83064927a84efa15ba27f1",
+    "results/phase2/m05_float32_method_r09_r10_source.json": "153e99d0137e2213609c1e0586aa7c47597a7818edbcdddb1604d641aac576a8"
+  },
+  "extension_commands": [
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_w2_independent_contract.py"
+    ],
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_highwidth_component_cost.py",
+      "--output",
+      "results/phase2/m05_highwidth_component_cost_r07.json"
+    ],
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_exact_cap_depth_ablation.py"
+    ],
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_float32_component_ablation.py"
+    ]
+  ],
+  "dtype_r09_source_archive": "r09pre-ruff import order preserved by sourcehash; r10same mechanism after formatting, fresh output",
+  "method_dtype_source_archive": "r09/r10 original exact source retained; current method only removes one blank line at EOF; computational AST unchanged"
+}

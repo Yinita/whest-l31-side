@@ -16,7 +16,7 @@
 | 10 | true | P0 | O29 | v30.091 | 高阶校正信号与reference不确定性的分离 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 11 | true | P0 | L20 | v30.115 | 新种子网络最终独立确认 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 12 | true | P1 | M04 | paper.M04.r01 | 解析代理和残差采样控制变量 | partial_negative | 结构性机制或论文完整对照；尚未证明收益 |
-| 13 | true | P1 | M05 | paper.M05.r01 | Monchot2023条件或混合传播 | partial_mapping | 结构性机制或论文完整对照；尚未证明收益 |
+| 13 | true | P1 | M05 | paper.M05.r01 | Monchot2023条件或混合传播 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 14 | true | P1 | M02 | paper.M02.r01 | Wright2024完整精确高斯协方差 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 15 | true | P1 | H28 | v30.058 | 再生core对角和offdiag联合对象闭合 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
 | 16 | true | P1 | H14 | v30.044 | B2两步输出导向收缩 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |

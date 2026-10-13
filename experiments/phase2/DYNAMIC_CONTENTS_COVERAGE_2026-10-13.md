@@ -4,6 +4,10 @@
 
 页面使用动态 React 正文。搜索服务只返回 Loading，随后通过浏览器读取完整正文、所有资料链接及 Phase 2 / Phase 1 / Warm-up 三个配置标签。当前无额外资源 iframe；五个章节为 Start here、Tools & links、Dataset、Quick reference、Cite & organizers。Tools & links 共11个去重资源入口，Explorer出现两次。原HTML缓存为 `benchmark/data/dynamic_contents_20261013.html`，哈希与逐项状态见 `results/phase2/dynamic_contents_coverage_20261013.json`。缓存是观察快照，不代表未来页面不变。
 
+
+
+> **13:46执行更新**：以下网页读取时间和原始实验表保留为当时快照。后续严格RPC已验收5秒setup故障、125秒外部watchdog及失败后重启；residual采用官方式返回后门槛。最佳同候选local8有3网residual失败，严格RPC30公共网零失败，汇总adjusted4.480111e-9。线上#335677/#335678均已graded，最佳#335678为4.2937797168e-9。分片4 ID30–36双方成对验收进行中，不计入完成覆盖。M04两种已知期望代理含费用后负；M05完整小对象/独立W2、精确误差拆分和1024宽float64/float32单组件成本诊断完成，仍未完成比赛候选。详见[开发入口](../../DEVELOPMENT.md)与[M05诊断](M05_SMALL_PIPELINE_2026-10-13.md)。Mini100/Full1000和最终独立验收仍待。
+
 ## 页面资料入口逐项对照
 
 | 官方条目 | 实际覆盖 | 项目证据 | 缺口及优先级 |

@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 2, 'partial_diagnostic': 20, 'partial_derivation': 33, 'partial_negative': 15, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'partial_diagnostic': 21, 'partial_derivation': 33, 'partial_negative': 15, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -283,13 +283,24 @@ before：L29固定替代分布负结果
 
 after：原文核对后完整有限混合/低维条件规格和同预算采样对照
 
-状态：partial_mapping
+状态：partial_diagnostic
 
-诊断结论：Monchot2023 actualGMM/Wasserstein split+UT method and publicimplementation mapped; paperAlgorithm1/3.4.4 covariance-eigen truncation cannot justify removing identityinput dimensions. 2049fullnetworkpoints/component ~68.753GFLOPs analyticlowerbound, <=31components before allothercost; noportscore；算法分数前后不适用。
+诊断结论：Legal fullsmall pipeline/W2 contracts pass. 1024float64 onecomponent307371364362FLOPs (13.98% budget; ~7evaluations before overhead). Exact1D depth5->12 improves total via UT/split bias cancellation; perleaf acceptance not globalbound. No official suite score or fulladaptive highdim convergence; float32 samefunctionAST costhalves to153685684230 (~14eval), outputdriftMSE1.789e-13, notaccuracyreference；算法分数前后不适用。
 
 - [m05_source_audit_r01.json](../../results/phase2/m05_source_audit_r01.json)
 - [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
 - [m05_unsplit_relu_gate_r02.json](../../results/phase2/m05_unsplit_relu_gate_r02.json)
+- [m05_small_split_ut_r04.json](../../results/phase2/m05_small_split_ut_r04.json)
+- [m05_split_error_confirmation_r05.json](../../results/phase2/m05_split_error_confirmation_r05.json)
+- [M05_SMALL_PIPELINE_2026-10-13.md](../../experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md)
+- [m05_split_covariance_contract_r01.json](../../results/phase2/m05_split_covariance_contract_r01.json)
+- [m05_small_pipeline_manifest_r01.json](../../results/phase2/m05_small_pipeline_manifest_r01.json)
+- [m05_component_cost_scaling_r06.json](../../results/phase2/m05_component_cost_scaling_r06.json)
+- [m05_w2_independent_contract_r01.json](../../results/phase2/m05_w2_independent_contract_r01.json)
+- [m05_highwidth_component_cost_r07.json](../../results/phase2/m05_highwidth_component_cost_r07.json)
+- [m05_exact_cap_depth_ablation_r08.json](../../results/phase2/m05_exact_cap_depth_ablation_r08.json)
+- [m05_float32_component_ablation_r09.json](../../results/phase2/m05_float32_component_ablation_r09.json)
+- [m05_float32_component_ablation_r10.json](../../results/phase2/m05_float32_component_ablation_r10.json)
 
 ### paper.M02.r01 M02 Wright2024完整精确高斯协方差
 
