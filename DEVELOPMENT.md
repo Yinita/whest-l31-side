@@ -1,10 +1,14 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13 20:15 CST：R60同失败输入隔离运行25.86秒通过，compute25.05/序列化.015/Volumecommit.791秒；原超时根因仍未证实。独立AST核验仅归档边界变化、数学与fit/eval完全一致。R61已按新身份启动PID1713590，逐文件核验复用原815成功＋R60补齐1条，不重跑旧训练；完成layer8 held24后接续9..14，compute与归档解耦。原失败保留，不提前生成完整模型；最佳/阶段阈值不变。
+
+2026-10-13 20:10 CST：R54在第8层一项cloudcapture达到300秒超时，原协议停止；815成功/1失败全部保留，只有through7的35heads，没有full14模型，不生成R56或报告提分。R60新身份隔离诊断具体输入与compute/serialization/Volume阶段，禁止缺网拟合；R58真实joint方向诊断准备中。最佳V37bH18、阶段1阈值5.779e-10均未变。
+
 更新：2026-10-13 20:04 CST。最佳仍为 **V37bH18**，线上#335678 adjusted **4.293779716792071e-9**；65公共网严格RPC零失败，adjusted4.459611165100404e-9/raw2.1926280100960693e-8。阶段1目标 **冻结Mini8 adjusted <5.779e-10**，并要求独立未见网络成对至少十倍、零失败及严格资源通过；尚未达标。
 
 最新已完成 r49：固定local26模型新8网无真值完整递推，raw2.324412918841486e-8→2.330233565377604e-8（+0.25%），4/8逐网改善、零失败，否决。r38/r39/r41/r42/r49的静态/teacher-forced矩预测改善没有形成完整闭环收益，禁止扫λ/scale/layers或重复上传。r47 TRAIN24四diag oracle约4.97倍仅是目标依赖诊断，不计候选成绩。
 
-当前 P0：r54真正逐层on-policy固定14层训练已于19:56运行PID1699263，最大96CPU worker，fixed26/λ.01，各foldprefix仅TRAIN18拟合；r55最终输出26feature固定网络CV仅−0.40%、15/24wins、CI含1，未过信号门槛，关闭。r51新6与旧26跨容器轨迹拼接门禁未过（14/24通过），不拼接、不fit、不重复oracle24。组件成本/正确性不等于实际提分；只有可靠完整raw收益才进入严格RPC/冻结Mini8。原reference、2**41预算、120/.4/5秒、线程数、工具版本保持冻结。
+当前 P0：r54真正逐层on-policy固定14层训练于19:56启动PID1699263，20:09因一项cloud300s超时停止，最大96CPU worker，fixed26/λ.01，各foldprefix仅TRAIN18拟合；r55最终输出26feature固定网络CV仅−0.40%、15/24wins、CI含1，未过信号门槛，关闭。r51新6与旧26跨容器轨迹拼接门禁未过（14/24通过），不拼接、不fit、不重复oracle24。组件成本/正确性不等于实际提分；只有可靠完整raw收益才进入严格RPC/冻结Mini8。原reference、2**41预算、120/.4/5秒、线程数、工具版本保持冻结。
 
 - [逐版本before/after与失败](experiments/phase2/TENFOLD_PROGRESS_20261013.md)
 - [研究日志与历史检查点](experiments/phase2/RESEARCH_LOG.md)

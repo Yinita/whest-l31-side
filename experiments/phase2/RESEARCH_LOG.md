@@ -1203,3 +1203,13 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 PID1699263/startticks3047507确认仍存活，immutable源SHA1321d9713e9f00538092e03c2019beb4bfc161bf97dab09af6632ca9afe408dd不改。已完成layer6（cloud layer2..6共600次；layer1复用原trace，不计cloud）。机器状态旧360数字是错误累计，现改为真实journal成功/失败/返回数，避免重复计量。layer6 held物理head/H18 μ/var/K3/K4比值.989722/.956384/.935875/.655349，floor μ205/var355；只是矩预测指标，不是finalraw/adjusted。完整14层后，无论局部CV强弱都执行一次已预定actual合法候选新8网R57；只有完整可靠raw收益才扩严格RPC。R57增加idx768同worker H18 A→B→candidate数值对照，before始终A，不因结果调参数。现有strict runner已具有外部5秒setup与measuredelapsed硬门禁，计划纠正为沿用它，不修改正确runner。
 
 项目报告顶部过时快照原文移至REPORT_CHECKPOINTS_20261013_2004.md，入口只展示当前状态。阶段1/5.779e-10/冻结基线不变，无新线上提交。
+
+
+### 2026-10-13 20:10 CST — R54 保留第8层基础设施失败，继续定位
+
+真实300s FunctionTimeoutError触发，taskinput in-01M4TJB9JETS38A1MDV0HXWB3W:1791893022287-0，UTC12:08:58 cloudtimeout、12:08:59本地原协议raise。第8层96TRAIN只有95success，唯一未返回由输入集合差推出full24 idx320；original816journal=815success/1failure。此前35heads through7冻结；没有full14/completionmodel，不能缺网拟合或生成候选。cloud app stopping/containerlist空的只读证据由alternative保存，timeout卡在compute还是Volumecommit尚未证明。下一R60新身份同prefix7/weights隔离一次，增加阶段timing并同300s，不改数学机制；只读检查原rawVolume是否存在完整failedinput payload，后续复用须真实hash/shape/prefix边界核验，原失败不能抹除。R57/R59必须等完整模型再执行。Git3476779已同步remote。
+
+
+### 2026-10-13 20:15 CST — R60成功并启动R61新身份基础设施接续
+
+R60只隔离原full24 idx320 layer8/prefix7，sameCPU1/16GiB/300s，实际25.85893秒成功：compute25.0466、serialization.0152、Volumecommit.7914秒，root AST去除日志与归档identity后等同原worker；payloadb8af2211..和prefix431cb268..哈希核验通过。原timeout根因仍未知，原failedpayloadVolume不存在，不伪称原R54成功。R61 PID1713590/源50ef9636..，新身份唯一基础设施变化computeonlyworker与每wave单独archive；原samefrozenmath/fit_head/eval_current AST严格一致。prelaunch逐815成功+R60payload ID/layer/hash/finite/tailfeatures同states/scales通过，原through7头prefixhashchain全审。复用816validcapture，只运行layer8held24和layer9..14的720新capture，共744新任务；末模型真实origin由R62新wrapper核验815+1+744=1560unique。所有原失败继续保留。Root静态审计绑定外部reuse与failedboundaryreportSHA；未完成前R56/R57/R59不启动。

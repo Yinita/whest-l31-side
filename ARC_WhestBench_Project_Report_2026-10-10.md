@@ -1,8 +1,12 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
+2026-10-13 20:15 CST：R60同失败输入隔离运行25.86秒通过，compute25.05/序列化.015/Volumecommit.791秒；原超时根因仍未证实。独立AST核验仅归档边界变化、数学与fit/eval完全一致。R61已按新身份启动PID1713590，逐文件核验复用原815成功＋R60补齐1条，不重跑旧训练；完成layer8 held24后接续9..14，compute与归档解耦。原失败保留，不提前生成完整模型；最佳/阶段阈值不变。
+
+2026-10-13 20:10 CST：R54在第8层一项cloudcapture达到300秒超时，原协议停止；815成功/1失败全部保留，只有through7的35heads，没有full14模型，不生成R56或报告提分。R60新身份隔离诊断具体输入与compute/serialization/Volume阶段，禁止缺网拟合；R58真实joint方向诊断准备中。最佳V37bH18、阶段1阈值5.779e-10均未变。
+
 2026-10-13 20:04 CST：**十倍目标尚未达到，最佳仍为 V37bH18**，线上 #335678 adjusted **4.293779716792071e-9**。公共65网严格RPC零失败，adjusted4.459611165100404e-9；阶段1仍要求原冻结Mini8 adjusted<5.779e-10、独立未见网络成对至少十倍及原资源验收。
 
-最新完整闭环r49 raw +0.2504%，否决；r55最终输出26特征网络CV仅−0.3987%、置信区间含1，关闭。r51跨容器26+6特征拼接门禁失败，不拟合。当前r54固定26特征/λ.01真正逐层on-policy训练正在运行，四fold的prefix只用本fold TRAIN18拟合；14层训练结束后冻结合法R56候选，在首次新8网idx768..880完整递推R57。局部矩CV、oracle诊断和组件降费均不当作最终分数。
+最新完整闭环r49 raw +0.2504%，否决；r55最终输出26特征网络CV仅−0.3987%、置信区间含1，关闭。r51跨容器26+6特征拼接门禁失败，不拟合。当前r54固定26特征/λ.01真正逐层on-policy训练已因第8层单cloud超时停止，等待新身份基础设施诊断，四fold的prefix只用本fold TRAIN18拟合；14层训练结束后冻结合法R56候选，在首次新8网idx768..880完整递推R57。局部矩CV、oracle诊断和组件降费均不当作最终分数。
 
 [当前开发入口](DEVELOPMENT.md) · [版本before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md) · [研究日志](experiments/phase2/RESEARCH_LOG.md) · [本次顶部历史快照](experiments/phase2/REPORT_CHECKPOINTS_20261013_2004.md)。以下原调研正文保留来源与证据标记。
 
