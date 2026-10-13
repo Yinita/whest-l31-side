@@ -10,23 +10,39 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "frozen shard05 public preparation",
+    "key": "frozen shard05 paired workflow",
     "status": "running",
-    "pid": 741152,
-    "pid_start_ticks": "885696",
-    "session_id": 35335,
-    "started_at_host": "2026-10-13 13:55:50",
+    "pid": 762565,
+    "pid_start_ticks": "914847",
+    "session_id": 38651,
+    "started_at_host": "2026-10-13 14:00:42",
     "command": [
       "uv",
       "run",
       "--frozen",
       "python",
-      "benchmark/prepare_public.py",
-      "--shard",
-      "5"
+      "benchmark/run_frozen_public_pair.py",
+      "--cohort",
+      "frozen_public_shard05",
+      "--run-id",
+      "r01"
     ],
-    "log": "results/phase2/mini_shard05_prepare_r01.log",
-    "next": "after SHA verified export actual rowcount and run V29/best strictRPC serial"
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard05_r01.json",
+    "lock": "results/phase2/frozen_pair_frozen_public_shard05.lock",
+    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05.json",
+    "dataset": "benchmark/data/mini_shard05",
+    "n_mlps": 7,
+    "network_ids": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "phase": "inputs",
+    "next": "pipeline exports ->V29predict/score ->bestpredict/score ->pairedcompare automatically; aftercomplete aggregate37+7 andupdate docs/state; never duplicate startup"
   },
   "next_experiment": {
     "key": "publicMini further expansion",
@@ -34,7 +50,7 @@
     "scope": "completefrozencohortfirst; preserveindependentnetwork/refgates"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T05:56:41.186411+00:00",
+  "updated_at_utc": "2026-10-13T06:00:59.002946+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46462,28 +46478,23 @@
     "stage_accepted": false
   },
   "previous_active_checkpoint": {
-    "key": "M05 fixed officialnetwork finalmean gate",
-    "status": "completed_negative_finaloutput_only",
-    "pid": 708029,
-    "pid_start_ticks": "838837",
-    "session_id": 33958,
-    "started_at_host": "2026-10-13 13:48:02",
-    "report": "results/phase2/m05_official_network_gate_r11.json",
+    "key": "frozen shard05 public preparation",
+    "status": "completed_preparation",
+    "pid": 741152,
+    "pid_start_ticks": "885696",
+    "session_id": 35335,
+    "started_at_host": "2026-10-13 13:55:50",
     "command": [
       "uv",
       "run",
       "--frozen",
       "python",
-      "experiments/phase2/m05_official_network_gate.py",
-      "--weights",
-      "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/mlp_0.npz",
-      "--dataset",
-      "benchmark/data/mini_first8",
-      "--output",
-      "results/phase2/m05_official_network_gate_r11.json"
+      "benchmark/prepare_public.py",
+      "--shard",
+      "5"
     ],
-    "next": "aftercomplete resume frozenbest shard04 strictRPC serial",
-    "no_adjusted_score": true
+    "log": "results/phase2/mini_shard05_prepare_r01.log",
+    "next": "after SHA verified export actual rowcount and run V29/best strictRPC serial"
   },
   "latest_v38_resource_candidate": {
     "key": "V38-S4-H18 local8",
