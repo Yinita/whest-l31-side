@@ -2217,3 +2217,15 @@ SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469，仅替换r
 同原network0 strict零失败：parent raw2.228117956804e-8→candidate2.273770505212e-8（+2.04893%）；adjusted4.871416049362e-9→1.968337971666e-8（+304.0587%，4.04059倍）。严格FLOPs/时间/残差/内存逐网见`results/phase2/tenfold_joint_trace_d4_r37_samecycle_comparison.json`。相比r34raw4.779058713211e-7明显恢复：sameinput targetfree第二层deltaRMS9.80e-5→5.11e-6，最终deltaRMS约6.6e-4→1.66e-5；证据`tenfold_diagonal_joint_targetfree_layerdiff_r01.json`。这解释了一种状态不一致，但没有超越parent，不能将修错恢复说成自身提分。停止CP4/D4projection邻近候选、降费、rank/layer/scale扫描，不扩量、不上传。
 
 下一P0为真正不同的jointstate rollout校正pilot：公开独立随机He网络corpus14048，实际shard00 idx0,16,…2032；前32row固定前24train/后8validation。仅用离线独立网络高精度MC目标训练，禁止Mini8或公共比赛reference作训练，网络划分与工具/数据哈希预先冻结。先验证torchseed生成与首层解析均值/MCnoise匹配，再捕获原H18完整actualpost μ/K2/K3/K4，固定理论features/一项ridge模型；后续闭环注入必须同步Cdiag、ordinaryM出生、G和所有centering，不能在未校正状态上teacher-force。云pilot不是受测候选/最终holdout，若失败/噪声/资源门槛不过原样保留；不保证十倍可行。阶段1阈值未改，最佳仍V37bH18。
+
+## r38/r39 全闭环已完成：否决线性联合模型
+
+2026-10-13 19:14 CST，完整32baseline、三个paired8closed模式均零数值失败；原reference/权重配对hash不变。此为N1e8独立corpus诊断，非比赛adjusted/资源验收；首轮32SIGKILL另保留。
+
+|版本/机制|raw before|raw after|变化|结论|
+|---|---:|---:|---:|---|
+|mean_and_varfloor|2.267771679777e-08|2.393295327818e-08|+5.5351%|否决，0/8失败|
+|four_diag|2.267771679777e-08|2.708309470173e-08|+19.4260%|否决，0/8失败|
+|exact_mean|2.267771679777e-08|2.392908622113e-08|+5.5181%|否决，0/8失败|
+
+不扩原Mini8、不线上上传、不扫λ/scale。模型48909c1ab79be77b30699dd1b66385a4a50d048718cc31f70a7fd1f604a795d0仅训练24网；当前共同线性模型对高阶误差没有迁移收益。训练24内另固定degree2交互、λ.01、4个18train/6held网络fold，quad/linear ratio μ.98816/var.97669/K3.87129/K4.76683，后两通过预设门槛；这只CV预测性，不闭环提分。冻结新模型SHA0610032b01bb3538a5ca6bea09079c92601222e7155775d1ea4ff0b292231e3b，接下来新8网idx512..624 step16闭环。不把已用384..496验证网当最终未见holdout。最佳仍V37bH18，十倍未达。

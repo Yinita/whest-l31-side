@@ -1,5 +1,9 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13 19:16最新：独立corpus24train/8held的完整闭环已完成，线性mean-only raw+5.52%、joint4diag+19.43%，均0/8数值失败，否决；首轮4GiB32SIGKILL另保留。固定二次交互及perlayer机制通过train24网络CV，已冻结并启动新8网idx512..624完整闭环，尚无成绩。此为N1e8离线诊断，非Mini8/严格资源或十倍验收；最佳仍V37bH18。见[本轮before/after](results/phase2/corpus_joint_rollout_before_after_r38_r39.json)。
+
+2026-10-13 19:11：独立corpus32完整baseline零失败、首层解析/MC噪声ratio0.99324通过；24train固定22feature ridge已冻结，静态held8误差比mean0.9934/var0.9858/K3 1.1707/K4 1.2568，无强信号。完整closed8的mean+variancefloor、formal4diag及真正K1only r39分别运行，未提前报提分。首版4GiB 32SIGKILL失败全部保留，r02是16GiB离线诊断，不比赛资源验收。最佳及十倍目标不变。
+
 2026-10-13 19:00最新：r25/r34/r37真实四阶残差历史及r29完整pairgrade4严格单网均零失败，全部adjusted未改善，否决。r37纠正总迹后消除灾难退化，但raw仍+2.05%；停止该分支。下一P0为独立corpus网络的联合状态闭环训练pilot。十倍目标5.779e-10未达，线上最佳V37bH18未变。见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 

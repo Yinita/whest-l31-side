@@ -1,0 +1,64 @@
+{
+  "version": "tenfold-joint-state-distribution-contract-r38",
+  "complete": true,
+  "source_sha256": "a0c18452071e02823efe4c181571db95ae6063280e4eed897da790d6ba7a486c",
+  "maxerrors": {
+    "shift_mean": 8.326672684688674e-17,
+    "shiftK2": 1.3877787807814457e-16,
+    "affineK2": 2.220446049250313e-16,
+    "shiftK3": 3.3306690738754696e-16,
+    "affineK3": 7.771561172376096e-16,
+    "shiftK4": 4.440892098500626e-16,
+    "affineK4": 7.216449660063518e-16,
+    "independentNoiseK1": 3.400058012914542e-16,
+    "independentNoiseK2": 1.457167719820518e-16,
+    "independentNoiseK3": 5.568462357885551e-16,
+    "independentNoiseK4": 4.544975507059235e-16,
+    "source3_affine": 8.881784197001252e-16,
+    "nextlinear_mean": 1.1102230246251565e-16,
+    "nextlinear_cov": 8.881784197001252e-16
+  },
+  "wrong_fixedraw_changedmean_cov_error": 0.1986868836037799,
+  "noisevariance": [
+    0.06090000000000001,
+    0.06010000000000001,
+    0.0741
+  ],
+  "noisecumulant3": [
+    0.017928000000000003,
+    -0.011664000000000006,
+    0.010596000000000003
+  ],
+  "noisecumulant4": [
+    0.004204139999999997,
+    -0.004511060000000001,
+    -0.005611859999999996
+  ],
+  "noiseorder2moment_determinants": [
+    0.00038635199999999996,
+    2.6999999999999897e-05,
+    0.0002856240000000001
+  ],
+  "noiseorder2moment_min_eigenvalues": [
+    0.0057701262965066304,
+    0.00043132886627769273,
+    0.00375305388186013
+  ],
+  "state_semantics": {
+    "shift": "K1+=b; allcentralK>=2 unchanged incl mixed; rawpowers must transform only if recomputing moments",
+    "affine": "K1=aK1+b; everyjointcentral\u03bai..*=product(a_indices), fullC/sourcelegs scaling required",
+    "independentnoise": "allcentral\u03ba addnoise; independentcoordinate noise changesonlydiagonal\u03ba>=2; noise\u03ba2nonnegative+momentPSD essential"
+  },
+  "birth_ledger": {
+    "postshift_after_center": "centralK21/K22 stayoriginal; keep original raw pk1/w12 for originalReLU birth calculation, sourcecentraldistribution unchanged",
+    "affine": "postprocessedraw/powerreconstruction or scale finalfullyassembledC/K3/K4history, notchange4diagonly",
+    "independentnoise": "adddiagonalC/K3/K4birth channels; ordinaryM residual must own newK3diag once; trueK4history or regenproxy approximation isexplicit"
+  },
+  "limits": [
+    "finite distribution algebra only, no benchmark truth",
+    "necessary marginalmomentPSD doesnotprove arbitrarymixedcumulants jointlyvalid",
+    "independentcoordinate noise restricts \u03b4variance>=0; arbitraryfourridgechannels notequivalent",
+    "shift canmakenonnegativeReLUoutputnegative; requireb>=0 or perneuronessinfbound foractualnonnegativesupport"
+  ],
+  "no_benchmark_truth": true
+}

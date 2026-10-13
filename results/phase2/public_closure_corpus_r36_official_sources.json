@@ -1,0 +1,104 @@
+{
+  "created_at_utc": "2026-10-13T10:54:41.099374+00:00",
+  "sources": [
+    {
+      "url": "https://discourse.aicrowd.com/t/18197.json",
+      "title": "Phase 2 of the ARC White-Box Estimation Challenge is live 🚀",
+      "body_sha256": "f2b6bf7db04f6bc4583246df54575de58dd019a45a3e3b9b8050edff4bacb75d",
+      "posts": [
+        {
+          "id": 35476,
+          "username": "mohanty",
+          "created_at": "2026-08-23T23:49:41.778Z",
+          "updated_at": "2026-08-23T23:50:31.504Z",
+          "post_number": 1,
+          "staff": true,
+          "text": " Submissions close on  17 October 2026 at 23:59 UTC . \n Phase 2 changes the rules that govern what your submission code is permitted to do. Code that was allowed in Phase 1 can result in disqualification in Phase 2. Please read  Code restrictions in Phase 2  section below before you submit. \n   Summary of changes \n \n \n \n \n Item \n Phase 1 \n Phase 2 \n \n \n \n \n MLP dimensions \n 256 wide, 32 deep \n 1,024 wide, 16 deep \n \n \n FLOP budget per MLP \n 2.72 × 10¹¹ \n 2⁴¹ (approximately 2.199 × 10¹²) \n \n \n Wall-clock cap per MLP \n 60 seconds \n 120 seconds \n \n \n Computation outside flopscope \n Charged against the budget \n Prohibited \n \n \n Residual wall time \n Priced at the published rate \n Capped at 0.4 seconds \n \n \n Submissions per team per day \n 50 \n 10 \n \n \n Solution process memory \n Not separately capped \n 8 GB \n \n \n Dataset revision \n   v1-phase1   \n   v2-phase2   \n \n \n \n    Accept the updated rules \n The official rules were updated for Phase 2. \nBefore you can make any submissions, you must accept the updated Rules of the challenge. \n To review and accept the rules, go to the  official rules  page. \n   Code restrictions in Phase 2 \n The competition measures the accuracy a solution achieves for a fixed amount of computation. That measurement is meaningful only if computation is counted the same way for every participant, and flopscope performs that counting. \n In Phase 2, all computation  must be performed through flopscope . Your solution’s Python code determines which flopscope operations to call. A submission consists of Python source and data files. At evaluation time, a solution may use only the following: \n \n The Python interpreter provided by the grader \n The flopscope client API \n Pure-Python standard library modules, for control flow and bookkeeping \n \n  Warning:  The following are prohibited in Phase 2. This list is not exhaustive. Each entry describes a way of performing computation that flopscope does not count, and any other mechanism having that effect is equally prohibited. \n \n Bundled or vendored numpy, scipy, or any BLAS or LAPACK implementation \n Compiled kernels of any kind, however delivered, including wheels, shared objects, static binaries, and code generated at runtime \n ctypes, cffi, or any other foreign-function mechanism \n asyncio, threads, subprocesses, multiprocessing, and threading runtimes \n Computation of any kind performed while a flopscope operation is in flight \n Modifying, monkeypatching, or otherwise interfering with the flopscope client, its transport, or its accounting \n \n Automated checks run on every submission. Anything they flag maybe directly invalidated or go through further agent-assisted validation, and anything still unresolved after that is reviewed by a person. Review continues after grading, so a submission can be scored and listed on the leaderboard while its review is still open. Any submission that does not conform to these rules is invalidated once identified. \n If you are unsure whether a technique falls inside the rule, ask at  arc-whestbench@aicrowd.com  before you submit. \n Data files remain permitted, including weights, lookup tables, and precomputed artifacts. For how to package and load them, see  Ship weights and multi-file submissions  in the starter kit. Where the Sponsor considers that a bundled file is not genuinely data, the Sponsor may decline to treat it as data and may disqualify the submission. \n   How this differs from Phase 1 \n In Phase 1, a submission could call out to any other library, numerical backend, programming language, executable, or saved file. Computation performed outside flopscope was charged against the budget through the residual wall-time conversion. \n That permission does not apply in Phase 2. Residual pricing is removed: the conversion rate λ is 0.0, and residual wall time is capped at 0.4 seconds per MLP instead. \nEffective cost is therefore equal to metered FLOPs: \n  C_m = F_m\n  \n Residual time in Phase 2 exists so that your Python code can loop, index, maintain bookkeeping, and determine which flopscope operations to call next. An MLP whose residual time exceeds the cap receives the zero-prediction fallback. It is important to note that this cap is a plumbing allowance, not free compute. It is not an unpriced 0.4 seconds in which to do arithmetic the meter cannot see. Performing meaningful computation in residual time is a breach of the rules and is still disqualifiable, whether or not you stay under the cap. Submissions with unusual residual wall-time usage receive additional scrutiny for conformance to the rules. \n If your Phase 1 estimator depends on numpy, a compiled kernel, or a worker thread, it is not eligible in Phase 2. Port it to flopscope operations before you submit. \n   Model architecture \n The best-performing methods in Phase 1 tended to be based on variations of sampling. We have made the network wider and shallower for Phase 2, to make cumulant-propagation-style methods more competitive. Nevertheless, 16 layers is deep enough that we expect handling depth-dependence well to be a challenge. \n  Phase 1:    256 wide, 32 deep     2.1 M parameters\nPhase 2:  1,024 wide, 16 deep    16.8 M parameters\n  \n The MLPs are 4 times wider, half as deep, and contain 8 times as many parameters. The FLOP budget increases by approximately the same factor, and the wall-clock cap doubles. \n   Submission limits \n  The daily submission cap drops from 50 per team per day in Phase 1 to 10 per team per day  in Phase 2. Every submission counts against the same shared team budget, regardless of which team member sent it. \n  For the first week of Phase 2, failed submissions do not count against the cap , up to 10 additional submissions per day. Use them to get your packaging and submission pipeline working against the Phase 2 evaluator before failures start costing you attempts. \n   Required software versions \n Update all three components before you submit. Do not submit against Phase 1 versions. \n  pip install --upgrade \"flopscope>=0.12.0\" \"whestbench>=0.16.0\"\n  \n Pull the latest  starter kit . It contains the Phase 2 estimator contract, the per-MLP FLOP budget, and the submission packaging format. \n   Dataset \n Phase 2 uses the  v2-phase2  revision of the  public dataset on Hugging Face : \n  load_dataset(\"aicrowd/arc-whestbench-public-2026\", revision=\"v2-phase2\")\n  \n Specify the revision explicitly. A cached  v1-phase1  copy contains the Phase 1 architecture and is not valid for this round. \n   Key dates \n \n \n \n \n Milestone \n Date and time \n \n \n \n \n Registration and team freeze deadline \n 2 October 2026, 23:59 UTC \n \n \n Phase 2 submissions close \n 17 October 2026, 23:59 UTC \n \n \n Algorithmic-contribution write-up deadline \n 24 October 2026, 23:59 UTC \n \n \n \n  Phase 2 carries $100,000 in prizes, in addition to the $50,000 in Phase 1. \n   Phase 1 status \n The Phase 1 private re-evaluations are in progress. We will report the Phase 1 results, the community contribution prizes, and the algorithmic contribution prizes when they are decided. \n   Send us feedback \n Feedback may also count toward the community contribution prizes, which are individual cash awards typically in the range of $500 to $5,000 USD. \n \n  General feedback and discussion:  start a topic on the  challenge forum . \n  Rules questions, FLOP-mispricing reports, and residual-cap exceptions:  email  arc-whestbench@aicrowd.com . If you believe flopscope is mispricing an operation, report it rather than working around the accounting. Include a minimal snippet, the  flops_used  you expected, and the value you observed. \n  Reproducible bugs:  open an issue on  flopscope ,  whestbench , or the  starter kit . \n  Security issues:  email  arc-whestbench@aicrowd.com  privately rather than opening a public issue. \n ",
+          "links": [
+            "#p-35476-code-restrictions-in-phase-2-3",
+            "#p-35476-summary-of-changes-1",
+            "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/tree/v1-phase1",
+            "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/tree/v2-phase2",
+            "#p-35476-accept-the-updated-rules-2",
+            "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+            "#p-35476-code-restrictions-in-phase-2-3",
+            "mailto:arc-whestbench@aicrowd.com",
+            "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/how-to/ship-weights.md",
+            "#p-35476-how-this-differs-from-phase-1-4",
+            "#p-35476-model-architecture-5",
+            "#p-35476-submission-limits-6",
+            "#p-35476-required-software-versions-7",
+            "https://github.com/AIcrowd/whest-starterkit",
+            "#p-35476-dataset-8",
+            "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026",
+            "#p-35476-key-dates-9",
+            "#p-35476-phase-1-status-10",
+            "#p-35476-send-us-feedback-11",
+            "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/discussion",
+            "mailto:arc-whestbench@aicrowd.com",
+            "https://github.com/AIcrowd/flopscope/issues",
+            "https://github.com/AIcrowd/whestbench/issues",
+            "https://github.com/AIcrowd/whest-starterkit/issues",
+            "mailto:arc-whestbench@aicrowd.com"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://discourse.aicrowd.com/t/18040.json",
+      "title": "How to use pytorch in this challenge?",
+      "body_sha256": "107ca0670af3ede885da03517b67d214c4fd46956149d1c795007dabb845ec25",
+      "posts": [
+        {
+          "id": 35117,
+          "username": "mohanty",
+          "created_at": "2026-06-23T18:54:15.550Z",
+          "updated_at": "2026-06-23T18:54:15.550Z",
+          "post_number": 3,
+          "staff": true,
+          "text": " Hi  @ngcferreira , \n  torch  (and  numpy / scipy ) can’t be imported in the grader, and  requirements.txt  isn’t installed there. This is intentional: estimators run in a sandbox exposing only  flopscope  ( flopscope.numpy as fnp ), the  whestbench  API ( BaseEstimator  /  MLP  /  SetupContext ), and the Python standard library, so all array math is FLOP-counted through flopscope — which is also why pinning  numpy  made no difference. \n Use PyTorch as an offline tool instead: precompute locally, save a pickle-free  .npz , ship it in a folder submission ( whest submit --estimator . ), and load it in  setup()  with  fnp.load(str(path))  (0 FLOPs). \n Both are documented in the starter kit, with a worked example: \n \n  Ship weights & multi-file submissions  \n  FAQ - using other packages  \n \n (We’ve also corrected the docs and the CLI hint that previously implied  requirements.txt  installed dependencies - thanks for flagging it.) \n Best, \nMohanty ",
+          "links": [
+            "/u/ngcferreira",
+            "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/how-to/ship-weights.md",
+            "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/troubleshooting/faq.md"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://discourse.aicrowd.com/t/18078.json",
+      "title": "📹 Townhall Summary & Recording",
+      "body_sha256": "89196187be83a47e589cf7cee0927b698bc54381d6198c02695c7dbeaddb6b0d",
+      "posts": [
+        {
+          "id": 35208,
+          "username": "aicrowd_team",
+          "created_at": "2026-07-17T10:57:30.509Z",
+          "updated_at": "2026-09-07T14:03:20.308Z",
+          "post_number": 1,
+          "staff": true,
+          "text": " \n  Superseded — updated 7 September 2026.  The schedule has changed since this post. The dates below were correct when published and are kept for the record. For current dates see the  Key dates and times  table in the  Official Rules , or the  Phase 2 launch announcement . \n \n \n Hello all, \n Thank you for joining the ARC White-Box Estimation Challenge Townhall. Here’s a summary of what was covered: \n Key takeaways: \n \n Team formation and merging is open until the end of Phase 1. You can keep submitting throughout Phase 2, and any submission during that window can be designated as your final entry. The designation locks at the actual Phase 2 deadline. \n Scoring is based on  final-layer MSE only . Intermediate layer stats shown in the interface are for debugging, not scoring. \n To win a prize, you must  release your code under an  Open Source Initiative approved license  . Declining forfeits the prize to the next eligible team. Community contribution prize submissions are released regardless. \n LLM use is fully permitted and encouraged, but must be disclosed transparently, especially if a write-up or code was largely LLM-generated. \n Offline training on external Monte Carlo data (e.g. published MLP moment datasets) is within the rules and untracked, but is seen as less likely to earn the algorithmic contribution prize than a more theoretical/mechanistic approach. \n The private rerun evaluates designated entries on a  completely fresh set of MLPs . No public-split score carries over. \n The grading dashboard is expected to get updates: more decimal digits and a direct compute multiplier (C/B) display are planned. \n \n \n \n    You can watch the Town Hall recording  here . \n \n     \n The townhall also discussed the following points in more detail: \n  Prizes and Judging  \n \n Top prizes are based on MSE performance within the compute (flop) budget, with a modest discount if the full budget isn’t used. \n The  algorithmic contribution prize  is more discretionary. ARC will review roughly the top 10 submissions (possibly more), looking for meaningful mechanistic analysis that measurably improved the score, not just black-box sampling with minor enhancements. A PDF write-up is required (strongly recommended at minimum) to be eligible. \n \n  Rules and Logistics Q&A  \n \n  Grading stack reproducibility:  FlopScope will receive further releases. If a change is meaningful enough to warrant re-evaluation, affected submissions will be re-evaluated. Final decisions will be based on the private evaluation round, run on a fixed version of FlopScope with full reproducibility details published. \n  Non-determinism:  Some non-determinism is attributed to “residual wall time,” but top submissions have optimized around it. The team will work to reduce this further before final prize decisions. \n  Offline training:  Training estimators offline on external Monte Carlo data (including publicly shared MLP moment datasets) is within the rules. There’s no way to track offline compute, so it doesn’t count toward anything computationally, but a more theoretical/mechanistic approach is seen as more likely to earn the algorithmic contribution prize than a purely learned/black-box estimator. \n  Private rerun scoring:  The designated final entry is re-evaluated on a fully fresh set of MLPs. No public-split score carries over. Exact evaluation details (e.g. number of MLPs) will be finalized closer to the time, after reviewing top submissions more closely. \n  Why final-layer MSE only:  Using only the final layer keeps the problem well-defined (estimating the output at one specific depth) rather than combining many separate problems (estimating every intermediate depth). Intermediate-layer data shown in the interface is for diagnostics only and isn’t part of scoring. \n \n  Technical Discussion  \n \n  Low-rank idea:  As network depth increases, the effective rank of the activation covariance matrix decreases (eigenvalues become more skewed). ARC is internally exploring spending more compute on higher-variance directions rather than tracking every direction equally, as a way to make cumulant propagation scale better with depth. \n  Cumulant propagation vs. quasi-Monte Carlo:  The expectation is that cumulant propagation methods will probably beat quasi-Monte Carlo in the long run, with plans to build a strong quasi-Monte Carlo baseline to test whether a correctly implemented cumulant approach can outperform it. The low-rank refinement above is seen as the most promising direction, with less focus on exploring the space of Monte Carlo approaches since that’s considered less interesting from a research perspective. \n  Higher-order Edgeworth series divergence:  Pushing cumulant propagation to higher-order moments improves results initially but eventually diverges. ARC has explored  Borel resummation  as a possible fix but hasn’t fully solved it. They believe this issue matters more for very narrow networks (e.g. width 16) than for the current challenge parameters (width 256), where it shouldn’t be a blocker. \n  Sparse matrix multiplication accounting:  A forum question noted that flopscope doesn’t currently provided sparsity related cost savings, which are realistic on current hardware. (e.g. Nvidia GPU sparsity acceleration). ARC said this is worth considering for the cost model, without committing to a timeline. \n \n Thank you again for your participation. \n All the best, \nTeam AIcrowd ",
+          "links": [
+            "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+            "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+            "https://opensource.org/licenses",
+            "https://youtu.be/pvCgbUJ-nTo?si=9VwTI10xG57C49SV",
+            "https://youtu.be/pvCgbUJ-nTo?si=HsWhEBKb91PD85cR"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://api.github.com/repos/keenanpepper/whest",
+      "status": 404,
+      "body_sha256": "4f50e254a719a6b1b06b529bdaa08980e4acf0878aad0090cba7771f6ebdf0b9",
+      "body": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}"
+    },
+    {
+      "url": "https://api.github.com/repos/keenanpepper/whest/git/trees/main?recursive=1",
+      "status": 404,
+      "body_sha256": "8c177a38af7c68d455e9554231def022cc2bcf62c1d3dab3626aaf5c319a5e04",
+      "body": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/trees#get-a-tree\",\"status\":\"404\"}"
+    }
+  ]
+}
