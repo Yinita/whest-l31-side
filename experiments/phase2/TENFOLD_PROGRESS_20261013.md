@@ -201,3 +201,8 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 ### r55 final-only真实网络CV负；只留下on-policy主线
 
 2026-10-13 19:52 CST：R52r02完整24capture零运行失败，原/新跨容器prediction一致性门禁1e-6与1e-5均失败（7网最大2.01e-5..3.12e-5）。source/weight/tools/meteredFLOPs固定且同capture26ownmean与final精确一致；R55另版本仅samecapture内CV，不声称旧baselineparity。固定26linear/.01/4blocked TRAINCV raw **2.211924114425658e-8→2.2031045516742192e-8（−0.398728%）**，15/24wins、pairedbootstrap95 ratio[.99205171,1.00030006]，预先固定<.90/16wins/upper<1全部未过，不fitfullmodel、不held/strict/上传。最大跨capture residualMSE5.9373e-11、raw漂移.6374%、漂移RMS/旧误差RMS最大5.027%；数值噪声与MC参考噪声保留。最佳及阶段阈值不变。唯一P0继续r54真正on-policy逐层TRAINprefix（不oracle），fixed26/λ.01。
+
+
+### r54真正on-policy固定14层已运行
+
+2026-10-13 19:56 CST，实际PID1699263/startticks见state，immutableSHA1321d9713e9f00538092e03c2019beb4bfc161bf97dab09af6632ca9afe408dd。首launcher1698800迅速消失、log0字节/OUT未创建，原log保留，确认无活动后r02launcher接续同源，未重复实验。full24+4foldTRAIN18/held6，layer1复用同trace baseline无cloud，2..14 learnedprefix实际capture，最大96worker/1CPU/16GiB，rawVolume hashcommit/local保留150MiB。合同r02八actual小网络+floor/inheriteddelta2例通过；默认NO_CORR=True，deltaNone，layer1总meanfp32-copy与K1copy默认路径相同，非默认rider路径另受合同。启动前TRAINnoise诊断μ残差/nominalnoise layer1~1.03→14~23.55，var1~1.03→14~97.33；early3只合同/finite安全检查，不用MCnoise占主导的earlyaccuracy截断late机制。模型不调参、不选层，完整14固定一次后fresh全推理/RPC才可判断提分。初估15–35分钟由实际测时更新，非保证。Stage1阈值及最佳不变，无新比赛上传。

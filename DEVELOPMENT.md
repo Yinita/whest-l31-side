@@ -4,7 +4,7 @@
 
 最新已完成 r49：固定local26模型新8网无真值完整递推，raw2.324412918841486e-8→2.330233565377604e-8（+0.25%），4/8逐网改善、零失败，否决。r38/r39/r41/r42/r49的静态/teacher-forced矩预测改善没有形成完整闭环收益，禁止扫λ/scale/layers或重复上传。r47 TRAIN24四diag oracle约4.97倍仅是目标依赖诊断，不计候选成绩。
 
-当前 P0：r54真正逐层on-policy训练，fixed26/λ.01，各foldprefix仅TRAIN18拟合；r55最终输出26feature固定网络CV仅−0.40%、15/24wins、CI含1，未过信号门槛，关闭。r51新6与旧26跨容器轨迹拼接门禁未过（14/24通过），不拼接、不fit、不重复oracle24。组件成本/正确性不等于实际提分；只有可靠完整raw收益才进入严格RPC/冻结Mini8。原reference、2**41预算、120/.4/5秒、线程数、工具版本保持冻结。
+当前 P0：r54真正逐层on-policy固定14层训练已于19:56运行PID1699263，最大96CPU worker，fixed26/λ.01，各foldprefix仅TRAIN18拟合；r55最终输出26feature固定网络CV仅−0.40%、15/24wins、CI含1，未过信号门槛，关闭。r51新6与旧26跨容器轨迹拼接门禁未过（14/24通过），不拼接、不fit、不重复oracle24。组件成本/正确性不等于实际提分；只有可靠完整raw收益才进入严格RPC/冻结Mini8。原reference、2**41预算、120/.4/5秒、线程数、工具版本保持冻结。
 
 - [逐版本before/after与失败](experiments/phase2/TENFOLD_PROGRESS_20261013.md)
 - [研究日志与历史检查点](experiments/phase2/RESEARCH_LOG.md)
