@@ -214,7 +214,9 @@ feedM = rowsum(((CZ1) ell1.T)*CP²)
 All14sources/fourfixedoutputs cost478,705,248 legalFLOPs afterconversion,
 538,910,752FLOPs includingdiagnosticsetup/conversion;wall.2447s. Every individual
 source/component matchesr22's independentlymaterializedM fullordinaryfunction
-within2e-12. NoH/M/n³ tensor is formed. Both scriptsruffcheckpass.
+within2e-12. NoH/M/n³ tensor is formed. Original executed sources have been retained verbatim as *_executed.py with
+report SHA identities. Current formatted r22/r23 sources pass ruff; the original
+executed versions contained I001/E702 style findings, which do not change results.
 
 These ordinaryM terms are alreadypresent inV29 and adding them toparentmean
 woulddoublecount. The relevant futurediagnostic is whether parent sourceage
@@ -222,3 +224,25 @@ projection or residualdiscard shifts these fullfunctional directions; only
 matchedH18state/MC/reference identities could quantify truebiasalignment.
 CachedV29state must not be paired silently withH18MCtrace. No arbitraryrank or
 scale wasselected, no newproductioncandidate/score claim fromr22/r23.
+
+
+## First-order non-Gaussian K3 history gain r24
+
+The parent transports represented K3 through Gaussian Phi, despite online
+D3/g4 marginal estimates. r24 tests the fixed first-order marginal Edgeworth
+expected ReLU derivative gain with all existing K3 legs and consistent newborn
+repeated-index subtraction. Formula and provenance are retained in
+[the candidate source notes](../../estimators/tenfold_nongaussian_k3_gain_r24/SOURCE.md).
+This is an experimental higher-grade gain product, not a missing official cap3
+term. Independent formal Hermite indicator integration, full CP transport and
+centering contracts pass; n32/n64 depth4 smokes are finite. Actual V29 layer14
+gain delta RMS .00130914623 and maxabs .00553651169 show a cheap nonzero change;
+no score or true-bias alignment follows from these contracts. Full strictRPC1
+screening is root-owned; no age/rank/scale ladder is prepared before its result.
+
+Actual candidate line-trace n32depth6 with and without confinement confirms
+all K3 gain sites and unchanged newborn/covariance raw-W paths; full represented
+CP slice comparison maxabs3.30e−7. No implementation error found. Root strictRPC1
+network0 result is negative: raw2.2659300213945244e−8 (+1.69704%) and
+adjusted4.9540952601586264e−9 (+1.69723%),480.781GFLOPs, wall44.84788s,
+residual.199365s,zero failures. Stop this mechanism without gain scaling sweeps.

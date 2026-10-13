@@ -1,0 +1,122 @@
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:879: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:880: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:896: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:896: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:897: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:900: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:901: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:1508: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:1509: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+{
+  "version": "tenfold.nongaussian.K3gain.r24",
+  "complete": true,
+  "candidate_sha256": "b37861ff6d0bd781d5fab4c31836bf29c63133fc2677e4f9a18bde97e465e23a",
+  "script_sha256": "211e0b7c2954faca658ca0a9c354cb03d308320b42e84094aa85ec3d09f7fdd6",
+  "fixed_theoretical_coefficients": {
+    "kappa3_w4": 0.16666666666666666,
+    "kappa4_w5": 0.041666666666666664
+  },
+  "formalHermitecontracts": [
+    {
+      "alpha": -2,
+      "sigma": 0.7,
+      "indicator_gain": 0.02394243245867878,
+      "Hermitedensity_quadrature_gain": 0.02394243245867906,
+      "error": 2.8102520310824275e-16,
+      "legal_flops": 126
+    },
+    {
+      "alpha": -0.3,
+      "sigma": 1.1,
+      "indicator_gain": 0.3780159915882881,
+      "Hermitedensity_quadrature_gain": 0.3780159915882891,
+      "error": 9.992007221626409e-16,
+      "legal_flops": 126
+    },
+    {
+      "alpha": 0,
+      "sigma": 1,
+      "indicator_gain": 0.49335096199330947,
+      "Hermitedensity_quadrature_gain": 0.49335096199331013,
+      "error": 6.661338147750939e-16,
+      "legal_flops": 126
+    },
+    {
+      "alpha": 1.5,
+      "sigma": 0.9,
+      "indicator_gain": 0.9323293480933693,
+      "Hermitedensity_quadrature_gain": 0.9323293480933675,
+      "error": 1.7763568394002505e-15,
+      "legal_flops": 126
+    }
+  ],
+  "tensor_transport_and_centering_contracts": [
+    {
+      "width": 4,
+      "CPgain_transport_max_error": 2.7755575615628914e-17,
+      "wrong_birth_subtraction_counterexample": 0.0061626843782933705
+    },
+    {
+      "width": 8,
+      "CPgain_transport_max_error": 1.1102230246251565e-16,
+      "wrong_birth_subtraction_counterexample": 0.011735044597815714
+    },
+    {
+      "width": 16,
+      "CPgain_transport_max_error": 1.3322676295501878e-15,
+      "wrong_birth_subtraction_counterexample": 0.0238396487465955
+    }
+  ],
+  "wholepredict_smoke": [
+    {
+      "width": 32,
+      "depth": 4,
+      "allfinite": true,
+      "wholepredict_legal_flops": 6275868
+    },
+    {
+      "width": 64,
+      "depth": 4,
+      "allfinite": true,
+      "wholepredict_legal_flops": 28048012
+    }
+  ],
+  "actual_cached_network0_layer14_gain": {
+    "capture_sha256": "97a14599fe8252608d0261674cc342d8cea216ffe65c70183ece4c4dff878b87",
+    "gaussian_gain_min": 1.2279066652354231e-13,
+    "gaussian_gain_max": 0.9999999999999638,
+    "corrected_gain_min": -2.6356797291243253e-05,
+    "corrected_gain_max": 1.0000296226065857,
+    "delta_rms": 0.001309146232112989,
+    "delta_max_abs": 0.005536511689955281,
+    "delta_mean": -3.920703328577035e-05,
+    "negative_gain_count": 82,
+    "above_one_gain_count": 93,
+    "legal_component_flops": 129024
+  },
+  "no_reference_or_target_access": true,
+  "raw_mse": null,
+  "adjusted_score": null,
+  "scope": "MarginalEdgeworthderivative foroldK3transport plusconsistentbirthsubtraction; no formalfullK3highergradeclosure orscore",
+  "limitations": [
+    "Gainproduct includeshighergradecrossproducts not officialbudget3terms",
+    "Inputmarginalg4/D3 retainparentproxies",
+    "No clipping/fittedscale; actualgainoutsiderange reported",
+    "Full1024strictresources andscore pending"
+  ]
+}

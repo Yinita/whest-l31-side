@@ -2178,3 +2178,9 @@ network0原reference严格RPC零失败：before raw2.228117956804e-8 / adjusted4
 before：H18冻结canonical自身prediction/gain，原reference与双流MC；after：r20独立target-free capture，对每个call自身状态归因。末层localinnovation4.41939e-9→4.43811e-9；K2缺口cross6.07788e-8→5.85025e-8，K3缺口6.52633e-5→6.51589e-5，K4缺口5.39773e-7→5.39747e-7。联合离线oracle残余不变。instrumentation漂移最大2.861e-6保留；原strict raw改善3.7406%而adjusted恶化114.03%不变。诊断完成，不是新候选、资源通过、独立泛化或十倍达标。停止r20rank/scale追扫。
 
 证据：[r24归因](../../results/phase2/tenfold_completed_state_attribution_r24.json)、[r20capture身份](../../results/phase2/tenfold_residual_remainder_r20_canonical_state_r01.json)。r22/r23真实全14来源fixed4outputM功能分解和精确收缩重组均targetfree合同通过，478,705,248FLOPs只表示组件；已parent表示的M不能双计为提分。
+
+## 非高斯三阶历史激活增益 r24：严格负结果
+
+唯一机制为旧K3来源期望ReLU导数Phi→Phi+D3(α²−1)φ/(6σ³)+g4(3α−α³)φ/(24σ⁴)，birth重复D3/D21扣除与历史gain一致，Gaussianbirth/covariancecarrier冻结；不裁gain、不拟合oracle。独立Hermiteindicator积分与CP/algebra合同通过，实际candidate接入审计另记录。
+
+network0原reference严格RPC零失败：before raw2.2281179568040e-08/adjusted4.8714160493623e-09；after raw2.2659300213945e-08/adjusted4.9540952601586e-09，分别+1.69704%/+1.69723%。FLOPs480781426807，wall44.847881s/residual0.199365116s，client293512KiB。SHA7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94。否决此fixedgainmechanism，不扫增益/κ3only、不扩量或上传，最佳与十倍阈值不变。下一项：paircost4完整grade一致闭合与真K4重复support持久history，先共享H18真实state合同/成本门槛。

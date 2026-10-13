@@ -1,0 +1,40 @@
+{
+  "version": "tenfold.nonGaussianK3gain.r24",
+  "status": "completed",
+  "candidate": "estimators/tenfold_nongaussian_k3_gain_r24/estimator.py",
+  "candidate_sha256": "7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94",
+  "command": [
+    "uv",
+    "run",
+    "--frozen",
+    "python",
+    "benchmark/run_rpc_strict.py",
+    "--estimator",
+    "estimators/tenfold_nongaussian_k3_gain_r24/estimator.py",
+    "--inputs",
+    "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
+    "--dataset",
+    "benchmark/data/mini_first8",
+    "--n-mlps",
+    "1",
+    "--output",
+    "results/phase2/tenfold_nongaussian_k3_gain_r24_strict1.json"
+  ],
+  "output": "results/phase2/tenfold_nongaussian_k3_gain_r24_strict1.json",
+  "log": "results/phase2/tenfold_nongaussian_k3_gain_r24_strict1.launcher.log",
+  "pid": 1626442,
+  "pid_start_ticks": "2543622",
+  "started_at_utc": "2026-10-13T10:32:10.273336+00:00",
+  "single_change": "Fixed firstorder marginalEdgeworth expectedgain for inheritedK3, consistentbirthD3/D21 subtraction; Gaussianbirth andcovC retained",
+  "contract": "results/phase2/tenfold_nongaussian_k3_gain_contract_r24.json",
+  "limits": {
+    "flops": 2199023255552,
+    "predict_s": 120,
+    "residual_s": 0.4,
+    "setup_s": 5
+  },
+  "limitations": "No clipping, highgrade productterms; actualintegration contract running; formal gain does not imply accuracy",
+  "completed_at_utc": "2026-10-13T10:33:36.716871+00:00",
+  "strict_manifest_completed": true,
+  "score": "results/phase2/tenfold_nongaussian_k3_gain_r24_strict1_score.json"
+}

@@ -1076,3 +1076,9 @@ network0原reference严格RPC零失败：before raw2.228117956804e-8 / adjusted4
 r24对r20使用新target-free canonical capture及该call自身prediction/gain，保持原reference与成功双流moments。严格分数仍采用原strict报告，instrumentedtrace不能当资源验收。r20 trace与strict最大差2.861e-6，finalrawcapture2.14668e-8。末层localinnovation4.41939e-9→4.43811e-9；K2missingcross6.07788e-8→5.85025e-8，K3missingcross6.52633e-5→6.51589e-5，K4missingcross5.39773e-7→5.39747e-7。恢复birthdiscarded M只填补小部分状态缺口，联合oraclelocalresidual约1.294e-10未改变；停止rank/scale追扫，重点继续真正K4producer与K3非树闭合。证据`results/phase2/tenfold_completed_state_attribution_r24.json`，无candidate真值访问或经验拟合。
 
 r22/r23 target-free V29旧capture组件（不同于H18canonical）完成：全14来源M的diag/ssep/rank16/feed逐来源年龄分解与普通functional精确重组；四输出ordinary组件478,705,248FLOPs，逐来源与独立materializedM误差<2e-12。这些M已被parent表示，不再次叠加，不称新分数。真实四阶producer n4/n8完整合同已完成，但fixedR2仍丢失约54–84%birthFrobenius，通用stream O(n4)不可据此宣称1024生产可行；继续repeat-support lift新组件。阶段1与最佳不变。
+
+## 非高斯三阶历史激活增益 r24：严格负结果
+
+唯一机制为旧K3来源期望ReLU导数Phi→Phi+D3(α²−1)φ/(6σ³)+g4(3α−α³)φ/(24σ⁴)，birth重复D3/D21扣除与历史gain一致，Gaussianbirth/covariancecarrier冻结；不裁gain、不拟合oracle。独立Hermiteindicator积分与CP/algebra合同通过，实际candidate接入审计另记录。
+
+network0原reference严格RPC零失败：before raw2.2281179568040e-08/adjusted4.8714160493623e-09；after raw2.2659300213945e-08/adjusted4.9540952601586e-09，分别+1.69704%/+1.69723%。FLOPs480781426807，wall44.847881s/residual0.199365116s，client293512KiB。SHA7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94。否决此fixedgainmechanism，不扫增益/κ3only、不扩量或上传，最佳与十倍阈值不变。下一项：paircost4完整grade一致闭合与真K4重复support持久history，先共享H18真实state合同/成本门槛。

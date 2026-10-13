@@ -1,0 +1,122 @@
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:878: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:879: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:893: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:895: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:896: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:898: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:900: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:1507: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_nongaussian_k3_gain_r24/estimator.py:1508: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+{
+  "version": "tenfold.nongaussian.K3gain.r24.integration",
+  "complete": true,
+  "candidate_sha256": "7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94",
+  "script_sha256": "12bf5c14f285a411c2be8c627080434c842aae1f5b5354221138b70edc128ce9",
+  "rows": [
+    {
+      "width": 32,
+      "depth": 6,
+      "confinement": false,
+      "allfinite": true,
+      "actual_site_counts": {
+        "actual_gain_fixedformula": 5,
+        "actual_newborn_A_rawW": 5,
+        "actual_newborn_P_rawW": 5,
+        "actual_newborn_Z_rawW": 5,
+        "actual_newborn_Zf_rawW": 5,
+        "actual_covariance_carrier_rawW": 4,
+        "actual_dslices_D3_denseCP": 4,
+        "actual_dslices_D21_denseCP": 4,
+        "actual_young_AP_gain_prescale": 4,
+        "actual_D3_birth_subtraction": 4,
+        "actual_D21_birth_subtraction": 4,
+        "actual_WD_allgain": 4,
+        "actual_young_AP_rawW_transport": 4,
+        "actual_Z_residual_and_feed_gain": 4,
+        "actual_Zf_feedback_gain": 4
+      },
+      "site_max_abs_error": {
+        "actual_gain_fixedformula": 5.150056514580115e-08,
+        "actual_newborn_A_rawW": 0,
+        "actual_newborn_P_rawW": 0,
+        "actual_newborn_Z_rawW": 0,
+        "actual_newborn_Zf_rawW": 0,
+        "actual_covariance_carrier_rawW": 4.76837158203125e-07,
+        "actual_dslices_D3_denseCP": 8.387414451860309e-08,
+        "actual_dslices_D21_denseCP": 2.834124015471673e-07,
+        "actual_young_AP_gain_prescale": 0,
+        "actual_D3_birth_subtraction": 4.6399168507349486e-08,
+        "actual_D21_birth_subtraction": 5.727302598845796e-08,
+        "actual_WD_allgain": 0,
+        "actual_young_AP_rawW_transport": 0,
+        "actual_Z_residual_and_feed_gain": 0,
+        "actual_Zf_feedback_gain": 0
+      },
+      "legal_predict_flops_with_trace": 14426690
+    },
+    {
+      "width": 32,
+      "depth": 6,
+      "confinement": true,
+      "allfinite": true,
+      "actual_site_counts": {
+        "actual_gain_fixedformula": 5,
+        "actual_newborn_A_rawW": 5,
+        "actual_newborn_P_rawW": 5,
+        "actual_newborn_Z_rawW": 5,
+        "actual_newborn_Zf_rawW": 5,
+        "actual_covariance_carrier_rawW": 4,
+        "actual_dslices_D3_denseCP": 4,
+        "actual_dslices_D21_denseCP": 4,
+        "actual_young_AP_gain_prescale": 4,
+        "actual_D3_birth_subtraction": 4,
+        "actual_D21_birth_subtraction": 4,
+        "actual_WD_allgain": 4,
+        "actual_Z_residual_and_feed_gain": 4,
+        "actual_Zf_feedback_gain": 4,
+        "actual_QP_join_gain": 2,
+        "actual_young_AP_rawW_transport": 1
+      },
+      "site_max_abs_error": {
+        "actual_gain_fixedformula": 5.2781247483757454e-08,
+        "actual_newborn_A_rawW": 0,
+        "actual_newborn_P_rawW": 0,
+        "actual_newborn_Z_rawW": 0,
+        "actual_newborn_Zf_rawW": 0,
+        "actual_covariance_carrier_rawW": 5.960464477539062e-07,
+        "actual_dslices_D3_denseCP": 2.391276610058668e-07,
+        "actual_dslices_D21_denseCP": 3.2910982616929374e-07,
+        "actual_young_AP_gain_prescale": 0,
+        "actual_D3_birth_subtraction": 8.071586643509931e-08,
+        "actual_D21_birth_subtraction": 2.76814211774834e-07,
+        "actual_WD_allgain": 0,
+        "actual_Z_residual_and_feed_gain": 0,
+        "actual_Zf_feedback_gain": 0,
+        "actual_QP_join_gain": 0,
+        "actual_young_AP_rawW_transport": 0
+      },
+      "legal_predict_flops_with_trace": 14065854
+    }
+  ],
+  "no_reference_or_target_access": true,
+  "limitations": [
+    "Trace dense tensors validation-only; costs are smoke-size, not candidate1024score",
+    "Suite1024pruning/regen riders not exercised",
+    "No strictRPC/MSE acceptance"
+  ]
+}

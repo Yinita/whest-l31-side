@@ -1,0 +1,57 @@
+{
+  "version": "tenfold.nongaussian.K3gain.r24",
+  "parent": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+  "parent_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "candidate_sha256": "7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94",
+  "primary_change": "First-order marginal Edgeworth expected ReLU derivative for all represented old K3 transport legs, with consistent birth repeated-index subtraction",
+  "coefficients": {
+    "kappa3_Erelu4": 0.16666666666666666,
+    "kappa4_Erelu5": 0.041666666666666664
+  },
+  "contracts": [
+    "results/phase2/tenfold_nongaussian_k3_gain_contract_r24.json",
+    "results/phase2/tenfold_nongaussian_k3_gain_integration_r24.json"
+  ],
+  "contract_executed_candidate_sha256": "b37861ff6d0bd781d5fab4c31836bf29c63133fc2677e4f9a18bde97e465e23a",
+  "executed_to_frozen_change": "Only blank lines before expected_relu_gain helper",
+  "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+  "tool_versions": {
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1"
+  },
+  "constraints": {
+    "flop_budget": 2199023255552,
+    "predict_seconds": 120,
+    "residual_seconds": 0.4,
+    "setup_seconds": 5,
+    "thread_count": 1
+  },
+  "no_reference_or_target_access": true,
+  "status": "Strict RPC1 negative, zero failures; no promotion or gain scaling sweep",
+  "raw_mse": 2.2659300213945244e-08,
+  "adjusted_score": 4.9540952601586264e-09,
+  "limitations": [
+    "Inherits parent marginal D3/g4 proxies",
+    "Gain product has higher-grade terms beyond official budget3",
+    "No clipping; signed Edgeworth tails reported",
+    "No independent-network or strict resource acceptance yet"
+  ],
+  "strict1_result": {
+    "report": "results/phase2/tenfold_nongaussian_k3_gain_r24_strict1_score.json",
+    "network_index": 0,
+    "name": "logan-fitzgerald",
+    "seed": 3909487726,
+    "raw_mse": 2.2659300213945244e-08,
+    "parent_raw_mse": 2.228117956804e-08,
+    "adjusted_score": 4.9540952601586264e-09,
+    "parent_adjusted_score": 4.87141604936e-09,
+    "flops": 480781426807,
+    "wall_seconds": 44.847880962,
+    "residual_seconds": 0.19936511599999562,
+    "failures": 0,
+    "raw_percent_change": 1.69704,
+    "adjusted_percent_change": 1.69723,
+    "conclusion": "Cheap fixed non-Gaussian oldK3 gain worsens accuracy; no promotion or arbitrary gain/rank/age sweep"
+  },
+  "integration": "Actual frozen candidate line-trace n32depth6 with confinement off/on verifies all gain sites, newborn/covariance rawW and full represented CP dslices, no implementation error found"
+}
