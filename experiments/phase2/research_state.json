@@ -15,7 +15,7 @@
     "status": "preparing_original_data"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T07:40:51.368554+00:00",
+  "updated_at_utc": "2026-10-13T07:44:13.660809+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -43910,11 +43910,22 @@
     "execution_started": true
   },
   "active_offline_diagnostic": {
-    "key": "C30",
-    "pid": 4140519,
-    "pid_start_ticks": "12617081",
-    "status": "completed3/8 resource errors",
-    "output": "results/phase2/ablation_v30_030_r02_c01_mini8_subprocess.json"
+    "key": "all14 real source K211 mapping and cost gate",
+    "status": "completed_diagnostic",
+    "session_id": 50111,
+    "report": "results/phase2/ablation_v30_067_r19_all_source_k211.json",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/real_all_source_k211.py"
+    ],
+    "candidate": "estimators/k3_v29/estimator.py",
+    "candidate_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "log": "results/phase2/ablation_v30_067_r19_all_source_k211.log",
+    "next": "run prepared real_all_source_k211.py once capturecomplete; do not overlap strict RPC",
+    "no_score": true
   },
   "prepared_serial_plan": [
     "Finish active L07 offline trace and CV",
@@ -46938,5 +46949,15 @@
     "relative_flops": -0.4974331196496412,
     "pair_relative_error": 3.2177388658749365e-07,
     "no_score": true
+  },
+  "latest_allsource_component": {
+    "report": "results/phase2/ablation_v30_067_r19_all_source_k211.json",
+    "source_slots": 14,
+    "allsource_D3_relative_error": 1.207631612487603e-07,
+    "allsource_D21_relative_error": 9.590112313162535e-07,
+    "component_flops": 273284014080,
+    "component_budget_fraction": 0.12427518144249916,
+    "no_score": true,
+    "not_resource_acceptance": true
   }
 }
