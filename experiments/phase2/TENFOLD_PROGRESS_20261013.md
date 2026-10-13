@@ -36,3 +36,9 @@ r05单因素检查关闭新在线LS之后的经验beta（li>=2，初始li1不改
 真实n1024 lower-support融合已完成：121106763776→13396717568 FLOPs（−88.94%），相对输出差4.50e-16；两网络均核验。这仍是费用合同不是新score。
 
 r06完整矩阵真实末层运输已严格RPC零失败：raw2.215712413545e-08（相对同cycleparent下降0.557%）、adjusted8.651172836984e-09，FLOPs858601059417，wall48.500416/residual0.199326s。成本抵消精度收益，不提升最佳。
+
+r07下一preactivation目标整链已严格RPC零失败：raw2.322639502950e-08、adjusted2.041687781313e-08，FLOPs1933024434477，wall76.952829/residual0.372440s。相对parent raw恶化4.24%，不推广。该完整retained-offdiag LS系列未证实十倍原理，停止细调。
+
+多层已知均值Gaussian-linear控制变量：两独立heldstream variance ratio0.66484/0.67292，约3倍sample成本。乐观全预算float32误差约2.5e-6，不通过预注册5e-4variance ratio门槛，停止该路线。不混成benchmark分数。
+
+下一新分布机制r08：rank1输入条件积分，4固定Gaussian quadrature节点，残余1023维完整Gaussian K3母链；方向仅weight-only Gaussian diagonal skeleton的outputmean sensitivity，不跑额外parent全链、无reference读取。第一层mean=tq/Cpre=Gram−qqT，其余保持parent。四链同一计费context，不重置预算；高阶接口/conditional分布校准/4nodequadraturebias与资源均待实际验证。

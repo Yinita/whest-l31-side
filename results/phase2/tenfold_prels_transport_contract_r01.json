@@ -1,0 +1,34 @@
+{
+  "version": "tenfold.prels.transport.r01",
+  "complete": true,
+  "rows": [
+    {
+      "width": 8,
+      "lambda_fullG_direct": 3.326191794058648e-05,
+      "lambda_adjoint_scalar": 3.326191794058647e-05,
+      "absolute_error": 1.3552527156068805e-20,
+      "future_output_perm_error": 0.0,
+      "network_input_by_output_and_current_perm_checked": true,
+      "legal_flops": 28452
+    },
+    {
+      "width": 32,
+      "lambda_fullG_direct": -4.385778761861357e-07,
+      "lambda_adjoint_scalar": -4.3857787618613456e-07,
+      "absolute_error": 1.1117307432712692e-21,
+      "future_output_perm_error": 1.0058516248644817e-21,
+      "network_input_by_output_and_current_perm_checked": true,
+      "legal_flops": 1044612
+    }
+  ],
+  "candidate": "estimators/tenfold_precorelambda_alllayers_r07/estimator.py",
+  "candidate_sha256": "b20fd6a1044c462914acabb1c01b0ccd98c337e28583bc66585f9fbd9b1ce005",
+  "script_sha256": "5e79012957d9f76eb39f2f8fcaa39137c02d85ad3e35d6b03bde9263189ce6cb",
+  "formula": "D=off(W*Cpost*W.T); H=W.T*D*W; lambda=(dot(gpostdiag,diag(H))+dot(Gpostoff,off(H)))/dot(D,D)",
+  "scope": "Full dense G transport versus independent source tensor/adjoint scalar preLS, bounded8/32",
+  "no_adjusted_score": true,
+  "limitations": [
+    "No actual1024/RPC proof; postG production has separate contracts",
+    "Candidate stores preLS scalar regeneration; does not preserve dense Gpre diagonal"
+  ]
+}

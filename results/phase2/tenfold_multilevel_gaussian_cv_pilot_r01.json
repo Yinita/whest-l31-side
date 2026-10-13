@@ -1,0 +1,135 @@
+{
+  "version": "tenfold-multilevel-Gaussian-CV-r01",
+  "complete": true,
+  "checks": {
+    "single_relu_control_equals_actual_minus_exact_mean": true,
+    "zero_gaussian_variance_centering": true,
+    "api_row_forward_h_at_w": true,
+    "all_controls_known_zero_expectation_by_induction": "analytic, no numerical reference used"
+  },
+  "script_sha256": "8f7ffc0b8024b6ad68cecfc3bbf04abf1d7f1a9cd5af79073abe83b96464433f",
+  "weights_sha256": "7fb2e3f519b4a90f2c3de9e64d45ad89b7f20ffd254d887e4ba4fa5c1fdf0754",
+  "features_sha256": "472ea3bfba7220243c41df15000b8db8425e571a387af5796b61f2ab43a0d4c4",
+  "feature_access": [
+    "mu",
+    "Phi"
+  ],
+  "reference_access": false,
+  "single_mechanism": "knownzero multilevel Gaussian-linear local innovations, inheritedthroughfrozenexpectedgates",
+  "beta_rule": "peroutput ordinary train-only beta, two predeclared disjoint streams; no held refit",
+  "build_seconds": 0.5011754890001612,
+  "A_nbytes": 134217728,
+  "sigma_range": [
+    0.11917742605681202,
+    1.5166167383114126
+  ],
+  "costs_float64": {
+    "dtype_billing_rate": 2,
+    "budget": 2199023255552,
+    "coefficient_build_flops": 64491618304,
+    "raw_sample_flops": 67108864,
+    "cv_sample_flops": 201523200,
+    "optimistic_full_budget_iid_samples": 32768,
+    "optimistic_cv_held_samples_after_pilot": 10079,
+    "cv_to_raw_sample_cost_ratio": 3.0029296875,
+    "omitted": [
+      "all data movement/RNG and sample centered variance/beta calculation",
+      "PDF/CDF expectation costs and Python/RPC overhead",
+      "actual implementation may fuse or reuse exact intermediates"
+    ]
+  },
+  "optimistic_float32_costs": {
+    "dtype_billing_rate": 1,
+    "budget": 2199023255552,
+    "coefficient_build_flops": 32245809152,
+    "raw_sample_flops": 33554432,
+    "cv_sample_flops": 100761600,
+    "optimistic_full_budget_iid_samples": 65536,
+    "optimistic_cv_held_samples_after_pilot": 20992,
+    "cv_to_raw_sample_cost_ratio": 3.0029296875,
+    "omitted": [
+      "all data movement/RNG and sample centered variance/beta calculation",
+      "PDF/CDF expectation costs and Python/RPC overhead",
+      "actual implementation may fuse or reuse exact intermediates"
+    ]
+  },
+  "rows": [
+    {
+      "train_seed": 261013711,
+      "held_seed": 261013712,
+      "antithetic_seed": 261013713,
+      "train_samples": 512,
+      "held_samples": 512,
+      "raw_output_variance": 0.08000629305329103,
+      "cv_residual_variance": 0.05319114719439402,
+      "held_cv_variance_ratio": 0.664837041743256,
+      "antithetic_same_forward_variance_ratio": 0.9075496643889759,
+      "beta_mean": 0.5646149108092895,
+      "beta_min": -0.08838908063266183,
+      "beta_max": 3.2620021827313517,
+      "held_control_mean_squared": 0.0001294055554149176,
+      "elapsed_s": 1.790331457999855,
+      "projections": [
+        {
+          "dtype_billing_rate": 2,
+          "cv_budget_variance": 5.277423077130075e-06,
+          "iid_budget_variance": 2.441598298745454e-06,
+          "projected_full_budget_adjusted": 5.277423077130075e-06,
+          "full_budget_stage_gate_pass": false
+        },
+        {
+          "dtype_billing_rate": 1,
+          "cv_budget_variance": 2.533877057659776e-06,
+          "iid_budget_variance": 1.220799149372727e-06,
+          "projected_full_budget_adjusted": 2.533877057659776e-06,
+          "full_budget_stage_gate_pass": false
+        }
+      ]
+    },
+    {
+      "train_seed": 261013721,
+      "held_seed": 261013722,
+      "antithetic_seed": 261013723,
+      "train_samples": 512,
+      "held_samples": 512,
+      "raw_output_variance": 0.07801010110387546,
+      "cv_residual_variance": 0.0524948651196046,
+      "held_cv_variance_ratio": 0.672923946729723,
+      "antithetic_same_forward_variance_ratio": 0.9116484701301526,
+      "beta_mean": 0.5777598092230242,
+      "beta_min": -0.05787009657416293,
+      "beta_max": 5.807214918781445,
+      "held_control_mean_squared": 7.345725976327226e-05,
+      "elapsed_s": 1.7885020280009485,
+      "projections": [
+        {
+          "dtype_billing_rate": 2,
+          "cv_budget_variance": 5.208340621054133e-06,
+          "iid_budget_variance": 2.380679354976668e-06,
+          "projected_full_budget_adjusted": 5.208340621054133e-06,
+          "full_budget_stage_gate_pass": false
+        },
+        {
+          "dtype_billing_rate": 1,
+          "cv_budget_variance": 2.5007081326031153e-06,
+          "iid_budget_variance": 1.190339677488334e-06,
+          "projected_full_budget_adjusted": 2.5007081326031153e-06,
+          "full_budget_stage_gate_pass": false
+        }
+      ]
+    }
+  ],
+  "predeclared_variance_gate": 0.0005,
+  "actual_full_budget_gate": 5.779e-10,
+  "variance_gate_pass": false,
+  "adjusted_score": null,
+  "limitations": [
+    "Offline NumPy float64, no flopscope/resource/score pass",
+    "float32 cost projection is hypothetical; no float32 precision pass",
+    "First-order Gaussian skeleton and frozenfatherPhi need not explain deep residual",
+    "512 held samples are variance screen, not reference or precise confidence interval",
+    "High correlation with an approximate centered deeperactivation would not guarantee unbiasedness; this control's Gaussian Eg is exact by construction",
+    "3 dense forward chains including realnet, not a 2-forward cost; immutablecoefficients build also charged",
+    "Necessary variance gate only; matchedcost/no-bias/independentnetwork/allowed RNG required before candidate"
+  ]
+}

@@ -123,3 +123,11 @@ QU是scratch，它在当前层只写ro:ns，尾/头可能陈旧；候选合法as
 `estimators/tenfold_corelambda_alllayers_r04/estimator.py` 仅将r03的 `li==14` 改为 `1<=li<=14`，验证“连续完整生产反馈闭合”假设；没有根据分数选层，mode0/layer0及last保持父路径。
 
 `tenfold_alllayers_analytic_cost_r01.json` 使用shape-only主GEMM模型：3fused lower-support、1CovCov、5tree每层；HA/HP young4来源上限；tier1rank384、tier2rank224及薄rank8/18。14层新增主GEMM约1.17785e12 FLOPs；加约4.5e11父成本约1.62785e12（预算2.19902e12）。这排除elementwise、Wick、astype、K31与其他输出/资源费，不能称完整预算或120s/.4s验收。实际模型接近预算/时间门槛，需root按原限制串行试验并保留失败，不以增预算解释达标。
+
+## r07：修正 LS 闭合所在的坐标系
+
+审计发现冻结 parent 的 LAM 表注释明确拟合 transported `G_pre_off = lambda*C_pre_off`，不是 post covariance。r01–r05 的 post→post LS 与此闭合对象不一致。新隔离 `tenfold_precorelambda_alllayers_r07` SHA256 `b20fd6a1044c462914acabb1c01b0ccd98c337e28583bc66585f9fbd9b1ce005` 在层1–14使用实际下一层权重做 white-box lookahead，先形成 `D=off(W*Cpost*W.T)` 与 `H=W.T*D*W`，再由 adjoint contraction 计算完整 represented post core 与 H 的内积，包括 `dot(g_prev,diag(H))`。source helper只接收 `off(H)`，保持zero-diagonal合同，最终除以 `sum(D*D)`。
+
+权重存储是input-by-output；当前input permutation作用在其第一轴，之后转置。未来output permutation不会改变Frobenius LS。post covariance对角用float64的 `pk2v-pk1v**2`，非对角用Sym(pk11)。新lambda所在层停止旧V25 beta，该beta原来针对LAM表拟合；没有新lambda的首层仍继承parent。此版本保留后继scalar regeneration与average metric近似，未切换dense G记忆。
+
+独立 `tenfold_prels_transport_contract_r01.json` 用六置换三阶tensor、distinct cap、任意对称残差及对角，直接比较dense `W*Gpost*W.T` 与adjoint/source scalar，n8/n32绝对误差为1.35525e-20/1.11173e-21，权重方向与两种permutation均通过。无reference、无整网score或资源通过声明。Lookahead额外4个dense float64 GEMM每层，shape-only估计约2.40518e11 FLOPs，叠加r04实测1.69246e12约1.93298e12；实际elementwise/astype及资源必须严格评测，不能提前称通过。

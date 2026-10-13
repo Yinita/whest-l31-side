@@ -104,3 +104,20 @@ eps_l = (reference_l-pred_l) - Phi_l * W_l * (reference_(l-1)-pred_(l-1))
 r02使用固定HistGradientBoostingRegressor：depth3、100iter、lr0.05、minleaf128、squared loss、early_stopping=False、random_state261013601；训练label scale仅train折统计。scikit-learn1.7.2只安装ignored `benchmark/data/paper-venv`，未改比赛工具或uv.lock，不进入submission。r01耗时1.78s、r02 6.32s，单线程只做cached计算；ruff和diffcheck通过。原始结果分别 `results/phase2/tenfold_local_innovation_pilot_r01.json` / `tenfold_local_innovation_pilot_r02_nonlinear.json`，含每网络每层、前后raw、全部源码和数据SHA及版本。
 
 结论：当地创新确实比用当前13特征预测累计残差稍有信号，但扩展的18特征仍不足。下一项应新增**实际joint K211/K31生产残差与covariance局部修正特征**，而非对已见Mini8扫树深度/learning-rate；未有因果新输入前不开发复杂production或声称提分。以上只有一阶meanJacobian replay，未重算covariance/high-order feedback，独立reference噪声proxy非实测CI；不报告adjusted、资源通过或十倍达标。
+
+## 多层Gaussian-linear控制实际pilot（17:08）
+
+版本 **tenfold-multilevel-Gaussian-CV-r01** 已执行，network0/logan-fitzgerald、seed3909487726，原weights和trace身份/sha核验，只读取V29 feature列1(mu)/7(Phi)，没有读取prediction/reference。512train、512held、两次独立train/held随机流，额外同forward数antithetic对照。单层精确中心化、零方差、API权重方向合同通过。
+
+实际实现递推为 `control_l=(control_(l-1) @ w_l)*gain_l + eta_l(x)`，初始control=x，`A_0=w_0`、`A_l=(A_(l-1)*gain_(l-1))@w_l`。它在每层保留Gaussian-linear的ReLU创新，Eg按A列范数得到确切Gaussian均值；没有假借真实高层activation的近似均值来称无偏。API column公式W=w.T对应rowbatch h@w，备用angular未运行前也补此方向合同，避免只靠identity权重自检。
+
+| 预定随机流 | iid最终方差 | CV残差方差 | variance ratio | antithetic同forward ratio | 乐观float32 fullB adjusted投影 |
+|---|---:|---:|---:|---:|---:|
+| train261013711/held261013712 | 0.0800063 | 0.0531911 | 0.664837 | 0.907550 | 2.53388e-6 |
+| train261013721/held261013722 | 0.0780101 | 0.0524949 | 0.672924 | 0.911648 | 2.50071e-6 |
+
+33%左右方差降低明显强于first-ReLU单控制，但费用模型显示**3条dense forward**（实际hW、Gaussian xA、递推controlW），不是此前粗想的2条。构造A另计15denseGEMM，全部float64；实际float64 fullB方差投影5.27742e-6/5.20834e-6。float32列仅假设允许实现的乐观成本，不是float32验证。三链同预算还比iid差约2倍。预注册variance ratio<5e-4和阶段5.779e-10必要门槛均失败，不做production，不扫系数或加采样量。
+
+执行4.14s结束，无重计算并发。原报告 `results/phase2/tenfold_multilevel_gaussian_cv_pilot_r01.json`、身份补记录 `_r01_identity.json`；执行源码原样封存 `tenfold_multilevel_gaussian_cv_pilot_r01_snapshot.py` 且SHA与原报告一致。主脚本随后只增加显式身份校验与输出metadata，未覆盖原报告。数据/构造/精度/mean/control偏差边界全部记录；组件试验不计adjusted得分。
+
+该负结果针对冻结expected-gain Gaussian-linear skeleton，不能证明一切控制变量失败。但十倍要求剩余条件方差进一步降低约千倍，任何后续控制路线需要新的深层latent结构与可准确求期望的proxy，不能仅调已有betas。
