@@ -41,3 +41,18 @@ M03r16 indexpartition: all-distinct249984entries birthmaxerror2.22e-9/2.64e-9; a
 M03r17 frozenbirthdifference independently split/transported. Seed31 diagonly D3MSE5.841e-8,paironly6.244e-7,cross−7.283e-8,total6.100e-7; seed32diagonly1.651e-7,paironly7.810e-7,cross5.208e-9,total9.513e-7. D21paironlyMSE1.803e-7/1.878e-7 dominates diagonly1.047e-8/2.652e-8. All-distincttransport~1e-18MSE. Pair repeatedbirthpriority supported, no predictiongain. Analyticdense3splits301,989,888FLOPs notcompetitionbilling; frozenbaseline28,541,708charged. ExecutedsourceSHA in r17report; keptsourceunchanged to preserve binding, ruffoneunusedpreviousread(F841) recorded, no runtime failure. Disk1.6GBavailable,noexpandbatch. Next exact21residualrepresentation contract.
 
 M03r18 frozen residual exactreplacement identifies firstbirthrank16approximation: ordinarybirthMSE1.197e-8/1.160e-8→1.594e-19/1.348e-19; pre1D3disagreement6.100e-7/9.513e-7→1.836e-16/1.577e-16. Replacing RLtranspose by3Rres.transpose only; no truth. r19 minimallegalcandidate subtracts3sum(Q*Bm.transpose) from S3c to cancel lowrank diagonal leakage; exactbirthmarginal restored0/~2.8e-17contracterror. Small64x4oldcommonreference raw1.9517205e-5→1.9490693e-5(−.136%),7.5005931e-6→7.4234604e-6(−1.028%);charged28,541,708→28,548,044. Not genericprecisionclaim. RealMini1r20running PID1799029,120/.4/5limits,thread1. Source/provenance frozen; ruffscripts pass. Online335672r03still submittedscore null. No newupload.
+
+## r18–r22：出生残差的因果定位与最小修复
+
+冻结首层所有对象，只把 `RLᵀ` 换为 `3 Rresᵀ`，两网出生张量与官方 ordinary K3 的差 MSE 从约1.2e-8降至约1.5e-19；第二层三阶对角差 MSE 从6.1e-7/9.5e-7降至约1.8e-16/1.6e-16。首层差距由秩16残差近似解释，但这不意味着完整方法或最后层误差已恢复。
+
+更小的合法单因素候选 `paper_m03_resdiag_r01` 保持秩、年龄和其它机制，出生时执行 `S3c -= 3 sum(Q * Bm.T, axis=1)`，抵消低秩残差带入的对角污染。首层对角合同误差为0/2.8e-17，独立于测试真值。
+
+| 真实网络0成对快筛 | V29当前控制 | 对角修复 |
+|---|---:|---:|
+| raw MSE | 2.290466483e-8 | 2.278293820e-8 |
+| adjusted | 6.116832335e-9 | 6.084329738e-9 |
+| FLOPs | 587262754287 | 587263261167 |
+| 失败 | 0 | 0 |
+
+单网adjusted改善0.531%，尚未获全集、RPC或独立确认。完整Mini8 r22运行中；所有数值研究保持与官方原始reference区分，最终候选不读取真值。r19小形状逐层差异仅略缩小，不能宣称论文完整方法已复现。
