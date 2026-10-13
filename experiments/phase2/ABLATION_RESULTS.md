@@ -147,6 +147,8 @@ after：一次完整非线性核心生产逐层对照
 - [ablation_v30_065_birth_deletion_mismatch.json](../../results/phase2/ablation_v30_065_birth_deletion_mismatch.json)
 - [ablation_v30_065_relu_merged_source_weight.json](../../results/phase2/ablation_v30_065_relu_merged_source_weight.json)
 - [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
+- [ablation_v30_067_r08_charged_centered_conversion.json](../../results/phase2/ablation_v30_067_r08_charged_centered_conversion.json)
+- [ablation_v30_067_r09_cp_centered_k211.json](../../results/phase2/ablation_v30_067_r09_cp_centered_k211.json)
 
 ### v30.067 O05 完整K31/K211生产核的离线表示上限
 
@@ -167,6 +169,8 @@ after：完整production Gnew与regen G成对诊断
 - [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
 - [ablation_v30_067_r08_p3_derivative_contract.json](../../results/phase2/ablation_v30_067_r08_p3_derivative_contract.json)
 - [ablation_v30_067_r07_p3_wick_stein.json](../../results/phase2/ablation_v30_067_r07_p3_wick_stein.json)
+- [ablation_v30_067_r08_charged_centered_conversion.json](../../results/phase2/ablation_v30_067_r08_charged_centered_conversion.json)
+- [ablation_v30_067_r09_cp_centered_k211.json](../../results/phase2/ablation_v30_067_r09_cp_centered_k211.json)
 
 ### v30.068 O06 完整生产核单层替换诊断
 
@@ -207,6 +211,7 @@ after：从actual K31 production加12/(n+4)*Sym(K31)的去重低rank残差
 - [ablation_v30_046_k31_conversion_contract.json](../../results/phase2/ablation_v30_046_k31_conversion_contract.json)
 - [ablation_v30_046_gaussian_core_projection.json](../../results/phase2/ablation_v30_046_gaussian_core_projection.json)
 - [ablation_v30_046_k31_legal_component.json](../../results/phase2/ablation_v30_046_k31_legal_component.json)
+- [ablation_v30_067_r08_charged_centered_conversion.json](../../results/phase2/ablation_v30_067_r08_charged_centered_conversion.json)
 
 ### v30.051 H21 恢复非对角metric的K4到K3 feed
 

@@ -1,0 +1,115 @@
+{
+  "status": "completed",
+  "pid": 754155,
+  "started_at_utc": "2026-10-13T05:58:56.084419+00:00",
+  "script_sha256": "b367bcae9d6b50952dac7c9c02275537425a87f55b2cfa8fcb8d6adf357c46f0",
+  "tool_hashes": {
+    "prepare_rpc_inputs.py": "8a907b368d6175049cddb2b784f0d437cfb12a5ba123079e7a79e22f098cd998",
+    "run_rpc_strict.py": "980f75b60b837df161cf46a8ceb00e594ff22639b431820d6e4b4fe17af70921",
+    "rpc_strict_score.py": "0a857f2cd90f7a6d6c554e745ddf619af6d6f74696062dcd80da6d4650b06735",
+    "compare_strict_cohort.py": "5c138603fa69fd5c09c7d792e4af19f8e216bd15a1dc9559449c5f24f11c4d48",
+    "aggregate_strict_public.py": "d74648a0b5d93f755969014fc7e32fec47a274207cd1a7a1aaefb8158c5cbaa5"
+  },
+  "protocol_sha256": "19c415fb08a2294849d46afe034509788246b84c00f4efd524165c42cf0c133f",
+  "cohort": {
+    "status": "completed_bothstrict7zero",
+    "dataset": "benchmark/data/mini_shard04",
+    "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "candidates": [
+      {
+        "name": "V29",
+        "path": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27"
+      },
+      {
+        "name": "V37bH18",
+        "path": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+        "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2"
+      }
+    ],
+    "runner": "strict_rpc for BOTH, same immutable exportedweights/SDKderivedseed/originalreference",
+    "selection": "frozenV29/V37bH18beforeopeningthiscohortscores, no tuning",
+    "no_model_selection_on_cohort": true,
+    "independence_caveat": "new project confirmation cohort, upstream author publictuning unknown; not final unseen holdout",
+    "input_manifest": "benchmark/data/rpc_inputs/frozen_shard04_r01/manifest.json",
+    "before_report": "results/phase2/v29_r10_strict_shard04_score.json",
+    "after_report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
+    "disk_plan": "5.9GiB before download; one shard only, keep original experimental evidence",
+    "network_ids": [
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36"
+    ],
+    "n_mlps": 7,
+    "arrow_sha256": "a5b0a08c0710bd9cd59c9e1d27f31e7061ba971fbc09a67bd282ccd2dbbd0112",
+    "reference": "unchanged original official all_layer_means",
+    "inputs_sha256": "43bc68fae1f6fb5216afbf7f7942a3f814114385f5946f9815dad76fb79c31b4",
+    "comparison": "results/phase2/sprint_public_v37b_h18_r10_shard04_before_after.json",
+    "relative_adjusted": -0.21929456430132765,
+    "relative_raw": -0.021973271401910632
+  },
+  "n_mlps": 7,
+  "phases": [
+    {
+      "name": "inputs",
+      "status": "resumed_completed",
+      "output": "benchmark/data/rpc_inputs/frozen_shard04_r01/manifest.json",
+      "sha256": "42e172e86c6000d82bd5ec6ce2cd83b277da070a172ea64bca81034d646cfd39"
+    },
+    {
+      "name": "V29_predict",
+      "status": "resumed_completed",
+      "output": "results/phase2/v29_r10_strict_shard04.json",
+      "sha256": "dc2459a08a9f14d61214aa216b0ec0cc8ef00259389d4886edfb8fe4c45a52c9"
+    },
+    {
+      "name": "V29_score",
+      "status": "resumed_completed",
+      "output": "results/phase2/v29_r10_strict_shard04_score.json",
+      "sha256": "9f3ba2b16f6a2f4b1e721116363d9922a54b4297a6b9181858441dfe0c80c5d7"
+    },
+    {
+      "name": "V37bH18_predict",
+      "status": "resumed_completed",
+      "output": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04.json",
+      "sha256": "33a030908908034d1107c4da410ebf1e584a50c42ebab06d8d24797a848ba177"
+    },
+    {
+      "name": "V37bH18_score",
+      "status": "resumed_completed",
+      "output": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
+      "sha256": "ac02fefd00c7e0051a4f7fae42845fd52ff1740e8d8aca8e2be23ac13ae19dd2"
+    },
+    {
+      "name": "paired_compare",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/compare_strict_cohort.py",
+        "--before",
+        "results/phase2/v29_r10_strict_shard04_score.json",
+        "--after",
+        "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
+        "--output",
+        "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard04_resumecheck01_before_after.json"
+      ],
+      "started_at_utc": "2026-10-13T05:58:56.122587+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard04_resumecheck01_paired_compare.log",
+      "pid": 754156,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T05:58:56.166367+00:00",
+      "status": "completed",
+      "output": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard04_resumecheck01_before_after.json",
+      "sha256": "79c9cfd09503891842effe8231d794b3dc027532c61b363aba779adc231c711a"
+    }
+  ],
+  "current_phase": null,
+  "finished_at_utc": "2026-10-13T05:58:56.166691+00:00",
+  "comparison": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard04_resumecheck01_before_after.json"
+}

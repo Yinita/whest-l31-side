@@ -103,7 +103,13 @@ uv run --frozen python benchmark/prepare_rpc_inputs.py \
 
 导出不执行候选、不读取reference以选择参数；新目录保存CRC校验、逐文件SHA、数据commit、SDK版本及seed。后续两候选复用这份固定输入，使用`run_rpc_strict.py`分别运行并用`rpc_strict_score.py`计分。
 
-两个严格RPC评分报告可以使用`compare_strict_cohort.py --before ... --after ... --output ...`生成逐网成对证据；工具核验原预测与候选SHA、输入/数据/seed/版本/监督器/预算的一致性，拒绝不同分片混比。分片2已完成V29与V37b+H18各7网零失败，adjusted5.485889e-9→4.303414e-9、raw下降1.74%；分片3（ID23–29）新增7网双方严格RPC零失败，adjusted5.565246e-9→4.337734e-9（−22.06%）、raw下降2.40%；当前最佳严格RPC总覆盖30网。它们仍是公共数据，Mini100未完成，不能据此宣称最终独立确认。
+两个严格RPC评分报告可以使用`compare_strict_cohort.py --before ... --after ... --output ...`生成逐网成对证据；工具核验原预测与候选SHA、输入/数据/seed/版本/监督器/预算的一致性，拒绝不同分片混比。分片2已完成V29与V37b+H18各7网零失败，adjusted5.485889e-9→4.303414e-9、raw下降1.74%；分片3（ID23–29）新增7网双方严格RPC零失败，adjusted5.565246e-9→4.337734e-9（−22.06%）、raw下降2.40%；截至分片3，最佳严格RPC总覆盖30网。它们仍是公共数据，Mini100未完成，不能据此宣称最终独立确认。
 
 
-完整同候选公共覆盖可用 `aggregate_strict_public.py --reports SCORE1 SCORE2 ... --output NEW.json` 合并。脚本核验候选/原预测哈希、版本和协议，拒绝重复网络，按网络等权计分并保留失败。当前30网汇总为adjusted4.480111090883221e-9/raw2.204721927986005e-8，零失败；各分片权重按实际网数，不能简单平均分片均分。[证据](../results/phase2/sprint_public_v37b_h18_strict_public30_r01.json)。
+完整同候选公共覆盖可用 `aggregate_strict_public.py --reports SCORE1 SCORE2 ... --output NEW.json` 合并。脚本核验候选/原预测哈希、版本和协议，拒绝重复网络，按网络等权计分并保留失败。分片3结束时的30网汇总为adjusted4.480111090883221e-9/raw2.204721927986005e-8，零失败；各分片权重按实际网数，不能简单平均分片均分。[证据](../results/phase2/sprint_public_v37b_h18_strict_public30_r01.json)。
+
+
+13:56更新：分片4 ID30–36双方严格RPC7网零失败，adjusted5.71253604217901e-9→4.4598079397537335e-9（−21.92946%）、raw下降2.19733%；逐网adjusted均改善。候选全部37网汇总adjusted4.476269954183047e-9/raw2.2023712679390122e-8，零失败。见[37网原始汇总](../results/phase2/sprint_public_v37b_h18_strict_public37_r02.json)。此前30网报告保留，不覆盖。
+
+
+冻结队列后的成对执行可用 `uv run --frozen python benchmark/run_frozen_public_pair.py --cohort frozen_public_shard05 --run-id r01`。先在协议JSON登记校验后的数据SHA/网数/ID和双方源码SHA。工具串行执行导出→V29→最佳→各自计分→配对，维护cohort锁、子PID、日志与阶段hash；仅跳过完整输出，遇到部分输出停下并保留，避免重跑或覆盖。全流程不选参数、不上传比赛、不改research_state。分片4恢复流程已验证跳过所有完整评测，只新建哈希核验对照。

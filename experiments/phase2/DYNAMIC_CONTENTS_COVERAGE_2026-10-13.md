@@ -75,3 +75,6 @@ Adjusted下降20.2798%，raw下降0.04315%；主要收益是成本。这是**不
 
 
 13:52增量复读[部署讨论18238](https://discourse.aicrowd.com/t/how-the-hidden-set-evaluation-invokes-whest-run/18238)仍为4帖，最后回复为选手观察，暂无主办方对server生命周期/限制的确认；[starter kit issues](https://github.com/AIcrowd/whest-starterkit/issues)仍4个open（33/36/39/43）。不把选手local副本当官方部署事实。
+
+
+13:59执行更新：新增分片4成对验收完成，最佳严格RPC累计37公共网零失败，aggregate adjusted4.476270e-9；M05有限分裂真实1024宽结果负，不移植提交。最新依据[开发入口](../../DEVELOPMENT.md)。分片5准备中，不计入覆盖。

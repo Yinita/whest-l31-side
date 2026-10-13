@@ -10,28 +10,23 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "frozen shard04 V37bH18 strict candidate",
+    "key": "frozen shard05 public preparation",
     "status": "running",
-    "pid": 711000,
-    "pid_start_ticks": "843831",
-    "session_id": 85120,
-    "started_at_host": "2026-10-13 13:48:52",
-    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
-    "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
-    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04.json",
-    "dataset": "benchmark/data/mini_shard04",
-    "n_mlps": 7,
-    "network_ids": [
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36
+    "pid": 741152,
+    "pid_start_ticks": "885696",
+    "session_id": 35335,
+    "started_at_host": "2026-10-13 13:55:50",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "benchmark/prepare_public.py",
+      "--shard",
+      "5"
     ],
-    "inputs": "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
-    "next": "score/paired bind after all complete; noonline reupload"
+    "log": "results/phase2/mini_shard05_prepare_r01.log",
+    "next": "after SHA verified export actual rowcount and run V29/best strictRPC serial"
   },
   "next_experiment": {
     "key": "publicMini further expansion",
@@ -39,7 +34,7 @@
     "scope": "completefrozencohortfirst; preserveindependentnetwork/refgates"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T05:49:37.130965+00:00",
+  "updated_at_utc": "2026-10-13T05:56:41.186411+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46400,7 +46395,7 @@
       "335678": "graded4.293779716792071e-9"
     },
     "latest_followup": "experiments/phase2/CONTINUATION_2026-10-13.md",
-    "strict_public_networks_completed": 30
+    "strict_public_networks_completed": 37
   },
   "latest_completed_rpc": {
     "key": "sprint-v37b-h18-fullRPC8",
@@ -46449,20 +46444,20 @@
     "stage_accepted": false
   },
   "latest_public_expansion": {
-    "report": "results/phase2/sprint_public_v37b_h18_r09_strict_shard03_score.json",
-    "comparison": "results/phase2/sprint_public_v37b_h18_r09_shard03_before_after.json",
-    "before_adjusted": 5.565246277833615e-09,
-    "adjusted": 4.33773427452032e-09,
-    "raw": 2.1321219329755488e-08,
+    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
+    "comparison": "results/phase2/sprint_public_v37b_h18_r10_shard04_before_after.json",
+    "before_adjusted": 5.71253604217901e-09,
+    "adjusted": 4.4598079397537335e-09,
+    "raw": 2.192297010594757e-08,
     "failures": 0,
-    "relative_adjusted_vs_v29": -0.22056741822953585,
-    "relative_raw_vs_v29": -0.023997084006875835,
+    "relative_adjusted_vs_v29": -0.21929456430132765,
+    "relative_raw_vs_v29": -0.021973271401910632,
     "n_mlps": 7,
-    "total_strict_public_networks": 30,
+    "total_strict_public_networks": 37,
     "scope": "Frozen paired public cohort, both strict RPC; upstream public tuning unknown; not final unseen holdout",
-    "maxwall": 54.36632663,
-    "maxresidual": 0.18849976299999582,
-    "client_peak_rss_kib": 300588,
+    "maxwall": 54.376598488,
+    "maxresidual": 0.18354026400000123,
+    "client_peak_rss_kib": 301072,
     "all_networks_adjusted_improved": true,
     "stage_accepted": false
   },
@@ -46699,28 +46694,28 @@
     "scope": "onecomponentfloat64deep16 allmatrixops; not1024evidence"
   },
   "latest_completed_experiment": {
-    "key": "newpublicshard03 frozenV37bH18 strict comparison",
+    "key": "frozen shard04 V37bH18 strict candidate",
     "status": "completed_zero_failures",
-    "pid": 627149,
-    "pid_start_ticks": "726901",
-    "session_id": 29844,
-    "started_at_host": "2026-10-13 13:29:23",
+    "pid": 711000,
+    "pid_start_ticks": "843831",
+    "session_id": 85120,
+    "started_at_host": "2026-10-13 13:48:52",
     "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
     "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
-    "report": "results/phase2/sprint_public_v37b_h18_r09_strict_shard03.json",
-    "dataset": "benchmark/data/mini_shard03",
+    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04.json",
+    "dataset": "benchmark/data/mini_shard04",
     "n_mlps": 7,
     "network_ids": [
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
     ],
-    "inputs": "benchmark/data/rpc_inputs/frozen_shard03_r01/inputs.json",
-    "next": "score/pairedprotocolbinding afterallcomplete; noonlineupload",
+    "inputs": "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
+    "next": "score/paired bind after all complete; noonline reupload",
     "completed_networks": 7,
     "completed_statuses": [
       "ok",
@@ -46731,9 +46726,8 @@
       "ok",
       "ok"
     ],
-    "score_report": "results/phase2/sprint_public_v37b_h18_r09_strict_shard03_score.json",
-    "comparison": "results/phase2/sprint_public_v37b_h18_r09_shard03_before_after.json",
-    "finished_at_utc": null
+    "score_report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
+    "comparison": "results/phase2/sprint_public_v37b_h18_r10_shard04_before_after.json"
   },
   "latest_m05_w2_contract": {
     "report": "results/phase2/m05_w2_independent_contract_r01.json",
@@ -46767,15 +46761,15 @@
     "no_competition_score": true
   },
   "strict_public_aggregate": {
-    "n_mlps": 30,
+    "n_mlps": 37,
     "n_failed_mlps": 0,
-    "final_layer_mse": 2.204721927986005e-08,
-    "adjusted_final_layer_score": 4.480111090883221e-09,
-    "mean_flops": 447151294613.93335,
+    "final_layer_mse": 2.2023712679390122e-08,
+    "adjusted_final_layer_score": 4.476269954183047e-09,
+    "mean_flops": 447248788936.1892,
     "max_wall_s": 58.75250673,
     "max_residual_s": 0.1978317510000025,
-    "max_client_peak_rss_kib": 300588,
-    "report": "results/phase2/sprint_public_v37b_h18_strict_public30_r01.json"
+    "max_client_peak_rss_kib": 301072,
+    "report": "results/phase2/sprint_public_v37b_h18_strict_public37_r02.json"
   },
   "prepared_m05_next": {
     "script": "experiments/phase2/m05_official_network_gate.py",
@@ -46862,5 +46856,35 @@
     "threshold_satisfied": false,
     "not_submission_contract": true,
     "no_adjusted_score": true
+  },
+  "latest_charged_centering_contract": {
+    "report": "results/phase2/ablation_v30_067_r08_charged_centered_conversion.json",
+    "status": "passed_small_object",
+    "no_score": true
+  },
+  "prepared_next_structural_component": {
+    "script": "experiments/phase2/cp_centered_k211_contract.py",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/cp_centered_k211_contract.py"
+    ],
+    "condition": "after active strict evaluation",
+    "scope": "syntheticfactor exact centering/cost, not actualsourceintegration or score"
+  },
+  "download_cache_cleanup": {
+    "report": "results/phase2/public_download_cache_cleanup_r01.json",
+    "bytes_released": 1950194252,
+    "only_redownloadable_chunks": true,
+    "original_data_and_results_preserved": true
+  },
+  "latest_cp_centering_contract": {
+    "report": "results/phase2/ablation_v30_067_r09_cp_centered_k211.json",
+    "status": "completed_diagnostic",
+    "legal_flops_1024": 2172671997,
+    "largest_charged_array_elements": 1048576,
+    "no_score": true
   }
 }
