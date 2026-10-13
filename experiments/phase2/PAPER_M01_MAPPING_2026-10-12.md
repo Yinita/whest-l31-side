@@ -55,6 +55,6 @@ M03r18 frozen residual exactreplacement identifies firstbirthrank16approximation
 | FLOPs | 587262754287 | 587263261167 |
 | 失败 | 0 | 0 |
 
-单网adjusted改善0.531%，尚未获全集、RPC或独立确认。完整Mini8 r22运行中；所有数值研究保持与官方原始reference区分，最终候选不读取真值。r19小形状逐层差异仅略缩小，不能宣称论文完整方法已复现。
+单网adjusted改善0.531%；完整Mini8 r22已完成，adjusted恶化0.1482%，拒绝晋升，未派发RPC或独立确认；所有数值研究保持与官方原始reference区分，最终候选不读取真值。r19小形状逐层差异仅略缩小，不能宣称论文完整方法已复现。
 
 M03r22 Mini8complete adjusted5.787544250514655e-9/raw2.273748767045447e-8,8zeroerrors,maxresidual.252484s,meanFLOPs559755271791. FrozenV29adjusted5.778979755766664e-9,after+0.1482%; realnetwork0paired−.531% doesnotgeneralize development8. Reject standalone resdiag promotion, cancel gatedindependent/RPCdispatch(preparedscripts retained). No stageacceptance/onlineupload. M03 remainspartial. Need jointpairrepresentation, fullrank alreadynegative so no repeatblindrank.

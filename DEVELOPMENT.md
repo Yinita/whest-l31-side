@@ -1,6 +1,8 @@
 # WhestBench Phase 2 开发入口
 
-更新日期：2026-10-12。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
+更新日期：2026-10-13。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
+
+官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，公共数据仅16网，Mini100/Full1000、完整论文比赛移植和RPC全部硬约束仍未完成。V37b+H18最新RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；同候选完整local8/独立确认待，线上335677/335678仍排队，阶段目标未达。
 
 ## 当前状态
 
