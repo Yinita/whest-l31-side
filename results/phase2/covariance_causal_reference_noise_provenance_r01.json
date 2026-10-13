@@ -1,0 +1,23 @@
+{
+  "samples": 1000341504,
+  "chunk_size": 524288,
+  "n_chunks": 1908,
+  "final_avg_variance": 0.07867601418567388,
+  "nominalfinal_mean_noise_mse": 7.864915518458173e-11,
+  "provenance": {
+    "method": "closed-form",
+    "operation_model": "whestbench.simulation.sample_layer_statistics",
+    "chunking_from": "the torch bake (jobs-phase2.yaml chunk_size)",
+    "cost_model": "flopscope 0.12.0 / whestbench 0.16.0",
+    "verified_against": [
+      "flopscope 0.10.0 (PyPI) / whestbench 0.14.0",
+      "flopscope 0.11.0 (PyPI) / whestbench 0.15.0",
+      "flopscope main@0812afe9 / whestbench 0.15.0",
+      "flopscope main@dcfa982b / whestbench 0.15.0"
+    ],
+    "chunk_size": 524288,
+    "n_chunks": 1908,
+    "note": "The ground-truth bake ran torch on GPU, outside flopscope's instrumentation. These are closed-form FLOP counts: the per-operation cost model is the one flopscope charges for the numpy reference implementation (validated against a live flopscope run to the unit), evaluated at the chunking the torch bake actually used. The bake was NOT budget-limited; flop_budget is recorded equal to flops_used so that flop_budget - flops_used == flops_remaining holds. It is unrelated to the estimator's Phase-2 evaluation budget of 2**41 FLOPs per MLP."
+  },
+  "scope": "Nominal iidmean noise from officialvariance/samples; bakedGPUdtype andlocalinnovation noise covariance not established. Doesnotreplace originalreference."
+}
