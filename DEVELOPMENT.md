@@ -4,7 +4,7 @@
 
 官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，公共数据仅16网，Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。
 
-后续核验：同候选local8已完成但3网residual超过400ms，失败保留；新严格RPC执行器故障验收已完成，完整候选运行中。线上335678已graded **4.2937797168e-9**，本队当前最佳、rank67；335677原样V37b为4.3922571600e-9。最新证据与执行状态见[严格RPC验证](experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。
+后续核验：同候选local8已完成但3网residual超过400ms，失败保留；新严格RPC执行器故障验收已完成，Mini8 **4.6043530011e-9**、扩展公共8网 **4.6350586013e-9**，各8/8零失败。扩展集较V29 adjusted下降21.39%、raw下降1.55%，主要降费；这些公共网曾用于研究，不能称最终未见holdout。线上335678已graded **4.2937797168e-9**，本队当前最佳、rank67；335677原样V37b为4.3922571600e-9。最新证据与执行状态见[严格RPC验证](experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。
 
 ## 当前状态
 
