@@ -1162,3 +1162,7 @@ SHA637212f82ca4906a3b6524623c64bb0bb0eff5712ae592e25708db93fd48a469，仅替换r
 ## r43–r45 局部均值创新：排除双计数，但收益不足
 
 r43实际24网络canonical权重SHA全核验，固定Phi W meanJacobian剥离继承误差，零失败；layer14局部error MSE/total.20587只目标分解，不算法提分。r44 24train/4blockedfold fixed22features/perlayerlinear.01，normalizedlocalratio.9888608、raw.9861997（22/24wins），未过预设.90门槛。r45同OOF预测真实W tangent递推至layer14，localratio.9942069；将totalerror逐层注入反而1.1248303。只改善.58%，不扩mean-only、不线上提交。firstorder只含均值响应，无完整cov/sourceJacobian，MC跨层共享样本，不假设iid去噪。next r46实际oracle四diag共同rollin训练网0/16、layers1..14，final不注入，用于检验真正非线性状态闭合的诊断上限，绝不是合法候选。
+
+## r46实际partialdiag oracle有信号，推进局部闭合训练
+
+r46 twoTRAINnet0/16实际post4diag MC真值rollin（layers1..14、layer0/final原样）零失败，raw2.407213e-8→4.623101e-9、2.478599e-8→4.35853e-9，约5.2/5.7倍。它是目标依赖的partialdiag closure诊断，非候选/十倍证明/通用精度上界；idx0换repeatreference为6.42125e-9，噪声影响保留。两网各15层covPSD检查无低于−1e-9特征值。r47剩余22TRAIN网络oraclecapture PID1673549已启动，同reset，移除离线eig cost并保存actualf32post。next r48训练localjointclosure，freshlearnedrollout必须无真值。

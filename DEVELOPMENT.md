@@ -1,5 +1,7 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13 19:28：实际partialdiag oracle两TRAIN网raw平均2.442906e-8→4.490815e-9（约5.44倍），仅目标依赖诊断，十倍未达/最佳不变。r47剩余22TRAIN网络正在采集localjointclosure输入，随后固定网络CV与无真值freshlearnedrollout；先前r38/r39/r41/r42完整学习候选均否决。参见[本轮真实结果](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
+
 2026-10-13 19:20：r41二次交互及r42分层联合状态闭合在新8网完整完成，raw分别+8.44%/+10.61%，均零失败、均否决。train24静态CV改善没有迁移到闭环，不重复扩量/线上提交。r43正在仅24train上用固定Phi/W剥离继承均值误差，下一CV检验局部innovation预测；这是待验证假设，非已有提分。十倍目标未达、最佳仍V37bH18。
 
 2026-10-13 19:16最新：独立corpus24train/8held的完整闭环已完成，线性mean-only raw+5.52%、joint4diag+19.43%，均0/8数值失败，否决；首轮4GiB32SIGKILL另保留。固定二次交互及perlayer机制通过train24网络CV，已冻结并启动新8网idx512..624完整闭环，尚无成绩。此为N1e8离线诊断，非Mini8/严格资源或十倍验收；最佳仍V37bH18。见[本轮before/after](results/phase2/corpus_joint_rollout_before_after_r38_r39.json)。

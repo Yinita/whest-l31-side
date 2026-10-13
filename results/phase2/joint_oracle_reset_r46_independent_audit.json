@@ -1,0 +1,144 @@
+{
+  "version": "partial-diagonal-oracle-r46-independent-audit",
+  "script_sha256": "0dec559f4cd64c5eab3918ec56424e200edee9492a8cec7bb6f8d38093b568cc",
+  "source_report_sha256": "38bd8025a9b2cefa375395e89c2e219e3daee87ad459e4d3d178ab65656cd76f",
+  "source_manifest_sha256": "b6dacbd187259637f7f18166ebf840266999030069ec901e1a9fe833bceeb3e4",
+  "labels_sha256": "4b62629a2cf5bb7ade8f8c20bc09c259d7922b684c4b0b6b7722f0a7aaeb7930",
+  "rows": [
+    {
+      "idx": 0,
+      "primary_before_raw": 2.4072134117009322e-08,
+      "primary_oracle_after_raw": 4.623100666583427e-09,
+      "raw_after_over_before": 0.19205196531855284,
+      "before_layer_mean_mse": [
+        6.604932097781235e-09,
+        5.004075846493828e-09,
+        4.3936371416507785e-09,
+        4.467658974772222e-09,
+        4.455321535801119e-09,
+        5.74493027966416e-09,
+        7.073439988359729e-09,
+        7.3285349887823254e-09,
+        9.200208562605239e-09,
+        1.2202679124626042e-08,
+        1.2579756355959148e-08,
+        1.4317675634925225e-08,
+        1.657985235127509e-08,
+        1.8899451608154473e-08,
+        2.2069735674834057e-08
+      ],
+      "oracle_layer_mean_mse": [
+        6.605438151313647e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "after_states_equal_mc_targets_layers1to14": true,
+      "reset_mean_live_f32_rounding_maxabs": 0.0,
+      "analytic_layer0_no_reset": true,
+      "analytic_first_output_vs_baseline_maxabs": 2.384185791015625e-07,
+      "covariance_min_eigenvalue": -2.653127631277315e-13,
+      "covariance_eigenvalues_below_minus1e_minus9": 0,
+      "elapsed_s": 64.972853558,
+      "maxrss_kib": 5413120,
+      "repeat_reference": {
+        "network_mapping": "inferred nearest of32; README does not state network ID",
+        "before_raw": 2.5308377644724744e-08,
+        "oracle_after_raw": 6.421246508812487e-09,
+        "after_over_before": 0.2537201949075122
+      }
+    },
+    {
+      "idx": 16,
+      "primary_before_raw": 2.4785994873867936e-08,
+      "primary_oracle_after_raw": 4.358529495268535e-09,
+      "raw_after_over_before": 0.17584646157833939,
+      "before_layer_mean_mse": [
+        6.727464505612568e-09,
+        5.184996290302505e-09,
+        4.6808808983125225e-09,
+        4.618733749182895e-09,
+        5.183903708562788e-09,
+        5.770406057933025e-09,
+        6.159645925122168e-09,
+        7.46109565399049e-09,
+        9.22439151078904e-09,
+        1.0992949404273359e-08,
+        1.3463438993248888e-08,
+        1.4413342737626939e-08,
+        1.6498869676614917e-08,
+        2.1093475808850113e-08,
+        2.31708917244171e-08
+      ],
+      "oracle_layer_mean_mse": [
+        6.727464505612568e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "after_states_equal_mc_targets_layers1to14": true,
+      "reset_mean_live_f32_rounding_maxabs": 0.0,
+      "analytic_layer0_no_reset": true,
+      "analytic_first_output_vs_baseline_maxabs": 0.0,
+      "covariance_min_eigenvalue": -2.36424864720758e-12,
+      "covariance_eigenvalues_below_minus1e_minus9": 0,
+      "elapsed_s": 98.214161058,
+      "maxrss_kib": 5390740
+    }
+  ],
+  "failures": 0,
+  "mean_before_raw": 2.442906449543863e-08,
+  "mean_oracle_after_raw": 4.490815080925981e-09,
+  "aggregate_raw_ratio": 0.1838308250307539,
+  "repeat_vector_nearest32": [
+    {
+      "idx": 0,
+      "mse": 1.7989558940213444e-09
+    },
+    {
+      "idx": 240,
+      "mse": 1.0649438522629684
+    },
+    {
+      "idx": 336,
+      "mse": 1.1046938691222923
+    },
+    {
+      "idx": 16,
+      "mse": 1.1307008452519998
+    }
+  ],
+  "no_noise_floor_subtracted": true,
+  "scientific_scope": "MC oracle central marginal reset under fixed approximate mixed closure; partial-diagonal mechanism diagnostic, not universal or rigorous upper bound",
+  "limits": [
+    "truth-guided rollout is nondeployable and not a candidate",
+    "sameMC errors correlated across resetlayers and primary reference",
+    "two train networks no CI or tenfold certification",
+    "PSD covariance does not establish joint fourth-order moment realizability",
+    "firstlayerrounding/backend differences recorded",
+    "final layer not reset",
+    "no legal flops/RPC/resource/stage acceptance"
+  ]
+}

@@ -10,17 +10,18 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "experiment_id": "joint.oracle.reset.r46",
-    "pid": 1671520,
-    "pid_start_ticks": "2861825",
+    "experiment_id": "joint.oracle.capture.r47",
+    "pid": 1673549,
+    "pid_start_ticks": "2875722",
     "status": "running",
-    "output": "results/phase2/modal_joint_oracle_reset_r46",
-    "log": "results/phase2/modal_joint_oracle_reset_r46.launcher.log",
-    "scope": "twoTRAINnet0/16 actualoracle4postdiagreset1..14; targetdependentdiagnostic, no admissiblecandidate or universalupperbound"
+    "output": "results/phase2/modal_joint_oracle_reset_r47",
+    "log": "results/phase2/modal_joint_oracle_reset_r47.launcher.log",
+    "scope": "22TRAIN oraclecaptures only; original0/final noreset; no candidate scores",
+    "source_prior": "r46sameprimarymechanism removeofflinePSDcost addactualpostfloat32capture"
   },
   "next_experiment": "H18 sharedactualcapture; paircost4 consistencygate; pureD4/repeatsupporthistory actualproductioncontract andstrictcandidate ifcostpasses",
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T11:25:34.199491+00:00",
+  "updated_at_utc": "2026-10-13T11:28:04.844986+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -47505,16 +47506,15 @@
     "finding": "Official factorizedaugment explicitly drops covariance triangles/K3edge at leading MSE order; current pureD4 persistence is project mechanism, not claiming official full algorithm."
   },
   "last_completed_experiment": {
-    "experiment_id": "mean.innovation.targets.r43",
-    "pid": 1667283,
-    "pid_start_ticks": "2833176",
-    "status": "completed",
-    "output": "results/phase2/modal_mean_innovation_targets_r43",
-    "log": "results/phase2/modal_mean_innovation_targets_r43.launcher.log",
-    "scope": "offline24train oracle targetconstruction viafixedPhiWmeanJacobian; noaccuracy score",
-    "successful_jobs": 24,
-    "failed_jobs": 0,
-    "completion": "results/phase2/modal_mean_innovation_targets_r43/completion.json"
+    "experiment_id": "joint.oracle.reset.r46",
+    "pid": 1671520,
+    "pid_start_ticks": "2861825",
+    "status": "completed_diagnostic",
+    "output": "results/phase2/modal_joint_oracle_reset_r46",
+    "log": "results/phase2/modal_joint_oracle_reset_r46.launcher.log",
+    "scope": "twoTRAINnet0/16 actualoracle4postdiagreset1..14; targetdependentdiagnostic, no admissiblecandidate or universalupperbound",
+    "completion": "results/phase2/modal_joint_oracle_reset_r46/completion.json",
+    "failed_jobs": 0
   },
   "tenfold_production_results": {
     "r25_sparse_d4": {
@@ -47647,5 +47647,24 @@
     "layer14_total_error_injection_ratio": 1.1248303,
     "report": "results/phase2/modal_mean_innovation_replay_r45/completion.json",
     "scope": "24train firstorder meanreplay 15layers; not actualnonlinearcandidate score"
+  },
+  "latest_oracle_actual_rollout": {
+    "scope": "twoTRAINnet diagnosticpost4diags true reset, notlegalcandidate/universalupperbound",
+    "rows": [
+      {
+        "idx": 0,
+        "before_raw": 2.4072134117009322e-08,
+        "after_oracle_raw": 4.623100666583427e-09,
+        "oracle_over_before": 0.19205196531855284
+      },
+      {
+        "idx": 16,
+        "before_raw": 2.4785994873867936e-08,
+        "after_oracle_raw": 4.358529495268535e-09,
+        "oracle_over_before": 0.17584646157833939
+      }
+    ],
+    "failures": 0,
+    "report": "results/phase2/modal_joint_oracle_reset_r46/completion.json"
   }
 }

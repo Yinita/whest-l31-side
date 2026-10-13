@@ -280,3 +280,40 @@ train-CV result rejects further full mean-only rollout; it is not full16layer
 finalMSE or a lawful resource run. Next scientific data requirements are in
 `JOINT_INNOVATION_DATA_REQUIREMENTS_R46.md`: the existing MC marginal corpus
 cannot identify transported off-diagonal covariance or joint cumulant error.
+
+
+R46 separate oracle pilot is now active(two train-only corpus networks0/16).
+At post ordinary cumulant boundary, true MC postmean/variance/K3/K4 are reset
+on layers1..14 using canonical truth[perm]; layer0 remains actual analytic,
+and final layer15 has no truth reset. Existing mixed central pair slices stay
+original and downstream ordinary diagonal sources are rebuilt. Oracle labels
+are explicitly sent to the oracle research worker; no candidate/model inference
+result is asserted. App PID1671520, `modal_joint_oracle_reset_r46.py`, output
+`results/phase2/modal_joint_oracle_reset_r46/`. It records covariance minimum
+and maximum eigenvalues/negative eigenvalue counts at every reset boundary.
+Desired afterstate is saved float64 MC truth, while the live state is copied
+float32; afterstate is not a claim of exact backend identity. Independent K4
+orientation audit passes non-involutive permutations, both weight axes, raw
+central conversion and inheriteddelta once. If even this oracle reset fails
+to give strong final gain, larger training on this post-state interface is not
+justified; if it succeeds it only identifies a possible interface upper bound,
+not a deployable algorithm or measured tenfold stage.
+
+
+R46 two-oracle gate completed0fail: network0 raw2.40721341e-8→4.62310067e-9
+(ratio.19205197), network16 2.47859949e-8→4.35852950e-9(.17584646).
+This5.2–5.7× oracle gain justifies studying local-closure targets but does not
+reach10× even with oracle inputs. No covariance eigenvalues below−1e-9 on
+these two runs; minima~−1e-12 are float noise. Reset returned means1..14 equal
+stored float32 MCmeans exactly, layer0 unchanged. Truepost variance can be
+exactzero for dead neurons; oracle reset uses raw truth without artificial
+floor. Subsequent H18 prevar retains its original numerical floor.
+
+R47 remaining22 training-corpus networks32..368 step16 are capturing the same
+oracle-conditioned local output. PID1673549, `modal_joint_oracle_reset_r47.py`,
+new output`results/phase2/modal_joint_oracle_reset_r47/`. Dense eigenvalue
+checks are omitted after the two-network gate; live actual aftercopy float32
+all4 states are also captured canonical to distinguish desired float64truth.
+These are oracle training targets explicitly permitted onlyoffline, no
+candidate score. R48 independent train-network CV will fit truepost minus
+own closure output given previous truepost states, not baseline total error.
