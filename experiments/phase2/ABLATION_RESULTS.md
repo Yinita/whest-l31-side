@@ -118,6 +118,18 @@ after：成本可行的官方basic/augmented/factorized端到端K2/K3及可行K4
 - [paper_m03_r09_dtype64_isolated.json](../../results/phase2/paper_m03_r09_dtype64_isolated.json)
 - [paper_m03_r10_birthfull_same64.json](../../results/phase2/paper_m03_r10_birthfull_same64.json)
 - [paper_m03_r10_birthfull_summary.json](../../results/phase2/paper_m03_r10_birthfull_summary.json)
+- [paper_m03_r11_layer_summary.json](../../results/phase2/paper_m03_r11_layer_summary.json)
+- [paper_m03_r12_resfull_summary.json](../../results/phase2/paper_m03_r12_resfull_summary.json)
+- [paper_m03_r13_state_summary.json](../../results/phase2/paper_m03_r13_state_summary.json)
+- [paper_m03_r14_birth_contract.json](../../results/phase2/paper_m03_r14_birth_contract.json)
+- [paper_m03_r15_birth_dense.json](../../results/phase2/paper_m03_r15_birth_dense.json)
+- [paper_m03_r15_source_binding.json](../../results/phase2/paper_m03_r15_source_binding.json)
+- [paper_m03_r16_birth_partition.json](../../results/phase2/paper_m03_r16_birth_partition.json)
+- [paper_m03_r17_repeated_transport.json](../../results/phase2/paper_m03_r17_repeated_transport.json)
+- [paper_m03_r18_exact21_contract.json](../../results/phase2/paper_m03_r18_exact21_contract.json)
+- [paper_m03_r19_resdiag_same64.json](../../results/phase2/paper_m03_r19_resdiag_same64.json)
+- [paper_m03_r19_resdiag_contract.json](../../results/phase2/paper_m03_r19_resdiag_contract.json)
+- [paper_m03_r21_resdiag_pair_summary.json](../../results/phase2/paper_m03_r21_resdiag_pair_summary.json)
 
 ### v30.065 O03 K211完整来源抵消一致性
 

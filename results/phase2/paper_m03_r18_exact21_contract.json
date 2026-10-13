@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "seed": 13026031,
+      "variants": {
+        "rank16": {
+          "birth_mse": 1.1968238588129735e-08,
+          "birth_max": 0.0035724592734975025,
+          "birth_diag_vs_marginal_max": 0.0035724741746586963,
+          "birth_pair_vs_marginal_max": 0.002993848749789335,
+          "pre1_diag_vs_official_mse": 6.099930826945714e-07
+        },
+        "exact": {
+          "birth_mse": 1.594347203629535e-19,
+          "birth_max": 2.9802322387695312e-08,
+          "birth_diag_vs_marginal_max": 0.0,
+          "birth_pair_vs_marginal_max": 6.941952249150951e-09,
+          "pre1_diag_vs_official_mse": 1.836351317184932e-16
+        }
+      },
+      "input_sha256": "cb06a80dd69fb1f2167d6ef8e2b36567c53fcd1b89c1de717e0edc7d53c6eecf",
+      "official_objects_sha256": "5d184ccc6a54e01590cc54b3c4aedd719932f229847928159e9bba93f34a9ea5",
+      "charged_capture_flops": 28541708
+    },
+    {
+      "seed": 13026032,
+      "variants": {
+        "rank16": {
+          "birth_mse": 1.1595623011525353e-08,
+          "birth_max": 0.0066070674074318325,
+          "birth_diag_vs_marginal_max": 0.00660709720975422,
+          "birth_pair_vs_marginal_max": 0.0036274229134519165,
+          "pre1_diag_vs_official_mse": 9.512865044732005e-07
+        },
+        "exact": {
+          "birth_mse": 1.3478967509296353e-19,
+          "birth_max": 2.9802322387695312e-08,
+          "birth_diag_vs_marginal_max": 0.0,
+          "birth_pair_vs_marginal_max": 6.427958471055817e-09,
+          "pre1_diag_vs_official_mse": 1.5769020589139603e-16
+        }
+      },
+      "input_sha256": "2e044388e893c0002e9b32b4668f38cba387a92425ceae71b3576b123cfc803b",
+      "official_objects_sha256": "0ffca382228ba04d4d5ee5fb928534f026585368bb30f62ad66d3f6026a1cf3a",
+      "charged_capture_flops": 28541708
+    }
+  ],
+  "complete": true,
+  "script_sha256": "212858d6a542972a430a40fefc7f968457600ddfce04c7babd026b5df5cace55",
+  "capture_sha256": "f2ffe022cf86bde3c89ea9c629602fbaa9f447e07e3f1436d26f85b881175103",
+  "intervention": "M residual RLtranspose replaced with3Rres.transpose only; all other birth objects frozen",
+  "formula": "M_exact=diag(s)+3A diag(e)+3Rres.transpose; T=Sym(3A,A diag(w2),I)+Sym(M,I,I)",
+  "sources": [
+    "V29 source1414-1436 S21/S_sep/Rres and M comments",
+    "r14 official ordinary K3 objects"
+  ],
+  "scope": "Offline diagnostic, no oracle target; no candidate score or deployment cost. Two dense transports analytic201326592 FLOPs/network distinct from flopscope."
+}
