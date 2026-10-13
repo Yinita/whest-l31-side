@@ -1,0 +1,55 @@
+# R57 frozen actual candidate fresh8 preparation
+
+Prepared only; no model/source/support is built for this run yet, no cloud
+launch and no freshMC labels read. Fresh indices768,784,…880 are fixed before
+score reading. One full14R54model is evaluated once even if localCV is weak,
+because local marginalCV cannot establish natural final16layer quality.
+
+The `wrap_onpolicy_model_r56.py` wrapper first binds actual frozenR54final
+envelope to complete heads1..14, prefixSHAchain, manifest and full24capture
+records. It only adds validated metadata; it cannot invent missingcaptures
+or fit coefficients. It never changes running R54 source/evidence. R56builder
+then validates wrapperSHA and writes normalized-head lawfulcandidate privately.
+Wholeactualmodel componentparity/sourceledger audit is required before launch.
+
+`modal_onpolicy_closed_fresh8_r57.py` sends only frozencandidate source/support/
+hashes and idx to predictionworkers. Each worker regenerates one fullW via
+the frozen torchseed contract, and runs actual H18 then actualR56candidate,
+with separate setup/predictBudgetContexts and original setupseed0. No Python
+tracer/NumPy correction/MCtruth enters prediction. There are no labels or
+reference identifiers in the worker source audit. Separate `read_labels`
+fetches a frozen-shard compact8finalreference and analyticfirstmean only after
+model/source identities freeze; labels are scored locally and remain private.
+
+Fixedidx768adds duplicateH18 baselineA→baselineB→candidate in oneworker; the
+other7run baselineA→candidate. Before/after score always uses A. Duplicate
+source and meteredFLOPs must match, while perlayerpredRMS/maxabs, finalresidual
+MSE, B/Araw and driftRMS/baselineerrorRMS are recorded. This distinguishes
+sameworker numerical/cache order effects from R52crosshost drift without
+repeating control on all8 or selecting model parameters.
+
+Cloud16GiB workers and sameprocess cumulativeRSS are diagnostic. Parentfirst
+ordering can warm caches; candidateelapsed/residual/cumulativeRSS does not
+establish competitionresource compliance. Apptimeout600s is a totaldiagnostic
+timeout covering up to3predicts, not permission to exceed officialpredict120s.
+Both Budget summaries/time/residual/setup/RSS/versions/weightsource hashes and
+allfailed results are preserved. No retries, no output overwrite. Rawgate is
+zerofailure, averagecandidate/baseline<.90 and network-bootstrap95upper<1;
+rawratio<.1 is recorded separately but cannot accept the tenfoldstage without
+Mini8adjusted/independent/strict checks.
+
+`launch_modal_onpolicy_closed_fresh8_r57.py` privately loads existing Modal
+credentials and requires candidate/model/support paths plus independently
+provided hashes. It is prepared, not executed. `prepare_onpolicy_strict_rpc_plan_r57.py`
+writes commands only using existing `benchmark/run_rpc_strict.py`,
+`rpc_strict_score.py` and `compare_strict_cohort.py`, with immutable inputs
+and paired samecycleH18. The strictSession supervises5ssetup and checks
+measured elapsed, officialclient enforcesmetered2**41, trustedworker8GiBRLIMIT_AS,
+120spredict/.4sresidual and identity/cold recovery. This tool does not relax
+those limits or launch tests. Development trustedserverarraycap1GiB still
+has unknown officialdeploymentequivalence. Strict results cannot claim online
+rank or stage acceptance by themselves.
+
+All source scripts lint/compile pass. `onpolicy_fresh8_preparation_r57_source_audit.json`
+records targetfreeactualworker, fixedcontrol and unstarted status. No model,
+score or tenfold claim is supplied by this preparation.

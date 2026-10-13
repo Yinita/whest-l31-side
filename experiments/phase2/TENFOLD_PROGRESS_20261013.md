@@ -2,6 +2,12 @@
 
 阶段1仍要求冻结Mini8 adjusted <5.779e-10，并独立网络成对10倍、零失败、严格资源验收。当前未达标。评分最低乘数0.1，因此raw必须<5.779e-9，仅降费不充分。
 
+## 当前主要实验：R54→R56→R57
+
+2026-10-13 20:07 CST：R54固定26features/λ.01、14层真正sequential on-policy，各foldprefix只来自其TRAIN18，full24独立训练。PID1699263/startticks3047507仍运行；已完成layer7、720次cloudcapture零失败，35heads冻结。layer1复用旧同trace，不计cloud；机器状态旧累计数字已纠正为journal真实行。layer7 held物理μ/var/K3/K4误差比H18为.991499/.955763/.916472/.607271，只有局部矩指标，无finalraw/adjusted。
+
+完整14层后冻结private模型，R56用合法fnp normalized算术，R57预定首次新8网idx768..880无真值完整递推；idx768另H18 A→B→candidate同host数值对照。参考标签只isolated/local评分，16GiB cloud只是研发。完整raw可靠改善才串行严格RPC network0→冻结Mini8；任意阶段未过不上传。已关闭r49+r55，并保留r51拼接门禁失败。真正联合方向矩的新R58诊断准备中，公共已用Mini0/16与corpus网络ID明确分开。
+
 ## 新完成的实际网络结果
 
 以下均同网络0、原始reference、immutable RPC inputs SHA9e53442b88a0da22e8b9dafa26aa92318b38af95ab284776fa0e972b991854b4，同工具flopscope0.12.1/whestbench0.16.1，预算2**41、120秒predict、0.4秒residual、5秒setup，线程1。不是Mini8均分或独立泛化证据。

@@ -1196,3 +1196,10 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 ### r54真正on-policy固定14层已运行
 
 2026-10-13 19:56 CST，实际PID1699263/startticks见state，immutableSHA1321d9713e9f00538092e03c2019beb4bfc161bf97dab09af6632ca9afe408dd。首launcher1698800迅速消失、log0字节/OUT未创建，原log保留，确认无活动后r02launcher接续同源，未重复实验。full24+4foldTRAIN18/held6，layer1复用同trace baseline无cloud，2..14 learnedprefix实际capture，最大96worker/1CPU/16GiB，rawVolume hashcommit/local保留150MiB。合同r02八actual小网络+floor/inheriteddelta2例通过；默认NO_CORR=True，deltaNone，layer1总meanfp32-copy与K1copy默认路径相同，非默认rider路径另受合同。启动前TRAINnoise诊断μ残差/nominalnoise layer1~1.03→14~23.55，var1~1.03→14~97.33；early3只合同/finite安全检查，不用MCnoise占主导的earlyaccuracy截断late机制。模型不调参、不选层，完整14固定一次后fresh全推理/RPC才可判断提分。初估15–35分钟由实际测时更新，非保证。Stage1阈值及最佳不变，无新比赛上传。
+
+
+### 2026-10-13 20:04 CST — R54 正在运行的真实检查点
+
+PID1699263/startticks3047507确认仍存活，immutable源SHA1321d9713e9f00538092e03c2019beb4bfc161bf97dab09af6632ca9afe408dd不改。已完成layer6（cloud layer2..6共600次；layer1复用原trace，不计cloud）。机器状态旧360数字是错误累计，现改为真实journal成功/失败/返回数，避免重复计量。layer6 held物理head/H18 μ/var/K3/K4比值.989722/.956384/.935875/.655349，floor μ205/var355；只是矩预测指标，不是finalraw/adjusted。完整14层后，无论局部CV强弱都执行一次已预定actual合法候选新8网R57；只有完整可靠raw收益才扩严格RPC。R57增加idx768同worker H18 A→B→candidate数值对照，before始终A，不因结果调参数。现有strict runner已具有外部5秒setup与measuredelapsed硬门禁，计划纠正为沿用它，不修改正确runner。
+
+项目报告顶部过时快照原文移至REPORT_CHECKPOINTS_20261013_2004.md，入口只展示当前状态。阶段1/5.779e-10/冻结基线不变，无新线上提交。
