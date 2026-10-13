@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "seed": 13026031,
+      "input_sha256": "cb06a80dd69fb1f2167d6ef8e2b36567c53fcd1b89c1de717e0edc7d53c6eecf",
+      "artifact_sha256": "5d184ccc6a54e01590cc54b3c4aedd719932f229847928159e9bba93f34a9ea5",
+      "dense_vs_official_diag_max": 4.520194665791344e-08,
+      "dense_vs_official_pair_max": 4.9992267520115874e-08,
+      "dense_vs_v29_diag_mse": 6.099980127323601e-07,
+      "dense_vs_v29_pair_mse": 1.8435198784866294e-07,
+      "numpy_dense_analytic_multiply_add_flops": 100663296,
+      "max_permutation_error": 3.725290298461914e-09
+    },
+    {
+      "seed": 13026032,
+      "input_sha256": "2e044388e893c0002e9b32b4668f38cba387a92425ceae71b3576b123cfc803b",
+      "artifact_sha256": "0ffca382228ba04d4d5ee5fb928534f026585368bb30f62ad66d3f6026a1cf3a",
+      "dense_vs_official_diag_max": 4.520801299978672e-08,
+      "dense_vs_official_pair_max": 3.7768101091018025e-08,
+      "dense_vs_v29_diag_mse": 9.512870116226263e-07,
+      "dense_vs_v29_pair_mse": 2.1230596742074745e-07,
+      "numpy_dense_analytic_multiply_add_flops": 100663296,
+      "max_permutation_error": 3.725290298461914e-09
+    }
+  ],
+  "complete": true,
+  "official_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+  "script_sha256": "a9b4dfeb375360b7a2c82ec98ab4851832f3bad1a888ea27854a211d16d4ae94",
+  "sources": [
+    "factor_k3.py:FactoredTensor.to_tensor, contract_W, factored_nonlin_kprop_k3 step4",
+    "cumulants.py:DS_pK_to_K",
+    "diagslice.py:diagslice"
+  ],
+  "formula": "Kprime_ijk=sum_abc Wia Wjb Wkc Kabc; D3=Kprime_iii; D21=Kprime_iij (zero i=j)",
+  "scope": "Official returned birth is ordinary K after pK conversion. No K3 harmonic projection; K4 separate. Offline NumPy analytic cost is not flopscope competition billing. No truth or score."
+}
