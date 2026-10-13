@@ -10,24 +10,25 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "V37b-H18 strictRPC8 r06",
+    "key": "V37bH18 strict public8 expansion",
     "status": "running",
-    "session_id": 36818,
-    "report": "results/phase2/sprint_public_v37b_h18_r06_strict_rpc8.json",
+    "session_id": 8903,
+    "report": "results/phase2/sprint_public_v37b_h18_r07_strict_public8.json",
     "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
-    "single_change": "trusted phase supervision + materialization inside real predict context; candidate unchanged",
-    "started_at_utc": "2026-10-13T03:50:26.937607+00:00",
-    "pid": 115751,
-    "started_at_host": "2026-10-13 11:50:12"
+    "dataset": "benchmark/data/mini_shard01",
+    "scope": "Publicnetworks8-15 previously used for H18 study,notunseenfinalholdout",
+    "started_at_utc": "2026-10-13T03:58:28.736803+00:00",
+    "pid": 152258,
+    "started_at_host": "2026-10-13 11:58:05"
   },
   "next_experiment": {
-    "key": "V37b+H18 same-candidate local8 and strict RPC timeout audit",
-    "status": "prepared priority; not started during resource-page audit",
-    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
-    "scope": "Full local8 counterpart absent; preserve RPC8 and initial localexit139 evidence"
+    "key": "Expanded public8 networks8-15 strictRPC",
+    "status": "prepared; gated on full current result review",
+    "scope": "Public reuse, not final unseenholdout",
+    "command_document": "experiments/phase2/DEVELOPMENT_PROTOCOL_20261013.json"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T03:50:26.937623+00:00",
+  "updated_at_utc": "2026-10-13T03:58:28.736823+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46331,10 +46332,13 @@
   },
   "latest_online_test": {
     "submission_id": 335678,
-    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
-    "status": "accepted",
-    "report": "results/phase2/sprint_public_v37b_h18_submit.json",
-    "scope": "Singlelocal/RPCpassed; initiallocalexit139 retained, no fullsuiteclaim"
+    "status": "graded",
+    "adjusted": 4.293779716792071e-09,
+    "raw": 2.1220624581985702e-08,
+    "report": "results/phase2/online_335678_strict_rpc_r02.json",
+    "relative_vs_online_v29": -0.20752187686336754,
+    "relative_vs_public_v37b_335677": -0.022420691605887,
+    "interpretation": "Different online aggregate observations, not same-network paired ablation; source frozen and H18 attribution requires paired confirmation"
   },
   "sprint_20min": {
     "start_utc": "2026-10-13T02:44:18Z",
@@ -46427,5 +46431,18 @@
     "blocked_alarm_r01": "interrupted externally: no processes remain, completedfalse/zero rows; cause unknown, not passed",
     "blocked_alarm_r02": "passed:125s external watchdog -> time_exhausted + undiscounted zero fallback",
     "recovery": "passed:network0residualfailure and network1ok in newclient/server"
+  },
+  "latest_strict_rpc": {
+    "report": "results/phase2/sprint_public_v37b_h18_r06_strict_rpc8_score.json",
+    "adjusted": 4.6043530010738635e-09,
+    "raw": 2.2679734534847285e-08,
+    "failures": 0,
+    "maxwall": 58.214717519,
+    "maxresidual": 0.1978317510000025,
+    "setup": 0.06316726599993672,
+    "continuous_lifecycle": true,
+    "exact_same_flops_vs_old": true,
+    "local_failures_retained": 3,
+    "stage_accepted": false
   }
 }

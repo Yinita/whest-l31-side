@@ -26,5 +26,31 @@
     6,
     7
   ],
-  "independent_suite_not_started": true
+  "independent_suite_not_started": true,
+  "gates_completed": true,
+  "after_current_strict8": {
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "benchmark/run_rpc_strict.py",
+      "--estimator",
+      "estimators/sprint_public_v37b_h18_r01/estimator.py",
+      "--inputs",
+      "benchmark/data/rpc_inputs/ablation_v30_116_r02_h18_public_rpc/inputs.json",
+      "--dataset",
+      "benchmark/data/mini_shard01",
+      "--n-mlps",
+      "8",
+      "--output",
+      "results/phase2/sprint_public_v37b_h18_r07_strict_public8.json"
+    ],
+    "conditions": [
+      "current strict8 complete and all metrics/failures reviewed",
+      "no concurrent heavy processes",
+      "candidate still frozen"
+    ],
+    "scope": "Expanded public networks8-15 previously used for H18 research; NOT unseen final holdout"
+  }
 }

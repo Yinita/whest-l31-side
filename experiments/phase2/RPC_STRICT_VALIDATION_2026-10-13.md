@@ -52,4 +52,8 @@ RPC client 0.12.1的BudgetContext只接收flop_budget、quiet、namespace，不�
 
 blockedalarm r02及失败后下网络冷恢复验收已完成。完整候选strict RPC8 `sprint_public_v37b_h18_r06_strict_rpc8.json`已经串行启动，候选源码不变；之后比较原RPC8与同候选local8。24项测试通过（新增19项与既有Phase2benchmark5项）。64GBserver、官方物理cpuset、单数组上限和隐藏集deployment仍未完整模拟；严格时限工具不等于完整官方沙箱。
 
-线上335678最新核验仍submitted、score=null。阶段1目标5.779e-10未通过。先完成本轮工具与候选验收，再扩大公共网络；Mini8不是全赛验收。
+完整strict RPC8现已完成：adjusted **4.6043530010738635e-9**、raw **2.2679734534847285e-8**、8/8零失败。maxwall58.214717519s、maxresidual0.197831751s、setup0.063167266s，单一client/server连续完成。全网FLOPs与旧RPC8完全一致；重复分数差−0.0577%只是数值变动，不算算法收益。同候选local8 hash/数据/协议对齐，五个双方成功网络raw相对差最多0.0022403%；三次local失败仍保留，不能称全部跨runner资源验收通过。新严格score与consistency summary保留完整逐网证据。
+
+之后已启动`sprint_public_v37b_h18_r07_strict_public8.json`，官方公共网络8–15的扩展确认；使用已冻结原始targets和严格执行器。这组以前参与过H18研究，明确不是完全未见最终holdout；尚未获得全集分数。
+
+线上更新：335677原样V37b已graded adjusted4.3922571600308725e-9/raw2.1651017334534116e-8；335678 V37b+H18已graded adjusted**4.293779716792071e-9**/raw2.1220624581985702e-8。对历史V29线上adjusted下降20.7522%，对原样V37b线上下降2.2421%；这些是不同线上aggregate观察，不当成同网络单因素因果对照。榜单快照Niko **rank67**，最佳335678；第一档展示1.4e-9，尚有约3倍差距。证据`online_335677_strict_rpc_r01.json`、`online_335678_strict_rpc_r02.json`、`leaderboard_strict_rpc_20261013.json`。阶段1目标5.779e-10未通过。先完成本轮工具与候选验收，再扩大公共网络；Mini8不是全赛验收。
