@@ -2,7 +2,7 @@
 
 更新日期：2026-10-13。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
 
-官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，最佳候选严格RPC累计覆盖44个公共网络；Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。
+官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，最佳候选严格RPC累计覆盖51个公共网络；Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。
 
 后续核验：同候选local8已完成但3网residual超过400ms，失败保留；新严格RPC执行器故障验收已完成，Mini8 **4.6043530011e-9**、扩展公共8网 **4.6350586013e-9**，各8/8零失败。扩展集较V29 adjusted下降21.39%、raw下降1.55%，主要降费；这些公共网曾用于研究，不能称最终未见holdout。线上335678已graded **4.2937797168e-9**，本队当前最佳；上次榜单快照rank67；335677原样V37b为4.3922571600e-9。最新证据与执行状态见[严格RPC验证](experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。
 
@@ -11,6 +11,10 @@
 13:39接续：分片3（ID23–29）V29/最佳候选严格RPC双方7网零失败，adjusted **5.565246e-9→4.337734e-9（−22.06%）**，raw **2.184545e-8→2.132122e-8（−2.40%）**，逐网adjusted均改善。最佳候选累计严格RPC覆盖44公共网，合并adjusted4.532173e-9/raw2.228391e-8、零失败；阶段1目标未达。M05小对象分裂/UT/Taylor/W2正确性及非对角W2独立合同通过，1024宽float64单分量完整实测307371364362 FLOPs（预算13.98%，约7次评估），尚非官方资源验收。精确一维深度5→12的总误差降低包含UT与分裂偏差抵消，逐分量阈值通过不等于总误差界。见[M05小流程](experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md)。M05真实1024宽9叶/13评估进一步诊断raw0.07479、占预算90.86%、阈值未达，当前实现降到P2，未提交。已[冻结公共验收队列](experiments/phase2/PUBLIC_ACCEPTANCE_QUEUE_20261013_r03.json)，分片4已完成V29adjusted5.712536e-9→最佳4.459808e-9（−21.93%）、raw下降2.20%、双方7网零失败；分片5已完成V29adjusted6.107346e-9→最佳4.827658e-9（−20.95%）、raw下降1.13%、双方7网零失败；分片6（ID44–50）14:54已启动同候选严格RPC串行验收并启用状态同步，复用原始reference；不重复Mini8或上传原包。
 
 14:51成对归因：新公共分片2–5共28网，双方同严格RPC/原reference，V29 adjusted5.717754e-9→最佳4.482154e-9（−21.61%），raw下降1.85%、FLOPs下降20.12%；28/28 adjusted改善，19/28 raw改善，双方零失败。见[冻结28网成对汇总](results/phase2/frozen_strict_public28_paired_r01.json)。主要仍是计算收益，不能把所有adjusted收益解释为精度提升。
+
+15:25接续：分片6（ID44–50）已完成，全部6阶段输出及候选/工具哈希核验通过；V29 adjusted **5.557312e-9→V37b+H18 4.352294e-9（−21.68%）**，raw **2.180149e-8→2.138083e-8（−1.93%）**，双方7网零失败。最佳候选51公共网去重汇总adjusted **4.507483e-9**、raw **2.215995e-8**，零失败；同runner新公共35网成对adjusted下降21.62%、raw下降1.87%、FLOPs下降20.12%。见[51网汇总](results/phase2/sprint_public_v37b_h18_strict_public51_r04.json)和[35网归因](results/phase2/frozen_strict_public35_paired_r02.json)。分片7（ID51–57）已冻结原候选并启动串行严格RPC，不提前计入完成网络。阶段1目标仍5.779e-10。
+
+高阶来源接入新增[真实B1组件验证](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)：从人工CP推进到真实layer14来源的全部1024列、实际pk1v及严格重复指标剔除。1024宽固定条目最大误差7.61e-10，完整组件计费12,907,085,824 FLOPs；实际均值与Gaussian均值代理使该组件改变1.32%。当前只有一个来源的K111 Wick/中心化轨道，其他来源、feedback/feed/M、其他K211轨道及完整整网接入未覆盖，不能报告candidate提分。
 
 ## 当前状态
 

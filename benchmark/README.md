@@ -2,6 +2,8 @@
 
 2026-10-13官方Resources覆盖复核见[审计](../experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)。Mini100/Full1000尚未完成。原`run_rpc.py`没有setup硬超时；后续严格RPC工具已验证外部5秒setup与125秒响应截止、predict/residual后验检查和失败后冷恢复，详见下方严格验收记录。本地trusted-server参数尚未确认与官方部署一致。本页早期日程是计划，不是完成记录。
 
+15:25权威覆盖：冻结最佳V37b+H18累计51个公共网络严格RPC零失败，去重等网络权重adjusted **4.5074834035e-9**、raw **2.2159953071e-8**，见[汇总](../results/phase2/sprint_public_v37b_h18_strict_public51_r04.json)。新公共ID16–50双方同runner的35网成对adjusted −21.62%、raw −1.87%、FLOPs −20.12%，主要降费。分片7已启动，不计入完成覆盖；原始local失败保留。Mini100与最终独立十倍验收仍未完成。
+
 后续新增可信父进程监督工具`run_rpc_strict.py`、`rpc_strict_worker.py`、`rpc_strict_score.py`；原RPC结果与脚本保留。故障注入及候选真实local8失败见[严格时限验证](../experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。新工具未完成全候选验收前，不将旧RPC报告追认为新约束通过。
 
 首个候选为 504aldo MIT 公开 V29；V25 保留为相同统计方法、无 Strassen 的诊断对照。代码原样导入，来源、上游 commit 与 SHA-256 见 `estimators/k3_v29/provenance.json`。这次提交建立复现与计量起点，不宣称独立算法贡献或全球最强。

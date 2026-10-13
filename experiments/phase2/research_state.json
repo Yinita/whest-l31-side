@@ -10,23 +10,23 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "frozen shard06 paired workflow",
+    "key": "frozen shard07 paired workflow",
     "status": "running",
-    "workflow": "results/phase2/frozen_pair_frozen_public_shard06_r01.json",
-    "lock": "results/phase2/frozen_pair_frozen_public_shard06.lock",
-    "report": "results/phase2/sprint_public_v37b_h18_r12_strict_shard06.json",
-    "dataset": "benchmark/data/mini_shard06",
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard07_r01.json",
+    "lock": "results/phase2/frozen_pair_frozen_public_shard07.lock",
+    "report": "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json",
+    "dataset": "benchmark/data/mini_shard07",
     "n_mlps": 7,
     "network_ids": [
-      "44",
-      "45",
-      "46",
-      "47",
-      "48",
-      "49",
-      "50"
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57"
     ],
-    "phase": "V29_predict",
+    "phase": "V37bH18_predict",
     "command": [
       "uv",
       "run",
@@ -34,19 +34,19 @@
       "python",
       "benchmark/run_frozen_public_pair.py",
       "--cohort",
-      "frozen_public_shard06",
+      "frozen_public_shard07",
       "--run-id",
       "r01",
       "--sync-research-state"
     ],
-    "next": "serial inputs/V29/best/scoring/comparison; state sync enabled; after complete aggregate unique51, no completed retry",
-    "workflow_updated_at_utc": "2026-10-13T06:54:26.224572+00:00",
-    "pid": 1000291,
-    "pid_start_ticks": "1234825",
-    "session_id": 54634,
-    "started_at_host": "2026-10-13 14:54:02",
+    "next": "serial inputs/V29/best/scoring/comparison; aggregate58 only after complete",
+    "workflow_updated_at_utc": "2026-10-13T07:30:24.345158+00:00",
+    "pid": 1135682,
+    "pid_start_ticks": "1421611",
+    "session_id": 9349,
+    "started_at_utc": "2026-10-13T07:25:10.175087+00:00",
     "current_child": {
-      "name": "V29_predict",
+      "name": "V37bH18_predict",
       "command": [
         "uv",
         "run",
@@ -54,28 +54,28 @@
         "python",
         "benchmark/run_rpc_strict.py",
         "--estimator",
-        "estimators/k3_v29/estimator.py",
+        "estimators/sprint_public_v37b_h18_r01/estimator.py",
         "--inputs",
-        "benchmark/data/rpc_inputs/frozen_shard06_r01/inputs.json",
+        "benchmark/data/rpc_inputs/frozen_shard07_r01/inputs.json",
         "--dataset",
-        "benchmark/data/mini_shard06",
+        "benchmark/data/mini_shard07",
         "--n-mlps",
         "7",
         "--output",
-        "results/phase2/v29_r12_strict_shard06.json"
+        "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json"
       ],
-      "started_at_utc": "2026-10-13T06:54:26.213369+00:00",
-      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard06_r01_V29_predict.log",
-      "pid": 1001852
+      "started_at_utc": "2026-10-13T07:30:24.334217+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_V37bH18_predict.log",
+      "pid": 1164292
     }
   },
   "next_experiment": {
-    "key": "frozen public shard06",
+    "key": "frozen public shard07",
     "status": "preparing_next_cohort",
-    "scope": "samecandidate/strictprotocol/originalrefs; no scorebased selection"
+    "scope": "same frozen candidates, strict protocol, original references, no scorebased selection"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T06:54:26.224584+00:00",
+  "updated_at_utc": "2026-10-13T07:31:31.036648+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -43883,12 +43883,8 @@
   "execution_mode": "continuous_goal",
   "automation_deleted": "whestbench-10",
   "data_preparation": {
-    "key": "frozen public shard03",
     "status": "completed",
-    "pid": 580922,
-    "pid_start_ticks": "664035",
-    "session_id": 57349,
-    "started_at_host": "2026-10-13 13:18:54",
+    "key": "public shard07 original data",
     "command": [
       "uv",
       "run",
@@ -43896,26 +43892,14 @@
       "python",
       "benchmark/prepare_public.py",
       "--shard",
-      "3"
+      "7"
     ],
-    "log": "results/phase2/mini_shard03_prepare_r01.log",
-    "candidates_frozen": [
-      "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-      "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2"
-    ],
-    "no_tuning_on_new_shard": true,
-    "report": "results/phase2/mini_shard03_dataset.json",
-    "n_mlps": 7,
-    "network_ids": [
-      "23",
-      "24",
-      "25",
-      "26",
-      "27",
-      "28",
-      "29"
-    ],
-    "arrow_sha256": "8c3ec400de12b082667a5783030357c78b136a5ee136472c06471b432a6331f8"
+    "pid": 1108880,
+    "pid_start_ticks": "1386497",
+    "started_at_host": "2026-10-13 15:19:18",
+    "session_id": 61385,
+    "log": "results/phase2/mini_shard07_prepare_r01.log",
+    "next": "verify SHA/network IDs, then strict serial paired workflow"
   },
   "reference_uncertainty_diagnostic": "results/phase2/reference_noise_proxy_mini8.json",
   "upstream_paper_code_lookup": {
@@ -46436,7 +46420,7 @@
       "335678": "graded4.293779716792071e-9"
     },
     "latest_followup": "experiments/phase2/CONTINUATION_2026-10-13.md",
-    "strict_public_networks_completed": 44
+    "strict_public_networks_completed": 51
   },
   "latest_completed_rpc": {
     "key": "sprint-v37b-h18-fullRPC8",
@@ -46485,20 +46469,20 @@
     "stage_accepted": false
   },
   "latest_public_expansion": {
-    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05_score.json",
-    "comparison": "results/phase2/shard05_completion_recheck_r02.json",
-    "before_adjusted": 6.107345633124037e-09,
-    "adjusted": 4.8276578292237505e-09,
-    "raw": 2.3659207672364702e-08,
+    "report": "results/phase2/sprint_public_v37b_h18_r12_strict_shard06_score.json",
+    "comparison": "results/phase2/shard06_completion_recheck_r02.json",
+    "before_adjusted": 5.557311737159959e-09,
+    "adjusted": 4.3522943527330596e-09,
+    "raw": 2.1380826252327878e-08,
     "failures": 0,
-    "relative_adjusted_vs_v29": -0.20953256631812722,
-    "relative_raw_vs_v29": -0.011313159604686707,
+    "relative_adjusted_vs_v29": -0.2168345850331438,
+    "relative_raw_vs_v29": -0.019295212381007842,
     "n_mlps": 7,
-    "total_strict_public_networks": 44,
+    "total_strict_public_networks": 51,
     "scope": "Frozen paired public cohort, both strict RPC; upstream public tuning unknown; not final unseen holdout",
-    "maxwall": 54.141581007,
-    "maxresidual": 0.18682620999999955,
-    "client_peak_rss_kib": 300892,
+    "maxwall": 54.391931228,
+    "maxresidual": 0.19214464799999575,
+    "client_peak_rss_kib": 300476,
     "all_networks_adjusted_improved": true,
     "stage_accepted": false
   },
@@ -46730,12 +46714,23 @@
     "scope": "onecomponentfloat64deep16 allmatrixops; not1024evidence"
   },
   "latest_completed_experiment": {
-    "key": "frozen shard05 paired workflow",
+    "key": "frozen shard06 paired workflow",
     "status": "completed_zero_failures",
-    "pid": 762565,
-    "pid_start_ticks": "914847",
-    "session_id": 38651,
-    "started_at_host": "2026-10-13 14:00:42",
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard06_r01.json",
+    "lock": "results/phase2/frozen_pair_frozen_public_shard06.lock",
+    "report": "results/phase2/sprint_public_v37b_h18_r12_strict_shard06.json",
+    "dataset": "benchmark/data/mini_shard06",
+    "n_mlps": 7,
+    "network_ids": [
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50"
+    ],
+    "phase": null,
     "command": [
       "uv",
       "run",
@@ -46743,30 +46738,20 @@
       "python",
       "benchmark/run_frozen_public_pair.py",
       "--cohort",
-      "frozen_public_shard05",
+      "frozen_public_shard06",
       "--run-id",
-      "r01"
+      "r01",
+      "--sync-research-state"
     ],
-    "workflow": "results/phase2/frozen_pair_frozen_public_shard05_r01.json",
-    "lock": "results/phase2/frozen_pair_frozen_public_shard05.lock",
-    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05.json",
-    "dataset": "benchmark/data/mini_shard05",
-    "n_mlps": 7,
-    "network_ids": [
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43
-    ],
-    "phase": "completed",
-    "next": "pipeline exports ->V29predict/score ->bestpredict/score ->pairedcompare automatically; aftercomplete aggregate37+7 andupdate docs/state; never duplicate startup",
-    "finished_at_utc": "2026-10-13T06:11:40.904497+00:00",
-    "completed_networks": 7,
-    "comparison": "results/phase2/shard05_completion_recheck_r02.json",
-    "score_report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05_score.json"
+    "next": "serial inputs/V29/best/scoring/comparison; state sync enabled; after complete aggregate unique51, no completed retry",
+    "workflow_updated_at_utc": "2026-10-13T07:05:06.631225+00:00",
+    "pid": 1000291,
+    "pid_start_ticks": "1234825",
+    "session_id": 54634,
+    "started_at_host": "2026-10-13 14:54:02",
+    "finished_at_utc": "2026-10-13T07:05:06.620865+00:00",
+    "comparison": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard06_r01_before_after.json",
+    "completion_recheck": "results/phase2/shard06_completion_recheck_r02.json"
   },
   "latest_m05_w2_contract": {
     "report": "results/phase2/m05_w2_independent_contract_r01.json",
@@ -46800,15 +46785,15 @@
     "no_competition_score": true
   },
   "strict_public_aggregate": {
-    "n_mlps": 44,
+    "n_mlps": 51,
     "n_failed_mlps": 0,
-    "final_layer_mse": 2.2283905064636077e-08,
-    "adjusted_final_layer_score": 4.532172570666796e-09,
-    "mean_flops": 447315262337.7273,
+    "final_layer_mse": 2.2159953070789855e-08,
+    "adjusted_final_layer_score": 4.5074834034994195e-09,
+    "mean_flops": 447363488138.84314,
     "max_wall_s": 58.75250673,
     "max_residual_s": 0.1978317510000025,
     "max_client_peak_rss_kib": 301072,
-    "report": "results/phase2/sprint_public_v37b_h18_strict_public44_r03.json"
+    "report": "results/phase2/sprint_public_v37b_h18_strict_public51_r04.json"
   },
   "prepared_m05_next": {
     "script": "experiments/phase2/m05_official_network_gate.py",
@@ -46902,22 +46887,37 @@
     "no_score": true
   },
   "prepared_next_structural_component": {
-    "script": "experiments/phase2/cp_centered_k211_contract.py",
-    "command": [
-      "uv",
-      "run",
-      "--frozen",
-      "python",
-      "experiments/phase2/cp_centered_k211_contract.py"
+    "scripts": [
+      "experiments/phase2/real_source_full_capture.py",
+      "experiments/phase2/real_source_full_k211.py"
     ],
-    "condition": "after active strict evaluation",
-    "scope": "syntheticfactor exact centering/cost, not actualsourceintegration or score"
+    "commands": [
+      [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "experiments/phase2/real_source_full_capture.py"
+      ],
+      [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "experiments/phase2/real_source_full_k211.py"
+      ]
+    ],
+    "condition": "only after active strict shard07 pair finishes; sequential capture then contract",
+    "scope": "complete represented single-source mapping including feedback/M/feed, compare independent V29 D3/D21; no score"
   },
   "download_cache_cleanup": {
-    "report": "results/phase2/public_download_cache_cleanup_r01.json",
-    "bytes_released": 1950194252,
-    "only_redownloadable_chunks": true,
-    "original_data_and_results_preserved": true
+    "report": "results/phase2/public_download_cache_cleanup_r03.json",
+    "at_utc": "2026-10-13T07:19:18.665508+00:00",
+    "verified_arrow_sha256": "9a627245a04238da55c3d199d45f49ce4efc7b95315247596d68ee4673384297",
+    "arrow_preserved": "benchmark/data/mini_shard06/prepared/mini/data.arrow",
+    "removed_only_redownloadable_parts": "benchmark/data/mini_shard06/prepared/mini/parts-9a627245a04238da55c3d199d45f49ce4efc7b95315247596d68ee4673384297",
+    "bytes_released": 470736601,
+    "free_bytes_after": 3210452992
   },
   "latest_cp_centering_contract": {
     "report": "results/phase2/ablation_v30_067_r09_cp_centered_k211.json",
@@ -46935,22 +46935,44 @@
     "network_identity_dedup_passed": true
   },
   "strict_paired_public_attribution": {
-    "scope": "Strict paired public IDs16–43; frozen before project score access, upstream public tuning unknown, not final unseen holdout",
-    "n_mlps": 28,
-    "before_adjusted": 5.717754342334902e-09,
-    "after_adjusted": 4.482153581802339e-09,
-    "before_raw": 2.2438054588950048e-08,
-    "after_raw": 2.2022582741547988e-08,
-    "before_flops": 560395979393.2858,
-    "after_flops": 447666621745.8571,
-    "relative_adjusted": -0.21609895888391606,
-    "relative_raw": -0.018516393466957104,
-    "relative_flops": -0.20116018278624237,
-    "adjusted_improved_networks": 28,
-    "raw_improved_networks": 19,
-    "before_failures": 0,
-    "after_failures": 0,
+    "scope": "Strict paired public IDs16–50, frozen before project score access; upstream public tuning unknown; not final unseen holdout",
+    "n_mlps": 35,
     "stage_accepted": false,
-    "report": "results/phase2/frozen_strict_public28_paired_r01.json"
+    "before_adjusted": 5.685665821299914e-09,
+    "before_raw": 2.2310741800067393e-08,
+    "before_flops": 560395979393.2858,
+    "before_failures": 0,
+    "after_adjusted": 4.456181735988483e-09,
+    "after_raw": 2.1894231443703964e-08,
+    "after_flops": 447666621745.8571,
+    "after_failures": 0,
+    "relative_adjusted": -0.2162427627570862,
+    "relative_raw": -0.01866860188226338,
+    "relative_flops": -0.20116018278624237,
+    "adjusted_improved_networks": 35,
+    "raw_improved_networks": 24,
+    "report": "results/phase2/frozen_strict_public35_paired_r02.json"
+  },
+  "latest_real_source_component": {
+    "report": "results/phase2/ablation_v30_067_r10_real_source_k211.json",
+    "status": "passed_component_subset",
+    "no_score": true
+  },
+  "latest_real_source_capture": {
+    "report": "results/phase2/ablation_v30_067_r11_full_b1_capture.json",
+    "status": "completed_target_free",
+    "all_source_columns": 1024,
+    "source_slots": 1
+  },
+  "latest_full_b1_component": {
+    "report": "results/phase2/ablation_v30_067_r12_full_b1_k211.json",
+    "status": "completed_diagnostic",
+    "no_score": true,
+    "failed_early_dependency_launch_log": "results/phase2/ablation_v30_067_r12_full_b1_k211.log"
+  },
+  "latest_full_source_mapping": {
+    "report": "results/phase2/ablation_v30_067_r13_full_source_cp_mapping.json",
+    "status": "passed_small_synthetic_component",
+    "no_score": true
   }
 }
