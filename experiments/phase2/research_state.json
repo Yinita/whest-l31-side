@@ -9,7 +9,17 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": null,
+  "active_experiment": {
+    "key": "V37b-H18 strictRPC8 r06",
+    "status": "running",
+    "session_id": 36818,
+    "report": "results/phase2/sprint_public_v37b_h18_r06_strict_rpc8.json",
+    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+    "single_change": "trusted phase supervision + materialization inside real predict context; candidate unchanged",
+    "started_at_utc": "2026-10-13T03:50:26.937607+00:00",
+    "pid": 115751,
+    "started_at_host": "2026-10-13 11:50:12"
+  },
   "next_experiment": {
     "key": "V37b+H18 same-candidate local8 and strict RPC timeout audit",
     "status": "prepared priority; not started during resource-page audit",
@@ -17,7 +27,7 @@
     "scope": "Full local8 counterpart absent; preserve RPC8 and initial localexit139 evidence"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T03:11:37.906165+00:00",
+  "updated_at_utc": "2026-10-13T03:50:26.937623+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46399,5 +46409,23 @@
     "raw": 2.2693022350139813e-08,
     "failures": 0,
     "comparison_scope": "Different candidates on same Mini-8: V37b+H18 RPC versus frozen V29 local. This is a baseline cost/error comparison, NOT same-candidate runner parity."
+  },
+  "latest_local8": {
+    "report": "results/phase2/sprint_public_v37b_h18_r05_local8.json",
+    "adjusted": 0.34217436909220283,
+    "failures": 3,
+    "failure_reason": "networks5/6/7residual>.4",
+    "status": "completed_with_failures",
+    "paired_report": "results/phase2/sprint_public_v37b_h18_r05_rpc_local8_parity.json"
+  },
+  "strict_rpc_validation": {
+    "setup_fault": "passed:external5s interruption;failurefallback",
+    "residual_fault": "passed:.450403s rejected;failurefallback",
+    "server_compute": "passed:2.356052s wall, .000241s residual",
+    "unit_tests": "24 passed including phase2benchmark regressions",
+    "next": "complete125s external watchdog, then full candidate strictRPC8",
+    "blocked_alarm_r01": "interrupted externally: no processes remain, completedfalse/zero rows; cause unknown, not passed",
+    "blocked_alarm_r02": "passed:125s external watchdog -> time_exhausted + undiscounted zero fallback",
+    "recovery": "passed:network0residualfailure and network1ok in newclient/server"
   }
 }

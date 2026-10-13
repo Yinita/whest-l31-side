@@ -1,0 +1,30 @@
+{
+  "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+  "frozen_candidate_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "strict_rpc_command": [
+    "uv",
+    "run",
+    "--frozen",
+    "python",
+    "benchmark/run_rpc_strict.py",
+    "--estimator",
+    "estimators/sprint_public_v37b_h18_r01/estimator.py",
+    "--inputs",
+    "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
+    "--n-mlps",
+    "8",
+    "--output",
+    "results/phase2/sprint_public_v37b_h18_r06_strict_rpc8.json"
+  ],
+  "next_output_fresh_required": true,
+  "gates": [
+    "watchdog r02 completes with time_exhausted",
+    "fail-first-then-ok records failed network0 and passes network1 after cold restart"
+  ],
+  "local8_failures": [
+    5,
+    6,
+    7
+  ],
+  "independent_suite_not_started": true
+}

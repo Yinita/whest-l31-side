@@ -2,6 +2,8 @@
 
 2026-10-13官方Resources覆盖复核见[审计](../experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)。Mini100/Full1000尚未完成。RPC目前对predict/residual做后验限值检查，5秒setup没有硬超时证据；本地trusted-server参数不能称已确认官方部署。本页早期日程是计划，不是完成记录。
 
+后续新增可信父进程监督工具`run_rpc_strict.py`、`rpc_strict_worker.py`、`rpc_strict_score.py`；原RPC结果与脚本保留。故障注入及候选真实local8失败见[严格时限验证](../experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。新工具未完成全候选验收前，不将旧RPC报告追认为新约束通过。
+
 首个候选为 504aldo MIT 公开 V29；V25 保留为相同统计方法、无 Strassen 的诊断对照。代码原样导入，来源、上游 commit 与 SHA-256 见 `estimators/k3_v29/provenance.json`。这次提交建立复现与计量起点，不宣称独立算法贡献或全球最强。
 
 ## 本地 benchmark

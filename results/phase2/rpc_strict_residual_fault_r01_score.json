@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "mode": "strict local official-client RPC score",
+  "manifest": {
+    "mode": "supervised local development RPC; official deployment unknown",
+    "n_mlps": 1,
+    "dataset": "benchmark/data/mini_first8",
+    "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "limits": {
+      "flop_budget": 2199023255552,
+      "predict_seconds": 120,
+      "residual_seconds": 0.4,
+      "setup_seconds": 5,
+      "response_grace_seconds": 5
+    },
+    "estimator_sha256": "a7c17c98f9292704a1a483ed6420c0ac4ca31d9c2024d47a7e3040089c83981e",
+    "inputs_sha256": "9e53442b88a0da22e8b9dafa26aa92318b38af95ab284776fa0e972b991854b4",
+    "supervisor_sha256": "980f75b60b837df161cf46a8ceb00e594ff22639b431820d6e4b4fe17af70921",
+    "worker_sha256": "cebab5899c90ed834e4579d2e670bf10d6f9a1f27cc686c211ecd1132dcc42bf",
+    "versions": {
+      "flopscope": "0.12.1",
+      "whestbench": "0.16.1"
+    },
+    "command": [
+      "benchmark/run_rpc_strict.py",
+      "--estimator",
+      "experiments/phase2/rpc_constraint_fixtures/residual_sleep.py",
+      "--inputs",
+      "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
+      "--n-mlps",
+      "1",
+      "--output",
+      "results/phase2/rpc_strict_residual_fault_r01.json"
+    ],
+    "setup_ok": true,
+    "residual_policy": "Official-style post-predict gate; not interrupted in-flight",
+    "server_max_array_bytes": 1073741824,
+    "continuous_lifecycle": false,
+    "completed": true,
+    "started_at_utc": "2026-10-13T03:25:58Z",
+    "network_ids": [
+      {
+        "index": 0,
+        "name": "logan-fitzgerald",
+        "seed": 3909487726
+      }
+    ],
+    "all_setup_attempts_ok": true
+  },
+  "predictions_sha256": "312830e1ae4b9b9a12dc02dda31e7ef4047438e1898d8d52c6135a4e5f8e8846",
+  "score_script_sha256": "0a857f2cd90f7a6d6c554e745ddf619af6d6f74696062dcd80da6d4650b06735",
+  "versions": {
+    "numpy": "2.2.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1"
+  },
+  "dataset": "/home/sti/Desktop/projects/whest-l31-side/benchmark/data/mini_first8",
+  "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+  "seed_protocol_version": "3.0",
+  "dataset_provenance": {
+    "repo": "aicrowd/arc-whestbench-public-2026",
+    "revision": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "file": "prepared/mini/data-00000-of-00014.arrow",
+    "sha256": "af3818cd72c33e66dae7acc2758544137c22703f30859499282aa32691892582",
+    "selection": "first 8 official Mini rows; unchanged targets",
+    "n_mlps": 8,
+    "columns": [
+      "mlp_id",
+      "mlp_name",
+      "mlp_seed",
+      "weights",
+      "all_layer_means",
+      "final_means",
+      "avg_variance",
+      "sampling_budget_breakdown"
+    ]
+  },
+  "limits": {
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120.0,
+    "residual_wall_time_limit_s": 0.4,
+    "setup_timeout_s": 5.0,
+    "lambda_flops_per_second": 0.0
+  },
+  "n_mlps": 1,
+  "n_failed_mlps": 1,
+  "final_layer_mse": 0.9434763193130493,
+  "all_layers_mse": 0.7062501907348633,
+  "adjusted_final_layer_score": 0.9434763193130493,
+  "mean_compute_utilization": 0.0,
+  "n_unknown_flop_counts": 0,
+  "local_comparison": {
+    "provided": false,
+    "same_candidate_parity_verified": false
+  },
+  "max_relative_mse_delta_vs_local": null,
+  "per_mlp": [
+    {
+      "mlp_index": 0,
+      "mlp_name": "logan-fitzgerald",
+      "seed": 3909487726,
+      "worker_status": "residual_wall_time_exhausted",
+      "failure": "residual exceeded 0.4s",
+      "failure_reasons": [
+        "worker_status_not_ok",
+        "worker_failure_recorded",
+        "residual_wall_time_exhausted"
+      ],
+      "zero_fallback": true,
+      "limits_passed": false,
+      "final_layer_mse": 0.9434763193130493,
+      "all_layers_mse": 0.7062501907348633,
+      "score_multiplier": 1.0,
+      "adjusted_final_layer_score": 0.9434763193130493,
+      "flops_used": 0,
+      "wall_time_s": 0.46033196,
+      "residual_wall_time_s": 0.450403151,
+      "budget_summary": {
+        "flop_budget": 2199023255552,
+        "flops_used": 0,
+        "flops_remaining": 2199023255552,
+        "operations": {
+          "zeros": {
+            "flop_cost": 0,
+            "calls": 1,
+            "flopscope_backend_time_s": 8.991999948193552e-06,
+            "flopscope_overhead_time_s": 8.8165000306617e-05
+          }
+        },
+        "wall_time_s": 0.46033196,
+        "flopscope_backend_time_s": 0.000115314,
+        "flopscope_overhead_time_s": 0.009813495,
+        "residual_wall_time_s": 0.450403151
+      },
+      "client_peak_rss_kib": 287836
+    }
+  ],
+  "limitation": "Local development server, not an online grade or full hardened-grader equivalence. Missing costs remain unknown; every failed row uses zero prediction and multiplier 1."
+}
