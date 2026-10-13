@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "pid": 1192059,
+  "pid_start_ticks": "1491652",
+  "started_at_utc": "2026-10-13T07:36:50.592006+00:00",
+  "freeze_sha256": "1a280908eaa67c247603d6649e2b8cdc6c8892096aed3804a1664722428fc935",
+  "phases": [
+    {
+      "name": "capture",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "experiments/phase2/real_source_full_capture.py"
+      ],
+      "log": "results/phase2/real_source_followup_r01_capture.log",
+      "pid": 1192060,
+      "returncode": 0,
+      "output": "results/phase2/ablation_v30_067_r14_full_source_capture.json",
+      "output_sha256": "2f134fee29e4360f9fd294c39f7d60f8ba49f360014fb5468a44fae9b6d6da3d"
+    },
+    {
+      "name": "contract",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "experiments/phase2/real_source_full_k211.py"
+      ],
+      "log": "results/phase2/real_source_followup_r01_contract.log",
+      "pid": 1197768,
+      "returncode": 0,
+      "output": "results/phase2/ablation_v30_067_r15_real_full_source_k211.json",
+      "output_sha256": "89ab0d6430e2572ffc90c09ae36f8f1220a231241db324b392788f8c8ebbd33c"
+    }
+  ],
+  "current_phase": null,
+  "finished_at_utc": "2026-10-13T07:38:09.895784+00:00"
+}

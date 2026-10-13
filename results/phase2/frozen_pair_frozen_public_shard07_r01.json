@@ -1,0 +1,208 @@
+{
+  "status": "completed",
+  "pid": 1135682,
+  "started_at_utc": "2026-10-13T07:25:10.175087+00:00",
+  "script_sha256": "f14205420f0ef2d01f2e9859bc5dca57c778eb4fea3c5a8172339413cbd330f3",
+  "tool_hashes": {
+    "prepare_rpc_inputs.py": "8a907b368d6175049cddb2b784f0d437cfb12a5ba123079e7a79e22f098cd998",
+    "run_rpc_strict.py": "980f75b60b837df161cf46a8ceb00e594ff22639b431820d6e4b4fe17af70921",
+    "rpc_strict_score.py": "0a857f2cd90f7a6d6c554e745ddf619af6d6f74696062dcd80da6d4650b06735",
+    "compare_strict_cohort.py": "5c138603fa69fd5c09c7d792e4af19f8e216bd15a1dc9559449c5f24f11c4d48",
+    "aggregate_strict_public.py": "d74648a0b5d93f755969014fc7e32fec47a274207cd1a7a1aaefb8158c5cbaa5"
+  },
+  "protocol_sha256": "1fc315748537357747a78d3d97c6f777b3a572c697405adbb40529f10d071683",
+  "cohort": {
+    "dataset_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+    "candidates": [
+      {
+        "name": "V29",
+        "path": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27"
+      },
+      {
+        "name": "V37bH18",
+        "path": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+        "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2"
+      }
+    ],
+    "runner": "strict_rpc for BOTH, same immutable exportedweights/SDKderivedseed/originalreference",
+    "selection": "frozenV29/V37bH18beforeopeningthiscohortscores, no tuning",
+    "no_model_selection_on_cohort": true,
+    "independence_caveat": "new project confirmation cohort, upstream author publictuning unknown; not final unseen holdout",
+    "reference": "unchanged original official all_layer_means",
+    "status": "prepared_frozen_before_scoring",
+    "dataset": "benchmark/data/mini_shard07",
+    "input_manifest": "benchmark/data/rpc_inputs/frozen_shard07_r01/manifest.json",
+    "before_report": "results/phase2/v29_r13_strict_shard07_score.json",
+    "after_report": "results/phase2/sprint_public_v37b_h18_r13_strict_shard07_score.json",
+    "arrow_sha256": "b223314ee79bb6ee12612b33e80bd91df1fb400f5991466bd7df05cfeaa69065",
+    "n_mlps": 7,
+    "network_ids": [
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57"
+    ]
+  },
+  "n_mlps": 7,
+  "phases": [
+    {
+      "name": "inputs",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/prepare_rpc_inputs.py",
+        "--dataset",
+        "benchmark/data/mini_shard07",
+        "--n-mlps",
+        "7",
+        "--output-dir",
+        "benchmark/data/rpc_inputs/frozen_shard07_r01"
+      ],
+      "started_at_utc": "2026-10-13T07:25:10.281383+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_inputs.log",
+      "pid": 1135683,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:25:32.904598+00:00",
+      "status": "completed",
+      "output": "benchmark/data/rpc_inputs/frozen_shard07_r01/manifest.json",
+      "sha256": "d084fb28eba778983d04c5c081c6a9c0dcea5fde17de77a808bcc4796fe56ad7"
+    },
+    {
+      "name": "V29_predict",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/run_rpc_strict.py",
+        "--estimator",
+        "estimators/k3_v29/estimator.py",
+        "--inputs",
+        "benchmark/data/rpc_inputs/frozen_shard07_r01/inputs.json",
+        "--dataset",
+        "benchmark/data/mini_shard07",
+        "--n-mlps",
+        "7",
+        "--output",
+        "results/phase2/v29_r13_strict_shard07.json"
+      ],
+      "started_at_utc": "2026-10-13T07:25:33.012351+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_V29_predict.log",
+      "pid": 1137257,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:30:23.457077+00:00",
+      "status": "completed",
+      "output": "results/phase2/v29_r13_strict_shard07.json",
+      "sha256": "82243f75c39f0f42fe64d43bb2071004166456f0bf0abeb9a9ceee099fa63263"
+    },
+    {
+      "name": "V29_score",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/rpc_strict_score.py",
+        "--predictions",
+        "results/phase2/v29_r13_strict_shard07.json",
+        "--dataset",
+        "benchmark/data/mini_shard07",
+        "--output",
+        "results/phase2/v29_r13_strict_shard07_score.json"
+      ],
+      "started_at_utc": "2026-10-13T07:30:23.586164+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_V29_score.log",
+      "pid": 1164189,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:30:24.223018+00:00",
+      "status": "completed",
+      "output": "results/phase2/v29_r13_strict_shard07_score.json",
+      "sha256": "eb78ebd4550fb126746c5cdca789f8ea1bb8961f14b280c3344e13b271f5a5fc"
+    },
+    {
+      "name": "V37bH18_predict",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/run_rpc_strict.py",
+        "--estimator",
+        "estimators/sprint_public_v37b_h18_r01/estimator.py",
+        "--inputs",
+        "benchmark/data/rpc_inputs/frozen_shard07_r01/inputs.json",
+        "--dataset",
+        "benchmark/data/mini_shard07",
+        "--n-mlps",
+        "7",
+        "--output",
+        "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json"
+      ],
+      "started_at_utc": "2026-10-13T07:30:24.334217+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_V37bH18_predict.log",
+      "pid": 1164292,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:36:42.013456+00:00",
+      "status": "completed",
+      "output": "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json",
+      "sha256": "71a59a6d2372a6b91a074a0c6d0f31efc2a850e23bcab764ee8a6b37066a5bf7"
+    },
+    {
+      "name": "V37bH18_score",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/rpc_strict_score.py",
+        "--predictions",
+        "results/phase2/sprint_public_v37b_h18_r13_strict_shard07.json",
+        "--dataset",
+        "benchmark/data/mini_shard07",
+        "--output",
+        "results/phase2/sprint_public_v37b_h18_r13_strict_shard07_score.json"
+      ],
+      "started_at_utc": "2026-10-13T07:36:42.170871+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_V37bH18_score.log",
+      "pid": 1191615,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:36:42.777362+00:00",
+      "status": "completed",
+      "output": "results/phase2/sprint_public_v37b_h18_r13_strict_shard07_score.json",
+      "sha256": "35a8ec26d060dd93737beb7749a62add81db84bd72452b6ecf6ade7e48c4947a"
+    },
+    {
+      "name": "paired_compare",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/compare_strict_cohort.py",
+        "--before",
+        "results/phase2/v29_r13_strict_shard07_score.json",
+        "--after",
+        "results/phase2/sprint_public_v37b_h18_r13_strict_shard07_score.json",
+        "--output",
+        "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_before_after.json"
+      ],
+      "started_at_utc": "2026-10-13T07:36:42.886102+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_paired_compare.log",
+      "pid": 1191986,
+      "returncode": 0,
+      "finished_at_utc": "2026-10-13T07:36:42.939396+00:00",
+      "status": "completed",
+      "output": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_before_after.json",
+      "sha256": "fb986de3d64069145653e5f1989e754ff199d1ab58b70a2bd1b6ab6e7d4fa7d6"
+    }
+  ],
+  "current_phase": null,
+  "finished_at_utc": "2026-10-13T07:36:42.992167+00:00",
+  "comparison": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard07_r01_before_after.json"
+}
