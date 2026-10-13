@@ -23,7 +23,7 @@ def main():
         identity = np.eye(64)
         M = np.diag(b['s'])+3*b['A']*b['e'][None,:]+b['R']@b['L'].T
         birth = sym(np.einsum('ir,jr,kr->ijk',3*b['A'],b['A']*b['w2'][None,:],identity))
-        birth += sym(np.einsum('ir,jr,kr->ijk',M,I,identity))
+        birth += sym(np.einsum('ir,jr,kr->ijk',M,identity,identity))
         official = np.load(f'benchmark/data/paper_m03_r14_birth_objects_{seed}.npz')
         W = official['W']
         U = np.einsum('ia,abc->ibc',W,birth)
