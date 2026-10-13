@@ -60,3 +60,17 @@ r09 GH2 rank1条件链实际strict1零失败：raw1.962775897368e-08，相对par
 r10 strict1同network0新结果：raw2.974875101813268e-8、adjusted6.525045206060913e-9，零失败；同cycleparent raw2.2281179568039988e-8、adjusted4.8714160493622575e-9。raw+33.515%、adjusted+33.946%，cheapdiag条件响应否决。r11仅cheapdiag→fullcovfirstchaos，GH8及t0母链冻结，严格RPC单网正在运行；不得提前报成功。
 
 r11 fullcovcheap response严格单网完成：raw2.072104088313e-08（相对parent-7.0020%），adjusted1.001602295015e-08（105.6080%），零失败、FLOPs1062951785084、wall50.432606/residual0.226421s、clientRSS287840KiB。全协方差响应比diag正确但其成本仍抵消收益，停止该CV路线节点/参数扫描。下一项r12球面输入分布的解析径向剥离正在做实际representedK3/core合同，不以理论合同称整网提分。
+
+r12径向sphere单链严格RPC完成：raw2.224884809721e-08（-0.1451%），adjusted5.519223882747e-09（13.2981%），FLOPs545506968169，wall/residual46.880127/0.209110s，零失败。没有实质精度收益，成本增加，否决该首层径向表示变换（不扫scale，不上传）。实际representedK3/core n8/32合同通过不等于真tensor；NO_CORR默认1且strict清V17env，本次firstmeanrider无删除造成的额外因素。
+
+云离线高阶归因初值：13successshards（stream0=1.049m/stream1=2.359m）分4whole-neuronvector独立chunks，以固定理论dK2,dK3,dK4系数估计末层localinnovation4.419e-9→oracle残差2.658e-10，4chunkSE1.20e-10。只诊断边际累积量闭合可能误差源，不是合法候选/整链raw/adjusted或十倍验收；早层采样噪声和成功片选择必须更可信r02确认。记录`results/phase2/modal_covariance_causal_r01/highorder_partial198_r01.json`。
+
+Modal covariance.causal.r01完整终止：256返回、13成功、243失败，completion.complete=false。失败含300s timeout及preemption/runnerSIGKILL，不能把成功子集称完整采样。r02唯一数值工作量改变262144→65536每片，总67m保持，同时offlineworker内存1→2GiB、交错stream/新seed修复早期诊断与资源稳定；这些是离线诊断资源，不是候选120s/8GB验收放宽。PID1575604，64×1CPU，journal逐条fsync，不重复启动。原source/rawseed错命名在独立审计更正：dataset mlp_seed6319981554997072999，grader setupseed3909487726。
+
+## 固定二阶边际闭合 r15：真实负结果
+
+从同一H18父版本独立生成r15，只补齐边际rawmoments的固定二阶Edgeworth项：均值已有κ3²/72与κ3κ4/144，故均值只补κ4²/1152；p2/p3/p4补三种二阶项。不拟合真值，不改变pair或资源。独立256点Gaussian积分核验实际候选block，maxerror1.4477e-15，合法计费2212FLOPs（7个toy neuron），不是提分。
+
+严格同network0，before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.252167519146e-8 / adjusted4.924006086041e-9，分别+1.07937%/+1.07956%。FLOPs480781460599，wall45.866670s，residual.210547197s，client293448KiB，零失败。候选SHA5e6f92cb89e32a7fa888a19dc59a02e54bea17fe78e7a3a023a90acc2c40e9e3；score与samecyclecomparison为results/phase2/tenfold_marginal_edgeworth2_r15_*。否决此固定二阶marginal-only机制；不扫增益、不扩量、不上传。不能由这项负结果推出真实K2/K3/K4闭合误差无关。
+
+最新离线双流诊断约13–15m/stream，r02至少3个基础设施失败，保留原journal。末层局部innovation4.419e-9；两stream平均理论effect后的真实positiveMSE约1.8e-10，独立流交叉消噪约8.4e-11，接近官方10亿样本参考的nominal约7.9e-11噪声。此前小样本/8chunk曾出现负残余，后续样本已回到与噪声相容；不能当负MSE或精确CI。oracle线索不是候选/整网成绩。当前完整三阶feedback与fullmetric四阶组件并行开发，原十倍阈值不变。

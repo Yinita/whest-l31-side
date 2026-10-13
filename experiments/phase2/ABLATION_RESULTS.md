@@ -2142,3 +2142,11 @@ r32/r33补官方5类出生tree均值中心化，两网partial K211范数36.29/37
 | r11 cheap响应fullcovfirstchaos | 2.2281179568e-8 / 4.8714160494e-9 | 2.0721040883e-8 / 1.0016022950e-8 | raw−7.00%，adjusted+105.61%，否决费用 |
 
 双方严格RPC零失败；详细FLOPs/time/memory/hash及原报告见[TENFOLD_PROGRESS](TENFOLD_PROGRESS_20261013.md)。r08四完整条件母链仅prepared未运行，不算消融完成；earlybranchmerge/radial/cheapresponse toy只合同不冒充整网score。最佳未晋升、阶段1未达。
+
+| r12 sphere径向单链 | 2.2281179568e-8 / 4.8714160494e-9 | 2.2248848097e-8 / 5.5192238827e-9 | raw−0.145%、adjusted+13.30%，零失败，negative |
+
+上行补充r12严格network0结果；详细before/after、资源与候选hash见[十倍记录](TENFOLD_PROGRESS_20261013.md)。原r09/r10/r11表保留。
+
+### tenfold.marginal.edgeworth2.r15 — complete negative
+
+名称：二阶边际Edgeworth闭合。详情：同parentstate、固定理论系数κ3²/72、κ3κ4/144、κ4²/1152，补p2–4二阶项及p1κ4²，pair不变。Before/after（network0，原reference，strictRPC）：raw2.2281179568e-8→2.2521675191e-8、adjusted4.8714160494e-9→4.9240060860e-9，约+1.08%，零失败。FLOPs480781460599 / residual.210547197s。实际公式合同pass1.45e-15。完整Mini8、独立确认未跑；该机制负结果停止，不计十倍完成。证据见tenfold_marginal_edgeworth2_r15_samecycle_comparison.json。

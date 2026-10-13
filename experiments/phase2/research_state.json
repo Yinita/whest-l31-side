@@ -11,13 +11,12 @@
   },
   "active_experiment": null,
   "next_experiment": {
-    "version": "tenfold.radial.sphere.r12",
-    "status": "preparing_contract",
-    "single_change": "analytic inputradial removal with firstrawmoments/specialK3channel and exacthomogeneity rescaling",
-    "limitations": "parentrepresentedsource and originalLAM/regen approximation remain"
+    "status": "component_and_candidate_development",
+    "version": "r14/r16",
+    "focus": "complete D21heavy history and fullmetric K4, no truthfitting; each independent"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T09:34:18.975891+00:00",
+  "updated_at_utc": "2026-10-13T09:44:36.171615+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46,7 +45,7 @@
     "pid_start_ticks": "12487430",
     "started_at_utc": "2026-10-12T04:58:23.356411+00:00",
     "report": "results/phase2/ablation_v30_001_r02_mini8_local.json",
-    "single_change": "\u5404\u5c3a\u5ea6\u53ea\u7b97\u4e0a\u975e\u5bf9\u89d2block\uff0c\u5bf9\u89d2block\u9012\u5f52\u523032\u00d732\uff0c\u6700\u540e\u5bf9\u89d2\u53f6\u5b50\u6279\u91cfdense\uff1b\u4e0b\u975e\u5bf9\u89d2copy transpose",
+    "single_change": "各尺度只算上非对角block，对角block递归到32×32，最后对角叶子批量dense；下非对角copy transpose",
     "status": "completed_positive",
     "network_ids": [
       "0",
@@ -5182,7 +5181,7 @@
       "pid_start_ticks": "11877136",
       "started_at_utc": "2026-10-12T03:16:40.415378+00:00",
       "report": "results/phase2/ablation_v30_007_r01_mini1_local.json",
-      "single_change": "trim\u65f6\u4ec5\u8ba1\u7b97dG\u548cg4row\uff0c\u4e0d\u521b\u5efawk4m",
+      "single_change": "trim时仅计算dG和g4row，不创建wk4m",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -6236,7 +6235,7 @@
       "pid_start_ticks": "11884066",
       "started_at_utc": "2026-10-12T03:17:49.715592+00:00",
       "report": "results/phase2/ablation_v30_014_r01_mini1_local.json",
-      "single_change": "\u82e5pk11\u9010\u503c\u786e\u5b9e\u5bf9\u79f0\u4e14finite\uff0ccopy K11\u540efill diagonal",
+      "single_change": "若pk11逐值确实对称且finite，copy K11后fill diagonal",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -6763,7 +6762,7 @@
       "pid_start_ticks": "11887520",
       "started_at_utc": "2026-10-12T03:18:24.257491+00:00",
       "report": "results/phase2/ablation_v30_008_r01_mini1_local.json",
-      "single_change": "trim\u4e13\u7528progs\u4ec5\u5305\u542b(1,)\u4e14\u53ea\u5199pk1v",
+      "single_change": "trim专用progs仅包含(1,)且只写pk1v",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -7290,7 +7289,7 @@
       "pid_start_ticks": "11890963",
       "started_at_utc": "2026-10-12T03:18:58.682338+00:00",
       "report": "results/phase2/ablation_v30_010_r01_mini1_local.json",
-      "single_change": "\u4f9d\u5df2\u6709wl,wr indices\u9009\u62e9WT\u884c\u5e76\u4e58coef",
+      "single_change": "依已有wl,wr indices选择WT行并乘coef",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -7817,7 +7816,7 @@
       "pid_start_ticks": "11895596",
       "started_at_utc": "2026-10-12T03:19:45.009142+00:00",
       "report": "results/phase2/ablation_v30_031_r01_mini1_local.json",
-      "single_change": "\u4ec5\u5bf9p2,p3,p4\u65b0\u589eD3\u00b2w(6,p)/72\uff0cp1\u4fdd\u6301\u539f\u8868",
+      "single_change": "仅对p2,p3,p4新增D3²w(6,p)/72，p1保持原表",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -8350,7 +8349,7 @@
       "pid_start_ticks": "11899085",
       "started_at_utc": "2026-10-12T03:20:19.902873+00:00",
       "report": "results/phase2/ablation_v30_032_r01_mini1_local.json",
-      "single_change": "\u4ec5\u5bf9p2,p3,p4\u65b0\u589eD3*g4*w(7,p)/144",
+      "single_change": "仅对p2,p3,p4新增D3*g4*w(7,p)/144",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -8883,7 +8882,7 @@
       "pid_start_ticks": "11902521",
       "started_at_utc": "2026-10-12T03:20:54.258970+00:00",
       "report": "results/phase2/ablation_v30_048_r01_mini1_local.json",
-      "single_change": "\u53ea\u5c06\u8fb9\u9645metric\u6539\u4e3acurrent diag(W W^T)\uff0c\u4fdd\u6301Gproxy\u548c\u5176\u4ed6\u901a\u9053",
+      "single_change": "只将边际metric改为current diag(W W^T)，保持Gproxy和其他通道",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -9410,7 +9409,7 @@
       "pid_start_ticks": "11907276",
       "started_at_utc": "2026-10-12T03:21:41.812464+00:00",
       "report": "results/phase2/ablation_v30_011_r01_mini1_local.json",
-      "single_change": "\u6309pk11/pk21/pk22\u5c06term\u6279\u6b21\u5206\u7ec4\uff0c\u53ea\u6c42\u5404\u81easum",
+      "single_change": "按pk11/pk21/pk22将term批次分组，只求各自sum",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -9937,7 +9936,7 @@
       "pid_start_ticks": "11910696",
       "started_at_utc": "2026-10-12T03:22:16.017222+00:00",
       "report": "results/phase2/ablation_v30_001_r01_mini1_local.json",
-      "single_change": "\u5404\u5c3a\u5ea6\u53ea\u7b97\u4e0a\u975e\u5bf9\u89d2block\uff0c\u5bf9\u89d2block\u9012\u5f52\u523032\u00d732\uff0c\u6700\u540e\u5bf9\u89d2\u53f6\u5b50\u6279\u91cfdense\uff1b\u4e0b\u975e\u5bf9\u89d2copy transpose",
+      "single_change": "各尺度只算上非对角block，对角block递归到32×32，最后对角叶子批量dense；下非对角copy transpose",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -10464,7 +10463,7 @@
       "pid_start_ticks": "11918425",
       "started_at_utc": "2026-10-12T03:23:33.304366+00:00",
       "report": "results/phase2/ablation_v30_048_r02_mini8_local.json",
-      "single_change": "\u53ea\u5c06\u8fb9\u9645metric\u6539\u4e3acurrent diag(W W^T)\uff0c\u4fdd\u6301Gproxy\u548c\u5176\u4ed6\u901a\u9053",
+      "single_change": "只将边际metric改为current diag(W W^T)，保持Gproxy和其他通道",
       "status": "completed_positive",
       "network_ids": [
         "0",
@@ -14860,7 +14859,7 @@
       "pid_start_ticks": "11953660",
       "started_at_utc": "2026-10-12T03:29:25.651714+00:00",
       "report": "results/phase2/ablation_v30_003_r01_mini1_local.json",
-      "single_change": "\u5c06\u4e24\u4e2a\u8584\u5217\u7ec4\u88c5\u6210\u4e00\u4e2a\u6301\u4e45stack\uff0c\u7528\u4e00\u6b21WD\u77e9\u9635\u4e58\u6cd5\uff0c\u518dview split",
+      "single_change": "将两个薄列组装成一个持久stack，用一次WD矩阵乘法，再view split",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -15387,7 +15386,7 @@
       "pid_start_ticks": "11957227",
       "started_at_utc": "2026-10-12T03:30:01.327300+00:00",
       "report": "results/phase2/ablation_v30_005_r01_mini1_local.json",
-      "single_change": "k\u548cq\u5408\u5e76\u4e3a\u5217\uff0c\u8ba1\u7b97PPL_flat @ Z_flat.T",
+      "single_change": "k和q合并为列，计算PPL_flat @ Z_flat.T",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -15914,7 +15913,7 @@
       "pid_start_ticks": "11960841",
       "started_at_utc": "2026-10-12T03:30:37.460953+00:00",
       "report": "results/phase2/ablation_v30_006_r01_mini1_local.json",
-      "single_change": "\u7528PP @ L\u540e\u9010\u5143\u7d20\u4e58Z\u3001\u6cbfk,q\u6c42\u548c\uff0c\u4e0d\u6784\u9020\u5b8c\u6574Z L.T",
+      "single_change": "用PP @ L后逐元素乘Z、沿k,q求和，不构造完整Z L.T",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -16447,7 +16446,7 @@
       "pid_start_ticks": "11965877",
       "started_at_utc": "2026-10-12T03:31:27.826934+00:00",
       "report": "results/phase2/ablation_v30_025_r01_mini1_local.json",
-      "single_change": "same-source repeated run\uff0c\u56fa\u5b9a\u7ebf\u7a0b\u5e93\u548cinputs\uff0c\u8f93\u51fa\u9010\u5c42\u9884\u6d4bdifference",
+      "single_change": "same-source repeated run，固定线程库和inputs，输出逐层预测difference",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -16974,7 +16973,7 @@
       "pid_start_ticks": "11969603",
       "started_at_utc": "2026-10-12T03:32:05.079707+00:00",
       "report": "results/phase2/ablation_v30_025_r02_mini1_local.json",
-      "single_change": "same-source repeated run\uff0c\u56fa\u5b9a\u7ebf\u7a0b\u5e93\u548cinputs\uff0c\u8f93\u51fa\u9010\u5c42\u9884\u6d4bdifference",
+      "single_change": "same-source repeated run，固定线程库和inputs，输出逐层预测difference",
       "status": "completed_diagnostic",
       "network_ids": [
         "0"
@@ -17502,7 +17501,7 @@
       "pid_start_ticks": "11973261",
       "started_at_utc": "2026-10-12T03:32:41.663722+00:00",
       "report": "results/phase2/ablation_v30_025_r03_mini1_local.json",
-      "single_change": "same-source repeated run\uff0c\u56fa\u5b9a\u7ebf\u7a0b\u5e93\u548cinputs\uff0c\u8f93\u51fa\u9010\u5c42\u9884\u6d4bdifference",
+      "single_change": "same-source repeated run，固定线程库和inputs，输出逐层预测difference",
       "status": "completed_diagnostic",
       "network_ids": [
         "0"
@@ -18030,7 +18029,7 @@
       "pid_start_ticks": "11995250",
       "started_at_utc": "2026-10-12T03:36:21.549875+00:00",
       "report": "results/phase2/ablation_v30_012_r01_mini1_local.json",
-      "single_change": "\u6bcfunique unordered AB pair\u53ea\u7b97\u4e00\u6b21\uff0cterm\u901a\u8fc7index view\u590d\u7528",
+      "single_change": "每unique unordered AB pair只算一次，term通过index view复用",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -18557,7 +18556,7 @@
       "pid_start_ticks": "12047077",
       "started_at_utc": "2026-10-12T03:44:59.821955+00:00",
       "report": "results/phase2/ablation_v30_022_r01_mini1_local.json",
-      "single_change": "\u4e00\u7ef4unique AB factors\u53caterm indexed\u9009\u62e9",
+      "single_change": "一维unique AB factors及term indexed选择",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -19090,7 +19089,7 @@
       "pid_start_ticks": "12083267",
       "started_at_utc": "2026-10-12T03:51:01.718391+00:00",
       "report": "results/phase2/ablation_v30_004_r01_mini1_local.json",
-      "single_change": "\u5408\u5e76[GYR,GXR]\u548c[F2,F1]\u8584\u5217\u4e00\u6b21\u4e58\u6cd5\u5e76\u4e00\u6b21k-sum",
+      "single_change": "合并[GYR,GXR]和[F2,F1]薄列一次乘法并一次k-sum",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -19617,7 +19616,7 @@
       "pid_start_ticks": "12087631",
       "started_at_utc": "2026-10-12T03:51:45.367264+00:00",
       "report": "results/phase2/ablation_v30_021_r01_mini1_local.json",
-      "single_change": "\u53ea\u4fdd\u5b58n\u00d71/1\u00d7n view\uff1bfnp\u5e7f\u64ad\u65f6\u6784\u9020\u771f\u6b63\u9700\u8981\u7684AB",
+      "single_change": "只保存n×1/1×n view；fnp广播时构造真正需要的AB",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -20144,7 +20143,7 @@
       "pid_start_ticks": "12131482",
       "started_at_utc": "2026-10-12T03:59:03.872631+00:00",
       "report": "results/phase2/ablation_v30_002_r01_mini1_local.json",
-      "single_change": "\u4fdd\u6301\u6bcf\u5c427\u4e2a\u4e58\u6cd5\uff0c\u4f7f\u7528Winograd15\u52a0\u51cf\u5171\u4eab\u4e2d\u95f4\u94fe",
+      "single_change": "保持每层7个乘法，使用Winograd15加减共享中间链",
       "status": "completed_failed",
       "network_ids": [
         "0"
@@ -20475,7 +20474,7 @@
       "pid_start_ticks": "12132723",
       "started_at_utc": "2026-10-12T03:59:16.280481+00:00",
       "report": "results/phase2/ablation_v30_019_r01_mini1_local.json",
-      "single_change": "\u7ec4[Aj,Pj]\u5728\u4e00\u4e2a\u6301\u4e45layout\u4e24batched GEMM\uff0c\u6700\u540e\u76f8\u52a0",
+      "single_change": "组[Aj,Pj]在一个持久layout两batched GEMM，最后相加",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -20995,7 +20994,7 @@
       "pid_start_ticks": "12140944",
       "started_at_utc": "2026-10-12T04:00:38.488630+00:00",
       "report": "results/phase2/ablation_v30_027_r01_mini1_local.json",
-      "single_change": "\u5f53\u6a21\u578bshape\u53d1\u751f\u53d8\u5316\u660e\u786e\u65b0\u5efa_Pool\u5e76\u91ca\u653e\u5386\u53f2\u5f15\u7528",
+      "single_change": "当模型shape发生变化明确新建_Pool并释放历史引用",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -21522,7 +21521,7 @@
       "pid_start_ticks": "12146229",
       "started_at_utc": "2026-10-12T04:01:31.346387+00:00",
       "report": "results/phase2/ablation_v30_002_r02_mini1_local.json",
-      "single_change": "\u4fdd\u6301\u6bcf\u5c427\u4e2a\u4e58\u6cd5\uff0c\u4f7f\u7528Winograd15\u52a0\u51cf\u5171\u4eab\u4e2d\u95f4\u94fe",
+      "single_change": "保持每层7个乘法，使用Winograd15加减共享中间链",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -22049,7 +22048,7 @@
       "pid_start_ticks": "12192751",
       "started_at_utc": "2026-10-12T04:09:16.565054+00:00",
       "report": "results/phase2/ablation_v30_009_r01_mini1_local.json",
-      "single_change": "\u9010WICK_PAIR\u7528\u660e\u786e\u7a00\u758fHorner/\u5355\u9879\u5f0f\u9009\u62e9\u6784\u9020",
+      "single_change": "逐WICK_PAIR用明确稀疏Horner/单项式选择构造",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -22576,7 +22575,7 @@
       "pid_start_ticks": "12196258",
       "started_at_utc": "2026-10-12T04:09:51.634494+00:00",
       "report": "results/phase2/ablation_v30_016_r01_mini1_local.json",
-      "single_change": "\u5bf9\u771f\u6b63\u5bf9\u79f0\u7684weighted Gram\u8ba1\u7b97\u4e0a\u4e09\u89d2block\u5e76copy\u4e0b\u4e09\u89d2",
+      "single_change": "对真正对称的weighted Gram计算上三角block并copy下三角",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -23103,7 +23102,7 @@
       "pid_start_ticks": "12199855",
       "started_at_utc": "2026-10-12T04:10:27.610044+00:00",
       "report": "results/phase2/ablation_v30_017_r01_mini1_local.json",
-      "single_change": "\u4fdd\u7559\u7b2c\u4e00\u4e58\u6cd5\uff0c\u672b\u6b21\u4e0a\u4e09\u89d2block\u8ba1\u7b97\u5e76copy",
+      "single_change": "保留第一乘法，末次上三角block计算并copy",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -23630,7 +23629,7 @@
       "pid_start_ticks": "12203382",
       "started_at_utc": "2026-10-12T04:11:02.873929+00:00",
       "report": "results/phase2/ablation_v30_018_r01_mini1_local.json",
-      "single_change": "\u4ec5\u672b\u6b21\u8ba1\u7b97\u4e0a\u4e09\u89d2\u8f93\u51fa\u5e76copy",
+      "single_change": "仅末次计算上三角输出并copy",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -24157,7 +24156,7 @@
       "pid_start_ticks": "12208361",
       "started_at_utc": "2026-10-12T04:11:52.661080+00:00",
       "report": "results/phase2/ablation_v30_016_r02_mini8_local.json",
-      "single_change": "\u5bf9\u771f\u6b63\u5bf9\u79f0\u7684weighted Gram\u8ba1\u7b97\u4e0a\u4e09\u89d2block\u5e76copy\u4e0b\u4e09\u89d2",
+      "single_change": "对真正对称的weighted Gram计算上三角block并copy下三角",
       "status": "completed_failed",
       "network_ids": [
         "0",
@@ -28553,7 +28552,7 @@
       "pid_start_ticks": "12243496",
       "started_at_utc": "2026-10-12T04:17:44.008649+00:00",
       "report": "results/phase2/ablation_v30_013_r01_mini1_local.json",
-      "single_change": "\u6bcf\u4e2a\u4e0a\u4e09\u89d2\u8f93\u51fablock\u540c\u65f6\u5408\u5e76\u6b63\u5411/\u53cd\u5411term\uff0c\u590d\u5236\u4e0b\u4e09\u89d2",
+      "single_change": "每个上三角输出block同时合并正向/反向term，复制下三角",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -29080,7 +29079,7 @@
       "pid_start_ticks": "12249555",
       "started_at_utc": "2026-10-12T04:18:44.603080+00:00",
       "report": "results/phase2/ablation_v30_016_r03_mini8_local.json",
-      "single_change": "\u5bf9\u771f\u6b63\u5bf9\u79f0\u7684weighted Gram\u8ba1\u7b97\u4e0a\u4e09\u89d2block\u5e76copy\u4e0b\u4e09\u89d2",
+      "single_change": "对真正对称的weighted Gram计算上三角block并copy下三角",
       "status": "completed_positive",
       "network_ids": [
         "0",
@@ -33476,7 +33475,7 @@
       "pid_start_ticks": "12369906",
       "started_at_utc": "2026-10-12T04:38:48.110015+00:00",
       "report": "results/phase2/ablation_v30_049_r01_mini1_local.json",
-      "single_change": "\u5bf9\u56fa\u5b9aGproxy\u4f7f\u75280.5*(Gij*Mii+Gii*Mij)\uff0c\u4ec5\u6539WK431 use",
+      "single_change": "对固定Gproxy使用0.5*(Gij*Mii+Gii*Mij)，仅改WK431 use",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -34003,7 +34002,7 @@
       "pid_start_ticks": "12373462",
       "started_at_utc": "2026-10-12T04:39:23.676415+00:00",
       "report": "results/phase2/ablation_v30_050_r01_mini1_local.json",
-      "single_change": "\u4f7f\u7528(Gii*Mjj+Gjj*Mii+4Gij*Mij)/6\uff0c\u4ec5\u6539WK22 use",
+      "single_change": "使用(Gii*Mjj+Gjj*Mii+4Gij*Mij)/6，仅改WK22 use",
       "status": "completed_negative",
       "network_ids": [
         "0"
@@ -34530,7 +34529,7 @@
       "pid_start_ticks": "12376983",
       "started_at_utc": "2026-10-12T04:39:58.878327+00:00",
       "report": "results/phase2/ablation_v30_052_r01_mini1_local.json",
-      "single_change": "\u76f8\u540crank16\u4e0b\u6539\u7528\u672a\u6765\u4e00\u4e24\u5c42weight\u548clive average ReLU gate\u6784\u9020sketch",
+      "single_change": "相同rank16下改用未来一两层weight和live average ReLU gate构造sketch",
       "status": "completed_positive",
       "network_ids": [
         "0"
@@ -35057,7 +35056,7 @@
       "pid_start_ticks": "12420493",
       "started_at_utc": "2026-10-12T04:47:13.982083+00:00",
       "report": "results/phase2/ablation_v30_052_r03_mini8_local.json",
-      "single_change": "\u76f8\u540crank16\u4e0b\u6539\u7528\u672a\u6765\u4e00\u4e24\u5c42weight\u548clive average ReLU gate\u6784\u9020sketch",
+      "single_change": "相同rank16下改用未来一两层weight和live average ReLU gate构造sketch",
       "status": "completed_positive",
       "network_ids": [
         "0",
@@ -39453,7 +39452,7 @@
       "pid_start_ticks": "12487430",
       "started_at_utc": "2026-10-12T04:58:23.356411+00:00",
       "report": "results/phase2/ablation_v30_001_r02_mini8_local.json",
-      "single_change": "\u5404\u5c3a\u5ea6\u53ea\u7b97\u4e0a\u975e\u5bf9\u89d2block\uff0c\u5bf9\u89d2block\u9012\u5f52\u523032\u00d732\uff0c\u6700\u540e\u5bf9\u89d2\u53f6\u5b50\u6279\u91cfdense\uff1b\u4e0b\u975e\u5bf9\u89d2copy transpose",
+      "single_change": "各尺度只算上非对角block，对角block递归到32×32，最后对角叶子批量dense；下非对角copy transpose",
       "status": "completed_positive",
       "network_ids": [
         "0",
@@ -44054,7 +44053,7 @@
   "queued_resource_audit": {
     "key": "C26",
     "script": "experiments/phase2/run_pool_audit_after_reference.sh",
-    "scope": "Actual predict shape64x4\u21921024x16\u219264x4\u21921024x16 with original8GiB cap",
+    "scope": "Actual predict shape64x4→1024x16→64x4→1024x16 with original8GiB cap",
     "status": "completed4shape no exception, nonfinite smallshape warnings; RPC lifetime pending"
   },
   "l07_singlethread": {
@@ -46852,7 +46851,7 @@
     "network_identity_dedup_passed": true
   },
   "strict_paired_public_attribution": {
-    "scope": "Strict paired public IDs16\u201364; frozen before project score access, upstream public tuning unknown, not final unseen holdout",
+    "scope": "Strict paired public IDs16–64; frozen before project score access, upstream public tuning unknown, not final unseen holdout",
     "n_mlps": 49,
     "stage_accepted": false,
     "before_adjusted": 5.6174229978703895e-09,
@@ -47134,17 +47133,17 @@
   "tenfold_focus": {
     "target": 5.779e-10,
     "minimum_raw_needed_at_multiplier_floor": 5.779e-09,
-    "priority": "Reproducible rank1 conditional raw gain vs doubled cost; cheap response correction and variance causal diagnosis",
+    "priority": "Actual K2/K3/K4 closure mechanisms: complete D21 heavy history, fullmetric K4, oracle entire-chain propagation diagnostics; no lambda gain scans",
     "stage_accepted": false
   },
   "latest_tenfold_experiment": {
-    "version": "tenfold.conditioning.cvfull.r11",
+    "version": "tenfold.radial.sphere.r12",
     "status": "completed_negative",
-    "candidate": "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
-    "sha256": "bbf7bafbd9fd93d431290b6da6b17776de79dcf42aeee6d57f90ecb2873e949d",
-    "pid": 1563177,
-    "pid_start_ticks": "2186246",
-    "started_at_utc": "2026-10-13T09:32:36.508223+00:00",
+    "candidate": "estimators/tenfold_radial_sphere_r12/estimator.py",
+    "sha256": "cf0d3c001b0f542a3f6ffc23ab0c1169290ba023d951a72ea35a36d5a22699a2",
+    "pid": 1571911,
+    "pid_start_ticks": "2239244",
+    "started_at_utc": "2026-10-13T09:41:26.491541+00:00",
     "command": [
       "uv",
       "run",
@@ -47152,7 +47151,7 @@
       "python",
       "benchmark/run_rpc_strict.py",
       "--estimator",
-      "estimators/tenfold_conditioning_cvfull_r11/estimator.py",
+      "estimators/tenfold_radial_sphere_r12/estimator.py",
       "--inputs",
       "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/inputs.json",
       "--dataset",
@@ -47160,23 +47159,23 @@
       "--n-mlps",
       "1",
       "--output",
-      "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json"
+      "results/phase2/tenfold_radial_sphere_r12_strict1.json"
     ],
-    "output": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.json",
-    "log": "results/phase2/tenfold_conditioning_cvfull_r11_strict1.launcher.log",
-    "single_change": "r10 cheapdiagonal\u2192fullcovGaussian firstchaos response; fixedGH8, same t0mother",
-    "limitations": "biased response approximation; wall/resource still unverified; exact bivariate cov not represented",
-    "score": "results/phase2/tenfold_conditioning_cvfull_r11_strict1_score.json",
-    "comparison": "results/phase2/tenfold_conditioning_cvfull_r11_samecycle_comparison.json",
+    "output": "results/phase2/tenfold_radial_sphere_r12_strict1.json",
+    "log": "results/phase2/tenfold_radial_sphere_r12_strict1.launcher.log",
+    "single_change": "inputradial separation: firstpost rawmoments to sphere + entire represented K3 transform + specialB/v transport + radialmean factor",
+    "limitations": "inherited representedGaussianbirth approximation and originalunconditionalLAM/regen calibration; onepublicnetworknot holdout",
+    "score": "results/phase2/tenfold_radial_sphere_r12_strict1_score.json",
+    "comparison": "results/phase2/tenfold_radial_sphere_r12_samecycle_comparison.json",
     "result": {
-      "final_layer_mse": 2.0721040883131536e-08,
-      "adjusted_final_layer_score": 1.0016022950150368e-08,
+      "final_layer_mse": 2.2248848097206064e-08,
+      "adjusted_final_layer_score": 5.5192238827473855e-09,
       "n_failed_mlps": 0,
-      "mean_compute_utilization": 0.48337450838698715,
-      "flops_used": 1062951785084,
-      "wall_time_s": 50.432605544,
-      "residual_wall_time_s": 0.2264213619999964,
-      "client_peak_rss_kib": 287840,
+      "mean_compute_utilization": 0.24806784866495946,
+      "flops_used": 545506968169,
+      "wall_time_s": 46.880126718,
+      "residual_wall_time_s": 0.20910992599999645,
+      "client_peak_rss_kib": 288176,
       "limits_passed": true,
       "failure_reasons": []
     }
@@ -47211,13 +47210,13 @@
     "score": "results/phase2/tenfold_parent_h18_samecycle_r01_strict1_score.json"
   },
   "cloud_diagnostic": {
-    "version": "covariance.causal.r01",
-    "pid": 1551390,
-    "pid_start_ticks": "2113723",
-    "manifest": "results/phase2/modal_covariance_causal_r01/manifest.json",
-    "app_url": "https://modal.com/apps/gydctet/main/ap-6HXuKhwbXYtT0zh7WDhWji",
+    "version": "covariance.causal.r02",
+    "pid": 1575604,
+    "pid_start_ticks": "2252947",
+    "manifest": "results/phase2/modal_covariance_causal_r02/manifest.json",
     "status": "running",
-    "scope": "Offline pre/post moments, no candidate truth dependency"
+    "scope": "Offline 2streams interleaved64workers 65536samples/shard 2GiB; fixedtheoryK2/K3/K4bias diagnosis, no candidate truth dependency",
+    "app_url": "https://modal.com/apps/gydctet/main/ap-5dwgqaCWAycdsGLatB0BYw"
   },
   "latest_tenfold_second_network": {
     "version": "tenfold.conditioning2node.r09",
@@ -47278,5 +47277,31 @@
     "failures": 0,
     "status": "completed_negative",
     "single_change": "one residualGaussian mother + cheap diagonalGH8 response"
+  },
+  "previous_cloud_diagnostic": {
+    "version": "covariance.causal.r01",
+    "pid": 1551390,
+    "pid_start_ticks": "2113723",
+    "manifest": "results/phase2/modal_covariance_causal_r01/manifest.json",
+    "app_url": "https://modal.com/apps/gydctet/main/ap-6HXuKhwbXYtT0zh7WDhWji",
+    "status": "completed_partial_failure",
+    "scope": "Offline partial statistics only; timeouts/preemption/SIGKILL; successselection uncertainty; notcandidatefailure",
+    "completion": "results/phase2/modal_covariance_causal_r01/completion.json",
+    "completed_jobs": 256,
+    "successful_jobs": 13,
+    "failed_jobs": 243
+  },
+  "latest_marginal_edgeworth_experiment": {
+    "version": "r15",
+    "status": "completed",
+    "score": "results/phase2/tenfold_marginal_edgeworth2_r15_strict1_score.json",
+    "paired": "results/phase2/tenfold_marginal_edgeworth2_r15_samecycle_comparison.json",
+    "candidate_sha256": "5e6f92cb89e32a7fa888a19dc59a02e54bea17fe78e7a3a023a90acc2c40e9e3",
+    "before_raw": 2.2281179568039988e-08,
+    "after_raw": 2.252167519145587e-08,
+    "before_adjusted": 4.8714160493622575e-09,
+    "after_adjusted": 4.924006086041307e-09,
+    "failures": 0,
+    "decision": "negative; stop this fixed marginal-only closure"
   }
 }

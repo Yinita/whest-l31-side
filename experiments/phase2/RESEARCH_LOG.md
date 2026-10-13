@@ -1034,3 +1034,13 @@ M03r22 Mini8complete adjusted5.787544250514655e-9/raw2.273748767045447e-8,8zeroe
 r10 strict1同network0新结果：raw2.974875101813268e-8、adjusted6.525045206060913e-9，零失败；同cycleparent raw2.2281179568039988e-8、adjusted4.8714160493622575e-9。raw+33.515%、adjusted+33.946%，cheapdiag条件响应否决。r11仅cheapdiag→fullcovfirstchaos，GH8及t0母链冻结，严格RPC单网正在运行；不得提前报成功。
 
 r11 fullcovcheap response严格单网完成：raw2.072104088313e-08（相对parent-7.0020%），adjusted1.001602295015e-08（105.6080%），零失败、FLOPs1062951785084、wall50.432606/residual0.226421s、clientRSS287840KiB。全协方差响应比diag正确但其成本仍抵消收益，停止该CV路线节点/参数扫描。下一项r12球面输入分布的解析径向剥离正在做实际representedK3/core合同，不以理论合同称整网提分。
+
+r12径向sphere单链严格RPC完成：raw2.224884809721e-08（-0.1451%），adjusted5.519223882747e-09（13.2981%），FLOPs545506968169，wall/residual46.880127/0.209110s，零失败。没有实质精度收益，成本增加，否决该首层径向表示变换（不扫scale，不上传）。实际representedK3/core n8/32合同通过不等于真tensor；NO_CORR默认1且strict清V17env，本次firstmeanrider无删除造成的额外因素。
+
+云离线高阶归因初值：13successshards（stream0=1.049m/stream1=2.359m）分4whole-neuronvector独立chunks，以固定理论dK2,dK3,dK4系数估计末层localinnovation4.419e-9→oracle残差2.658e-10，4chunkSE1.20e-10。只诊断边际累积量闭合可能误差源，不是合法候选/整链raw/adjusted或十倍验收；早层采样噪声和成功片选择必须更可信r02确认。记录`results/phase2/modal_covariance_causal_r01/highorder_partial198_r01.json`。
+
+Modal covariance.causal.r01完整终止：256返回、13成功、243失败，completion.complete=false。失败含300s timeout及preemption/runnerSIGKILL，不能把成功子集称完整采样。r02唯一数值工作量改变262144→65536每片，总67m保持，同时offlineworker内存1→2GiB、交错stream/新seed修复早期诊断与资源稳定；这些是离线诊断资源，不是候选120s/8GB验收放宽。PID1575604，64×1CPU，journal逐条fsync，不重复启动。原source/rawseed错命名在独立审计更正：dataset mlp_seed6319981554997072999，grader setupseed3909487726。
+
+### 2026-10-13T10:00:32.076394+00:00 — marginal.Edgeworth.r15
+
+假设：parentmean有二阶κ3/κ4而p2/p3/p4仅线性，可能产生K2/K3/K4生产偏差。唯一机制变更为固定二阶边际闭合，版本、hash、PID1594433/startticks2341902、命令、冻结inputs与网络0、资源见launchmanifest/contract/strict1score/paired。公式实际block独立积分通过1.45e-15；before/after raw2.228117956804e-8→2.252167519146e-8、adjusted4.871416049362e-9→4.924006086041e-9（+1.08%），FLOPs480781460599、wall45.86667s/residual.210547197s，零失败。否决当前版本，不扩量/上传。下一项：恢复完整D21heavyfeedback并严格birth去重，合法组件合同后单网筛选；双流MC独立诊断仍运行，失败与参考floor保留。

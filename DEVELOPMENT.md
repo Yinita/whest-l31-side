@@ -1,5 +1,8 @@
 # WhestBench Phase 2 开发入口
 
+2026-10-13当前：r15固定二阶边际闭合严格单网零失败，但raw/adjusted均+1.08%，否决；完整三阶反馈新表示正在实现。双流离线oracle残余已接近原参考噪声，只作机制定位，不能称候选十倍收益。最佳与阶段1阈值不变。
+2026-10-13后续：r12解析球面径向版本严格RPC单网raw仅−0.145%、adjusted+13.30%，零失败，未晋升。云独立新seed两流初步复现边际K2/K3/K4缺口与late局部mean误差的关联；后续出现基础设施失败并完整保留；oracle归因不可当作候选分数，正在完整采集与设计新的高阶表示。
+
 2026-10-13十倍精度接续：两网GH2条件积分raw−11.91%/−7.37%但费用翻倍，adjusted未改善；r10cheapdiag否决（raw+33.52%），r11fullcov响应raw−7.00%但adjusted+105.61%，均零失败。下一单链解析径向分布版本正在做实际source合同；云逐层矩采集首版大量timeout，保留全部失败，不记候选收益。阶段1目标5.779e-10、当前线上最佳V37bH18均未改变。见[真实before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 最新检查点（2026-10-13）：V37bH18严格RPC累计65公共网零失败，adjusted **4.4596111651e-9**，raw **2.1926280101e-8**。同runner成对49网，V29→V37bH18 adjusted下降21.54%、raw下降1.76%、FLOPs下降20.12%；49/49 adjusted改善、34/49 raw改善，主要收益来自降费。[65网汇总](results/phase2/sprint_public_v37b_h18_strict_public65_r06.json)与[49网成对归因](results/phase2/frozen_strict_public49_paired_r04.json)保留逐网证据。阶段1目标5.779e-10未达，Mini100未完成，公共集不称最终独立holdout；线上最佳仍#335678的4.2937797168e-9，未新上传。
