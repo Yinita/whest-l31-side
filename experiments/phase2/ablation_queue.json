@@ -629,7 +629,7 @@
       "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
       "before": "单独解析闭合与单独MonteCarlo",
       "after": "合法可计算E[g]+mean(f-g)，独立采样流与残差方差成本核验",
-      "readiness": "needs_derivation",
+      "readiness": "derived_proxy_pilot_done",
       "kind": "algorithm",
       "priority": "P1",
       "dependencies": [
@@ -641,13 +641,13 @@
       "group": "paper_methods",
       "id": "WB-P2-M04",
       "version": "paper.M04.r01",
-      "version_state": "reserved; no after score",
+      "version_state": "paper.M04.r01 firstproxy variance/cost pilot completed; fullmethod pending",
       "parent": {
         "default": "estimators/k3_v29/estimator.py",
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "pending_derivation",
+      "status": "partial_negative",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
       "candidate_path": null,
@@ -655,12 +655,48 @@
       "dependency_ids": [
         "WB-P2-M01"
       ],
-      "evidence": [],
-      "result": {},
+      "evidence": [
+        "experiments/phase2/CONTINUATION_2026-10-13.md",
+        "results/phase2/m04_first_relu_control_pilot_r01.json",
+        "results/phase2/m04_first_relu_regression_pilot_r02.json"
+      ],
+      "result": {
+        "conclusion": "Realnetwork firstReLU knownexpectation tangentcontrol reduces heldvariance2.75% but analyticfixedbudgetMSE+12.45%; reject thisproxy standalone, fullM04 remains incomplete",
+        "scope": "oneexistingresearchnetwork/twoindependenttrainheldstreams; no benchmark score; analyticcost only",
+        "report": "results/phase2/m04_first_relu_control_pilot_r01.json",
+        "before_variance": [
+          0.07884326930012472,
+          0.07813409093180997
+        ],
+        "after_variance": [
+          0.07667230254341244,
+          0.0759863349782254
+        ],
+        "projected_samebudget_mse_ratios": [
+          1.124474094098494,
+          1.1245286053744545
+        ],
+        "acceptance": "Knownzero proxy and independent beta pilot verified by derivation; float32centering/allowedoperator/fullcost/independentnetwork gates not completed"
+      },
       "is_promising": true,
       "execution_priority": "P1",
       "promising_reason": "结构性机制或论文完整对照；尚未证明收益",
-      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory"
+      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory",
+      "next_experiment": "Knownmean firstlayer proxies fail analyticbudgetgate in two mechanisms; fullM04 requires morecorrelated nonlinear knownexpectation surrogate, no blindridge sweep",
+      "pilot_followup": {
+        "version": "paper.M04.r02",
+        "report": "results/phase2/m04_first_relu_regression_pilot_r02.json",
+        "single_change": "independentpilot regression coefficients replaces tangent",
+        "variance_ratios": [
+          0.9547490571390514,
+          0.9613382183591652
+        ],
+        "samebudget_mse_ratios": [
+          1.0935075227101065,
+          1.1010543197544893
+        ],
+        "conclusion": "stillnegative fullcost; no proxyport"
+      }
     },
     {
       "key": "M05",
@@ -668,7 +704,7 @@
       "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
       "before": "L29固定替代分布负结果",
       "after": "原文核对后完整有限混合/低维条件规格和同预算采样对照",
-      "readiness": "needs_derivation",
+      "readiness": "source_method_mapped_requires_contract",
       "kind": "algorithm",
       "priority": "P1",
       "dependencies": [
@@ -680,13 +716,13 @@
       "group": "paper_methods",
       "id": "WB-P2-M05",
       "version": "paper.M05.r01",
-      "version_state": "reserved; no after score",
+      "version_state": "source/algorithm/costmapping only; no afterscore",
       "parent": {
         "default": "estimators/k3_v29/estimator.py",
         "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
         "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
       },
-      "status": "pending_derivation",
+      "status": "partial_mapping",
       "allow_lower_reasoning_execution": false,
       "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
       "candidate_path": null,
@@ -694,12 +730,28 @@
       "dependency_ids": [
         "WB-P2-M01"
       ],
-      "evidence": [],
-      "result": {},
+      "evidence": [
+        "results/phase2/m05_source_audit_r01.json",
+        "experiments/phase2/CONTINUATION_2026-10-13.md",
+        "results/phase2/m05_unsplit_relu_gate_r02.json"
+      ],
+      "result": {
+        "conclusion": "Monchot2023 actualGMM/Wasserstein split+UT method and publicimplementation mapped; paperAlgorithm1/3.4.4 covariance-eigen truncation cannot justify removing identityinput dimensions. 2049fullnetworkpoints/component ~68.753GFLOPs analyticlowerbound, <=31components before allothercost; noportscore",
+        "scope": "originalsource/code/costprojection only; fullmethod incomplete"
+      },
       "is_promising": true,
       "execution_priority": "P1",
       "promising_reason": "结构性机制或论文完整对照；尚未证明收益",
-      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory"
+      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory",
+      "next_experiment": "smallshape GMMsplit/UT/Wasserstein full contract, quantify finite-split bias; originalpublicTensorFlowcode not allowed submissionport",
+      "diagnostic_r02": {
+        "version": "paper.M05.r02",
+        "scope": "unsplitfirstReLUsigma-pointdiagnosticonexistingnetwork, NOTwholealgorithm",
+        "original_kappa_nminus3_mse": 0.02718091507985365,
+        "mean_relative_bias": -0.2921478742003982,
+        "zero_kappa_diagnostic_mse": 2.1687722244458458e-05,
+        "conclusion": "ReproduceoriginalUTpointmeanandshowunsplitReLUbias; adaptivefullsplittingrequired, notalgorithmrejection"
+      }
     },
     {
       "key": "M02",
@@ -53931,5 +53983,6 @@
     "M03",
     "M04",
     "M05"
-  ]
+  ],
+  "updated_at_utc": "2026-10-13T04:23:00Z"
 }

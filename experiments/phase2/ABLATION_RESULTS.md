@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'partial_diagnostic': 20, 'partial_derivation': 33, 'pending_derivation': 2, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30, 'partial_negative': 14}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 2, 'partial_diagnostic': 20, 'partial_derivation': 33, 'partial_negative': 15, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -260,6 +260,36 @@ after：候选及配置冻结后生成预注册未见种子网络，候选与上
 - [ablation_v30_115_independent_protocol.json](../../results/phase2/ablation_v30_115_independent_protocol.json)
 - [ablation_v30_115_independent_weights.json](../../results/phase2/ablation_v30_115_independent_weights.json)
 - [ablation_v30_114_reference_uncertainty_gate.json](../../results/phase2/ablation_v30_114_reference_uncertainty_gate.json)
+
+### paper.M04.r01 M04 解析代理和残差采样控制变量
+
+before：单独解析闭合与单独MonteCarlo
+
+after：合法可计算E[g]+mean(f-g)，独立采样流与残差方差成本核验
+
+状态：partial_negative
+
+验收：Knownzero proxy and independent beta pilot verified by derivation; float32centering/allowedoperator/fullcost/independentnetwork gates not completed。
+
+诊断结论：Realnetwork firstReLU knownexpectation tangentcontrol reduces heldvariance2.75% but analyticfixedbudgetMSE+12.45%; reject thisproxy standalone, fullM04 remains incomplete；算法分数前后不适用。
+
+- [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
+- [m04_first_relu_control_pilot_r01.json](../../results/phase2/m04_first_relu_control_pilot_r01.json)
+- [m04_first_relu_regression_pilot_r02.json](../../results/phase2/m04_first_relu_regression_pilot_r02.json)
+
+### paper.M05.r01 M05 Monchot2023条件或混合传播
+
+before：L29固定替代分布负结果
+
+after：原文核对后完整有限混合/低维条件规格和同预算采样对照
+
+状态：partial_mapping
+
+诊断结论：Monchot2023 actualGMM/Wasserstein split+UT method and publicimplementation mapped; paperAlgorithm1/3.4.4 covariance-eigen truncation cannot justify removing identityinput dimensions. 2049fullnetworkpoints/component ~68.753GFLOPs analyticlowerbound, <=31components before allothercost; noportscore；算法分数前后不适用。
+
+- [m05_source_audit_r01.json](../../results/phase2/m05_source_audit_r01.json)
+- [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
+- [m05_unsplit_relu_gate_r02.json](../../results/phase2/m05_unsplit_relu_gate_r02.json)
 
 ### paper.M02.r01 M02 Wright2024完整精确高斯协方差
 

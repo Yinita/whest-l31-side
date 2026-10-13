@@ -11,12 +11,12 @@
   },
   "active_experiment": null,
   "next_experiment": {
-    "key": "larger frozen public cohort + local residual localization",
-    "status": "not started",
-    "scope": "Stage1 target unchanged; do not relabel16networks as Mini100"
+    "key": "M05 smallshape complete split/UT/Wasserstein contract",
+    "status": "source_spec_prepared_not_started",
+    "scope": "originalmethodpartialmapping; no weakreference replacement; firstReLU unsplitbias requires adaptive split verification; maintainphase1target"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T04:06:33.899620+00:00",
+  "updated_at_utc": "2026-10-13T04:39:24.968171+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -43824,49 +43824,37 @@
   "execution_mode": "continuous_goal",
   "automation_deleted": "whestbench-10",
   "data_preparation": {
+    "key": "frozen public shard02 preparation",
     "status": "completed",
-    "pid": 587794,
-    "pid_start_ticks": "2467310",
-    "log": "results/phase2/prepare_shard01_resume.log",
-    "output": "benchmark/data/mini_shard01",
+    "pid": 221082,
+    "pid_start_ticks": "262777",
+    "session_id": 33413,
+    "started_at_host": "2026-10-13 12:12:01",
     "command": [
       "uv",
       "run",
+      "--frozen",
       "python",
       "benchmark/prepare_public.py",
       "--shard",
-      "1"
+      "2"
     ],
-    "started_at_utc": "2026-10-10T10:26:00.438993+00:00",
-    "provenance": {
-      "repo": "aicrowd/arc-whestbench-public-2026",
-      "revision": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
-      "file": "prepared/mini/data-00001-of-00014.arrow",
-      "sha256": "c0f70e3beab4b24c0cbc2547b042af50073087e610f945368f104f2c88a6dc85",
-      "selection": "official Mini shard 1; unchanged targets; reserved from local candidate tuning",
-      "network_ids": [
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15"
-      ],
-      "independence_caveat": "Public networks; separation from upstream author tuning has not been established.",
-      "n_mlps": 8,
-      "columns": [
-        "mlp_id",
-        "mlp_name",
-        "mlp_seed",
-        "weights",
-        "all_layer_means",
-        "final_means",
-        "avg_variance",
-        "sampling_budget_breakdown"
-      ]
-    }
+    "log": "results/phase2/mini_shard02_prepare_r01.log",
+    "single_change": "expand fixed candidate validation to next pinned public shard; no tuning on this shard",
+    "reference": "unchanged official targets",
+    "stage_accepted": false,
+    "report": "results/phase2/mini_shard02_dataset.json",
+    "network_ids": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "n_mlps": 7,
+    "arrow_sha256": "f4ef83bd0d40bfcd7b72c7ad6e0a2fd65b92988fe4b391b67d4be6ac7c31ac6a"
   },
   "reference_uncertainty_diagnostic": "results/phase2/reference_noise_proxy_mini8.json",
   "upstream_paper_code_lookup": {
@@ -46383,9 +46371,11 @@
       "P1 M04 control-variate mechanism and M03 full-method cost gate"
     ],
     "online_submissions": {
-      "335677": "submitted; score null",
-      "335678": "submitted; score null"
-    }
+      "335677": "graded4.3922571600308725e-9",
+      "335678": "graded4.293779716792071e-9"
+    },
+    "latest_followup": "experiments/phase2/CONTINUATION_2026-10-13.md",
+    "strict_public_networks_completed": 23
   },
   "latest_completed_rpc": {
     "key": "sprint-v37b-h18-fullRPC8",
@@ -46434,14 +46424,19 @@
     "stage_accepted": false
   },
   "latest_public_expansion": {
-    "report": "results/phase2/sprint_public_v37b_h18_r07_strict_public8_score.json",
-    "comparison": "results/phase2/sprint_public_v37b_h18_r07_public_before_after.json",
-    "adjusted": 4.635058601285328e-09,
-    "raw": 2.2802703725233187e-08,
+    "report": "results/phase2/sprint_public_v37b_h18_r08_strict_shard02_score.json",
+    "comparison": "results/phase2/sprint_public_v37b_h18_r08_shard02_before_after.json",
+    "before_adjusted": 5.485889416202945e-09,
+    "adjusted": 4.303414283711552e-09,
+    "raw": 2.1186933858124187e-08,
     "failures": 0,
-    "relative_adjusted_vs_v29": -0.21392947085170866,
-    "relative_raw_vs_v29": -0.015506837127161277,
-    "scope": "previouslyusedpublic8notunseenfinalholdout"
+    "relative_adjusted_vs_v29": -0.21554848134540827,
+    "relative_raw_vs_v29": -0.01736419487387164,
+    "n_mlps": 7,
+    "total_strict_public_networks": 23,
+    "scope": "frozen before scoring newpublic16-22; no projecttuningoncohort, upstreamunknown, not finalunseenholdout",
+    "maxwall": 58.75250673,
+    "maxresidual": 0.18561879199999964
   },
   "previous_active_checkpoint": {
     "key": "V37bH18 strict public8 expansion",
@@ -46461,5 +46456,97 @@
       "ok",
       "ok"
     ]
+  },
+  "latest_v38_resource_candidate": {
+    "key": "V38-S4-H18 local8",
+    "status": "completed",
+    "single_change": "Strassen recursion cap5->4",
+    "candidate": "estimators/v38_strassen4_h18/estimator.py",
+    "sha256": "669f9c1ac1b191ca8adacfeee9aa01cf48336c490735ed7686c3631f91ca2350",
+    "pid": 243130,
+    "pid_start_ticks": "282641",
+    "session_id": 58628,
+    "started_at_host": "2026-10-13 12:15:20",
+    "report": "results/phase2/v38_strassen4_h18_r01_local8.json",
+    "dataset": "benchmark/data/mini_first8",
+    "next": "score and retain negative; frozen public shard02 V29/V37bH18 paired validation next",
+    "adjusted": 4.876618851087354e-09,
+    "raw": 2.2660965326437577e-08,
+    "failures": 0,
+    "max_residual_s": 0.380913586024235,
+    "mean_flops": 473328782033.0,
+    "stage_accepted": false,
+    "interpretation": "resource alternative, not new best score; crossrunner vs parent strictRPC adjusted+5.913%"
+  },
+  "latest_m04_pilot": {
+    "report": "results/phase2/m04_first_relu_control_pilot_r01.json",
+    "status": "completed_negative_cost_gate",
+    "variance_ratios": [
+      0.9724647801139716,
+      0.9725119224147757
+    ],
+    "same_budget_projected_mse_ratios": [
+      1.124474094098494,
+      1.1245286053744545
+    ],
+    "scope": "one researchnetwork/twoseeds/offline variance and analyticcost; no measured benchmark score",
+    "next": "better knownexpectationproxy required; reject standalone currenttangent candidate"
+  },
+  "frozen_shard02_control": {
+    "key": "frozen shard02 V29 strict control",
+    "status": "completed",
+    "pid": 282486,
+    "pid_start_ticks": "320877",
+    "session_id": 14076,
+    "started_at_host": "2026-10-13 12:21:42",
+    "candidate": "estimators/k3_v29/estimator.py",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "report": "results/phase2/v29_r08_strict_shard02.json",
+    "dataset": "benchmark/data/mini_shard02",
+    "inputs": "benchmark/data/rpc_inputs/frozen_shard02_r01/inputs.json",
+    "n_mlps": 7,
+    "next": "score then V37bH18 strict same7, serial",
+    "stage_accepted": false,
+    "completed_networks": 6,
+    "completed_statuses": [
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "score_report": "results/phase2/v29_r08_strict_shard02_score.json",
+    "adjusted": 5.485889416202945e-09,
+    "raw": 2.1561328976206695e-08,
+    "failures": 0
+  },
+  "latest_m04_regression_pilot": {
+    "report": "results/phase2/m04_first_relu_regression_pilot_r02.json",
+    "status": "completed_negative_cost_gate",
+    "variance_ratios": [
+      0.9547490571390514,
+      0.9613382183591652
+    ],
+    "projected_samebudget_mse_ratios": [
+      1.0935075227101065,
+      1.1010543197544893
+    ],
+    "next": "firstlayerproxy route negative under fullpilotcost; no candidateport or rankscan"
+  },
+  "latest_v38_strict_confirmation": {
+    "report": "results/phase2/v38_strassen4_h18_r02_strict_rpc8_score.json",
+    "comparison": "results/phase2/v38_strassen4_h18_r02_vs_parent_strict.json",
+    "status": "completed_zero_failure_resource_alternative",
+    "adjusted": 4.876791740532289e-09,
+    "raw": 2.2660965326437577e-08,
+    "failures": 0,
+    "same_candidate_local_parity_verified": true,
+    "max_relative_raw_delta_vs_local": 0.0,
+    "flops_delta_per_network": 16777216,
+    "relative_adjusted_vs_parent_strict": 0.05916982025376516,
+    "maxwall": 38.180445833,
+    "maxresidual": 0.1732082119999987,
+    "stage_accepted": false
   }
 }

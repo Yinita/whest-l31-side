@@ -1,0 +1,63 @@
+{
+  "status": "source_and_cost_mapping_only",
+  "sources": {
+    "monchot23a_20261013.pdf": "270c9138572dc61531c96578e3c97d04735803ce33100307ea08bb00bbf1945c",
+    "wgmprop_utils_wgmprop_propagation.py": "555ad0f6028408530c3155371afebfccc1fe36fbbd031412c6715d45a431ef4f",
+    "wgmprop_utils.py": "9d65cdd2d3c2e9d0538be6393b0e0c5a2ac2af34482d6e854cad8e4a4d16bbcd",
+    "wgmprop_tree_20261013.json": "a924056274838f2bd89f41fe5446190ad990e332240f52ae8d3d17cce39c334e"
+  },
+  "paper": "https://proceedings.mlr.press/v202/monchot23a/monchot23a.pdf",
+  "code": "https://github.com/PaulMcht/WGMprop",
+  "commit": "915eaacea0ae3906536b8ffc6662a84b43b8487c",
+  "read_sections": [
+    "3.2split4steps(merge not used)",
+    "3.3Wassersteinbounds",
+    "3.4.2UT2d+1points",
+    "3.4.4subspaceselection",
+    "Algorithm1"
+  ],
+  "method": "GMMinputsplit, fullnetwork nonlinear and localTaylor sigma-point propagation, weighted Wasserstein uppercriterion; not simplelayerwiseGaussianclosure",
+  "competition_input": "N(0,I1024) has no smaller eigenvalues for covariance-only subspace truncation",
+  "cost_gate_projection": {
+    "samples_per_component_full_dimension": 2049,
+    "per_sample_dense_forward_flops": 33554432,
+    "per_component_forward_flops_lower_bound": 68753031168,
+    "budget": 2199023255552,
+    "max_full_dimension_components_ignoring_all_other_costs": 31
+  },
+  "limitations": [
+    "projectionnotflopscopeactual",
+    "linearization/eigendecomposition/Wasserstein/splitcostnotincluded",
+    "noportorbenchmarkscore",
+    "UTapproximationandfiniteGMMsplittingbiasmustbequantified"
+  ],
+  "next": "smallshape full method reproduction before suiteport; inputidentityprecludesuninformedranktruncation",
+  "split_template_moment_diagnostic": {
+    "scope": "1Dstandardnormal threecomponentsusingpublishedroundedparameters; notfulladaptivemethod",
+    "weights": [
+      0.6364,
+      0.1818,
+      0.1818
+    ],
+    "means": [
+      0,
+      1.0579,
+      -1.0579
+    ],
+    "sigma": 0.7687,
+    "variance_before": 1,
+    "variance_after": 0.9978235062760001,
+    "exact_first_relu_before": 0.3989422804014327,
+    "exact_mixture_relu_after": 0.3982864984010622,
+    "bias": -0.0006557820003705306,
+    "observation": "Splittingapproximationandparameterroundingintroducemomentbias; highernarrowersplitsneedvalidation"
+  },
+  "code_paper_parity_question": {
+    "file": "model/utils_wgmprop_propagation.py",
+    "function": "_subspace_fn_propagation2",
+    "expression": "sqrt(reduce_mean(w_points * squared_taylor_error, axis=1))",
+    "paper": "\u00a73.4.2weightedexpectationsum_jomega_j||f(Zj)-fbar(Zj)||\u00b2",
+    "difference": "code usesmeanofweightedterms whereas normalizedUTexpectation is sum; sqrtterm scaled1/sqrt(2r+1)",
+    "status": "staticobservationalgebraonly; fullupstreamexecutionnotreproduced; do not silentlyportcriterionandclaimtheoreticalbound"
+  }
+}

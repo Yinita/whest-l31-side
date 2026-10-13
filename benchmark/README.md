@@ -1,6 +1,6 @@
 # Phase 2 benchmark 与一致性流程
 
-2026-10-13官方Resources覆盖复核见[审计](../experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)。Mini100/Full1000尚未完成。RPC目前对predict/residual做后验限值检查，5秒setup没有硬超时证据；本地trusted-server参数不能称已确认官方部署。本页早期日程是计划，不是完成记录。
+2026-10-13官方Resources覆盖复核见[审计](../experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)。Mini100/Full1000尚未完成。原`run_rpc.py`没有setup硬超时；后续严格RPC工具已验证外部5秒setup与125秒响应截止、predict/residual后验检查和失败后冷恢复，详见下方严格验收记录。本地trusted-server参数尚未确认与官方部署一致。本页早期日程是计划，不是完成记录。
 
 后续新增可信父进程监督工具`run_rpc_strict.py`、`rpc_strict_worker.py`、`rpc_strict_score.py`；原RPC结果与脚本保留。故障注入及候选真实local8失败见[严格时限验证](../experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。新工具未完成全候选验收前，不将旧RPC报告追认为新约束通过。
 
@@ -92,3 +92,15 @@ uv run python benchmark/rpc_score.py --predictions results/phase2/v29_rpc_repeat
 ## 扩展公共网络集合
 
 `uv run python benchmark/prepare_public.py --shard 1` 缓存固定commit的第二个Mini分片至 `benchmark/data/mini_shard01`，校验官方LFS SHA并记录网络ID。其他分片可用0–13；0保持原冻结Mini8路径。保留原targets，不合并到调参集。本地未调参的公共网络仍不能证明上游未使用；阶段独立验证须额外核查。下载与评测结果分开记录。
+
+2026-10-13新增分片2包含7网（ID16–22），分片行数不能默认都是8。只导出RPC权重与官方派生seed，可以使用：
+
+```bash
+uv run --frozen python benchmark/prepare_rpc_inputs.py \
+  --dataset benchmark/data/mini_shard02 --n-mlps 7 \
+  --output-dir benchmark/data/rpc_inputs/frozen_shard02_r01
+```
+
+导出不执行候选、不读取reference以选择参数；新目录保存CRC校验、逐文件SHA、数据commit、SDK版本及seed。后续两候选复用这份固定输入，使用`run_rpc_strict.py`分别运行并用`rpc_strict_score.py`计分。
+
+两个严格RPC评分报告可以使用`compare_strict_cohort.py --before ... --after ... --output ...`生成逐网成对证据；工具核验原预测与候选SHA、输入/数据/seed/版本/监督器/预算的一致性，拒绝不同分片混比。分片2已完成V29与V37b+H18各7网零失败，adjusted5.485889e-9→4.303414e-9、raw下降1.74%；当前最佳严格RPC总覆盖23网。它们仍是公共数据，Mini100未完成，不能据此宣称最终独立确认。

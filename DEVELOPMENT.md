@@ -6,6 +6,8 @@
 
 后续核验：同候选local8已完成但3网residual超过400ms，失败保留；新严格RPC执行器故障验收已完成，Mini8 **4.6043530011e-9**、扩展公共8网 **4.6350586013e-9**，各8/8零失败。扩展集较V29 adjusted下降21.39%、raw下降1.55%，主要降费；这些公共网曾用于研究，不能称最终未见holdout。线上335678已graded **4.2937797168e-9**，本队当前最佳、rank67；335677原样V37b为4.3922571600e-9。最新证据与执行状态见[严格RPC验证](experiments/phase2/RPC_STRICT_VALIDATION_2026-10-13.md)。
 
+12:33接续：V38-S4-H18仅将Strassen递归上限5→4，local8零失败，最高residual0.380914秒，adjusted4.876619e-9；这是成本略高的资源备选，未替代线上最佳。同候选严格RPC8也零失败，raw逐网与local完全一致；同runner相比parent adjusted+5.92%，不提升为线上最佳。新公共分片2（7网、ID16–22）双方严格RPC零失败，V29 adjusted5.485889e-9→V37b+H18 4.303414e-9（-21.55%），raw改善1.74%，最佳候选覆盖23公共网；Mini100未完成。M04两个已知期望代理pilot含成本后预计MSE分别恶化12.45%和9–10%，M05完成原论文/代码映射及未分裂UT偏差诊断；完整方法仍未完成。详见[本轮记录](experiments/phase2/CONTINUATION_2026-10-13.md)。
+
 ## 当前状态
 
 - 根目录 `estimator.py` 保留 Phase 1 Hadamard 采样基线，仅作采样对照；尚未验证其 Phase 2 性能与成本，不作为最终候选。
