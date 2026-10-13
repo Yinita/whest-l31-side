@@ -10,7 +10,7 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": null,
-  "next_experiment": "r54 genuine on-policy sequential26, branch TRAIN-only prefixheads, fixednetworkCV; r52 finalonly26 samecaptureCV running",
+  "next_experiment": "r54 genuine on-policy sequential26 fixedmodel; fold TRAIN-only learnedprefix; originalMini8 targetunchanged",
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
   "updated_at_utc": "2026-10-13T11:33:17.046745+00:00",
   "previous_experiment": {
@@ -4409,7 +4409,7 @@
       "results/phase2/ablation_v30_001_r02_mini8_local.validate.log"
     ]
   },
-  "last_checkpoint_utc": "2026-10-13T11:47:00Z",
+  "last_checkpoint_utc": "2026-10-13T11:52:00Z",
   "history": [
     {
       "id": "P2-E003-age3-mini8",
@@ -47565,18 +47565,8 @@
       "conclusion": "trace fixes r34 catastrophic error but raw+2.0489%; close CP4D4projection branch"
     }
   },
-  "next_tenfold_mechanism": "r54 genuine on-policy sequential26, branch TRAIN-only prefixheads, fixednetworkCV; r52 finalonly26 samecaptureCV running",
-  "active_auxiliary_experiments": [
-    {
-      "experiment_id": "final.readout.capture.r52.r02",
-      "pid": 1689444,
-      "pid_start_ticks": "2992786",
-      "status": "running",
-      "output": "results/phase2/final_readout_capture_r52_r02",
-      "log": "results/phase2/modal_final_readout_capture_r52_r02.launcher.log",
-      "scope": "TRAIN24 finalonly26capture continuation; oldnumeric1e-6gatefailed retained; new1e-5diagnostic only no resource acceptance;samecapture fit"
-    }
-  ],
+  "next_tenfold_mechanism": "r54 genuine on-policy sequential26 fixedmodel; fold TRAIN-only learnedprefix; originalMini8 targetunchanged",
+  "active_auxiliary_experiments": [],
   "latest_corpus_model": {
     "version": "joint.closure.r38.r02",
     "path": "results/phase2/modal_joint_closure_pilot_r38_r02/frozen_joint_ridge.json",
@@ -47716,5 +47706,21 @@
     "old26_new6_trace_gate_pass": 14,
     "old26_new6_trace_gate_fail": 10,
     "decision": "no cross-trace splice/fit; no rerunoracle24; on-policy next"
+  },
+  "latest_final_readout_cv": {
+    "version": "r55",
+    "status": "signal_gate_failed",
+    "report": "results/phase2/final_readout_cv_r55/completion.json",
+    "before_raw": 2.211924114425658e-08,
+    "after_raw": 2.2031045516742192e-08,
+    "ratio": 0.9960127191,
+    "wins": 15,
+    "networks": 24,
+    "bootstrap_ratio95": [
+      0.99205171,
+      1.00030006
+    ],
+    "decision": "no reliable10%signal; nofullmodel; noheld/strict/upload",
+    "scope": "samecapture-onlyofflineTRAINCV; oldcapture1e-6/1e-5paritygatesfailed and preserved; notcandidate/adjusted/stage"
   }
 }

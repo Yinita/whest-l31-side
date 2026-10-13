@@ -343,6 +343,16 @@ final_mean labels; previous L03final13 negative is documented rather than
 forgotten. Fixedgate/spec and originalR52numerical smoke failure are recorded
 in `TENFOLD_FINAL_READOUT_R52.md`. Neither route has a demonstrated scoregain.
 
+R52r02 final26TRAINcapture all24successful0runtimefail, originaloldbaseline
+numericalcomparison stillfails7networks at1e-5(max3.123e-5); nofurthertol
+change. Allactualsource/weight/tool/meteredFLOPs match and samecapturemean
+feature equals returnedfinal, but CPU/kernelcause remainsunproved. Separate
+R55uses only internally paired newcapturefeature/pred; fixedOOF final-only
+raw2.21192411443e-8→2.20310455167e-8(ratio.9960127191),15/24wins,
+bootstrap95[.9920517108,1.0003000591],0failure. Allfixedpromotiongates fail,
+so nofullmodel retained, noheld/strict rollout. This evidence is independently
+named and cannot be used to claim oldbaseline consistency or tenfold progress.
+
 
 ## r49 fresh8真实闭环否决，转向联合图context / final-only检验
 

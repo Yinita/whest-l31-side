@@ -196,3 +196,8 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 2026-10-13 19:47 CST：r51 TRAIN24 fixedgraph6只读采集全部成功，compact15MiB、零运行失败。旧26与新6来自跨容器不同浮点轨迹，预设拼接绝对门禁仅14/24通过，最大features26差.0122045/state差.0024414/pred差3.7551e-6。拒绝拼接拟合R53，不放宽门槛、不重复采oracle24。R52 finalonly2smoke运行成功但旧prediction1e-6一致性门禁失败（max4.2915e-6、finalRMS~9e-7），原失败保留；r02新离线数值诊断1e-5仅用于同capture内fit，22remaining接续中，不比赛资源通过。
 
 原公开实现HenryMIT commit8d6cd4f4f6ec6672914bc002350f6a40da92ca84使用真正逐层on-policy拟合：每层模型面对自己previouslearned纠正的TRAIN轨迹。它的强成绩是Phase1 256×32/probe，并非我们Phase2复现；独立1024×16只是Gaussian链合成研究，分数不可移植。R48oraclepreviousreset teacherforcing存在exposurebias，R38baseline一次拟合也不是sequential。下一唯一改变R54训练rollin机制：固定26/λ.01/floors/4blocked网络fold，每个foldprefixheads只由其TRAIN18拟合，held6不参与任何prefix；fullTRAIN24独立第五branch。worker只有weights+prefixmodel，MC标签仅本地拟合/评分。先1..3门禁再决定扩14，候选完整无truth递推/strict与十倍仍未验收。
+
+
+### r55 final-only真实网络CV负；只留下on-policy主线
+
+2026-10-13 19:52 CST：R52r02完整24capture零运行失败，原/新跨容器prediction一致性门禁1e-6与1e-5均失败（7网最大2.01e-5..3.12e-5）。source/weight/tools/meteredFLOPs固定且同capture26ownmean与final精确一致；R55另版本仅samecapture内CV，不声称旧baselineparity。固定26linear/.01/4blocked TRAINCV raw **2.211924114425658e-8→2.2031045516742192e-8（−0.398728%）**，15/24wins、pairedbootstrap95 ratio[.99205171,1.00030006]，预先固定<.90/16wins/upper<1全部未过，不fitfullmodel、不held/strict/上传。最大跨capture residualMSE5.9373e-11、raw漂移.6374%、漂移RMS/旧误差RMS最大5.027%；数值噪声与MC参考噪声保留。最佳及阶段阈值不变。唯一P0继续r54真正on-policy逐层TRAINprefix（不oracle），fixed26/λ.01。
