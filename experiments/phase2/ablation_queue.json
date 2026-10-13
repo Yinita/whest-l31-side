@@ -295,15 +295,24 @@
         "results/phase2/ablation_v30_067_r05_cp_input_k211_charged_component.json",
         "results/phase2/ablation_v30_067_r06_p3_wick_charged.json",
         "results/phase2/ablation_v30_063_064_r02_charged_conversion.json",
-        "results/phase2/ablation_v30_067_r08_p3_derivative_contract.json"
+        "results/phase2/ablation_v30_067_r08_p3_derivative_contract.json",
+        "results/phase2/ablation_v30_067_r07_p3_wick_stein.json"
       ],
       "result": {
-        "conclusion": "Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending"
+        "conclusion": "Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending; p3k1..5now independently verified by Stein/Hermite integration, fullsource/conversionintegration pending"
       },
       "is_promising": true,
       "execution_priority": "P0",
       "promising_reason": "结构性机制或论文完整对照；尚未证明收益",
-      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory"
+      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory",
+      "p3_wick_independent_confirmation": {
+        "report": "results/phase2/ablation_v30_067_r07_p3_wick_stein.json",
+        "maximum_abs_error": 6.148761695357052e-07,
+        "refinement_delta": 5.980493877899562e-13,
+        "all_derivatives_k1_to_k5": true,
+        "legal_flops": 870,
+        "no_score": true
+      }
     },
     {
       "key": "O06",
@@ -696,119 +705,6 @@
           1.1010543197544893
         ],
         "conclusion": "stillnegative fullcost; no proxyport"
-      }
-    },
-    {
-      "key": "M05",
-      "name": "Monchot2023条件或混合传播",
-      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
-      "before": "L29固定替代分布负结果",
-      "after": "原文核对后完整有限混合/低维条件规格和同预算采样对照",
-      "readiness": "small_pipeline_costed_full_suite_pending",
-      "kind": "algorithm",
-      "priority": "P1",
-      "dependencies": [
-        "M01"
-      ],
-      "cost": "先独立数学核验与完整计费成本门槛",
-      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
-      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
-      "group": "paper_methods",
-      "id": "WB-P2-M05",
-      "version": "paper.M05.r01",
-      "version_state": "paper.M05.r04/r05/r06/r07/r08: fullsmall pipeline, exactbias separation, measured highwidth cost; fullsuite pending; r09/r10 dtype-only cost and numericaldrift",
-      "parent": {
-        "default": "estimators/k3_v29/estimator.py",
-        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
-      },
-      "status": "partial_diagnostic",
-      "allow_lower_reasoning_execution": false,
-      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
-      "candidate_path": null,
-      "output_prefix": "results/phase2/paper_m05",
-      "dependency_ids": [
-        "WB-P2-M01"
-      ],
-      "evidence": [
-        "results/phase2/m05_source_audit_r01.json",
-        "experiments/phase2/CONTINUATION_2026-10-13.md",
-        "results/phase2/m05_unsplit_relu_gate_r02.json",
-        "results/phase2/m05_small_split_ut_r04.json",
-        "results/phase2/m05_split_error_confirmation_r05.json",
-        "experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md",
-        "results/phase2/m05_split_covariance_contract_r01.json",
-        "results/phase2/m05_small_pipeline_manifest_r01.json",
-        "results/phase2/m05_component_cost_scaling_r06.json",
-        "results/phase2/m05_w2_independent_contract_r01.json",
-        "results/phase2/m05_highwidth_component_cost_r07.json",
-        "results/phase2/m05_exact_cap_depth_ablation_r08.json",
-        "results/phase2/m05_float32_component_ablation_r09.json",
-        "results/phase2/m05_float32_component_ablation_r10.json"
-      ],
-      "result": {
-        "conclusion": "Legal fullsmall pipeline/W2 contracts pass. 1024float64 onecomponent307371364362FLOPs (13.98% budget; ~7evaluations before overhead). Exact1D depth5->12 improves total via UT/split bias cancellation; perleaf acceptance not globalbound. No official suite score or fulladaptive highdim convergence; float32 samefunctionAST costhalves to153685684230 (~14eval), outputdriftMSE1.789e-13, notaccuracyreference",
-        "scope": "Smallexact diagnosis and highwidth math/local metering; no official candidate score or independent generalization"
-      },
-      "is_promising": true,
-      "execution_priority": "P1",
-      "promising_reason": "结构性机制或论文完整对照；尚未证明收益",
-      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory",
-      "next_experiment": "Reduce per-component cost or prove few-component accuracy before fullsuite port; avoid treating perleaf or cancellation as global convergence",
-      "diagnostic_r02": {
-        "version": "paper.M05.r02",
-        "scope": "unsplitfirstReLUsigma-pointdiagnosticonexistingnetwork, NOTwholealgorithm",
-        "original_kappa_nminus3_mse": 0.02718091507985365,
-        "mean_relative_bias": -0.2921478742003982,
-        "zero_kappa_diagnostic_mse": 2.1687722244458458e-05,
-        "conclusion": "ReproduceoriginalUTpointmeanandshowunsplitReLUbias; adaptivefullsplittingrequired, notalgorithmrejection"
-      },
-      "small_pipeline": {
-        "report": "results/phase2/m05_small_split_ut_r04.json",
-        "legal_runs": 6,
-        "contract_passed": true,
-        "all_threshold_unsatisfied": true,
-        "max_components": 27,
-        "min_flops": 219946,
-        "max_flops": 783238,
-        "no_score": true
-      },
-      "legal_component_scaling": {
-        "report": "results/phase2/m05_component_cost_scaling_r06.json",
-        "widths": [
-          8,
-          16,
-          32,
-          64
-        ],
-        "depth": 16,
-        "dtype": "float64",
-        "no1024claim": true
-      },
-      "highwidth_cost_gate": {
-        "report": "results/phase2/m05_highwidth_component_cost_r07.json",
-        "status": "completed_diagnostic",
-        "dtype": "float64",
-        "width": 1024,
-        "legal_flops": 307371364362,
-        "budget_fraction": 0.13977631368197763,
-        "same_cost_component_evaluation_cap": 7,
-        "no_rpc_or_official_resource_acceptance": true
-      },
-      "depth_cap_ablation": {
-        "report": "results/phase2/m05_exact_cap_depth_ablation_r08.json",
-        "status": "completed_exact1d_diagnostic",
-        "single_change": "maxdepth5->12 then componentcap27->81",
-        "leaf_criterion_pass_is_not_global_error_bound": true,
-        "no_score": true
-      },
-      "dtype_cost_gate": {
-        "report": "results/phase2/m05_float32_component_ablation_r10.json",
-        "status": "completed_dtype_diagnostic",
-        "legal_flops_1024": 153685684230,
-        "mean_delta_mse_1024": 1.789094195487228e-13,
-        "component_evaluation_cap_before_overhead": 14,
-        "no_competition_score": true
       }
     },
     {
@@ -1347,6 +1243,139 @@
       "execution_priority": "P1",
       "promising_reason": "结构性机制或论文完整对照；尚未证明收益",
       "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory"
+    },
+    {
+      "key": "M05",
+      "name": "Monchot2023条件或混合传播",
+      "detail": "规格及一手来源见PAPER_METHODS_PRIORITY_2026-10-12.md；缺少公式不猜测。",
+      "before": "L29固定替代分布负结果",
+      "after": "原文核对后完整有限混合/低维条件规格和同预算采样对照",
+      "readiness": "budget_capped_1024_finaloutput_negative_fullcontract_pending",
+      "kind": "algorithm",
+      "priority": "P1",
+      "dependencies": [
+        "M01"
+      ],
+      "cost": "先独立数学核验与完整计费成本门槛",
+      "acceptance": "固定协议，完整方法和子集区分，逐网raw/adjusted/FLOPs/时间/内存/失败；独立确认不可由开发集代替",
+      "source": "experiments/phase2/PAPER_METHODS_PRIORITY_2026-10-12.md",
+      "group": "paper_methods",
+      "id": "WB-P2-M05",
+      "version": "paper.M05.r01",
+      "version_state": "paper.M05.r04/r05/r06/r07/r08: fullsmall pipeline, exactbias separation, measured highwidth cost; fullsuite pending; r09/r10 dtype-only cost and numericaldrift; r11 full1024 final-output only negative",
+      "parent": {
+        "default": "estimators/k3_v29/estimator.py",
+        "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+        "rule": "Default frozen V29; if before names a prerequisite candidate, freeze that candidate explicitly and compare paired, never silently combine mechanisms"
+      },
+      "status": "partial_negative",
+      "allow_lower_reasoning_execution": false,
+      "lower_reasoning_boundary": "公式和范围冻结后才能执行；不得猜测",
+      "candidate_path": null,
+      "output_prefix": "results/phase2/paper_m05",
+      "dependency_ids": [
+        "WB-P2-M01"
+      ],
+      "evidence": [
+        "results/phase2/m05_source_audit_r01.json",
+        "experiments/phase2/CONTINUATION_2026-10-13.md",
+        "results/phase2/m05_unsplit_relu_gate_r02.json",
+        "results/phase2/m05_small_split_ut_r04.json",
+        "results/phase2/m05_split_error_confirmation_r05.json",
+        "experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md",
+        "results/phase2/m05_split_covariance_contract_r01.json",
+        "results/phase2/m05_small_pipeline_manifest_r01.json",
+        "results/phase2/m05_component_cost_scaling_r06.json",
+        "results/phase2/m05_w2_independent_contract_r01.json",
+        "results/phase2/m05_highwidth_component_cost_r07.json",
+        "results/phase2/m05_exact_cap_depth_ablation_r08.json",
+        "results/phase2/m05_float32_component_ablation_r09.json",
+        "results/phase2/m05_float32_component_ablation_r10.json",
+        "results/phase2/m05_official_network_gate_r11.json"
+      ],
+      "result": {
+        "conclusion": "Legal fullsmall pipeline/W2 contracts pass. 1024float64 onecomponent307371364362FLOPs (13.98% budget; ~7evaluations before overhead). Exact1D depth5->12 improves total via UT/split bias cancellation; perleaf acceptance not globalbound. No official suite score or fulladaptive highdim convergence; float32 samefunctionAST costhalves to153685684230 (~14eval), outputdriftMSE1.789e-13, notaccuracyreference; actualpublicnetwork1024x16cap1raw.0802821->cap9raw.0747929,13component eval1.997985e12FLOPs,unsatisfied. Fullmethodnotrejected, currentbudgetcapped implementation not competitive",
+        "scope": "Smallexact diagnosis and highwidth math/local metering; no official candidate score or independent generalization"
+      },
+      "is_promising": false,
+      "execution_priority": "P2",
+      "promising_reason": "真实1024宽预算内分裂误差远劣于最佳；当前实现降级，完整路线需新降费或精度机制",
+      "priority_basis": "Research judgment, not measured success probability; dependencies and cost gates remain mandatory",
+      "next_experiment": "Do not expand or submit currentUT mixture; reopen only with derived low-cost accurate closure. Keep originalofficialreference.",
+      "diagnostic_r02": {
+        "version": "paper.M05.r02",
+        "scope": "unsplitfirstReLUsigma-pointdiagnosticonexistingnetwork, NOTwholealgorithm",
+        "original_kappa_nminus3_mse": 0.02718091507985365,
+        "mean_relative_bias": -0.2921478742003982,
+        "zero_kappa_diagnostic_mse": 2.1687722244458458e-05,
+        "conclusion": "ReproduceoriginalUTpointmeanandshowunsplitReLUbias; adaptivefullsplittingrequired, notalgorithmrejection"
+      },
+      "small_pipeline": {
+        "report": "results/phase2/m05_small_split_ut_r04.json",
+        "legal_runs": 6,
+        "contract_passed": true,
+        "all_threshold_unsatisfied": true,
+        "max_components": 27,
+        "min_flops": 219946,
+        "max_flops": 783238,
+        "no_score": true
+      },
+      "legal_component_scaling": {
+        "report": "results/phase2/m05_component_cost_scaling_r06.json",
+        "widths": [
+          8,
+          16,
+          32,
+          64
+        ],
+        "depth": 16,
+        "dtype": "float64",
+        "no1024claim": true
+      },
+      "highwidth_cost_gate": {
+        "report": "results/phase2/m05_highwidth_component_cost_r07.json",
+        "status": "completed_diagnostic",
+        "dtype": "float64",
+        "width": 1024,
+        "legal_flops": 307371364362,
+        "budget_fraction": 0.13977631368197763,
+        "same_cost_component_evaluation_cap": 7,
+        "no_rpc_or_official_resource_acceptance": true
+      },
+      "depth_cap_ablation": {
+        "report": "results/phase2/m05_exact_cap_depth_ablation_r08.json",
+        "status": "completed_exact1d_diagnostic",
+        "single_change": "maxdepth5->12 then componentcap27->81",
+        "leaf_criterion_pass_is_not_global_error_bound": true,
+        "no_score": true
+      },
+      "dtype_cost_gate": {
+        "report": "results/phase2/m05_float32_component_ablation_r10.json",
+        "status": "completed_dtype_diagnostic",
+        "legal_flops_1024": 153685684230,
+        "mean_delta_mse_1024": 1.789094195487228e-13,
+        "component_evaluation_cap_before_overhead": 14,
+        "no_competition_score": true
+      },
+      "official_network_gate": {
+        "report": "results/phase2/m05_official_network_gate_r11.json",
+        "status": "completed_negative_finaloutput_only",
+        "before_raw": 0.08028205682582212,
+        "after_raw": 0.07479294690932989,
+        "flops": 1997985234052,
+        "component_leaves": 9,
+        "evaluated_components": 13,
+        "threshold_satisfied": false,
+        "not_submission_contract": true,
+        "no_adjusted_score": true
+      },
+      "prospect_override": {
+        "is_promising": false,
+        "execution_priority": "P2",
+        "reason": "真实1024宽预算内分裂误差远劣于最佳；当前实现降级，完整路线需新降费或精度机制",
+        "evidence": "results/phase2/m05_official_network_gate_r11.json",
+        "scope": "currentbudgetcappedUTsplit implementation; fullWGMprop not mathematically rejected"
+      }
     },
     {
       "key": "H04",

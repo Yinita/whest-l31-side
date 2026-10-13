@@ -72,3 +72,6 @@ V37b+H18完整RPC Mini8已完成，源码SHA `c3dd3282106ba72f5882b2c2e1a0143c36
 Adjusted下降20.2798%，raw下降0.04315%；主要收益是成本。这是**不同候选、相同网络的基线对照**，不是同候选local/RPC一致性；报告中已明确重命名相关字段。新RPC max predict57.59493s、max residual0.195844s、client峰值1,488,920KiB。未完成完整同候选local8或独立网络验收，未达到5.779e-10阶段门槛。#335677/#335678本次状态仍submitted，线上分数null。
 
 同步纠正M01文档和M03队列的旧“r22运行中”表述：r22已完成、零失败但Mini8 adjusted恶化0.1482%，已拒绝晋升；原实验JSON及历史日志保留。
+
+
+13:52增量复读[部署讨论18238](https://discourse.aicrowd.com/t/how-the-hidden-set-evaluation-invokes-whest-run/18238)仍为4帖，最后回复为选手观察，暂无主办方对server生命周期/限制的确认；[starter kit issues](https://github.com/AIcrowd/whest-starterkit/issues)仍4个open（33/36/39/43）。不把选手local副本当官方部署事实。

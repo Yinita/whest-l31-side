@@ -56,7 +56,9 @@
     "results/phase2/m05_float32_component_ablation_r09.json": "f3b9cc4a8df950332306ce2c9e39a763922c8351946dfd95aca87eeb92b39776",
     "experiments/phase2/m05_float32_component_ablation.py": "17daef42b13dcbb84853bcd8dddce237eb6d1a7441a7e3c9e085e7c2fb43051a",
     "results/phase2/m05_float32_component_ablation_r10.json": "1eb46e0b3d294344ba870a3003f4f1074a6b15299f83064927a84efa15ba27f1",
-    "results/phase2/m05_float32_method_r09_r10_source.json": "153e99d0137e2213609c1e0586aa7c47597a7818edbcdddb1604d641aac576a8"
+    "results/phase2/m05_float32_method_r09_r10_source.json": "153e99d0137e2213609c1e0586aa7c47597a7818edbcdddb1604d641aac576a8",
+    "experiments/phase2/m05_official_network_gate.py": "ca4b79182168b9b237dc84d17ac934c846248ce8df56e4c09f710e7ac2d709c5",
+    "results/phase2/m05_official_network_gate_r11.json": "35a6bcd4fad119c3704aa778a401d872073319c42a449dc4747a75fb3f41c5c0"
   },
   "extension_commands": [
     [
@@ -88,6 +90,19 @@
       "--frozen",
       "python",
       "experiments/phase2/m05_float32_component_ablation.py"
+    ],
+    [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "experiments/phase2/m05_official_network_gate.py",
+      "--weights",
+      "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/mlp_0.npz",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--output",
+      "results/phase2/m05_official_network_gate_r11.json"
     ]
   ],
   "dtype_r09_source_archive": "r09pre-ruff import order preserved by sourcehash; r10same mechanism after formatting, fresh output",

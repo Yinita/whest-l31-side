@@ -1,6 +1,6 @@
 # WhestBench 消融执行结果
 
-总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'partial_diagnostic': 21, 'partial_derivation': 33, 'partial_negative': 15, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30}。完成快筛不等于独立确认；阶段1尚未达标。
+总任务134（原129项＋论文方法）。当前状态：{'partial_mapping': 1, 'partial_diagnostic': 20, 'partial_derivation': 33, 'partial_negative': 16, 'completed_positive': 17, 'completed_negative': 17, 'completed_diagnostic': 30}。完成快筛不等于独立确认；阶段1尚未达标。
 
 | 版本 | key | 状态 | before raw | after raw | before adjusted | after adjusted | adjusted变化 | FLOPs变化 | 失败 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -156,7 +156,7 @@ after：完整production Gnew与regen G成对诊断
 
 状态：partial_diagnostic
 
-诊断结论：Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending；算法分数前后不适用。
+诊断结论：Full K31 and35 rawterm K211 legal components checked with strict repeated exclusions, relative<2.3e-7; n3 intermediates diagnostic only, full1024 representation and actualstate integration pending; p3k1..5now independently verified by Stein/Hermite integration, fullsource/conversionintegration pending；算法分数前后不适用。
 
 - [ablation_v30_067_core_representation_bound.json](../../results/phase2/ablation_v30_067_core_representation_bound.json)
 - [ablation_v30_067_r02_full_k31_charged_component.json](../../results/phase2/ablation_v30_067_r02_full_k31_charged_component.json)
@@ -166,6 +166,7 @@ after：完整production Gnew与regen G成对诊断
 - [ablation_v30_067_r06_p3_wick_charged.json](../../results/phase2/ablation_v30_067_r06_p3_wick_charged.json)
 - [ablation_v30_063_064_r02_charged_conversion.json](../../results/phase2/ablation_v30_063_064_r02_charged_conversion.json)
 - [ablation_v30_067_r08_p3_derivative_contract.json](../../results/phase2/ablation_v30_067_r08_p3_derivative_contract.json)
+- [ablation_v30_067_r07_p3_wick_stein.json](../../results/phase2/ablation_v30_067_r07_p3_wick_stein.json)
 
 ### v30.068 O06 完整生产核单层替换诊断
 
@@ -276,31 +277,6 @@ after：合法可计算E[g]+mean(f-g)，独立采样流与残差方差成本核�
 - [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
 - [m04_first_relu_control_pilot_r01.json](../../results/phase2/m04_first_relu_control_pilot_r01.json)
 - [m04_first_relu_regression_pilot_r02.json](../../results/phase2/m04_first_relu_regression_pilot_r02.json)
-
-### paper.M05.r01 M05 Monchot2023条件或混合传播
-
-before：L29固定替代分布负结果
-
-after：原文核对后完整有限混合/低维条件规格和同预算采样对照
-
-状态：partial_diagnostic
-
-诊断结论：Legal fullsmall pipeline/W2 contracts pass. 1024float64 onecomponent307371364362FLOPs (13.98% budget; ~7evaluations before overhead). Exact1D depth5->12 improves total via UT/split bias cancellation; perleaf acceptance not globalbound. No official suite score or fulladaptive highdim convergence; float32 samefunctionAST costhalves to153685684230 (~14eval), outputdriftMSE1.789e-13, notaccuracyreference；算法分数前后不适用。
-
-- [m05_source_audit_r01.json](../../results/phase2/m05_source_audit_r01.json)
-- [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
-- [m05_unsplit_relu_gate_r02.json](../../results/phase2/m05_unsplit_relu_gate_r02.json)
-- [m05_small_split_ut_r04.json](../../results/phase2/m05_small_split_ut_r04.json)
-- [m05_split_error_confirmation_r05.json](../../results/phase2/m05_split_error_confirmation_r05.json)
-- [M05_SMALL_PIPELINE_2026-10-13.md](../../experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md)
-- [m05_split_covariance_contract_r01.json](../../results/phase2/m05_split_covariance_contract_r01.json)
-- [m05_small_pipeline_manifest_r01.json](../../results/phase2/m05_small_pipeline_manifest_r01.json)
-- [m05_component_cost_scaling_r06.json](../../results/phase2/m05_component_cost_scaling_r06.json)
-- [m05_w2_independent_contract_r01.json](../../results/phase2/m05_w2_independent_contract_r01.json)
-- [m05_highwidth_component_cost_r07.json](../../results/phase2/m05_highwidth_component_cost_r07.json)
-- [m05_exact_cap_depth_ablation_r08.json](../../results/phase2/m05_exact_cap_depth_ablation_r08.json)
-- [m05_float32_component_ablation_r09.json](../../results/phase2/m05_float32_component_ablation_r09.json)
-- [m05_float32_component_ablation_r10.json](../../results/phase2/m05_float32_component_ablation_r10.json)
 
 ### paper.M02.r01 M02 Wright2024完整精确高斯协方差
 
@@ -459,6 +435,32 @@ after：直接从current state和Gaussian diagram生成固定数量CP factors供
 
 - [ablation_v30_062_direct_cp_birth.json](../../results/phase2/ablation_v30_062_direct_cp_birth.json)
 - [ablation_v30_062_cp_cost_gate.json](../../results/phase2/ablation_v30_062_cp_cost_gate.json)
+
+### paper.M05.r01 M05 Monchot2023条件或混合传播
+
+before：L29固定替代分布负结果
+
+after：原文核对后完整有限混合/低维条件规格和同预算采样对照
+
+状态：partial_negative
+
+诊断结论：Legal fullsmall pipeline/W2 contracts pass. 1024float64 onecomponent307371364362FLOPs (13.98% budget; ~7evaluations before overhead). Exact1D depth5->12 improves total via UT/split bias cancellation; perleaf acceptance not globalbound. No official suite score or fulladaptive highdim convergence; float32 samefunctionAST costhalves to153685684230 (~14eval), outputdriftMSE1.789e-13, notaccuracyreference; actualpublicnetwork1024x16cap1raw.0802821->cap9raw.0747929,13component eval1.997985e12FLOPs,unsatisfied. Fullmethodnotrejected, currentbudgetcapped implementation not competitive；算法分数前后不适用。
+
+- [m05_source_audit_r01.json](../../results/phase2/m05_source_audit_r01.json)
+- [CONTINUATION_2026-10-13.md](../../experiments/phase2/CONTINUATION_2026-10-13.md)
+- [m05_unsplit_relu_gate_r02.json](../../results/phase2/m05_unsplit_relu_gate_r02.json)
+- [m05_small_split_ut_r04.json](../../results/phase2/m05_small_split_ut_r04.json)
+- [m05_split_error_confirmation_r05.json](../../results/phase2/m05_split_error_confirmation_r05.json)
+- [M05_SMALL_PIPELINE_2026-10-13.md](../../experiments/phase2/M05_SMALL_PIPELINE_2026-10-13.md)
+- [m05_split_covariance_contract_r01.json](../../results/phase2/m05_split_covariance_contract_r01.json)
+- [m05_small_pipeline_manifest_r01.json](../../results/phase2/m05_small_pipeline_manifest_r01.json)
+- [m05_component_cost_scaling_r06.json](../../results/phase2/m05_component_cost_scaling_r06.json)
+- [m05_w2_independent_contract_r01.json](../../results/phase2/m05_w2_independent_contract_r01.json)
+- [m05_highwidth_component_cost_r07.json](../../results/phase2/m05_highwidth_component_cost_r07.json)
+- [m05_exact_cap_depth_ablation_r08.json](../../results/phase2/m05_exact_cap_depth_ablation_r08.json)
+- [m05_float32_component_ablation_r09.json](../../results/phase2/m05_float32_component_ablation_r09.json)
+- [m05_float32_component_ablation_r10.json](../../results/phase2/m05_float32_component_ablation_r10.json)
+- [m05_official_network_gate_r11.json](../../results/phase2/m05_official_network_gate_r11.json)
 
 ### v30.034 H04 精确Gaussian pair核替换
 

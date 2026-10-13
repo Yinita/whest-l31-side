@@ -20,6 +20,11 @@ def main():
         task['promising_reason'] = ('结构性机制或论文完整对照；尚未证明收益' if promising else
                                     '已有负结果或已完成；保留证据，需新机制才重开' if done or 'negative' in task['status'] else
                                     '推导储备；当前证据不足，排在结构性任务之后')
+        override = task.get('prospect_override')
+        if override:
+            task['is_promising'] = override['is_promising']
+            task['execution_priority'] = override['execution_priority']
+            task['promising_reason'] = override['reason']
         task['priority_basis'] = 'Research judgment, not measured success probability; dependencies and cost gates remain mandatory'
     queue['tasks'].sort(key=lambda t: (not t['is_promising'], t['execution_priority'],
                                        leading.index(t['key']) if t['key'] in leading else 999, t['id']))

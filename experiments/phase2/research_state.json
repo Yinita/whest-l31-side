@@ -10,15 +10,15 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "frozen shard04 V29 strict control",
+    "key": "frozen shard04 V37bH18 strict candidate",
     "status": "running",
-    "pid": 684879,
-    "pid_start_ticks": "808381",
-    "session_id": 8439,
-    "started_at_host": "2026-10-13 13:42:57",
-    "candidate": "estimators/k3_v29/estimator.py",
-    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-    "report": "results/phase2/v29_r10_strict_shard04.json",
+    "pid": 711000,
+    "pid_start_ticks": "843831",
+    "session_id": 85120,
+    "started_at_host": "2026-10-13 13:48:52",
+    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
+    "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04.json",
     "dataset": "benchmark/data/mini_shard04",
     "n_mlps": 7,
     "network_ids": [
@@ -31,24 +31,7 @@
       36
     ],
     "inputs": "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
-    "command": [
-      "uv",
-      "run",
-      "--frozen",
-      "python",
-      "benchmark/run_rpc_strict.py",
-      "--estimator",
-      "estimators/k3_v29/estimator.py",
-      "--inputs",
-      "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
-      "--dataset",
-      "benchmark/data/mini_shard04",
-      "--n-mlps",
-      "7",
-      "--output",
-      "results/phase2/v29_r10_strict_shard04.json"
-    ],
-    "next": "score after complete then same frozen V37bH18; serial"
+    "next": "score/paired bind after all complete; noonline reupload"
   },
   "next_experiment": {
     "key": "publicMini further expansion",
@@ -56,7 +39,7 @@
     "scope": "completefrozencohortfirst; preserveindependentnetwork/refgates"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T05:43:25.587823+00:00",
+  "updated_at_utc": "2026-10-13T05:49:37.130965+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46484,24 +46467,28 @@
     "stage_accepted": false
   },
   "previous_active_checkpoint": {
-    "key": "frozen public shard04 dataset preparation",
-    "status": "running",
-    "pid": 661732,
-    "pid_start_ticks": "776242",
-    "session_id": 17934,
-    "started_at_host": "2026-10-13 13:37:36",
+    "key": "M05 fixed officialnetwork finalmean gate",
+    "status": "completed_negative_finaloutput_only",
+    "pid": 708029,
+    "pid_start_ticks": "838837",
+    "session_id": 33958,
+    "started_at_host": "2026-10-13 13:48:02",
+    "report": "results/phase2/m05_official_network_gate_r11.json",
     "command": [
       "uv",
       "run",
       "--frozen",
       "python",
-      "benchmark/prepare_public.py",
-      "--shard",
-      "4"
+      "experiments/phase2/m05_official_network_gate.py",
+      "--weights",
+      "benchmark/data/rpc_inputs/sprint_public_v37b_h18_r04_rpc8/mlp_0.npz",
+      "--dataset",
+      "benchmark/data/mini_first8",
+      "--output",
+      "results/phase2/m05_official_network_gate_r11.json"
     ],
-    "log": "results/phase2/mini_shard04_prepare_r01.log",
-    "next": "after SHA validation export inputs then V29/best strict RPC serial",
-    "no_partial_coverage_credit": true
+    "next": "aftercomplete resume frozenbest shard04 strictRPC serial",
+    "no_adjusted_score": true
   },
   "latest_v38_resource_candidate": {
     "key": "V38-S4-H18 local8",
@@ -46808,5 +46795,72 @@
       "results/phase2/m05_official_network_gate_r11.json"
     ],
     "condition": "aftercurrentV29control exits, before bestcandidate; serial"
+  },
+  "frozen_shard04_control": {
+    "key": "frozen shard04 V29 strict control",
+    "status": "completed_zero_failures",
+    "pid": 684879,
+    "pid_start_ticks": "808381",
+    "session_id": 8439,
+    "started_at_host": "2026-10-13 13:42:57",
+    "candidate": "estimators/k3_v29/estimator.py",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "report": "results/phase2/v29_r10_strict_shard04.json",
+    "dataset": "benchmark/data/mini_shard04",
+    "n_mlps": 7,
+    "network_ids": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "inputs": "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "benchmark/run_rpc_strict.py",
+      "--estimator",
+      "estimators/k3_v29/estimator.py",
+      "--inputs",
+      "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
+      "--dataset",
+      "benchmark/data/mini_shard04",
+      "--n-mlps",
+      "7",
+      "--output",
+      "results/phase2/v29_r10_strict_shard04.json"
+    ],
+    "next": "score after complete then same frozen V37bH18; serial",
+    "completed_networks": 7,
+    "completed_statuses": [
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "score_report": "results/phase2/v29_r10_strict_shard04_score.json",
+    "adjusted": 5.71253604217901e-09,
+    "raw": 2.2415512240010164e-08,
+    "failures": 0
+  },
+  "latest_m05_official_gate": {
+    "report": "results/phase2/m05_official_network_gate_r11.json",
+    "status": "completed_negative_finaloutput_only",
+    "before_raw": 0.08028205682582212,
+    "after_raw": 0.07479294690932989,
+    "flops": 1997985234052,
+    "component_leaves": 9,
+    "evaluated_components": 13,
+    "threshold_satisfied": false,
+    "not_submission_contract": true,
+    "no_adjusted_score": true
   }
 }

@@ -16,18 +16,18 @@
 | 10 | true | P0 | O29 | v30.091 | 高阶校正信号与reference不确定性的分离 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 11 | true | P0 | L20 | v30.115 | 新种子网络最终独立确认 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
 | 12 | true | P1 | M04 | paper.M04.r01 | 解析代理和残差采样控制变量 | partial_negative | 结构性机制或论文完整对照；尚未证明收益 |
-| 13 | true | P1 | M05 | paper.M05.r01 | Monchot2023条件或混合传播 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
-| 14 | true | P1 | M02 | paper.M02.r01 | Wright2024完整精确高斯协方差 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
-| 15 | true | P1 | H28 | v30.058 | 再生core对角和offdiag联合对象闭合 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 16 | true | P1 | H14 | v30.044 | B2两步输出导向收缩 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 17 | true | P1 | H23 | v30.053 | old-source basis按K21收缩能源选择 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 18 | true | P1 | L25 | v30.120 | 输出敏感性来源排序诊断 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 19 | true | P1 | L26 | v30.121 | 输出敏感性来源预算分配 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 20 | true | P1 | H25 | v30.055 | Rres新增解析可分leading项 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 21 | true | P1 | H26 | v30.056 | Rres物理机制分组basis | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 22 | true | P1 | H29 | v30.059 | K111乘covariance边新来源 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 23 | true | P1 | H30 | v30.060 | K111乘covariance边一层收缩 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
-| 24 | true | P1 | H32 | v30.062 | 高阶newborn直接CP因素生成 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 13 | true | P1 | M02 | paper.M02.r01 | Wright2024完整精确高斯协方差 | partial_diagnostic | 结构性机制或论文完整对照；尚未证明收益 |
+| 14 | true | P1 | H28 | v30.058 | 再生core对角和offdiag联合对象闭合 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 15 | true | P1 | H14 | v30.044 | B2两步输出导向收缩 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 16 | true | P1 | H23 | v30.053 | old-source basis按K21收缩能源选择 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 17 | true | P1 | L25 | v30.120 | 输出敏感性来源排序诊断 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 18 | true | P1 | L26 | v30.121 | 输出敏感性来源预算分配 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 19 | true | P1 | H25 | v30.055 | Rres新增解析可分leading项 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 20 | true | P1 | H26 | v30.056 | Rres物理机制分组basis | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 21 | true | P1 | H29 | v30.059 | K111乘covariance边新来源 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 22 | true | P1 | H30 | v30.060 | K111乘covariance边一层收缩 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 23 | true | P1 | H32 | v30.062 | 高阶newborn直接CP因素生成 | partial_derivation | 结构性机制或论文完整对照；尚未证明收益 |
+| 24 | false | P2 | M05 | paper.M05.r01 | Monchot2023条件或混合传播 | partial_negative | 真实1024宽预算内分裂误差远劣于最佳；当前实现降级，完整路线需新降费或精度机制 |
 | 25 | false | P2 | H04 | v30.034 | 精确Gaussian pair核替换 | partial_derivation | 推导储备；当前证据不足，排在结构性任务之后 |
 | 26 | false | P2 | H05 | v30.035 | Gaussian pair尾项有理重求和 | partial_derivation | 推导储备；当前证据不足，排在结构性任务之后 |
 | 27 | false | P2 | H07 | v30.037 | WK22到B1出生来源恢复 | partial_derivation | 推导储备；当前证据不足，排在结构性任务之后 |
