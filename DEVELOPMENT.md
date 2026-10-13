@@ -4,6 +4,8 @@
 
 本轮新增真实高阶组件：r21利用重复P与rank-one feed精确收缩，全14来源成本下降33.06%；r22年龄裁剪及r23列抽样偏差较大，不接入候选。r25 float32完整K31中心化精度失败，r26仅改float64后独立核验通过，1024宽15类图项成本2.678亿FLOPs。均无整网分数，完整K211和proxy去重仍待。版本、before/after、失败与成本见[真实来源记录](experiments/phase2/REAL_SOURCE_K211_2026-10-13.md)。
 
+十倍专项已进入整网验证：[本轮before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。新完整retained非对角core→LS候选单层仅raw改善0.09%，全1–14层raw恶化13.02%；均严格RPC单网零失败，成本使adjusted变差。已否决这些版本，不称十倍。当前单因素beta归因与局部新增误差模型继续推进；V37bH18仍最佳。
+
 更新日期：2026-10-13。当前决策依据为 [项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)。先投入 48 小时完成强基线复现与诊断，再按独立网络上的误差和成本决定后续投入。
 
 官方Resources逐项核验见[页面覆盖审计](experiments/phase2/DYNAMIC_CONTENTS_COVERAGE_2026-10-13.md)：工程已实际使用，最佳候选严格RPC累计覆盖58个公共网络；Mini100/Full1000、完整论文比赛移植与独立验收仍未完成。V37b+H18原RPC Mini8 adjusted **4.6070113621e-9**，8网零失败，主要是成本收益；阶段目标未达。

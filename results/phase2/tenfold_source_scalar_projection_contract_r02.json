@@ -1,0 +1,108 @@
+{
+  "scope": "bounded independent source-projection contract; no score",
+  "version": "tenfold.scalarprojection.r02",
+  "complete": true,
+  "rows": [
+    {
+      "width": 8,
+      "dtype": "float32",
+      "shared_basis": false,
+      "source_columns": 8,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 4.974429451465312e-06,
+      "expected": -18.121628967349373,
+      "actual": -18.121623992919922,
+      "flops": 9641
+    },
+    {
+      "width": 8,
+      "dtype": "float32",
+      "shared_basis": true,
+      "source_columns": 8,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 5.829069984031321e-06,
+      "expected": -37.93383609030045,
+      "actual": -37.93383026123047,
+      "flops": 9473
+    },
+    {
+      "width": 8,
+      "dtype": "float64",
+      "shared_basis": false,
+      "source_columns": 8,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 1.9895196601282805e-13,
+      "expected": -166.05641981374873,
+      "actual": -166.05641981374853,
+      "flops": 19282
+    },
+    {
+      "width": 8,
+      "dtype": "float64",
+      "shared_basis": true,
+      "source_columns": 8,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 4.547473508864641e-13,
+      "expected": 2289.4681158041817,
+      "actual": 2289.468115804182,
+      "flops": 18946
+    },
+    {
+      "width": 32,
+      "dtype": "float32",
+      "shared_basis": false,
+      "source_columns": 32,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 0.0001794214988422027,
+      "expected": 1084.9284020777488,
+      "actual": 1084.92822265625,
+      "flops": 252833
+    },
+    {
+      "width": 32,
+      "dtype": "float32",
+      "shared_basis": true,
+      "source_columns": 32,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 0.014370888049597852,
+      "expected": -74470.29562088805,
+      "actual": -74470.28125,
+      "flops": 152321
+    },
+    {
+      "width": 32,
+      "dtype": "float64",
+      "shared_basis": false,
+      "source_columns": 32,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 3.979039320256561e-12,
+      "expected": 434.15519354937385,
+      "actual": 434.15519354936987,
+      "flops": 505666
+    },
+    {
+      "width": 32,
+      "dtype": "float64",
+      "shared_basis": true,
+      "source_columns": 32,
+      "row_mask": "prefix1 and tail2 zeros",
+      "scalar_error": 7.275957614183426e-12,
+      "expected": 12635.109853262366,
+      "actual": 12635.109853262373,
+      "flops": 304642
+    }
+  ],
+  "script_sha256": "a1748a07d765d80d75dd27c30b2cdd83c1ccec1e5cc45ef8807da56cbffc3302",
+  "before": "Full source cap matrix then inner product with live post covariance",
+  "after": "Exact scalar inner product with shared H@A/H@P, all source columns",
+  "no_adjusted_score": true,
+  "requirements": [
+    "H uses symmetric zero-diagonal post covariance and both gate factors",
+    "shared HQ uses identical masked basis underlying current represented A/P",
+    "call before in-place old-source Wick scaling; u already combines pK211 and mean centering"
+  ],
+  "limitations": [
+    "Small synthetic float32/float64 only; actual1024 cost/parity pending",
+    "source orbit only; lower-support/tree/K4 and K31 have separate contracts"
+  ]
+}

@@ -1,0 +1,1 @@
+Parent r01 fullcore li14; same single li14 LS mechanism. Exact 28-term fused contraction and direct source numerator, all14source/all1024 birth columns. Source scalar calculation in float64, lambda output float32 maintains parent precision. Contracted helper origins tracked in research log. Unvalidated.

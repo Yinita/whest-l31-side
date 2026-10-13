@@ -2124,3 +2124,8 @@ after：每次拟合/调参/查看reference都记录selection ledger，确认集
 新增r30/r31：两个真实网络28个K211低支持矩阵图项与CovCov扣除通过独立标量核验，含Sym成本1211.26亿FLOPs、CovCov新增43.08亿；partial范数缩至power约26.3–26.5%。仍缺mean*pK111出生/tree及三指标K4轨道，不能当完整K211或新分数。r29对称门槛失败保留，r30按官方输出Sym处理原切片数值非对称。
 
 r32/r33补官方5类出生tree均值中心化，两网partial K211范数36.29/37.12→2.85/3.71；同输入/float64/过滤、无target。组件标量核验通过，总1471.96亿FLOPs；仍缺K4/source，未报整网分数。
+
+
+## 十倍专项整网新结果 2026-10-13
+
+新候选r01资源失败；r02/r03单层raw约0.09%改善但adjusted变差；r04全层raw恶化13.02%。所有before/after、合同、精度限定见[TENFOLD_PROGRESS_20261013.md](TENFOLD_PROGRESS_20261013.md)。不修改原134项状态为完成；新候选负结果保留。

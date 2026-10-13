@@ -1,0 +1,1 @@
+Parent: sprint_public_v37b_h18_r01 (504aldo MIT). Single mechanism: layer14 full retained augmented off-diagonal core LS base lambda. Input K4 proxies, diagonal regeneration and adaptive multiplier retained. Static diagrams pinned official commit93d091a4. No references or targets. Experimental, unvalidated.

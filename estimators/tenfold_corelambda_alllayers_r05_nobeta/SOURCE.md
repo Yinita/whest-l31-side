@@ -1,0 +1,1 @@
+Parent tenfold_corelambda_alllayers_r04. Single change: disable V25 empirical multiplier on next-layer transport after the new online LS computed lambda (li>=2). Initial li1 table-based transport adaptation retained. Same constraints, diagrams, sources, precision. Not validated.
