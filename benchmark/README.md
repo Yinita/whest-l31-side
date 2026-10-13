@@ -119,3 +119,6 @@ uv run --frozen python benchmark/prepare_rpc_inputs.py \
 
 
 分片6开始启用 `--sync-research-state`，完成自动清除所属active，失败保留error/phase；7项状态与汇总回归通过。不同workflow拥有active时不会覆盖。运行身份以workflow/当前child PID/输出manifest为证据，父state不是单独的完成判据。
+
+
+严格同runner成对归因使用分片2–5（28网，ID16–43），避免将较早不同runner控制混入。[28网成对汇总](../results/phase2/frozen_strict_public28_paired_r01.json)：adjusted−21.6099%、raw−1.85164%、FLOPs−20.1160%，28/28 adjusted改善但19/28 raw改善，双方零失败。公共上游调参未知，不代替独立门槛。
