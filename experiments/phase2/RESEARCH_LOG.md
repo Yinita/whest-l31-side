@@ -1082,3 +1082,18 @@ r22/r23 target-free V29旧capture组件（不同于H18canonical）完成：全14
 唯一机制为旧K3来源期望ReLU导数Phi→Phi+D3(α²−1)φ/(6σ³)+g4(3α−α³)φ/(24σ⁴)，birth重复D3/D21扣除与历史gain一致，Gaussianbirth/covariancecarrier冻结；不裁gain、不拟合oracle。独立Hermiteindicator积分与CP/algebra合同通过，实际candidate接入审计另记录。
 
 network0原reference严格RPC零失败：before raw2.2281179568040e-08/adjusted4.8714160493623e-09；after raw2.2659300213945e-08/adjusted4.9540952601586e-09，分别+1.69704%/+1.69723%。FLOPs480781426807，wall44.847881s/residual0.199365116s，client293512KiB。SHA7ff47e2a24fae92837b0229a8040318c1e2ab979e5582809f27e5eca6ed86a94。否决此fixedgainmechanism，不扫增益/κ3only、不扩量或上传，最佳与十倍阈值不变。下一项：paircost4完整grade一致闭合与真K4重复support持久history，先共享H18真实state合同/成本门槛。
+
+## r25 / r29 整网严格对照：2026-10-13 18:44 CST
+
+同冻结network0、原reference、输入SHA9e53442b88a0da22e8b9dafa26aa92318b38af95ab284776fa0e972b991854b4、数据commit aa99830fdc09fad15407b10e8e3459d3e18bba0a与同严格runner；工具flopscope0.12.1/whestbench0.16.1/numpy2.2.6，单线程、2**41FLOPs/120s/.4s/5s/lambda0。小合同不替代此整网评分。
+
+| 版本 | 唯一机制 | raw before→after | adjusted before→after | FLOPs | wall/residual秒 | 失败/结论 |
+|---|---|---:|---:|---:|---:|---|
+| r25 sparse D4 | 用真实CP4全历史+共享完整CP3feed替代harmonicproxy；只保留D4新出生 | 2.228117956804e-8→4.325905251790e-7 | 4.871416049362e-9→3.743006846401e-7 | 1,902,713,679,991 | 55.289197/.201143 | 0；raw19.415倍、adjusted76.836倍更差，否决 |
+| r29 consistent pair grade4 | mode1全部marginal/pair cost4固定图补齐、一致float64中心化后nativef32history | 2.228117956804e-8→2.217498007440e-8 | 4.871416049362e-9→5.025853859795e-9 | 498,398,171,255 | 58.744976/.318560 | 0；raw−.47663%、adjusted+3.17029%，否决 |
+
+r25 SHA b6fe6506fe37061a9efe48326349100bae18dead466ff6d80657b8e920447438；r29 SHA73099422205a37b7ce0f41fcb599292a04c30dd0e3d00509ee706ad7e3f9034d。client RSS287712/287676KiB，manifest.completed均true。逐网证据：`results/phase2/tenfold_sparse_d4_r25_samecycle_comparison.json`、`results/phase2/tenfold_pair_grade4_consistent_r29_samecycle_comparison.json`。prediction、score、合同、失败与执行snapshot全部保留；不扩Mini8、不重复线上上传、不改十倍阈值。
+
+r25targetfree逐层delta从li1已出现mean+2.875e-5，li15 RMS6.55e-4，不是尾层突变；genericactualledger独立PASS排除已测gain/rawW与重复feed，但未假称actual1024trace。D4only删除parent交叉出生，尤其早Gaussian K22，可能解释链偏差，仍需归因。fullGaussianK22并非仅Cov²：含rho1..3 power cumulant及pK11²的rho2..6中心化项。新exact31历史组件n4/8/16合同<2.78e-17，但完整allhistory naive总约3.77T超预算，否决直接candidate，不age/rank扫。
+
+下一固定机制r34：保留parent harmonic cross producer/USE/feed，同时精确携带signed univariate CP4 residualhistory及一致feedback，按postmetric合同去掉已有D4再出生。它仍是crossapprox，不称fullK4；先独立tensor与actualwholecall合同，再单网strict。另推导Gaussian22 structured transport成本。最佳V37bH18/线上335678仍不变，阶段1<5.779e-10未达。

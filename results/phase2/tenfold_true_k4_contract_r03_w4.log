@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 204, in <module>
+    if __name__=="__main__":main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 189, in main
+    row=run(n);rows.append(row);print(json.dumps({"width":n,"wall":row["wall_time_s"],"step_costs":[s["legal_cost"]["flops_used"] for s in row["steps"]],"before_after_r1_r2":[[s["birth_before_r1_relative_Frobenius"],s["birth_after_r2_relative_Frobenius"]] for s in row["steps"]]}),flush=True)
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 131, in run
+    model=[producer.tensor(d) for d in (1,2,3)]
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_contract.py", line 131, in <listcomp>
+    model=[producer.tensor(d) for d in (1,2,3)]
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_producer.py", line 181, in tensor
+    return self.entries(indices)
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_true_k4_producer.py", line 175, in entries
+    out[mask]=value
+  File "/home/sti/Desktop/projects/whest-l31-side/.venv/lib/python3.10/site-packages/flopscope/_ndarray.py", line 947, in __setitem__
+    raise TypeError(
+TypeError: flopscope arrays are immutable, so item assignment (arr[i] = ...) and indexed in-place updates (arr[i] += ...) are not supported. Build the result functionally instead: collect the pieces in a list and combine them with fnp.stack(...) / fnp.concatenate(...), or use a whole-array update (arr = arr + x). See https://aicrowd.github.io/flopscope/docs/getting-started/competition/#immutable-arrays

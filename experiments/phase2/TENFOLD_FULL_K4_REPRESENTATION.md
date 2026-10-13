@@ -205,3 +205,46 @@ root串行strict1报告：零失败；raw `2.2281179568e-8 → 2.2318463522e-8`�
 5. 合法1024模型内部capture只计费`apply_H(B)`和一次R2projection/压缩，而不执行整候选。budget预测必须包含所有历史feed；若tensorprojection大残差或历史state显著超budget，保存负结果并转向alternative的完整K3nonhypertree闭合，不扫lambda/scale。
 
 这个组件的主要变化是**保留真实retainedK4production/history**，它与“用任意thin采样拟合K4 proxy”不同。官方K3augment会投影掉四阶tracefree部分，固定R2能保留一部分多metric历史；仍不能保证trueK4精度。若fullproducer不具可行factor结构，可先精确保留`D4/D31/D22`及它们诱导的liftedDSTensor传播，单列另一机制；这需要各partition支持完整lift和重复去重，不能将D31/D22array当四阶matrixpair本身。
+
+## R04 完整 retained producer：实际组件与成本门槛
+
+`tenfold_true_k4_producer.py` 实际生成官方 k4-basic 的全部 retained 图项（k_max4,d_max4,augment=False），含 29 个1111原图/4类，全部通过官方 factoredfilter。各 pK→ordinary polynomial 来自集合分割展开，并通过任意19样本分布独立验证（不是以分数拟合）。独立 scalar rawmoment cumulant oracle 与 charged mean/C/K3及K4 apply逐项相符。完整实际 producer 不创建 charged n4 tensor，却使用 **n3 slab** temporary，O(n4)work；先前注释的n2temporary是旧row路径描述，不能沿用。冻结R04 source快照保留。
+
+| report | 宽度 | 两步合法 FLOPs | 总时长 | R1→R2出生 Frobenius residual（两步） |
+|---|---:|---:|---:|---|
+| `tenfold_true_k4_contract_r03b_w4.json` | 4 | 7.21M / 13.27M | 66.09s | 70.03%→66.92% / 70.11%→53.83% |
+| `tenfold_true_k4_contract_r04_w8.json` | 8 | 77.90M / 125.09M | 86.88s | 83.95%→83.91% / 85.36%→78.53% |
+| `tenfold_true_k4_contract_r04_w16.json` | 16 | 1.008B / 1.476B | 176.89s | 91.09%→91.08% / 92.46%→89.17% |
+
+n8 streaming/source parity≤1.78e-15，fullhistory pairtransport≤6.27e-15；完整 retained birth 明显无法被固定identity+Cov²两个方向表示。n16成本门槛与n4work阶已经否决直接1024 streamingprojection；不扫R/rank或radial系数。
+
+## 新机制：exact repeat-support lift
+
+`tenfold_true_k4_support_lift.py` 从真实retained producer减掉actualleading历史后，保留D4/D31/D22。4、31、22的支持 masks 互斥，出生211/1111为零。所有source entries、实际W运输后的D4/D31/D22、weightedD211 F/P cap以及完整三项feed D3/D21/centering与独立dense合同n4/n8误差≤1.11e-15。
+
+| 目标无关 toy width | R2出生残差 | exact重复支持残差 | R2+exact重复 residual | source合法 FLOPs | transport+allUSE/feed FLOPs |
+|---|---:|---:|---:|---:|---:|
+| 4 | 65.14% | 0.3133% | 13.58% | 118494 | 19312 |
+| 8 | 82.54% | 0.2285% | 10.30% | 508434 | 153312 |
+
+这是near-independent固定toy的模型内部强信号，不是raw/adjusted分数，也不是1024泛化。R2+支持残差较高，因为R2在all-distinct支持引入不真实内容。任意source B收缩 `W apply_H(W.T B W) W.T` 以及D4/D31/Pcaps均O(n3)，但**所有transportedD22对任意densebirthD22通常O(n4)**：22项含`2∑ij D22ij Wa_i Wb_i Wa_j Wb_j`，不能称只需两个GEMM。完整supportlift还无可提交候选。
+
+## Actual H18 内部切片门槛
+
+共享一次H18li14 capture：`results/phase2/h18_joint_li14_r25/completion.json`。`tenfold_true_k4_h18_gate_r01_w32.json` 固定内部leading32neuron、保留14source全部1024columns；不是32随机网络或完整1024。sourceK3与parent已prune的D3/D21 max差3.95e-9/1.25e-6，需记录source含被parentreadout禁用内容。
+
+真实模型内部retained birth norm：D4=2.146e-6，D31=3.211e-6，D22=2.094e-7。D22 targetfree offline singular residual rank1/2/4/8/16 =58.47%/30.30%/16.11%/6.26%/1.26%；简单Cov²形状最佳scalar投影残差92.31%。该谱只诊断结构，未实施或按benchmark选rank。完整retainedproducer输入K4仍是当层实际parentG surrogate，不能宣称已有truefullK4history。
+
+## 实际提交候选 R25：独立 pure D4 history
+
+`estimators/tenfold_sparse_d4_r25/estimator.py` SHA256 `b6fe6506fe37061a9efe48326349100bae18dead466ff6d80657b8e920447438`。替换全部层parentharmonicK4USE与approxfeed，只保存普通univariate出生 `newc=K4v−Σ c (w1*qpre)^4`，完整先前history为CP4共享leg。全新31/22/211/1111出生被该机制明确遗漏，因而与parent保存crossborntrace不同。
+
+K4→K3 fullfeed为`Sym(X,q,q)`，Xnew=`1.5*c*w2*qpre²`、qpost=`w1*qpre`、Xpost=`w1*Xpre+Xnew`，每个源共享一X，下一层rawW一次运输q/X。新完整feed repeated加入parentD3new/21new并从普通M residual扣掉，已有externalfeed加到preD3/21；不保留oldregenfeed。birthD4不叠加parentG或完整oldunivariate，避免双计。external histories保留完整rows，范围与parentprunedlegs不同。
+
+`tenfold_sparse_d4_history_contract_r01.json` signed n4/8/16两步组件≤2.22e-16；`tenfold_sparse_d4_production_contract_r25_r03.json` actualcandidate n8/32depth4 USE≤6.94e-7、完整feed和dslice≤6.90e-8、birthD4≤5.88e-8。r01首次实际candidate运行segfault无diagnostic，保留log；r02/r03完成，不将重跑宣称完整稳定认证。最终省去unusedfinalD21；birthfeed slices精确利用已有D4/31/22，省420n³，不改张量。分析新增成本1320n³≈1.417e12，加changedparent约0.48e12；whole1024strict由root串行验证，当前无新score或资源通过声明。完整非linear闭合仍为parenttables，不是所有K211图的production。
+
+### R25 整网严格负结果，停止扩量
+
+root同cycle strict1零失败，合法资源通过：FLOPs1,902,713,679,991，predict55.289s，residual0.20114s。但raw `2.2281179568e-8 → 4.32590525179e-7`（19.415倍更差），adjusted `4.8714160494e-9 → 3.7430068464e-7`（76.836倍更差）。因此它不是最佳版，不扩Mini8、不上传；sharedCP4/feed组织资源可行并不意味着纯D4出生足够。
+
+无truth逐层比较旧同input strict预测 `tenfold_sparse_d4_r25_targetfree_layerdiff_r01.json`：li0完全一致；li1RMS3.58e-5/mean+2.875e-5，li2RMS9.99e-5，li5RMS2.60e-4，li10RMS4.75e-4，li15RMS6.55e-4/mean+2.374e-4，呈逐层积累而非尾层突然失效。独立actualledgerpassed已排除已测oldgain/rawW和重复feed问题；crossbirth删掉是待归因因素，不能凭delta认定唯一原因。尤其li0GaussianReLU已有K22 birth，母版将其投影入harmonictrace，pureD4删除它后li1即改变。晚层D31大不能证明只补D31即可恢复早层；下一完整来源应先解析/保留GaussianleadingK22结构，避免再盲纯subset替换。

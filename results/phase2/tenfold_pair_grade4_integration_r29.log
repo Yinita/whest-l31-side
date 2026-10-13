@@ -1,0 +1,46 @@
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:420: SymmetryLossWarning: Symmetry lost along dims (0, 1): multiply — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  value = value*operand
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:426: SymmetryLossWarning: Symmetry lost along dims (0, 1): add — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  acc = acc+value
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_pair_grade4_contract_r26.py:74: SymmetryLossWarning: Symmetry lost along dims (0, 1): multiply — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  value = value*factor
+/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_pair_grade4_contract_r26.py:78: SymmetryLossWarning: Symmetry lost along dims (0, 1): add — no symmetry groups shared by both operands. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  acc = acc+value
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:914: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:915: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:929: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:930: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:931: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:931: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:932: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:934: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:935: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:936: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:1543: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py:1544: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_pair_grade4_integration_r29.py", line 79, in <module>
+    main()
+  File "/home/sti/Desktop/projects/whest-l31-side/experiments/phase2/tenfold_pair_grade4_integration_r29.py", line 65, in main
+    prediction = np.asarray(estimator.predict(SimpleNamespace(width=n, weights=weights), 2**41)).copy()
+  File "/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py", line 965, in predict
+    return self._predict_core(mlp, budget)
+  File "/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_pair_grade4_consistent_r29/estimator.py", line 1620, in _predict_core
+    (3, 1): wk431, (1, 3): wk431.T, (2, 2): wk4m})
+UnboundLocalError: local variable 'wk431' referenced before assignment

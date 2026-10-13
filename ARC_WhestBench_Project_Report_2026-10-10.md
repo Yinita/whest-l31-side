@@ -1,5 +1,8 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
+2026-10-13 18:44最新：r25真实D4-only全历史严格单网零失败但raw恶化19.415倍；r29完整pair grade4 raw−0.4766%但adjusted+3.1703%，均否决。下一r34保留harmoniccross并补signedD4残差历史；最佳V37bH18与阶段1目标5.779e-10不变，十倍未达。详见[实际before/after](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
+
+
 2026-10-13最新：r20严格单网raw−3.7406%但adjusted+114.03%，未晋升；双流离线诊断1015成功/9timeout收齐，真实状态联合闭合仍是重点。最佳V37bH18与阶段1目标5.779e-10不变，十倍未达。最新候选、失败、before/after与局限见[专项进展](experiments/phase2/TENFOLD_PROGRESS_20261013.md)。
 
 2026-10-13严格新结果：r14完整heavyhypertree全历史raw+0.029%/adjusted+239.7%；r16tail2真metric完整USE/feed raw+0.167%/adjusted+5.99%，均零失败、均否决。转向官方舍弃nonhypertree与真正四阶历史联合闭合，十倍尚未达标。

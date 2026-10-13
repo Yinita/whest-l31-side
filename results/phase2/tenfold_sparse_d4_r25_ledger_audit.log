@@ -1,0 +1,161 @@
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:877: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.pdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:878: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  flops.stats.norm.cdf(v)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:892: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("tij,ti,tj,tg->gij", t3, t3[:, :, 0], t3[:, 0, :], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:893: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ti,ti,tg->gi", t3[:, :, 0], t3[:, :, 1], g3)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (0, 1): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:894: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("iq,kqn->kin", m[:, :16], t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:895: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,kc->ic", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:897: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kj->ki", t3, t3[:, 0, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:898: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("ki,ki->i", t3[:, :, 0], t3[:, :, 1])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:899: SymmetryLossWarning: Symmetry lost along dims (1, 2): slicing removed all symmetric dim groups. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  fnp.einsum("kij,kqj->iq", t3, t3[:, :16, :])
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:1531: FlopscopeWarning: stats.norm.pdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  phi = flops.stats.norm.pdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:1532: FlopscopeWarning: stats.norm.cdf promoted its float32 input to float64 to match scipy.stats. If float64 output was not intended, cast the result back with result.astype(np.float32) before downstream operations; float64 operations are billed at twice the float32 dtype rate.
+  Phi = flops.stats.norm.cdf(alpha).astype(f32)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:1861: SymmetryLossWarning: Symmetry lost along dims (0, 1), (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  Ff_b = fnp.concatenate([F1_b, F2_b], axis=1) if rfb > 0 else None
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:1889: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_q=fnp.concatenate([sparse_post_q,fnp.eye(n,dtype=f32)],axis=1)
+/home/sti/Desktop/projects/whest-l31-side/estimators/tenfold_sparse_d4_r25/estimator.py:1890: SymmetryLossWarning: Symmetry lost along dims (0, 1): concatenate breaks block symmetry or mixes with plain inputs. Use as_symmetric() to re-tag if you know the result is symmetric. Suppress with flops.configure(symmetry_warnings=False).
+  sparse_x=fnp.concatenate([sparse_x,fnp.zeros((n,n),dtype=f32)],axis=1)
+{
+  "version": "tenfold.sparseD4.r25.ledgeraudit",
+  "complete": true,
+  "candidate_sha256": "b6fe6506fe37061a9efe48326349100bae18dead466ff6d80657b8e920447438",
+  "script_sha256": "cb716090686b086ebb7a897e619c170c32bd3c9cc859d74afac0d9f0a7a9916b",
+  "rows": [
+    {
+      "width": 8,
+      "depth": 4,
+      "allfinite": true,
+      "actual_site_counts": {
+        "actual_S3c_fullfeed_repeated_dedup": 3,
+        "actual_S21_fullfeed_repeated_dedup": 3,
+        "actual_initial_Q_I": 1,
+        "actual_initial_X_zero": 1,
+        "actual_initial_c_K4v": 1,
+        "actual_q_next_rawW_once": 3,
+        "actual_X_next_rawW_once": 3,
+        "actual_c_static": 3,
+        "actual_priorfeed_D3": 3,
+        "actual_priorfeed_D21": 2,
+        "actual_total_D3_prior_added_once": 3,
+        "actual_total_D21_prior_added_once": 2,
+        "actual_new_X_coefficient": 2,
+        "actual_Q_post_gain_once": 2,
+        "actual_newfeed_D3": 2,
+        "actual_newfeed_D21": 2,
+        "actual_birth_D3_append_once": 2,
+        "actual_birth_D21_append_once": 2,
+        "actual_total_D3_w_gain_once": 2,
+        "actual_total_D21_w_gain_once": 2,
+        "actual_Q_gain_then_unscaled_newborn_I": 2,
+        "actual_X_oldgain_newfeed_once_newborn_zero": 2,
+        "actual_c_birth_residual_not_full_diagonal_doublecount": 2,
+        "actual_postfeed_full_tensor_singleinheritance": 2
+      },
+      "max_abs_errors": {
+        "actual_S3c_fullfeed_repeated_dedup": 5.960464477539063e-08,
+        "actual_S21_fullfeed_repeated_dedup": 5.960464477539063e-08,
+        "actual_initial_Q_I": 0,
+        "actual_initial_X_zero": 0,
+        "actual_initial_c_K4v": 0,
+        "actual_q_next_rawW_once": 7.302631099825874e-08,
+        "actual_X_next_rawW_once": 2.755018750910665e-07,
+        "actual_c_static": 0,
+        "actual_priorfeed_D3": 8.53266095557359e-08,
+        "actual_priorfeed_D21": 1.2357515366545613e-07,
+        "actual_total_D3_prior_added_once": 8.53266095557359e-08,
+        "actual_total_D21_prior_added_once": 1.2357515366545613e-07,
+        "actual_new_X_coefficient": 1.6732768548521904e-07,
+        "actual_Q_post_gain_once": 2.9013932589805336e-08,
+        "actual_newfeed_D3": 1.4270231507573783e-07,
+        "actual_newfeed_D21": 5.938012387352032e-08,
+        "actual_birth_D3_append_once": 1.4270231529778243e-07,
+        "actual_birth_D21_append_once": 5.022074156535439e-08,
+        "actual_total_D3_w_gain_once": 2.1220010504308107e-07,
+        "actual_total_D21_w_gain_once": 4.9447234418131814e-08,
+        "actual_Q_gain_then_unscaled_newborn_I": 2.9013932589805336e-08,
+        "actual_X_oldgain_newfeed_once_newborn_zero": 1.6732768548521904e-07,
+        "actual_c_birth_residual_not_full_diagonal_doublecount": 2.4130939824118514e-07,
+        "actual_postfeed_full_tensor_singleinheritance": 1.2170227670083023e-07
+      },
+      "legal_predict_flops_with_validation_trace": 403852
+    },
+    {
+      "width": 32,
+      "depth": 4,
+      "allfinite": true,
+      "actual_site_counts": {
+        "actual_S3c_fullfeed_repeated_dedup": 3,
+        "actual_S21_fullfeed_repeated_dedup": 3,
+        "actual_initial_Q_I": 1,
+        "actual_initial_X_zero": 1,
+        "actual_initial_c_K4v": 1,
+        "actual_q_next_rawW_once": 3,
+        "actual_X_next_rawW_once": 3,
+        "actual_c_static": 3,
+        "actual_priorfeed_D3": 3,
+        "actual_priorfeed_D21": 2,
+        "actual_total_D3_prior_added_once": 3,
+        "actual_total_D21_prior_added_once": 2,
+        "actual_new_X_coefficient": 2,
+        "actual_Q_post_gain_once": 2,
+        "actual_newfeed_D3": 2,
+        "actual_newfeed_D21": 2,
+        "actual_birth_D3_append_once": 2,
+        "actual_birth_D21_append_once": 2,
+        "actual_total_D3_w_gain_once": 2,
+        "actual_total_D21_w_gain_once": 2,
+        "actual_Q_gain_then_unscaled_newborn_I": 2,
+        "actual_X_oldgain_newfeed_once_newborn_zero": 2,
+        "actual_c_birth_residual_not_full_diagonal_doublecount": 2,
+        "actual_postfeed_full_tensor_singleinheritance": 2
+      },
+      "max_abs_errors": {
+        "actual_S3c_fullfeed_repeated_dedup": 5.21540641784668e-08,
+        "actual_S21_fullfeed_repeated_dedup": 1.862645149230957e-08,
+        "actual_initial_Q_I": 0,
+        "actual_initial_X_zero": 0,
+        "actual_initial_c_K4v": 0,
+        "actual_q_next_rawW_once": 1.0585665755069584e-07,
+        "actual_X_next_rawW_once": 1.0291982854848669e-07,
+        "actual_c_static": 0,
+        "actual_priorfeed_D3": 9.397846945091715e-09,
+        "actual_priorfeed_D21": 1.3545274735182744e-08,
+        "actual_total_D3_prior_added_once": 3.345885302152851e-08,
+        "actual_total_D21_prior_added_once": 3.297571860017001e-08,
+        "actual_new_X_coefficient": 3.1325750216026904e-08,
+        "actual_Q_post_gain_once": 2.853869673913323e-08,
+        "actual_newfeed_D3": 1.3263842010835525e-08,
+        "actual_newfeed_D21": 1.0762331720259866e-08,
+        "actual_birth_D3_append_once": 1.5029739661165387e-08,
+        "actual_birth_D21_append_once": 1.6587303225401584e-08,
+        "actual_total_D3_w_gain_once": 3.01212884634694e-08,
+        "actual_total_D21_w_gain_once": 1.2269989135837989e-08,
+        "actual_Q_gain_then_unscaled_newborn_I": 2.853869673913323e-08,
+        "actual_X_oldgain_newfeed_once_newborn_zero": 3.1325750216026904e-08,
+        "actual_c_birth_residual_not_full_diagonal_doublecount": 6.070566826998913e-08,
+        "actual_postfeed_full_tensor_singleinheritance": 5.669918992645684e-09
+      },
+      "legal_predict_flops_with_validation_trace": 8128540
+    }
+  ],
+  "no_reference_or_target_access": true,
+  "no_adjusted_score": true,
+  "limitations": [
+    "Actualgenericpredict n8/32 depth4 validateslifecycle; suitepruning/regen notactualtraced",
+    "Fullfeed history represented exactly but birth retainsD4only and parent M compressed",
+    "Validationtrace notresourceacceptance"
+  ]
+}
