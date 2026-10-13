@@ -10,47 +10,31 @@
     "report": "results/phase2/v29_mini8_local.json"
   },
   "active_experiment": {
-    "key": "frozen shard05 paired workflow",
+    "key": "frozen shard06 public preparation",
     "status": "running",
-    "pid": 762565,
-    "pid_start_ticks": "914847",
-    "session_id": 38651,
-    "started_at_host": "2026-10-13 14:00:42",
+    "pid": 978963,
+    "pid_start_ticks": "1206768",
+    "session_id": 88867,
+    "started_at_host": "2026-10-13 14:49:21",
     "command": [
       "uv",
       "run",
       "--frozen",
       "python",
-      "benchmark/run_frozen_public_pair.py",
-      "--cohort",
-      "frozen_public_shard05",
-      "--run-id",
-      "r01"
+      "benchmark/prepare_public.py",
+      "--shard",
+      "6"
     ],
-    "workflow": "results/phase2/frozen_pair_frozen_public_shard05_r01.json",
-    "lock": "results/phase2/frozen_pair_frozen_public_shard05.lock",
-    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05.json",
-    "dataset": "benchmark/data/mini_shard05",
-    "n_mlps": 7,
-    "network_ids": [
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43
-    ],
-    "phase": "inputs",
-    "next": "pipeline exports ->V29predict/score ->bestpredict/score ->pairedcompare automatically; aftercomplete aggregate37+7 andupdate docs/state; never duplicate startup"
+    "log": "results/phase2/mini_shard06_prepare_r01.log",
+    "next": "after verifieddata/actualrows register protocol then immutable inputs/V29/best serial pair"
   },
   "next_experiment": {
-    "key": "publicMini further expansion",
-    "status": "aftercurrentcohort",
-    "scope": "completefrozencohortfirst; preserveindependentnetwork/refgates"
+    "key": "frozen public shard06",
+    "status": "preparing_next_cohort",
+    "scope": "samecandidate/strictprotocol/originalrefs; no scorebased selection"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T06:00:59.002946+00:00",
+  "updated_at_utc": "2026-10-13T06:49:42.714315+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -46411,7 +46395,7 @@
       "335678": "graded4.293779716792071e-9"
     },
     "latest_followup": "experiments/phase2/CONTINUATION_2026-10-13.md",
-    "strict_public_networks_completed": 37
+    "strict_public_networks_completed": 44
   },
   "latest_completed_rpc": {
     "key": "sprint-v37b-h18-fullRPC8",
@@ -46460,20 +46444,20 @@
     "stage_accepted": false
   },
   "latest_public_expansion": {
-    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
-    "comparison": "results/phase2/sprint_public_v37b_h18_r10_shard04_before_after.json",
-    "before_adjusted": 5.71253604217901e-09,
-    "adjusted": 4.4598079397537335e-09,
-    "raw": 2.192297010594757e-08,
+    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05_score.json",
+    "comparison": "results/phase2/shard05_completion_recheck_r02.json",
+    "before_adjusted": 6.107345633124037e-09,
+    "adjusted": 4.8276578292237505e-09,
+    "raw": 2.3659207672364702e-08,
     "failures": 0,
-    "relative_adjusted_vs_v29": -0.21929456430132765,
-    "relative_raw_vs_v29": -0.021973271401910632,
+    "relative_adjusted_vs_v29": -0.20953256631812722,
+    "relative_raw_vs_v29": -0.011313159604686707,
     "n_mlps": 7,
-    "total_strict_public_networks": 37,
+    "total_strict_public_networks": 44,
     "scope": "Frozen paired public cohort, both strict RPC; upstream public tuning unknown; not final unseen holdout",
-    "maxwall": 54.376598488,
-    "maxresidual": 0.18354026400000123,
-    "client_peak_rss_kib": 301072,
+    "maxwall": 54.141581007,
+    "maxresidual": 0.18682620999999955,
+    "client_peak_rss_kib": 300892,
     "all_networks_adjusted_improved": true,
     "stage_accepted": false
   },
@@ -46705,40 +46689,43 @@
     "scope": "onecomponentfloat64deep16 allmatrixops; not1024evidence"
   },
   "latest_completed_experiment": {
-    "key": "frozen shard04 V37bH18 strict candidate",
+    "key": "frozen shard05 paired workflow",
     "status": "completed_zero_failures",
-    "pid": 711000,
-    "pid_start_ticks": "843831",
-    "session_id": 85120,
-    "started_at_host": "2026-10-13 13:48:52",
-    "candidate": "estimators/sprint_public_v37b_h18_r01/estimator.py",
-    "sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
-    "report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04.json",
-    "dataset": "benchmark/data/mini_shard04",
+    "pid": 762565,
+    "pid_start_ticks": "914847",
+    "session_id": 38651,
+    "started_at_host": "2026-10-13 14:00:42",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "benchmark/run_frozen_public_pair.py",
+      "--cohort",
+      "frozen_public_shard05",
+      "--run-id",
+      "r01"
+    ],
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard05_r01.json",
+    "lock": "results/phase2/frozen_pair_frozen_public_shard05.lock",
+    "report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05.json",
+    "dataset": "benchmark/data/mini_shard05",
     "n_mlps": 7,
     "network_ids": [
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
     ],
-    "inputs": "benchmark/data/rpc_inputs/frozen_shard04_r01/inputs.json",
-    "next": "score/paired bind after all complete; noonline reupload",
+    "phase": "completed",
+    "next": "pipeline exports ->V29predict/score ->bestpredict/score ->pairedcompare automatically; aftercomplete aggregate37+7 andupdate docs/state; never duplicate startup",
+    "finished_at_utc": "2026-10-13T06:11:40.904497+00:00",
     "completed_networks": 7,
-    "completed_statuses": [
-      "ok",
-      "ok",
-      "ok",
-      "ok",
-      "ok",
-      "ok",
-      "ok"
-    ],
-    "score_report": "results/phase2/sprint_public_v37b_h18_r10_strict_shard04_score.json",
-    "comparison": "results/phase2/sprint_public_v37b_h18_r10_shard04_before_after.json"
+    "comparison": "results/phase2/shard05_completion_recheck_r02.json",
+    "score_report": "results/phase2/sprint_public_v37b_h18_r11_strict_shard05_score.json"
   },
   "latest_m05_w2_contract": {
     "report": "results/phase2/m05_w2_independent_contract_r01.json",
@@ -46772,15 +46759,15 @@
     "no_competition_score": true
   },
   "strict_public_aggregate": {
-    "n_mlps": 37,
+    "n_mlps": 44,
     "n_failed_mlps": 0,
-    "final_layer_mse": 2.2023712679390122e-08,
-    "adjusted_final_layer_score": 4.476269954183047e-09,
-    "mean_flops": 447248788936.1892,
+    "final_layer_mse": 2.2283905064636077e-08,
+    "adjusted_final_layer_score": 4.532172570666796e-09,
+    "mean_flops": 447315262337.7273,
     "max_wall_s": 58.75250673,
     "max_residual_s": 0.1978317510000025,
     "max_client_peak_rss_kib": 301072,
-    "report": "results/phase2/sprint_public_v37b_h18_strict_public37_r02.json"
+    "report": "results/phase2/sprint_public_v37b_h18_strict_public44_r03.json"
   },
   "prepared_m05_next": {
     "script": "experiments/phase2/m05_official_network_gate.py",
@@ -46897,5 +46884,13 @@
     "legal_flops_1024": 2172671997,
     "largest_charged_array_elements": 1048576,
     "no_score": true
+  },
+  "state_reconciliation": {
+    "at_utc": "2026-10-13T06:49:21.627415+00:00",
+    "reason": "workflow completed at06:11UTC but parentstate stale running/inputs",
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard05_r01.json",
+    "all_six_phase_hashes_verified": true,
+    "pid_gone_lock_absent": true,
+    "network_identity_dedup_passed": true
   }
 }

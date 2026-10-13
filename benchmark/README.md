@@ -112,4 +112,10 @@ uv run --frozen python benchmark/prepare_rpc_inputs.py \
 13:56更新：分片4 ID30–36双方严格RPC7网零失败，adjusted5.71253604217901e-9→4.4598079397537335e-9（−21.92946%）、raw下降2.19733%；逐网adjusted均改善。候选全部37网汇总adjusted4.476269954183047e-9/raw2.2023712679390122e-8，零失败。见[37网原始汇总](../results/phase2/sprint_public_v37b_h18_strict_public37_r02.json)。此前30网报告保留，不覆盖。
 
 
-冻结队列后的成对执行可用 `uv run --frozen python benchmark/run_frozen_public_pair.py --cohort frozen_public_shard05 --run-id r01`。先在协议JSON登记校验后的数据SHA/网数/ID和双方源码SHA。工具串行执行导出→V29→最佳→各自计分→配对，维护cohort锁、子PID、日志与阶段hash；仅跳过完整输出，遇到部分输出停下并保留，避免重跑或覆盖。全流程不选参数、不上传比赛、不改research_state。分片4恢复流程已验证跳过所有完整评测，只新建哈希核验对照。
+冻结队列后的成对执行可用 `uv run --frozen python benchmark/run_frozen_public_pair.py --cohort frozen_public_shard05 --run-id r01`。先在协议JSON登记校验后的数据SHA/网数/ID和双方源码SHA。工具串行执行导出→V29→最佳→各自计分→配对，维护cohort锁、子PID、日志与阶段hash；仅跳过完整输出，遇到部分输出停下并保留，避免重跑或覆盖。全流程不选参数、不上传比赛；`--sync-research-state`仅同步所属workflow的运行阶段、失败与完成状态，不改阶段目标或成绩。分片4恢复流程已验证跳过所有完整评测，只新建哈希核验对照。
+
+
+14:49核验：分片5（ID37–43）实际14:11已完成，旧research_state的running/inputs为滞后状态，已按完成报告及全部6阶段哈希修正，未重启评测。双方严格RPC零失败，adjusted6.107345633124037e-9→4.8276578292237505e-9（−20.95326%），raw下降1.13132%；逐网adjusted均改善。去重44网汇总adjusted4.532172570666796e-9/raw2.2283905064636077e-8、零失败，见[原始44网汇总](../results/phase2/sprint_public_v37b_h18_strict_public44_r03.json)。
+
+
+分片6开始启用 `--sync-research-state`，完成自动清除所属active，失败保留error/phase；7项状态与汇总回归通过。不同workflow拥有active时不会覆盖。运行身份以workflow/当前child PID/输出manifest为证据，父state不是单独的完成判据。

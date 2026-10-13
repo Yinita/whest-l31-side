@@ -1,7 +1,8 @@
 """Execute a frozen public cohort serially, keeping resumable phase evidence.
 
-No parameter selection, dataset download, online upload, or research-state edits
-are performed. Only completed outputs can be resumed; partial outputs block
+No parameter selection, dataset download, or online upload is performed.
+Optional state synchronization updates only the workflow owning active_experiment.
+Only completed outputs can be resumed; partial outputs block
 resumption so a live/incomplete experiment cannot be overwritten.
 """
 
@@ -28,10 +29,36 @@ def utc():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
+def synchronize_state(state_path, workflow, report):
+    """Do not let a completed workflow remain running in its owner's state."""
+    state = json.loads(state_path.read_text())
+    active = state.get("active_experiment")
+    if not active or Path(active.get("workflow", "")).resolve() != workflow.resolve():
+        return False
+    active.update(status=report["status"], phase=report["current_phase"],
+                  workflow_updated_at_utc=utc())
+    if report.get("current_child"):
+        active["current_child"] = report["current_child"]
+    else:
+        active.pop("current_child", None)
+    if report["status"] == "completed":
+        active.update(finished_at_utc=report["finished_at_utc"], comparison=report["comparison"])
+        state["latest_completed_experiment"] = dict(active)
+        state["active_experiment"] = None
+    elif report["status"] == "failed":
+        active["error"] = report["error"]
+    state["updated_at_utc"] = utc()
+    temporary = state_path.with_suffix(".workflow.tmp")
+    temporary.write_text(json.dumps(state, ensure_ascii=False, indent=2)+"\n")
+    temporary.replace(state_path)
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cohort", required=True)
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--sync-research-state", action="store_true")
     args = parser.parse_args()
     protocol_path = ROOT/"experiments/phase2/DEVELOPMENT_PROTOCOL_20261013.json"
     protocol = json.loads(protocol_path.read_text())
@@ -71,6 +98,8 @@ def main():
         temporary = workflow.with_suffix(".tmp")
         temporary.write_text(json.dumps(report, indent=2, allow_nan=False)+"\n")
         temporary.replace(workflow)
+        if args.sync_research_state:
+            synchronize_state(ROOT/"experiments/phase2/research_state.json", workflow, report)
 
     def verify_frozen():
         for candidate in (before, after):
