@@ -1,0 +1,71 @@
+{
+  "version": "tenfold.mixed.matrixfree.probe.r21",
+  "complete": true,
+  "script_sha256": "b24093cf5c62666c419604cf324359223f33db1819c360a1d5a2953880689229",
+  "small_contract": [
+    {
+      "width": 4,
+      "matrixfree_vs_independentdense_action_max_error": 8.881784197001252e-16,
+      "legal_flops": 2352
+    },
+    {
+      "width": 8,
+      "matrixfree_vs_independentdense_action_max_error": 2.220446049250313e-15,
+      "legal_flops": 6120
+    },
+    {
+      "width": 32,
+      "matrixfree_vs_independentdense_action_max_error": 7.993605777301127e-15,
+      "legal_flops": 56952
+    }
+  ],
+  "rows": [
+    {
+      "output": 0,
+      "same_fixedz_matrixfree_probe": 0.00012129834604754797,
+      "probe_flops_after_sharedprep": 4227952640,
+      "wall_seconds": 1.287569068997982
+    },
+    {
+      "output": 1,
+      "same_fixedz_matrixfree_probe": 0.0011749410748647631,
+      "probe_flops_after_sharedprep": 4227952640,
+      "wall_seconds": 1.2905771430014283
+    },
+    {
+      "output": 2,
+      "same_fixedz_matrixfree_probe": -0.00025934995741398785,
+      "probe_flops_after_sharedprep": 4227952640,
+      "wall_seconds": 1.3191907039981743
+    },
+    {
+      "output": 3,
+      "same_fixedz_matrixfree_probe": 0.0006232923103771803,
+      "probe_flops_after_sharedprep": 4227952640,
+      "wall_seconds": 1.2742204150017642
+    }
+  ],
+  "sharedprep_legal_flops": 3295981568,
+  "fixedoutput0_matrixfree_vs_r19_knownq_probe_error": 5.827586677109586e-19,
+  "fixedoutput0_probes_required_for_10pct_relative_se": 4503,
+  "optimistic_onlyoutput0_probes_after_parent": 418,
+  "optimistic_onlyoutput0_se_to_signal": 0.3281984176351226,
+  "passes_optimistic_onlyoutput0_se_gate": false,
+  "network_id": "0",
+  "layer": 14,
+  "all14_sources_all1024_columns": true,
+  "data_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+  "state_capture_sha256": "97a14599fe8252608d0261674cc342d8cea216ffe65c70183ece4c4dff878b87",
+  "source_capture_sha256": "3408c2e75f32cad0619268f541e0048c98235d34cbed7b8eb07da3d14e9a2a14",
+  "no_reference_or_target_access": true,
+  "raw_mse": null,
+  "adjusted_score": null,
+  "conclusion": "Use actualmatrixfreeprobefee rather than impossibleknownQcheapfee; productioncandidate not established",
+  "limitations": [
+    "Probe outputs0-3 are fixed; no selection bysignal orreference",
+    "OnlynextD3functional; D21/history cost omitted",
+    "Sharedprep fee excluded from optimisticbound; actual is worse",
+    "Wholeoutput1024 probe cost at least1024fixedoutputcost before history, no sharedCz saves source contractions",
+    "Float64 diagnosed. No unmeasuredfloat32fee/variance extrapolation used aspass"
+  ]
+}

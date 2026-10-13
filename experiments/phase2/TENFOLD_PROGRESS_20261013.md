@@ -88,3 +88,21 @@ network0严格RPC零失败：before raw2.228117956804e-8 / adjusted4.87141604936
 同原network0严格RPC，before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.231846352174e-08 / adjusted5.163226797216e-09（raw+0.16733%、adjusted+5.99027%），零失败。FLOPs508729276534，wall44.609014/residual0.193475329s、client288208KiB。候选SHAa1672cc0d2dedaa65eb668213612c1b47855ec46102bb0cb35721c6df1b7cfce。否决tail2currentGmetric机制，不扫层、不扩量、无raw信号故不做final收缩降费支线。真正全历史K4 birth/metric闭合仍未实现，不可从局部负结果全盘否决。
 
 更大双流全链离线oracle以固定K2/K3/K4系数和PhiW递推：parentfinalraw2.22819e-8；两流平均effect后的真实positive residualK2=1.275e-8，K3=1.866e-8，K4=1.609e-8，K2+3=8.328e-9，K2+3+4=2.019e-9。组合oracle约11倍不是合法候选成绩；整链早层MC噪声大，8chunkcross残余1.336e-9±1.348e-9，不能据此认证30倍。下一重点仍联合真实state生产，source非树项成本门槛和真K4历史闭合。
+
+## 低秩残差丢失补回 r20：真实raw小信号、adjusted负结果
+
+只将出生Rres−QBm恢复为独立CP(3(Rres−QBm).T,I,I)，2腿全宽全历史，父已有thinM保持，diagremainder也保留以取消近似QBm的伪对角。不是改rank扫参数，不依赖truth；独立n4/8/32三年龄tensor/helper合同max1.55e-15，n32depth4wholepredictfinite；只读生产审计alias/newbornrawW/olderWD及去重通过。后续parentP有confine而remainderP全宽，故称birthdiscarded恢复，不能称完整fullM。
+
+network0原reference严格RPC零失败：before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.144773247892e-08 / adjusted1.042629715438e-08（raw−3.74059%、adjusted+114.0301%）。FLOPs1069002046455，wall74.028162/residual0.264957639s，client287904KiB；候选SHAc50fd5d81ca67fdfd6b5163b82c5970b7f371c185cb6cd396ba5ee5722b57de0。残差丢失有小raw信号，但不足支付费用且距tenfold远，未晋升、不上传、不扫rank/scale。
+
+非树K111×edge r18固定outputs0–3/all14sources有信号，但r21实际matrixfreeprobe每output每probe4,227,952,640FLOPs；output0达到预定10%SE需要4503probes，扣父费用仅418probe（SE/signal.3282）。1024output单probe约4.329e12，超总预算，此具体Hutch实现否决，非所有方法下界。r18fixed4outputs与V29同hashMC方向3/4反向，保留noise/旧capture局限不据4点断言全方法无效。继续真正K4 birth/history最小producer合同。
+
+2026-10-13T10:26:50.187209+00:00
+
+## 双流诊断完成与 r20 状态归因 r24
+
+云r02自然终止：1024返回、1015成功、9基础设施timeout；两stream有效样本33,226,752/33,292,288，总66,519,040，原失败保留、不重启。最终冻结报告和脚本身份见`results/phase2/modal_covariance_causal_r02/frozen_final_commit_manifest_r03.json`。固定联合K2/K3/K4的离线全链oracle正残余2.22819e-8→1.48439e-9，wholecross8.28073e-10，8chunkcross1.05231e-9±6.313e-10；仅指真值诊断，不能当候选或十倍验收。
+
+r24对r20使用新target-free canonical capture及该call自身prediction/gain，保持原reference与成功双流moments。严格分数仍采用原strict报告，instrumentedtrace不能当资源验收。r20 trace与strict最大差2.861e-6，finalrawcapture2.14668e-8。末层localinnovation4.41939e-9→4.43811e-9；K2missingcross6.07788e-8→5.85025e-8，K3missingcross6.52633e-5→6.51589e-5，K4missingcross5.39773e-7→5.39747e-7。恢复birthdiscarded M只填补小部分状态缺口，联合oraclelocalresidual约1.294e-10未改变；停止rank/scale追扫，重点继续真正K4producer与K3非树闭合。证据`results/phase2/tenfold_completed_state_attribution_r24.json`，无candidate真值访问或经验拟合。
+
+r22/r23 target-free V29旧capture组件（不同于H18canonical）完成：全14来源M的diag/ssep/rank16/feed逐来源年龄分解与普通functional精确重组；四输出ordinary组件478,705,248FLOPs，逐来源与独立materializedM误差<2e-12。这些M已被parent表示，不再次叠加，不称新分数。真实四阶producer n4/n8完整合同已完成，但fixedR2仍丢失约54–84%birthFrobenius，通用stream O(n4)不可据此宣称1024生产可行；继续repeat-support lift新组件。阶段1与最佳不变。

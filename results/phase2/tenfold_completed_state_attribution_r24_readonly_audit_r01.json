@@ -1,0 +1,40 @@
+{
+  "report": "results/phase2/tenfold_completed_state_attribution_r24.json",
+  "report_sha256": "00ebca2c11a644159170a3ae7514d00cd6774d79a487e33ef5f4e30a1a7cccbe",
+  "reference_name": "logan-fitzgerald",
+  "reference_raw_mlp_seed": 6319981554997072999,
+  "strict_setup_seed": 3909487726,
+  "reference_weights_exact_match_rpc_float32": true,
+  "parent_metadata_actual_version": "V37bH18",
+  "parent_source_sha256": "c3dd3282106ba72f5882b2c2e1a0143c3627c373acaae0642c1e0033788ffda2",
+  "candidate_source_sha256": "c50fd5d81ca67fdfd6b5163b82c5970b7f371c185cb6cd396ba5ee5722b57de0",
+  "parent_chain_positive_vs_prior_report_absdiff": 6.168699418114204e-22,
+  "parent_chain_cross_vs_prior_report_absdiff": 1.41654679899706e-22,
+  "canonical_premean_chain_maxabs_parent": 2.4697481944002675e-06,
+  "canonical_premean_chain_maxabs_candidate": 2.618053013936361e-06,
+  "captured_pk1_prediction_maxdiff_both": 0.0,
+  "mode0_D3_K4_maxabs_both": 0.0,
+  "firstvar_vs_float64_exact_maxabs_both": 8.350547893165583e-07,
+  "current_relevant_environment_override_keys": [],
+  "files": [
+    {
+      "source": "experiments/phase2/tenfold_completed_state_attribution_r24.py",
+      "source_sha256": "214a41799f158c423ea35745146f245a746191674c9f5e5c986c59f64570e509",
+      "snapshot": "results/phase2/tenfold_completed_state_attribution_r24.audit_r01.executed.py",
+      "snapshot_sha256": "214a41799f158c423ea35745146f245a746191674c9f5e5c986c59f64570e509"
+    },
+    {
+      "source": "experiments/phase2/capture_tenfold_candidate_state_r01.py",
+      "source_sha256": "8c88b89bdcb7231e5e8b1a8164fa4a1fbceb3ea811198c945c3d62f6b769751f",
+      "snapshot": "results/phase2/capture_tenfold_candidate_state_r01.audit_r01.executed.py",
+      "snapshot_sha256": "8c88b89bdcb7231e5e8b1a8164fa4a1fbceb3ea811198c945c3d62f6b769751f"
+    }
+  ],
+  "actual_findings": [
+    "No current report math/permutation/moment coefficient/ownprediction mismatch identified. r24 uses H18 trace and aggregate MC moments, not aggregate.rows.V29.",
+    "capture clears V17_ through V29_, but leaves effective V30_, V36_, V37_ overrides; current environment has none, so present evidence not contaminated.",
+    "r24 should assert feature order/canonical flag, original reference identity/weights, aggregate identity and strict network IDs; current inputs independently checked matching.",
+    "Cross-stream statistic is a signed estimator, not a nonnegative MSE or stage certificate. MC fourth/third sample bias/reference noise remains. No chunk SE in r24."
+  ],
+  "scope": "Read-only source/input/previous-report checks, no running source modifications or production score claim."
+}

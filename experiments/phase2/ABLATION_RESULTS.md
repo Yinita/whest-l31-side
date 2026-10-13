@@ -2164,3 +2164,17 @@ network0严格RPC零失败：before raw2.228117956804e-8 / adjusted4.87141604936
 同原network0严格RPC，before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.231846352174e-08 / adjusted5.163226797216e-09（raw+0.16733%、adjusted+5.99027%），零失败。FLOPs508729276534，wall44.609014/residual0.193475329s、client288208KiB。候选SHAa1672cc0d2dedaa65eb668213612c1b47855ec46102bb0cb35721c6df1b7cfce。否决tail2currentGmetric机制，不扫层、不扩量、无raw信号故不做final收缩降费支线。真正全历史K4 birth/metric闭合仍未实现，不可从局部负结果全盘否决。
 
 更大双流全链离线oracle以固定K2/K3/K4系数和PhiW递推：parentfinalraw2.22819e-8；两流平均effect后的真实positive residualK2=1.275e-8，K3=1.866e-8，K4=1.609e-8，K2+3=8.328e-9，K2+3+4=2.019e-9。组合oracle约11倍不是合法候选成绩；整链早层MC噪声大，8chunkcross残余1.336e-9±1.348e-9，不能据此认证30倍。下一重点仍联合真实state生产，source非树项成本门槛和真K4历史闭合。
+
+## 低秩残差丢失补回 r20：真实raw小信号、adjusted负结果
+
+只将出生Rres−QBm恢复为独立CP(3(Rres−QBm).T,I,I)，2腿全宽全历史，父已有thinM保持，diagremainder也保留以取消近似QBm的伪对角。不是改rank扫参数，不依赖truth；独立n4/8/32三年龄tensor/helper合同max1.55e-15，n32depth4wholepredictfinite；只读生产审计alias/newbornrawW/olderWD及去重通过。后续parentP有confine而remainderP全宽，故称birthdiscarded恢复，不能称完整fullM。
+
+network0原reference严格RPC零失败：before raw2.228117956804e-8 / adjusted4.871416049362e-9；after raw2.144773247892e-08 / adjusted1.042629715438e-08（raw−3.74059%、adjusted+114.0301%）。FLOPs1069002046455，wall74.028162/residual0.264957639s，client287904KiB；候选SHAc50fd5d81ca67fdfd6b5163b82c5970b7f371c185cb6cd396ba5ee5722b57de0。残差丢失有小raw信号，但不足支付费用且距tenfold远，未晋升、不上传、不扫rank/scale。
+
+非树K111×edge r18固定outputs0–3/all14sources有信号，但r21实际matrixfreeprobe每output每probe4,227,952,640FLOPs；output0达到预定10%SE需要4503probes，扣父费用仅418probe（SE/signal.3282）。1024output单probe约4.329e12，超总预算，此具体Hutch实现否决，非所有方法下界。r18fixed4outputs与V29同hashMC方向3/4反向，保留noise/旧capture局限不据4点断言全方法无效。继续真正K4 birth/history最小producer合同。
+
+### tenfold.r24 — r20完整状态before/after归因
+
+before：H18冻结canonical自身prediction/gain，原reference与双流MC；after：r20独立target-free capture，对每个call自身状态归因。末层localinnovation4.41939e-9→4.43811e-9；K2缺口cross6.07788e-8→5.85025e-8，K3缺口6.52633e-5→6.51589e-5，K4缺口5.39773e-7→5.39747e-7。联合离线oracle残余不变。instrumentation漂移最大2.861e-6保留；原strict raw改善3.7406%而adjusted恶化114.03%不变。诊断完成，不是新候选、资源通过、独立泛化或十倍达标。停止r20rank/scale追扫。
+
+证据：[r24归因](../../results/phase2/tenfold_completed_state_attribution_r24.json)、[r20capture身份](../../results/phase2/tenfold_residual_remainder_r20_canonical_state_r01.json)。r22/r23真实全14来源fixed4outputM功能分解和精确收缩重组均targetfree合同通过，478,705,248FLOPs只表示组件；已parent表示的M不能双计为提分。
