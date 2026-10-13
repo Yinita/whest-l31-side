@@ -9,13 +9,74 @@
     "adjusted_score": 5.778979755766664e-09,
     "report": "results/phase2/v29_mini8_local.json"
   },
-  "active_experiment": null,
+  "active_experiment": {
+    "key": "frozen shard08 paired workflow",
+    "status": "running",
+    "workflow": "results/phase2/frozen_pair_frozen_public_shard08_r01.json",
+    "lock": "results/phase2/frozen_pair_frozen_public_shard08.lock",
+    "report": "results/phase2/sprint_public_v37b_h18_r14_strict_shard08.json",
+    "dataset": "benchmark/data/mini_shard08",
+    "n_mlps": 7,
+    "network_ids": [
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64"
+    ],
+    "phase": "V29_predict",
+    "command": [
+      "uv",
+      "run",
+      "--frozen",
+      "python",
+      "benchmark/run_frozen_public_pair.py",
+      "--cohort",
+      "frozen_public_shard08",
+      "--run-id",
+      "r01",
+      "--sync-research-state"
+    ],
+    "next": "serialinputs/V29/best/scores/compare; completecoverage remains58 until finished",
+    "workflow_updated_at_utc": "2026-10-13T07:45:09.865792+00:00",
+    "pid": 1230827,
+    "pid_start_ticks": "1539114",
+    "session_id": 24505,
+    "started_at_utc": "2026-10-13T07:44:45.211046+00:00",
+    "current_child": {
+      "name": "V29_predict",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "benchmark/run_rpc_strict.py",
+        "--estimator",
+        "estimators/k3_v29/estimator.py",
+        "--inputs",
+        "benchmark/data/rpc_inputs/frozen_shard08_r01/inputs.json",
+        "--dataset",
+        "benchmark/data/mini_shard08",
+        "--n-mlps",
+        "7",
+        "--output",
+        "results/phase2/v29_r14_strict_shard08.json"
+      ],
+      "started_at_utc": "2026-10-13T07:45:09.385750+00:00",
+      "log": "/home/sti/Desktop/projects/whest-l31-side/results/phase2/frozen_pair_frozen_public_shard08_r01_V29_predict.log",
+      "pid": 1232392
+    }
+  },
   "next_experiment": {
-    "key": "frozen public shard08",
-    "status": "preparing_original_data"
+    "key": "collect frozen shard08 results then compression cost gate",
+    "status": "waiting_on_active_pair",
+    "hypothesis": "Fullrank allsource one-orbit 12.43%budget requires compression or shared-basis contractions before full nonlinear integration",
+    "scope": "target-free state, exact mapping frozen; score absent until complete candidate"
   },
   "stop_policy": "Only user pause stops the automation; validated stage achievement advances target /10. A checkpoint is not stage completion.",
-  "updated_at_utc": "2026-10-13T07:44:13.660809+00:00",
+  "updated_at_utc": "2026-10-13T07:45:09.865803+00:00",
   "previous_experiment": {
     "id": "WB-P2-A001",
     "version": "v30.001",
@@ -43823,7 +43884,7 @@
   "execution_mode": "continuous_goal",
   "automation_deleted": "whestbench-10",
   "data_preparation": {
-    "status": "running",
+    "status": "completed",
     "key": "public shard08 original data",
     "pid": 1206295,
     "pid_start_ticks": "1509809",
