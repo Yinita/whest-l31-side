@@ -1,7 +1,14 @@
-# R56 normalized on-policy candidate preparation
+# R56 normalized on-policy candidate validation
+
+Current checkpoint 2026-10-14 15:34 CST: actual R61 completion/full14 verified; R62 actual wrapper and R56 component/source audit passed. R57fresh8 and R59wholeparity launched with frozen identities. No new raw/adjusted or strict resource acceptance yet. Earlier preparation-only descriptions below remain historical.
+
+## Earlier preparation checkpoint
 
 Preparation only. No full sequential TRAIN14 model is available at this
 checkpoint, so no estimator directory/support/model/candidate is generated.
+R54 retained a layer8idx320300s failure. R61 continues unchanged mathematics
+from70 copied through7 artifacts and815 successful captures plus isolatedR60;
+R62 binds the real complete continuation provenance before any future build.
 
 `build_onpolicy_closure_template_r56.py --audit-output <new-json>` without a
 model writes an audit template and exits. Building requires a frozen private
@@ -32,10 +39,15 @@ strict resource acceptance. Reports: `onpolicy_closure_template_r56_audit.json`
 and `onpolicy_support_contract_r56_r01.json`.
 
 Before using any future generatedcandidate: freeze actual fullsequentialmodel
-and evidence, show targetfree wholeprediction parity with samecycleproduction
-H18, collect freshnetworkrawsignal, then strictRPC Mini8/independent adjusted
-scores/resourcechecks. Do not port a negativepilot merely because the builder
-works. Stage1target remains<5.779e-10 and tenfold is unachieved.
+and evidence, run actualmodel componentparity and
+`audit_onpolicy_integration_r56.py`, collect fixedR57fresh8 naturalrawsignal
+and fixedR59TRAINidx0 targetfree complete observer-versus-actual parity, then
+strictRPC Mini8/independent adjusted scores/resourcechecks. The source audit
+checks exact normalizedhead AST, support/model/source identity, allowed runtime
+operators, first0/final15 skips, rideronce and unchanged mixedcross block.
+It cannot replace wholeimplementation parity or validate jointrealizability.
+Do not port a negativepilot merely because the builder works. Stage1target
+remains<5.779e-10 and tenfold is unachieved.
 
 R54earlynoise interpretation is separately audited in
 `onpolicy_early_noise_gate_audit_r54_integration.json`. Mean layer1 observed

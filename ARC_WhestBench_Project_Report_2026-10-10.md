@@ -1,5 +1,7 @@
 # ARC White-Box Estimation Challenge 2026 项目调研与推进报告
 
+2026-10-14 15:34 CST：最佳V37bH18已按用户要求复测提交 **#335966**，同包既有线上adjusted **4.293779716792071e-9**，预计量级约4.3e-9；最新API仍submitted/score null，不重复提交、不宣称新收益。R61实际于2026-10-13T12:38:30Z完成1560唯一有效capture（815原R54＋1R60＋744R61）、70heads/full24完整14层、held336；旧running840状态已修正并绑定completion/model/journal。R54原300秒失败保留。R62真实来源绑定及R56实际组件/源代码集成核验通过，候选SHA d11ec74e…。当前R57首次新8网idx768..880完整成对rollout（PID2479952）与R59固定idx0无labels整网实现一致性（PID2479957）已实际启动。局部CV不是最终raw/adjusted，16GiB云诊断不是原资源验收；stage1仍5.779e-10，尚未达标。
+
 2026-10-13 20:15 CST：R60同失败输入隔离运行25.86秒通过，compute25.05/序列化.015/Volumecommit.791秒；原超时根因仍未证实。独立AST核验仅归档边界变化、数学与fit/eval完全一致。R61已按新身份启动PID1713590，逐文件核验复用原815成功＋R60补齐1条，不重跑旧训练；完成layer8 held24后接续9..14，compute与归档解耦。原失败保留，不提前生成完整模型；最佳/阶段阈值不变。
 
 2026-10-13 20:10 CST：R54在第8层一项cloudcapture达到300秒超时，原协议停止；815成功/1失败全部保留，只有through7的35heads，没有full14模型，不生成R56或报告提分。R60新身份隔离诊断具体输入与compute/serialization/Volume阶段，禁止缺网拟合；R58真实joint方向诊断准备中。最佳V37bH18、阶段1阈值5.779e-10均未变。

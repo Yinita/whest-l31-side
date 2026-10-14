@@ -212,3 +212,17 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 ### r54真正on-policy固定14层已运行
 
 2026-10-13 19:56 CST，实际PID1699263/startticks见state，immutableSHA1321d9713e9f00538092e03c2019beb4bfc161bf97dab09af6632ca9afe408dd。首launcher1698800迅速消失、log0字节/OUT未创建，原log保留，确认无活动后r02launcher接续同源，未重复实验。full24+4foldTRAIN18/held6，layer1复用同trace baseline无cloud，2..14 learnedprefix实际capture，最大96worker/1CPU/16GiB，rawVolume hashcommit/local保留150MiB。合同r02八actual小网络+floor/inheriteddelta2例通过；默认NO_CORR=True，deltaNone，layer1总meanfp32-copy与K1copy默认路径相同，非默认rider路径另受合同。启动前TRAINnoise诊断μ残差/nominalnoise layer1~1.03→14~23.55，var1~1.03→14~97.33；early3只合同/finite安全检查，不用MCnoise占主导的earlyaccuracy截断late机制。模型不调参、不选层，完整14固定一次后fresh全推理/RPC才可判断提分。初估15–35分钟由实际测时更新，非保证。Stage1阈值及最佳不变，无新比赛上传。
+
+## 2026-10-14 R61完整冻结 → R62 → R56实际候选 → R57/R59已启动
+
+2026-10-14 15:34 CST：最佳V37bH18已按用户要求复测提交 **#335966**，同包既有线上adjusted **4.293779716792071e-9**，预计量级约4.3e-9；最新API仍submitted/score null，不重复提交、不宣称新收益。R61实际于2026-10-13T12:38:30Z完成1560唯一有效capture（815原R54＋1R60＋744R61）、70heads/full24完整14层、held336；旧running840状态已修正并绑定completion/model/journal。R54原300秒失败保留。R62真实来源绑定及R56实际组件/源代码集成核验通过，候选SHA d11ec74e…。当前R57首次新8网idx768..880完整成对rollout（PID2479952）与R59固定idx0无labels整网实现一致性（PID2479957）已实际启动。局部CV不是最终raw/adjusted，16GiB云诊断不是原资源验收；stage1仍5.779e-10，尚未达标。
+
+|版本|验证内容|before|after|结果|
+|---|---|---|---|---|
+|R61|同fixed26/λ.01逐层on-policy14训练|H18局部矩误差|physical head/H18 μ .999258、var .962844、K3 .836661、K4 .615331|1560captures/0新失败，仅CV诊断|
+|R62|真实完成来源绑定|原R54失败保留|815R54＋1R60＋744R61|通过，不拟合/不计分|
+|R56|实际冻结组件及源代码集成|原H18/R48算子|normalized ((f−mean)/scale)@theta，fnp-only|组件通过，整网/资源尚未通过|
+|R57|首次新8网完整无truth递推|同worker H18|冻结R56候选|运行中，分数待回收|
+|R59|固定TRAINidx0整网实现一致性|offlineobserver|实际R56candidate|运行中，绝对1e-6固定门槛|
+
+原模型SHA bca9e30b08a0ee146784795848946a302ed1cc08fb75dffbde347a2aa340d6e2；来源wrapperSHA de9b9c7c65c5a8fe6c2816e770df359786d345a177a56e9313f4120d22a823d4；实际candidateSHA d11ec74ebca5c04f9c621d05a2e163b6220ef223f584c3598639cae29abe5c34；supportSHA39412c5441b32412ce1d358b144bb43d529ca3e3b233e17280d47d5e64138f02。模型/support/labels不Git发布。

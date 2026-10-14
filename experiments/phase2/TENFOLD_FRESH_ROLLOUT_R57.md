@@ -1,16 +1,24 @@
-# R57 frozen actual candidate fresh8 preparation
+# R57 frozen actual candidate fresh8 validation
+
+Current checkpoint 2026-10-14 15:34 CST: actual R61 completion/full14 verified; R62 actual wrapper and R56 component/source audit passed. R57fresh8 and R59wholeparity launched with frozen identities. No new raw/adjusted or strict resource acceptance yet. Earlier preparation-only descriptions below remain historical.
+
+## Earlier preparation checkpoint
 
 Prepared only; no model/source/support is built for this run yet, no cloud
 launch and no freshMC labels read. Fresh indices768,784,…880 are fixed before
 score reading. One full14R54model is evaluated once even if localCV is weak,
 because local marginalCV cannot establish natural final16layer quality.
 
-The `wrap_onpolicy_model_r56.py` wrapper first binds actual frozenR54final
-envelope to complete heads1..14, prefixSHAchain, manifest and full24capture
-records. It only adds validated metadata; it cannot invent missingcaptures
-or fit coefficients. It never changes running R54 source/evidence. R56builder
-then validates wrapperSHA and writes normalized-head lawfulcandidate privately.
-Wholeactualmodel componentparity/sourceledger audit is required before launch.
+The original `wrap_onpolicy_model_r56.py` requires a complete originalR54;
+R54failed at layer8idx320300s and has no full14model. New R61infrastructure
+continuation preserves original815successes, one genuineisolatedR60capture,
+through7heads and originalfailure. `wrap_onpolicy_continuation_model_r62.py`
+waits for realcompleteR61heads1..14 then binds originalsource/failure, captures,
+prefixSHAchain and committedarchivewaveprovenance into a newprivatewrapper.
+It only adds validated metadata; it cannot invent missingcaptures or fit
+coefficients. R56builder then validates wrapperSHA and writes normalized-head
+lawfulcandidate privately. Actualmodel componentparity/sourceledger audit is
+required before launch; R59 wholeactual-observer parity runs on fixedTRAINidx0.
 
 `modal_onpolicy_closed_fresh8_r57.py` sends only frozencandidate source/support/
 hashes and idx to predictionworkers. Each worker regenerates one fullW via

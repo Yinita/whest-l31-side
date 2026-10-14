@@ -1218,3 +1218,7 @@ R60只隔离原full24 idx320 layer8/prefix7，sameCPU1/16GiB/300s，实际25.858
 ### 2026-10-14 — 用户授权最佳版线上复测 #335966
 
 用户要求“现在把最好的交云端”。核验已验证最佳仍V37bH18，原包SHA95d47c0510c58dbe9b1f69cf0467a9347e2d5d617f3a88cbc989449ff2b8791c，源码c3dd3282..；tar源码逐字节一致及whest validate-package通过。新提交#335966已accepted，原samepackage#335678已graded4.293779716792071e-9；65公共网strict adjusted4.459611165100404e-9零失败。预计仅以既有同包线上约4.3e-9为锚，非改进保证；新分数以新grader返回为准。R61完整训练已结束但仅局部矩CV，无R57完整新网/strict评分，不作为best。没有提交private派生模型或负候选。
+
+## 2026-10-14 R61 completed provenance correction / R62
+
+R61 PID1713590 exited. Actual completion2026-10-13T12:38:30Z;1560 unique successful captures:815 originalR54 +1 isolatedR60 +744 newR61.70 heads/full24 frozen14,held336. Boundary and truthful continuation binding passed; originalR54 300s failure remains retained. ModelSHA bca9e30b08a0ee146784795848946a302ed1cc08fb75dffbde347a2aa340d6e2. Physical head/H18 localCV mean,var,K3,K4 [0.9992582861419407, 0.9628437459342497, 0.8366605486706465, 0.6153306009656218]; no final raw/adjusted score. Status previously running840 corrected from immutable completion/journal. R62 adds provenance only, no fitting. #335966 existing bestpackage remains submitted/score null at latest query. Stage1 threshold5.779e-10 unchanged. Next actualmodel component/integration and registered R57fresh8/R59wholeparity.
