@@ -1,64 +1,38 @@
 # WhestBench Phase 2 研究项目
 
-本仓库基于 AIcrowd whest-starterkit，当前目标是复现公开 K=3 高阶统计量传播方法，诊断误差与计算来源，再验证一项可解释的精度—成本改进。项目状态更新于 **2026-10-12**。
+更新于 2026-10-14 15:40 CST。最佳已验证候选是 **V37bH18**：线上 #335678 adjusted **4.293779716792071e-9**、raw **2.1220624581985702e-8**；公共65网严格RPC adjusted **4.459611165100404e-9**、raw **2.1926280100960693e-8**、零失败。用户要求复测的同包 **#335966** 仍 submitted / score null，预计约4.3e-9，实际以平台评分为准。
 
-完整依据见 [项目调研与推进报告](ARC_WhestBench_Project_Report_2026-10-10.md)，当前任务见 [DEVELOPMENT.md](DEVELOPMENT.md)，实验状态见 [EXPERIMENTS_REPORT.md](EXPERIMENTS_REPORT.md)，最新逐轮研究见 [RESEARCH_LOG.md](experiments/phase2/RESEARCH_LOG.md)。报告中的公开结果与路线建议不等于本项目已完成的复现。
+最新 R61 完成1560唯一有效capture并冻结完整14层模型；R62来源核验、R56实际组件及源代码检查通过。**R57首次新8网完整递推 raw 2.0529841238535947e-8 → 2.09938120285408e-8（+2.259982%，4/8改善、零运行失败）**，paired bootstrap95 ratio[0.9988951937,1.0516581763]，否决固定26特征线性on-policy边缘矩修正。R59整网observer/actualcandidate逐层最大差0，通过实现一致性。云诊断16GiB及residual超0.4秒，不是原资源验收；没有新adjusted成绩，不扩严格RPC/Mini8、不上传此候选。
 
-## 当前阶段
+阶段1仍要求冻结Mini8 adjusted **<5.779e-10**、独立未见网络至少十倍、零失败及严格资源/合同通过，**尚未达标**。原R54 300秒失败及全部负结果保留。下一研究方向需改变联合信息机制，不能继续扫同模型λ/scale/layers。
 
-Phase 2 以宽 1024、深 16 的随机 ReLU MLP 为对象，返回 `(16, 1024)` post-ReLU 均值，按最后一层 MSE 与计算用量评分。报告记录预算为 `2**41` FLOPs，公开数据版本为 `v2-phase2`；执行正式实验前须核对 grader 与工具版本。
+## 结果与执行入口
 
-Phase 2 当前入口是 `estimators/k3_v29/estimator.py`，公开 V29 原样复现；首次提交 #335146 已 graded，上榜团队 Niko，2026-10-10 快照排名 111，adjusted 5.4182e-9；评分与记录见 `results/phase2/`。本地与线上 benchmark 流程见 [benchmark/README.md](benchmark/README.md)。
+|用途|入口|
+|---|---|
+|最佳已验证提交代码|[V37bH18](estimators/sprint_public_v37b_h18_r01/estimator.py)|
+|最新完成实验与before/after|[十倍研究进展](experiments/phase2/TENFOLD_PROGRESS_20261013.md)、[R57结果](results/phase2/onpolicy_fresh8_r57_summary_r01.json)|
+|执行协议与下一步|[开发入口](DEVELOPMENT.md)、[状态](experiments/phase2/research_state.json)|
+|benchmark复跑|[benchmark/README.md](benchmark/README.md)|
+|134项队列（原129项＋论文方法）|[消融结果](experiments/phase2/ABLATION_RESULTS.md)、[机器队列](experiments/phase2/ablation_queue.json)|
+|原始证据与实验来源|[研究日志](experiments/phase2/RESEARCH_LOG.md)、[结果索引](results/phase2/README.md)|
+|官方资料与规则调研|[项目报告](ARC_WhestBench_Project_Report_2026-10-10.md)|
+|仓库目录及发布边界|[仓库整理说明](docs/REPOSITORY_LAYOUT.md)|
 
-根目录 `estimator.py` 是保留的 Phase 1 Hadamard 采样对照，仍含旧阶段预算标定，且仅填充最后一层预测。它尚未完成 Phase 2 验收。教学例子也不等同于公开 V25/V29 实现。
-
-## 安装与基础检查
+## 复现
 
 ```bash
 uv sync --frozen --group dev
+uv run --frozen python benchmark/phase2.py run \
+  --estimator estimators/sprint_public_v37b_h18_r01/estimator.py \
+  --dataset benchmark/data/mini_first8 --n-mlps 8 --runner local \
+  --output results/phase2/v37bh18_new_local.json
 ```
 
-以下小网络检查用于确认已有本地工具可运行：
+先按benchmark文档准备公开数据；使用新输出名，保留已有证据。固定flopscope0.12.1、whestbench0.16.1、NumPy2.2.6、seed0、单线程、2**41 FLOP预算、lambda0、predict120秒/residual0.4秒/setup5秒。Math/local用于数值研发，严格RPC用于提交路径和原资源检查。工具升级必须重跑冻结控制；公共开发集与独立确认、raw与adjusted分开报告。
 
-```bash-test
-uv run python estimator.py --width 8 --depth 3
-```
+## 历史与许可
 
-```bash
-uv run pytest tests/ -q
-uv run ruff check .
-uv run whest validate --estimator examples/03_covariance_propagation.py
-```
+根目录 `estimator.py` 是Phase1历史采样对照；当前Phase2提交入口见上表。`examples/`、`local_engine.py`、`tests/` 为教学与合同工具，`experiments/moment_chain/` 为旧阶段研究参考。Phase1报告在[archive/phase1/](archive/phase1/README.md)，starterkit原首页在[archive/starterkit/README.md](archive/starterkit/README.md)。
 
-Phase 2 数据评测入口如下；应先完成版本核对和候选合同验收。这里使用教学协方差对照，不代表强基线复现：
-
-```bash
-uv run whest run --estimator examples/03_covariance_propagation.py \
-    --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
-    --split mini --runner subprocess
-```
-
-提交计算需通过允许的 flopscope 算子。Torch/NumPy 参考程序仅用于研发。打包时显式指定经过验收的 estimator 文件或目录，并检查上传内容。
-
-## 研究顺序
-
-1. E00–E02：官方 baseline、V25/V29 复现、输出约定与成本对齐。
-2. E03–E07：来源扰动、输出导向压缩、高阶核心近似与精确计算重组。
-3. E09–E10：连续运行、独立网络验证、冻结 holdout 与消融。
-
-先用 48 小时完成可解释复现与诊断。采样与低阶控制变量保留为对照；最终候选需有独立贡献、归因、成本记录与未见网络结果。
-
-## 仓库导航
-
-- `estimator.py`：历史采样对照。
-- `local_engine.py`、`examples/`、`tests/`：本地教学、参考算法与检查。
-- `experiments/moment_chain/`：保留的旧阶段矩链数学探针，尚需 Phase 2 重测。
-- `docs/`：继承的 starter kit 教程及合同参考；涉及旧阶段的内容已标记。
-- `archive/phase1/`：旧 L31 版本、日志、失败实验、提交草稿与报告，退出当前工作入口。
-- `archive/starterkit/README.md`：上游历史首页。
-
-报告建议北京时间 **2026-10-17 18:00** 内部冻结、当日 **23:00 前**完成提交；报告记录官方截止为 **2026-10-18 07:59**。最终选择界面与外部截止执行前需再次核查。
-
-上游来源：[AIcrowd/whest-starterkit](https://github.com/AIcrowd/whest-starterkit)。许可证见 [LICENSE](LICENSE)。公开参赛代码的许可与署名须在导入时单独记录。
-
-129项消融正在执行；真实before/after与资源记录见[消融结果](experiments/phase2/ABLATION_RESULTS.md)。H18在Mini-8开发集adjusted降低2.287%，独立/RPC仍待确认，阶段1尚未达标。
+上游[AIcrowd/whest-starterkit](https://github.com/AIcrowd/whest-starterkit)，许可证[LICENSE](LICENSE)。公开方法源码保留各目录LICENSE/NOTICE。凭据、原始数组、MC labels及许可未明确的学习模型/系数仅本地保存；本仓库发布推理源码、复现工具和可公开的计量证据。

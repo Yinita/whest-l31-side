@@ -32,3 +32,23 @@ Thumbs.db
 
 # Benchmark input caches (large public weights/reference arrays)
 /benchmark/data/
+
+# Local execution streams and generated immutable diagnostic snapshots.
+# Keep JSON completion/manifest/summary evidence explicitly versioned.
+/results/phase2/**/*.log
+/results/phase2/**/*.pstats
+/results/phase2/**/*.progress.json
+/results/phase2/**/*.session*.lifecycle.json
+/experiments/phase2/on_policy_h18_snapshot_*.py
+/experiments/phase2/pregraph_h18_snapshot_*.py
+/experiments/phase2/*_ledger_diagnostic_snapshot.py
+
+# Private fitted artifacts: dataset redistribution rights remain unconfirmed.
+# The frozen_pair / frozen_strict public score reports do not match this rule.
+/results/phase2/**/frozen_train*.json
+/results/phase2/**/frozen_full24*.json
+/results/phase2/**/frozen_joint_ridge.json
+
+# Local independent-reference arrays embedded in JSON streams.
+/results/phase2/modal_independent_reference_r03.json
+/results/phase2/modal_independent_reference_r03.jsonl

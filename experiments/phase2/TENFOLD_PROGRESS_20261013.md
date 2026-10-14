@@ -226,3 +226,16 @@ R50六个固定target-free有向协方差/混合source图context正确性及实�
 |R59|固定TRAINidx0整网实现一致性|offlineobserver|实际R56candidate|运行中，绝对1e-6固定门槛|
 
 原模型SHA bca9e30b08a0ee146784795848946a302ed1cc08fb75dffbde347a2aa340d6e2；来源wrapperSHA de9b9c7c65c5a8fe6c2816e770df359786d345a177a56e9313f4120d22a823d4；实际candidateSHA d11ec74ebca5c04f9c621d05a2e163b6220ef223f584c3598639cae29abe5c34；supportSHA39412c5441b32412ce1d358b144bb43d529ca3e3b233e17280d47d5e64138f02。模型/support/labels不Git发布。
+
+## 2026-10-14 15:40 CST R57完整负结果，R59实现一致性通过
+
+更新于 2026-10-14 15:40 CST。最佳已验证候选是 **V37bH18**：线上 #335678 adjusted **4.293779716792071e-9**、raw **2.1220624581985702e-8**；公共65网严格RPC adjusted **4.459611165100404e-9**、raw **2.1926280100960693e-8**、零失败。用户要求复测的同包 **#335966** 仍 submitted / score null，预计约4.3e-9，实际以平台评分为准。
+
+最新 R61 完成1560唯一有效capture并冻结完整14层模型；R62来源核验、R56实际组件及源代码检查通过。**R57首次新8网完整递推 raw 2.0529841238535947e-8 → 2.09938120285408e-8（+2.259982%，4/8改善、零运行失败）**，paired bootstrap95 ratio[0.9988951937,1.0516581763]，否决固定26特征线性on-policy边缘矩修正。R59整网observer/actualcandidate逐层最大差0，通过实现一致性。云诊断16GiB及residual超0.4秒，不是原资源验收；没有新adjusted成绩，不扩严格RPC/Mini8、不上传此候选。
+
+阶段1仍要求冻结Mini8 adjusted **<5.779e-10**、独立未见网络至少十倍、零失败及严格资源/合同通过，**尚未达标**。原R54 300秒失败及全部负结果保留。下一研究方向需改变联合信息机制，不能继续扫同模型λ/scale/layers。
+
+|版本|before raw|after raw|变化|失败|结论|
+|---|---:|---:|---:|---:|---|
+|R56/R57|2.0529841238535947e-8|2.09938120285408e-8|+2.259982%|0/8|关闭，不扩RPC/不上传|
+|R59|observer full16|actualcandidate full16|maxabs0|0|实现一致性通过，非分数|

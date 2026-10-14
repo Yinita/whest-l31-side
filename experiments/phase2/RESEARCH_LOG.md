@@ -1222,3 +1222,13 @@ R60只隔离原full24 idx320 layer8/prefix7，sameCPU1/16GiB/300s，实际25.858
 ## 2026-10-14 R61 completed provenance correction / R62
 
 R61 PID1713590 exited. Actual completion2026-10-13T12:38:30Z;1560 unique successful captures:815 originalR54 +1 isolatedR60 +744 newR61.70 heads/full24 frozen14,held336. Boundary and truthful continuation binding passed; originalR54 300s failure remains retained. ModelSHA bca9e30b08a0ee146784795848946a302ed1cc08fb75dffbde347a2aa340d6e2. Physical head/H18 localCV mean,var,K3,K4 [0.9992582861419407, 0.9628437459342497, 0.8366605486706465, 0.6153306009656218]; no final raw/adjusted score. Status previously running840 corrected from immutable completion/journal. R62 adds provenance only, no fitting. #335966 existing bestpackage remains submitted/score null at latest query. Stage1 threshold5.779e-10 unchanged. Next actualmodel component/integration and registered R57fresh8/R59wholeparity.
+
+## 2026-10-14 15:40 CST R57/R59完成与仓库整理
+
+更新于 2026-10-14 15:40 CST。最佳已验证候选是 **V37bH18**：线上 #335678 adjusted **4.293779716792071e-9**、raw **2.1220624581985702e-8**；公共65网严格RPC adjusted **4.459611165100404e-9**、raw **2.1926280100960693e-8**、零失败。用户要求复测的同包 **#335966** 仍 submitted / score null，预计约4.3e-9，实际以平台评分为准。
+
+最新 R61 完成1560唯一有效capture并冻结完整14层模型；R62来源核验、R56实际组件及源代码检查通过。**R57首次新8网完整递推 raw 2.0529841238535947e-8 → 2.09938120285408e-8（+2.259982%，4/8改善、零运行失败）**，paired bootstrap95 ratio[0.9988951937,1.0516581763]，否决固定26特征线性on-policy边缘矩修正。R59整网observer/actualcandidate逐层最大差0，通过实现一致性。云诊断16GiB及residual超0.4秒，不是原资源验收；没有新adjusted成绩，不扩严格RPC/Mini8、不上传此候选。
+
+阶段1仍要求冻结Mini8 adjusted **<5.779e-10**、独立未见网络至少十倍、零失败及严格资源/合同通过，**尚未达标**。原R54 300秒失败及全部负结果保留。下一研究方向需改变联合信息机制，不能继续扫同模型λ/scale/layers。
+
+完整8网同worker数值控制idx768 baselineA/B逐层完全一致、FLOPs一致。R56candidate固定FLOPs480868427895 vs parent480763746423（增加104681472）；运行失败0，云residual超0.4秒明确不资源通过。R59 idx0 maxabs0，不拟合、不改变模型。stage1和最佳保持不变。发布public JSON/source，private支持未stage。

@@ -1,5 +1,7 @@
 # R57 frozen actual candidate fresh8 validation
 
+Completed 2026-10-14 15:40 CST: R57fullfresh8 raw+2.259982%,4/8wins,0fail; rawgate failed, fixed26 linear on-policy mechanism rejected, no strict expansion/upload. R59full16 paritypassed maxabs0. Earlier checkpoints below are historical.
+
 Current checkpoint 2026-10-14 15:34 CST: actual R61 completion/full14 verified; R62 actual wrapper and R56 component/source audit passed. R57fresh8 and R59wholeparity launched with frozen identities. No new raw/adjusted or strict resource acceptance yet. Earlier preparation-only descriptions below remain historical.
 
 ## Earlier preparation checkpoint
