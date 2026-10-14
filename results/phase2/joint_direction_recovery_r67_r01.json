@@ -1,0 +1,89 @@
+{
+  "version": "r67-localpayload-arrowcompat-recovery",
+  "complete": true,
+  "source_sha256": "e7b4f9f960e831000d07fc680ecae9ae399b31dc93e420babc6d4ea3f10568f5",
+  "original_journal_sha256": "3ea47fbc71e996bede8e14bccf067d4bd04c4a31855671690ff9bdab094a0cb1",
+  "original_log_sha256": "11dee4f5570504874ec82326af156d094b7b32709086a30e992e415f44a43980",
+  "preparation_sha256": "3bed347e8ae02f829f843c4f6c42a12fd64e1dd9ec7fc08bf9f6b2747c689856",
+  "original_failure": "datasets List metadata incompatible in Modal host Python3.10",
+  "versions": {
+    "datasets": "4.8.5",
+    "pyarrow": "24.0.0",
+    "numpy": "2.2.6"
+  },
+  "corruption": [
+    {
+      "line": 6,
+      "bytes": 572,
+      "all_NUL": true
+    }
+  ],
+  "valid_receipts": 5,
+  "smoke_unique": 4,
+  "baseline_payloads": 2,
+  "rows": [
+    {
+      "network": 0,
+      "path": "results/phase2/joint_direction_mc_r58_r02/baseline_network0.npz",
+      "payload_sha256": "9e9d60849c6c4569f8f4fcf5761c6546b88f8e5b980ef69847440387b7e3a79f",
+      "receipt_available": true,
+      "recovered_from_local_payload": false,
+      "original_cloud_receipt_reconstructed": false,
+      "original_reference_sha256": "af3818cd72c33e66dae7acc2758544137c22703f30859499282aa32691892582",
+      "before_raw": 2.232756579884569e-08,
+      "control_raw": 2.232756579884569e-08,
+      "control_ratio": 1.0,
+      "prediction_control_maxabs": 0.0,
+      "numeric_gate_passed": true,
+      "zip_crc_passed": true,
+      "arrays_finite": true,
+      "missing_metadata": []
+    },
+    {
+      "network": 16,
+      "path": "results/phase2/joint_direction_mc_r58_r02/baseline_network16.npz",
+      "payload_sha256": "3c871626c21aa3269de145ea05ff6701f1dacd6117c8bcf9d6a8b74020abd3b1",
+      "receipt_available": false,
+      "recovered_from_local_payload": true,
+      "original_cloud_receipt_reconstructed": false,
+      "original_reference_sha256": "f4ef83bd0d40bfcd7b72c7ad6e0a2fd65b92988fe4b391b67d4be6ac7c31ac6a",
+      "before_raw": 1.811567602295953e-08,
+      "control_raw": 1.811567602295953e-08,
+      "control_ratio": 1.0,
+      "prediction_control_maxabs": 0.0,
+      "numeric_gate_passed": true,
+      "zip_crc_passed": true,
+      "arrays_finite": true,
+      "missing_metadata": [
+        "elapsed_s",
+        "capture_cost",
+        "control_cost",
+        "audit",
+        "trace_removed",
+        "raw_archive_receipt"
+      ]
+    }
+  ],
+  "calibrations": [
+    {
+      "network": 0,
+      "samples": 131072,
+      "ratio": 1.1249324644641263,
+      "passed": true
+    },
+    {
+      "network": 16,
+      "samples": 131072,
+      "ratio": 1.0640100169149704,
+      "passed": true
+    }
+  ],
+  "numeric_data_gate_passed": true,
+  "full_original_metadata_gate_passed": false,
+  "remaining252_started": false,
+  "no_cloud_samples_repeated": true,
+  "no_original_evidence_modified": true,
+  "continuation_requires": "Explicit provenance exception for lost network16 receipt; array/numeric gates pass but original prestate/trace audit cannot be recovered. Do not silently claim original full integrity gate.",
+  "score_claim": false,
+  "stage_accepted": false
+}

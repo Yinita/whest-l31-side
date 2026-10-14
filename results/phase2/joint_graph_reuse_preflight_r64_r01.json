@@ -1,0 +1,83 @@
+{
+  "version": "r64-joint-direction-graph-reuse-identifiability-audit",
+  "complete": true,
+  "source_sha256": "39824b52071ffa89b1690da9eb04a135bae05bc9e7c015737a4f6b4cbaf4d4f9",
+  "preparation_sha256": "3bed347e8ae02f829f843c4f6c42a12fd64e1dd9ec7fc08bf9f6b2747c689856",
+  "immutable_r58_source_hashes": {
+    "experiments/phase2/modal_joint_direction_mc_r58_r02.py": "b8a350f745a10bde72b70914cf8ced0472623cc278f3eb1e484a9d5d061aaf96",
+    "experiments/phase2/joint_direction_config_r58.py": "0ea5644a955312bb7d8a01cef8107ff112fff3d96c07f3e03a73694c6ccd02e5",
+    "experiments/phase2/joint_direction_stats_r58.py": "7346ef1cc1cf83919782c3276ab61b3c85476f24cfeb4d46522add9d36888f37",
+    "experiments/phase2/joint_direction_contract_r58.py": "2cfd5ab70db4e1b815c5d6d0afe109145edb78519aba6cd97ffe7b73bd9d582a",
+    "experiments/phase2/prepare_joint_direction_r58_r02.py": "bb6f5289996f01185296518efa481500802fd3e6f5960d4fa65eb7ed99350471"
+  },
+  "networks": [
+    {
+      "network": 0,
+      "weights_sha256": "7fb2e3f519b4a90f2c3de9e64d45ad89b7f20ffd254d887e4ba4fa5c1fdf0754",
+      "reference_sha256": "af3818cd72c33e66dae7acc2758544137c22703f30859499282aa32691892582",
+      "used_public_development": true
+    },
+    {
+      "network": 16,
+      "weights_sha256": "abc7991fdf8e285788b5dfa57753e57ed0db849600c047f0bb9ae76ba8af9a76",
+      "reference_sha256": "f4ef83bd0d40bfcd7b72c7ad6e0a2fd65b92988fe4b391b67d4be6ac7c31ac6a",
+      "used_public_development": true
+    }
+  ],
+  "mathematical_contract_sha256": "9c4b42af4a155d5b6566ab41e68b2a49ea0ad6b88920ab1c9a52c3f1b28695b2",
+  "identifiability": {
+    "equal_marginal_cumulants": true,
+    "directional_variance_independent": 2.0,
+    "directional_variance_shared": 4.0,
+    "conclusion": "marginal-only archives cannot identify joint contractions"
+  },
+  "existing_MC": {
+    "completion_sha256": "ac0ba569b99da93b79461044479f3310fd481bfaed34b527eb3cf00644c69a27",
+    "original_successes": 1015,
+    "original_failures": 9,
+    "inspected_payload_sha256": "fa7c0eebb0d78f0eca99589b24589b594e21ba067dd1b63fb1b485c875760e34",
+    "stored_shape": [
+      2,
+      16,
+      1024
+    ],
+    "raw_samples_saved": false,
+    "joint_labels_recoverable": false,
+    "no_MC_repeated": true
+  },
+  "existing_graph": {
+    "manifest_sha256": "f293ba69a9b27d1699df7df484e3a3b242239e97ddbbf00806fac210987b3b0e",
+    "completion_sha256": "fae44456c5ae43f1bbe4ecc41b2329256c60a7ac03115c8a411b8ee78bf884a4",
+    "capture_source_sha256": "778645219a8b9e41e9e262891181ffc4d5f13b853076411906c51b1a47f01c40",
+    "networks": 24,
+    "failures": 0,
+    "preserved_arrays": [
+      "idx",
+      "graph_features"
+    ],
+    "original_gate_pass_count": 14,
+    "gate_not_relaxed": true,
+    "maxabs_per_feature": [
+      0.0638312131295612,
+      0.0026572440119832456,
+      0.005588334827668358,
+      0.009908051493038935,
+      0.00453117073884148,
+      0.0009458572042107437
+    ],
+    "transport_local32_discarded": true,
+    "no_cross_trace_join": true,
+    "fitting_performed": false
+  },
+  "deployment": {
+    "original_import_failure_sha256": "a21f44177aefef7eb525607c0a4b0ee570ac712a232b1984597d61285d16ae43",
+    "original_failure_retained": true,
+    "immutable_r02_inlines_configuration": true,
+    "new_MC_results_available": false
+  },
+  "mechanism": "measure true K2/K3/K4 next-weight contractions before choosing joint-context algorithm",
+  "minimum_next_experiment": "fixed four unique MCsmoke shards plus two sameworker H18 capture/control; reuse smoke on integrity pass; fixed remaining252 only after numeric/data gates",
+  "gain_claim": false,
+  "stage_accepted": false,
+  "scope": "read-only existing-evidence reuse audit; no fitted model, candidate, score or generalization"
+}

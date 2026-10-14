@@ -1232,3 +1232,11 @@ R61 PID1713590 exited. Actual completion2026-10-13T12:38:30Z;1560 unique success
 阶段1仍要求冻结Mini8 adjusted **<5.779e-10**、独立未见网络至少十倍、零失败及严格资源/合同通过，**尚未达标**。原R54 300秒失败及全部负结果保留。下一研究方向需改变联合信息机制，不能继续扫同模型λ/scale/layers。
 
 完整8网同worker数值控制idx768 baselineA/B逐层完全一致、FLOPs一致。R56candidate固定FLOPs480868427895 vs parent480763746423（增加104681472）；运行失败0，云residual超0.4秒明确不资源通过。R59 idx0 maxabs0，不拟合、不改变模型。stage1和最佳保持不变。发布public JSON/source，private支持未stage。
+
+## 2026-10-14 R64existingreuse → R65actualgraph → R58r02smoke
+
+R64readonly audit allR58source/weights/reference/direction hashes passes. OriginalR58import failure0MC retained. R51compactgraph24payloads hashes verify, originalgate14/24 unchanged; same-run26/state lost after transport, noR53join/fit. OldMC1015success9fail stores marginalstats only, cannotidentifyjointtargets (equalmarginals/crossvar2vs4 counterexample). R65 savedH18li14actual1024 component legalgraph4.3433472G, oraclemax1.301e-18/permutation1.388e-17, nopredict/reference/fit;14layer60.8069G onlyextrapolation. FixedR58r02PID2516325/startticks instate, fouruniquesmoke returned29.68–33.16s zero failures; sameworkersbaselinecaptures running. Existing335966statusr05 remains submitted/null. Stage1target5.779e-10 andbest unchanged. OriginalPébay andofficialfactorK3 sources re-browsed; omission-leadingorder isupstream report notourreproduction.
+
+## 2026-10-14 R58r02真实中断 / R67恢复
+
+PID2516325退出；ModalhostPython3.10 datasets对reference metadata List类型不兼容。原journal前5条有效，line6为572NUL；network16ZIP/payload在盘但原cloudreceipt丢失。原log/journal不改。R67固定ArrowIPC直接读取同hash原reference，核对all_layer_means[-1]与final_means一致；4smoke+2baseline全部复用，无cloud重跑。两baselineprediction/control完全相等，calibration与数据数值门槛见恢复报告。network16原elapsed/cost/prestateaudit/trace_removed/archive回执不能补造；原完整metadata门槛未验收，因此未启动252。R66原要求两完整baseline回执，不伪造通过。最佳/stage1不变。
