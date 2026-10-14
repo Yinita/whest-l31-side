@@ -1213,3 +1213,8 @@ PID1699263/startticks3047507确认仍存活，immutable源SHA1321d9713e9f0053809
 ### 2026-10-13 20:15 CST — R60成功并启动R61新身份基础设施接续
 
 R60只隔离原full24 idx320 layer8/prefix7，sameCPU1/16GiB/300s，实际25.85893秒成功：compute25.0466、serialization.0152、Volumecommit.7914秒，root AST去除日志与归档identity后等同原worker；payloadb8af2211..和prefix431cb268..哈希核验通过。原timeout根因仍未知，原failedpayloadVolume不存在，不伪称原R54成功。R61 PID1713590/源50ef9636..，新身份唯一基础设施变化computeonlyworker与每wave单独archive；原samefrozenmath/fit_head/eval_current AST严格一致。prelaunch逐815成功+R60payload ID/layer/hash/finite/tailfeatures同states/scales通过，原through7头prefixhashchain全审。复用816validcapture，只运行layer8held24和layer9..14的720新capture，共744新任务；末模型真实origin由R62新wrapper核验815+1+744=1560unique。所有原失败继续保留。Root静态审计绑定外部reuse与failedboundaryreportSHA；未完成前R56/R57/R59不启动。
+
+
+### 2026-10-14 — 用户授权最佳版线上复测 #335966
+
+用户要求“现在把最好的交云端”。核验已验证最佳仍V37bH18，原包SHA95d47c0510c58dbe9b1f69cf0467a9347e2d5d617f3a88cbc989449ff2b8791c，源码c3dd3282..；tar源码逐字节一致及whest validate-package通过。新提交#335966已accepted，原samepackage#335678已graded4.293779716792071e-9；65公共网strict adjusted4.459611165100404e-9零失败。预计仅以既有同包线上约4.3e-9为锚，非改进保证；新分数以新grader返回为准。R61完整训练已结束但仅局部矩CV，无R57完整新网/strict评分，不作为best。没有提交private派生模型或负候选。
